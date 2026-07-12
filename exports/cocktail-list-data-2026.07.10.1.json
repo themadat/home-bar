@@ -1,0 +1,3036 @@
+{
+  "buildVersion": "2026.07.10.1",
+  "exportedAt": "2026-07-10T17:14:16.622Z",
+  "customTypes": [],
+  "typeAssignments": {},
+  "notes": {
+    "alexander": "not as creamy, sweet, or strong as you would want from these ingredients",
+    "amaretto-martini": "Night after night of tweaking to get this perfect for game night has produced a BANGER cocktail\nVariations:\n- Try Demerara simple syrup which brings in more richness and a caramel/molasses taste profile and fuller mouthfeel",
+    "americano": "Sweet start, very bitter finish that has you coming back for more.\nVariations:\n- 3 oz of soda water which results in a very refreshing spritz like drink for the summer. \n- Adding lemon soda bring an interesting twist, but can't tell if it is better"
+  },
+  "ratings": {
+    "amaretto-martini": 5,
+    "alexander": 3,
+    "americano": 4
+  },
+  "cocktails": [
+    {
+      "id": "amaretto-martini",
+      "name": "Amaretto Martini",
+      "type": "Custom",
+      "originalType": "Custom",
+      "status": "Custom",
+      "glassware": "Martini Cocktail",
+      "baseLiquor": [
+        "Vodka",
+        "Liqueurs"
+      ],
+      "garnish": "Lemon, Orange, Cherry, Rosemary",
+      "ingredients": [
+        "2 oz Almond Nut Liqueur [Amaretto]",
+        "1 oz Vodka",
+        "1/2 oz Fresh Lemon Juice",
+        "1/2 oz Simple Syrup"
+      ],
+      "totalVolume": "4 oz",
+      "method": [
+        "Shake with ice for 20 seconds.",
+        "Strain and serve neat. Serve over fresh ice if preferred."
+      ],
+      "userNotes": "Night after night of tweaking to get this perfect for game night has produced a BANGER cocktail\nVariations:\n- Try Demerara simple syrup which brings in more richness and a caramel/molasses taste profile and fuller mouthfeel",
+      "rating": 5
+    },
+    {
+      "id": "alexander",
+      "name": "Alexander",
+      "type": "The Unforgettables",
+      "originalType": "The Unforgettables",
+      "status": "Current IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Brandy",
+        "Liqueurs"
+      ],
+      "garnish": "Nutmeg",
+      "ingredients": [
+        "1 oz Cognac",
+        "1 oz Chocolate Liqueur [Crème de Cacao] (Brown)",
+        "1 oz Fresh Cream"
+      ],
+      "totalVolume": "3 oz",
+      "method": [
+        "Pour all ingredients into cocktail shaker filled with ice cubes.",
+        "Shake and strain into a chilled cocktail glass."
+      ],
+      "userNotes": "not as creamy, sweet, or strong as you would want from these ingredients",
+      "rating": 3
+    },
+    {
+      "id": "americano",
+      "name": "Americano",
+      "type": "The Unforgettables",
+      "originalType": "The Unforgettables",
+      "status": "Current IBA",
+      "glassware": "Old Fashioned",
+      "baseLiquor": [
+        "Liqueurs",
+        "Vermouth"
+      ],
+      "garnish": "Lemon, Orange",
+      "ingredients": [
+        "1 oz Bitter Liqueur [Campari]",
+        "1 oz Sweet Red Vermouth",
+        "A splash of Soda Water"
+      ],
+      "totalVolume": "2 oz",
+      "method": [
+        "Mix the ingredients directly in an old fashioned glass filled with ice cubes.",
+        "Add a splash of Soda Water. Stir gently."
+      ],
+      "userNotes": "Sweet start, very bitter finish that has you coming back for more.\nVariations:\n- 3 oz of soda water which results in a very refreshing spritz like drink for the summer. \n- Adding lemon soda bring an interesting twist, but can't tell if it is better",
+      "rating": 4
+    },
+    {
+      "id": "angel-face",
+      "name": "Angel Face",
+      "type": "The Unforgettables",
+      "originalType": "The Unforgettables",
+      "status": "Current IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Gin",
+        "Brandy",
+        "Liqueurs"
+      ],
+      "garnish": "NONE",
+      "ingredients": [
+        "1 oz Gin",
+        "1 oz Apricot Fruit Liqueur [Apricot Brandy]",
+        "1 oz Calvados"
+      ],
+      "totalVolume": "3 oz",
+      "method": [
+        "Pour all ingredients into cocktail shaker filled with ice cubes.",
+        "Shake and strain into a chilled cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "aviation",
+      "name": "Aviation",
+      "type": "The Unforgettables",
+      "originalType": "The Unforgettables",
+      "status": "Current IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Gin",
+        "Liqueurs"
+      ],
+      "garnish": "Cherry",
+      "ingredients": [
+        "1 1/2 oz Gin",
+        "1/2 oz Maraschino Fruit Liqueur [Luxardo]",
+        "1/2 oz Fresh Lemon Juice",
+        "1/6 oz (1 Bar Spoon) Violet Floral Liqueur [Crème de Violette]"
+      ],
+      "totalVolume": "2 2/3 oz",
+      "method": [
+        "Add all ingredients into a cocktail shaker.",
+        "Shake with cracked ice and strain into a chilled cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "bees-knees",
+      "name": "Bee’s Knees",
+      "type": "New Era Drinks",
+      "originalType": "New Era Drinks",
+      "status": "Current IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Gin"
+      ],
+      "garnish": "Lemon, Orange",
+      "ingredients": [
+        "1 3/4 oz Dry Gin",
+        "1/3 oz (2 teaspoons) Honey Syrup",
+        "3/4 oz Fresh Lemon Juice",
+        "3/4 oz Fresh Orange Juice"
+      ],
+      "totalVolume": "3 2/3 oz",
+      "method": [
+        "Stir honey with lemon and orange juices until it dissolves, add gin and shake with ice. Strain into a chilled cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "bellini",
+      "name": "Bellini",
+      "type": "Contemporary Classics",
+      "originalType": "Contemporary Classics",
+      "status": "Current IBA",
+      "glassware": "Flute",
+      "baseLiquor": [
+        "Wine"
+      ],
+      "garnish": "NONE",
+      "ingredients": [
+        "3 1/3 oz Prosecco",
+        "1 2/3 oz White Peach Puree"
+      ],
+      "totalVolume": "5 oz",
+      "method": [
+        "Pour peach puree into the mixing glass with ice, add the Prosecco wine.",
+        "Stir gently and pour in a chilled flute glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "between-the-sheets",
+      "name": "Between the Sheets",
+      "type": "The Unforgettables",
+      "originalType": "The Unforgettables",
+      "status": "Current IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Rum",
+        "Brandy",
+        "Liqueurs"
+      ],
+      "garnish": "NONE",
+      "ingredients": [
+        "1 oz White Rum",
+        "1 oz Cognac",
+        "1 oz Orange Fruit Liqueur [Triple Sec]",
+        "2/3 oz Fresh Lemon Juice"
+      ],
+      "totalVolume": "3 2/3 oz",
+      "method": [
+        "Add all ingredients into a cocktail shaker.",
+        "Shake with ice and strain into a chilled cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "black-russian",
+      "name": "Black Russian",
+      "type": "Contemporary Classics",
+      "originalType": "Contemporary Classics",
+      "status": "Current IBA",
+      "glassware": "Old Fashioned",
+      "baseLiquor": [
+        "Vodka",
+        "Liqueurs"
+      ],
+      "garnish": "NONE",
+      "ingredients": [
+        "1 2/3 oz Vodka",
+        "2/3 oz Coffee Liqueur [Coffee Liqueur]"
+      ],
+      "totalVolume": "2 1/3 oz",
+      "method": [
+        "Pour the ingredients into the old fashioned glass filled with ice cubes.",
+        "Stir gently. strain ingredients into old fashioned glass filled with ice."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "bloody-mary",
+      "name": "Bloody Mary",
+      "type": "Contemporary Classics",
+      "originalType": "Contemporary Classics",
+      "status": "Current IBA",
+      "glassware": "Rocks",
+      "baseLiquor": [
+        "Vodka"
+      ],
+      "garnish": "Lemon, Celery",
+      "ingredients": [
+        "1 1/2 oz Vodka",
+        "3 oz Tomato Juice",
+        "1/2 oz Fresh Lemon Juice",
+        "2 dashes Worcestershire Sauce",
+        "Tabasco, Celery Salt, Pepper (Up to taste)"
+      ],
+      "totalVolume": "5 oz",
+      "method": [
+        "Stir gently all the ingredients in a mixing glass with ice, pour into rocks glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "boulevardier",
+      "name": "Boulevardier",
+      "type": "The Unforgettables",
+      "originalType": "The Unforgettables",
+      "status": "Current IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Whisk(e)y",
+        "Liqueurs",
+        "Vermouth"
+      ],
+      "garnish": "Lemon, Orange",
+      "ingredients": [
+        "1 1/2 oz Bourbon or Rye Whiskey",
+        "1 oz Bitter Liqueur [Campari]",
+        "1 oz Sweet Red Vermouth"
+      ],
+      "totalVolume": "3 1/2 oz",
+      "method": [
+        "Pour all ingredients into mixing glass with ice cubes.",
+        "Stir well. Strain into chilled cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "bramble",
+      "name": "Bramble",
+      "type": "New Era Drinks",
+      "originalType": "New Era Drinks",
+      "status": "Current IBA",
+      "glassware": "Old Fashioned",
+      "baseLiquor": [
+        "Gin",
+        "Liqueurs"
+      ],
+      "garnish": "Lemon, Blackberries",
+      "ingredients": [
+        "1 2/3 oz Gin",
+        "3/4 oz Fresh Lemon Juice",
+        "1/2 oz Sugar Syrup",
+        "1/2 oz Blackberry Fruit Liqueur [Crème de Mûre]"
+      ],
+      "totalVolume": "3 1/2 oz",
+      "method": [
+        "Pour all ingredients into cocktail shaker except the Crème de Mûre, shake well with ice, strain into chilled old fashioned glass filled with crushed ice, then pour the blackberry liqueur (Crème de Mûre) over the top of the drink, in a circular motion."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "brandy-crusta",
+      "name": "Brandy Crusta",
+      "type": "The Unforgettables",
+      "originalType": "The Unforgettables",
+      "status": "Current IBA",
+      "glassware": "Slim Cocktail",
+      "baseLiquor": [
+        "Brandy",
+        "Liqueurs"
+      ],
+      "garnish": "Lemon, Orange, Rim: Sugar",
+      "ingredients": [
+        "1 3/4 oz Brandy",
+        "1/4 oz Maraschino Fruit Liqueur [Luxardo]",
+        "1/6 oz (1 Bar Spoon) Orange Fruit Liqueur [Curacao]",
+        "1/2 oz Fresh Lemon Juice",
+        "1/6 oz (1 Bar Spoon) Simple Syrup",
+        "2 Dashes Aromatic Bitters"
+      ],
+      "totalVolume": "2 3/4 oz",
+      "method": [
+        "Mix together all ingredients with ice cubes in a mixing",
+        "glass and strain into a prepared slim cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "caipirinha",
+      "name": "Caipirinha",
+      "type": "Contemporary Classics",
+      "originalType": "Contemporary Classics",
+      "status": "Current IBA",
+      "glassware": "Double Old Fashioned",
+      "baseLiquor": [
+        "Rum"
+      ],
+      "garnish": "NONE",
+      "ingredients": [
+        "2 oz Cachaça",
+        "1 Lime cut into small wedges",
+        "2/3 oz (4 teaspoons) White Cane Sugar"
+      ],
+      "totalVolume": "2 2/3 oz",
+      "method": [
+        "Place lime and sugar into a double old fashioned glass and muddle gently.",
+        "Fill the glass with cracked ice and add Cachaça. Stir gently to involve ingredients."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "canchanchara",
+      "name": "Canchanchara",
+      "type": "New Era Drinks",
+      "originalType": "New Era Drinks",
+      "status": "Current IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Rum"
+      ],
+      "garnish": "Lime",
+      "ingredients": [
+        "2 oz Cuban Aguardiente",
+        "1/2 oz Fresh Lime Juice",
+        "1/2 oz Raw Honey",
+        "1 2/3 oz Water"
+      ],
+      "totalVolume": "4 2/3 oz",
+      "method": [
+        "Mix honey with water and lime juice and spread the mixture on the bottom and sides of the glass.",
+        "Add cracked ice, and then the rum.",
+        "End by energetically stirring from bottom to top."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "cardinale",
+      "name": "Cardinale",
+      "type": "Contemporary Classics",
+      "originalType": "Contemporary Classics",
+      "status": "Current IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Gin",
+        "Liqueurs",
+        "Vermouth"
+      ],
+      "garnish": "Lemon",
+      "ingredients": [
+        "1 1/3 oz Gin",
+        "2/3 oz Dry Vermouth",
+        "1/3 oz Bitter Liqueur [Campari]"
+      ],
+      "totalVolume": "2 1/3 oz",
+      "method": [
+        "Pour all ingredients into mixing glass with ice cubes. Stir well.",
+        "Strain into chilled cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "casino",
+      "name": "Casino",
+      "type": "The Unforgettables",
+      "originalType": "The Unforgettables",
+      "status": "Current IBA",
+      "glassware": "Rocks",
+      "baseLiquor": [
+        "Gin",
+        "Liqueurs"
+      ],
+      "garnish": "Lemon, Cherry",
+      "ingredients": [
+        "1 1/3 oz Old Tom Gin [Old Tom Gin]",
+        "1/3 oz Maraschino Fruit Liqueur [Luxardo]",
+        "1/3 oz Fresh Lemon Juice",
+        "2 Dashes Orange Bitters"
+      ],
+      "totalVolume": "2 oz",
+      "method": [
+        "Pour all ingredients into cocktails shaker, shake well with ice, strain",
+        "into chilled rocks glass with ice."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "champagne-cocktail",
+      "name": "Champagne Cocktail",
+      "type": "Contemporary Classics",
+      "originalType": "Contemporary Classics",
+      "status": "Current IBA",
+      "glassware": "Large Champagne",
+      "baseLiquor": [
+        "Brandy",
+        "Liqueurs",
+        "Wine"
+      ],
+      "garnish": "Orange, Cherry",
+      "ingredients": [
+        "3 oz Chilled Champagne",
+        "1/3 oz Cognac",
+        "2 dashes Angostura bitters",
+        "Few drops of Orange Fruit Liqueur [Grand Marnier] (optional)",
+        "1 sugar cube"
+      ],
+      "totalVolume": "3 1/3 oz",
+      "method": [
+        "Place the sugar cube with 2 dashes of bitters in a large Champagne glass, add the cognac.",
+        "Pour gently chilled Champagne."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "chartreuse-swizzle",
+      "name": "Chartreuse Swizzle",
+      "type": "New Era Drinks",
+      "originalType": "New Era Drinks",
+      "status": "Current IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Liqueurs"
+      ],
+      "garnish": "Mint, Nutmeg",
+      "ingredients": [
+        "1 1/2 oz Green Herb and Anise Liqueur [Chartreuse]",
+        "1 oz Fresh Pineapple Juice",
+        "3/4 oz Fresh Lime Juice",
+        "1/2 oz Herb and Anise Liqueur [Falernum]"
+      ],
+      "totalVolume": "3 3/4 oz",
+      "method": [
+        "Pour all ingredients into a tall glass, add pebble ice.",
+        "With the help of a swizzle stick (or cocktail spoon) mix vigorously, complete by filling the glass with more pebble ice."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "clover-club",
+      "name": "Clover Club",
+      "type": "The Unforgettables",
+      "originalType": "The Unforgettables",
+      "status": "Current IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Gin"
+      ],
+      "garnish": "Raspberries",
+      "ingredients": [
+        "1 1/2 oz Gin",
+        "1/2 oz Raspberry Syrup",
+        "1/2 oz Fresh Lemon Juice",
+        "Few Drops of Egg White"
+      ],
+      "totalVolume": "2 1/2 oz",
+      "method": [
+        "Pour all ingredients into cocktails shaker, shake well with ice, strain into chilled cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "corpse-reviver-2",
+      "name": "Corpse Reviver #2",
+      "type": "Contemporary Classics",
+      "originalType": "Contemporary Classics",
+      "status": "Current IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Gin",
+        "Liqueurs",
+        "Wine"
+      ],
+      "garnish": "Orange",
+      "ingredients": [
+        "1 oz Gin",
+        "1 oz Orange Fruit Liqueur [Cointreau]",
+        "1 oz White Aromatized Wine [Lillet Blanc]",
+        "1 oz Fresh Lemon Juice",
+        "1 dash Anise Liqueur [Absinthe]"
+      ],
+      "totalVolume": "4 oz",
+      "method": [
+        "Pour all ingredients into shaker with ice.",
+        "Shake well and strain in chilled cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "cosmopolitan",
+      "name": "Cosmopolitan",
+      "type": "Contemporary Classics",
+      "originalType": "Contemporary Classics",
+      "status": "Current IBA",
+      "glassware": "Large Cocktail",
+      "baseLiquor": [
+        "Vodka",
+        "Liqueurs"
+      ],
+      "garnish": "Lemon",
+      "ingredients": [
+        "1 1/3 oz Flavored Vodka [Vodka Citron]",
+        "1/2 oz Orange Fruit Liqueur [Cointreau]",
+        "1/2 oz Fresh Lime Juice",
+        "1 oz Cranberry Juice"
+      ],
+      "totalVolume": "3 1/3 oz",
+      "method": [
+        "Add all ingredients into cocktail shaker filled with ice.",
+        "Shake well and strain into large cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "cuba-libre",
+      "name": "Cuba Libre",
+      "type": "Contemporary Classics",
+      "originalType": "Contemporary Classics",
+      "status": "Current IBA",
+      "glassware": "Highball",
+      "baseLiquor": [
+        "Rum"
+      ],
+      "garnish": "Lime",
+      "ingredients": [
+        "1 2/3 oz White Rum",
+        "4 oz Cola",
+        "1/3 oz Fresh Lime Juice"
+      ],
+      "totalVolume": "6 oz",
+      "method": [
+        "Build all ingredients in a highball glass filled with ice."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "daiquiri",
+      "name": "Daiquiri",
+      "type": "The Unforgettables",
+      "originalType": "The Unforgettables",
+      "status": "Current IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Rum"
+      ],
+      "garnish": "NONE",
+      "ingredients": [
+        "2 oz White Cuban Ron",
+        "2/3 oz Fresh Lime Juice",
+        "1/3 oz (2 Bar Spoons) Superfine Sugar"
+      ],
+      "totalVolume": "3 oz",
+      "method": [
+        "In a cocktail shaker add all ingredients. Stir well to dissolve the sugar.",
+        "Add ice and shake. Strain into chilled cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "dark-n-stormy",
+      "name": "Dark ‘n’ Stormy",
+      "type": "New Era Drinks",
+      "originalType": "New Era Drinks",
+      "status": "Current IBA",
+      "glassware": "Highball",
+      "baseLiquor": [
+        "Rum"
+      ],
+      "garnish": "Lime",
+      "ingredients": [
+        "2 oz Goslings Rum",
+        "3 1/3 oz Ginger Beer"
+      ],
+      "totalVolume": "5 1/3 oz",
+      "method": [
+        "In a highball glass filled with ice pour the ginger beer and top floating with the Rum."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "dons-special-daiquiri",
+      "name": "Don’s Special Daiquiri",
+      "type": "New Era Drinks",
+      "originalType": "New Era Drinks",
+      "status": "Current IBA",
+      "glassware": "Footed Copo",
+      "baseLiquor": [
+        "Rum"
+      ],
+      "garnish": "Passion Fruit",
+      "ingredients": [
+        "1 oz Gold Jamaican Rum",
+        "1/2 oz Cuban Rum",
+        "1/2 oz Passion Fruit Syrup",
+        "1/2 oz Fresh lime juice",
+        "1/2 oz Honey Syrup"
+      ],
+      "totalVolume": "3 oz",
+      "method": [
+        "Blend for a few seconds in a milkshake mixer with crushed ice and pour into a footed copo glass.",
+        "Fill the glass with more crushed ice."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "dry-martini",
+      "name": "Dry Martini",
+      "type": "The Unforgettables",
+      "originalType": "The Unforgettables",
+      "status": "Current IBA",
+      "glassware": "Martini Cocktail",
+      "baseLiquor": [
+        "Gin",
+        "Vermouth"
+      ],
+      "garnish": "Lemon, Olive",
+      "ingredients": [
+        "2 oz Gin",
+        "1/3 oz Dry Vermouth"
+      ],
+      "totalVolume": "2 1/3 oz",
+      "method": [
+        "Pour all ingredients into mixing glass with ice cubes. Stir well. Strain into chilled martini cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "espresso-martini",
+      "name": "Espresso Martini",
+      "type": "New Era Drinks",
+      "originalType": "New Era Drinks",
+      "status": "Current IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Vodka",
+        "Liqueurs"
+      ],
+      "garnish": "Coffee Beans",
+      "ingredients": [
+        "1 2/3 oz Vodka",
+        "1 oz Kahlúa",
+        "1/3 oz Sugar Syrup",
+        "1 strong Espresso"
+      ],
+      "totalVolume": "3 oz",
+      "method": [
+        "Pour all ingredients into cocktail shaker, shake well with ice, strain into chilled cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "fernandito",
+      "name": "Fernandito",
+      "type": "New Era Drinks",
+      "originalType": "New Era Drinks",
+      "status": "Current IBA",
+      "glassware": "Double Old Fashioned",
+      "baseLiquor": [
+        "Liqueurs"
+      ],
+      "garnish": "NONE",
+      "ingredients": [
+        "1 2/3 oz Bitter Liqueur [Fernet-Branca]",
+        "Fill up with Cola"
+      ],
+      "totalVolume": "1 2/3 oz",
+      "method": [
+        "Pour the Fernet Branca into a double old fashioned glass with ice, fill the glass up with Cola. Gently stir."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "french-75",
+      "name": "French 75",
+      "type": "Contemporary Classics",
+      "originalType": "Contemporary Classics",
+      "status": "Current IBA",
+      "glassware": "Champagne Flute",
+      "baseLiquor": [
+        "Gin",
+        "Wine"
+      ],
+      "garnish": "NONE",
+      "ingredients": [
+        "1 oz Gin",
+        "1/2 oz Fresh Lemon Juice",
+        "1/2 oz Sugar Syrup",
+        "2 oz Champagne"
+      ],
+      "totalVolume": "4 oz",
+      "method": [
+        "Pour all the ingredients, except Champagne, into a shaker.",
+        "Shake well and strain into a Champagne flute.",
+        "Top up with Champagne.",
+        "Stir gently."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "french-connection",
+      "name": "French Connection",
+      "type": "Contemporary Classics",
+      "originalType": "Contemporary Classics",
+      "status": "Current IBA",
+      "glassware": "Old Fashioned",
+      "baseLiquor": [
+        "Brandy",
+        "Liqueurs"
+      ],
+      "garnish": "NONE",
+      "ingredients": [
+        "1 1/4 oz Cognac",
+        "1 1/4 oz Almond Nut Liqueur [Amaretto]"
+      ],
+      "totalVolume": "2 1/2 oz",
+      "method": [
+        "Pour all ingredients directly into old fashioned glass filled with ice cubes.",
+        "Stir gently."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "french-martini",
+      "name": "French Martini",
+      "type": "New Era Drinks",
+      "originalType": "New Era Drinks",
+      "status": "Current IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Vodka",
+        "Liqueurs"
+      ],
+      "garnish": "Lemon",
+      "ingredients": [
+        "1 1/2 oz Vodka",
+        "1/2 oz Raspberry Liqueur [Raspberry Liqueur]",
+        "1/2 oz Fresh Pineapple Juice"
+      ],
+      "totalVolume": "2 1/2 oz",
+      "method": [
+        "Pour all ingredients into cocktail shaker, shake well with ice, strain into chilled cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "garibaldi",
+      "name": "Garibaldi",
+      "type": "Contemporary Classics",
+      "originalType": "Contemporary Classics",
+      "status": "Current IBA",
+      "glassware": "Highball",
+      "baseLiquor": [
+        "Liqueurs"
+      ],
+      "garnish": "Orange",
+      "ingredients": [
+        "1 1/2 oz Bitter Liqueur [Campari]",
+        "4 oz Freshly Squeezed Orange Juice"
+      ],
+      "totalVolume": "5 1/2 oz",
+      "method": [
+        "Build all ingredients in a highball glass filled with ice."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "gin-basil-smash",
+      "name": "Gin Basil Smash",
+      "type": "New Era Drinks",
+      "originalType": "New Era Drinks",
+      "status": "Current IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Gin"
+      ],
+      "garnish": "NONE",
+      "ingredients": [
+        "2 oz Gin",
+        "3/4 oz Freshly Squeezed Lemon Juice",
+        "3/4 oz Sugar Syrup",
+        "10 pcs Italian Basil leaves"
+      ],
+      "totalVolume": "3 1/2 oz",
+      "method": [
+        "Add all ingredients into shaker with ice.",
+        "Shake vigorously and pour into chilled cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "gin-fizz",
+      "name": "Gin Fizz",
+      "type": "The Unforgettables",
+      "originalType": "The Unforgettables",
+      "status": "Current IBA",
+      "glassware": "Tall Tumbler",
+      "baseLiquor": [
+        "Gin"
+      ],
+      "garnish": "Lemon",
+      "ingredients": [
+        "1 1/2 oz Gin",
+        "1 oz Fresh Lemon Juice",
+        "1/3 oz Simple Syrup",
+        "Splash of Soda Water"
+      ],
+      "totalVolume": "2 3/4 oz",
+      "method": [
+        "Shake all ingredients with ice except soda water.",
+        "Pour into thin tall Tumbler glass , top with a splash soda water."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "grand-margarita",
+      "name": "Grand Margarita",
+      "type": "New Era Drinks",
+      "originalType": "New Era Drinks",
+      "status": "Current IBA",
+      "glassware": "Margarita",
+      "baseLiquor": [
+        "Tequila",
+        "Liqueurs"
+      ],
+      "garnish": "Lime",
+      "ingredients": [
+        "1 1/2 oz Tequila 100% agave",
+        "1 oz Orange Fruit Liqueur [Grand Marnier]",
+        "1/2 oz Fresh Lime Juice"
+      ],
+      "totalVolume": "3 oz",
+      "method": [
+        "Rim the rock glass with good quality sea salt. Pour the ingredients into the shaker.",
+        "Add ice to both glass and shaker.",
+        "Shake hard for 10 seconds. Strain the drink into the glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "grasshopper",
+      "name": "Grasshopper",
+      "type": "Contemporary Classics",
+      "originalType": "Contemporary Classics",
+      "status": "Current IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Liqueurs"
+      ],
+      "garnish": "Mint",
+      "ingredients": [
+        "2/3 oz Chocolate Liqueur [Crème de Cacao] (White)",
+        "2/3 oz Herb and Anise Liqueur [Crème de Menthe] (Green)",
+        "2/3 oz Fresh Cream"
+      ],
+      "totalVolume": "2 oz",
+      "method": [
+        "Pour all ingredients into shaker filled with ice.",
+        "Shake briskly for few seconds. Strain into chilled cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "hanky-panky",
+      "name": "Hanky Panky",
+      "type": "The Unforgettables",
+      "originalType": "The Unforgettables",
+      "status": "Current IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Gin",
+        "Liqueurs",
+        "Vermouth"
+      ],
+      "garnish": "Orange",
+      "ingredients": [
+        "1 1/2 oz Dry Gin [London Dry]",
+        "1 1/2 oz Sweet Red Vermouth",
+        "1/4 oz Fernet"
+      ],
+      "totalVolume": "3 1/4 oz",
+      "method": [
+        "Pour all ingredients into mixing glass with ice cubes. Stir well.",
+        "Strain into chilled cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "hemingway-special",
+      "name": "Hemingway Special",
+      "type": "Contemporary Classics",
+      "originalType": "Contemporary Classics",
+      "status": "Current IBA",
+      "glassware": "Large Cocktail",
+      "baseLiquor": [
+        "Rum",
+        "Liqueurs"
+      ],
+      "garnish": "NONE",
+      "ingredients": [
+        "2 oz Rum",
+        "1 1/3 oz Grapefruit Juice",
+        "1/2 oz Maraschino Fruit Liqueur [Luxardo]",
+        "1/2 oz Fresh Lime"
+      ],
+      "totalVolume": "4 1/3 oz",
+      "method": [
+        "Pour all ingredients into a shaker with ice.",
+        "Shake well and strain into a large cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "horses-neck",
+      "name": "Horse’s Neck",
+      "type": "Contemporary Classics",
+      "originalType": "Contemporary Classics",
+      "status": "Current IBA",
+      "glassware": "Highball",
+      "baseLiquor": [
+        "Brandy"
+      ],
+      "garnish": "Lemon",
+      "ingredients": [
+        "1 1/3 oz Cognac",
+        "4 oz Ginger Ale",
+        "Dash of Angostura Bitters (optional)"
+      ],
+      "totalVolume": "5 1/3 oz",
+      "method": [
+        "Pour Cognac and ginger ale directly into highball glass with ice cubes.",
+        "Stir gently.",
+        "If preferred, add dashes of Angostura Bitter."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "iba-tiki",
+      "name": "IBA Tiki",
+      "type": "New Era Drinks",
+      "originalType": "New Era Drinks",
+      "status": "Current IBA",
+      "glassware": "Tiki",
+      "baseLiquor": [
+        "Rum",
+        "Liqueurs"
+      ],
+      "garnish": "Pineapple",
+      "ingredients": [
+        "1 oz Ron Profundo Havana Club",
+        "1 oz Ron Smoky Havana Club",
+        "1/2 oz Almond Nut Liqueur [Amaretto]",
+        "1/4 oz Hazelnut Nut Liqueur [Frangelico]",
+        "5 drops Maraschino Fruit Liqueur [Luxardo]",
+        "1 oz Passion Fruit Puree",
+        "90 Fresh Pineapple Juice",
+        "30 Fresh Lime Juice",
+        "1 pc Gengibre Slice"
+      ],
+      "totalVolume": "3 3/4 oz",
+      "method": [
+        "In a cocktail shaker muddle a thin slice of Gengibre, Pour all other ingredients.",
+        "Shake vigorously with ice.",
+        "Strain into a chilled Tiki glass filled with pebbled ice."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "illegal",
+      "name": "Illegal",
+      "type": "New Era Drinks",
+      "originalType": "New Era Drinks",
+      "status": "Current IBA",
+      "glassware": "Terracotta Mug",
+      "baseLiquor": [
+        "Rum",
+        "Tequila",
+        "Liqueurs"
+      ],
+      "garnish": "NONE",
+      "ingredients": [
+        "1 oz Espadin Mezcal",
+        "1/2 oz Jamaica Overproof White Rum",
+        "1/2 oz Herb and Anise Liqueur [Falernum]",
+        "1/6 oz (1 Bar Spoon) Maraschino Fruit Liqueur [Luxardo]",
+        "3/4 oz Fresh Lime Juice",
+        "1/2 oz Simple Syrup",
+        "Few Drops of Egg White (Optional)"
+      ],
+      "totalVolume": "3 1/3 oz",
+      "method": [
+        "Pour all ingredients into the shaker. Shake vigorously with ice.",
+        "Strain into a chilled cocktail glass, or “on the rocks” in a traditional clay or terracotta mug."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "irish-coffee",
+      "name": "Irish Coffee",
+      "type": "Contemporary Classics",
+      "originalType": "Contemporary Classics",
+      "status": "Current IBA",
+      "glassware": "Irish Coffee",
+      "baseLiquor": [
+        "Whisk(e)y"
+      ],
+      "garnish": "NONE",
+      "ingredients": [
+        "1 2/3 oz Irish Whiskey",
+        "4 oz Hot coffee",
+        "1 2/3 oz Fresh cream (Chilled)",
+        "1/6 oz (1 teaspoon) Sugar"
+      ],
+      "totalVolume": "7 1/2 oz",
+      "method": [
+        "Warm black coffee is poured into a preheated Irish coffee glass.",
+        "Whiskey and at least one teaspoon of sugar is added and stirred until dissolved.",
+        "Fresh thick chilled cream is carefully poured over the back of a spoon held just above the surface of the coffee.",
+        "The layer of cream will float on the coffee without mixing.",
+        "Plain sugar can be replaced with sugar syrup"
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "john-collins",
+      "name": "John Collins",
+      "type": "The Unforgettables",
+      "originalType": "The Unforgettables",
+      "status": "Current IBA",
+      "glassware": "Highball",
+      "baseLiquor": [
+        "Gin"
+      ],
+      "garnish": "Lemon, Cherry",
+      "ingredients": [
+        "1 1/2 oz Gin",
+        "1 oz Fresh Lemon Juice",
+        "1/2 oz Simple Syrup",
+        "2 oz Soda Water"
+      ],
+      "totalVolume": "5 oz",
+      "method": [
+        "Pour all ingredients directly into highball filled with ice. Stir gently."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "jungle-bird",
+      "name": "Jungle Bird",
+      "type": "New Era Drinks",
+      "originalType": "New Era Drinks",
+      "status": "Current IBA",
+      "glassware": "Rocks",
+      "baseLiquor": [
+        "Rum",
+        "Liqueurs"
+      ],
+      "garnish": "Pineapple",
+      "ingredients": [
+        "1 1/2 oz Blackstrap rum",
+        "3/4 oz Bitter Liqueur [Campari]",
+        "1 1/2 oz Pineapple juice",
+        "1/2 oz Freshly Squeezed Lime juice",
+        "1/2 oz Demerara sugar syrup"
+      ],
+      "totalVolume": "4 3/4 oz",
+      "method": [
+        "Pour all ingredients into a shaker with ice and shake.",
+        "Strain into a rocks glass filled with ice."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "kir",
+      "name": "Kir",
+      "type": "Contemporary Classics",
+      "originalType": "Contemporary Classics",
+      "status": "Current IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Liqueurs",
+        "Wine"
+      ],
+      "garnish": "NONE",
+      "ingredients": [
+        "3 oz Dry White Wine",
+        "1/3 oz Crème de Cassis [Blackcurrant Fruit Liqueur [Crème de Cassis]]"
+      ],
+      "totalVolume": "3 1/3 oz",
+      "method": [
+        "Pour Crème de Cassis into glass, top up with white wine."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "last-word",
+      "name": "Last Word",
+      "type": "The Unforgettables",
+      "originalType": "The Unforgettables",
+      "status": "Current IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Gin",
+        "Liqueurs"
+      ],
+      "garnish": "NONE",
+      "ingredients": [
+        "3/4 oz Gin",
+        "3/4 oz Green Herb and Anise Liqueur [Chartreuse]",
+        "3/4 oz Maraschino Fruit Liqueur [Luxardo]",
+        "3/4 oz Fresh Lime Juice"
+      ],
+      "totalVolume": "3 oz",
+      "method": [
+        "Add all ingredients into a cocktail shaker.",
+        "Shake with ice and strain into a chilled cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "lemon-drop-martini",
+      "name": "Lemon Drop Martini",
+      "type": "Contemporary Classics",
+      "originalType": "Contemporary Classics",
+      "status": "Current IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Vodka",
+        "Liqueurs"
+      ],
+      "garnish": "NONE",
+      "ingredients": [
+        "1 oz Vodka",
+        "2/3 oz Orange Fruit Liqueur [Triple Sec]",
+        "1/2 oz Fresh Squeezed Lemon Juice"
+      ],
+      "totalVolume": "2 1/4 oz",
+      "method": [
+        "Pour all ingredients into a shaker with ice.",
+        "Shake well and strain into a chilled cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "long-island-iced-tea",
+      "name": "Long Island Iced Tea",
+      "type": "Contemporary Classics",
+      "originalType": "Contemporary Classics",
+      "status": "Current IBA",
+      "glassware": "Highball",
+      "baseLiquor": [
+        "Vodka",
+        "Rum",
+        "Gin",
+        "Tequila",
+        "Liqueurs"
+      ],
+      "garnish": "Lemon",
+      "ingredients": [
+        "1/2 oz Vodka",
+        "1/2 oz Tequila",
+        "1/2 oz White rum",
+        "1/2 oz Gin",
+        "1/2 oz Orange Fruit Liqueur [Cointreau]",
+        "3/4 oz Lemon juice",
+        "1 oz Simple syrup",
+        "Top with Cola"
+      ],
+      "totalVolume": "4 1/4 oz",
+      "method": [
+        "Add all ingredients into highball glass filled with ice.",
+        "Stir gently."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "mai-tai",
+      "name": "Mai Tai",
+      "type": "Contemporary Classics",
+      "originalType": "Contemporary Classics",
+      "status": "Current IBA",
+      "glassware": "Highball",
+      "baseLiquor": [
+        "Rum",
+        "Liqueurs"
+      ],
+      "garnish": "Lime, Mint, Pineapple",
+      "ingredients": [
+        "1 oz Amber Jamaican Rum",
+        "1 oz Martinique Molasses Rhum*",
+        "1/2 oz Orange Fruit Liqueur [Orange Curacao]",
+        "1/2 oz Orgeat Syrup (Almond)",
+        "1 oz Fresh Squeezed Lime Juice",
+        "1/4 oz Simple Syrup"
+      ],
+      "totalVolume": "4 1/4 oz",
+      "method": [
+        "Add all ingredients into a shaker with ice.",
+        "Shake and pour into a double rocks glass or an highball glass.",
+        "* The Martinique molasses rum used by Trader Vic was not an Agricole Rhum but a type of “rummy” from molasses."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "manhattan",
+      "name": "Manhattan",
+      "type": "The Unforgettables",
+      "originalType": "The Unforgettables",
+      "status": "Current IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Whisk(e)y",
+        "Vermouth"
+      ],
+      "garnish": "Cherry",
+      "ingredients": [
+        "1 2/3 oz Rye Whiskey",
+        "2/3 oz Sweet Red Vermouth",
+        "1 dash Angostura Bitters"
+      ],
+      "totalVolume": "2 1/3 oz",
+      "method": [
+        "Pour all ingredients into mixing glass with ice cubes.",
+        "Stir well. Strain into chilled cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "margarita",
+      "name": "Margarita",
+      "type": "Contemporary Classics",
+      "originalType": "Contemporary Classics",
+      "status": "Current IBA",
+      "glassware": "Margarita",
+      "baseLiquor": [
+        "Tequila",
+        "Liqueurs"
+      ],
+      "garnish": "Rim: Salt",
+      "ingredients": [
+        "1 2/3 oz Tequila 100% Agave",
+        "2/3 oz Orange Fruit Liqueur [Triple Sec]",
+        "1/2 oz Freshly Squeezed Lime Juice"
+      ],
+      "totalVolume": "2 3/4 oz",
+      "method": [
+        "Add all ingredients into a shaker with ice.",
+        "Shake and strain into a chilled cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "martinez",
+      "name": "Martinez",
+      "type": "The Unforgettables",
+      "originalType": "The Unforgettables",
+      "status": "Current IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Gin",
+        "Liqueurs",
+        "Vermouth"
+      ],
+      "garnish": "Lemon",
+      "ingredients": [
+        "1 1/2 oz Dry Gin [London Dry]",
+        "1 1/2 oz Sweet Red Vermouth",
+        "1/6 oz (1 Bar Spoon) Maraschino Fruit Liqueur [Luxardo]",
+        "2 Dashes Orange Bitters"
+      ],
+      "totalVolume": "3 1/4 oz",
+      "method": [
+        "Pour all ingredients into mixing glass with ice cubes.",
+        "Stir well. Strain into chilled cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "mary-pickford",
+      "name": "Mary Pickford",
+      "type": "The Unforgettables",
+      "originalType": "The Unforgettables",
+      "status": "Current IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Rum",
+        "Liqueurs"
+      ],
+      "garnish": "NONE",
+      "ingredients": [
+        "1 1/2 oz White Rum",
+        "1 1/2 oz Fresh Pineapple Juice",
+        "1/4 oz Maraschino Fruit Liqueur [Luxardo]",
+        "1/4 oz Grenadine Syrup"
+      ],
+      "totalVolume": "3 1/2 oz",
+      "method": [
+        "Pour all ingredients into cocktail shaker, shake well with ice, strain into chilled cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "mimosa",
+      "name": "Mimosa",
+      "type": "Contemporary Classics",
+      "originalType": "Contemporary Classics",
+      "status": "Current IBA",
+      "glassware": "Flute",
+      "baseLiquor": [
+        "Wine"
+      ],
+      "garnish": "Orange",
+      "ingredients": [
+        "2 1/2 oz Freshly Squeezed Orange Juice",
+        "2 1/2 oz Prosecco"
+      ],
+      "totalVolume": "5 oz",
+      "method": [
+        "Pour orange juice into flute glass and gently pour the sparkling wine.",
+        "Stir gently."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "mint-julep",
+      "name": "Mint Julep",
+      "type": "Contemporary Classics",
+      "originalType": "Contemporary Classics",
+      "status": "Current IBA",
+      "glassware": "Julep Cup",
+      "baseLiquor": [
+        "Whisk(e)y"
+      ],
+      "garnish": "Mint",
+      "ingredients": [
+        "2 oz Bourbon Whiskey",
+        "4 fresh Mint sprigs",
+        "1/6 oz (1 tsp) Powdered Sugar",
+        "1/3 oz (2 tsp) Water"
+      ],
+      "totalVolume": "2 1/2 oz",
+      "method": [
+        "In Julep Stainless Steel Cup gently muddle the mint with sugar and water.",
+        "Fill the glass with cracked ice, add the Bourbon and stir well until the cup frosts."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "missionarys-downfall",
+      "name": "Missionary’s Downfall",
+      "type": "New Era Drinks",
+      "originalType": "New Era Drinks",
+      "status": "Current IBA",
+      "glassware": "Coppa Grande",
+      "baseLiquor": [
+        "Rum",
+        "Brandy",
+        "Liqueurs"
+      ],
+      "garnish": "Mint, Pineapple",
+      "ingredients": [
+        "1 oz White rum",
+        "1/2 oz Peach Fruit Liqueur [Peach Brandy]",
+        "1/2 oz Fresh lime juice",
+        "1 oz Honey Mix",
+        "10 pcs Mint Leaves",
+        "3 to 4 pcs Pineapple Chunks"
+      ],
+      "totalVolume": "3 oz",
+      "method": [
+        "Blend all the ingredients with half cup of crushed ice.",
+        "Serve it in a Coppa grande."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "mojito",
+      "name": "Mojito",
+      "type": "Contemporary Classics",
+      "originalType": "Contemporary Classics",
+      "status": "Current IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Rum"
+      ],
+      "garnish": "Lime, Mint",
+      "ingredients": [
+        "1 1/2 oz White Cuban Ron",
+        "2/3 oz Fresh Lime Juice",
+        "6 pcs Mint Sprigs",
+        "1/3 oz (2 tsp) White Cane Sugar",
+        "Soda Water"
+      ],
+      "totalVolume": "2 1/2 oz",
+      "method": [
+        "Mix mint springs with sugar and lime juice.",
+        "Add splash of soda water and fill the glass with ice.",
+        "Pour the rum and top with soda water. Light stir to involve all ingredients."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "monkey-gland",
+      "name": "Monkey Gland",
+      "type": "The Unforgettables",
+      "originalType": "The Unforgettables",
+      "status": "Current IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Gin",
+        "Liqueurs"
+      ],
+      "garnish": "NONE",
+      "ingredients": [
+        "1 1/2 oz Dry Gin",
+        "1 1/2 oz Fresh Orange Juice",
+        "1/2 oz (1 tablespoon) Anise Liqueur [Absinthe]",
+        "1/2 oz (1 tablespoon) Grenadine Syrup"
+      ],
+      "totalVolume": "4 oz",
+      "method": [
+        "Pour all ingredients into cocktail shaker, shake well with ice, strain into chilled cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "moscow-mule",
+      "name": "Moscow Mule",
+      "type": "Contemporary Classics",
+      "originalType": "Contemporary Classics",
+      "status": "Current IBA",
+      "glassware": "Mule Cup",
+      "baseLiquor": [
+        "Vodka"
+      ],
+      "garnish": "Lime",
+      "ingredients": [
+        "1 1/2 oz Smirnoff Vodka",
+        "4 oz Ginger Beer",
+        "1/3 oz Fresh lime juice"
+      ],
+      "totalVolume": "5 3/4 oz",
+      "method": [
+        "In an Mule Cup or rocks glass, combine the vodka and ginger beer.",
+        "Add lime juice and gently stir to involve all ingredients."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "naked-and-famous",
+      "name": "Naked and Famous",
+      "type": "New Era Drinks",
+      "originalType": "New Era Drinks",
+      "status": "Current IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Tequila",
+        "Liqueurs"
+      ],
+      "garnish": "NONE",
+      "ingredients": [
+        "3/4 oz Mezcal",
+        "3/4 oz Yellow Herb and Anise Liqueur [Chartreuse]",
+        "3/4 oz Bitter Liqueur [Aperol]",
+        "3/4 oz Fresh Lime Juice"
+      ],
+      "totalVolume": "3 oz",
+      "method": [
+        "Pour all ingredients into cocktail shaker, shake well with ice, strain into chilled cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "negroni",
+      "name": "Negroni",
+      "type": "The Unforgettables",
+      "originalType": "The Unforgettables",
+      "status": "Current IBA",
+      "glassware": "Old Fashioned",
+      "baseLiquor": [
+        "Gin",
+        "Liqueurs",
+        "Vermouth"
+      ],
+      "garnish": "Orange",
+      "ingredients": [
+        "1 oz Gin",
+        "1 oz Bitter Liqueur [Campari]",
+        "1 oz Sweet Red Vermouth"
+      ],
+      "totalVolume": "3 oz",
+      "method": [
+        "Pour all ingredients directly into chilled old fashioned glass filled with ice.",
+        "Stir gently."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "new-york-sour",
+      "name": "New York Sour",
+      "type": "New Era Drinks",
+      "originalType": "New Era Drinks",
+      "status": "Current IBA",
+      "glassware": "Rocks",
+      "baseLiquor": [
+        "Whisk(e)y",
+        "Wine"
+      ],
+      "garnish": "Lemon, Orange, Cherry",
+      "ingredients": [
+        "2 oz Rye Whiskey or Bourbon",
+        "3/4 oz Simple syrup",
+        "1 oz Fresh lemon juice",
+        "Few Drops of Egg White",
+        "1/2 oz Red wine (Shiraz or Malbech)"
+      ],
+      "totalVolume": "4 1/4 oz",
+      "method": [
+        "Pour all ingredients into the shaker. Shake vigorously with ice.",
+        "Strain into a chilled rocks glass filled with ice. Float the wine on top."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "old-cuban",
+      "name": "Old Cuban",
+      "type": "New Era Drinks",
+      "originalType": "New Era Drinks",
+      "status": "Current IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Rum",
+        "Wine"
+      ],
+      "garnish": "Mint",
+      "ingredients": [
+        "6/8 pcs Mint Leaves",
+        "1 1/2 oz Aged Rum",
+        "3/4 oz Fresh Lime Juice",
+        "1 oz Simple Syrup",
+        "2 Dashes Angostura Bitters",
+        "2 oz Brut Champagne or Prosecco"
+      ],
+      "totalVolume": "5 1/4 oz",
+      "method": [
+        "Pour all ingredients into cocktail shaker except the wine, shake well with ice, strain into chilled elegant cocktail glass.",
+        "Top up with the sparkling wine."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "old-fashioned",
+      "name": "Old Fashioned",
+      "type": "The Unforgettables",
+      "originalType": "The Unforgettables",
+      "status": "Current IBA",
+      "glassware": "Old Fashioned",
+      "baseLiquor": [
+        "Whisk(e)y"
+      ],
+      "garnish": "Orange, Cherry",
+      "ingredients": [
+        "1 1/2 oz Bourbon or Rye Whiskey",
+        "1 Sugar Cube",
+        "Few Dashes Angostura Bitters",
+        "Few Dashes Plain Water"
+      ],
+      "totalVolume": "1 1/2 oz",
+      "method": [
+        "Place sugar cube in old fashioned glass and saturate with bitter, add few dashes of plain water. Muddle until dissolved. Fill the glass with ice cubes and add whiskey.",
+        "Stir gently."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "paloma",
+      "name": "Paloma",
+      "type": "New Era Drinks",
+      "originalType": "New Era Drinks",
+      "status": "Current IBA",
+      "glassware": "Highball",
+      "baseLiquor": [
+        "Tequila"
+      ],
+      "garnish": "Lime",
+      "ingredients": [
+        "1 2/3 oz 100% Agave Tequila",
+        "1/4 oz Fresh lime",
+        "A pinch of Salt",
+        "3 1/3 oz Pink Grapefruit Soda"
+      ],
+      "totalVolume": "5 1/4 oz",
+      "method": [
+        "Poor the tequila into a highball glass, squeeze the lime juice.",
+        "Add ice and salt, fill up pink grapefruit soda.",
+        "Stir gently."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "paper-plane",
+      "name": "Paper Plane",
+      "type": "New Era Drinks",
+      "originalType": "New Era Drinks",
+      "status": "Current IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Whisk(e)y",
+        "Liqueurs"
+      ],
+      "garnish": "NONE",
+      "ingredients": [
+        "1 oz Bourbon Whiskey",
+        "1 oz Bitter Liqueur [Amaro Nonino]",
+        "1 oz Bitter Liqueur [Aperol]",
+        "1 oz Fresh Lemon Juice"
+      ],
+      "totalVolume": "4 oz",
+      "method": [
+        "Pour all ingredients into cocktail shaker, shake well with ice, strain into chilled cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "paradise",
+      "name": "Paradise",
+      "type": "The Unforgettables",
+      "originalType": "The Unforgettables",
+      "status": "Current IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Gin",
+        "Brandy",
+        "Liqueurs"
+      ],
+      "garnish": "NONE",
+      "ingredients": [
+        "1 oz Gin",
+        "2/3 oz Apricot Fruit Liqueur [Apricot Brandy]",
+        "1/2 oz Fresh Orange Juice"
+      ],
+      "totalVolume": "2 1/4 oz",
+      "method": [
+        "Pour all ingredients into cocktail shaker, shake well with ice, strain into chilled cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "penicillin",
+      "name": "Penicillin",
+      "type": "New Era Drinks",
+      "originalType": "New Era Drinks",
+      "status": "Current IBA",
+      "glassware": "Old Fashioned",
+      "baseLiquor": [
+        "Whisk(e)y"
+      ],
+      "garnish": "Candied Ginger Slices",
+      "ingredients": [
+        "2 oz Blended scotch whisky",
+        "1/4 oz Lagavulin 16y",
+        "3/4 oz Fresh lemon juice",
+        "3/4 oz Honey syrup",
+        "2-3 quarter size sliced fresh ginger"
+      ],
+      "totalVolume": "3 3/4 oz",
+      "method": [
+        "Muddle fresh ginger in a shaker and add the remaining ingredients except for the Islay single malt whisky.",
+        "Fill the shaker with ice and shake.",
+        "Fine train into a chilled Old Fashioned glass with ice.",
+        "Float the single malt whisky on top."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "pina-colada",
+      "name": "Piña Colada",
+      "type": "Contemporary Classics",
+      "originalType": "Contemporary Classics",
+      "status": "Current IBA",
+      "glassware": "Large",
+      "baseLiquor": [
+        "Rum"
+      ],
+      "garnish": "Cherry, Pineapple",
+      "ingredients": [
+        "1 2/3 oz White Rum",
+        "1 oz Coconut Cream",
+        "1 2/3 oz Fresh Pineapple Juice"
+      ],
+      "totalVolume": "4 1/3 oz",
+      "method": [
+        "Blend all the ingredients with ice in a electric blender,",
+        "pour into a large glass and serve with straws."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "pisco-punch",
+      "name": "Pisco Punch",
+      "type": "New Era Drinks",
+      "originalType": "New Era Drinks",
+      "status": "Current IBA",
+      "glassware": "Large Goblet",
+      "baseLiquor": [
+        "Brandy",
+        "Wine"
+      ],
+      "garnish": "NONE",
+      "ingredients": [
+        "2 oz Pisco",
+        "3/4 oz Fresh Pineapple Juice",
+        "1/2 oz Simple Syrup",
+        "1/2 oz Fresh Lemon Juice",
+        "1 oz Dry White Wine",
+        "3 pcs Cloves"
+      ],
+      "totalVolume": "4 3/4 oz",
+      "method": [
+        "Gentle mash the simple syrup with the cloves, add the remaining ingredients except the wine.",
+        "Shake vigorously and double strain into a large goblet.",
+        "Add the wine on top and gently stir."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "pisco-sour",
+      "name": "Pisco Sour",
+      "type": "Contemporary Classics",
+      "originalType": "Contemporary Classics",
+      "status": "Current IBA",
+      "glassware": "Goblet",
+      "baseLiquor": [
+        "Brandy"
+      ],
+      "garnish": "Amago Bitters",
+      "ingredients": [
+        "2 oz Pisco",
+        "1 oz Fresh Lemon Juice",
+        "2/3 oz Simple Syrup",
+        "1 Raw whole Egg White"
+      ],
+      "totalVolume": "3 2/3 oz",
+      "method": [
+        "Add all ingredients into a shaker with ice.",
+        "Shake and strain into a chilled goblet glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "planters-punch",
+      "name": "Planter’s Punch",
+      "type": "The Unforgettables",
+      "originalType": "The Unforgettables",
+      "status": "Current IBA",
+      "glassware": "Small Tumbler",
+      "baseLiquor": [
+        "Rum"
+      ],
+      "garnish": "Orange",
+      "ingredients": [
+        "1 1/2 oz Jamaican Rum",
+        "1/2 oz Lime Juice",
+        "1 oz Sugar Cane Juice"
+      ],
+      "totalVolume": "3 oz",
+      "method": [
+        "Pour all ingredients directly in a small tumbler or a typical terracotta glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "porn-star-martini",
+      "name": "Porn Star Martini",
+      "type": "New Era Drinks",
+      "originalType": "New Era Drinks",
+      "status": "Current IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Vodka",
+        "Liqueurs",
+        "Wine"
+      ],
+      "garnish": "Passion Fruit",
+      "ingredients": [
+        "1 2/3 oz Flavored Vodka [Vanilla Vodka]",
+        "2/3 oz Passion Fruit Liqueur [Passion Fruit Liqueur]",
+        "1 2/3 oz Passion Fruit Puree",
+        "1/3 oz (2 Bar Spoons) Vanilla Sugar",
+        "1 2/3 oz Champagne to serve on the side"
+      ],
+      "totalVolume": "6 oz",
+      "method": [
+        "Pour all ingredients into cocktail shaker, shake well with ice, double strain into a large chilled cocktail glass.",
+        "Accompany with a shot of champagne."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "porto-flip",
+      "name": "Porto Flip",
+      "type": "The Unforgettables",
+      "originalType": "The Unforgettables",
+      "status": "Current IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Brandy",
+        "Wine"
+      ],
+      "garnish": "Nutmeg",
+      "ingredients": [
+        "1/2 oz Brandy",
+        "1 1/2 oz Red Tawny Port Wine",
+        "1/3 oz Egg Yolk"
+      ],
+      "totalVolume": "2 1/3 oz",
+      "method": [
+        "Pour all ingredients into cocktail shaker, shake well with ice, strain into chilled cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "rabo-de-galo",
+      "name": "Rabo de Galo",
+      "type": "Contemporary Classics",
+      "originalType": "Contemporary Classics",
+      "status": "Current IBA",
+      "glassware": "Rocks",
+      "baseLiquor": [
+        "Rum",
+        "Liqueurs",
+        "Vermouth"
+      ],
+      "garnish": "Orange",
+      "ingredients": [
+        "2 oz Cachaca",
+        "2/3 oz Sweet Vermouth Cinzano Rosso",
+        "1/2 oz Bitter Liqueur [Cynar]",
+        "2 Drops Angostura (Optional)"
+      ],
+      "totalVolume": "3 1/4 oz",
+      "method": [
+        "Combine all the ingredients into a rocks glass, add ice and stir briefly."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "ramos-fizz",
+      "name": "Ramos Fizz",
+      "type": "The Unforgettables",
+      "originalType": "The Unforgettables",
+      "status": "Current IBA",
+      "glassware": "Highball",
+      "baseLiquor": [
+        "Gin"
+      ],
+      "garnish": "NONE",
+      "ingredients": [
+        "1 1/2 oz Gin",
+        "1/2 oz Fresh Lime Juice",
+        "1/2 oz Fresh Lemon Juice",
+        "1 oz Sugar Syrup",
+        "2 oz Cream",
+        "1 oz Egg white",
+        "3 Dashes Orange Flower Water",
+        "2 Drops Vanilla Extract",
+        "Soda Water"
+      ],
+      "totalVolume": "6 1/2 oz",
+      "method": [
+        "Pour all ingredients except soda water in a cocktail shaker with ice.",
+        "Shake for two minutes, double strain in a glass, pour the drink back in the shaker and hard shake without ice for one minute.",
+        "Strain into a highball glass, top up with soda."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "remember-the-maine",
+      "name": "Remember the Maine",
+      "type": "The Unforgettables",
+      "originalType": "The Unforgettables",
+      "status": "Current IBA",
+      "glassware": "Coupe",
+      "baseLiquor": [
+        "Whisk(e)y",
+        "Brandy",
+        "Liqueurs",
+        "Vermouth"
+      ],
+      "garnish": "Lemon",
+      "ingredients": [
+        "2 oz Rye Whiskey",
+        "3/4 oz Sweet Vermouth",
+        "1/2 oz Cherry Fruit Liqueur [Luxardo Cherry Brandy]",
+        "1/4 oz Anise Liqueur [Absinthe]"
+      ],
+      "totalVolume": "3 1/2 oz",
+      "method": [
+        "Pour the absinthe into a coupe glass and swirl to completely coat the inside.",
+        "Discard the absinthe and set the glass aside. Add the other ingredients to a mixing glass and fill it 3/4 full with ice. Stir until chilled, then strain into the glass rinsed with the absinthe."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "russian-spring-punch",
+      "name": "Russian Spring Punch",
+      "type": "New Era Drinks",
+      "originalType": "New Era Drinks",
+      "status": "Current IBA",
+      "glassware": "Tall Tumbler",
+      "baseLiquor": [
+        "Vodka",
+        "Liqueurs",
+        "Wine"
+      ],
+      "garnish": "Lemon, Blackberries",
+      "ingredients": [
+        "3/4 oz Vodka",
+        "3/4 oz Fresh Lemon Juice",
+        "1/2 oz Creme de Cassis [Blackcurrant Fruit Liqueur [Crème de Cassis]]",
+        "1/3 oz Sugar Syrup",
+        "Top up with Sparkling Wine"
+      ],
+      "totalVolume": "2 1/3 oz",
+      "method": [
+        "Pour all ingredients into cocktail shaker except the sparkling wine, shake well with ice, strain into chilled tall tumbler glass filled with ice",
+        "and top up with sparkling wine."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "rusty-nail",
+      "name": "Rusty Nail",
+      "type": "The Unforgettables",
+      "originalType": "The Unforgettables",
+      "status": "Current IBA",
+      "glassware": "Old Fashioned",
+      "baseLiquor": [
+        "Whisk(e)y",
+        "Liqueurs"
+      ],
+      "garnish": "Lemon",
+      "ingredients": [
+        "1 1/2 oz Scotch Whisky",
+        "3/4 oz Whiskey Liqueur [Drambuie]"
+      ],
+      "totalVolume": "2 1/4 oz",
+      "method": [
+        "Pour all ingredients directly into an old fashioned glass filled with ice.",
+        "Stir gently."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "sazerac",
+      "name": "Sazerac",
+      "type": "The Unforgettables",
+      "originalType": "The Unforgettables",
+      "status": "Current IBA",
+      "glassware": "Old Fashioned",
+      "baseLiquor": [
+        "Brandy",
+        "Liqueurs"
+      ],
+      "garnish": "Lemon",
+      "ingredients": [
+        "1 2/3 oz Cognac",
+        "1/3 oz Anise Liqueur [Absinthe]",
+        "1 Sugar Cube",
+        "2 Dashes Peychaud’s Bitters"
+      ],
+      "totalVolume": "2 oz",
+      "method": [
+        "Rinse a chilled old-fashioned glass with the absinthe, add crushed ice and set it aside. Stir the remaining ingredients over ice in a mixing glass.",
+        "Discard the ice and any excess absinthe from the prepared glass, strain the mixed drink into the glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "sea-breeze",
+      "name": "Sea Breeze",
+      "type": "Contemporary Classics",
+      "originalType": "Contemporary Classics",
+      "status": "Current IBA",
+      "glassware": "Highball",
+      "baseLiquor": [
+        "Vodka"
+      ],
+      "garnish": "Orange, Cherry",
+      "ingredients": [
+        "1 1/3 oz Vodka",
+        "4 oz Cranberry Juice",
+        "1 oz Grapefruit Juice"
+      ],
+      "totalVolume": "6 1/3 oz",
+      "method": [
+        "Build all ingredients in a highball glass filled with ice."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "sex-on-the-beach",
+      "name": "Sex on the Beach",
+      "type": "Contemporary Classics",
+      "originalType": "Contemporary Classics",
+      "status": "Current IBA",
+      "glassware": "Highball",
+      "baseLiquor": [
+        "Vodka",
+        "Liqueurs"
+      ],
+      "garnish": "Orange",
+      "ingredients": [
+        "1 1/3 oz Vodka",
+        "2/3 oz Peach Fruit Liqueur [Peach Schnapps]",
+        "1 1/3 oz Fresh Orange Juice",
+        "1 1/3 oz Cranberry Juice"
+      ],
+      "totalVolume": "4 2/3 oz",
+      "method": [
+        "Build all ingredients in a highball glass filled with ice."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "sherry-cobbler",
+      "name": "Sherry Cobbler",
+      "type": "New Era Drinks",
+      "originalType": "New Era Drinks",
+      "status": "Current IBA",
+      "glassware": "Julep Cup",
+      "baseLiquor": [
+        "Wine"
+      ],
+      "garnish": "Lemon, Orange",
+      "ingredients": [
+        "1 1/2 oz Amontillado sherry",
+        "1 1/2 oz Palo Cortado",
+        "1/6 oz (1 tsp) Superfine Sugar (or granulated)",
+        "1/2 Orange Wheel",
+        "1/2 Lemon Wheel"
+      ],
+      "totalVolume": "3 1/4 oz",
+      "method": [
+        "Combine sherry, sugar and 2 quarter wheels each of orange and lemon in a shaker with ice, shake briskly, strain into a Julep cocktail cup filled with crushed ice."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "sidecar",
+      "name": "Sidecar",
+      "type": "The Unforgettables",
+      "originalType": "The Unforgettables",
+      "status": "Current IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Brandy",
+        "Liqueurs"
+      ],
+      "garnish": "NONE",
+      "ingredients": [
+        "1 2/3 oz Cognac",
+        "2/3 oz Orange Fruit Liqueur [Triple Sec]",
+        "2/3 oz Fresh Lemon Juice"
+      ],
+      "totalVolume": "3 oz",
+      "method": [
+        "Pour all ingredients into cocktail shaker, shake well with ice, strain into chilled cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "singapore-sling",
+      "name": "Singapore Sling",
+      "type": "Contemporary Classics",
+      "originalType": "Contemporary Classics",
+      "status": "Current IBA",
+      "glassware": "Hurricane",
+      "baseLiquor": [
+        "Gin",
+        "Liqueurs"
+      ],
+      "garnish": "Cherry, Pineapple",
+      "ingredients": [
+        "1 oz Gin",
+        "1/2 oz Cherry Fruit Liqueur [Cherry Sangue Morlacco]",
+        "1/4 oz Orange Fruit Liqueur [Cointreau]",
+        "1/4 oz DOM Bénédictine [Herb and Anise Liqueur [Bénédictine]]",
+        "4 oz Fresh Pineapple Juice",
+        "1/2 oz Fresh Lime Juice",
+        "1/3 oz Grenadine Syrup",
+        "A dash of Angostura bitters"
+      ],
+      "totalVolume": "6 3/4 oz",
+      "method": [
+        "Pour all ingredients into cocktail shaker filled with ice cubes.",
+        "Shake well.",
+        "Strain into Hurricane glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "south-side",
+      "name": "South Side",
+      "type": "New Era Drinks",
+      "originalType": "New Era Drinks",
+      "status": "Current IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Gin"
+      ],
+      "garnish": "Mint",
+      "ingredients": [
+        "2 oz Dry Gin [London Dry]",
+        "1 oz Fresh Lemon Juice",
+        "1/2 oz Simple syrup",
+        "5/6 Mint leaves",
+        "Few drops Egg white (Optional)"
+      ],
+      "totalVolume": "3 1/2 oz",
+      "method": [
+        "Pour all ingredients into a cocktail shaker, shake well with ice, double-strain into chilled cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "spicy-fifty",
+      "name": "Spicy Fifty",
+      "type": "New Era Drinks",
+      "originalType": "New Era Drinks",
+      "status": "Current IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Vodka",
+        "Liqueurs"
+      ],
+      "garnish": "Red Chili Pepper",
+      "ingredients": [
+        "1 2/3 oz Vodka Vanilla",
+        "1/2 oz Elderflower Floral Liqueur [Elderflower Cordial]",
+        "1/2 oz Fresh Lime Juice",
+        "1/3 oz Monin Honey Syrup",
+        "2 thin Slices Red Chili Pepper"
+      ],
+      "totalVolume": "3 oz",
+      "method": [
+        "Pour all ingredients into a cocktail shaker, shake well with ice, double-strain into chilled cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "spritz",
+      "name": "Spritz",
+      "type": "New Era Drinks",
+      "originalType": "New Era Drinks",
+      "status": "Current IBA",
+      "glassware": "Wine",
+      "baseLiquor": [
+        "Liqueurs",
+        "Wine"
+      ],
+      "garnish": "Orange",
+      "ingredients": [
+        "3 oz Prosecco",
+        "2 oz Bitter Liqueur [Aperol]",
+        "Splash of Soda water"
+      ],
+      "totalVolume": "5 oz",
+      "method": [
+        "Build all ingredients into a wine glass filled with ice.",
+        "Stir gently."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "stinger",
+      "name": "Stinger",
+      "type": "The Unforgettables",
+      "originalType": "The Unforgettables",
+      "status": "Current IBA",
+      "glassware": "Martini Cocktail",
+      "baseLiquor": [
+        "Brandy",
+        "Liqueurs"
+      ],
+      "garnish": "Mint",
+      "ingredients": [
+        "1 2/3 oz Cognac",
+        "2/3 oz White Herb and Anise Liqueur [Crème de Menthe]"
+      ],
+      "totalVolume": "2 1/3 oz",
+      "method": [
+        "Pour all ingredients into mixing glass with ice cubes. Stir well.",
+        "Strain into chilled martini cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "suffering-bastard",
+      "name": "Suffering Bastard",
+      "type": "New Era Drinks",
+      "originalType": "New Era Drinks",
+      "status": "Current IBA",
+      "glassware": "Mug",
+      "baseLiquor": [
+        "Gin",
+        "Brandy"
+      ],
+      "garnish": "Orange, Mint",
+      "ingredients": [
+        "1 oz Cognac or Brandy",
+        "1 oz Gin",
+        "1/2 oz Fresh Lime Juice",
+        "2 Dashes Angostura Bitters",
+        "Top up Ginger beer"
+      ],
+      "totalVolume": "2 1/2 oz",
+      "method": [
+        "Pour all ingredients into cocktail shaker except the ginger beer, shake well with ice.",
+        "Pour unstrained into a Collins glass or in the original.",
+        "S. Bastard mug and top up with ginger beer."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "tequila-sunrise",
+      "name": "Tequila Sunrise",
+      "type": "Contemporary Classics",
+      "originalType": "Contemporary Classics",
+      "status": "Current IBA",
+      "glassware": "Highball",
+      "baseLiquor": [
+        "Tequila"
+      ],
+      "garnish": "Orange",
+      "ingredients": [
+        "1 1/2 oz Tequila",
+        "3 oz Fresh Orange Juice",
+        "1/2 oz Grenadine Syrup"
+      ],
+      "totalVolume": "5 oz",
+      "method": [
+        "Pour tequila and orange juice directly into highball glass filled with ice cubes.",
+        "Add the grenadine syrup to create chromatic effect (sunrise), do not stir."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "three-dots-and-a-dash",
+      "name": "Three Dots and a Dash",
+      "type": "New Era Drinks",
+      "originalType": "New Era Drinks",
+      "status": "Current IBA",
+      "glassware": "Footed Copo",
+      "baseLiquor": [
+        "Rum",
+        "Liqueurs"
+      ],
+      "garnish": "Pineapple",
+      "ingredients": [
+        "1 1/2 oz Rhum Martinique Agricole",
+        "1/2 oz Blended Aged Rum",
+        "1/4 oz Herb and Anise Liqueur [Falernum]",
+        "1/4 oz Allspice Saint Elizabeth15 ml Fresh Lime Juice",
+        "1/2 oz Fresh Orange juice",
+        "1/2 oz Honey Syrup",
+        "2 Dashes Angostura Bitters"
+      ],
+      "totalVolume": "3 1/2 oz",
+      "method": [
+        "Pour all ingredients in a Blender with 12 ounces of crushed ice, flash blend, pour the drink into a footed copo glass.",
+        "Fill the glass with more crushed ice."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "tipperary",
+      "name": "Tipperary",
+      "type": "New Era Drinks",
+      "originalType": "New Era Drinks",
+      "status": "Current IBA",
+      "glassware": "Martini Cocktail",
+      "baseLiquor": [
+        "Whisk(e)y",
+        "Liqueurs",
+        "Vermouth"
+      ],
+      "garnish": "Orange",
+      "ingredients": [
+        "1 2/3 oz Irish Whiskey",
+        "3/4 oz Sweet Red Vermouth",
+        "1/2 oz Green Herb and Anise Liqueur [Chartreuse]",
+        "2 Dashes Angostura Bitters"
+      ],
+      "totalVolume": "3 oz",
+      "method": [
+        "Pour all ingredients into mixing glass with ice cubes.",
+        "Stir well. Strain into chilled martini cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "tommys-margarita",
+      "name": "Tommy’s Margarita",
+      "type": "New Era Drinks",
+      "originalType": "New Era Drinks",
+      "status": "Current IBA",
+      "glassware": "Margarita",
+      "baseLiquor": [
+        "Tequila"
+      ],
+      "garnish": "Lime",
+      "ingredients": [
+        "2 oz Tequila 100% agave",
+        "1 oz Fresh Lime Juice",
+        "1 oz Agave Nectar"
+      ],
+      "totalVolume": "4 oz",
+      "method": [
+        "Pour all ingredients into a cocktail shaker, shake well with ice, strain into chilled rocks glass filled with ice."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "trinidad-sour",
+      "name": "Trinidad Sour",
+      "type": "New Era Drinks",
+      "originalType": "New Era Drinks",
+      "status": "Current IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Whisk(e)y"
+      ],
+      "garnish": "NONE",
+      "ingredients": [
+        "1 1/2 oz Angostura Bitters",
+        "1 oz Orgeat Syrup",
+        "3/4 oz Fresh Lemon Juice",
+        "1/2 oz Rye Whiskey"
+      ],
+      "totalVolume": "3 3/4 oz",
+      "method": [
+        "Pour all ingredients into a cocktail shaker, shake well with ice.",
+        "Strain into chilled cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "tuxedo",
+      "name": "Tuxedo",
+      "type": "The Unforgettables",
+      "originalType": "The Unforgettables",
+      "status": "Current IBA",
+      "glassware": "Martini Cocktail",
+      "baseLiquor": [
+        "Gin",
+        "Liqueurs",
+        "Vermouth"
+      ],
+      "garnish": "Lemon, Cherry",
+      "ingredients": [
+        "1 oz Old Tom Gin [Old Tom Gin]",
+        "1 oz Dry Vermouth",
+        "1/12 oz (1/2 Bar Spoons) Maraschino Fruit Liqueur [Luxardo]",
+        "1/12 oz (1/4 Bar Spoons) of Anise Liqueur [Absinthe]",
+        "3 Dashes Orange Bitters"
+      ],
+      "totalVolume": "2 1/4 oz",
+      "method": [
+        "Pour all ingredients into mixing glass with ice cubes. Stir well.",
+        "Strain into chilled martini cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "ve-n-to",
+      "name": "Ve.n.to",
+      "type": "New Era Drinks",
+      "originalType": "New Era Drinks",
+      "status": "Current IBA",
+      "glassware": "Small Tumbler",
+      "baseLiquor": [
+        "Brandy"
+      ],
+      "garnish": "Lemon, Grapes",
+      "ingredients": [
+        "1 1/2 oz White Smooth Grappa",
+        "3/4 oz Fresh lemon Juice",
+        "1/2 oz Honey mix (replace water with chamomile)*",
+        "1/2 oz Chamomile cordial",
+        "Few Drops of Egg White (Optional)"
+      ],
+      "totalVolume": "3 1/4 oz",
+      "method": [
+        "Pour all ingredients into the shaker. Shake vigorously with ice.",
+        "Strain into a chilled small tumbler glass filled with ice."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "vesper",
+      "name": "Vesper",
+      "type": "Contemporary Classics",
+      "originalType": "Contemporary Classics",
+      "status": "Current IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Vodka",
+        "Gin",
+        "Wine"
+      ],
+      "garnish": "Lemon",
+      "ingredients": [
+        "1 1/2 oz Gin",
+        "1/2 oz Vodka",
+        "1/4 oz White Aromatized Wine [Lillet Blanc]"
+      ],
+      "totalVolume": "2 1/4 oz",
+      "method": [
+        "Pour all ingredients into cocktail shaker filled with ice cubes.",
+        "Shake and strain into a chilled cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "vieux-carre",
+      "name": "Vieux Carré",
+      "type": "The Unforgettables",
+      "originalType": "The Unforgettables",
+      "status": "Current IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Whisk(e)y",
+        "Brandy",
+        "Liqueurs",
+        "Vermouth"
+      ],
+      "garnish": "Orange, Cherry",
+      "ingredients": [
+        "1 oz Rye Whiskey",
+        "1 oz Cognac",
+        "1 oz Sweet Vermouth",
+        "1/6 oz (1 Bar Spoon) Bénédictine [Herb and Anise Liqueur [Bénédictine]]",
+        "2 Dashes Peychaud’s Bitters"
+      ],
+      "totalVolume": "3 1/4 oz",
+      "method": [
+        "Pour all ingredients into mixing glass with ice cubes.",
+        "Stir well. Strain into chilled cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "whiskey-sour",
+      "name": "Whiskey Sour",
+      "type": "The Unforgettables",
+      "originalType": "The Unforgettables",
+      "status": "Current IBA",
+      "glassware": "Old Fashioned",
+      "baseLiquor": [
+        "Whisk(e)y"
+      ],
+      "garnish": "Orange, Cherry",
+      "ingredients": [
+        "1 1/2 oz Bourbon Whiskey",
+        "3/4 oz Fresh Lemon Juice",
+        "2/3 oz Sugar Syrup",
+        "Few Drops of Egg White (Optional)"
+      ],
+      "totalVolume": "3 oz",
+      "method": [
+        "Pour all ingredients into cocktail shaker filled with ice. Shake well.",
+        "Strain into cobbler glass. If served “On the rocks”, strain ingredients",
+        "into old fashioned glass filled with ice."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "white-lady",
+      "name": "White Lady",
+      "type": "The Unforgettables",
+      "originalType": "The Unforgettables",
+      "status": "Current IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Gin",
+        "Liqueurs"
+      ],
+      "garnish": "NONE",
+      "ingredients": [
+        "1 1/3 oz Gin",
+        "1 oz Orange Fruit Liqueur [Triple Sec]",
+        "2/3 oz Fresh Lemon Juice"
+      ],
+      "totalVolume": "3 oz",
+      "method": [
+        "Pour all ingredients into cocktail shaker, shake well with ice, strain into chilled cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "zombie",
+      "name": "Zombie",
+      "type": "Contemporary Classics",
+      "originalType": "Contemporary Classics",
+      "status": "Current IBA",
+      "glassware": "Tall Tumbler",
+      "baseLiquor": [
+        "Rum",
+        "Liqueurs"
+      ],
+      "garnish": "Mint",
+      "ingredients": [
+        "1 1/2 oz Jamaican dark rum",
+        "1 1/2 oz Gold Puerto Rican rum",
+        "1 oz Demerara Rum",
+        "2/3 oz Fresh lime juice",
+        "1/2 oz Herb and Anise Liqueur [Falernum]",
+        "1/2 oz Donn’s Mix*",
+        "1/6 oz (1 tsp) Grenadine syrup",
+        "1 dash Angostura bitters",
+        "6 drops Anise Liqueur [Pernod]"
+      ],
+      "totalVolume": "5 3/4 oz",
+      "method": [
+        "Add all ingredients into an electric blender with 6 oz of cracked ice.",
+        "With pulse bottom blend for a few seconds. Serve in a tall tumbler glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "legacy-b-52",
+      "name": "B-52",
+      "type": "Legacy",
+      "originalType": "Legacy",
+      "status": "Former IBA",
+      "glassware": "Shot",
+      "baseLiquor": [
+        "Liqueurs"
+      ],
+      "garnish": "NONE",
+      "ingredients": [
+        "2/3 oz Coffee Liqueur",
+        "2/3 oz Cream Liqueur [Baileys Irish Cream]",
+        "2/3 oz Orange Fruit Liqueur [Grand Marnier]"
+      ],
+      "totalVolume": "2 oz",
+      "method": [
+        "Layer coffee liqueur, Irish cream, and orange liqueur in a shot glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "legacy-bacardi",
+      "name": "Bacardi",
+      "type": "Legacy",
+      "originalType": "Legacy",
+      "status": "Former IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Rum"
+      ],
+      "garnish": "Lime",
+      "ingredients": [
+        "1 1/2 oz White rum",
+        "2/3 oz Lime Juice",
+        "1/3 oz Grenadine Syrup"
+      ],
+      "totalVolume": "2 1/2 oz",
+      "method": [
+        "Shake the ingredients with ice and strain into a chilled cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "legacy-barracuda",
+      "name": "Barracuda",
+      "type": "Legacy",
+      "originalType": "Legacy",
+      "status": "Former IBA",
+      "glassware": "Margarita",
+      "baseLiquor": [
+        "Rum",
+        "Liqueurs",
+        "Wine"
+      ],
+      "garnish": "NONE",
+      "ingredients": [
+        "1 1/2 oz Gold rum",
+        "1/2 oz Herb and Anise Liqueur [Galliano]",
+        "2 oz Pineapple Juice",
+        "1 dash Lime Juice",
+        "Top with Prosecco"
+      ],
+      "totalVolume": "4 oz",
+      "method": [
+        "Shake rum, Galliano, pineapple, and lime with ice, strain into the glass, then top with Prosecco."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "legacy-derby",
+      "name": "Derby",
+      "type": "Legacy",
+      "originalType": "Legacy",
+      "status": "Former IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Gin"
+      ],
+      "garnish": "Mint",
+      "ingredients": [
+        "2 oz Gin",
+        "2 dashes Peach bitters",
+        "2 fresh mint leaves"
+      ],
+      "totalVolume": "2 oz",
+      "method": [
+        "Shake gin and bitters with ice, strain into a chilled cocktail glass, and finish with mint."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "legacy-dirty-martini",
+      "name": "Dirty Martini",
+      "type": "Legacy",
+      "originalType": "Legacy",
+      "status": "Former IBA",
+      "glassware": "Martini Cocktail",
+      "baseLiquor": [
+        "Vodka",
+        "Gin",
+        "Vermouth"
+      ],
+      "garnish": "Olive",
+      "ingredients": [
+        "2 oz Gin or Vodka",
+        "1/3 oz Dry Vermouth",
+        "1/3 oz Olive brine"
+      ],
+      "totalVolume": "2 2/3 oz",
+      "method": [
+        "Stir or shake the ingredients with ice and strain into a chilled martini glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "legacy-godfather",
+      "name": "Godfather",
+      "type": "Legacy",
+      "originalType": "Legacy",
+      "status": "Former IBA",
+      "glassware": "Old Fashioned",
+      "baseLiquor": [
+        "Whisk(e)y",
+        "Liqueurs"
+      ],
+      "garnish": "NONE",
+      "ingredients": [
+        "1 1/4 oz Scotch Whisky",
+        "1 1/4 oz Almond Nut Liqueur [Amaretto]"
+      ],
+      "totalVolume": "2 1/2 oz",
+      "method": [
+        "Build over ice in an old fashioned glass and stir briefly."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "legacy-godmother",
+      "name": "Godmother",
+      "type": "Legacy",
+      "originalType": "Legacy",
+      "status": "Former IBA",
+      "glassware": "Old Fashioned",
+      "baseLiquor": [
+        "Vodka",
+        "Liqueurs"
+      ],
+      "garnish": "NONE",
+      "ingredients": [
+        "1 1/4 oz Vodka",
+        "1 1/4 oz Almond Nut Liqueur [Amaretto]"
+      ],
+      "totalVolume": "2 1/2 oz",
+      "method": [
+        "Build over ice in an old fashioned glass and stir briefly."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "legacy-golden-dream",
+      "name": "Golden Dream",
+      "type": "Legacy",
+      "originalType": "Legacy",
+      "status": "Former IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Liqueurs"
+      ],
+      "garnish": "NONE",
+      "ingredients": [
+        "2/3 oz Herb and Anise Liqueur [Galliano]",
+        "2/3 oz Orange Fruit Liqueur [Triple Sec]",
+        "2/3 oz Orange Juice",
+        "1/3 oz Fresh Cream"
+      ],
+      "totalVolume": "2 1/3 oz",
+      "method": [
+        "Shake all ingredients with ice and strain into a chilled cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "legacy-harvey-wallbanger",
+      "name": "Harvey Wallbanger",
+      "type": "Legacy",
+      "originalType": "Legacy",
+      "status": "Former IBA",
+      "glassware": "Highball",
+      "baseLiquor": [
+        "Vodka",
+        "Liqueurs"
+      ],
+      "garnish": "Orange, Cherry",
+      "ingredients": [
+        "1 1/2 oz Vodka",
+        "3 oz Orange Juice",
+        "1/2 oz Herb and Anise Liqueur [Galliano]"
+      ],
+      "totalVolume": "5 oz",
+      "method": [
+        "Build vodka and orange juice over ice, then float Galliano on top."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "legacy-kamikaze",
+      "name": "Kamikaze",
+      "type": "Legacy",
+      "originalType": "Legacy",
+      "status": "Former IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Vodka",
+        "Liqueurs"
+      ],
+      "garnish": "Lime",
+      "ingredients": [
+        "1 oz Vodka",
+        "1 oz Orange Fruit Liqueur [Triple Sec]",
+        "1 oz Lime Juice"
+      ],
+      "totalVolume": "3 oz",
+      "method": [
+        "Shake with ice and strain into a chilled cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "legacy-orgasm",
+      "name": "Orgasm",
+      "type": "Legacy",
+      "originalType": "Legacy",
+      "status": "Former IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Liqueurs"
+      ],
+      "garnish": "NONE",
+      "ingredients": [
+        "1 oz Cream Liqueur [Baileys Irish Cream]",
+        "1 oz Orange Fruit Liqueur [Cointreau]",
+        "2/3 oz Orange Fruit Liqueur [Grand Marnier]"
+      ],
+      "totalVolume": "2 2/3 oz",
+      "method": [
+        "Shake with ice and strain into a chilled cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "legacy-rose",
+      "name": "Rose",
+      "type": "Legacy",
+      "originalType": "Legacy",
+      "status": "Former IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Vermouth"
+      ],
+      "garnish": "Cherry",
+      "ingredients": [
+        "1 1/3 oz Dry Vermouth",
+        "2/3 oz Kirsch",
+        "3 dashes Strawberry syrup"
+      ],
+      "totalVolume": "2 oz",
+      "method": [
+        "Stir the ingredients with ice and strain into a chilled cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "legacy-screwdriver",
+      "name": "Screwdriver",
+      "type": "Legacy",
+      "originalType": "Legacy",
+      "status": "Former IBA",
+      "glassware": "Highball",
+      "baseLiquor": [
+        "Vodka"
+      ],
+      "garnish": "Orange",
+      "ingredients": [
+        "1 2/3 oz Vodka",
+        "3 1/3 oz Orange Juice"
+      ],
+      "totalVolume": "5 oz",
+      "method": [
+        "Build over ice in a highball glass and stir."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "legacy-vampiro",
+      "name": "Vampiro",
+      "type": "Legacy",
+      "originalType": "Legacy",
+      "status": "Former IBA",
+      "glassware": "Old Fashioned",
+      "baseLiquor": [
+        "Tequila"
+      ],
+      "garnish": "Lime",
+      "ingredients": [
+        "1 2/3 oz Tequila",
+        "2 1/3 oz Tomato Juice",
+        "1 oz Orange Juice",
+        "1/3 oz Lime Juice",
+        "1/6 oz (1 teaspoon) Honey",
+        "Seasoning to taste"
+      ],
+      "totalVolume": "5 1/2 oz",
+      "method": [
+        "Shake with ice and strain into an old fashioned glass over ice."
+      ],
+      "userNotes": "",
+      "rating": null
+    },
+    {
+      "id": "legacy-yellow-bird",
+      "name": "Yellow Bird",
+      "type": "Legacy",
+      "originalType": "Legacy",
+      "status": "Former IBA",
+      "glassware": "Cocktail",
+      "baseLiquor": [
+        "Rum",
+        "Liqueurs"
+      ],
+      "garnish": "NONE",
+      "ingredients": [
+        "1 oz White rum",
+        "1/2 oz Herb and Anise Liqueur [Galliano]",
+        "1/2 oz Orange Fruit Liqueur [Triple Sec]",
+        "1/2 oz Lime Juice"
+      ],
+      "totalVolume": "2 1/2 oz",
+      "method": [
+        "Shake with ice and strain into a chilled cocktail glass."
+      ],
+      "userNotes": "",
+      "rating": null
+    }
+  ]
+}
