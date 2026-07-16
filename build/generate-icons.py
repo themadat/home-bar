@@ -5,11 +5,9 @@ generate-icons.py
 Generate every favicon / PWA / Apple touch icon asset Cocktail List needs
 from a single source PNG: build/icon-sources/source-material/app_icon.png
 
-The source already has a dark navy background with a gold coupe-glass mark,
-padded with transparent margin (a standard "safe zone" export). It is used
-as-is (transparency preserved) for "any"-purpose icons, and flattened onto
-its own dominant background color (so the seam is invisible) for icons that
-get masked/cropped by the OS: apple-touch-icon and "maskable" PWA icons.
+The source is a square, full-bleed dark navy image with a gold coupe-glass
+mark. Every generated asset is flattened to RGB so icons contain no white
+padding or transparent pixels; each platform applies its own icon mask.
 
 Requires: Pillow (pip3 install --user pillow)
 
@@ -74,9 +72,9 @@ def main() -> None:
 
     flat_src = flatten(src, bg)
 
-    print("Transparent (any-purpose):")
+    print("Opaque (any-purpose):")
     for name, size in ANY_SIZES + FAVICON_SIZES:
-        resized(src, size).save(DEST_DIR / name)
+        resized(flat_src, size).save(DEST_DIR / name)
         print(f"  {name:<28} {size}x{size}")
 
     print("\nFlattened (maskable / apple-touch, full-bleed on sampled background):")
@@ -85,7 +83,7 @@ def main() -> None:
         print(f"  {name:<28} {size}x{size}")
 
     ico_path = DEST_DIR / "favicon.ico"
-    resized(src, 48).save(ico_path, format="ICO", sizes=ICO_SIZES)
+    resized(flat_src, 48).save(ico_path, format="ICO", sizes=ICO_SIZES)
     print(f"\nfavicon.ico                  {', '.join(f'{w}x{h}' for w, h in ICO_SIZES)}")
 
     print(f"\nDone. {len(ANY_SIZES) + len(FAVICON_SIZES) + len(MASKABLE_SIZES) + len(APPLE_TOUCH_SIZES) + 1} files written.")
