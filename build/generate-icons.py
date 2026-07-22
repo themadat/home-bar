@@ -25,7 +25,11 @@ DEST_DIR = REPO_ROOT / "assets" / "icons"
 
 # (filename, size, flattened?)
 ANY_SIZES = [("icon-192.png", 192), ("icon-512.png", 512)]
-MASKABLE_SIZES = [("icon-192-maskable.png", 192), ("icon-512-maskable.png", 512)]
+MASKABLE_SIZES = [
+    ("icon-192-maskable.png", 192),
+    ("icon-512-maskable.png", 512),
+    ("icon-1024-maskable.png", 1024),
+]
 APPLE_TOUCH_SIZES = [
     ("apple-touch-icon.png", 180),
     ("apple-touch-icon-152.png", 152),
