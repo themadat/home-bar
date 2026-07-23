@@ -1,7 +1,7 @@
 {
   "dataVersion": 1,
-  "buildVersion": "2026.07.22.10",
-  "exportedAt": "2026-07-22T20:59:43.689Z",
+  "buildVersion": "2026.07.22.11",
+  "exportedAt": "2026-07-22T21:26:32.420Z",
   "customTypes": [],
   "typeAssignments": {},
   "notes": {
@@ -9,12 +9,14 @@
     "alexander": "not as creamy, sweet, or strong as you would want from these ingredients",
     "americano": "Sweet start, very bitter finish that has you coming back for more.\nVariations:\n- 3 oz of soda water which results in a very refreshing spritz like drink for the summer. \n- Adding lemon soda bring an interesting twist, but can't tell if it is better",
     "cookies-and-cream": "Sent via text from Kubaryk",
-    "too-much-too-soon": "A Barrel Aged cocktail from Barley Swine pre 2022"
+    "too-much-too-soon": "A Barrel Aged cocktail from Barley Swine pre 2022",
+    "legacy-godfather": "Prefer 3:1 ratio for a stronger drink\n\nFormer IBA drink removed in the 2020 update."
   },
   "ratings": {
     "amaretto-martini": 5,
     "alexander": 3,
-    "americano": 4
+    "americano": 4,
+    "legacy-godfather": 4.5
   },
   "bookmarks": {
     "boulevardier": true,
@@ -38,26 +40,26 @@
   "bar": [
     {
       "id": "bar-1783811830755-x7vqe",
+      "kind": "spirit",
       "name": "Monkey Shoulder Blended Malt Scotch Whisky",
       "base": "Whiskey",
       "subtype": "Scotch, Blended",
       "purpose": "mixing",
+      "useInCocktails": false,
       "notes": "",
       "favorite": true,
+      "shoppingList": true,
+      "recommended": false,
+      "recommendationSourceId": "",
       "price": 33,
       "totalWineLocation": "Aisle 07, Right, Bay 25, Shelf 01",
       "totalWineUrl": "https://www.totalwine.com/spirits/scotch/blended-scotch/monkey-shoulder-blended-malt-scotch-whisky/p/127093750",
-      "useInCocktails": false,
-      "shoppingList": true,
       "country": "Scotland",
       "abv": 43,
       "taste": "Apricot, Apricot, Butterscotch",
-      "recommended": false,
       "storage": "bar",
       "expirationMonths": "",
-      "kind": "spirit",
-      "has375ml": false,
-      "recommendationSourceId": ""
+      "has375ml": false
     },
     {
       "id": "bar-1783812880629-4pfol",
@@ -151,21 +153,21 @@
       "base": "Liqueurs",
       "subtype": "Fruit, Cherry",
       "purpose": "mixing",
+      "useInCocktails": false,
       "notes": "",
       "favorite": false,
+      "shoppingList": false,
+      "recommended": false,
+      "recommendationSourceId": "",
       "price": 36,
       "totalWineLocation": "Aisle 10, Right, Bay 10, Shelf 01",
       "totalWineUrl": "",
-      "useInCocktails": false,
-      "shoppingList": false,
       "country": "Italy",
       "abv": 32,
       "taste": "Semi-sweet, Semi-sweet",
-      "recommended": false,
       "storage": "bar",
       "expirationMonths": "",
-      "has375ml": true,
-      "recommendationSourceId": ""
+      "has375ml": true
     },
     {
       "id": "bar-1783819663673-dhp76",
@@ -194,21 +196,21 @@
       "base": "Flavorings",
       "subtype": "Bitter, Other",
       "purpose": "mixing",
+      "useInCocktails": false,
       "notes": "",
       "favorite": false,
+      "shoppingList": false,
+      "recommended": false,
+      "recommendationSourceId": "",
       "price": 7,
       "totalWineLocation": "Backwall",
       "totalWineUrl": "",
-      "useInCocktails": false,
-      "shoppingList": false,
       "country": "United States",
       "abv": 35,
       "taste": "Bitter",
-      "recommended": false,
       "storage": "bar",
       "expirationMonths": "",
-      "has375ml": false,
-      "recommendationSourceId": ""
+      "has375ml": false
     },
     {
       "id": "bar-1784514415751-381a8",
@@ -217,21 +219,21 @@
       "base": "Vodka",
       "subtype": "Plain",
       "purpose": "mixing",
+      "useInCocktails": false,
       "notes": "",
       "favorite": true,
+      "shoppingList": false,
+      "recommended": false,
+      "recommendationSourceId": "",
       "price": 18,
       "totalWineLocation": "Aisle 04, Left, Bay 19, Shelf 04",
       "totalWineUrl": "https://www.totalwine.com/spirits/vodka/vodka/titos-handmade-vodka/p/96260750",
-      "useInCocktails": false,
-      "shoppingList": false,
       "country": "United States",
       "abv": 40,
       "taste": "Clean, Sweet, Pepper",
-      "recommended": false,
       "storage": "freezer",
       "expirationMonths": "",
-      "has375ml": true,
-      "recommendationSourceId": ""
+      "has375ml": true
     },
     {
       "id": "bar-1784514457734-py7wa",
@@ -240,21 +242,21 @@
       "base": "Whiskey",
       "subtype": "Irish",
       "purpose": "mixing",
+      "useInCocktails": false,
       "notes": "",
       "favorite": true,
+      "shoppingList": true,
+      "recommended": false,
+      "recommendationSourceId": "",
       "price": 25,
       "totalWineLocation": "Aisle 06, Left, Bay 26, Shelf 05",
       "totalWineUrl": "https://www.totalwine.com/spirits/irish-whiskey/jameson-irish-whiskey/p/2812750",
-      "useInCocktails": false,
-      "shoppingList": true,
       "country": "Ireland",
       "abv": 40,
       "taste": "Delicate, Spice, Vanilla, Nut, Mild",
-      "recommended": false,
       "storage": "bar",
       "expirationMonths": "",
-      "has375ml": true,
-      "recommendationSourceId": ""
+      "has375ml": true
     },
     {
       "id": "bar-1784516080416-vx432",
@@ -268,6 +270,7 @@
       "favorite": false,
       "shoppingList": false,
       "recommended": false,
+      "recommendationSourceId": "",
       "price": 0,
       "totalWineLocation": "Homemade",
       "totalWineUrl": "",
@@ -276,8 +279,7 @@
       "taste": "Sweet",
       "storage": "bar",
       "expirationMonths": 1,
-      "has375ml": false,
-      "recommendationSourceId": ""
+      "has375ml": false
     },
     {
       "id": "bar-1784519640880-2hqum",
@@ -286,21 +288,21 @@
       "base": "Whiskey",
       "subtype": "Scotch, Islay (Smokey)",
       "purpose": "sipping",
+      "useInCocktails": true,
       "notes": "",
       "favorite": true,
+      "shoppingList": false,
+      "recommended": false,
+      "recommendationSourceId": "",
       "price": 79,
       "totalWineLocation": "Aisle 07, Right, Bay 21, Shelf 01",
       "totalWineUrl": "",
-      "useInCocktails": true,
-      "shoppingList": false,
       "country": "Scotland",
       "abv": 54.2,
       "taste": "Peat, Smoke, Sweet",
-      "recommended": false,
       "storage": "bar",
       "expirationMonths": "",
-      "has375ml": false,
-      "recommendationSourceId": ""
+      "has375ml": false
     },
     {
       "id": "bar-1784523738967-hsvz7",
@@ -312,18 +314,18 @@
       "useInCocktails": false,
       "notes": "350ml :: $42 :: Aisle 08, Left | Bay 03 | Shelf 02",
       "favorite": false,
+      "shoppingList": false,
+      "recommended": false,
+      "recommendationSourceId": "",
       "price": 60,
       "totalWineLocation": "Aisle 04, Left, Bay 15, Shelf 01",
       "totalWineUrl": "",
-      "shoppingList": false,
       "country": "Germany",
       "abv": 47,
       "taste": "Floral, Citrus, Pepper",
-      "recommended": false,
       "storage": "freezer",
       "expirationMonths": "",
-      "has375ml": true,
-      "recommendationSourceId": ""
+      "has375ml": true
     },
     {
       "id": "bar-1784526234714-9j0q4",
@@ -335,18 +337,18 @@
       "useInCocktails": false,
       "notes": "",
       "favorite": true,
+      "shoppingList": false,
+      "recommended": false,
+      "recommendationSourceId": "",
       "price": 70,
       "totalWineLocation": "Aisle 07, Right, Bay 22, Shelf 01",
       "totalWineUrl": "",
-      "shoppingList": false,
       "country": "Scotland",
       "abv": 45.8,
       "taste": "Malt, Spice, Smoke",
-      "recommended": false,
       "storage": "bar",
       "expirationMonths": "",
-      "has375ml": false,
-      "recommendationSourceId": ""
+      "has375ml": false
     },
     {
       "id": "bar-1784527800752-tdqnc",
@@ -359,17 +361,17 @@
       "notes": "",
       "favorite": true,
       "shoppingList": true,
+      "recommended": false,
+      "recommendationSourceId": "",
       "price": 50,
       "totalWineLocation": "Aisle 07, Right, Bay 21, Shelf 04",
       "totalWineUrl": "",
       "country": "Scotland",
       "abv": 43,
       "taste": "Oak, Smoke",
-      "recommended": false,
       "storage": "bar",
       "expirationMonths": "",
-      "has375ml": false,
-      "recommendationSourceId": ""
+      "has375ml": false
     },
     {
       "id": "bar-1784528827288-cjs58",
@@ -382,17 +384,17 @@
       "notes": "",
       "favorite": true,
       "shoppingList": false,
+      "recommended": false,
+      "recommendationSourceId": "",
       "price": 55,
       "totalWineLocation": "Aisle 06, Left, Bay 26, Shelf 01",
       "totalWineUrl": "https://www.totalwine.com/spirits/irish-whiskey/redbreast-12-yr-irish-whiskey",
       "country": "Ireland",
       "abv": 40,
       "taste": "Full, Spice, Fruit, Oak, Long",
-      "recommended": false,
       "storage": "bar",
       "expirationMonths": "",
-      "has375ml": false,
-      "recommendationSourceId": ""
+      "has375ml": false
     },
     {
       "id": "bar-1784529306304-3byrb",
@@ -405,17 +407,17 @@
       "notes": "",
       "favorite": true,
       "shoppingList": false,
+      "recommended": false,
+      "recommendationSourceId": "",
       "price": 77,
       "totalWineLocation": "Aisle 07, Right, Bay 18, Shelf 05",
       "totalWineUrl": "",
       "country": "Scotland",
       "abv": 43,
       "taste": "Citrus, Peat, Smoke",
-      "recommended": false,
       "storage": "bar",
       "expirationMonths": "",
-      "has375ml": false,
-      "recommendationSourceId": ""
+      "has375ml": false
     },
     {
       "id": "bar-1784530173480-h5biv",
@@ -428,17 +430,17 @@
       "notes": "Premixed liqueur consisting of 60% Bénédictine (an herbal liqueur) and 40% French brandy (often Cognac). It was invented in the 1930s by bartenders looking for a drier, less sweet version of Bénédictine.\nThe Liqueur (Bénédictine): Features a complex blend of 27 different herbs, plants, and spices, giving it notes of honey, baking spices, and tea.\nThe Brandy/Cognac: Adds a layer of warmth, oakiness, and distillate strength at mid-palate",
       "favorite": true,
       "shoppingList": false,
+      "recommended": false,
+      "recommendationSourceId": "",
       "price": 34,
       "totalWineLocation": "Aisle 10, Right, Bay 07, Shelf 03",
       "totalWineUrl": "",
       "country": "France",
       "abv": 40,
       "taste": "Oak, Woody, Herb",
-      "recommended": false,
       "storage": "bar",
       "expirationMonths": "",
-      "has375ml": false,
-      "recommendationSourceId": ""
+      "has375ml": false
     },
     {
       "id": "bar-1784578038785-wsuw2",
@@ -452,6 +454,7 @@
       "favorite": false,
       "shoppingList": false,
       "recommended": false,
+      "recommendationSourceId": "",
       "price": 4,
       "totalWineLocation": "Backwall",
       "totalWineUrl": "",
@@ -460,8 +463,7 @@
       "taste": "Sweet",
       "storage": "bar",
       "expirationMonths": "",
-      "has375ml": false,
-      "recommendationSourceId": ""
+      "has375ml": false
     },
     {
       "id": "bar-1784578275832-tzi7t",
@@ -475,6 +477,7 @@
       "favorite": true,
       "shoppingList": false,
       "recommended": false,
+      "recommendationSourceId": "",
       "price": 90,
       "totalWineLocation": "Aisle 07, Right, Bay 19, Shelf 05",
       "totalWineUrl": "",
@@ -483,8 +486,7 @@
       "taste": "Caramel, Vanilla, Tropical Fruit",
       "storage": "bar",
       "expirationMonths": "",
-      "has375ml": true,
-      "recommendationSourceId": ""
+      "has375ml": true
     },
     {
       "id": "bar-1784578416292-3ho1w",
@@ -498,6 +500,7 @@
       "favorite": false,
       "shoppingList": true,
       "recommended": false,
+      "recommendationSourceId": "",
       "price": 4,
       "totalWineLocation": "Backwall",
       "totalWineUrl": "",
@@ -506,8 +509,7 @@
       "taste": "Sweet",
       "storage": "bar",
       "expirationMonths": 12,
-      "has375ml": false,
-      "recommendationSourceId": ""
+      "has375ml": false
     },
     {
       "id": "bar-1784578497175-nf9d0",
@@ -521,6 +523,7 @@
       "favorite": false,
       "shoppingList": true,
       "recommended": false,
+      "recommendationSourceId": "",
       "price": 8,
       "totalWineLocation": "Backwall",
       "totalWineUrl": "",
@@ -529,8 +532,7 @@
       "taste": "Sweet",
       "storage": "bar",
       "expirationMonths": "",
-      "has375ml": false,
-      "recommendationSourceId": ""
+      "has375ml": false
     },
     {
       "id": "bar-1784579610935-mwuas",
@@ -544,6 +546,7 @@
       "favorite": false,
       "shoppingList": true,
       "recommended": true,
+      "recommendationSourceId": "",
       "price": 4,
       "totalWineLocation": "Backwall",
       "totalWineUrl": "",
@@ -552,8 +555,7 @@
       "taste": "Sweet",
       "storage": "bar",
       "expirationMonths": "",
-      "has375ml": false,
-      "recommendationSourceId": ""
+      "has375ml": false
     },
     {
       "id": "bar-1784579656010-urb17",
@@ -567,6 +569,7 @@
       "favorite": false,
       "shoppingList": true,
       "recommended": true,
+      "recommendationSourceId": "",
       "price": 15,
       "totalWineLocation": "Backwall",
       "totalWineUrl": "",
@@ -575,8 +578,7 @@
       "taste": "Sweet",
       "storage": "bar",
       "expirationMonths": "",
-      "has375ml": false,
-      "recommendationSourceId": ""
+      "has375ml": false
     },
     {
       "id": "bar-1784579757213-0y81l",
@@ -590,6 +592,7 @@
       "favorite": false,
       "shoppingList": true,
       "recommended": true,
+      "recommendationSourceId": "",
       "price": 12,
       "totalWineLocation": "Backwall",
       "totalWineUrl": "",
@@ -598,8 +601,7 @@
       "taste": "Bitter",
       "storage": "bar",
       "expirationMonths": "",
-      "has375ml": false,
-      "recommendationSourceId": ""
+      "has375ml": false
     },
     {
       "id": "bar-1784579822097-1dtzr",
@@ -613,6 +615,7 @@
       "favorite": false,
       "shoppingList": true,
       "recommended": true,
+      "recommendationSourceId": "",
       "price": 12,
       "totalWineLocation": "Backwall",
       "totalWineUrl": "",
@@ -621,8 +624,7 @@
       "taste": "Bitter",
       "storage": "bar",
       "expirationMonths": "",
-      "has375ml": false,
-      "recommendationSourceId": ""
+      "has375ml": false
     },
     {
       "id": "bar-1784580094760-4e9do",
@@ -636,6 +638,7 @@
       "favorite": true,
       "shoppingList": false,
       "recommended": false,
+      "recommendationSourceId": "",
       "price": 30,
       "totalWineLocation": "Aisle 10, Right, Bay 11, Shelf 05",
       "totalWineUrl": "",
@@ -644,8 +647,7 @@
       "taste": "Almond, Caramel, Nut",
       "storage": "bar",
       "expirationMonths": "",
-      "has375ml": true,
-      "recommendationSourceId": ""
+      "has375ml": true
     },
     {
       "id": "bar-1784580154410-ov19f",
@@ -659,6 +661,7 @@
       "favorite": false,
       "shoppingList": false,
       "recommended": true,
+      "recommendationSourceId": "",
       "price": 81,
       "totalWineLocation": "Out of Stock",
       "totalWineUrl": "",
@@ -667,8 +670,7 @@
       "taste": "Chartreuse",
       "storage": "bar",
       "expirationMonths": "",
-      "has375ml": false,
-      "recommendationSourceId": ""
+      "has375ml": false
     },
     {
       "id": "bar-1784581709865-v3loa",
@@ -682,6 +684,7 @@
       "favorite": true,
       "shoppingList": false,
       "recommended": false,
+      "recommendationSourceId": "",
       "price": 62,
       "totalWineLocation": "Aisle 06, Left, Bay 03, Shelf 04",
       "totalWineUrl": "",
@@ -690,8 +693,7 @@
       "taste": "Toast, Caramel",
       "storage": "bar",
       "expirationMonths": "",
-      "has375ml": false,
-      "recommendationSourceId": ""
+      "has375ml": false
     },
     {
       "id": "bar-1784581864997-cl0eg",
@@ -710,6 +712,7 @@
       "favorite": false,
       "shoppingList": true,
       "recommended": true,
+      "recommendationSourceId": "",
       "price": 22,
       "totalWineLocation": "Aisle 04, Left, Bay 11, Shelf 01",
       "totalWineUrl": "https://www.totalwine.com/spirits/gin/beefeater-london-dry-gin/p/3639750",
@@ -718,8 +721,7 @@
       "taste": "Herbal, Juniper, Citrus",
       "storage": "freezer",
       "expirationMonths": "",
-      "has375ml": false,
-      "recommendationSourceId": ""
+      "has375ml": false
     },
     {
       "id": "bar-1784582604184-pgejv",
@@ -733,6 +735,7 @@
       "favorite": false,
       "shoppingList": true,
       "recommended": true,
+      "recommendationSourceId": "",
       "price": 26,
       "totalWineLocation": "Aisle 04, Right, Bay 07, Shelf 05",
       "totalWineUrl": "",
@@ -741,8 +744,7 @@
       "taste": "Herbal",
       "storage": "freezer",
       "expirationMonths": "",
-      "has375ml": false,
-      "recommendationSourceId": ""
+      "has375ml": false
     },
     {
       "id": "bar-1784582626618-qlumh",
@@ -756,6 +758,7 @@
       "favorite": false,
       "shoppingList": false,
       "recommended": true,
+      "recommendationSourceId": "",
       "price": 25,
       "totalWineLocation": "Aisle 06, Left, Bay 03, Shelf 05",
       "totalWineUrl": "",
@@ -764,8 +767,7 @@
       "taste": "Vanilla, Chocolate, Cinnamon",
       "storage": "bar",
       "expirationMonths": "",
-      "has375ml": false,
-      "recommendationSourceId": ""
+      "has375ml": false
     },
     {
       "id": "bar-1784582683205-rw6vh",
@@ -779,6 +781,7 @@
       "favorite": false,
       "shoppingList": true,
       "recommended": true,
+      "recommendationSourceId": "",
       "price": 21,
       "totalWineLocation": "Aisle 08, Left, Bay 04, Shelf 01",
       "totalWineUrl": "",
@@ -787,8 +790,7 @@
       "taste": "Fruit, Maple, Vanilla, Complex",
       "storage": "bar",
       "expirationMonths": "",
-      "has375ml": true,
-      "recommendationSourceId": ""
+      "has375ml": true
     },
     {
       "id": "bar-1784582702083-7rc8t",
@@ -802,6 +804,7 @@
       "favorite": false,
       "shoppingList": true,
       "recommended": true,
+      "recommendationSourceId": "",
       "price": 13,
       "totalWineLocation": "Aisle 08, Left, Bay 04, Shelf 05",
       "totalWineUrl": "https://www.totalwine.com/spirits/bourbon/wild-turkey-101-bourbon/p/1862750",
@@ -810,8 +813,7 @@
       "taste": "Spice, Vanilla, Complex",
       "storage": "bar",
       "expirationMonths": "",
-      "has375ml": true,
-      "recommendationSourceId": ""
+      "has375ml": true
     },
     {
       "id": "bar-1784582888688-k251k",
@@ -825,6 +827,7 @@
       "favorite": false,
       "shoppingList": false,
       "recommended": true,
+      "recommendationSourceId": "",
       "price": 48,
       "totalWineLocation": "Out of Stock",
       "totalWineUrl": "https://www.totalwine.com/spirits/brandy-cognac/cognac/ferrand-1840-orig-formula-cognac/p/2126276330",
@@ -833,8 +836,7 @@
       "taste": "Fruit, Honey",
       "storage": "bar",
       "expirationMonths": "",
-      "has375ml": false,
-      "recommendationSourceId": ""
+      "has375ml": false
     },
     {
       "id": "bar-1784605203218-n0631",
@@ -858,6 +860,7 @@
       "favorite": false,
       "shoppingList": true,
       "recommended": true,
+      "recommendationSourceId": "",
       "price": 32,
       "totalWineLocation": "Aisle 10, Right, Bay 08, Shelf 05",
       "totalWineUrl": "",
@@ -866,8 +869,7 @@
       "taste": "Orange, Nut, Cinnamon",
       "storage": "bar",
       "expirationMonths": "",
-      "has375ml": true,
-      "recommendationSourceId": ""
+      "has375ml": true
     },
     {
       "id": "bar-1784611112740-3s4si",
@@ -881,6 +883,7 @@
       "favorite": false,
       "shoppingList": true,
       "recommended": true,
+      "recommendationSourceId": "",
       "price": 40,
       "totalWineLocation": "Aisle 06, Left, Bay 14",
       "totalWineUrl": "",
@@ -889,8 +892,7 @@
       "taste": "Caramel, Nut, Vanilla",
       "storage": "bar",
       "expirationMonths": "",
-      "has375ml": true,
-      "recommendationSourceId": ""
+      "has375ml": true
     },
     {
       "id": "bar-1784611194350-c4g2t",
@@ -904,6 +906,7 @@
       "favorite": false,
       "shoppingList": false,
       "recommended": false,
+      "recommendationSourceId": "",
       "price": 200,
       "totalWineLocation": "Aisle 07, Right, Bay 14",
       "totalWineUrl": "",
@@ -912,8 +915,7 @@
       "taste": "Smoke, Honey, Spice",
       "storage": "bar",
       "expirationMonths": "",
-      "has375ml": true,
-      "recommendationSourceId": ""
+      "has375ml": true
     },
     {
       "id": "bar-1784611235026-mj7d6",
@@ -927,6 +929,7 @@
       "favorite": false,
       "shoppingList": false,
       "recommended": false,
+      "recommendationSourceId": "",
       "price": 86,
       "totalWineLocation": "Aisle 07, Right, Bay 22, Shelf 01",
       "totalWineUrl": "",
@@ -935,8 +938,7 @@
       "taste": "Peat, Amoroso",
       "storage": "bar",
       "expirationMonths": "",
-      "has375ml": false,
-      "recommendationSourceId": ""
+      "has375ml": false
     },
     {
       "id": "bar-1784611676422-m3050",
@@ -950,6 +952,7 @@
       "favorite": false,
       "shoppingList": true,
       "recommended": true,
+      "recommendationSourceId": "",
       "price": 20,
       "totalWineLocation": "Aisle 10, Right, Bay 11, Shelf 02",
       "totalWineUrl": "",
@@ -958,8 +961,7 @@
       "taste": "Mint, Spice",
       "storage": "bar",
       "expirationMonths": "",
-      "has375ml": false,
-      "recommendationSourceId": ""
+      "has375ml": false
     },
     {
       "id": "bar-1784671167762-1df0u",
@@ -973,6 +975,7 @@
       "favorite": false,
       "shoppingList": false,
       "recommended": true,
+      "recommendationSourceId": "",
       "price": 33,
       "totalWineLocation": "Aisle 04, Left, Bay 18, Shelf 05",
       "totalWineUrl": "",
@@ -981,8 +984,7 @@
       "taste": "Cinnamon, Clove, Citrus, Bitter-sweet",
       "storage": "bar",
       "expirationMonths": "",
-      "has375ml": false,
-      "recommendationSourceId": ""
+      "has375ml": false
     },
     {
       "id": "bar-1784671266897-xzxo1",
@@ -996,6 +998,7 @@
       "favorite": false,
       "shoppingList": false,
       "recommended": false,
+      "recommendationSourceId": "",
       "price": 24,
       "totalWineLocation": "Aisle 09, Right, Bay 04, Shelf 05",
       "totalWineUrl": "",
@@ -1004,8 +1007,7 @@
       "taste": "Pepper, Floral, Agave",
       "storage": "bar",
       "expirationMonths": "",
-      "has375ml": true,
-      "recommendationSourceId": ""
+      "has375ml": true
     },
     {
       "id": "bar-1784671314449-x1mnk",
@@ -1019,6 +1021,7 @@
       "favorite": false,
       "shoppingList": false,
       "recommended": false,
+      "recommendationSourceId": "",
       "price": 60,
       "totalWineLocation": "Aisle 08, Left, Bay 08, Shelf 02",
       "totalWineUrl": "",
@@ -1027,8 +1030,7 @@
       "taste": "Cooked Agave, Caramel, Vanilla",
       "storage": "bar",
       "expirationMonths": "",
-      "has375ml": true,
-      "recommendationSourceId": ""
+      "has375ml": true
     },
     {
       "id": "bar-1784671441998-t9hb2",
@@ -1042,6 +1044,7 @@
       "favorite": false,
       "shoppingList": false,
       "recommended": false,
+      "recommendationSourceId": "",
       "price": 35,
       "totalWineLocation": "Aisle 04, Left, Bay 17, Shelf 01",
       "totalWineUrl": "",
@@ -1050,8 +1053,7 @@
       "taste": "Vanilla, Floral, Mint, Bitter-sweet",
       "storage": "fridge",
       "expirationMonths": 3,
-      "has375ml": true,
-      "recommendationSourceId": ""
+      "has375ml": true
     },
     {
       "id": "bar-1784671477050-5225a",
@@ -1065,6 +1067,7 @@
       "favorite": false,
       "shoppingList": false,
       "recommended": false,
+      "recommendationSourceId": "",
       "price": 20,
       "totalWineLocation": "Aisle 10, Right, Bay 11, Shelf 03",
       "totalWineUrl": "",
@@ -1073,8 +1076,7 @@
       "taste": "Chocolate",
       "storage": "bar",
       "expirationMonths": "",
-      "has375ml": false,
-      "recommendationSourceId": ""
+      "has375ml": false
     },
     {
       "id": "bar-1784671690302-7i991",
@@ -1088,6 +1090,7 @@
       "favorite": false,
       "shoppingList": false,
       "recommended": false,
+      "recommendationSourceId": "",
       "price": 35,
       "totalWineLocation": "Aisle 10, Right, Bay 06, Shelf 03",
       "totalWineUrl": "",
@@ -1096,8 +1099,7 @@
       "taste": "Green Chartreuse",
       "storage": "bar",
       "expirationMonths": "",
-      "has375ml": false,
-      "recommendationSourceId": ""
+      "has375ml": false
     },
     {
       "id": "bar-1784747879139-k7b6c",
@@ -1111,6 +1113,7 @@
       "favorite": false,
       "shoppingList": false,
       "recommended": true,
+      "recommendationSourceId": "",
       "price": 21,
       "totalWineLocation": "Aisle 09, Right, Bay 04, Shelf 04",
       "totalWineUrl": "https://www.totalwine.com/spirits/tequila/blancosilver/olmeca-altos-platatequila/p/131597750",
@@ -1119,8 +1122,7 @@
       "taste": "Citrus, Pepper, Agave",
       "storage": "bar",
       "expirationMonths": "",
-      "has375ml": true,
-      "recommendationSourceId": ""
+      "has375ml": true
     },
     {
       "id": "bar-1784748013534-1xiq2",
@@ -1134,6 +1136,7 @@
       "favorite": false,
       "shoppingList": false,
       "recommended": true,
+      "recommendationSourceId": "",
       "price": 24,
       "totalWineLocation": "Aisle 08, Left, Bay 02, Shelf 07",
       "totalWineUrl": "",
@@ -1142,8 +1145,7 @@
       "taste": "Medium, Citrus, Smoke, Pepper, Balanced",
       "storage": "bar",
       "expirationMonths": "",
-      "has375ml": true,
-      "recommendationSourceId": ""
+      "has375ml": true
     },
     {
       "id": "bar-1784750918043-3skb9",
@@ -4256,8 +4258,8 @@
       "method": [
         "Build over ice in an old fashioned glass and stir briefly."
       ],
-      "userNotes": "",
-      "rating": null,
+      "userNotes": "Prefer 3:1 ratio for a stronger drink\n\nFormer IBA drink removed in the 2020 update.",
+      "rating": 4.5,
       "toTry": false
     },
     {
