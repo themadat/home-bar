@@ -8,7 +8,7 @@
     }
     .gold { fill: #F0C96F; }
   </style>
-  <rect width="64" height="64" fill="#080B10"/>
+  <circle cx="32" cy="32" r="28.75" fill="#080B10"/>
   <circle class="line" cx="32" cy="32" r="29" stroke-width="3.5"/>
   <path class="gold" d="M32 7l1.35 3.65L37 12l-3.65 1.35L32 17l-1.35-3.65L27 12l3.65-1.35z"/>
   <path class="line" d="M15 21c5.2-2.4 28.8-2.4 34 0l-2.8 13.5C45 40 39.7 43 32 43s-13-3-14.2-8.5z" stroke-width="3.2"/>
