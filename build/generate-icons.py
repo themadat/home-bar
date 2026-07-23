@@ -8,7 +8,8 @@ from a single source PNG: build/icon-sources/source-material/app_icon.png
 The source is a square, full-bleed dark navy image with a gold coupe-glass
 mark. App and touch icons are flattened to RGB so each platform can apply its
 own mask. Browser favicons isolate the brass artwork on transparency so Safari
-does not add a white contrast frame around the dark navy square.
+does not add a white contrast frame around the dark navy square. The ICO is
+also written at the site root as a legacy browser fallback.
 
 Requires: Pillow (pip3 install --user pillow)
 
@@ -125,7 +126,11 @@ def main() -> None:
     resized(favicon_src, 48).save(ico_path, format="ICO", sizes=ICO_SIZES)
     print(f"\nfavicon-brass.ico            {', '.join(f'{w}x{h}' for w, h in ICO_SIZES)}")
 
-    print(f"\nDone. {len(ANY_SIZES) + len(FAVICON_SIZES) + len(MASKABLE_SIZES) + len(APPLE_TOUCH_SIZES) + 1} files written.")
+    root_ico_path = REPO_ROOT / "favicon.ico"
+    resized(favicon_src, 48).save(root_ico_path, format="ICO", sizes=ICO_SIZES)
+    print(f"favicon.ico                  {', '.join(f'{w}x{h}' for w, h in ICO_SIZES)}")
+
+    print(f"\nDone. {len(ANY_SIZES) + len(FAVICON_SIZES) + len(MASKABLE_SIZES) + len(APPLE_TOUCH_SIZES) + 2} files written.")
 
 
 if __name__ == "__main__":
