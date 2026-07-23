@@ -7,9 +7,9 @@ from a single source PNG: build/icon-sources/source-material/app_icon.png
 
 The source is a square, full-bleed dark navy image with a gold coupe-glass
 mark. App and touch icons are flattened to RGB so each platform can apply its
-own mask. Browser favicons place the isolated brass artwork around a circular
-dark navy field with transparent corners, preventing Safari's contrast outline.
-The ICO is also written at the site root as a legacy browser fallback.
+own mask. Browser favicons contain only the isolated brass artwork so Safari
+does not add a high-contrast frame around a dark icon. The ICO is also written
+at the site root as a legacy browser fallback.
 
 Requires: Pillow (pip3 install --user pillow)
 
@@ -19,7 +19,7 @@ Usage: ./build/generate-icons.py
 from collections import Counter
 from pathlib import Path
 
-from PIL import Image, ImageDraw
+from PIL import Image
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 SOURCE = REPO_ROOT / "build" / "icon-sources" / "source-material" / "app_icon.png"
@@ -43,7 +43,6 @@ FAVICON_SIZES = [
     ("favicon-brass-48.png", 48),
 ]
 ICO_SIZES = [(16, 16), (32, 32), (48, 48)]
-FAVICON_BACKGROUND = (8, 11, 16, 255)
 
 
 def dominant_opaque_color(im: Image.Image) -> tuple[int, int, int]:
@@ -90,23 +89,6 @@ def transparent_favicon(im: Image.Image) -> Image.Image:
     return favicon
 
 
-def themed_favicon(im: Image.Image) -> Image.Image:
-    brass = transparent_favicon(im)
-    favicon = Image.new("RGBA", brass.size, (0, 0, 0, 0))
-    brass_bounds = brass.getchannel("A").getbbox()
-    if brass_bounds:
-        inset = round(brass.width * 0.03)
-        background_bounds = (
-            brass_bounds[0] + inset,
-            brass_bounds[1] + inset,
-            brass_bounds[2] - inset,
-            brass_bounds[3] - inset,
-        )
-        ImageDraw.Draw(favicon).ellipse(background_bounds, fill=FAVICON_BACKGROUND)
-    favicon.alpha_composite(brass)
-    return favicon
-
-
 def main() -> None:
     if not SOURCE.exists():
         raise SystemExit(f"Error: missing source icon: {SOURCE}")
@@ -129,8 +111,8 @@ def main() -> None:
         resized(flat_src, size).save(DEST_DIR / name)
         print(f"  {name:<28} {size}x{size}")
 
-    favicon_src = themed_favicon(src)
-    print("\nBrass browser favicons on circular dark theme background:")
+    favicon_src = transparent_favicon(src)
+    print("\nTransparent brass browser favicons:")
     for name, size in FAVICON_SIZES:
         resized(favicon_src, size).save(DEST_DIR / name)
         print(f"  {name:<28} {size}x{size}")
