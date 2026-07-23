@@ -7,9 +7,9 @@ from a single source PNG: build/icon-sources/source-material/app_icon.png
 
 The source is a square, full-bleed dark navy image with a gold coupe-glass
 mark. App and touch icons are flattened to RGB so each platform can apply its
-own mask. Browser favicons isolate the brass artwork on transparency so Safari
-does not add a white contrast frame around the dark navy square. The ICO is
-also written at the site root as a legacy browser fallback.
+own mask. Browser favicons place the isolated brass artwork on the app's dark
+navy background. The ICO is also written at the site root as a legacy browser
+fallback.
 
 Requires: Pillow (pip3 install --user pillow)
 
@@ -43,6 +43,7 @@ FAVICON_SIZES = [
     ("favicon-brass-48.png", 48),
 ]
 ICO_SIZES = [(16, 16), (32, 32), (48, 48)]
+FAVICON_BACKGROUND = (8, 11, 16, 255)
 
 
 def dominant_opaque_color(im: Image.Image) -> tuple[int, int, int]:
@@ -89,6 +90,13 @@ def transparent_favicon(im: Image.Image) -> Image.Image:
     return favicon
 
 
+def themed_favicon(im: Image.Image) -> Image.Image:
+    brass = transparent_favicon(im)
+    favicon = Image.new("RGBA", brass.size, FAVICON_BACKGROUND)
+    favicon.alpha_composite(brass)
+    return favicon.convert("RGB")
+
+
 def main() -> None:
     if not SOURCE.exists():
         raise SystemExit(f"Error: missing source icon: {SOURCE}")
@@ -111,8 +119,8 @@ def main() -> None:
         resized(flat_src, size).save(DEST_DIR / name)
         print(f"  {name:<28} {size}x{size}")
 
-    favicon_src = transparent_favicon(src)
-    print("\nTransparent brass browser favicons:")
+    favicon_src = themed_favicon(src)
+    print("\nBrass browser favicons on dark theme background:")
     for name, size in FAVICON_SIZES:
         resized(favicon_src, size).save(DEST_DIR / name)
         print(f"  {name:<28} {size}x{size}")
