@@ -252,7 +252,9 @@
       display: inline-flex; align-items: center; gap: 6px; flex: 0 0 auto; min-width: 0;
       height: 28px; border: 1px solid var(--line); border-radius: 999px; background: var(--panel); padding: 0 8px;
     }
-    #pillFilters > .rating-filter { justify-self: start; }
+    #pillFilters > .rating-filter {
+      justify-self: stretch; height: auto; min-height: 30px; border-radius: var(--radius); padding: 8px 10px;
+    }
     .rating-filter > .section-pill { font-size: 10px; }
     .rating-filter-row { display: flex; flex-wrap: nowrap; align-items: center; gap: 6px; min-width: 0; }
     .rating-filter-row select { flex: 0 1 auto; width: auto; min-width: 82px; border: 0; min-height: 0; padding: 0; background: transparent; }
@@ -326,6 +328,27 @@
       grid-template-columns: repeat(5, minmax(0, 1fr));
       gap: 8px;
       margin-bottom: 10px;
+    }
+    @media (min-width: 1101px) {
+      .pill-section { grid-template-columns: minmax(255px, 1.9fr) repeat(4, minmax(150px, 1fr)) minmax(160px, 1fr); }
+      .pill-section .pill-card[data-filter-section="base"],
+      .pill-section .pill-card[data-filter-section="garnish"],
+      .pill-section .pill-card[data-filter-section="glass"],
+      .pill-section .pill-card[data-filter-section="type"] {
+        padding: 8px;
+      }
+      .pill-section .pill-card[data-filter-section="base"] .section-pill,
+      .pill-section .pill-card[data-filter-section="garnish"] .section-pill,
+      .pill-section .pill-card[data-filter-section="glass"] .section-pill,
+      .pill-section .pill-card[data-filter-section="type"] .section-pill {
+        padding: 4px 8px; font-size: 12px;
+      }
+      .pill-section .pill-card[data-filter-section="base"] .section-meta,
+      .pill-section .pill-card[data-filter-section="garnish"] .section-meta,
+      .pill-section .pill-card[data-filter-section="glass"] .section-meta,
+      .pill-section .pill-card[data-filter-section="type"] .section-meta {
+        font-size: 11px;
+      }
     }
         .pill-card {
           border: 1px solid var(--line);
@@ -1209,9 +1232,10 @@
 	          .mobile-filter-toggle {
 	            display: grid;
 	            place-items: center;
-	            width: 28px;
-	            height: 28px;
-	            min-height: 28px;
+	            flex: 0 0 auto;
+	            width: 36px;
+	            height: 36px;
+	            min-height: 36px;
 	            padding: 0;
 	            border: 1px solid var(--line);
 	            border-radius: 999px;
@@ -1220,14 +1244,14 @@
 	          }
 	          .mobile-filter-toggle:hover, .mobile-filter-toggle[aria-expanded="true"] { border-color: var(--accent); color: var(--accent); }
 	          .mobile-filter-chevron {
-	            width: 7px;
-	            height: 7px;
-	            border-right: 2px solid currentColor;
-	            border-bottom: 2px solid currentColor;
-	            transform: translateY(-2px) rotate(45deg);
+	            width: 10px;
+	            height: 10px;
+	            border-right: 3px solid currentColor;
+	            border-bottom: 3px solid currentColor;
+	            transform: translateY(-3px) rotate(45deg);
 	            transition: transform .15s ease;
 	          }
-	          .mobile-filter-toggle[aria-expanded="true"] .mobile-filter-chevron { transform: translateY(2px) rotate(225deg); }
+	          .mobile-filter-toggle[aria-expanded="true"] .mobile-filter-chevron { transform: translateY(3px) rotate(225deg); }
 	          .pill-section { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; margin: 0 0 8px; }
 	          .pill-section:not(.mobile-expanded) { display: none; }
 	          .pill-section .pill-card[data-filter-section="ingredient"] { display: none; }
