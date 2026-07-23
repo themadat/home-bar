@@ -74,7 +74,13 @@
       margin: 0 auto;
       padding: 10px 0;
     }
+    @media (min-width: 1101px) {
+      .topbar { grid-template-columns: minmax(180px, 1fr) minmax(200px, 340px) minmax(0, 1.3fr) auto; }
+    }
     .topbar-actions { display: flex; gap: 8px; align-items: center; }
+    .topbar-quick-filter-slot { display: flex; align-items: center; min-width: 0; }
+    .topbar-quick-filter-slot:empty { display: none; }
+    .topbar-quick-filter-slot .quick-filter-scroll { width: 100%; }
     .topbar-search {
       display: flex; align-items: center; gap: 8px; min-width: 0; height: var(--control-h);
       border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); padding: 0 9px;
@@ -246,6 +252,7 @@
       display: inline-flex; align-items: center; gap: 6px; flex: 0 0 auto; min-width: 0;
       height: 28px; border: 1px solid var(--line); border-radius: 999px; background: var(--panel); padding: 0 8px;
     }
+    #pillFilters > .rating-filter { justify-self: start; }
     .rating-filter > .section-pill { font-size: 10px; }
     .rating-filter-row { display: flex; flex-wrap: nowrap; align-items: center; gap: 6px; min-width: 0; }
     .rating-filter-row select { flex: 0 1 auto; width: auto; min-width: 82px; border: 0; min-height: 0; padding: 0; background: transparent; }
@@ -1198,11 +1205,7 @@
 	            gap: 4px;
 	          }
 	          .quick-filter-scroll .quick-chip { height: 28px; padding-inline: 9px; font-size: 11px; }
-	          .quick-filter-scroll .rating-filter { gap: 4px; padding-inline: 7px; }
-	          .quick-filter-scroll .rating-filter > .section-pill { display: none; }
-	          .quick-filter-scroll .rating-filter-row { gap: 3px; }
-	          .quick-filter-scroll input.rating-num { width: 34px; }
-	          .quick-filter-scroll .rating-range { gap: 2px; }
+	          .pill-section > .rating-filter { grid-column: 1 / -1; justify-self: stretch; }
 	          .mobile-filter-toggle {
 	            display: grid;
 	            place-items: center;
@@ -1306,6 +1309,7 @@
           <input id="searchInput" class="text-input" type="search" placeholder="Search cocktails" autocomplete="off">
           <kbd class="topbar-search-shortcut" aria-hidden="true">/</kbd>
         </label>
+        <div id="topbarQuickFilterSlot" class="topbar-quick-filter-slot"></div>
 	        <div class="topbar-actions">
 	          <button id="addCocktailButton" class="button icon" type="button" title="Add cocktail" aria-label="Add cocktail">+</button>
 	          <button id="manageBarButton" class="button icon" type="button" title="Manage My Bar" aria-label="Manage My Bar"><svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 14.4629 30.6543"><g><rect height="30.6543" opacity="0" width="14.4629" x="0" y="0"/><path d="M3.56445 3.71582L10.5469 3.71582C11.3379 3.71582 11.9092 3.15918 11.9092 2.35352L11.9092 1.3623C11.9092 0.561523 11.3379 0 10.5469 0L3.56445 0C2.76367 0 2.20703 0.561523 2.20703 1.3623L2.20703 2.35352C2.20703 3.15918 2.76367 3.71582 3.56445 3.71582ZM0.0146484 10.0732L14.0869 10.0732C14.0381 8.62793 13.7842 7.56348 12.9443 6.43066L12.666 6.0498C12.3291 5.58105 11.748 5.24902 11.167 5.24902L2.93457 5.24902C2.35352 5.24902 1.77246 5.58105 1.43066 6.0498L1.15234 6.43066C0.317383 7.56348 0.0634766 8.62793 0.0146484 10.0732ZM0 11.9043L0 24.3164L14.1016 24.3164L14.1016 11.9043ZM7.04102 22.3779C5.24414 22.3779 4.06738 21.2354 4.06738 19.502C4.06738 18.623 4.47754 17.9004 4.67773 17.4365C5.14648 16.4258 5.92285 15.1123 6.5918 14.1113C6.71387 13.9062 6.88965 13.7988 7.04102 13.7988C7.2168 13.7988 7.37305 13.9062 7.49512 14.1113C8.16406 15.1123 8.95508 16.4258 9.41406 17.4365C9.62402 17.9004 10.0195 18.623 10.0195 19.502C10.0195 21.2354 8.83789 22.3779 7.04102 22.3779ZM0 26.1475L0 26.333C0 29.126 1.38672 30.6348 3.88672 30.6348L10.21 30.6348C12.7148 30.6348 14.1016 29.126 14.1016 26.333L14.1016 26.1475Z"/></g></svg></button>
@@ -1317,7 +1321,7 @@
     </header>
     <main>
       <section class="filters" aria-label="Filters">
-        <div class="quick-filter-scroll">
+        <div id="quickFilterScroll" class="quick-filter-scroll">
           <button class="quick-chip stat-filter" type="button" data-stat-filter="neat" aria-pressed="false">Neat</button>
           <button class="quick-chip stat-filter" type="button" data-stat-filter="custom" aria-pressed="false">Custom</button>
           <button class="quick-chip" type="button" data-quick="toTry">Try</button>
@@ -1325,24 +1329,7 @@
           <button class="quick-chip" type="button" data-quick="myBar">My Bar</button>
           <span id="genreQuickFilters" class="genre-favorites"></span>
           <button id="genreMoreButton" class="quick-chip" type="button" aria-expanded="false" aria-controls="genreMoreMenu">More<span id="genreMoreCount" class="genre-more-count"></span></button>
-          <button id="mobileAdvancedFiltersToggle" class="mobile-filter-toggle" type="button" aria-expanded="false" aria-controls="pillFilters" aria-label="Show Base, Garnish, Glassware, and Type filters"><span class="mobile-filter-chevron" aria-hidden="true"></span></button>
-          <div class="rating-filter">
-            <div class="section-pill">Rating</div>
-            <div class="rating-filter-row">
-              <select id="ratingModeSelect" aria-label="Rating filter mode">
-                <option value="any">Any rating</option>
-                <option value="above">Above</option>
-                <option value="below">Below</option>
-                <option value="within">Range</option>
-              </select>
-              <input id="ratingValueInput" class="text-input rating-num" type="number" min="0.5" max="5" step="0.5" value="3" hidden aria-label="Rating value">
-              <span id="ratingRangeInputs" class="rating-range" hidden>
-                <input id="ratingMinInput" class="text-input rating-num" type="number" min="0.5" max="5" step="0.5" value="2" aria-label="Rating minimum">
-                <span>to</span>
-                <input id="ratingMaxInput" class="text-input rating-num" type="number" min="0.5" max="5" step="0.5" value="4" aria-label="Rating maximum">
-              </span>
-            </div>
-          </div>
+          <button id="mobileAdvancedFiltersToggle" class="mobile-filter-toggle" type="button" aria-expanded="false" aria-controls="pillFilters" aria-label="Show Base, Garnish, Glassware, Type, and Rating filters"><span class="mobile-filter-chevron" aria-hidden="true"></span></button>
         </div>
       </section>
 	          <section id="genreMoreMenu" class="genre-menu" aria-label="More filters" hidden>
@@ -1391,6 +1378,23 @@
 	                <span id="typeSummary" class="section-meta"></span>
 	              </div>
 	              <div id="typePills" class="pill-row" hidden></div>
+	            </div>
+	            <div class="rating-filter">
+	              <div class="section-pill">Rating</div>
+	              <div class="rating-filter-row">
+	                <select id="ratingModeSelect" aria-label="Rating filter mode">
+	                  <option value="any">Any rating</option>
+	                  <option value="above">Above</option>
+	                  <option value="below">Below</option>
+	                  <option value="within">Range</option>
+	                </select>
+	                <input id="ratingValueInput" class="text-input rating-num" type="number" min="0.5" max="5" step="0.5" value="3" hidden aria-label="Rating value">
+	                <span id="ratingRangeInputs" class="rating-range" hidden>
+	                  <input id="ratingMinInput" class="text-input rating-num" type="number" min="0.5" max="5" step="0.5" value="2" aria-label="Rating minimum">
+	                  <span>to</span>
+	                  <input id="ratingMaxInput" class="text-input rating-num" type="number" min="0.5" max="5" step="0.5" value="4" aria-label="Rating maximum">
+	                </span>
+	              </div>
 	            </div>
       </section>
       <section id="myBarReadyHeader" class="my-bar-ready-header" aria-labelledby="myBarReadyTitle" hidden>
@@ -2015,6 +2019,15 @@
       {id: 'hof', label: 'HOF'}
     ];
     const GENRE_FILTER_IDS = new Set(GENRE_FILTERS.map((filter) => filter.id));
+    const QUICK_FILTER_LABEL_MAP = new Map([
+      ['toTry', 'Try'], ['favs', 'Favs'], ['myBar', 'My Bar'],
+      ...MORE_QUICK_FILTERS.map((filter) => [filter.id, filter.label]),
+      ...GENRE_FILTERS.map((filter) => [filter.id, filter.label])
+    ]);
+    const STAT_FILTER_LABEL_MAP = new Map([
+      ['neat', 'Neat'], ['custom', 'Custom'],
+      ...MORE_STAT_FILTERS.map((filter) => [filter.id, filter.label])
+    ]);
     const storedBookmarks = localStorage.getItem('cocktailBookmarks');
     const BAR_SUBTYPE_MIGRATIONS = {
       'Blended Scotch': 'Scotch, Blended',
@@ -2219,6 +2232,14 @@
     const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
     ['resetFilters', 'settingsButton', 'manageBarButton', 'shoppingListButton', 'addCocktailButton']
       .forEach((id) => $('.topbar-actions').appendChild($(`#${id}`)));
+    const desktopQuickFilterQuery = window.matchMedia('(min-width: 1101px)');
+    function placeQuickFilters(isDesktop) {
+      const scroll = $('#quickFilterScroll');
+      const target = isDesktop ? $('#topbarQuickFilterSlot') : $('.filters');
+      if (scroll && target && scroll.parentElement !== target) target.appendChild(scroll);
+    }
+    placeQuickFilters(desktopQuickFilterQuery.matches);
+    desktopQuickFilterQuery.addEventListener('change', (event) => placeQuickFilters(event.matches));
     [
       ['#resetFilters', 'R', 'Control+Alt+Shift+R'],
       ['#settingsButton', 'S', 'Control+Alt+Shift+S'],
@@ -5237,11 +5258,35 @@
       $('#genreMoreCount').textContent = hiddenActiveCount ? ` ${hiddenActiveCount}` : '';
       $('#genreMoreButton').classList.toggle('active', hiddenActiveCount > 0);
     }
+	    function quickFilterCount(id) {
+	      if (id === 'toTry') return COCKTAILS.filter((c) => store.bookmarks[c.id]).length;
+	      if (id === 'favs') return COCKTAILS.filter((c) => getRating(c) >= 4).length;
+	      if (id === 'myBar') return COCKTAILS.filter(canMakeFromBar).length;
+	      if (id === 'allSpirit') return COCKTAILS.filter(isAllSpirit).length;
+	      if (id === 'spiritForward') return COCKTAILS.filter(isSpiritForward).length;
+	      if (id === 'hof') return COCKTAILS.filter((c) => getRating(c) >= 5).length;
+	      if (GENRE_FILTER_IDS.has(id)) return COCKTAILS.filter((c) => matchesGenre(c, id)).length;
+	      return 0;
+	    }
+	    function statFilterCount(id) {
+	      if (id === 'neat') return neatPourBottles().length;
+	      if (id === 'current') return COCKTAILS.filter((c) => c.status === 'Current IBA').length;
+	      if (id === 'legacy') return COCKTAILS.filter((c) => c.status === 'Former IBA').length;
+	      if (id === 'custom') return COCKTAILS.filter(isCustomCocktail).length;
+	      return COCKTAILS.length;
+	    }
 	    function updateQuickFilters() {
 	      $$('[data-quick]').forEach((chip) => {
-	        const active = state.quick.has(chip.dataset.quick);
+	        const id = chip.dataset.quick;
+	        const active = state.quick.has(id);
 	        chip.classList.toggle('active', active);
 	        chip.setAttribute('aria-pressed', String(active));
+	        const label = QUICK_FILTER_LABEL_MAP.get(id);
+	        if (label) chip.textContent = `${label} (${quickFilterCount(id)})`;
+	      });
+	      $$('[data-stat-filter]').forEach((chip) => {
+	        const label = STAT_FILTER_LABEL_MAP.get(chip.dataset.statFilter);
+	        if (label) chip.textContent = `${label} (${statFilterCount(chip.dataset.statFilter)})`;
 	      });
 	    }
 	    function setMobileAdvancedFiltersExpanded(expanded) {
