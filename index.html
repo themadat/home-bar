@@ -72,7 +72,7 @@
       align-items: center;
       width: calc(100vw - 24px);
       margin: 0 auto;
-      padding: 10px 0;
+      padding: 7px 0;
     }
     @media (min-width: 1101px) {
       .topbar { grid-template-columns: minmax(180px, 1fr) minmax(200px, 340px) minmax(0, 1.3fr) auto; }
@@ -105,15 +105,16 @@
     .title-line {
       display: flex;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 8px 10px;
+      flex-wrap: nowrap;
+      gap: 8px;
       min-width: 0;
     }
+    .title-lockup { display: grid; gap: 2px; min-width: 0; }
     .title-line .topbar-meta { margin-left: auto; }
     .app-icon-button {
       display: inline-flex;
-      width: var(--control-h);
-      height: var(--control-h);
+      width: 40px;
+      height: 40px;
       padding: 0;
       border: 0;
       border-radius: 9px;
@@ -123,7 +124,7 @@
       line-height: 0;
       flex: 0 0 auto;
     }
-    .app-icon-button img { display: block; width: 34px; height: 34px; border-radius: 8px; }
+    .app-icon-button img { display: block; width: 40px; height: 40px; border-radius: 8px; }
     .app-icon-button:hover { box-shadow: inset 0 0 0 1px var(--accent), 0 0 0 2px rgba(194, 154, 82, .12); }
 	    h1 {
 	      margin: 0;
@@ -139,8 +140,8 @@
 	      background: var(--chip);
 	      color: var(--muted);
 	      border-radius: 999px;
-	      padding: 3px 9px;
-	      font-size: 12px;
+	      padding: 2px 7px;
+	      font-size: 10px;
 	      line-height: 1;
 	    }
 	    .version-pill:hover { border-color: var(--accent); color: var(--text); }
@@ -618,10 +619,11 @@
 	    .star-fg { color: var(--accent); overflow: hidden; }
 	    .rating-value { color: var(--muted); font-size: 12px; white-space: nowrap; }
     .detail-row td { background: #0B1017; padding: 0; }
-    .detail { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 18px; padding: 18px; border-bottom: 1px solid var(--line); }
+    .detail { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 8px; padding: 8px; border-bottom: 1px solid var(--line); }
+    .detail-media { display: grid; align-content: start; gap: 6px; }
     .photo {
       width: 100%;
-      aspect-ratio: 4 / 5;
+      height: 130px;
       border-radius: var(--radius);
       background: var(--panel-2);
       object-fit: cover;
@@ -636,12 +638,12 @@
       font-weight: 800;
       background: var(--panel-2);
     }
-    .detail-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-    .recipe-detail-row { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
-    .detail-card { border: 1px solid var(--line); background: var(--panel-2); border-radius: var(--radius); padding: 12px; min-width: 0; }
+    .detail-grid { display: grid; grid-template-columns: 1.2fr 1.1fr .75fr 1fr 1fr; gap: 8px; min-width: 0; }
+    .recipe-detail-row { display: contents; }
+    .detail-card { max-height: 176px; overflow: auto; border: 1px solid var(--line); background: var(--panel-2); border-radius: var(--radius); padding: 8px; min-width: 0; }
     .detail-card.full { grid-column: 1 / -1; }
-    .detail-card h3 { margin: 0 0 8px; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
-    .detail-card-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+    .detail-card h3 { margin: 0 0 5px; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+    .detail-card-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 5px; margin-bottom: 5px; }
     .detail-card-header h3 { margin: 0; }
     .mobile-detail-facts { display: none; }
     .detail-facts-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 14px; margin: 0; }
@@ -661,13 +663,13 @@
     .serving-stepper button:disabled { cursor: not-allowed; color: var(--faint); }
     .serving-count { min-width: 72px; text-align: center; color: var(--accent); font-size: 12px; font-weight: 700; }
     ul, ol { margin: 0; padding-left: 20px; }
-    li + li { margin-top: 4px; }
+    li + li { margin-top: 2px; }
     .empty { color: var(--faint); }
-    .related-list { display: flex; flex-direction: column; gap: 4px; }
+    .related-list { display: flex; flex-direction: column; gap: 3px; }
     .related-chip {
       display: flex; align-items: center; gap: 10px; width: 100%; min-width: 0;
       border: 1px solid var(--line); background: var(--chip); border-radius: var(--radius);
-      padding: 5px 10px; color: var(--text); cursor: pointer; text-align: left; font: inherit;
+      padding: 3px 6px; color: var(--text); cursor: pointer; text-align: left; font: inherit;
     }
     .related-chip:hover { border-color: var(--accent); background: var(--chip-on); }
     .related-chip:focus-visible { outline: 2px solid var(--accent-2); outline-offset: 2px; }
@@ -686,6 +688,11 @@
     .related-note { flex: 1 1 auto; min-width: 0; color: var(--muted); font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .source-line { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; color: var(--muted); }
     .notes-source { border-top: 1px solid var(--line-soft); margin-top: 10px; padding-top: 10px; }
+    .detail-card .text-area { min-height: 64px; }
+    .detail-card .edit-cocktail-btn { width: auto; min-height: 24px; margin: 0; padding: 2px 6px; font-size: 10px; }
+    .detail-card .notes-source { margin-top: 6px; padding-top: 6px; gap: 6px; font-size: 11px; }
+    .detail-card .spirit-tags { gap: 4px; margin-bottom: 6px; }
+    .detail-card .spirit-tag { height: 20px; padding-inline: 7px; font-size: 9px; }
     .spirit-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
     .spirit-tag { display: inline-flex; align-items: center; height: 24px; padding: 0 10px; border-radius: 999px; border: 1px solid var(--accent-2); background: var(--accent-2-soft); color: #DCE8ED; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; white-space: nowrap; }
     .install-intro { display: flex; align-items: center; gap: 14px; min-width: 0; }
@@ -1147,9 +1154,12 @@
     .no-results { padding: 28px; text-align: center; color: var(--muted); }
         @media (max-width: 1100px) {
           .pill-section { grid-template-columns: 1fr; }
-          .detail { grid-template-columns: 220px 1fr; }
-          .detail-grid { grid-template-columns: 1fr; }
-          .recipe-detail-row { grid-template-columns: 1fr; }
+          .detail { grid-template-columns: 96px minmax(0, 1fr); }
+          .detail-row td { width: 100%; max-width: calc(100vw - 24px); }
+          .detail { width: calc(100vw - 24px); max-width: 100%; }
+          .detail-grid { display: flex; width: 100%; max-width: 100%; overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: thin; }
+          .recipe-detail-row { display: contents; }
+          .detail-card { flex: 0 0 min(290px, 70vw); scroll-snap-align: start; }
           .bar-workspace { grid-template-columns: minmax(0, 1fr) 220px; }
           .bar-inventory-toolbar { grid-template-columns: 1fr; align-items: start; height: auto; min-height: 51px; }
           .bar-add-form { grid-template-columns: minmax(140px, 1.4fr) minmax(100px, .7fr) minmax(135px, 1fr) auto auto auto auto; }
@@ -1407,9 +1417,10 @@
       .glassware-table .glassware-col-cost { width: 15% !important; }
       .glassware-table .glassware-col-actions { width: 5% !important; }
       .detail-row { margin: -8px 0 8px; border: 1px solid var(--line); border-top: 0; border-radius: 0 0 var(--radius) var(--radius); overflow: hidden; }
-      .detail { grid-template-columns: 1fr; padding: 12px; }
+      .detail { grid-template-columns: 1fr; padding: 8px; }
+      .detail-media { display: none; }
       .mobile-detail-facts { display: block; }
-      .photo, .fallback-photo { max-height: 360px; }
+      .detail-grid .detail-card { flex-basis: calc(100vw - 72px); max-height: 166px; }
       .assign { grid-template-columns: 1fr; }
     }
     @media (max-width: 350px) {
@@ -1430,10 +1441,12 @@
         <div class="topbar-title">
           <div class="title-line">
             <button id="installAppButton" class="app-icon-button" type="button" aria-haspopup="dialog" aria-label="Add to Home Screen">
-              <img src="assets/icons/icon-192.png" alt="" width="34" height="34">
+              <img src="assets/icons/icon-192.png" alt="" width="40" height="40">
             </button>
-            <h1>Home Bar</h1>
-            <button id="versionPill" class="version-pill" type="button" aria-haspopup="dialog"></button>
+            <div class="title-lockup">
+              <h1>Home Bar</h1>
+              <button id="versionPill" class="version-pill" type="button" aria-haspopup="dialog"></button>
+            </div>
           </div>
         </div>
         <label class="topbar-search" aria-label="Search cocktails">
@@ -1458,11 +1471,11 @@
     <main>
       <section class="filters" aria-label="Filters">
         <div id="quickFilterScroll" class="quick-filter-scroll">
+          <button class="quick-chip" type="button" data-quick="myBar">My Bar</button>
           <button class="quick-chip stat-filter" type="button" data-stat-filter="neat" aria-pressed="false">Neat</button>
           <button class="quick-chip stat-filter" type="button" data-stat-filter="custom" aria-pressed="false">Custom</button>
           <button class="quick-chip" type="button" data-quick="toTry">Try</button>
           <button class="quick-chip" type="button" data-quick="favs">Favs</button>
-          <button class="quick-chip" type="button" data-quick="myBar">My Bar</button>
           <span id="genreQuickFilters" class="genre-favorites"></span>
           <button id="genreMoreButton" class="quick-chip" type="button" aria-expanded="false" aria-controls="genreMoreMenu" aria-label="More filters">&hellip;<span id="genreMoreCount" class="genre-more-count"></span></button>
           <button id="mobileAdvancedFiltersToggle" class="mobile-filter-toggle" type="button" aria-expanded="false" aria-controls="pillFilters" aria-label="Show Base, Garnish, Glassware, Type, and Rating filters"><span class="mobile-filter-chevron" aria-hidden="true"></span></button>
@@ -1948,7 +1961,7 @@
   <button id="floatingResetButton" class="button icon" type="button" title="Reset filters and collapse cocktails" aria-label="Reset filters and collapse cocktails" hidden>↺</button>
   <button id="githubSyncButton" class="button icon" type="button" title="Set up GitHub Sync" aria-label="Set up GitHub Sync" aria-haspopup="dialog" data-sync-state="setup"><span id="githubSyncGlyph"></span></button>
   <script>
-    const BUILD_VERSION = '1.0.1.26';
+    const BUILD_VERSION = '1.0.1.27';
 	    const __ARROW_UP_AND_DOWN_SQUARE_FILL = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24.1846 23.8281"><g><rect height="23.8281" opacity="0" width="24.1846" x="0" y="0"/><path d="M23.8232 4.26758L23.8232 19.5605C23.8232 22.3193 22.3145 23.8232 19.5264 23.8232L4.29199 23.8232C1.50879 23.8232 0 22.3291 0 19.5605L0 4.26758C0 1.49902 1.50879 0 4.29199 0L19.5264 0C22.3145 0 23.8232 1.50391 23.8232 4.26758ZM11.0107 4.45312L7.56836 7.97363C7.33398 8.20312 7.22656 8.48145 7.22656 8.7793C7.22656 9.38477 7.68555 9.80957 8.30566 9.80957C8.64746 9.80957 8.96484 9.65332 9.13574 9.40918L9.80469 8.72559L10.8753 7.30769L10.7812 9.80469L10.7812 14.0039L10.8755 16.506L9.80469 15.0879L9.13574 14.4092C8.96484 14.1553 8.64746 14.0039 8.30566 14.0039C7.68555 14.0039 7.22656 14.4287 7.22656 15.0342C7.22656 15.332 7.33398 15.6055 7.56836 15.8398L11.0107 19.3604C11.2744 19.6484 11.5967 19.8047 11.9873 19.8047C12.3828 19.8047 12.7051 19.6484 12.9736 19.3604L16.4111 15.8398C16.6504 15.6006 16.7529 15.332 16.7529 15.0342C16.7529 14.4287 16.2988 14.0039 15.6689 14.0039C15.3271 14.0039 15.0146 14.1553 14.8438 14.4092L14.1748 15.0879L13.1041 16.5027L13.1982 14.0039L13.1982 9.80469L13.1043 7.31102L14.1748 8.72559L14.8438 9.40918C15.0146 9.65332 15.3271 9.80957 15.6689 9.80957C16.2988 9.80957 16.7529 9.38477 16.7529 8.7793C16.7529 8.48145 16.6504 8.20801 16.4111 7.97363L12.9736 4.45312C12.7051 4.16992 12.3828 4.00879 11.9873 4.00879C11.5967 4.00879 11.2744 4.16992 11.0107 4.45312Z"/></g></svg>`;
 	    const __ARROW_UP_SQUARE_FILL = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24.1846 23.8281"><g><rect height="23.8281" opacity="0" width="24.1846" x="0" y="0"/><path d="M23.8232 4.26758L23.8232 19.5605C23.8232 22.3193 22.3145 23.8232 19.5264 23.8232L4.29199 23.8232C1.50879 23.8232 0 22.3291 0 19.5605L0 4.26758C0 1.49902 1.50879 0 4.29199 0L19.5264 0C22.3145 0 23.8232 1.50391 23.8232 4.26758ZM10.874 5.55664L6.49414 9.78027C6.24512 10.0293 6.1084 10.293 6.1084 10.6543C6.1084 11.3428 6.67969 11.8359 7.32422 11.8359C7.68066 11.8359 8.01758 11.6895 8.25684 11.4258L10 9.58984L10.6642 8.73089L10.5664 10.5762L10.5664 17.3486C10.5664 18.0957 11.2012 18.7402 11.9824 18.7402C12.7734 18.7402 13.3936 18.0957 13.3936 17.3486L13.3936 10.5762L13.2988 8.7285L13.9648 9.58984L15.7031 11.4258C15.9424 11.6895 16.2744 11.8359 16.6309 11.8359C17.2705 11.8359 17.8564 11.3428 17.8564 10.6543C17.8564 10.293 17.7148 10.0293 17.4707 9.78027L13.0908 5.55664C12.7197 5.2002 12.3584 5.07324 11.9824 5.07324C11.6016 5.07324 11.2451 5.2002 10.874 5.55664Z"/></g></svg>`;
 	    const __ARROW_DOWN_APP_FILL = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24.0576 23.7305"><g><rect height="23.7305" opacity="0" width="24.0576" x="0" y="0"/><path d="M21.8799 1.81152C23.0664 2.9834 23.6963 4.7168 23.6963 6.92383L23.6963 16.7822C23.6963 18.9893 23.0615 20.7275 21.8799 21.8994C20.7227 23.0615 18.9844 23.7061 16.7725 23.7061L6.92383 23.7061C4.7168 23.7061 2.97852 23.0664 1.81641 21.8994C0.629883 20.7227 0 18.9893 0 16.7822L0 6.92383C0 4.7168 0.634766 2.97852 1.81641 1.81152C2.97363 0.649414 4.7168 0 6.92383 0L16.7725 0C18.9844 0 20.7178 0.634766 21.8799 1.81152ZM10.4346 6.41113L10.4346 13.1836L10.5323 15.0269L9.86328 14.165L8.125 12.3291C7.88574 12.0703 7.54883 11.9238 7.19238 11.9238C6.54785 11.9238 5.97168 12.4121 5.97168 13.1006C5.97168 13.4619 6.11328 13.7256 6.35742 13.9746L10.7373 18.1982C11.1133 18.5596 11.4648 18.6865 11.8506 18.6865C12.2266 18.6865 12.5879 18.5596 12.9541 18.1982L17.334 13.9746C17.583 13.7256 17.7197 13.4619 17.7197 13.1006C17.7197 12.4121 17.1338 11.9238 16.4941 11.9238C16.1426 11.9238 15.8105 12.0703 15.5713 12.3291L13.833 14.165L13.1654 15.0284L13.2568 13.1836L13.2568 6.41113C13.2568 5.65918 12.6367 5.01953 11.8506 5.01953C11.0645 5.01953 10.4346 5.65918 10.4346 6.41113Z"/></g></svg>`;
@@ -3424,7 +3437,7 @@
 	        ? '<p class="ingredient-footnote">* B&amp;B may replace Bénédictine when the recipe calls for 1/4 oz or less.</p>'
 	        : '';
 	      return `<tr class="detail-row"><td colspan="11"><div class="detail">
-	        <div>${img}${editButton}</div>
+	        <div class="detail-media">${img}</div>
 	        <div class="detail-grid">
 	          <section class="detail-card mobile-detail-facts">
 	            <h3>Details</h3>
@@ -3455,7 +3468,7 @@
 	            <section class="detail-card"><h3>Method</h3><ol>${c.method.length ? c.method.map((x) => `<li>${escapeHtml(formatMethodLine(x))}</li>`).join('') : '<li class="empty">Not recorded yet</li>'}</ol></section>
 	            <section class="detail-card"><h3>Garnish</h3><p>${c.garnish ? escapeHtml(c.garnish) : '<span class="empty">None listed</span>'}</p></section>
 	          </div>
-	          <section class="detail-card"><h3>Notes</h3>${spiritTags(c)}<textarea class="text-area" data-note-id="${escapeHtml(c.id)}" placeholder="Add a note">${escapeHtml(noteValue)}</textarea><div class="source-line notes-source">${sourceLine}</div></section>
+	          <section class="detail-card"><div class="detail-card-header"><h3>Notes</h3>${editButton}</div>${spiritTags(c)}<textarea class="text-area" data-note-id="${escapeHtml(c.id)}" placeholder="Add a note">${escapeHtml(noteValue)}</textarea><div class="source-line notes-source">${sourceLine}</div></section>
 	          ${relatedCard(c)}
 	        </div>
 	      </div></td></tr>`;
