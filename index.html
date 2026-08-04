@@ -201,6 +201,7 @@
         .genre-menu-filter { justify-content: flex-start; width: 100%; border-radius: var(--radius); }
         .bookmark-cell { width: 36px; text-align: center; padding: 6px 4px !important; }
         .bookmark-toggle {
+          position: relative;
           border: 0;
           background: transparent;
           color: var(--faint);
@@ -210,10 +211,31 @@
           display: inline-flex;
           align-items: center;
           justify-content: center;
+          user-select: none;
+          -webkit-touch-callout: none;
         }
         .bookmark-toggle:hover { color: var(--accent-hover); }
         .bookmark-toggle.active { color: var(--accent); }
         .bookmark-toggle .sf-symbol { width: 11px; height: auto; fill: currentColor; display: block; }
+        .try-priority-level {
+          position: absolute; top: -5px; right: -6px; display: grid; place-items: center;
+          width: 14px; height: 14px; border: 1px solid #0E141C; border-radius: 50%;
+          background: var(--accent); color: #080B10; font-size: 8px; font-weight: 900; line-height: 1;
+        }
+        .bookmark-toggle.priority-2 .try-priority-level { background: #79A9BA; }
+        .bookmark-toggle.priority-3 .try-priority-level { background: var(--muted); color: #080B10; }
+        .try-priority-popover {
+          position: fixed; z-index: 90; display: flex; align-items: center; gap: 5px;
+          max-width: calc(100vw - 24px); padding: 7px; border: 1px solid var(--line);
+          border-radius: 7px; background: var(--panel-2); box-shadow: var(--shadow);
+        }
+        .try-priority-popover[hidden] { display: none; }
+        .try-priority-option {
+          min-width: 34px; height: 34px; padding: 0 9px; border: 1px solid var(--line);
+          border-radius: 5px; background: #0E141C; color: var(--muted); font: inherit; font-size: 11px; font-weight: 750;
+        }
+        .try-priority-option:hover, .try-priority-option.active { border-color: var(--accent); color: var(--text); }
+        .try-priority-option.remove { color: #E5A1A5; }
     .control {
       display: flex;
       align-items: center;
@@ -781,7 +803,8 @@
     .backup-action-icon, .sync-action-icon { display: inline-grid; place-items: center; flex: 0 0 auto; }
     .backup-action-icon .sf-symbol { display: block; width: 16px; height: 19px; fill: currentColor; }
     .sync-action-icon .sf-symbol { display: block; width: 18px; height: 17px; fill: currentColor; }
-    #githubSyncNow { display: inline-flex; align-items: center; justify-content: center; gap: 10px; }
+    #githubSyncNow, #githubDownloadLatest { display: inline-flex; align-items: center; justify-content: center; gap: 10px; }
+    #githubDownloadLatest { border-color: var(--accent-2); color: #B9D3DD; }
     #githubSyncButton {
       position: fixed; right: calc(18px + env(safe-area-inset-right)); bottom: calc(18px + env(safe-area-inset-bottom));
       z-index: 80; width: 58px; height: 58px; min-height: 58px; border-radius: 50%;
@@ -1278,8 +1301,13 @@
       .sync-form-grid { grid-template-columns: repeat(4, minmax(135px, 1fr)); }
       .sync-token-row { grid-template-columns: 1fr; }
       .sync-remember { min-height: 0; }
-      .sync-actions .button { flex: 1 1 100%; }
+      .sync-actions .button { flex: 1 1 calc(50% - 4px); }
+      .sync-actions #githubSyncCloseAction { flex-basis: 100%; }
       .sync-actions .button.primary { margin-left: 0; }
+      #githubSyncNow, #githubDownloadLatest { height: 44px; gap: 7px; padding-inline: 8px; font-size: 12px; white-space: nowrap; }
+      .serving-stepper button { width: 44px; height: 44px; font-size: 20px; }
+      .serving-count { min-width: 76px; }
+      .bookmark-toggle { width: 30px; height: 30px; padding: 7px; touch-action: manipulation; }
           main, .topbar { width: calc(100vw - 16px); }
 	          .filters { min-width: 0; }
 	          .quick-filter-scroll {
@@ -1566,7 +1594,8 @@
         </section>
       </div>
     </main>
-    <div id="infoPopover" class="info-popover" role="dialog" aria-live="polite" hidden></div>
+	    <div id="infoPopover" class="info-popover" role="dialog" aria-live="polite" hidden></div>
+	    <div id="tryPriorityPopover" class="try-priority-popover" role="dialog" aria-label="Choose Try priority" hidden></div>
     <div id="versionModalOverlay" class="modal-overlay" hidden>
       <div class="modal modal-version" role="dialog" aria-modal="true" aria-labelledby="versionModalTitle">
         <div class="modal-header">
@@ -1714,6 +1743,7 @@
           <p id="githubSyncStatus" class="sync-status" role="status" aria-live="polite">Enter your private repository and token to begin.</p>
           <div class="sync-actions">
             <button id="githubSyncNow" class="button primary" type="submit"><span id="githubSyncNowIcon" class="sync-action-icon" aria-hidden="true"></span><span>Sync Now</span></button>
+            <button id="githubDownloadLatest" class="button" type="button"><span id="githubDownloadLatestIcon" class="sync-action-icon" aria-hidden="true"></span><span>Download Latest</span></button>
             <button id="githubSyncCloseAction" class="button primary" type="button" hidden>Close</button>
           </div>
           <div id="githubSyncSettingsPanel" class="sync-settings-panel">
@@ -1910,7 +1940,7 @@
   </div>
   <button id="githubSyncButton" class="button icon" type="button" title="Set up GitHub Sync" aria-label="Set up GitHub Sync" aria-haspopup="dialog" data-sync-state="setup"><span id="githubSyncGlyph"></span></button>
   <script>
-    const BUILD_VERSION = '1.0.1.24';
+    const BUILD_VERSION = '1.0.1.25';
 	    const __ARROW_UP_AND_DOWN_SQUARE_FILL = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24.1846 23.8281"><g><rect height="23.8281" opacity="0" width="24.1846" x="0" y="0"/><path d="M23.8232 4.26758L23.8232 19.5605C23.8232 22.3193 22.3145 23.8232 19.5264 23.8232L4.29199 23.8232C1.50879 23.8232 0 22.3291 0 19.5605L0 4.26758C0 1.49902 1.50879 0 4.29199 0L19.5264 0C22.3145 0 23.8232 1.50391 23.8232 4.26758ZM11.0107 4.45312L7.56836 7.97363C7.33398 8.20312 7.22656 8.48145 7.22656 8.7793C7.22656 9.38477 7.68555 9.80957 8.30566 9.80957C8.64746 9.80957 8.96484 9.65332 9.13574 9.40918L9.80469 8.72559L10.8753 7.30769L10.7812 9.80469L10.7812 14.0039L10.8755 16.506L9.80469 15.0879L9.13574 14.4092C8.96484 14.1553 8.64746 14.0039 8.30566 14.0039C7.68555 14.0039 7.22656 14.4287 7.22656 15.0342C7.22656 15.332 7.33398 15.6055 7.56836 15.8398L11.0107 19.3604C11.2744 19.6484 11.5967 19.8047 11.9873 19.8047C12.3828 19.8047 12.7051 19.6484 12.9736 19.3604L16.4111 15.8398C16.6504 15.6006 16.7529 15.332 16.7529 15.0342C16.7529 14.4287 16.2988 14.0039 15.6689 14.0039C15.3271 14.0039 15.0146 14.1553 14.8438 14.4092L14.1748 15.0879L13.1041 16.5027L13.1982 14.0039L13.1982 9.80469L13.1043 7.31102L14.1748 8.72559L14.8438 9.40918C15.0146 9.65332 15.3271 9.80957 15.6689 9.80957C16.2988 9.80957 16.7529 9.38477 16.7529 8.7793C16.7529 8.48145 16.6504 8.20801 16.4111 7.97363L12.9736 4.45312C12.7051 4.16992 12.3828 4.00879 11.9873 4.00879C11.5967 4.00879 11.2744 4.16992 11.0107 4.45312Z"/></g></svg>`;
 	    const __ARROW_UP_SQUARE_FILL = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24.1846 23.8281"><g><rect height="23.8281" opacity="0" width="24.1846" x="0" y="0"/><path d="M23.8232 4.26758L23.8232 19.5605C23.8232 22.3193 22.3145 23.8232 19.5264 23.8232L4.29199 23.8232C1.50879 23.8232 0 22.3291 0 19.5605L0 4.26758C0 1.49902 1.50879 0 4.29199 0L19.5264 0C22.3145 0 23.8232 1.50391 23.8232 4.26758ZM10.874 5.55664L6.49414 9.78027C6.24512 10.0293 6.1084 10.293 6.1084 10.6543C6.1084 11.3428 6.67969 11.8359 7.32422 11.8359C7.68066 11.8359 8.01758 11.6895 8.25684 11.4258L10 9.58984L10.6642 8.73089L10.5664 10.5762L10.5664 17.3486C10.5664 18.0957 11.2012 18.7402 11.9824 18.7402C12.7734 18.7402 13.3936 18.0957 13.3936 17.3486L13.3936 10.5762L13.2988 8.7285L13.9648 9.58984L15.7031 11.4258C15.9424 11.6895 16.2744 11.8359 16.6309 11.8359C17.2705 11.8359 17.8564 11.3428 17.8564 10.6543C17.8564 10.293 17.7148 10.0293 17.4707 9.78027L13.0908 5.55664C12.7197 5.2002 12.3584 5.07324 11.9824 5.07324C11.6016 5.07324 11.2451 5.2002 10.874 5.55664Z"/></g></svg>`;
 	    const __ARROW_DOWN_APP_FILL = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24.0576 23.7305"><g><rect height="23.7305" opacity="0" width="24.0576" x="0" y="0"/><path d="M21.8799 1.81152C23.0664 2.9834 23.6963 4.7168 23.6963 6.92383L23.6963 16.7822C23.6963 18.9893 23.0615 20.7275 21.8799 21.8994C20.7227 23.0615 18.9844 23.7061 16.7725 23.7061L6.92383 23.7061C4.7168 23.7061 2.97852 23.0664 1.81641 21.8994C0.629883 20.7227 0 18.9893 0 16.7822L0 6.92383C0 4.7168 0.634766 2.97852 1.81641 1.81152C2.97363 0.649414 4.7168 0 6.92383 0L16.7725 0C18.9844 0 20.7178 0.634766 21.8799 1.81152ZM10.4346 6.41113L10.4346 13.1836L10.5323 15.0269L9.86328 14.165L8.125 12.3291C7.88574 12.0703 7.54883 11.9238 7.19238 11.9238C6.54785 11.9238 5.97168 12.4121 5.97168 13.1006C5.97168 13.4619 6.11328 13.7256 6.35742 13.9746L10.7373 18.1982C11.1133 18.5596 11.4648 18.6865 11.8506 18.6865C12.2266 18.6865 12.5879 18.5596 12.9541 18.1982L17.334 13.9746C17.583 13.7256 17.7197 13.4619 17.7197 13.1006C17.7197 12.4121 17.1338 11.9238 16.4941 11.9238C16.1426 11.9238 15.8105 12.0703 15.5713 12.3291L13.833 14.165L13.1654 15.0284L13.2568 13.1836L13.2568 6.41113C13.2568 5.65918 12.6367 5.01953 11.8506 5.01953C11.0645 5.01953 10.4346 5.65918 10.4346 6.41113Z"/></g></svg>`;
@@ -2402,7 +2432,7 @@
       assignments: JSON.parse(localStorage.getItem('cocktailTypeAssignments') || '{}'),
       notes: JSON.parse(localStorage.getItem('cocktailUserNotes') || '{}'),
       ratings: JSON.parse(localStorage.getItem('cocktailRatings') || '{}'),
-      bookmarks: storedBookmarks ? JSON.parse(storedBookmarks) : Object.fromEntries(BOOKMARK_SEED_IDS.map((id) => [id, true])),
+      bookmarks: storedBookmarks ? sanitizeBookmarks(JSON.parse(storedBookmarks)) : Object.fromEntries(BOOKMARK_SEED_IDS.map((id) => [id, true])),
       bar: migratedBar,
       archivedBar: migratedArchive,
       favoriteGenreFilters: JSON.parse(localStorage.getItem('cocktailFavoriteGenreFilters') || '[]').filter((id) => GENRE_FILTER_IDS.has(id)),
@@ -2418,7 +2448,7 @@
       else COCKTAILS[existingIndex] = cocktail;
     });
         const state = {
-          q: '', ingredientQ: '', sort: 'source', sortDirection: 'default', pantrySort: 'alpha', statFilter: 'all', expanded: '', barExpandedBottle: '', barExpandedRecommendation: '', neatExpandedBottle: '', bottleUsageId: '', bottleUsageOverride: null, pendingRemoveBottleId: '',
+          q: '', ingredientQ: '', sort: 'name', sortDirection: 'default', pantrySort: 'alpha', statFilter: 'all', expanded: new Set(), barExpandedBottle: '', barExpandedRecommendation: '', neatExpandedBottle: '', bottleUsageId: '', bottleUsageOverride: null, pendingRemoveBottleId: '',
           futureBarPreview: false,
 	          hideBarRecommendations: false,
 	          barQ: '',
@@ -2876,9 +2906,35 @@
     $('#glasswareCondenseButton').innerHTML = __RECTANGLE_COMPRESS_VERTICAL;
     $('#barRecommendIcon').innerHTML = __LIGHTBULB_MAX_FILL;
     $('#barBottle375Icon').innerHTML = __ALIGN_VERTICAL_BOTTOM_FILL;
+    function tryPriority(id) {
+      const value = store.bookmarks[id];
+      return Number.isInteger(value) && value >= 1 && value <= 3 ? value : 0;
+    }
+    function trySortRank(id) {
+      if (!store.bookmarks[id]) return 0;
+      const priority = tryPriority(id);
+      return priority ? 5 - priority : 1;
+    }
+    function setTryPriority(id, value) {
+      if (value === 'remove') delete store.bookmarks[id];
+      else if (value === 'none') store.bookmarks[id] = true;
+      else store.bookmarks[id] = Math.max(1, Math.min(3, Number(value) || 1));
+    }
+    function cycleTryPriority(id) {
+      const current = store.bookmarks[id];
+      if (!current) store.bookmarks[id] = true;
+      else if (current === true) store.bookmarks[id] = 1;
+      else if (current === 1) store.bookmarks[id] = 2;
+      else if (current === 2) store.bookmarks[id] = 3;
+      else delete store.bookmarks[id];
+    }
     function bookmarkToggle(c) {
       const active = Boolean(store.bookmarks[c.id]);
-      return `<button class="bookmark-toggle${active ? ' active' : ''}" type="button" data-bookmark-id="${escapeHtml(c.id)}" aria-pressed="${active}" aria-label="${active ? 'Remove from To Try' : 'Add to To Try'}" title="${active ? 'Remove from To Try' : 'Mark as want to try'}">${active ? __BOOKMARK_FILL : __BOOKMARK}</button>`;
+      const priority = tryPriority(c.id);
+      const priorityLabel = priority ? ` priority ${priority}` : active ? ', no priority' : '';
+      const nextLabel = !active ? 'add without priority' : !priority ? 'set priority 1' : priority < 3 ? `set priority ${priority + 1}` : 'remove from Try';
+      const badge = priority ? `<span class="try-priority-level" aria-hidden="true">${priority}</span>` : '';
+      return `<button class="bookmark-toggle${active ? ' active' : ''}${priority ? ` priority-${priority}` : ''}" type="button" data-bookmark-id="${escapeHtml(c.id)}" aria-pressed="${active}" aria-haspopup="dialog" aria-expanded="false" aria-label="Try${priorityLabel}. Tap to ${nextLabel}; hold to choose directly." title="Try${priorityLabel}. Tap to cycle; hold to choose.">${active ? __BOOKMARK_FILL : __BOOKMARK}${badge}</button>`;
     }
     const unique = (items) => Array.from(new Set(items.filter(Boolean)));
     function getCounts(items, getValues) {
@@ -3115,7 +3171,7 @@
         }
     function tableSortValue(cocktail, key) {
       if (key === 'name') return cocktail.name;
-      if (key === 'try') return store.bookmarks[cocktail.id] ? 1 : 0;
+      if (key === 'try') return trySortRank(cocktail.id);
       if (key === 'rating') return getRating(cocktail);
       if (key === 'base') return cocktail.baseLiquor.map(displayBaseLabel).join(', ');
       if (key === 'garnish') return rowGarnish(cocktail);
@@ -3138,7 +3194,7 @@
     function filteredCocktails() {
       const rows = COCKTAILS.map((cocktail, sourceIndex) => ({cocktail, sourceIndex})).filter((row) => isMatch(row.cocktail));
       rows.sort((a, b) => {
-        if (state.sort === 'source' || state.sortDirection === 'default') return a.sourceIndex - b.sourceIndex;
+        if (state.sortDirection === 'default') return a.cocktail.name.localeCompare(b.cocktail.name, undefined, {numeric: true, sensitivity: 'base'}) || a.sourceIndex - b.sourceIndex;
         const direction = state.sortDirection === 'descending' ? -1 : 1;
         const compared = compareTableSortValues(a.cocktail, b.cocktail, state.sort);
         if (compared) return compared * direction;
@@ -3164,6 +3220,37 @@
       popover.innerHTML = `<strong>${escapeHtml(title)}</strong><div>${escapeHtml(text)}</div>`;
       popover.hidden = false;
       $$('[data-info][aria-expanded="true"]').forEach((item) => {
+        if (item !== button) item.setAttribute('aria-expanded', 'false');
+      });
+      button.setAttribute('aria-expanded', 'true');
+      const rect = button.getBoundingClientRect();
+      const popRect = popover.getBoundingClientRect();
+      const left = Math.min(Math.max(12, rect.left + rect.width / 2 - popRect.width / 2), window.innerWidth - popRect.width - 12);
+      const top = rect.bottom + popRect.height + 10 > window.innerHeight ? Math.max(12, rect.top - popRect.height - 8) : rect.bottom + 8;
+      popover.style.left = `${left}px`;
+      popover.style.top = `${top}px`;
+    }
+    function hideTryPriorityPopover() {
+      const popover = $('#tryPriorityPopover');
+      if (!popover || popover.hidden) return;
+      popover.hidden = true;
+      popover.innerHTML = '';
+      $$('[data-bookmark-id][aria-expanded="true"]').forEach((button) => button.setAttribute('aria-expanded', 'false'));
+    }
+    function showTryPriorityPopover(button) {
+      const id = button.dataset.bookmarkId;
+      const active = store.bookmarks[id];
+      const priority = tryPriority(id);
+      const options = [
+        {value: 'none', label: 'No priority', selected: active === true},
+        ...[1, 2, 3].map((value) => ({value: String(value), label: String(value), selected: priority === value})),
+        {value: 'remove', label: 'Remove', selected: !active, remove: true}
+      ];
+      const popover = $('#tryPriorityPopover');
+      popover.dataset.bookmarkId = id;
+      popover.innerHTML = options.map((option) => `<button class="try-priority-option${option.selected ? ' active' : ''}${option.remove ? ' remove' : ''}" type="button" data-set-try-priority="${option.value}" aria-pressed="${option.selected}">${option.label}</button>`).join('');
+      popover.hidden = false;
+      $$('[data-bookmark-id][aria-expanded="true"]').forEach((item) => {
         if (item !== button) item.setAttribute('aria-expanded', 'false');
       });
       button.setAttribute('aria-expanded', 'true');
@@ -3366,7 +3453,7 @@
 	      </div></td></tr>`;
 	    }
     function rowTemplate(c) {
-      const expanded = state.expanded === c.id;
+      const expanded = state.expanded.has(c.id);
       const bases = c.baseLiquor.map((base) => `<span class="mini-tag base-tag base-${classToken(base)}">${escapeHtml(displayBaseLabel(base))}</span>`).join('');
 	      const garnish = rowGarnish(c);
 	      return `<tr class="summary-row" tabindex="0" role="button" aria-expanded="${expanded}" data-id="${escapeHtml(c.id)}">
@@ -3462,8 +3549,8 @@
         $('.table-sort-icon', button).innerHTML = TABLE_SORT_ICONS[direction];
         th.setAttribute('aria-sort', active ? direction : 'none');
         button.setAttribute('aria-label', active
-          ? `${label}, sorted ${direction}. Activate to ${direction === 'descending' ? 'sort ascending' : 'restore source order'}.`
-          : `${label}, source order. Activate to sort descending.`);
+          ? `${label}, sorted ${direction}. Activate to ${direction === 'descending' ? 'sort ascending' : 'restore alphabetical default'}.`
+          : `${label}, alphabetical default. Activate to sort descending.`);
       });
     }
     function cycleSort(sortState, sortKey, directionKey, key) {
@@ -3473,7 +3560,7 @@
       } else if (sortState[directionKey] === 'descending') {
         sortState[directionKey] = 'ascending';
       } else {
-        sortState[sortKey] = 'source';
+        sortState[sortKey] = 'name';
         sortState[directionKey] = 'default';
       }
     }
@@ -3521,14 +3608,15 @@
 	          'My Bar — track the spirits and ingredients you own, see what\'s Ready to Make, One Item Away, and your Neat Pours',
 	          'Glassware — log the glasses you own, with type, brand, size, count, cost, and a product link',
 	          'Shopping List, auto-built from what My Bar is missing, with a Future Bar preview toggle',
-	          'GitHub Sync — back up and sync your ratings, notes, and My Bar to your own GitHub repo',
+	          'GitHub Sync — back up and sync your data, with Download Latest available to restore the GitHub copy directly',
 	          'Import and export a full JSON backup of your notes, ratings, and custom types',
 	          'Custom cocktail types and per-cocktail type reassignment',
 	          'Add your own cocktails, from a quick "In the Wild" log to a fully detailed recipe',
 	          'Editable notes per cocktail, plus a standalone Notes page for freeform jotting',
 	          'Adjustable servings with automatically scaled ingredient amounts',
 	          'Related Cocktails — parent/child/cousin ingredient relationships plus broader similar-drink matches',
-	          'Bookmark cocktails to a "To Try" list or mark them a Favorite',
+	          'Prioritize cocktails in a "To Try" list from 1–3, or leave them unranked',
+	          'Expand and compare multiple cocktail recipes at the same time',
 	          'Quick filter chips for Neat, Custom, To Try, Favs, and My Bar, plus All Spirit / Spirit Forward / HOF genre filters',
 	          'Installable as a home screen app'
 	        ];
@@ -4769,7 +4857,7 @@
 	          resetFilterState();
 	          state.bottleUsageId = bottle.id;
 	          state.bottleUsageOverride = null;
-	          state.expanded = '';
+	          state.expanded.clear();
 	          closeBarModal();
 	          render();
 	          $('.table-wrap')?.scrollIntoView({behavior: 'smooth', block: 'start'});
@@ -4787,7 +4875,7 @@
 	            shoppingList: false
 	          };
 	          state.bottleUsageId = state.bottleUsageOverride.id;
-	          state.expanded = '';
+	          state.expanded.clear();
 	          closeShoppingListModal();
 	          render();
 	          $('.table-wrap')?.scrollIntoView({behavior: 'smooth', block: 'start'});
@@ -4808,7 +4896,7 @@
 	          resetFilterState();
 	          state.ingredients.add(name);
 	          state.collapsed.ingredient = false;
-	          state.expanded = '';
+	          state.expanded.clear();
 	          closeBarModal();
 	          render();
 	          $('.table-wrap')?.scrollIntoView({behavior: 'smooth', block: 'start'});
@@ -4895,7 +4983,7 @@
 	          resetFilterState();
 	          state.bottleUsageId = saved.id;
 	          state.bottleUsageOverride = null;
-	          state.expanded = '';
+	          state.expanded.clear();
 	          closeBarModal();
 	          render();
 	          $('.table-wrap')?.scrollIntoView({behavior: 'smooth', block: 'start'});
@@ -5243,7 +5331,8 @@
 	              method: cocktail.method.map((line) => formatMethodLine(line)),
 	              userNotes: store.notes[cocktail.id] || '',
 	              rating: getRating(cocktail) || null,
-	              toTry: Boolean(store.bookmarks[cocktail.id])
+	              toTry: Boolean(store.bookmarks[cocktail.id]),
+	              tryPriority: tryPriority(cocktail.id) || null
 	            }))
 	          };
 	        }
@@ -5291,6 +5380,7 @@
 	        $('#importDataIcon').innerHTML = __SQUARE_AND_ARROW_DOWN;
 	        $('#exportDataIcon').innerHTML = __SQUARE_AND_ARROW_UP;
 	        $('#githubSyncNowIcon').innerHTML = __ARROW_TRIANGLEHEAD_2_CLOCKWISE_ROTATE_90;
+	        $('#githubDownloadLatestIcon').innerHTML = __ICLOUD_AND_ARROW_DOWN_FILL;
 	        const GITHUB_SYNC_CHECK_INTERVAL = 5 * 60 * 1000;
 	        let githubSyncModalMode = 'sync';
 	        let githubSyncBusy = false;
@@ -5547,7 +5637,7 @@
 	        }
 	        function setGitHubSyncBusy(busy) {
 	          githubSyncBusy = busy;
-	          ['githubSyncForget', 'githubSyncSaveSettings', 'githubSyncNow', 'githubSyncModalClose', 'githubSyncCloseAction'].forEach((id) => { $(`#${id}`).disabled = busy; });
+	          ['githubSyncForget', 'githubSyncSaveSettings', 'githubSyncNow', 'githubDownloadLatest', 'githubSyncModalClose', 'githubSyncCloseAction'].forEach((id) => { $(`#${id}`).disabled = busy; });
 	        }
 	        function resetSyncCloseAction() {
 	          $('#githubSyncNow').classList.add('primary');
@@ -5707,6 +5797,32 @@
 	            updateGitHubSyncInterface(false);
 	          }
 	        }
+	        async function downloadLatestGitHubData() {
+	          if (!confirm('Replace all Home Bar data on this device with the latest GitHub copy? Any changes that have not been uploaded will be lost.')) return;
+	          try {
+	            const {settings, token} = gitHubSyncFormValues();
+	            saveGitHubSyncCredentials(settings, token);
+	            setGitHubSyncBusy(true);
+	            resetSyncCloseAction();
+	            setGitHubSyncStatus('Downloading the latest GitHub data…');
+	            await verifyGitHubSyncTarget(settings, token);
+	            const remote = await readGitHubDataFile(settings, token);
+	            applyGitHubData(settings, remote);
+	            setGitHubSyncStatus('Downloaded. This device now matches the latest GitHub data.', 'success');
+	            showSyncCloseAction();
+	          } catch (error) {
+	            githubSyncRuntime.error = error.message || 'Could not download from GitHub.';
+	            githubSyncRuntime.offline = isGitHubNetworkError(error);
+	            setGitHubSyncStatus(
+	              githubSyncRuntime.offline ? 'This device is offline. Reconnect to the internet, then try again.' : githubSyncRuntime.error,
+	              'error'
+	            );
+	            updateGitHubSyncButton();
+	          } finally {
+	            setGitHubSyncBusy(false);
+	            updateGitHubSyncInterface(false);
+	          }
+	        }
 	        function forgetGitHubSync() {
 	          localStorage.removeItem(GITHUB_SYNC_SETTINGS_KEY);
 	          localStorage.removeItem(GITHUB_SYNC_TOKEN_KEY);
@@ -5728,7 +5844,10 @@
 	          return Object.fromEntries(Object.entries(plainObject(value)).filter(([key, val]) => key && typeof val === 'number' && isFinite(val) && val > 0));
 	        }
 	        function sanitizeBookmarks(value) {
-	          return Object.fromEntries(Object.entries(plainObject(value)).filter(([key, val]) => key && val === true));
+	          return Object.fromEntries(Object.entries(plainObject(value)).flatMap(([key, val]) => {
+	            if (!key || (val !== true && !(Number.isInteger(val) && val >= 1 && val <= 3))) return [];
+	            return [[key, val]];
+	          }));
 	        }
 	        function sanitizeBar(value) {
 	          if (!Array.isArray(value)) return null;
@@ -5812,7 +5931,8 @@
 	                ratingsFromCocktails[cocktail.id] = cocktail.rating;
 	              }
 	              if (cocktail && typeof cocktail.id === 'string' && cocktail.toTry === true) {
-	                bookmarksFromCocktails[cocktail.id] = true;
+	                const priority = Number(cocktail.tryPriority);
+	                bookmarksFromCocktails[cocktail.id] = Number.isInteger(priority) && priority >= 1 && priority <= 3 ? priority : true;
 	              }
 	            });
 	          }
@@ -5966,11 +6086,48 @@
       renderPills(); renderGenreFilters(); renderNeatPours(); renderTable(); renderStats(); updateQuickFilters(); updateGitHubSyncButton(); updateStickyTop();
     }
     function toggleSet(set, value) { set.has(value) ? set.delete(value) : set.add(value); }
+    function toggleCocktailExpansion(id) { state.expanded.has(id) ? state.expanded.delete(id) : state.expanded.add(id); }
+    let tryPriorityPress = null;
+    let suppressTryPriorityClick = {id: '', until: 0};
+    function cancelTryPriorityPress() {
+      if (tryPriorityPress?.timer) clearTimeout(tryPriorityPress.timer);
+      tryPriorityPress = null;
+    }
+    document.addEventListener('pointerdown', (event) => {
+      const button = event.target.closest('[data-bookmark-id]');
+      if (!button || event.button > 0) return;
+      cancelTryPriorityPress();
+      const press = {button, id: button.dataset.bookmarkId, x: event.clientX, y: event.clientY, timer: 0};
+      press.timer = setTimeout(() => {
+        suppressTryPriorityClick = {id: press.id, until: Date.now() + 800};
+        showTryPriorityPopover(press.button);
+        tryPriorityPress = null;
+      }, 500);
+      tryPriorityPress = press;
+    });
+    document.addEventListener('pointermove', (event) => {
+      if (!tryPriorityPress) return;
+      if (Math.hypot(event.clientX - tryPriorityPress.x, event.clientY - tryPriorityPress.y) > 10) cancelTryPriorityPress();
+    });
+    document.addEventListener('pointerup', cancelTryPriorityPress);
+    document.addEventListener('pointercancel', cancelTryPriorityPress);
+    document.addEventListener('contextmenu', (event) => {
+      if (event.target.closest('[data-bookmark-id]')) event.preventDefault();
+    });
     document.addEventListener('click', (event) => {
+      const tryPriorityOption = event.target.closest('[data-set-try-priority]');
+      if (tryPriorityOption) {
+        const id = $('#tryPriorityPopover').dataset.bookmarkId;
+        setTryPriority(id, tryPriorityOption.dataset.setTryPriority);
+        hideTryPriorityPopover();
+        saveCustom();
+        render();
+        return;
+      }
+      if (!event.target.closest('#tryPriorityPopover') && !event.target.closest('[data-bookmark-id]')) hideTryPriorityPopover();
       const sortButton = event.target.closest('[data-table-sort]');
       if (sortButton) {
         cycleTableSort(sortButton.dataset.tableSort);
-        state.expanded = '';
         renderTable();
         scheduleColumnWidthUpdate();
         return;
@@ -5979,7 +6136,6 @@
       if (statButton) {
         const selected = statButton.dataset.statFilter;
         state.statFilter = selected === state.statFilter && selected !== 'all' ? 'all' : selected;
-        state.expanded = '';
         if (statButton.closest('#genreMoreMenu')) {
           $('#genreMoreMenu').hidden = true;
           $('#genreMoreButton').setAttribute('aria-expanded', 'false');
@@ -6039,7 +6195,7 @@
         resetFilterState();
         state.ingredients.add(detailIngredient.dataset.detailIngredient);
         state.collapsed.ingredient = false;
-        state.expanded = '';
+        state.expanded.clear();
         render();
         $('.table-wrap')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
         return;
@@ -6080,10 +6236,14 @@
       const bookmarkButton = event.target.closest('[data-bookmark-id]');
       if (bookmarkButton) {
         const id = bookmarkButton.dataset.bookmarkId;
-        if (store.bookmarks[id]) delete store.bookmarks[id];
-        else store.bookmarks[id] = true;
+        if (suppressTryPriorityClick.id === id && Date.now() < suppressTryPriorityClick.until) {
+          suppressTryPriorityClick = {id: '', until: 0};
+          return;
+        }
+        hideTryPriorityPopover();
+        cycleTryPriority(id);
         saveCustom();
-        renderTable();
+        render();
         return;
       }
       const recommendedBottle = event.target.closest('[data-add-recommended]');
@@ -6246,7 +6406,7 @@
       }
       const row = event.target.closest('.summary-row');
       if (row) {
-        state.expanded = state.expanded === row.dataset.id ? '' : row.dataset.id;
+        toggleCocktailExpansion(row.dataset.id);
         renderTable();
       }
     });
@@ -6322,7 +6482,7 @@
         }
       }
       if (event.key === 'Escape') {
-	        hideInfoPopover(); closeVersionModal(); closeNotesModal(); closeGlasswareModal(); closeGitHubSyncModal(); closeShoppingListModal(); closeArchiveModal(); closeRemoveBottleModal(); closeCocktailForm(); closeBarModal(); closeInstallModal();
+	        hideInfoPopover(); hideTryPriorityPopover(); closeVersionModal(); closeNotesModal(); closeGlasswareModal(); closeGitHubSyncModal(); closeShoppingListModal(); closeArchiveModal(); closeRemoveBottleModal(); closeCocktailForm(); closeBarModal(); closeInstallModal();
         $('#genreMoreMenu').hidden = true;
         $('#genreMoreButton').setAttribute('aria-expanded', 'false');
         refreshShortcutHints(shortcutModifiersHeld(event));
@@ -6330,7 +6490,7 @@
       const row = event.target.closest && event.target.closest('.summary-row');
       if (row && (event.key === 'Enter' || event.key === ' ')) {
         event.preventDefault();
-        state.expanded = state.expanded === row.dataset.id ? '' : row.dataset.id;
+        toggleCocktailExpansion(row.dataset.id);
         renderTable();
       }
     });
@@ -6379,16 +6539,16 @@
 	        }
 	        function resetSortAndFilters() {
 	          resetFilterState();
-	          state.sort = 'source';
+	          state.sort = 'name';
 	          state.sortDirection = 'default';
-	          state.expanded = '';
+	          state.expanded.clear();
 	          render();
 	        }
 	        function jumpToCocktail(id) {
 	          const target = COCKTAILS.find((cocktail) => cocktail.id === id);
 	          if (!target) return;
 	          if (!isMatch(target)) resetFilterState();
-	          state.expanded = id;
+	          state.expanded.add(id);
 	          render();
 	          const row = $$('.summary-row').find((tr) => tr.dataset.id === id);
 	          if (row) {
@@ -6482,6 +6642,7 @@
 	      synchronizeGitHubData();
 	    });
 	    $('#githubSyncSaveSettings').addEventListener('click', saveGitHubSyncSettingsOnly);
+	    $('#githubDownloadLatest').addEventListener('click', downloadLatestGitHubData);
 	    $('#githubSyncForget').addEventListener('click', forgetGitHubSync);
 	    $('#githubSyncCloseAction').addEventListener('click', closeGitHubSyncModal);
 	    $('#shoppingListButton').addEventListener('click', openShoppingListModal);
