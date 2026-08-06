@@ -274,6 +274,14 @@
     .rating-filter-row select { flex: 0 1 auto; width: auto; min-width: 82px; border: 0; min-height: 0; padding: 0; background: transparent; }
     input.rating-num { width: 42px; min-height: 22px; padding: 1px 4px; flex: 0 0 auto; text-align: center; }
     .rating-range { display: flex; align-items: center; gap: 4px; color: var(--muted); white-space: nowrap; }
+    .rating-header-group { display: flex; align-items: center; min-height: 31px; }
+    .rating-header-group .table-sort-button { flex: 1 1 auto; min-width: 0; }
+    .rating-audience-toggle {
+      flex: 0 0 auto; min-width: 28px; height: 21px; margin-right: 5px; padding: 0 5px;
+      border: 1px solid var(--accent-2); border-radius: 999px; background: var(--accent-2-soft); color: #B9D3DD;
+      font-size: 8px; font-weight: 800; line-height: 1; text-transform: uppercase;
+    }
+    .rating-audience-toggle[data-view="mine"] { border-color: var(--accent); background: var(--accent-soft); color: #E0BD72; }
     .label {
       display: flex;
       justify-content: space-between;
@@ -627,10 +635,32 @@
 	    .stars { display: inline-flex; gap: 1px; }
 	    .star { position: relative; width: 12px; height: 12px; font-size: 12px; line-height: 1; cursor: pointer; }
 	    .stars.readonly .star { cursor: default; }
+	    .stars.friends-view .star { cursor: pointer; }
 	    .star-bg, .star-fg { position: absolute; top: 0; left: 0; white-space: nowrap; pointer-events: none; }
 	    .star-bg { color: var(--line); }
 	    .star-fg { color: var(--accent); overflow: hidden; }
+	    body[data-rating-view="friends"] .rating-cell .star-fg { color: #6FA7BD; }
 	    .rating-value { color: var(--muted); font-size: 12px; white-space: nowrap; }
+    .modal.modal-friend-ratings { max-width: 560px; }
+    .friend-rating-summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 34px; }
+    .friend-rating-cocktail { min-width: 0; margin: 0; color: var(--text); font-size: 16px; overflow-wrap: anywhere; }
+    .friend-rating-average { display: inline-flex; align-items: baseline; gap: 4px; color: var(--accent-2); white-space: nowrap; }
+    .friend-rating-average strong { font-size: 20px; }
+    .friend-rating-average span { color: var(--muted); font-size: 10px; }
+    .rating-view-switch { display: grid; grid-template-columns: repeat(2, 1fr); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: #0C1118; }
+    .rating-view-option { min-height: 34px; border: 0; border-right: 1px solid var(--line); background: transparent; color: var(--muted); font-size: 11px; font-weight: 750; }
+    .rating-view-option:last-child { border-right: 0; }
+    .rating-view-option.active { background: var(--accent-2-soft); color: #DCE8ED; }
+    .friend-rating-form { display: grid; grid-template-columns: minmax(0, 1fr) 92px auto; gap: 8px; align-items: end; }
+    .friend-rating-form .button { min-height: 38px; }
+    .friend-rating-list { display: grid; border-top: 1px solid var(--line-soft); }
+    .friend-rating-row { display: grid; grid-template-columns: minmax(0, 1fr) auto 34px; gap: 10px; align-items: center; min-height: 42px; border-bottom: 1px solid var(--line-soft); }
+    .friend-rating-name { min-width: 0; border: 0; background: transparent; color: var(--text); padding: 6px 0; text-align: left; font-weight: 650; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .friend-rating-score { display: inline-flex; align-items: center; gap: 6px; color: var(--accent-2); }
+    .friend-rating-score .star-fg { color: #6FA7BD; }
+    .friend-rating-score-value { min-width: 24px; color: var(--muted); font-size: 11px; text-align: right; }
+    .friend-rating-remove { width: 30px; height: 30px; min-height: 0; color: var(--faint); }
+    .friend-rating-remove:hover { color: #F0C8CB; border-color: var(--danger); }
     .detail-row td { background: #0B1017; padding: 0; }
     .detail { padding: 8px; border-bottom: 1px solid var(--line); }
     .detail-grid { display: grid; grid-template-columns: minmax(0, 20fr) minmax(0, 20fr) minmax(0, 30fr) minmax(0, 30fr); gap: 8px; min-width: 0; }
@@ -1661,7 +1691,7 @@
 	              <th class="sortable-column" data-col="cocktail" data-sort-key="name" aria-sort="none" style="width: 14%;"><button class="table-sort-button" type="button" data-table-sort="name"><span>Cocktail</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
 	              <th data-col="photo" style="width: 46px;">Photo</th>
 	              <th class="sortable-column" data-col="try" data-sort-key="try" aria-sort="none" style="width: 70px;"><button class="table-sort-button" type="button" data-table-sort="try"><span>Try</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
-	              <th class="sortable-column" data-col="rating" data-sort-key="rating" aria-sort="none" style="width: 100px;"><button class="table-sort-button" type="button" data-table-sort="rating"><span>Rating</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
+	              <th class="sortable-column" data-col="rating" data-sort-key="rating" aria-sort="none" style="width: 100px;"><div class="rating-header-group"><button class="table-sort-button" type="button" data-table-sort="rating"><span>Rating</span><span class="table-sort-icon" aria-hidden="true"></span></button><button id="ratingAudienceToggle" class="rating-audience-toggle" type="button" data-view="mine" title="Show friends average" aria-label="Show friends average" hidden>Mine</button></div></th>
 	              <th class="sortable-column" data-col="base" data-sort-key="base" aria-sort="none" style="width: 20%;"><button class="table-sort-button" type="button" data-table-sort="base"><span>Base Liquor</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
 	              <th class="sortable-column" data-col="garnish" data-sort-key="garnish" aria-sort="none" style="width: 16%;"><button class="table-sort-button" type="button" data-table-sort="garnish"><span>Garnish</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
 	              <th class="sortable-column" data-col="ing" data-sort-key="ingredients" aria-sort="none" style="width: 56px;"><button class="table-sort-button" type="button" data-table-sort="ingredients"><span>Ing.</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
@@ -1751,6 +1781,31 @@
         </div>
         <div class="modal-body">
           <textarea id="notesTextarea" class="text-area notes-textarea" placeholder="Jot down anything — recipes to try, shopping reminders, party planning…" aria-label="Notes"></textarea>
+        </div>
+      </div>
+    </div>
+    <div id="friendRatingsOverlay" class="modal-overlay" hidden>
+      <div class="modal modal-friend-ratings" role="dialog" aria-modal="true" aria-labelledby="friendRatingsTitle">
+        <div class="modal-header">
+          <h2 id="friendRatingsTitle">Friend Ratings</h2>
+          <button id="friendRatingsClose" class="button icon" type="button" aria-label="Close friend ratings">×</button>
+        </div>
+        <div class="modal-body">
+          <div class="friend-rating-summary">
+            <h3 id="friendRatingCocktail" class="friend-rating-cocktail"></h3>
+            <span id="friendRatingAverage" class="friend-rating-average"></span>
+          </div>
+          <div class="rating-view-switch" role="group" aria-label="Displayed rating">
+            <button class="rating-view-option" type="button" data-rating-view="mine">My Rating</button>
+            <button class="rating-view-option" type="button" data-rating-view="friends">Friends Average</button>
+          </div>
+          <form id="friendRatingForm" class="friend-rating-form">
+            <label class="form-field"><span class="form-label">Friend</span><input id="friendRatingName" class="text-input" type="text" list="friendRatingNames" autocomplete="off" required></label>
+            <label class="form-field"><span class="form-label">Rating</span><input id="friendRatingValue" class="text-input" type="number" min="0.5" max="5" step="0.5" value="3" required></label>
+            <button class="button primary" type="submit">Save</button>
+            <datalist id="friendRatingNames"></datalist>
+          </form>
+          <div id="friendRatingList" class="friend-rating-list"></div>
         </div>
       </div>
     </div>
@@ -2093,7 +2148,7 @@
   <button id="floatingResetButton" class="button icon" type="button" title="Reset filters and collapse cocktails" aria-label="Reset filters and collapse cocktails" hidden>↺</button>
   <button id="githubSyncButton" class="button icon" type="button" title="Set up GitHub Sync" aria-label="Set up GitHub Sync" aria-haspopup="dialog" data-sync-state="setup"><span id="githubSyncGlyph"></span></button>
   <script>
-    const BUILD_VERSION = '1.0.1.38';
+    const BUILD_VERSION = '1.0.1.39';
 	    const __ARROW_UP_AND_DOWN_SQUARE_FILL = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24.1846 23.8281"><g><rect height="23.8281" opacity="0" width="24.1846" x="0" y="0"/><path d="M23.8232 4.26758L23.8232 19.5605C23.8232 22.3193 22.3145 23.8232 19.5264 23.8232L4.29199 23.8232C1.50879 23.8232 0 22.3291 0 19.5605L0 4.26758C0 1.49902 1.50879 0 4.29199 0L19.5264 0C22.3145 0 23.8232 1.50391 23.8232 4.26758ZM11.0107 4.45312L7.56836 7.97363C7.33398 8.20312 7.22656 8.48145 7.22656 8.7793C7.22656 9.38477 7.68555 9.80957 8.30566 9.80957C8.64746 9.80957 8.96484 9.65332 9.13574 9.40918L9.80469 8.72559L10.8753 7.30769L10.7812 9.80469L10.7812 14.0039L10.8755 16.506L9.80469 15.0879L9.13574 14.4092C8.96484 14.1553 8.64746 14.0039 8.30566 14.0039C7.68555 14.0039 7.22656 14.4287 7.22656 15.0342C7.22656 15.332 7.33398 15.6055 7.56836 15.8398L11.0107 19.3604C11.2744 19.6484 11.5967 19.8047 11.9873 19.8047C12.3828 19.8047 12.7051 19.6484 12.9736 19.3604L16.4111 15.8398C16.6504 15.6006 16.7529 15.332 16.7529 15.0342C16.7529 14.4287 16.2988 14.0039 15.6689 14.0039C15.3271 14.0039 15.0146 14.1553 14.8438 14.4092L14.1748 15.0879L13.1041 16.5027L13.1982 14.0039L13.1982 9.80469L13.1043 7.31102L14.1748 8.72559L14.8438 9.40918C15.0146 9.65332 15.3271 9.80957 15.6689 9.80957C16.2988 9.80957 16.7529 9.38477 16.7529 8.7793C16.7529 8.48145 16.6504 8.20801 16.4111 7.97363L12.9736 4.45312C12.7051 4.16992 12.3828 4.00879 11.9873 4.00879C11.5967 4.00879 11.2744 4.16992 11.0107 4.45312Z"/></g></svg>`;
 	    const __ARROW_UP_SQUARE_FILL = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24.1846 23.8281"><g><rect height="23.8281" opacity="0" width="24.1846" x="0" y="0"/><path d="M23.8232 4.26758L23.8232 19.5605C23.8232 22.3193 22.3145 23.8232 19.5264 23.8232L4.29199 23.8232C1.50879 23.8232 0 22.3291 0 19.5605L0 4.26758C0 1.49902 1.50879 0 4.29199 0L19.5264 0C22.3145 0 23.8232 1.50391 23.8232 4.26758ZM10.874 5.55664L6.49414 9.78027C6.24512 10.0293 6.1084 10.293 6.1084 10.6543C6.1084 11.3428 6.67969 11.8359 7.32422 11.8359C7.68066 11.8359 8.01758 11.6895 8.25684 11.4258L10 9.58984L10.6642 8.73089L10.5664 10.5762L10.5664 17.3486C10.5664 18.0957 11.2012 18.7402 11.9824 18.7402C12.7734 18.7402 13.3936 18.0957 13.3936 17.3486L13.3936 10.5762L13.2988 8.7285L13.9648 9.58984L15.7031 11.4258C15.9424 11.6895 16.2744 11.8359 16.6309 11.8359C17.2705 11.8359 17.8564 11.3428 17.8564 10.6543C17.8564 10.293 17.7148 10.0293 17.4707 9.78027L13.0908 5.55664C12.7197 5.2002 12.3584 5.07324 11.9824 5.07324C11.6016 5.07324 11.2451 5.2002 10.874 5.55664Z"/></g></svg>`;
 	    const __ARROW_DOWN_APP_FILL = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24.0576 23.7305"><g><rect height="23.7305" opacity="0" width="24.0576" x="0" y="0"/><path d="M21.8799 1.81152C23.0664 2.9834 23.6963 4.7168 23.6963 6.92383L23.6963 16.7822C23.6963 18.9893 23.0615 20.7275 21.8799 21.8994C20.7227 23.0615 18.9844 23.7061 16.7725 23.7061L6.92383 23.7061C4.7168 23.7061 2.97852 23.0664 1.81641 21.8994C0.629883 20.7227 0 18.9893 0 16.7822L0 6.92383C0 4.7168 0.634766 2.97852 1.81641 1.81152C2.97363 0.649414 4.7168 0 6.92383 0L16.7725 0C18.9844 0 20.7178 0.634766 21.8799 1.81152ZM10.4346 6.41113L10.4346 13.1836L10.5323 15.0269L9.86328 14.165L8.125 12.3291C7.88574 12.0703 7.54883 11.9238 7.19238 11.9238C6.54785 11.9238 5.97168 12.4121 5.97168 13.1006C5.97168 13.4619 6.11328 13.7256 6.35742 13.9746L10.7373 18.1982C11.1133 18.5596 11.4648 18.6865 11.8506 18.6865C12.2266 18.6865 12.5879 18.5596 12.9541 18.1982L17.334 13.9746C17.583 13.7256 17.7197 13.4619 17.7197 13.1006C17.7197 12.4121 17.1338 11.9238 16.4941 11.9238C16.1426 11.9238 15.8105 12.0703 15.5713 12.3291L13.833 14.165L13.1654 15.0284L13.2568 13.1836L13.2568 6.41113C13.2568 5.65918 12.6367 5.01953 11.8506 5.01953C11.0645 5.01953 10.4346 5.65918 10.4346 6.41113Z"/></g></svg>`;
@@ -2579,6 +2634,30 @@
       if (bottle.recommended === true) return {...bottle, recommended: false, shoppingList: false};
       return isMixingBottle(bottle) ? bottle : null;
     };
+    const sanitizeFriendRatingValue = (value) => {
+      const rating = Math.round(Number(value) * 2) / 2;
+      return Number.isFinite(rating) && rating >= 0.5 && rating <= 5 ? rating : 0;
+    };
+    function sanitizeFriendRatings(value) {
+      if (!value || typeof value !== 'object' || Array.isArray(value)) return {};
+      return Object.fromEntries(Object.entries(value).flatMap(([cocktailId, entries]) => {
+        if (!cocktailId) return [];
+        const sourceEntries = Array.isArray(entries)
+          ? entries
+          : (entries && typeof entries === 'object' ? Object.entries(entries).map(([name, rating]) => ({name, rating})) : []);
+        const byName = new Map();
+        sourceEntries.forEach((entry) => {
+          const name = typeof entry?.name === 'string' ? entry.name.trim() : '';
+          const rating = sanitizeFriendRatingValue(entry?.rating);
+          if (name && rating) byName.set(bottleSearchText(name), {name, rating});
+        });
+        const cleanEntries = [...byName.values()].sort((a, b) => a.name.localeCompare(b.name));
+        return cleanEntries.length ? [[cocktailId, cleanEntries]] : [];
+      }));
+    }
+    let storedFriendRatings = {};
+    try { storedFriendRatings = sanitizeFriendRatings(JSON.parse(localStorage.getItem('cocktailFriendRatings') || '{}')); }
+    catch (error) { storedFriendRatings = {}; }
     const storedBar = JSON.parse(localStorage.getItem('cocktailBar') || '[]');
     const migratedBar = storedBar.map(migrateBarItem);
     const storedArchive = JSON.parse(localStorage.getItem('cocktailArchive') || '[]');
@@ -2588,6 +2667,9 @@
       assignments: JSON.parse(localStorage.getItem('cocktailTypeAssignments') || '{}'),
       notes: JSON.parse(localStorage.getItem('cocktailUserNotes') || '{}'),
       ratings: JSON.parse(localStorage.getItem('cocktailRatings') || '{}'),
+      friendRatings: storedFriendRatings,
+      ratingView: localStorage.getItem('cocktailRatingView') === 'friends' ? 'friends' : 'mine',
+      friendRatingsUnlocked: localStorage.getItem('cocktailFriendRatingsUnlocked') === 'true' || Object.keys(storedFriendRatings).length > 0,
       bookmarks: storedBookmarks ? sanitizeBookmarks(JSON.parse(storedBookmarks)) : Object.fromEntries(BOOKMARK_SEED_IDS.map((id) => [id, true])),
       bar: migratedBar,
       archivedBar: migratedArchive,
@@ -3031,6 +3113,9 @@
 	      localStorage.setItem('cocktailTypeAssignments', JSON.stringify(store.assignments));
 	      localStorage.setItem('cocktailUserNotes', JSON.stringify(store.notes));
 	      localStorage.setItem('cocktailRatings', JSON.stringify(store.ratings));
+	      localStorage.setItem('cocktailFriendRatings', JSON.stringify(store.friendRatings));
+	      localStorage.setItem('cocktailRatingView', store.ratingView);
+	      localStorage.setItem('cocktailFriendRatingsUnlocked', String(store.friendRatingsUnlocked));
 	      localStorage.setItem('cocktailBookmarks', JSON.stringify(store.bookmarks));
 	      localStorage.setItem('cocktailBar', JSON.stringify(store.bar));
 	      localStorage.setItem('cocktailArchive', JSON.stringify(store.archivedBar));
@@ -3078,7 +3163,13 @@
       return `${label}${description ? `<span>${escapeHtml(description)}</span>` : ''}`;
     }
     const isEditableCocktail = (cocktail) => cocktail.status === 'Custom' || ['Custom', 'In the Wild'].includes(displayType(cocktail));
-    const getRating = (cocktail) => Number(store.ratings[cocktail.id]) || 0;
+    const getMyRating = (cocktail) => Number(store.ratings[cocktail.id]) || 0;
+    const friendRatingEntries = (cocktail) => store.friendRatings[cocktail.id] || [];
+    function getFriendAverage(cocktail) {
+      const entries = friendRatingEntries(cocktail);
+      return entries.length ? entries.reduce((sum, entry) => sum + entry.rating, 0) / entries.length : 0;
+    }
+    const getRating = (cocktail) => store.ratingView === 'friends' ? getFriendAverage(cocktail) : getMyRating(cocktail);
     function ratingStars(id, value, extraClass = '') {
       const stars = Array.from({length: 5}, (_, i) => {
         const fill = Math.max(0, Math.min(1, value - i)) * 100;
@@ -3091,6 +3182,91 @@
     }
     function ratingValueLabel(value) {
       return value ? value.toFixed(1) : '—';
+    }
+    let friendRatingCocktailId = '';
+    let editingFriendRatingName = '';
+    function allFriendRatingNames() {
+      return unique(Object.values(store.friendRatings).flat().map((entry) => entry.name)).sort((a, b) => a.localeCompare(b));
+    }
+    function updateRatingAudienceUi() {
+      document.body.dataset.ratingView = store.ratingView;
+      const toggle = $('#ratingAudienceToggle');
+      toggle.hidden = !store.friendRatingsUnlocked;
+      toggle.dataset.view = store.ratingView;
+      toggle.textContent = store.ratingView === 'friends' ? 'Avg' : 'Mine';
+      toggle.title = store.ratingView === 'friends' ? 'Show my ratings' : 'Show friends average';
+      toggle.setAttribute('aria-label', toggle.title);
+      $$('.rating-view-option').forEach((button) => {
+        const active = button.dataset.ratingView === store.ratingView;
+        button.classList.toggle('active', active);
+        button.setAttribute('aria-pressed', String(active));
+      });
+    }
+    function setRatingView(view) {
+      if (!['mine', 'friends'].includes(view)) return;
+      store.ratingView = view;
+      store.friendRatingsUnlocked = true;
+      saveCustom();
+      render();
+      if (!$('#friendRatingsOverlay').hidden) renderFriendRatingManager();
+    }
+    function renderFriendRatingManager() {
+      const cocktail = COCKTAILS.find((item) => item.id === friendRatingCocktailId);
+      if (!cocktail) return;
+      const entries = friendRatingEntries(cocktail);
+      const average = getFriendAverage(cocktail);
+      $('#friendRatingCocktail').textContent = cocktail.name;
+      $('#friendRatingAverage').innerHTML = average
+        ? `<strong>${escapeHtml(ratingValueLabel(average))}</strong><span>${entries.length} rating${entries.length === 1 ? '' : 's'}</span>`
+        : '<span>Not rated</span>';
+      $('#friendRatingNames').innerHTML = allFriendRatingNames().map((name) => `<option value="${escapeHtml(name)}"></option>`).join('');
+      $('#friendRatingList').innerHTML = entries.length
+        ? entries.map((entry) => `<div class="friend-rating-row"><button class="friend-rating-name" type="button" data-edit-friend-rating="${escapeHtml(entry.name)}">${escapeHtml(entry.name)}</button><span class="friend-rating-score">${ratingStars('', entry.rating, 'readonly')}<span class="friend-rating-score-value">${escapeHtml(ratingValueLabel(entry.rating))}</span></span><button class="button icon friend-rating-remove" type="button" data-remove-friend-rating="${escapeHtml(entry.name)}" aria-label="Remove ${escapeHtml(entry.name)}'s rating">×</button></div>`).join('')
+        : '<span class="empty">No friend ratings yet.</span>';
+      updateRatingAudienceUi();
+    }
+    function openFriendRatings(cocktailId) {
+      if (!COCKTAILS.some((cocktail) => cocktail.id === cocktailId)) return;
+      friendRatingCocktailId = cocktailId;
+      store.friendRatingsUnlocked = true;
+      saveCustom();
+      $('#friendRatingName').value = '';
+      $('#friendRatingValue').value = 3;
+      editingFriendRatingName = '';
+      renderFriendRatingManager();
+      $('#friendRatingsOverlay').hidden = false;
+    }
+    function closeFriendRatings() {
+      $('#friendRatingsOverlay').hidden = true;
+      friendRatingCocktailId = '';
+    }
+    function saveFriendRating(event) {
+      event.preventDefault();
+      const name = $('#friendRatingName').value.trim();
+      const rating = sanitizeFriendRatingValue($('#friendRatingValue').value);
+      if (!name || !rating || !friendRatingCocktailId) return;
+      const entries = [...(store.friendRatings[friendRatingCocktailId] || [])].filter((entry) => !editingFriendRatingName || bottleSearchText(entry.name) !== bottleSearchText(editingFriendRatingName));
+      const existing = entries.findIndex((entry) => bottleSearchText(entry.name) === bottleSearchText(name));
+      const next = {name, rating};
+      if (existing >= 0) entries[existing] = next;
+      else entries.push(next);
+      store.friendRatings[friendRatingCocktailId] = entries.sort((a, b) => a.name.localeCompare(b.name));
+      store.friendRatingsUnlocked = true;
+      saveCustom();
+      $('#friendRatingName').value = '';
+      editingFriendRatingName = '';
+      render();
+      renderFriendRatingManager();
+      $('#friendRatingName').focus();
+    }
+    function removeFriendRating(name) {
+      if (!friendRatingCocktailId) return;
+      const entries = (store.friendRatings[friendRatingCocktailId] || []).filter((entry) => bottleSearchText(entry.name) !== bottleSearchText(name));
+      if (entries.length) store.friendRatings[friendRatingCocktailId] = entries;
+      else delete store.friendRatings[friendRatingCocktailId];
+      saveCustom();
+      render();
+      renderFriendRatingManager();
     }
     function statusLabel(c) {
       const parts = [];
@@ -3673,11 +3849,16 @@
       const expanded = state.expanded.has(c.id);
       const bases = c.baseLiquor.map((base) => `<span class="mini-tag base-tag base-${classToken(base)}">${escapeHtml(displayBaseLabel(base))}</span>`).join('');
 	      const garnish = rowGarnish(c);
+	      const rating = getRating(c);
+	      const friendCount = friendRatingEntries(c).length;
+	      const ratingTitle = rating
+	        ? `${store.ratingView === 'friends' ? `Friends average from ${friendCount} rating${friendCount === 1 ? '' : 's'}` : 'My rating'}: ${ratingLabel(rating)} / 5`
+	        : (store.ratingView === 'friends' ? 'No friend ratings' : 'Not rated');
 	      return `<tr class="summary-row" tabindex="0" role="button" aria-expanded="${expanded}" data-id="${escapeHtml(c.id)}">
 	        <td data-label="Cocktail"><div class="name-cell"><span class="chev">${expanded ? '−' : '+'}</span><div><div class="cocktail-name">${escapeHtml(c.name)}</div></div></div></td>
 	        <td data-label="Photo">${thumbCell(c)}</td>
 	        <td data-label="Try" class="bookmark-cell">${bookmarkToggle(c)}</td>
-	        <td data-label="Rating"><div class="rating-cell" title="${getRating(c) ? `${ratingLabel(getRating(c))} / 5` : 'Not rated'}">${ratingStars(c.id, getRating(c))}<span class="rating-value">${ratingValueLabel(getRating(c))}</span></div></td>
+	        <td data-label="Rating"><div class="rating-cell" title="${escapeHtml(ratingTitle)}">${ratingStars(c.id, rating, store.ratingView === 'friends' ? 'friends-view' : '')}<span class="rating-value">${ratingValueLabel(rating)}</span></div></td>
 	        <td data-label="Base Liquor"><div class="tagline">${bases}</div></td>
 	        <td data-label="Garnish"><span class="garnish-cell">${escapeHtml(garnish)}</span></td>
 	        <td data-label="Ing.">${c.ingredientCount}</td>
@@ -3786,6 +3967,7 @@
       cycleSort(state, 'sort', 'sortDirection', key);
     }
     function renderTable() {
+      updateRatingAudienceUi();
       updateFloatingResetButton();
       renderTableSortHeaders();
       const rows = filteredCocktails();
@@ -5568,6 +5750,8 @@
 	            typeAssignments: store.assignments,
 	            notes: store.notes,
 	            ratings: store.ratings,
+	            friendRatings: store.friendRatings,
+	            ratingView: store.ratingView,
 	            bookmarks: store.bookmarks,
 	            bar: store.bar,
 	            archivedBar: store.archivedBar,
@@ -5588,7 +5772,8 @@
 	              totalVolume: formatTotalVolume(totalIngredientVolume(cocktail, 1)),
 	              method: cocktail.method.map((line) => formatMethodLine(line)),
 	              userNotes: store.notes[cocktail.id] || '',
-	              rating: getRating(cocktail) || null,
+	              rating: getMyRating(cocktail) || null,
+	              friendRatingAverage: getFriendAverage(cocktail) || null,
 	              toTry: Boolean(store.bookmarks[cocktail.id]),
 	              tryPriority: tryPriority(cocktail.id) || null
 	            }))
@@ -5610,7 +5795,7 @@
 	        const GITHUB_SYNC_TOKEN_KEY = 'cocktailGitHubSyncToken';
 	        const GITHUB_SYNC_META_KEY = 'cocktailGitHubSyncMeta';
 	        const HOME_BAR_STORAGE_KEYS = [
-	          'cocktailCustomTypes', 'cocktailTypeAssignments', 'cocktailUserNotes', 'cocktailRatings',
+	          'cocktailCustomTypes', 'cocktailTypeAssignments', 'cocktailUserNotes', 'cocktailRatings', 'cocktailFriendRatings', 'cocktailRatingView',
 	          'cocktailBookmarks', 'cocktailBar', 'cocktailArchive', 'cocktailFavoriteGenreFilters',
 	          'cocktailCustomCocktails', 'cocktailAppNotes', 'cocktailGlassware'
 	        ];
@@ -5681,6 +5866,8 @@
 	            typeAssignments: source.typeAssignments || source.assignments || {},
 	            notes: source.notes || {},
 	            ratings: source.ratings || {},
+	            ...(source.friendRatings && Object.keys(source.friendRatings).length ? {friendRatings: source.friendRatings} : {}),
+	            ...(source.ratingView === 'friends' ? {ratingView: 'friends'} : {}),
 	            bookmarks: source.bookmarks || {},
 	            bar: source.bar || [],
 	            favoriteGenreFilters: source.favoriteGenreFilters || [],
@@ -5787,12 +5974,12 @@
 	          status.className = `sync-status${kind ? ` ${kind}` : ''}`;
 	        }
 	        function syncChangeItemLabel(key, value) {
-	          if (value && typeof value === 'object') return value.name || value.type || value.id || key;
+	          if (value && typeof value === 'object' && !Array.isArray(value) && (value.name || value.type || value.id)) return value.name || value.type || value.id;
 	          return COCKTAILS.find((cocktail) => cocktail.id === key)?.name || key;
 	        }
 	        const SYNC_CHANGE_DESCRIPTORS = [
 	          ['bar', 'My Bar'], ['glassware', 'Drinkware'],
-	          ['customCocktails', 'Custom Cocktails'], ['notes', 'Cocktail Notes'], ['ratings', 'Ratings'],
+	          ['customCocktails', 'Custom Cocktails'], ['notes', 'Cocktail Notes'], ['ratings', 'My Ratings'], ['friendRatings', 'Friend Ratings'], ['ratingView', 'Rating View'],
 	          ['bookmarks', 'Try Priorities'], ['typeAssignments', 'Type Assignments'],
 	          ['customTypes', 'Custom Types'], ['favoriteGenreFilters', 'Favorite Filters'], ['appNotes', 'App Notes']
 	        ];
@@ -5816,7 +6003,11 @@
 	          }
 	          if (Array.isArray(value)) {
 	            if (!value.length) return 'None';
-	            return value.map((item) => item && typeof item === 'object' ? item.name || item.type || JSON.stringify(item) : String(item)).join(', ');
+	            return value.map((item) => {
+	              if (!item || typeof item !== 'object') return String(item);
+	              if (item.name && item.rating) return `${item.name}: ${item.rating}`;
+	              return item.name || item.type || JSON.stringify(item);
+	            }).join(', ');
 	          }
 	          if (value && typeof value === 'object') return JSON.stringify(value, null, 2);
 	          return String(value);
@@ -5829,7 +6020,8 @@
 	            };
 	          }
 	          if (value && typeof value === 'object') return {count: Object.keys(value).length, map: new Map(Object.entries(value))};
-	          return {count: value === undefined || value === null || value === '' ? 0 : 1, map: new Map([['value', value]])};
+	          if (value === undefined || value === null || value === '') return {count: 0, map: new Map()};
+	          return {count: 1, map: new Map([['value', value]])};
 	        }
 	        function syncChangedFields(deviceValue, githubValue, includeAll = false) {
 	          const deviceObject = deviceValue && typeof deviceValue === 'object' && !Array.isArray(deviceValue);
@@ -6355,6 +6547,8 @@
 	          const importedAssignments = sanitizeStringMap(data.typeAssignments || data.assignments);
 	          const importedNotes = sanitizeStringMap({...notesFromCocktails, ...plainObject(data.notes)});
 	          const importedRatings = sanitizeNumberMap({...ratingsFromCocktails, ...plainObject(data.ratings)});
+	          const importedFriendRatings = data.friendRatings && typeof data.friendRatings === 'object' ? sanitizeFriendRatings(data.friendRatings) : null;
+	          const importedRatingView = ['mine', 'friends'].includes(data.ratingView) ? data.ratingView : null;
 	          const importedBookmarks = data.bookmarks && typeof data.bookmarks === 'object'
 	            ? sanitizeBookmarks({...bookmarksFromCocktails, ...plainObject(data.bookmarks)})
 	            : (Object.keys(bookmarksFromCocktails).length ? bookmarksFromCocktails : null);
@@ -6370,12 +6564,20 @@
 	          const importedCocktails = hasImportedCocktails
 	            ? data.customCocktails.filter((c) => c && typeof c.id === 'string' && typeof c.name === 'string' && Array.isArray(c.ingredientNames))
 	            : [];
-	          if (!importedCustomTypes.length && !Object.keys(importedAssignments).length && !Object.keys(importedNotes).length && !Object.keys(importedRatings).length && !importedCocktails.length && importedFavoriteGenres === null && importedBookmarks === null && importedBar === null && importedArchivedBar === null && importedGlassware === null && importedAppNotes === null) {
+	          if (!importedCustomTypes.length && !Object.keys(importedAssignments).length && !Object.keys(importedNotes).length && !Object.keys(importedRatings).length && importedFriendRatings === null && !importedCocktails.length && importedFavoriteGenres === null && importedBookmarks === null && importedBar === null && importedArchivedBar === null && importedGlassware === null && importedAppNotes === null) {
 	            throw new Error('Import file did not include Home Bar user data.');
 	          }
 	          store.assignments = importedAssignments;
 	          store.notes = importedNotes;
 	          store.ratings = importedRatings;
+	          if (importedFriendRatings !== null) {
+	            store.friendRatings = importedFriendRatings;
+	            store.friendRatingsUnlocked = Object.keys(importedFriendRatings).length > 0;
+	          }
+	          if (importedRatingView !== null) {
+	            store.ratingView = importedRatingView;
+	            if (importedRatingView === 'friends') store.friendRatingsUnlocked = true;
+	          }
 	          if (importedBookmarks !== null) store.bookmarks = importedBookmarks;
 	          if (importedBar !== null) store.bar = importedBar;
 	          if (importedArchivedBar !== null) store.archivedBar = importedArchivedBar;
@@ -6407,7 +6609,8 @@
 	          if (!$('#barModalOverlay').hidden) refreshBarModal();
 	          if (!$('#glasswareModalOverlay').hidden) renderGlasswareList();
 	          if (!$('#archiveModalOverlay').hidden) renderArchiveList();
-	          const summary = `Imported ${store.bar.length} My Bar items, ${store.archivedBar.length} archived, ${store.glassware.length} glassware, ${Object.keys(store.bookmarks).length} To Try cocktails, ${Object.keys(store.notes).length} notes, ${Object.keys(store.ratings).length} ratings, ${importedCocktails.length} custom cocktails, ${Object.keys(store.assignments).length} type assignments, and ${store.favoriteGenreFilters.length} favorite genre filters.`;
+	          const friendRatingCount = Object.values(store.friendRatings).reduce((sum, entries) => sum + entries.length, 0);
+	          const summary = `Imported ${store.bar.length} My Bar items, ${store.archivedBar.length} archived, ${store.glassware.length} glassware, ${Object.keys(store.bookmarks).length} To Try cocktails, ${Object.keys(store.notes).length} notes, ${Object.keys(store.ratings).length} personal ratings, ${friendRatingCount} friend ratings, ${importedCocktails.length} custom cocktails, ${Object.keys(store.assignments).length} type assignments, and ${store.favoriteGenreFilters.length} favorite genre filters.`;
 	          if (options.notify !== false) alert(summary);
 	          return summary;
 	        }
@@ -6505,6 +6708,8 @@
     function toggleCocktailExpansion(id) { state.expanded.has(id) ? state.expanded.delete(id) : state.expanded.add(id); }
     let tryPriorityPress = null;
     let suppressTryPriorityClick = {id: '', until: 0};
+    let friendRatingPress = null;
+    let suppressFriendRatingClick = {id: '', until: 0};
     function cancelTryPriorityPress() {
       if (tryPriorityPress?.timer) clearTimeout(tryPriorityPress.timer);
       tryPriorityPress = null;
@@ -6529,6 +6734,35 @@
     document.addEventListener('pointercancel', cancelTryPriorityPress);
     document.addEventListener('contextmenu', (event) => {
       if (event.target.closest('[data-bookmark-id]')) event.preventDefault();
+    });
+    function cancelFriendRatingPress() {
+      if (friendRatingPress?.timer) clearTimeout(friendRatingPress.timer);
+      friendRatingPress = null;
+    }
+    document.addEventListener('pointerdown', (event) => {
+      const stars = event.target.closest('.stars[data-rating-id]');
+      if (!stars || stars.classList.contains('readonly') || event.button > 0) return;
+      cancelFriendRatingPress();
+      const press = {id: stars.dataset.ratingId, x: event.clientX, y: event.clientY, timer: 0};
+      press.timer = setTimeout(() => {
+        suppressFriendRatingClick = {id: press.id, until: Date.now() + 900};
+        openFriendRatings(press.id);
+        friendRatingPress = null;
+      }, 650);
+      friendRatingPress = press;
+    });
+    document.addEventListener('pointermove', (event) => {
+      if (!friendRatingPress) return;
+      if (Math.hypot(event.clientX - friendRatingPress.x, event.clientY - friendRatingPress.y) > 8) cancelFriendRatingPress();
+    });
+    document.addEventListener('pointerup', cancelFriendRatingPress);
+    document.addEventListener('pointercancel', cancelFriendRatingPress);
+    document.addEventListener('contextmenu', (event) => {
+      const stars = event.target.closest('.stars[data-rating-id]');
+      if (!stars || stars.classList.contains('readonly')) return;
+      event.preventDefault();
+      suppressFriendRatingClick = {id: stars.dataset.ratingId, until: Date.now() + 900};
+      openFriendRatings(stars.dataset.ratingId);
     });
     document.addEventListener('click', (event) => {
       const tryPriorityOption = event.target.closest('[data-set-try-priority]');
@@ -6797,11 +7031,19 @@
         const starsWrap = starEl.closest('.stars');
         if (starsWrap && !starsWrap.classList.contains('readonly')) {
           const id = starsWrap.dataset.ratingId;
+          if (suppressFriendRatingClick.id === id && Date.now() < suppressFriendRatingClick.until) {
+            suppressFriendRatingClick = {id: '', until: 0};
+            return;
+          }
+          if (store.ratingView === 'friends') {
+            openFriendRatings(id);
+            return;
+          }
           const idx = Number(starEl.dataset.starIndex);
           const rect = starEl.getBoundingClientRect();
           const isHalf = (event.clientX - rect.left) < rect.width / 2;
           const newValue = isHalf ? idx - 0.5 : idx;
-          const current = getRating({id});
+          const current = getMyRating({id});
           if (current === newValue) delete store.ratings[id];
           else store.ratings[id] = newValue;
           saveCustom();
@@ -6903,7 +7145,7 @@
         }
       }
       if (event.key === 'Escape') {
-	        hideInfoPopover(); hideTryPriorityPopover(); closeVersionModal(); closeNotesModal(); closeCocktailNotes(); closeGlasswareModal(); closeGitHubSyncModal(); closeShoppingListModal(); closeArchiveModal(); closeRemoveBottleModal(); closeCocktailForm(); closeBarModal(); closeInstallModal();
+	        hideInfoPopover(); hideTryPriorityPopover(); closeVersionModal(); closeNotesModal(); closeFriendRatings(); closeCocktailNotes(); closeGlasswareModal(); closeGitHubSyncModal(); closeShoppingListModal(); closeArchiveModal(); closeRemoveBottleModal(); closeCocktailForm(); closeBarModal(); closeInstallModal();
         $('#genreMoreMenu').hidden = true;
         $('#genreMoreButton').setAttribute('aria-expanded', 'false');
         refreshShortcutHints(shortcutModifiersHeld(event));
@@ -6992,6 +7234,28 @@
 	    $('#notesModalClose').addEventListener('click', closeNotesModal);
 	    $('#notesModalOverlay').addEventListener('click', (event) => {
 	      if (event.target === $('#notesModalOverlay')) closeNotesModal();
+	    });
+	    $('#ratingAudienceToggle').addEventListener('click', () => setRatingView(store.ratingView === 'friends' ? 'mine' : 'friends'));
+	    $('#friendRatingsClose').addEventListener('click', closeFriendRatings);
+	    $('#friendRatingsOverlay').addEventListener('click', (event) => {
+	      if (event.target === $('#friendRatingsOverlay')) closeFriendRatings();
+	    });
+	    $('#friendRatingForm').addEventListener('submit', saveFriendRating);
+	    $$('.rating-view-option').forEach((button) => button.addEventListener('click', () => setRatingView(button.dataset.ratingView)));
+	    $('#friendRatingList').addEventListener('click', (event) => {
+	      const edit = event.target.closest('[data-edit-friend-rating]');
+	      if (edit) {
+	        const entry = (store.friendRatings[friendRatingCocktailId] || []).find((item) => item.name === edit.dataset.editFriendRating);
+	        if (entry) {
+	          editingFriendRatingName = entry.name;
+	          $('#friendRatingName').value = entry.name;
+	          $('#friendRatingValue').value = entry.rating;
+	          $('#friendRatingName').focus();
+	        }
+	        return;
+	      }
+	      const remove = event.target.closest('[data-remove-friend-rating]');
+	      if (remove) removeFriendRating(remove.dataset.removeFriendRating);
 	    });
 	    $('#cocktailNotesClose').addEventListener('click', closeCocktailNotes);
 	    $('#cocktailNotesOverlay').addEventListener('click', (event) => {
