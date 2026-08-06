@@ -77,7 +77,6 @@
     }
     @media (min-width: 1101px) {
       .topbar { grid-template-columns: minmax(180px, 1fr) minmax(200px, 340px) minmax(0, 1.3fr) auto; }
-      body:not(.filters-visible) .topbar { grid-template-columns: minmax(180px, 1fr) minmax(240px, 420px) auto; }
     }
     .topbar-actions { display: flex; gap: 8px; align-items: center; }
     .topbar-actions .topbar-meta { max-width: 165px; }
@@ -151,8 +150,6 @@
 	    .filter-summary-toggle { min-width: 0; border: 0; background: transparent; color: inherit; padding: 0; font: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; cursor: pointer; white-space: nowrap; }
 	    .filter-summary-toggle:hover, .filter-summary-toggle[aria-expanded="true"] { color: var(--accent); }
 	    .meta-sep { margin: 0 6px; color: var(--faint); }
-      body:not(.filters-visible) #topbarQuickFilterSlot,
-      body:not(.filters-visible) .filters,
       body:not(.filters-visible) #pillFilters { display: none !important; }
     main { width: calc(100vw - 24px); margin: 0 auto; padding: 12px 0 36px; }
         .filters { min-width: 0; margin-bottom: 8px; }
@@ -847,14 +844,44 @@
     .sync-see-changes { flex: 0 0 auto; min-height: 28px; padding: 4px 9px; border-color: var(--danger); color: #F0C8CB; background: rgba(255,255,255,.035); }
     .sync-status.success { border-color: var(--success); color: #DCEBE3; background: var(--success-soft); }
     .sync-status.error { border-color: var(--danger); color: #F0C8CB; background: var(--danger-soft); }
-    .sync-changes-panel { display: grid; gap: 8px; max-height: 260px; overflow-y: auto; padding: 10px; border: 1px solid var(--danger); border-radius: 6px; background: #100D12; }
+    .sync-changes-panel { display: grid; gap: 10px; max-height: min(68dvh, 680px); overflow-y: auto; padding: 10px; border: 1px solid var(--danger); border-radius: 6px; background: #100D12; }
     .sync-changes-header { position: sticky; top: -10px; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: -10px -10px 0; padding: 8px 10px; background: #18121A; border-bottom: 1px solid var(--line); }
     .sync-changes-header strong { font-size: 12px; }
     .sync-changes-header .button.icon { width: 26px; height: 26px; min-height: 0; }
-    .sync-change-list { display: grid; gap: 6px; }
-    .sync-change-row { display: grid; gap: 2px; padding: 7px 8px; border: 1px solid var(--line-soft); border-radius: 5px; background: #0C1118; }
-    .sync-change-row strong { color: var(--text); font-size: 11px; }
-    .sync-change-row span { color: var(--muted); font-size: 10px; overflow-wrap: anywhere; }
+    .sync-change-list { display: grid; gap: 10px; }
+    .sync-diff-intro { display: grid; gap: 8px; }
+    .sync-diff-intro p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.45; }
+    .sync-diff-direction { padding: 7px 9px; border-left: 3px solid var(--danger); background: rgba(185, 79, 85, .08); color: #F0C8CB !important; }
+    .sync-diff-snapshots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+    .sync-diff-snapshot { display: grid; gap: 2px; padding: 8px 9px; border: 1px solid var(--line-soft); border-radius: 5px; background: #0C1118; }
+    .sync-diff-snapshot strong { color: var(--text); font-size: 11px; }
+    .sync-diff-snapshot span { color: var(--muted); font-size: 10px; overflow-wrap: anywhere; }
+    .sync-diff-total { display: flex; flex-wrap: wrap; gap: 5px; }
+    .sync-diff-badge { display: inline-flex; align-items: center; min-height: 20px; padding: 2px 7px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); background: #0C1118; font-size: 9px; font-weight: 750; white-space: nowrap; }
+    .sync-diff-badge.device-only { border-color: var(--success); color: #B9D8C7; background: var(--success-soft); }
+    .sync-diff-badge.github-only { border-color: var(--accent-2); color: #B9D3DD; background: var(--accent-2-soft); }
+    .sync-diff-badge.changed { border-color: var(--accent); color: #E0BD72; background: rgba(194, 154, 82, .1); }
+    .sync-diff-section { border: 1px solid var(--line-soft); border-radius: 6px; background: #0C1118; overflow: hidden; }
+    .sync-diff-section > summary { display: flex; align-items: center; gap: 8px; min-height: 38px; padding: 7px 9px; cursor: pointer; list-style: none; }
+    .sync-diff-section > summary::-webkit-details-marker { display: none; }
+    .sync-diff-section > summary::before { content: '\25B8'; color: var(--faint); font-size: 10px; transform-origin: center; }
+    .sync-diff-section[open] > summary::before { transform: rotate(90deg); }
+    .sync-diff-section-title { flex: 1 1 auto; min-width: 0; color: var(--text); font-size: 11px; font-weight: 750; }
+    .sync-diff-section-count { color: var(--faint); font-size: 9px; white-space: nowrap; }
+    .sync-diff-section-badges { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 4px; }
+    .sync-diff-items { display: grid; border-top: 1px solid var(--line-soft); }
+    .sync-diff-item { display: grid; gap: 7px; padding: 8px 9px; border-bottom: 1px solid var(--line-soft); }
+    .sync-diff-item:last-child { border-bottom: 0; }
+    .sync-diff-item-head { display: flex; align-items: center; gap: 8px; min-width: 0; }
+    .sync-diff-item-name { flex: 1 1 auto; min-width: 0; color: var(--text); font-size: 11px; font-weight: 700; overflow-wrap: anywhere; }
+    .sync-diff-fields { display: grid; gap: 5px; }
+    .sync-diff-field { display: grid; grid-template-columns: minmax(90px, .55fr) minmax(0, 1fr) minmax(0, 1fr); gap: 6px; align-items: start; }
+    .sync-diff-field-label { padding-top: 5px; color: var(--faint); font-size: 9px; font-weight: 700; text-transform: uppercase; }
+    .sync-diff-value { min-height: 26px; padding: 5px 6px; border: 1px solid var(--line-soft); border-radius: 4px; background: #080B10; color: var(--muted); font-size: 10px; line-height: 1.4; white-space: pre-wrap; overflow-wrap: anywhere; }
+    .sync-diff-value::before { display: block; margin-bottom: 2px; color: var(--faint); font-size: 8px; font-weight: 750; text-transform: uppercase; }
+    .sync-diff-value.device::before { content: 'This Device'; }
+    .sync-diff-value.github::before { content: 'GitHub'; }
+    .sync-diff-value.missing { color: var(--faint); font-style: italic; }
     .sync-actions { display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 8px; }
     .sync-actions .button.primary { margin-left: 0; }
     .sync-settings-actions { display: flex; justify-content: flex-end; gap: 8px; }
@@ -1381,6 +1408,13 @@
       .sync-actions #githubSyncCloseAction { flex-basis: 100%; }
       .sync-actions .button.primary { margin-left: 0; }
       #githubSyncNow, #githubDownloadLatest { height: 44px; gap: 7px; padding-inline: 8px; font-size: 12px; white-space: nowrap; }
+      .sync-changes-panel { max-height: 62dvh; }
+      .sync-diff-snapshots { grid-template-columns: 1fr; }
+      .sync-diff-section > summary { align-items: flex-start; flex-wrap: wrap; }
+      .sync-diff-section-title { min-width: 130px; }
+      .sync-diff-section-count { order: 3; width: 100%; padding-left: 18px; }
+      .sync-diff-field { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .sync-diff-field-label { grid-column: 1 / -1; padding-top: 0; }
       .serving-stepper button { width: 44px; height: 44px; font-size: 20px; }
       .serving-count { min-width: 76px; }
       .bookmark-toggle { width: 30px; height: 30px; padding: 7px; touch-action: manipulation; }
@@ -1850,11 +1884,11 @@
           </div>
           <div id="githubSyncStatus" class="sync-status" role="status" aria-live="polite">
             <span id="githubSyncStatusText" class="sync-status-message">Enter your private repository and token to begin.</span>
-            <button id="githubSyncSeeChanges" class="button sync-see-changes" type="button" hidden>See Changes</button>
+            <button id="githubSyncSeeChanges" class="button sync-see-changes" type="button" hidden>Compare Copies</button>
           </div>
           <section id="githubSyncChangesPanel" class="sync-changes-panel" aria-labelledby="githubSyncChangesTitle" hidden>
             <div class="sync-changes-header">
-              <strong id="githubSyncChangesTitle">Changes on both copies</strong>
+              <strong id="githubSyncChangesTitle">Compare This Device and GitHub</strong>
               <button id="githubSyncChangesClose" class="button icon" type="button" aria-label="Close changes">×</button>
             </div>
             <div id="githubSyncChangesList" class="sync-change-list"></div>
@@ -2059,7 +2093,7 @@
   <button id="floatingResetButton" class="button icon" type="button" title="Reset filters and collapse cocktails" aria-label="Reset filters and collapse cocktails" hidden>↺</button>
   <button id="githubSyncButton" class="button icon" type="button" title="Set up GitHub Sync" aria-label="Set up GitHub Sync" aria-haspopup="dialog" data-sync-state="setup"><span id="githubSyncGlyph"></span></button>
   <script>
-    const BUILD_VERSION = '1.0.1.36';
+    const BUILD_VERSION = '1.0.1.37';
 	    const __ARROW_UP_AND_DOWN_SQUARE_FILL = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24.1846 23.8281"><g><rect height="23.8281" opacity="0" width="24.1846" x="0" y="0"/><path d="M23.8232 4.26758L23.8232 19.5605C23.8232 22.3193 22.3145 23.8232 19.5264 23.8232L4.29199 23.8232C1.50879 23.8232 0 22.3291 0 19.5605L0 4.26758C0 1.49902 1.50879 0 4.29199 0L19.5264 0C22.3145 0 23.8232 1.50391 23.8232 4.26758ZM11.0107 4.45312L7.56836 7.97363C7.33398 8.20312 7.22656 8.48145 7.22656 8.7793C7.22656 9.38477 7.68555 9.80957 8.30566 9.80957C8.64746 9.80957 8.96484 9.65332 9.13574 9.40918L9.80469 8.72559L10.8753 7.30769L10.7812 9.80469L10.7812 14.0039L10.8755 16.506L9.80469 15.0879L9.13574 14.4092C8.96484 14.1553 8.64746 14.0039 8.30566 14.0039C7.68555 14.0039 7.22656 14.4287 7.22656 15.0342C7.22656 15.332 7.33398 15.6055 7.56836 15.8398L11.0107 19.3604C11.2744 19.6484 11.5967 19.8047 11.9873 19.8047C12.3828 19.8047 12.7051 19.6484 12.9736 19.3604L16.4111 15.8398C16.6504 15.6006 16.7529 15.332 16.7529 15.0342C16.7529 14.4287 16.2988 14.0039 15.6689 14.0039C15.3271 14.0039 15.0146 14.1553 14.8438 14.4092L14.1748 15.0879L13.1041 16.5027L13.1982 14.0039L13.1982 9.80469L13.1043 7.31102L14.1748 8.72559L14.8438 9.40918C15.0146 9.65332 15.3271 9.80957 15.6689 9.80957C16.2988 9.80957 16.7529 9.38477 16.7529 8.7793C16.7529 8.48145 16.6504 8.20801 16.4111 7.97363L12.9736 4.45312C12.7051 4.16992 12.3828 4.00879 11.9873 4.00879C11.5967 4.00879 11.2744 4.16992 11.0107 4.45312Z"/></g></svg>`;
 	    const __ARROW_UP_SQUARE_FILL = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24.1846 23.8281"><g><rect height="23.8281" opacity="0" width="24.1846" x="0" y="0"/><path d="M23.8232 4.26758L23.8232 19.5605C23.8232 22.3193 22.3145 23.8232 19.5264 23.8232L4.29199 23.8232C1.50879 23.8232 0 22.3291 0 19.5605L0 4.26758C0 1.49902 1.50879 0 4.29199 0L19.5264 0C22.3145 0 23.8232 1.50391 23.8232 4.26758ZM10.874 5.55664L6.49414 9.78027C6.24512 10.0293 6.1084 10.293 6.1084 10.6543C6.1084 11.3428 6.67969 11.8359 7.32422 11.8359C7.68066 11.8359 8.01758 11.6895 8.25684 11.4258L10 9.58984L10.6642 8.73089L10.5664 10.5762L10.5664 17.3486C10.5664 18.0957 11.2012 18.7402 11.9824 18.7402C12.7734 18.7402 13.3936 18.0957 13.3936 17.3486L13.3936 10.5762L13.2988 8.7285L13.9648 9.58984L15.7031 11.4258C15.9424 11.6895 16.2744 11.8359 16.6309 11.8359C17.2705 11.8359 17.8564 11.3428 17.8564 10.6543C17.8564 10.293 17.7148 10.0293 17.4707 9.78027L13.0908 5.55664C12.7197 5.2002 12.3584 5.07324 11.9824 5.07324C11.6016 5.07324 11.2451 5.2002 10.874 5.55664Z"/></g></svg>`;
 	    const __ARROW_DOWN_APP_FILL = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24.0576 23.7305"><g><rect height="23.7305" opacity="0" width="24.0576" x="0" y="0"/><path d="M21.8799 1.81152C23.0664 2.9834 23.6963 4.7168 23.6963 6.92383L23.6963 16.7822C23.6963 18.9893 23.0615 20.7275 21.8799 21.8994C20.7227 23.0615 18.9844 23.7061 16.7725 23.7061L6.92383 23.7061C4.7168 23.7061 2.97852 23.0664 1.81641 21.8994C0.629883 20.7227 0 18.9893 0 16.7822L0 6.92383C0 4.7168 0.634766 2.97852 1.81641 1.81152C2.97363 0.649414 4.7168 0 6.92383 0L16.7725 0C18.9844 0 20.7178 0.634766 21.8799 1.81152ZM10.4346 6.41113L10.4346 13.1836L10.5323 15.0269L9.86328 14.165L8.125 12.3291C7.88574 12.0703 7.54883 11.9238 7.19238 11.9238C6.54785 11.9238 5.97168 12.4121 5.97168 13.1006C5.97168 13.4619 6.11328 13.7256 6.35742 13.9746L10.7373 18.1982C11.1133 18.5596 11.4648 18.6865 11.8506 18.6865C12.2266 18.6865 12.5879 18.5596 12.9541 18.1982L17.334 13.9746C17.583 13.7256 17.7197 13.4619 17.7197 13.1006C17.7197 12.4121 17.1338 11.9238 16.4941 11.9238C16.1426 11.9238 15.8105 12.0703 15.5713 12.3291L13.833 14.165L13.1654 15.0284L13.2568 13.1836L13.2568 6.41113C13.2568 5.65918 12.6367 5.01953 11.8506 5.01953C11.0645 5.01953 10.4346 5.65918 10.4346 6.41113Z"/></g></svg>`;
@@ -2614,7 +2648,7 @@
     function setFiltersVisible(visible) {
       document.body.classList.toggle('filters-visible', visible);
       $('#filterSummaryToggle').setAttribute('aria-expanded', String(visible));
-      $('#filterSummaryToggle').setAttribute('aria-label', `${visible ? 'Hide' : 'Show'} cocktail filters`);
+      $('#filterSummaryToggle').setAttribute('aria-label', `${visible ? 'Hide' : 'Show'} detailed cocktail filters`);
       setMobileAdvancedFiltersExpanded(visible && window.matchMedia('(max-width: 760px)').matches);
       if (!visible) {
         $('#genreMoreMenu').hidden = true;
@@ -5755,50 +5789,121 @@
 	          if (value && typeof value === 'object') return value.name || value.type || value.id || key;
 	          return COCKTAILS.find((cocktail) => cocktail.id === key)?.name || key;
 	        }
-	        function syncChangeDetails(localValue, remoteValue) {
-	          if (Array.isArray(localValue) || Array.isArray(remoteValue)) {
-	            const localItems = Array.isArray(localValue) ? localValue : [];
-	            const remoteItems = Array.isArray(remoteValue) ? remoteValue : [];
-	            const itemKey = (value, index) => value && typeof value === 'object' ? String(value.id || value.name || index) : String(value);
-	            const localMap = new Map(localItems.map((value, index) => [itemKey(value, index), value]));
-	            const remoteMap = new Map(remoteItems.map((value, index) => [itemKey(value, index), value]));
-	            const deviceOnly = [...localMap.keys()].filter((key) => !remoteMap.has(key)).map((key) => syncChangeItemLabel(key, localMap.get(key)));
-	            const githubOnly = [...remoteMap.keys()].filter((key) => !localMap.has(key)).map((key) => syncChangeItemLabel(key, remoteMap.get(key)));
-	            const edited = [...localMap.keys()].filter((key) => remoteMap.has(key) && stableJson(localMap.get(key)) !== stableJson(remoteMap.get(key))).map((key) => syncChangeItemLabel(key, localMap.get(key)));
-	            return {deviceCount: localItems.length, githubCount: remoteItems.length, deviceOnly, githubOnly, edited};
+	        const SYNC_CHANGE_DESCRIPTORS = [
+	          ['bar', 'My Bar'], ['glassware', 'Drinkware'],
+	          ['customCocktails', 'Custom Cocktails'], ['notes', 'Cocktail Notes'], ['ratings', 'Ratings'],
+	          ['bookmarks', 'Try Priorities'], ['typeAssignments', 'Type Assignments'],
+	          ['customTypes', 'Custom Types'], ['favoriteGenreFilters', 'Favorite Filters'], ['appNotes', 'App Notes']
+	        ];
+	        function syncFieldLabel(key) {
+	          const labels = {
+	            abv: 'ABV', id: 'ID', url: 'URL', totalWineUrl: 'Total Wine URL', totalWineLocation: 'Location',
+	            useInCocktails: 'Mix Use', neatPour: 'Neat Pour', smallSizeAvailable: '375 ml Available',
+	            baseLiquor: 'Base Liquor', ingredientNames: 'Ingredients', sourceNote: 'Source Note',
+	            dateAdded: 'Date Added', dateRemoved: 'Date Removed', image: 'Picture', shoppingList: 'Grocery List'
+	          };
+	          if (labels[key]) return labels[key];
+	          return String(key).replace(/([a-z0-9])([A-Z])/g, '$1 $2').replace(/[_-]+/g, ' ').replace(/\b\w/g, (letter) => letter.toUpperCase());
+	        }
+	        function syncDisplayValue(value, field = '') {
+	          if (value === undefined) return 'Not present';
+	          if (value === null || value === '') return 'None';
+	          if (typeof value === 'boolean') return value ? 'Yes' : 'No';
+	          if (field === 'image' && typeof value === 'string') {
+	            if (/^data:image\//i.test(value)) return `Attached image (${Math.max(1, Math.round(value.length / 1024))} KB)`;
+	            return value;
 	          }
-	          if ((localValue && typeof localValue === 'object') || (remoteValue && typeof remoteValue === 'object')) {
-	            const localMap = localValue && typeof localValue === 'object' ? localValue : {};
-	            const remoteMap = remoteValue && typeof remoteValue === 'object' ? remoteValue : {};
-	            const localKeys = Object.keys(localMap);
-	            const remoteKeys = Object.keys(remoteMap);
-	            const deviceOnly = localKeys.filter((key) => !Object.prototype.hasOwnProperty.call(remoteMap, key)).map((key) => syncChangeItemLabel(key, localMap[key]));
-	            const githubOnly = remoteKeys.filter((key) => !Object.prototype.hasOwnProperty.call(localMap, key)).map((key) => syncChangeItemLabel(key, remoteMap[key]));
-	            const edited = localKeys.filter((key) => Object.prototype.hasOwnProperty.call(remoteMap, key) && stableJson(localMap[key]) !== stableJson(remoteMap[key])).map((key) => syncChangeItemLabel(key, localMap[key]));
-	            return {deviceCount: localKeys.length, githubCount: remoteKeys.length, deviceOnly, githubOnly, edited};
+	          if (Array.isArray(value)) {
+	            if (!value.length) return 'None';
+	            return value.map((item) => item && typeof item === 'object' ? item.name || item.type || JSON.stringify(item) : String(item)).join(', ');
 	          }
-	          return {deviceCount: String(localValue || '').length, githubCount: String(remoteValue || '').length, deviceOnly: [], githubOnly: [], edited: ['Text differs']};
+	          if (value && typeof value === 'object') return JSON.stringify(value, null, 2);
+	          return String(value);
+	        }
+	        function syncCollection(value) {
+	          if (Array.isArray(value)) {
+	            return {
+	              count: value.length,
+	              map: new Map(value.map((item, index) => [item && typeof item === 'object' ? String(item.id || item.name || item.type || index) : String(item), item]))
+	            };
+	          }
+	          if (value && typeof value === 'object') return {count: Object.keys(value).length, map: new Map(Object.entries(value))};
+	          return {count: value === undefined || value === null || value === '' ? 0 : 1, map: new Map([['value', value]])};
+	        }
+	        function syncChangedFields(deviceValue, githubValue, includeAll = false) {
+	          const deviceObject = deviceValue && typeof deviceValue === 'object' && !Array.isArray(deviceValue);
+	          const githubObject = githubValue && typeof githubValue === 'object' && !Array.isArray(githubValue);
+	          if (deviceObject || githubObject) {
+	            const device = deviceObject ? deviceValue : {};
+	            const github = githubObject ? githubValue : {};
+	            return [...new Set([...Object.keys(device), ...Object.keys(github)])]
+	              .filter((key) => includeAll || stableJson(device[key]) !== stableJson(github[key]))
+	              .sort((a, b) => syncFieldLabel(a).localeCompare(syncFieldLabel(b)))
+	              .map((key) => ({label: syncFieldLabel(key), field: key, device: device[key], github: github[key]}));
+	          }
+	          return [{label: 'Value', field: '', device: deviceValue, github: githubValue}];
+	        }
+	        function syncCategoryComparison(key, label, deviceValue, githubValue) {
+	          const device = syncCollection(deviceValue);
+	          const github = syncCollection(githubValue);
+	          const keys = [...new Set([...device.map.keys(), ...github.map.keys()])];
+	          const items = keys.flatMap((itemKey) => {
+	            const hasDevice = device.map.has(itemKey);
+	            const hasGithub = github.map.has(itemKey);
+	            const deviceItem = device.map.get(itemKey);
+	            const githubItem = github.map.get(itemKey);
+	            if (hasDevice && hasGithub && stableJson(deviceItem) === stableJson(githubItem)) return [];
+	            const kind = !hasGithub ? 'device-only' : !hasDevice ? 'github-only' : 'changed';
+	            const labelValue = hasDevice ? deviceItem : githubItem;
+	            return [{
+	              kind,
+	              name: itemKey === 'value' ? label : syncChangeItemLabel(itemKey, labelValue),
+	              fields: syncChangedFields(deviceItem, githubItem, kind !== 'changed')
+	            }];
+	          }).sort((a, b) => a.name.localeCompare(b.name));
+	          const totals = {
+	            deviceOnly: items.filter((item) => item.kind === 'device-only').length,
+	            githubOnly: items.filter((item) => item.kind === 'github-only').length,
+	            changed: items.filter((item) => item.kind === 'changed').length
+	          };
+	          return {key, label, deviceCount: device.count, githubCount: github.count, items, totals};
 	        }
 	        function syncChangeRows(localData, remoteData) {
 	          const local = syncComparableData(localData);
 	          const remote = syncComparableData(remoteData);
-	          const descriptors = [
-	            ['bar', 'My Bar'], ['glassware', 'Drinkware'], ['customCocktails', 'Custom Cocktails'],
-	            ['notes', 'Cocktail Notes'], ['ratings', 'Ratings'], ['bookmarks', 'Try Priorities'],
-	            ['typeAssignments', 'Type Assignments'], ['customTypes', 'Custom Types'],
-	            ['favoriteGenreFilters', 'Favorite Filters'], ['appNotes', 'App Notes']
-	          ];
-	          return descriptors.flatMap(([key, label]) => {
+	          return SYNC_CHANGE_DESCRIPTORS.flatMap(([key, label]) => {
 	            if (stableJson(local[key]) === stableJson(remote[key])) return [];
-	            const details = syncChangeDetails(local[key], remote[key]);
-	            const clips = (items) => items.length ? items.slice(0, 5).join(', ') + (items.length > 5 ? `, +${items.length - 5} more` : '') : '';
-	            const lines = [
-	              details.deviceOnly.length ? `Only on this device: ${clips(details.deviceOnly)}` : '',
-	              details.githubOnly.length ? `Only on GitHub: ${clips(details.githubOnly)}` : '',
-	              details.edited.length ? `Different on both: ${clips(details.edited)}` : ''
-	            ].filter(Boolean);
-	            return [{label, counts: `Device ${details.deviceCount} · GitHub ${details.githubCount}`, lines}];
+	            return [syncCategoryComparison(key, label, local[key], remote[key])];
 	          });
+	        }
+	        function syncDiffBadge(kind, count) {
+	          if (!count) return '';
+	          const labels = { 'device-only': 'Device only', 'github-only': 'GitHub only', changed: 'Changed' };
+	          return `<span class="sync-diff-badge ${kind}">${escapeHtml(labels[kind])} ${count}</span>`;
+	        }
+	        function syncDiffValueMarkup(value, field, side) {
+	          const missing = value === undefined;
+	          return `<div class="sync-diff-value ${side}${missing ? ' missing' : ''}">${escapeHtml(syncDisplayValue(value, field))}</div>`;
+	        }
+	        function syncDiffItemMarkup(item) {
+	          const kindLabels = { 'device-only': 'Device only', 'github-only': 'GitHub only', changed: 'Changed' };
+	          return `<article class="sync-diff-item">
+	            <div class="sync-diff-item-head"><span class="sync-diff-item-name">${escapeHtml(item.name)}</span><span class="sync-diff-badge ${item.kind}">${escapeHtml(kindLabels[item.kind])}</span></div>
+	            <div class="sync-diff-fields">${item.fields.map((field) => `<div class="sync-diff-field"><span class="sync-diff-field-label">${escapeHtml(field.label)}</span>${syncDiffValueMarkup(field.device, field.field, 'device')}${syncDiffValueMarkup(field.github, field.field, 'github')}</div>`).join('')}</div>
+	          </article>`;
+	        }
+	        function syncDiffSectionMarkup(category) {
+	          const totalChanges = category.items.length;
+	          return `<details class="sync-diff-section" open>
+	            <summary><span class="sync-diff-section-title">${escapeHtml(category.label)}</span><span class="sync-diff-section-badges">${syncDiffBadge('device-only', category.totals.deviceOnly)}${syncDiffBadge('github-only', category.totals.githubOnly)}${syncDiffBadge('changed', category.totals.changed)}</span><span class="sync-diff-section-count">Device ${category.deviceCount} · GitHub ${category.githubCount} · ${totalChanges} difference${totalChanges === 1 ? '' : 's'}</span></summary>
+	            <div class="sync-diff-items">${category.items.map(syncDiffItemMarkup).join('')}</div>
+	          </details>`;
+	        }
+	        function syncSnapshotSummary(data, side) {
+	          const comparable = syncComparableData(data);
+	          const build = data?.buildVersion ? `v${data.buildVersion}` : 'Version unknown';
+	          const saved = side === 'github' && data?.exportedAt && !Number.isNaN(Date.parse(data.exportedAt)) ? ` · saved ${new Date(data.exportedAt).toLocaleString()}` : '';
+	          return `${escapeHtml(build + saved)}<br>${comparable.bar.length} bottles · ${comparable.customCocktails.length} custom cocktails · ${comparable.glassware.length} drinkware`;
 	        }
 	        async function showGitHubSyncChanges() {
 	          const panel = $('#githubSyncChangesPanel');
@@ -5813,8 +5918,24 @@
 	              remoteData = remote.data;
 	              Object.assign(githubSyncRuntime, {remoteSha: remote.sha, remoteHash: syncDataFingerprint(remote.data), remoteData: remote.data});
 	            }
-	            const rows = syncChangeRows(userDataSnapshot(), remoteData);
-	            list.innerHTML = rows.length ? rows.map((row) => `<article class="sync-change-row"><strong>${escapeHtml(row.label)} · ${escapeHtml(row.counts)}</strong>${row.lines.map((line) => `<span>${escapeHtml(line)}</span>`).join('')}</article>`).join('') : '<span class="empty">The saved categories currently contain the same data.</span>';
+	            const localData = userDataSnapshot();
+	            const rows = syncChangeRows(localData, remoteData);
+	            const totals = rows.reduce((sum, row) => ({
+	              deviceOnly: sum.deviceOnly + row.totals.deviceOnly,
+	              githubOnly: sum.githubOnly + row.totals.githubOnly,
+	              changed: sum.changed + row.totals.changed
+	            }), {deviceOnly: 0, githubOnly: 0, changed: 0});
+	            const meta = parseStoredJson(GITHUB_SYNC_META_KEY);
+	            const baseline = meta.syncedAt ? `The copies last matched ${new Date(meta.syncedAt).toLocaleString()}. ` : '';
+	            list.innerHTML = `<div class="sync-diff-intro">
+	              <p>${escapeHtml(baseline)}Only differences are listed below; expand or collapse any category.</p>
+	              <div class="sync-diff-snapshots">
+	                <div class="sync-diff-snapshot"><strong>This Device</strong><span>${syncSnapshotSummary(localData, 'device')}</span></div>
+	                <div class="sync-diff-snapshot"><strong>GitHub</strong><span>${syncSnapshotSummary(remoteData, 'github')}</span></div>
+	              </div>
+	              <div class="sync-diff-total">${syncDiffBadge('device-only', totals.deviceOnly)}${syncDiffBadge('github-only', totals.githubOnly)}${syncDiffBadge('changed', totals.changed)}</div>
+	              <p class="sync-diff-direction"><strong>Download Latest</strong> replaces this device with GitHub. <strong>Sync Now</strong> will ask whether to keep this device or GitHub.</p>
+	            </div>${rows.length ? rows.map(syncDiffSectionMarkup).join('') : '<span class="empty">The saved categories currently contain the same data.</span>'}`;
 	          } catch (error) {
 	            list.innerHTML = `<span class="empty">${escapeHtml(error.message || 'Could not compare the two copies.')}</span>`;
 	          }
