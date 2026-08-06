@@ -492,13 +492,23 @@
       padding: 10px 12px;
       font-size: 13px;
       line-height: 1.35;
+      max-height: calc(100dvh - 24px);
+      overflow: auto;
     }
+    .info-popover.has-info-grid { max-width: min(760px, calc(100vw - 24px)); }
     .info-popover strong {
       display: block;
       margin-bottom: 4px;
       font-size: 13px;
     }
     .info-popover > div { white-space: pre-wrap; }
+    .info-popover .vermouth-info-scroll { overflow-x: auto; white-space: normal; }
+    .vermouth-info-grid { display: grid; grid-template-columns: 145px minmax(230px, 2fr) 105px minmax(190px, 1.35fr); min-width: 680px; margin-top: 8px; border: 1px solid var(--line-soft); border-radius: 6px; overflow: hidden; }
+    .vermouth-info-grid > span { padding: 6px 8px; border-right: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
+    .vermouth-info-grid > span:nth-child(4n) { border-right: 0; }
+    .vermouth-info-grid > span:nth-last-child(-n + 4) { border-bottom: 0; }
+    .vermouth-info-grid .info-grid-heading { background: var(--chip); color: var(--muted); font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; }
+    .vermouth-info-grid .info-grid-type { color: var(--accent); font-weight: 700; }
     .info-popover[hidden] { display: none; }
     .modal-overlay {
       position: fixed;
@@ -763,6 +773,12 @@
     .detail-meta-tags .table-type-tag { flex: 0 0 auto; }
     .detail-meta-tags .spirit-tags { min-width: 0; margin: 0; flex-wrap: nowrap; overflow: hidden; }
     .detail-meta-tags .spirit-tag { flex: 0 0 auto; }
+    .detail-notes-header { align-items: flex-start; flex-wrap: nowrap; }
+    .detail-notes-header h3 { flex: 0 0 auto; padding-top: 3px; }
+    .detail-notes-header .detail-meta-tags { flex: 1 1 auto; margin: 0; padding-top: 1px; }
+    .detail-notes-header .detail-card-actions { flex: 0 0 auto; }
+    .detail-notes-header .table-type-tag { min-height: 18px; padding: 1px 6px; font-size: 9px; }
+    .detail-card.detail-notes-card .detail-notes-header .spirit-tag { height: 18px; padding-inline: 6px; font-size: 8px; }
     .table-type-status { margin-left: 5px; padding-left: 5px; border-left: 1px solid currentColor; opacity: .78; font-weight: 650; }
     .detail-card .notes-source { flex-wrap: nowrap; margin-top: 6px; padding-top: 6px; gap: 4px; font-size: 9px; white-space: nowrap; overflow: hidden; }
     .detail-card .notes-source a { flex: 0 0 auto; }
@@ -2185,7 +2201,7 @@
   <button id="floatingResetButton" class="button icon" type="button" title="Reset filters and collapse cocktails" aria-label="Reset filters and collapse cocktails" hidden>↺</button>
   <button id="githubSyncButton" class="button icon" type="button" title="Set up GitHub Sync" aria-label="Set up GitHub Sync" aria-haspopup="dialog" data-sync-state="setup"><span id="githubSyncGlyph"></span></button>
   <script>
-    const BUILD_VERSION = '1.0.1.51';
+    const BUILD_VERSION = '1.0.1.52';
 	    const __ARROW_UP_AND_DOWN_SQUARE_FILL = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24.1846 23.8281"><g><rect height="23.8281" opacity="0" width="24.1846" x="0" y="0"/><path d="M23.8232 4.26758L23.8232 19.5605C23.8232 22.3193 22.3145 23.8232 19.5264 23.8232L4.29199 23.8232C1.50879 23.8232 0 22.3291 0 19.5605L0 4.26758C0 1.49902 1.50879 0 4.29199 0L19.5264 0C22.3145 0 23.8232 1.50391 23.8232 4.26758ZM11.0107 4.45312L7.56836 7.97363C7.33398 8.20312 7.22656 8.48145 7.22656 8.7793C7.22656 9.38477 7.68555 9.80957 8.30566 9.80957C8.64746 9.80957 8.96484 9.65332 9.13574 9.40918L9.80469 8.72559L10.8753 7.30769L10.7812 9.80469L10.7812 14.0039L10.8755 16.506L9.80469 15.0879L9.13574 14.4092C8.96484 14.1553 8.64746 14.0039 8.30566 14.0039C7.68555 14.0039 7.22656 14.4287 7.22656 15.0342C7.22656 15.332 7.33398 15.6055 7.56836 15.8398L11.0107 19.3604C11.2744 19.6484 11.5967 19.8047 11.9873 19.8047C12.3828 19.8047 12.7051 19.6484 12.9736 19.3604L16.4111 15.8398C16.6504 15.6006 16.7529 15.332 16.7529 15.0342C16.7529 14.4287 16.2988 14.0039 15.6689 14.0039C15.3271 14.0039 15.0146 14.1553 14.8438 14.4092L14.1748 15.0879L13.1041 16.5027L13.1982 14.0039L13.1982 9.80469L13.1043 7.31102L14.1748 8.72559L14.8438 9.40918C15.0146 9.65332 15.3271 9.80957 15.6689 9.80957C16.2988 9.80957 16.7529 9.38477 16.7529 8.7793C16.7529 8.48145 16.6504 8.20801 16.4111 7.97363L12.9736 4.45312C12.7051 4.16992 12.3828 4.00879 11.9873 4.00879C11.5967 4.00879 11.2744 4.16992 11.0107 4.45312Z"/></g></svg>`;
 	    const __ARROW_UP_SQUARE_FILL = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24.1846 23.8281"><g><rect height="23.8281" opacity="0" width="24.1846" x="0" y="0"/><path d="M23.8232 4.26758L23.8232 19.5605C23.8232 22.3193 22.3145 23.8232 19.5264 23.8232L4.29199 23.8232C1.50879 23.8232 0 22.3291 0 19.5605L0 4.26758C0 1.49902 1.50879 0 4.29199 0L19.5264 0C22.3145 0 23.8232 1.50391 23.8232 4.26758ZM10.874 5.55664L6.49414 9.78027C6.24512 10.0293 6.1084 10.293 6.1084 10.6543C6.1084 11.3428 6.67969 11.8359 7.32422 11.8359C7.68066 11.8359 8.01758 11.6895 8.25684 11.4258L10 9.58984L10.6642 8.73089L10.5664 10.5762L10.5664 17.3486C10.5664 18.0957 11.2012 18.7402 11.9824 18.7402C12.7734 18.7402 13.3936 18.0957 13.3936 17.3486L13.3936 10.5762L13.2988 8.7285L13.9648 9.58984L15.7031 11.4258C15.9424 11.6895 16.2744 11.8359 16.6309 11.8359C17.2705 11.8359 17.8564 11.3428 17.8564 10.6543C17.8564 10.293 17.7148 10.0293 17.4707 9.78027L13.0908 5.55664C12.7197 5.2002 12.3584 5.07324 11.9824 5.07324C11.6016 5.07324 11.2451 5.2002 10.874 5.55664Z"/></g></svg>`;
 	    const __ARROW_DOWN_APP_FILL = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24.0576 23.7305"><g><rect height="23.7305" opacity="0" width="24.0576" x="0" y="0"/><path d="M21.8799 1.81152C23.0664 2.9834 23.6963 4.7168 23.6963 6.92383L23.6963 16.7822C23.6963 18.9893 23.0615 20.7275 21.8799 21.8994C20.7227 23.0615 18.9844 23.7061 16.7725 23.7061L6.92383 23.7061C4.7168 23.7061 2.97852 23.0664 1.81641 21.8994C0.629883 20.7227 0 18.9893 0 16.7822L0 6.92383C0 4.7168 0.634766 2.97852 1.81641 1.81152C2.97363 0.649414 4.7168 0 6.92383 0L16.7725 0C18.9844 0 20.7178 0.634766 21.8799 1.81152ZM10.4346 6.41113L10.4346 13.1836L10.5323 15.0269L9.86328 14.165L8.125 12.3291C7.88574 12.0703 7.54883 11.9238 7.19238 11.9238C6.54785 11.9238 5.97168 12.4121 5.97168 13.1006C5.97168 13.4619 6.11328 13.7256 6.35742 13.9746L10.7373 18.1982C11.1133 18.5596 11.4648 18.6865 11.8506 18.6865C12.2266 18.6865 12.5879 18.5596 12.9541 18.1982L17.334 13.9746C17.583 13.7256 17.7197 13.4619 17.7197 13.1006C17.7197 12.4121 17.1338 11.9238 16.4941 11.9238C16.1426 11.9238 15.8105 12.0703 15.5713 12.3291L13.833 14.165L13.1654 15.0284L13.2568 13.1836L13.2568 6.41113C13.2568 5.65918 12.6367 5.01953 11.8506 5.01953C11.0645 5.01953 10.4346 5.65918 10.4346 6.41113Z"/></g></svg>`;
@@ -2212,7 +2228,7 @@
           Tequila: ['Blanco (Silver/Plata)','Mezcal','Joven (Gold/Oro)','Reposado (Rested)','Añejo (Aged)','Extra Añejo (Ultra Aged)'],
           Whiskey: ['Scotch, Highlands','Scotch, Lowlands','Scotch, Campbeltown','Scotch, Speyside','Scotch, Islands (Orkney)','Scotch, Islands (Skye)','Scotch, Islay (Smokey)','Scotch, Blended','Scotch, Single Malt','Japanese','Irish','Canadian','American','Bourbon','Rye'],
           Rum: ['White','Gold','Dark','Spiced','Overproof','Aged/Vintage'],
-          Vermouth: ['Vermouth, Sweet (Italian/Rosso)','Vermouth, Dry (French)','Vermouth, Bittersweet','Vermouth, Rosé','Vermouth, Bianco (Blanc)','Vermouth, Ambrato (Amber)'],
+          Vermouth: ['Vermouth, Sweet (Italian/Rosso)','Vermouth, Dry (French)','Vermouth, Extra Dry','Vermouth, Bittersweet','Vermouth, Rosé','Vermouth, Bianco (Blanc)','Vermouth, Ambrato (Amber)'],
           Brandy: ['Cognac','Armagnac','Calvados','Pisco','Brandy de Jerez','Fruit Brandies (Eau-de-Vie)','Grappa','Other Brandy'],
           Wine: ['Red','White','Rosé','Sparkling','Aromatized/Aperitif','Dessert/Fortified Wine'],
           Beer: ['Ales','Lagers','Cider/Mead','Specialty/Sour'],
@@ -2274,6 +2290,15 @@
           Flavorings: 'Cocktail bitters, syrups, and sweeteners kept as prepared bottles in the bar.',
           Other: 'A base that does not fit the standard spirit, wine, or beer families.'
         };
+        const VERMOUTH_INFO_ROWS = [
+          {type:'Dry (French)', flavor:'Crisp, herbal, lightly bitter, low sweetness', color:'Pale straw', uses:'Martini, Bamboo, cooking'},
+          {type:'Sweet (Italian/Rosso)', flavor:'Rich, sweet, spicy, vanilla, caramel', color:'Reddish-brown', uses:'Manhattan, Negroni, Boulevardier'},
+          {type:'Bittersweet', flavor:'Balanced sweetness with pronounced bitter herbs, citrus peel, gentian, and spice', color:'Amber to deep red', uses:'Variations (can be sweet vermouth plus bitter aromatics)'},
+          {type:'Bianco (Blanc)', flavor:'Sweeter than dry, lighter than rosso, floral and vanilla notes', color:'Pale gold', uses:'Served over ice, spritzes, lighter cocktails'},
+          {type:'Rosé', flavor:'Fruity, floral, balanced sweetness', color:'Pink', uses:'Spritzes, modern cocktails'},
+          {type:'Extra Dry', flavor:'Very dry, minimal sweetness', color:'Pale', uses:'Very dry Martinis'},
+          {type:'Ambrato (Amber)', flavor:'Herbal with honey, dried fruit, and spice', color:'Amber', uses:'Sipping or specialty cocktails'}
+        ];
         const SUBTYPE_INFO = {
           'Vodka::Plain': 'Clean, neutral, and clear. Distilled to high purity, it is highly versatile and the standard base for most cocktails.',
           'Vodka::Flavored/Infused': 'Enhanced with natural or artificial ingredients. Flavored vodkas use added flavorings, while infused vodkas are steeped with real fruits, herbs, or spices.',
@@ -2316,12 +2341,13 @@
           'Brandy::Fruit Brandies (Eau-de-Vie)': 'Unaged distillates made from fruits like cherries, plums, and apples.',
           'Brandy::Grappa': 'An Italian pomace brandy distilled from leftover grape skins, seeds, and stems.',
           'Brandy::Other Brandy': 'A general grape or fruit brandy that does not belong to one of the protected regional categories.',
-          'Vermouth::Vermouth, Sweet (Italian/Rosso)': 'Dark red to amber, sweet, and rich with spices, caramel, and vanilla notes. Foundational in Manhattans and Negronis.',
-          'Vermouth::Vermouth, Dry (French)': 'Typically pale and crisp with low residual sugar, and the essential backbone of a classic Martini.',
-          'Vermouth::Vermouth, Bittersweet': 'A sweet vermouth with a more pronounced bitter edge, bridging classic rosso vermouth and amaro.',
-          'Vermouth::Vermouth, Rosé': 'A pink vermouth combining light fruit notes with a refreshing bitter-herbal balance.',
-          'Vermouth::Vermouth, Bianco (Blanc)': 'Pale, clear, and sweeter than dry vermouth, with a silky, floral finish.',
-          'Vermouth::Vermouth, Ambrato (Amber)': 'A golden, aromatic style balancing floral and citrus notes with a pleasantly bitter finish.',
+          'Vermouth::Vermouth, Sweet (Italian/Rosso)': 'Rich, sweet, spicy, with vanilla and caramel notes. Reddish-brown. Common in the Manhattan, Negroni, and Boulevardier.',
+          'Vermouth::Vermouth, Dry (French)': 'Crisp, herbal, lightly bitter, and low in sweetness. Pale straw. Common in the Martini, Bamboo, and cooking.',
+          'Vermouth::Vermouth, Extra Dry': 'Very dry with minimal sweetness. Pale. Used for very dry Martinis.',
+          'Vermouth::Vermouth, Bittersweet': 'Balanced sweetness with pronounced bitter herbs, citrus peel, gentian, and spice. Amber to deep red. Can be approximated with sweet vermouth plus bitter aromatics.',
+          'Vermouth::Vermouth, Rosé': 'Fruity and floral with balanced sweetness. Pink. Common in spritzes and modern cocktails.',
+          'Vermouth::Vermouth, Bianco (Blanc)': 'Sweeter than dry and lighter than rosso, with floral and vanilla notes. Pale gold. Served over ice or used in spritzes and lighter cocktails.',
+          'Vermouth::Vermouth, Ambrato (Amber)': 'Herbal with honey, dried fruit, and spice. Amber. Suited to sipping and specialty cocktails.',
           'Wine::Red': 'Made from dark-colored grapes fermented with their skins, giving red wines color, structure, and tannins.',
           'Wine::White': 'Produced from green or yellow grapes, typically without skin contact. Ranges from crisp and dry to rich and creamy.',
           'Wine::Rosé': 'Made with brief red grape skin contact, creating a pink hue and a light red-fruit profile.',
@@ -2433,6 +2459,8 @@
           'Italian Vermouth': 'Vermouth, Sweet (Italian/Rosso)',
           'Dry Vermouth': 'Vermouth, Dry (French)',
           'French Vermouth': 'Vermouth, Dry (French)',
+          'Extra Dry Vermouth': 'Vermouth, Extra Dry',
+          'Vermouth Extra Dry': 'Vermouth, Extra Dry',
           'Bittersweet Vermouth': 'Vermouth, Bittersweet',
           'Rosé Vermouth': 'Vermouth, Rosé',
           'Rose Vermouth': 'Vermouth, Rosé',
@@ -2525,6 +2553,7 @@
       'Sweet': 'Vermouth, Sweet (Italian/Rosso)',
       'Dry': 'Vermouth, Dry (French)',
       'Dry (French)': 'Vermouth, Dry (French)',
+      'Extra Dry': 'Vermouth, Extra Dry',
       'Bittersweet': 'Vermouth, Bittersweet',
       'Rosé': 'Vermouth, Rosé',
       'Rose': 'Vermouth, Rosé',
@@ -2941,7 +2970,9 @@
           }
           if (cocktail.baseLiquor.includes('Vermouth')) {
             const isBittersweetVermouth = textHas(text, 'bittersweet vermouth') || textHas(text, 'vermouth bittersweet') || textHas(text, 'punt e mes');
-            if (textHas(text, 'dry vermouth') || textHas(text, 'french vermouth') || textHas(text, 'vermouth dry french')) add('Vermouth', 'Vermouth, Dry (French)');
+            const isExtraDryVermouth = textHas(text, 'extra dry vermouth') || textHas(text, 'vermouth extra dry');
+            if (isExtraDryVermouth) add('Vermouth', 'Vermouth, Extra Dry');
+            else if (textHas(text, 'dry vermouth') || textHas(text, 'french vermouth') || textHas(text, 'vermouth dry french')) add('Vermouth', 'Vermouth, Dry (French)');
             if (isBittersweetVermouth) add('Vermouth', 'Vermouth, Bittersweet');
             else if (textHas(text, 'sweet vermouth') || textHas(text, 'sweet red vermouth') || textHas(text, 'rosso vermouth') || textHas(text, 'italian vermouth') || textHas(text, 'vermouth sweet italian rosso')) add('Vermouth', 'Vermouth, Sweet (Italian/Rosso)');
             if (textHas(text, 'bianco vermouth') || textHas(text, 'blanc vermouth') || textHas(text, 'vermouth bianco blanc')) add('Vermouth', 'Vermouth, Bianco (Blanc)');
@@ -3704,7 +3735,8 @@
     }
     function pill(label, count, active, cls, value, info = '') {
       const infoText = String(info || '').trim();
-      const infoButton = infoText ? `<button class="info-button ${cls}" type="button" data-info-title="${escapeHtml(label)}" data-info="${escapeHtml(infoText)}" aria-label="${escapeHtml(`About ${label}`)}" aria-expanded="false" aria-controls="infoPopover">i</button>` : '';
+      const infoTable = label === 'Vermouth' ? ' data-info-table="vermouth"' : '';
+      const infoButton = infoText ? `<button class="info-button ${cls}" type="button" data-info-title="${escapeHtml(label)}" data-info="${escapeHtml(infoText)}"${infoTable} aria-label="${escapeHtml(`About ${label}`)}" aria-expanded="false" aria-controls="infoPopover">i</button>` : '';
       return `<span class="pill-wrap"><button class="pill ${cls} ${active ? 'active' : ''}" type="button" data-value="${escapeHtml(value || label)}"><span>${escapeHtml(label)}</span><span class="count">${count}</span></button>${infoButton}</span>`;
     }
     function hideInfoPopover() {
@@ -3717,7 +3749,11 @@
       const popover = $('#infoPopover');
       const title = button.dataset.infoTitle || 'Info';
       const text = button.dataset.info || '';
-      popover.innerHTML = `<strong>${escapeHtml(title)}</strong><div>${escapeHtml(text)}</div>`;
+      const vermouthGrid = button.dataset.infoTable === 'vermouth'
+        ? `<div class="vermouth-info-scroll"><div class="vermouth-info-grid" role="table" aria-label="Vermouth styles"><span class="info-grid-heading" role="columnheader">Type</span><span class="info-grid-heading" role="columnheader">Flavor Profile</span><span class="info-grid-heading" role="columnheader">Color</span><span class="info-grid-heading" role="columnheader">Common Uses</span>${VERMOUTH_INFO_ROWS.map((row) => `<span class="info-grid-type" role="cell">${escapeHtml(row.type)}</span><span role="cell">${escapeHtml(row.flavor)}</span><span role="cell">${escapeHtml(row.color)}</span><span role="cell">${escapeHtml(row.uses)}</span>`).join('')}</div></div>`
+        : '';
+      popover.classList.toggle('has-info-grid', Boolean(vermouthGrid));
+      popover.innerHTML = `<strong>${escapeHtml(title)}</strong><div>${escapeHtml(text)}</div>${vermouthGrid}`;
       popover.hidden = false;
       $$('[data-info][aria-expanded="true"]').forEach((item) => {
         if (item !== button) item.setAttribute('aria-expanded', 'false');
@@ -3941,7 +3977,7 @@
 	            </section>
 	            <section class="detail-card"><h3>Method</h3><ol>${c.method.length ? c.method.map((x) => `<li>${escapeHtml(formatMethodLine(x))}</li>`).join('') : '<li class="empty">Not recorded yet</li>'}</ol></section>
 	          </div>
-	          <section class="detail-card detail-notes-card"><div class="detail-card-header"><h3>Notes</h3><div class="detail-card-actions">${editButton}<button class="button icon notes-popout-button" type="button" data-popout-note="${escapeHtml(c.id)}" title="Expand notes" aria-label="Expand notes for ${escapeHtml(c.name)}">↗</button></div></div><div class="detail-meta-tags">${compactTypeTag(c, true)}${spiritTags(c)}</div><textarea class="text-area" data-note-id="${escapeHtml(c.id)}" placeholder="Add a note">${escapeHtml(noteValue)}</textarea><div class="source-line notes-source">${sourceLine}</div></section>
+	          <section class="detail-card detail-notes-card"><div class="detail-card-header detail-notes-header"><h3>Notes</h3><div class="detail-meta-tags">${compactTypeTag(c, true)}${spiritTags(c)}</div><div class="detail-card-actions">${editButton}<button class="button icon notes-popout-button" type="button" data-popout-note="${escapeHtml(c.id)}" title="Expand notes" aria-label="Expand notes for ${escapeHtml(c.name)}">↗</button></div></div><textarea class="text-area" data-note-id="${escapeHtml(c.id)}" placeholder="Add a note">${escapeHtml(noteValue)}</textarea><div class="source-line notes-source">${sourceLine}</div></section>
 	          ${relatedCard(c)}
 	        </div>
 	      </div></td></tr>`;
@@ -4734,6 +4770,7 @@
 	          if (has('aged rum', 'vintage rum')) return {base: 'Rum', subtype: 'Aged/Vintage'};
 	          if (has('rum', 'cachaca', 'aguardiente')) return {base: 'Rum', subtype: 'White'};
 	          if (has('punt e mes', 'bittersweet vermouth', 'vermouth bittersweet')) return {base: 'Vermouth', subtype: 'Vermouth, Bittersweet'};
+	          if (has('extra dry vermouth', 'vermouth extra dry')) return {base: 'Vermouth', subtype: 'Vermouth, Extra Dry'};
 	          if (has('ambrato vermouth', 'amber vermouth', 'vermouth ambrato', 'vermouth amber')) return {base: 'Vermouth', subtype: 'Vermouth, Ambrato (Amber)'};
 	          if (has('bianco vermouth', 'blanc vermouth', 'vermouth bianco', 'vermouth blanc')) return {base: 'Vermouth', subtype: 'Vermouth, Bianco (Blanc)'};
 	          if (has('rose vermouth', 'rosé vermouth', 'vermouth rose', 'vermouth rosé')) return {base: 'Vermouth', subtype: 'Vermouth, Rosé'};
