@@ -711,13 +711,16 @@
     .detail-facts-list div { min-width: 0; }
     .detail-facts-list dt { color: var(--muted); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
     .detail-facts-list dd { margin: 2px 0 0; color: var(--text); overflow-wrap: anywhere; }
-    .detail-ingredient-button { display: grid; grid-template-columns: 2.35em 1.25em minmax(0, 1fr); align-items: baseline; column-gap: 2px; width: 100%; color: var(--text); text-align: left; font: inherit; line-height: inherit; }
-    .detail-ingredient-button:has(.ingredient-unit-compact) { grid-template-columns: 2.35em 3.65em minmax(0, 1fr); }
+    .detail-ingredient-button { display: grid; grid-template-columns: 5.6em minmax(0, 1fr); align-items: baseline; column-gap: 4px; width: 100%; color: var(--text); text-align: left; font: inherit; line-height: inherit; }
     .detail-ingredient-line { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 6px; }
-    .ingredient-amount { display: inline-flex; align-items: center; gap: 2px; min-height: 1em; text-align: left; font-variant-numeric: tabular-nums; white-space: nowrap; }
-    .ingredient-amount-fraction { justify-content: flex-end; text-align: right; }
-    .ingredient-unit { text-align: left; color: var(--muted); white-space: nowrap; }
-    .ingredient-unit-compact { position: relative; top: -1px; font-size: 9px; line-height: 1.15; text-transform: lowercase; }
+    .ingredient-measure { display: inline-flex; align-items: baseline; justify-content: flex-end; gap: 3px; min-width: 0; white-space: nowrap; }
+    .ingredient-amount { display: inline-flex; align-items: baseline; justify-content: flex-end; min-height: 1em; text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .ingredient-fraction-align { display: inline-grid; grid-template-columns: 1ch 1.15em; align-items: baseline; justify-items: end; }
+    .ingredient-fraction-whole:empty { visibility: hidden; }
+    .ingredient-fraction-glyph { justify-self: center; }
+    .ingredient-unit { color: var(--muted); white-space: nowrap; }
+    .ingredient-measure-compact { font-size: 11px; }
+    .ingredient-unit-compact { position: relative; top: -1px; font-size: 10px; line-height: 1.15; }
     .ingredient-name-group { display: inline-flex; align-items: baseline; min-width: 0; max-width: 100%; overflow: hidden; }
 	    .ingredient-original-measure { flex: 0 0 auto; margin-right: 4px; color: var(--faint); font-size: 9px; }
     .ingredient-name, .ingredient-specific-name { min-width: 0; border: 0; border-bottom: 1px dotted var(--accent-2); background: transparent; color: inherit; padding: 0; font: inherit; line-height: inherit; text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -726,7 +729,7 @@
     .ingredient-specific-name { color: var(--accent-2); }
     .ingredient-name:hover, .ingredient-specific-name:hover { color: #DCE8ED; border-bottom-color: var(--accent); }
     .ingredient-name:focus-visible, .ingredient-specific-name:focus-visible { outline: 2px solid var(--accent-2); outline-offset: 2px; }
-    .detail-ingredient-line .info-button { width: 19px; min-width: 19px; height: 19px; font-size: 9px; }
+    .detail-ingredient-line .info-button { flex: 0 0 19px; width: 19px; min-width: 19px; height: 19px; margin-left: 4px; font-size: 9px; }
     .ingredients-card ul { padding-left: 0; list-style: none; }
     .ingredients-card .detail-card-header { align-items: flex-start; }
     .ingredients-tools { display: flex; flex: 1 0 100%; align-items: center; justify-content: space-between; flex-wrap: nowrap; gap: 6px; }
@@ -2209,7 +2212,7 @@
   <button id="floatingResetButton" class="button icon" type="button" title="Reset filters and collapse cocktails" aria-label="Reset filters and collapse cocktails" hidden>↺</button>
   <button id="githubSyncButton" class="button icon" type="button" title="Set up GitHub Sync" aria-label="Set up GitHub Sync" aria-haspopup="dialog" data-sync-state="setup"><span id="githubSyncGlyph"></span></button>
   <script>
-    const BUILD_VERSION = '1.0.1.53';
+        const BUILD_VERSION = '1.0.1.54';
 	    const __ARROW_UP_AND_DOWN_SQUARE_FILL = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24.1846 23.8281"><g><rect height="23.8281" opacity="0" width="24.1846" x="0" y="0"/><path d="M23.8232 4.26758L23.8232 19.5605C23.8232 22.3193 22.3145 23.8232 19.5264 23.8232L4.29199 23.8232C1.50879 23.8232 0 22.3291 0 19.5605L0 4.26758C0 1.49902 1.50879 0 4.29199 0L19.5264 0C22.3145 0 23.8232 1.50391 23.8232 4.26758ZM11.0107 4.45312L7.56836 7.97363C7.33398 8.20312 7.22656 8.48145 7.22656 8.7793C7.22656 9.38477 7.68555 9.80957 8.30566 9.80957C8.64746 9.80957 8.96484 9.65332 9.13574 9.40918L9.80469 8.72559L10.8753 7.30769L10.7812 9.80469L10.7812 14.0039L10.8755 16.506L9.80469 15.0879L9.13574 14.4092C8.96484 14.1553 8.64746 14.0039 8.30566 14.0039C7.68555 14.0039 7.22656 14.4287 7.22656 15.0342C7.22656 15.332 7.33398 15.6055 7.56836 15.8398L11.0107 19.3604C11.2744 19.6484 11.5967 19.8047 11.9873 19.8047C12.3828 19.8047 12.7051 19.6484 12.9736 19.3604L16.4111 15.8398C16.6504 15.6006 16.7529 15.332 16.7529 15.0342C16.7529 14.4287 16.2988 14.0039 15.6689 14.0039C15.3271 14.0039 15.0146 14.1553 14.8438 14.4092L14.1748 15.0879L13.1041 16.5027L13.1982 14.0039L13.1982 9.80469L13.1043 7.31102L14.1748 8.72559L14.8438 9.40918C15.0146 9.65332 15.3271 9.80957 15.6689 9.80957C16.2988 9.80957 16.7529 9.38477 16.7529 8.7793C16.7529 8.48145 16.6504 8.20801 16.4111 7.97363L12.9736 4.45312C12.7051 4.16992 12.3828 4.00879 11.9873 4.00879C11.5967 4.00879 11.2744 4.16992 11.0107 4.45312Z"/></g></svg>`;
 	    const __ARROW_UP_SQUARE_FILL = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24.1846 23.8281"><g><rect height="23.8281" opacity="0" width="24.1846" x="0" y="0"/><path d="M23.8232 4.26758L23.8232 19.5605C23.8232 22.3193 22.3145 23.8232 19.5264 23.8232L4.29199 23.8232C1.50879 23.8232 0 22.3291 0 19.5605L0 4.26758C0 1.49902 1.50879 0 4.29199 0L19.5264 0C22.3145 0 23.8232 1.50391 23.8232 4.26758ZM10.874 5.55664L6.49414 9.78027C6.24512 10.0293 6.1084 10.293 6.1084 10.6543C6.1084 11.3428 6.67969 11.8359 7.32422 11.8359C7.68066 11.8359 8.01758 11.6895 8.25684 11.4258L10 9.58984L10.6642 8.73089L10.5664 10.5762L10.5664 17.3486C10.5664 18.0957 11.2012 18.7402 11.9824 18.7402C12.7734 18.7402 13.3936 18.0957 13.3936 17.3486L13.3936 10.5762L13.2988 8.7285L13.9648 9.58984L15.7031 11.4258C15.9424 11.6895 16.2744 11.8359 16.6309 11.8359C17.2705 11.8359 17.8564 11.3428 17.8564 10.6543C17.8564 10.293 17.7148 10.0293 17.4707 9.78027L13.0908 5.55664C12.7197 5.2002 12.3584 5.07324 11.9824 5.07324C11.6016 5.07324 11.2451 5.2002 10.874 5.55664Z"/></g></svg>`;
 	    const __ARROW_DOWN_APP_FILL = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24.0576 23.7305"><g><rect height="23.7305" opacity="0" width="24.0576" x="0" y="0"/><path d="M21.8799 1.81152C23.0664 2.9834 23.6963 4.7168 23.6963 6.92383L23.6963 16.7822C23.6963 18.9893 23.0615 20.7275 21.8799 21.8994C20.7227 23.0615 18.9844 23.7061 16.7725 23.7061L6.92383 23.7061C4.7168 23.7061 2.97852 23.0664 1.81641 21.8994C0.629883 20.7227 0 18.9893 0 16.7822L0 6.92383C0 4.7168 0.634766 2.97852 1.81641 1.81152C2.97363 0.649414 4.7168 0 6.92383 0L16.7725 0C18.9844 0 20.7178 0.634766 21.8799 1.81152ZM10.4346 6.41113L10.4346 13.1836L10.5323 15.0269L9.86328 14.165L8.125 12.3291C7.88574 12.0703 7.54883 11.9238 7.19238 11.9238C6.54785 11.9238 5.97168 12.4121 5.97168 13.1006C5.97168 13.4619 6.11328 13.7256 6.35742 13.9746L10.7373 18.1982C11.1133 18.5596 11.4648 18.6865 11.8506 18.6865C12.2266 18.6865 12.5879 18.5596 12.9541 18.1982L17.334 13.9746C17.583 13.7256 17.7197 13.4619 17.7197 13.1006C17.7197 12.4121 17.1338 11.9238 16.4941 11.9238C16.1426 11.9238 15.8105 12.0703 15.5713 12.3291L13.833 14.165L13.1654 15.0284L13.2568 13.1836L13.2568 6.41113C13.2568 5.65918 12.6367 5.01953 11.8506 5.01953C11.0645 5.01953 10.4346 5.65918 10.4346 6.41113Z"/></g></svg>`;
@@ -2352,7 +2355,7 @@
           'Vermouth::Vermouth, Sweet (Italian/Rosso)': 'Rich, sweet, spicy, with vanilla and caramel notes. Reddish-brown. Common in the Manhattan, Negroni, and Boulevardier.',
           'Vermouth::Vermouth, Dry (French)': 'Crisp, herbal, lightly bitter, and low in sweetness. Pale straw. Common in the Martini, Bamboo, and cooking.',
           'Vermouth::Vermouth, Extra Dry': 'Very dry with minimal sweetness. Pale. Used for very dry Martinis.',
-          'Vermouth::Vermouth, Bittersweet': 'Balanced sweetness with pronounced bitter herbs, citrus peel, gentian, and spice. Amber to deep red. Can be approximated with sweet vermouth plus bitter aromatics.',
+          'Vermouth::Vermouth, Bittersweet': 'Balanced sweetness with pronounced bitter herbs, citrus peel, gentian, and spice. Amber to deep red. Use sweet vermouth plus aromatic bitters as a practical substitute; start with 1–2 dashes per ounce and adjust to taste.',
           'Vermouth::Vermouth, Rosé': 'Fruity and floral with balanced sweetness. Pink. Common in spritzes and modern cocktails.',
           'Vermouth::Vermouth, Bianco (Blanc)': 'Sweeter than dry and lighter than rosso, with floral and vanilla notes. Pale gold. Served over ice or used in spritzes and lighter cocktails.',
           'Vermouth::Vermouth, Ambrato (Amber)': 'Herbal with honey, dried fruit, and spice. Amber. Suited to sipping and specialty cocktails.',
@@ -2437,6 +2440,7 @@
         const WHITE_SUGAR_INFO = 'White, preferably cane: cane sugar comes only from sugar cane, rather than sugar beets or a cane/beet blend. Taste and sweetness are essentially identical and the sugars can be used interchangeably, but cane sugar is slightly purer, caramelizes better, and contains fewer impurities.';
         const INGREDIENT_INFO = {
           'Honey Syrup': 'Mix 2 parts honey with 1 part warm water. A 2:1 honey-to-water ratio is the best all-purpose cocktail ratio.',
+          'Vermouth, Bittersweet': 'Use sweet vermouth plus aromatic bitters as a practical substitute. Start with 1–2 dashes of bitters per ounce of sweet vermouth and adjust to taste.',
           "Donn's Mix": "*Donn’s Mix: 2 parts of fresh yellow grapefruit and 1 part of cinnamon syrup\n\n- 1 cinnamon stick, crushed\n- 1/3 cup sugar\n- 1/3 cup water\n- Fresh grapefruit juice (2/3 Cups)\n\nCreate an infused simple syrup by heating cinnamon sticks, sugar and water. Bring to a boil, stirring until sugar is dissolved. Simmer for 2 minutes, then remove from heat and let sit for at least 2 hours before straining into a clean glass bottle. To finish making the mix, add 1 part of the syrup to 2 parts fresh grapefruit juice. Cover and keep refrigerated for up to 2 weeks.",
           'Seasoning To Taste': 'For the Vampiro: add salt and a few drops of hot pepper sauce to taste. Some versions also include Worcestershire sauce.',
           'Sugar [Powdered]': WHITE_SUGAR_INFO,
@@ -2452,7 +2456,8 @@
           'Fresh Lime Juice': 'Lime Juice',
           'Fresh Lime': 'Lime Juice',
           'Lillet Blanc': 'White Aromatized Wine [Lillet Blanc]',
-          'London Dry Gin': 'Dry Gin [London Dry]',
+          'Dry Gin': 'Gin, London Dry',
+          'London Dry Gin': 'Gin, London Dry',
           'Old Tom Gin': 'Old Tom Gin',
           'Pinch Of Salt': 'Salt',
           'Pinch of Salt': 'Salt',
@@ -3034,7 +3039,9 @@
           if (normalized === 'pinch of salt') return 'Salt';
           if (normalized === 'donn s mix') return "Donn's Mix";
           const liqueur = cocktail.liqueurs.find((item) => normalized === norm(item.name) || normalized.includes(norm(item.name)) || norm(item.name).includes(normalized));
-          return liqueur ? liqueurIngredientLabel(liqueur) : name;
+          if (liqueur) return liqueurIngredientLabel(liqueur);
+          const rumMatch = String(name || '').trim().match(/^(.+?)\s+Rum$/i);
+          return rumMatch ? `Rum, ${titleWords(rumMatch[1])}` : name;
         }
         function splitSpecificIngredientLabel(value) {
           const text = String(value || '').trim();
@@ -3043,6 +3050,7 @@
         }
         function ingredientDisplayParts(cocktail, index) {
           const rawName = cocktail.ingredientNames[index] || parseIngredientLine(cocktail.ingredients[index] || '').name;
+          const sourceLine = String(cocktail.ingredients[index] || '');
           const explicitSpecific = String(cocktail.ingredientBottles?.[index] || '').trim();
           if (explicitSpecific) {
             const displayed = splitSpecificIngredientLabel(displayIngredientName(rawName, cocktail));
@@ -3051,7 +3059,12 @@
           const normalized = norm(rawName);
           const liqueur = cocktail.liqueurs.find((item) => normalized === norm(item.name) || normalized.includes(norm(item.name)) || norm(item.name).includes(normalized));
           if (liqueur) return splitSpecificIngredientLabel(liqueurIngredientLabel(liqueur));
-          return {generic: displayIngredientName(rawName, cocktail), specific: ''};
+          const displayed = splitSpecificIngredientLabel(displayIngredientName(rawName, cocktail));
+          if (normalized === 'gin' && /\b(?:london\s+)?dry gin\b/i.test(sourceLine)) displayed.generic = 'Gin, London Dry';
+          const sourceBracket = sourceLine.match(/\[([^\]]+)\]/);
+          if (!displayed.specific && sourceBracket) displayed.specific = sourceBracket[1].trim();
+          if (!displayed.specific && (/\bsugar cubes?\b/i.test(sourceLine) || normalized === 'sugar cube')) displayed.specific = 'Sugar Cube';
+          return displayed;
         }
         function ingredientTags(cocktail) {
           return unique(cocktail.ingredientNames.flatMap((name, index) => {
@@ -3192,12 +3205,16 @@
 	        }
 	        function ingredientAmountMarkup(amount) {
 	          const text = String(amount || '').trim();
-	          const match = text.match(/^(?:(\d+)\s+)?(\d+)[\/⁄](\d+)$/);
-	          if (!match) return escapeHtml(text);
-	          const fraction = VULGAR_FRACTIONS.get(`${match[2]}/${match[3]}`) || `${match[2]}⁄${match[3]}`;
-	          return escapeHtml(`${match[1] ? `${match[1]} ` : ''}${fraction}`);
+	          const slashMatch = text.match(/^(?:(\d+)\s+)?(\d+)[\/⁄](\d+)$/);
+	          const vulgarMatch = text.match(new RegExp(`^(?:(\\d+)\\s+)?([${VULGAR_FRACTION_CHARS}])$`));
+	          if (!slashMatch && !vulgarMatch) return escapeHtml(text);
+	          const whole = slashMatch ? (slashMatch[1] || '') : (vulgarMatch[1] || '');
+	          const fraction = slashMatch
+	            ? (VULGAR_FRACTIONS.get(`${slashMatch[2]}/${slashMatch[3]}`) || `${slashMatch[2]}⁄${slashMatch[3]}`)
+	            : vulgarMatch[2];
+	          return `<span class="ingredient-fraction-align"><span class="ingredient-fraction-whole">${escapeHtml(whole)}</span><span class="ingredient-fraction-glyph">${escapeHtml(fraction)}</span></span>`;
 	        }
-	        function ingredientLineMarkup(line, genericName = '', specificName = '') {
+	        function ingredientLineMarkup(line, genericName = '', specificName = '', infoButton = '') {
 	          const text = String(line || '').trim().replace(/\bLime Juice Juice\b/gi, 'Lime Juice');
 	          const standardMatch = text.match(new RegExp(`^${AMOUNT_PATTERN}\\s+(oz|tsp|tbsp|teaspoons?|tablespoons?|dash(?:es)?|drops?|bar\\s+spoons?)\\s+(.+)$`, 'i'));
 	          const dashOnlyMatch = text.match(/^(?:a\s+)?dash(?:es)?(?:\s+of)?\s+(.+)$/i);
@@ -3210,20 +3227,21 @@
 	          const originalMeasureMatch = parsedNameWithMeasure.match(/^\(([^)]+)\)\s+(.+)$/);
 	          const parsedName = originalMeasureMatch ? originalMeasureMatch[2] : parsedNameWithMeasure;
 	          const displayName = genericName || parsedName;
-	          const displayUnit = /^(?:dash(?:es)?|drops?|few drops|tsp|teaspoons?)$/i.test(unit) ? unit.toLowerCase() : unit;
 	          const isCompact = /^(?:dash(?:es)?|drops?|few drops|tsp|teaspoons?)$/i.test(unit);
+	          const displayUnit = isCompact ? (amount ? unit.toLowerCase() : titleWords(unit)) : unit;
 	          const amountClass = amount && !/\s/.test(amount) && (/[\/⁄]/.test(amount) || VULGAR_FRACTION_VALUES.has(amount)) ? ' ingredient-amount-fraction' : '';
 	          const specificMarkup = specificName
 	            ? `<span class="ingredient-specific-wrap"><span class="ingredient-bracket">&nbsp;[</span><button type="button" class="ingredient-specific-name" data-detail-ingredient="${escapeHtml(specificName)}" title="Show cocktails using ${escapeHtml(specificName)}">${escapeHtml(specificName)}</button><span class="ingredient-bracket">]</span></span>`
 	            : '';
 	          const originalMeasure = originalMeasureMatch ? `<span class="ingredient-original-measure">(${escapeHtml(originalMeasureMatch[1])})</span>` : '';
-	          const nameMarkup = `<span class="ingredient-name-group">${originalMeasure}<button type="button" class="ingredient-name" data-detail-ingredient="${escapeHtml(displayName)}" title="Show cocktails using ${escapeHtml(displayName)}">${escapeHtml(displayName)}</button>${specificMarkup}</span>`;
-	          return `<span class="ingredient-amount${amountClass}">${ingredientAmountMarkup(amount)}</span><span class="ingredient-unit${isCompact ? ' ingredient-unit-compact' : ''}">${escapeHtml(displayUnit)}</span>${nameMarkup}`;
+	          const nameMarkup = `<span class="ingredient-name-group">${originalMeasure}<button type="button" class="ingredient-name" data-detail-ingredient="${escapeHtml(displayName)}" title="Show cocktails using ${escapeHtml(displayName)}">${escapeHtml(displayName)}</button>${specificMarkup}${infoButton}</span>`;
+	          return `<span class="ingredient-measure${isCompact ? ' ingredient-measure-compact' : ''}"><span class="ingredient-amount${amountClass}">${ingredientAmountMarkup(amount)}</span><span class="ingredient-unit${isCompact ? ' ingredient-unit-compact' : ''}">${escapeHtml(displayUnit)}</span></span>${nameMarkup}`;
 	        }
 	        function formatMethodLine(line) {
 	          return convertMetricMeasurements(line)
-	            .replace(/\bthe sugar cube\b/ig, '1 tsp sugar [Sugar Cube]')
-	            .replace(/\bsugar cube\b/ig, '1 tsp sugar [Sugar Cube]');
+	            .replace(/1\s*tsp\s+sugar\s*\[1\s*tsp\s+sugar\s*\[Sugar Cube\]\]/ig, '1 tsp sugar [Sugar Cube]')
+	            .replace(/\bthe sugar cube\b(?!\])/ig, '1 tsp sugar [Sugar Cube]')
+	            .replace(/\bsugar cube\b(?!\])/ig, '1 tsp sugar [Sugar Cube]');
 	        }
         function cleanGarnishLabel(value) {
           const text = String(value || '').trim();
@@ -4000,10 +4018,11 @@
 	      const sourceLine = sourceLineMarkup(c);
 	      const ingredientLines = c.ingredients.map((line, index) => {
 	        const parts = ingredientDisplayParts(c, index);
-	        const info = INGREDIENT_INFO[parts.generic] || INGREDIENT_INFO[parts.specific] || '';
-	        const infoTitle = INGREDIENT_INFO[parts.generic] ? parts.generic : parts.specific;
+	        const combinedLabel = parts.specific ? `${parts.generic} [${parts.specific}]` : parts.generic;
+	        const info = INGREDIENT_INFO[combinedLabel] || INGREDIENT_INFO[parts.generic] || INGREDIENT_INFO[parts.specific] || '';
+	        const infoTitle = INGREDIENT_INFO[combinedLabel] ? combinedLabel : (INGREDIENT_INFO[parts.generic] ? parts.generic : parts.specific);
 	        const infoButton = info ? `<button class="info-button detail-ingredient-info" type="button" data-info-title="${escapeHtml(infoTitle)}" data-info="${escapeHtml(info)}" aria-label="How to make ${escapeHtml(infoTitle)}" aria-expanded="false" aria-controls="infoPopover">i</button>` : '';
-	        return `<li class="detail-ingredient-line"><div class="detail-ingredient-button">${ingredientLineMarkup(formatIngredientLine(line, c, servings), parts.generic, parts.specific)}</div>${infoButton}</li>`;
+	        return `<li class="detail-ingredient-line"><div class="detail-ingredient-button">${ingredientLineMarkup(formatIngredientLine(line, c, servings), parts.generic, parts.specific, infoButton)}</div></li>`;
 	      }).join('');
 	      const ingredientFootnote = recipeAllowsBandBSubstitute(c)
 	        ? '<p class="ingredient-footnote">* B&amp;B may replace Bénédictine when the recipe calls for 1/4 oz or less.</p>'
