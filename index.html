@@ -805,12 +805,9 @@
     .related-name { min-width: 0; font-weight: 650; font-size: 12px; line-height: 1.15; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .related-chip-muted .related-name { font-weight: 500; color: #C7CDD3; }
     .related-note { min-width: 0; color: var(--muted); font-size: 10px; line-height: 1.15; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .source-line { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; color: var(--muted); }
-    .notes-source { border-top: 1px solid var(--line-soft); margin-top: 10px; padding-top: 10px; }
     .detail-card .text-area { min-height: 64px; }
     .detail-notes-card { display: flex; flex-direction: column; height: 205px; max-height: 205px; overflow: hidden; }
     .detail-notes-card .text-area { flex: 1 1 auto; min-height: 60px; }
-    .detail-notes-card .notes-source { margin-top: auto; }
     .serving-style-tag {
       display: inline-flex; align-items: center; min-height: 18px; padding: 1px 6px; border: 1px solid var(--line); border-radius: 999px;
       color: var(--muted); background: var(--chip); font-size: 9px; font-weight: 750; line-height: 1; white-space: nowrap;
@@ -851,9 +848,6 @@
     .detail-notes-header .table-type-tag { min-height: 18px; padding: 1px 6px; font-size: 9px; }
     .detail-card.detail-notes-card .detail-notes-header .spirit-tag { height: 18px; padding-inline: 6px; font-size: 8px; }
     .table-type-status { margin-left: 5px; padding-left: 5px; border-left: 1px solid currentColor; opacity: .78; font-weight: 650; }
-    .detail-card .notes-source { flex-wrap: nowrap; margin-top: 6px; padding-top: 6px; gap: 4px; font-size: 9px; white-space: nowrap; overflow: hidden; }
-    .detail-card .notes-source a { flex: 0 0 auto; }
-    .detail-card .notes-source span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .table-type-tag { display: inline-flex; align-items: center; min-height: 20px; max-width: 100%; padding: 2px 7px; border: 1px solid var(--line); border-radius: 999px; font-size: 10px; font-weight: 700; line-height: 1; white-space: nowrap; }
     .table-type-legacy { color: #F3B7CA; background: rgba(185, 79, 115, .18); border-color: #A94E70; }
     .table-type-classic { color: #BED4E8; background: rgba(42, 76, 112, .58); border-color: #426C94; }
@@ -889,7 +883,6 @@
     .cocktail-notes-tags .spirit-tags { display: contents; }
     .cocktail-notes-editor { min-width: 0; min-height: 0; display: flex; flex-direction: column; gap: 8px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel-2); padding: 10px; }
     .cocktail-notes-drawer .text-area { flex: 1 1 auto; min-height: 0; resize: none; font-size: 15px; line-height: 1.55; }
-    .cocktail-notes-drawer .source-line { flex: 0 0 auto; padding-top: 8px; border-top: 1px solid var(--line-soft); }
     .cocktail-notes-related { min-width: 0; min-height: 0; }
     .cocktail-notes-related .detail-card { width: 100%; height: 100%; max-height: none; padding: 9px; }
     .cocktail-notes-related .related-list { max-height: calc(100% - 17px); overflow-y: auto; }
@@ -1865,7 +1858,7 @@
 	              <th class="sortable-column" data-col="ing" data-sort-key="ingredients" aria-sort="none" style="width: 56px;"><button class="table-sort-button" type="button" data-table-sort="ingredients"><span>Ing.</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
 	              <th class="sortable-column" data-col="time" data-sort-key="time" aria-sort="none" style="width: 76px;"><button class="table-sort-button" type="button" data-table-sort="time"><span>Time</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
 	              <th class="sortable-column" data-col="glass" data-sort-key="glass" aria-sort="none" style="width: 12%;"><button class="table-sort-button" type="button" data-table-sort="glass"><span>Glassware</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
-	              <th class="sortable-column" data-col="serving" data-sort-key="serving" aria-sort="none" style="width: 58px;"><button class="table-sort-button" type="button" data-table-sort="serving"><span>Serve</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
+	              <th class="sortable-column" data-col="serving" data-sort-key="serving" aria-sort="none" style="width: 72px;"><button class="table-sort-button" type="button" data-table-sort="serving"><span>Serve</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
 	              <th class="sortable-column" data-col="type" data-sort-key="type" aria-sort="none" style="width: 12%;"><button class="table-sort-button" type="button" data-table-sort="type"><span>Type</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
 	              <th class="sortable-column" data-col="status" data-sort-key="status" aria-sort="none" style="width: 7%;"><button class="table-sort-button" type="button" data-table-sort="status"><span>Status</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
             </tr>
@@ -1997,7 +1990,6 @@
             <section class="cocktail-notes-editor">
               <div id="cocktailNotesGuide"></div>
               <textarea id="cocktailNotesTextarea" class="text-area" placeholder="Add a note" aria-label="Cocktail notes"></textarea>
-              <div id="cocktailNotesSource" class="source-line"></div>
             </section>
             <div id="cocktailNotesRelated" class="cocktail-notes-related"></div>
           </div>
@@ -2350,7 +2342,7 @@
   <button id="floatingResetButton" class="button icon" type="button" title="Reset filters and collapse cocktails" aria-label="Reset filters and collapse cocktails" hidden>↺</button>
   <button id="githubSyncButton" class="button icon" type="button" title="Set up GitHub Sync" aria-label="Set up GitHub Sync" aria-haspopup="dialog" data-sync-state="setup"><span id="githubSyncGlyph"></span></button>
   <script>
-        const BUILD_VERSION = '1.0.1.71';
+        const BUILD_VERSION = '1.0.1.72';
 	    const __ARROW_UP_AND_DOWN_SQUARE_FILL = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24.1846 23.8281"><g><rect height="23.8281" opacity="0" width="24.1846" x="0" y="0"/><path d="M23.8232 4.26758L23.8232 19.5605C23.8232 22.3193 22.3145 23.8232 19.5264 23.8232L4.29199 23.8232C1.50879 23.8232 0 22.3291 0 19.5605L0 4.26758C0 1.49902 1.50879 0 4.29199 0L19.5264 0C22.3145 0 23.8232 1.50391 23.8232 4.26758ZM11.0107 4.45312L7.56836 7.97363C7.33398 8.20312 7.22656 8.48145 7.22656 8.7793C7.22656 9.38477 7.68555 9.80957 8.30566 9.80957C8.64746 9.80957 8.96484 9.65332 9.13574 9.40918L9.80469 8.72559L10.8753 7.30769L10.7812 9.80469L10.7812 14.0039L10.8755 16.506L9.80469 15.0879L9.13574 14.4092C8.96484 14.1553 8.64746 14.0039 8.30566 14.0039C7.68555 14.0039 7.22656 14.4287 7.22656 15.0342C7.22656 15.332 7.33398 15.6055 7.56836 15.8398L11.0107 19.3604C11.2744 19.6484 11.5967 19.8047 11.9873 19.8047C12.3828 19.8047 12.7051 19.6484 12.9736 19.3604L16.4111 15.8398C16.6504 15.6006 16.7529 15.332 16.7529 15.0342C16.7529 14.4287 16.2988 14.0039 15.6689 14.0039C15.3271 14.0039 15.0146 14.1553 14.8438 14.4092L14.1748 15.0879L13.1041 16.5027L13.1982 14.0039L13.1982 9.80469L13.1043 7.31102L14.1748 8.72559L14.8438 9.40918C15.0146 9.65332 15.3271 9.80957 15.6689 9.80957C16.2988 9.80957 16.7529 9.38477 16.7529 8.7793C16.7529 8.48145 16.6504 8.20801 16.4111 7.97363L12.9736 4.45312C12.7051 4.16992 12.3828 4.00879 11.9873 4.00879C11.5967 4.00879 11.2744 4.16992 11.0107 4.45312Z"/></g></svg>`;
 	    const __ARROW_UP_SQUARE_FILL = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24.1846 23.8281"><g><rect height="23.8281" opacity="0" width="24.1846" x="0" y="0"/><path d="M23.8232 4.26758L23.8232 19.5605C23.8232 22.3193 22.3145 23.8232 19.5264 23.8232L4.29199 23.8232C1.50879 23.8232 0 22.3291 0 19.5605L0 4.26758C0 1.49902 1.50879 0 4.29199 0L19.5264 0C22.3145 0 23.8232 1.50391 23.8232 4.26758ZM10.874 5.55664L6.49414 9.78027C6.24512 10.0293 6.1084 10.293 6.1084 10.6543C6.1084 11.3428 6.67969 11.8359 7.32422 11.8359C7.68066 11.8359 8.01758 11.6895 8.25684 11.4258L10 9.58984L10.6642 8.73089L10.5664 10.5762L10.5664 17.3486C10.5664 18.0957 11.2012 18.7402 11.9824 18.7402C12.7734 18.7402 13.3936 18.0957 13.3936 17.3486L13.3936 10.5762L13.2988 8.7285L13.9648 9.58984L15.7031 11.4258C15.9424 11.6895 16.2744 11.8359 16.6309 11.8359C17.2705 11.8359 17.8564 11.3428 17.8564 10.6543C17.8564 10.293 17.7148 10.0293 17.4707 9.78027L13.0908 5.55664C12.7197 5.2002 12.3584 5.07324 11.9824 5.07324C11.6016 5.07324 11.2451 5.2002 10.874 5.55664Z"/></g></svg>`;
 	    const __ARROW_DOWN_APP_FILL = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24.0576 23.7305"><g><rect height="23.7305" opacity="0" width="24.0576" x="0" y="0"/><path d="M21.8799 1.81152C23.0664 2.9834 23.6963 4.7168 23.6963 6.92383L23.6963 16.7822C23.6963 18.9893 23.0615 20.7275 21.8799 21.8994C20.7227 23.0615 18.9844 23.7061 16.7725 23.7061L6.92383 23.7061C4.7168 23.7061 2.97852 23.0664 1.81641 21.8994C0.629883 20.7227 0 18.9893 0 16.7822L0 6.92383C0 4.7168 0.634766 2.97852 1.81641 1.81152C2.97363 0.649414 4.7168 0 6.92383 0L16.7725 0C18.9844 0 20.7178 0.634766 21.8799 1.81152ZM10.4346 6.41113L10.4346 13.1836L10.5323 15.0269L9.86328 14.165L8.125 12.3291C7.88574 12.0703 7.54883 11.9238 7.19238 11.9238C6.54785 11.9238 5.97168 12.4121 5.97168 13.1006C5.97168 13.4619 6.11328 13.7256 6.35742 13.9746L10.7373 18.1982C11.1133 18.5596 11.4648 18.6865 11.8506 18.6865C12.2266 18.6865 12.5879 18.5596 12.9541 18.1982L17.334 13.9746C17.583 13.7256 17.7197 13.4619 17.7197 13.1006C17.7197 12.4121 17.1338 11.9238 16.4941 11.9238C16.1426 11.9238 15.8105 12.0703 15.5713 12.3291L13.833 14.165L13.1654 15.0284L13.2568 13.1836L13.2568 6.41113C13.2568 5.65918 12.6367 5.01953 11.8506 5.01953C11.0645 5.01953 10.4346 5.65918 10.4346 6.41113Z"/></g></svg>`;
@@ -3654,13 +3646,6 @@
     function renderCocktailRawPreview() {
       $('#cocktailFormRawPreview').innerHTML = cocktailFactsItemsMarkup(parseCocktailRawInfo($('#cocktailFormRawInfo').value));
     }
-    function sourceDescription(cocktail) {
-      const status = String(cocktail.status || '').trim();
-      const note = String(cocktail.sourceNote || '').trim();
-      if (!status || !note) return note;
-      const statusPrefix = `${status.toLowerCase()} `;
-      return note.toLowerCase().startsWith(statusPrefix) ? note.slice(status.length).trimStart() : note;
-    }
     function cocktailLinks(cocktail) {
       const links = [];
       const seen = new Set();
@@ -3676,15 +3661,6 @@
       }
       add(cocktail?.url, cocktail?.status || 'Source');
       return links;
-    }
-    function sourceLineMarkup(cocktail) {
-      const description = sourceDescription(cocktail);
-      const primaryLink = cocktailLinks(cocktail)[0];
-      const status = escapeHtml(primaryLink?.label || cocktail.status || 'Source');
-      const label = primaryLink
-        ? `<a href="${escapeHtml(primaryLink.url)}" target="_blank" rel="noopener">${status}</a>`
-        : `<span>${status}</span>`;
-      return `${label}${description ? `<span>${escapeHtml(description)}</span>` : ''}`;
     }
     const getMyRating = (cocktail) => Number(store.ratings[cocktail.id]) || 0;
     const friendRatingEntries = (cocktail) => store.friendRatings[cocktail.id] || [];
@@ -4461,7 +4437,6 @@
 	      const editButton = `<button type="button" class="button icon edit-cocktail-btn" data-edit-cocktail-id="${escapeHtml(c.id)}" title="Edit cocktail" aria-label="Edit ${escapeHtml(cocktailDisplayName(c))}">${__PENCIL}</button>`;
 	      const links = cocktailLinks(c);
 	      const linkButton = `<button type="button" class="button icon cocktail-link-button" data-cocktail-links="${escapeHtml(c.id)}" title="Open cocktail links" aria-label="Open links for ${escapeHtml(cocktailDisplayName(c))}" aria-expanded="false" aria-controls="cocktailLinkPopover"${links.length ? '' : ' disabled'}>${__LINK}</button>`;
-	      const sourceLine = sourceLineMarkup(c);
 	      const {lines: ingredientLines, footnote: ingredientFootnote} = ingredientListDetails(c, servings);
 	      return `<tr class="detail-row"><td colspan="13"><div class="detail">
 	        <div class="detail-grid">
@@ -4492,7 +4467,7 @@
 	            </section>
 	            <section class="detail-card"><div class="detail-method-header"><h3>Method</h3>${servingStyleTag(c)}</div><ol>${c.method.length ? c.method.map((x) => `<li>${escapeHtml(formatMethodLine(x))}</li>`).join('') : '<li class="empty">Not recorded yet</li>'}</ol></section>
 	          </div>
-	          <section class="detail-card detail-notes-card"><div class="detail-card-header detail-notes-header"><h3>Notes</h3><div class="detail-meta-tags">${compactTypeTag(c, true)}${spiritTags(c)}</div><div class="detail-card-actions">${editButton}${linkButton}<button class="button icon notes-popout-button" type="button" data-popout-note="${escapeHtml(c.id)}" title="Expand notes" aria-label="Expand notes for ${escapeHtml(cocktailDisplayName(c))}">↗</button></div></div>${cocktailGuideMarkup(c)}${cocktailFactsMarkup(c.nutrition)}<textarea class="text-area" data-note-id="${escapeHtml(c.id)}" placeholder="Add a note">${escapeHtml(noteValue)}</textarea><div class="source-line notes-source">${sourceLine}</div></section>
+	          <section class="detail-card detail-notes-card"><div class="detail-card-header detail-notes-header"><h3>Notes</h3><div class="detail-meta-tags">${compactTypeTag(c, true)}${spiritTags(c)}</div><div class="detail-card-actions">${editButton}${linkButton}<button class="button icon notes-popout-button" type="button" data-popout-note="${escapeHtml(c.id)}" title="Expand notes" aria-label="Expand notes for ${escapeHtml(cocktailDisplayName(c))}">↗</button></div></div>${cocktailGuideMarkup(c)}${cocktailFactsMarkup(c.nutrition)}<textarea class="text-area" data-note-id="${escapeHtml(c.id)}" placeholder="Add a note">${escapeHtml(noteValue)}</textarea></section>
 	          ${relatedCard(c)}
 	        </div>
 	      </div></td></tr>`;
@@ -4744,7 +4719,6 @@
 	          $('#cocktailNotesGuide').innerHTML = `${cocktailGuideMarkup(cocktail)}${cocktailFactsMarkup(cocktail.nutrition)}`;
 	          $('#cocktailNotesTextarea').value = noteValue;
 	          $('#cocktailNotesTextarea').dataset.noteId = cocktail.id;
-	          $('#cocktailNotesSource').innerHTML = sourceLineMarkup(cocktail);
 	          $('#cocktailNotesRelated').innerHTML = relatedCard(cocktail);
 	          $('#cocktailNotesOverlay').hidden = false;
 	          requestAnimationFrame(() => $('#cocktailNotesTextarea').focus());
@@ -8599,7 +8573,7 @@
 	      });
 	      saveCustom();
 	    });
-    const FIXED_COL_WIDTH = { photo: 42, availability: 10, try: 56, rating: 94, ing: 66, time: 76, serving: 58 };
+    const FIXED_COL_WIDTH = { photo: 42, availability: 10, try: 56, rating: 94, ing: 66, time: 76, serving: 72 };
     const PRIORITY_COLS = ['cocktail', 'base', 'type', 'garnish', 'glass'];
     const PRIORITY_FLOOR = { cocktail: 100, base: 90, garnish: 89, type: 71, glass: 120 };
     const PRIORITY_GROW_WEIGHT = { cocktail: 14, base: 20, garnish: 16, type: 12, glass: 12 };
