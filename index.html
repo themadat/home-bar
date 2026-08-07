@@ -237,6 +237,14 @@
           border-radius: 7px; background: var(--panel-2); box-shadow: var(--shadow);
         }
         .try-priority-popover[hidden] { display: none; }
+        .cocktail-link-popover {
+          position: fixed; z-index: 90; display: grid; gap: 4px; width: min(300px, calc(100vw - 24px));
+          padding: 7px; border: 1px solid var(--line); border-radius: 7px; background: var(--panel-2); box-shadow: var(--shadow);
+        }
+        .cocktail-link-popover[hidden] { display: none; }
+        .cocktail-link-option { display: flex; align-items: center; gap: 8px; min-height: 34px; padding: 6px 8px; border: 1px solid var(--line-soft); border-radius: 5px; background: #0E141C; color: var(--text); font-size: 11px; font-weight: 700; }
+        .cocktail-link-option:hover { border-color: var(--accent-2); text-decoration: none; }
+        .cocktail-link-option .sf-symbol { flex: 0 0 auto; width: 13px; height: 13px; fill: currentColor; }
         .try-priority-option {
           min-width: 34px; height: 34px; padding: 0 9px; border: 1px solid var(--line);
           border-radius: 5px; background: #0E141C; color: var(--muted); font: inherit; font-size: 11px; font-weight: 750;
@@ -562,6 +570,12 @@
     .cocktail-form-name-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; }
     .cocktail-form-meta-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 130px; gap: 14px; }
     .cocktail-form-meta-row .text-input { height: 38px; min-height: 38px; }
+    .cocktail-link-editor { display: grid; gap: 6px; }
+    .cocktail-link-row { display: grid; grid-template-columns: minmax(120px, .4fr) minmax(0, 1fr) 38px; gap: 6px; align-items: center; }
+    .cocktail-link-remove, .cocktail-link-add { width: 38px; min-width: 38px; padding: 0; }
+    .cocktail-link-remove { color: var(--faint); }
+    .cocktail-link-remove:hover { border-color: var(--danger); color: #F0C8CB; }
+    .cocktail-link-add { justify-self: start; color: var(--accent); font-size: 19px; }
     .cocktail-ingredient-editor { display: grid; gap: 6px; }
     .cocktail-ingredient-columns, .cocktail-ingredient-row { display: grid; grid-template-columns: minmax(86px, .3fr) minmax(150px, 1fr) minmax(130px, .78fr) 38px; gap: 6px; align-items: center; }
     .cocktail-ingredient-columns { color: var(--faint); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
@@ -713,8 +727,10 @@
     .detail-card-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 5px; margin-bottom: 5px; }
     .detail-card-header h3 { margin: 0; }
     .detail-card-actions { display: inline-flex; align-items: center; gap: 4px; }
-    .detail-card .notes-popout-button, .detail-card .edit-cocktail-btn { width: var(--control-h); height: var(--control-h); min-height: 0; margin: 0; padding: 0; line-height: 1; }
-    .detail-card .edit-cocktail-btn .sf-symbol { display: block; width: 14px; height: 14px; fill: currentColor; }
+    .detail-card .notes-popout-button, .detail-card .edit-cocktail-btn, .detail-card .cocktail-link-button { width: var(--control-h); height: var(--control-h); min-height: 0; margin: 0; padding: 0; line-height: 1; }
+    .detail-card .edit-cocktail-btn .sf-symbol, .detail-card .cocktail-link-button .sf-symbol { display: block; width: 14px; height: 14px; fill: currentColor; }
+    .detail-method-header { display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-bottom: 5px; }
+    .detail-method-header h3 { margin: 0; }
     .mobile-detail-facts { display: none; }
     .detail-facts-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 14px; margin: 0; }
     .detail-facts-list div { min-width: 0; }
@@ -793,7 +809,6 @@
     .serving-style-tag.is-ice { color: #B9DDED; border-color: rgba(84, 126, 146, .8); background: rgba(84, 126, 146, .2); }
     .serving-style-tag.is-neat { color: #D6BD8C; border-color: rgba(194, 154, 82, .68); background: rgba(194, 154, 82, .12); }
     .cocktail-guide { flex: 0 0 auto; min-width: 0; padding: 0 0 6px; border-bottom: 1px solid var(--line-soft); }
-    .cocktail-guide-title { margin-bottom: 3px; color: var(--text); font-size: 10px; font-weight: 750; }
     .cocktail-guide-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
     .cocktail-guide-control { display: block; min-width: 0; }
     .cocktail-guide-axis { display: grid; grid-template-columns: repeat(3, 1fr); align-items: center; color: var(--faint); font-size: 8px; line-height: 1; }
@@ -811,6 +826,8 @@
     }
     .cocktail-guide-range::-moz-range-track { height: 3px; border: 0; border-radius: 2px; background: var(--line); }
     .cocktail-guide-range::-moz-range-thumb { width: 11px; height: 11px; border: 2px solid var(--panel-2); border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 1px var(--line); }
+    .cocktail-guide-range.unrated::-webkit-slider-thumb { opacity: 0; }
+    .cocktail-guide-range.unrated::-moz-range-thumb { opacity: 0; }
     .cocktail-guide-range:focus-visible { outline: 2px solid var(--accent-2); outline-offset: 3px; }
     .cocktail-guide-scale { display: grid; grid-template-columns: repeat(11, 1fr); color: var(--faint); font-size: 7px; line-height: 1; text-align: center; }
     .cocktail-guide-scale .active { color: var(--text); font-weight: 800; }
@@ -1406,6 +1423,7 @@
       .cocktail-form-name-row { grid-template-columns: 1fr; gap: 8px; }
       .cocktail-form-meta-row { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
       .cocktail-form-meta-row > :first-child { grid-column: 1 / -1; }
+      .cocktail-link-row { grid-template-columns: minmax(92px, .42fr) minmax(0, 1fr) 38px; }
       .cocktail-ingredient-columns { display: none; }
       .cocktail-ingredient-row { grid-template-columns: 76px minmax(0, 1fr) 38px; align-items: stretch; }
       .cocktail-ingredient-row [data-cocktail-ingredient-amount] { grid-column: 1; grid-row: 1; }
@@ -1822,7 +1840,9 @@
             <col data-table-col="ing">
             <col data-table-col="time">
             <col data-table-col="glass">
+            <col data-table-col="serving">
             <col data-table-col="type">
+            <col data-table-col="status">
           </colgroup>
           <thead>
             <tr>
@@ -1836,6 +1856,7 @@
 	              <th class="sortable-column" data-col="ing" data-sort-key="ingredients" aria-sort="none" style="width: 56px;"><button class="table-sort-button" type="button" data-table-sort="ingredients"><span>Ing.</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
 	              <th class="sortable-column" data-col="time" data-sort-key="time" aria-sort="none" style="width: 76px;"><button class="table-sort-button" type="button" data-table-sort="time"><span>Time</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
 	              <th class="sortable-column" data-col="glass" data-sort-key="glass" aria-sort="none" style="width: 12%;"><button class="table-sort-button" type="button" data-table-sort="glass"><span>Glassware</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
+	              <th class="sortable-column" data-col="serving" data-sort-key="serving" aria-sort="none" style="width: 58px;"><button class="table-sort-button" type="button" data-table-sort="serving"><span>Serve</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
 	              <th class="sortable-column" data-col="type" data-sort-key="type" aria-sort="none" style="width: 12%;"><button class="table-sort-button" type="button" data-table-sort="type"><span>Type</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
 	              <th class="sortable-column" data-col="status" data-sort-key="status" aria-sort="none" style="width: 7%;"><button class="table-sort-button" type="button" data-table-sort="status"><span>Status</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
             </tr>
@@ -1890,6 +1911,7 @@
     </main>
 	    <div id="infoPopover" class="info-popover" role="dialog" aria-live="polite" hidden></div>
 	    <div id="tryPriorityPopover" class="try-priority-popover" role="dialog" aria-label="Choose Try priority" hidden></div>
+	    <div id="cocktailLinkPopover" class="cocktail-link-popover" role="dialog" aria-label="Cocktail links" hidden></div>
     <div id="versionModalOverlay" class="modal-overlay" hidden>
       <div class="modal modal-version" role="dialog" aria-modal="true" aria-labelledby="versionModalTitle">
         <div class="modal-header">
@@ -2169,10 +2191,13 @@
             <span class="form-label">Image URL <span class="label-hint">optional</span></span>
             <input id="cocktailFormImage" class="text-input" type="url" placeholder="https://…" inputmode="url">
           </label>
-          <label class="form-field">
-            <span class="form-label">Source URL <span class="label-hint">optional</span></span>
-            <input id="cocktailFormUrl" class="text-input" type="url" placeholder="https://…" inputmode="url">
-          </label>
+          <div class="form-field">
+            <span class="form-label">Links <span class="label-hint">optional</span></span>
+            <div class="cocktail-link-editor">
+              <div id="cocktailFormLinkRows"></div>
+              <button id="cocktailFormAddLink" class="button cocktail-link-add" type="button" aria-label="Add link" title="Add link">+</button>
+            </div>
+          </div>
           <div class="cocktail-form-meta-row">
             <label class="form-field">
               <span class="form-label">Type</span>
@@ -2307,7 +2332,7 @@
   <button id="floatingResetButton" class="button icon" type="button" title="Reset filters and collapse cocktails" aria-label="Reset filters and collapse cocktails" hidden>↺</button>
   <button id="githubSyncButton" class="button icon" type="button" title="Set up GitHub Sync" aria-label="Set up GitHub Sync" aria-haspopup="dialog" data-sync-state="setup"><span id="githubSyncGlyph"></span></button>
   <script>
-        const BUILD_VERSION = '1.0.1.69';
+        const BUILD_VERSION = '1.0.1.70';
 	    const __ARROW_UP_AND_DOWN_SQUARE_FILL = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24.1846 23.8281"><g><rect height="23.8281" opacity="0" width="24.1846" x="0" y="0"/><path d="M23.8232 4.26758L23.8232 19.5605C23.8232 22.3193 22.3145 23.8232 19.5264 23.8232L4.29199 23.8232C1.50879 23.8232 0 22.3291 0 19.5605L0 4.26758C0 1.49902 1.50879 0 4.29199 0L19.5264 0C22.3145 0 23.8232 1.50391 23.8232 4.26758ZM11.0107 4.45312L7.56836 7.97363C7.33398 8.20312 7.22656 8.48145 7.22656 8.7793C7.22656 9.38477 7.68555 9.80957 8.30566 9.80957C8.64746 9.80957 8.96484 9.65332 9.13574 9.40918L9.80469 8.72559L10.8753 7.30769L10.7812 9.80469L10.7812 14.0039L10.8755 16.506L9.80469 15.0879L9.13574 14.4092C8.96484 14.1553 8.64746 14.0039 8.30566 14.0039C7.68555 14.0039 7.22656 14.4287 7.22656 15.0342C7.22656 15.332 7.33398 15.6055 7.56836 15.8398L11.0107 19.3604C11.2744 19.6484 11.5967 19.8047 11.9873 19.8047C12.3828 19.8047 12.7051 19.6484 12.9736 19.3604L16.4111 15.8398C16.6504 15.6006 16.7529 15.332 16.7529 15.0342C16.7529 14.4287 16.2988 14.0039 15.6689 14.0039C15.3271 14.0039 15.0146 14.1553 14.8438 14.4092L14.1748 15.0879L13.1041 16.5027L13.1982 14.0039L13.1982 9.80469L13.1043 7.31102L14.1748 8.72559L14.8438 9.40918C15.0146 9.65332 15.3271 9.80957 15.6689 9.80957C16.2988 9.80957 16.7529 9.38477 16.7529 8.7793C16.7529 8.48145 16.6504 8.20801 16.4111 7.97363L12.9736 4.45312C12.7051 4.16992 12.3828 4.00879 11.9873 4.00879C11.5967 4.00879 11.2744 4.16992 11.0107 4.45312Z"/></g></svg>`;
 	    const __ARROW_UP_SQUARE_FILL = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24.1846 23.8281"><g><rect height="23.8281" opacity="0" width="24.1846" x="0" y="0"/><path d="M23.8232 4.26758L23.8232 19.5605C23.8232 22.3193 22.3145 23.8232 19.5264 23.8232L4.29199 23.8232C1.50879 23.8232 0 22.3291 0 19.5605L0 4.26758C0 1.49902 1.50879 0 4.29199 0L19.5264 0C22.3145 0 23.8232 1.50391 23.8232 4.26758ZM10.874 5.55664L6.49414 9.78027C6.24512 10.0293 6.1084 10.293 6.1084 10.6543C6.1084 11.3428 6.67969 11.8359 7.32422 11.8359C7.68066 11.8359 8.01758 11.6895 8.25684 11.4258L10 9.58984L10.6642 8.73089L10.5664 10.5762L10.5664 17.3486C10.5664 18.0957 11.2012 18.7402 11.9824 18.7402C12.7734 18.7402 13.3936 18.0957 13.3936 17.3486L13.3936 10.5762L13.2988 8.7285L13.9648 9.58984L15.7031 11.4258C15.9424 11.6895 16.2744 11.8359 16.6309 11.8359C17.2705 11.8359 17.8564 11.3428 17.8564 10.6543C17.8564 10.293 17.7148 10.0293 17.4707 9.78027L13.0908 5.55664C12.7197 5.2002 12.3584 5.07324 11.9824 5.07324C11.6016 5.07324 11.2451 5.2002 10.874 5.55664Z"/></g></svg>`;
 	    const __ARROW_DOWN_APP_FILL = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24.0576 23.7305"><g><rect height="23.7305" opacity="0" width="24.0576" x="0" y="0"/><path d="M21.8799 1.81152C23.0664 2.9834 23.6963 4.7168 23.6963 6.92383L23.6963 16.7822C23.6963 18.9893 23.0615 20.7275 21.8799 21.8994C20.7227 23.0615 18.9844 23.7061 16.7725 23.7061L6.92383 23.7061C4.7168 23.7061 2.97852 23.0664 1.81641 21.8994C0.629883 20.7227 0 18.9893 0 16.7822L0 6.92383C0 4.7168 0.634766 2.97852 1.81641 1.81152C2.97363 0.649414 4.7168 0 6.92383 0L16.7725 0C18.9844 0 20.7178 0.634766 21.8799 1.81152ZM10.4346 6.41113L10.4346 13.1836L10.5323 15.0269L9.86328 14.165L8.125 12.3291C7.88574 12.0703 7.54883 11.9238 7.19238 11.9238C6.54785 11.9238 5.97168 12.4121 5.97168 13.1006C5.97168 13.4619 6.11328 13.7256 6.35742 13.9746L10.7373 18.1982C11.1133 18.5596 11.4648 18.6865 11.8506 18.6865C12.2266 18.6865 12.5879 18.5596 12.9541 18.1982L17.334 13.9746C17.583 13.7256 17.7197 13.4619 17.7197 13.1006C17.7197 12.4121 17.1338 11.9238 16.4941 11.9238C16.1426 11.9238 15.8105 12.0703 15.5713 12.3291L13.833 14.165L13.1654 15.0284L13.2568 13.1836L13.2568 6.41113C13.2568 5.65918 12.6367 5.01953 11.8506 5.01953C11.0645 5.01953 10.4346 5.65918 10.4346 6.41113Z"/></g></svg>`;
@@ -3514,7 +3539,12 @@
       const style = cocktailServingStyle(cocktail);
       return style ? `<span class="serving-style-tag is-${style.toLowerCase()}" title="Finished drink is served ${style === 'Ice' ? 'on ice' : 'without ice'}">${style}</span>` : '';
     }
-    const cocktailGuideValue = (cocktailId, key) => Number.isFinite(Number(store.guides[cocktailId]?.[key])) ? Number(store.guides[cocktailId][key]) : 5;
+    function cocktailGuideValue(cocktailId, key) {
+      const raw = store.guides[cocktailId]?.[key];
+      if (raw === undefined || raw === null || raw === '') return null;
+      const value = Number(raw);
+      return Number.isFinite(value) ? Math.max(0, Math.min(10, value)) : null;
+    }
     function cocktailGuideScale(value) {
       return Array.from({length: 11}, (_, number) => `<span class="${number === value ? 'active' : ''}">${number}</span>`).join('');
     }
@@ -3524,11 +3554,11 @@
       const control = (key, value, labels, ariaLabel) => `
         <label class="cocktail-guide-control">
           <span class="cocktail-guide-axis"><span>${labels[0]}</span><span>${labels[1]}</span><span>${labels[2]}</span></span>
-          <input class="cocktail-guide-range" type="range" min="0" max="10" step="1" value="${value}" data-guide-id="${escapeHtml(cocktail.id)}" data-guide-key="${key}" aria-label="${escapeHtml(ariaLabel)}">
+          <input class="cocktail-guide-range${value === null ? ' unrated' : ''}" type="range" min="0" max="10" step="1" value="${value ?? 5}" data-guide-id="${escapeHtml(cocktail.id)}" data-guide-key="${key}" aria-label="${escapeHtml(ariaLabel)}">
           <span class="cocktail-guide-scale" data-guide-scale="${escapeHtml(cocktail.id)}:${key}">${cocktailGuideScale(value)}</span>
         </label>`;
       const displayName = cocktailDisplayName(cocktail);
-      return `<div class="cocktail-guide"><div class="cocktail-guide-title">Strength &amp; Taste Guide</div><div class="cocktail-guide-grid">${control('strength', strength, ['No alcohol', 'Medium', 'Boozy'], `${displayName} strength`)}${control('taste', taste, ['Sweet', 'Medium', 'Dry/Sour'], `${displayName} taste`)}</div></div>`;
+      return `<div class="cocktail-guide"><div class="cocktail-guide-grid">${control('strength', strength, ['No alcohol', 'Medium', 'Boozy'], `${displayName} strength`)}${control('taste', taste, ['Sweet', 'Medium', 'Dry/Sour'], `${displayName} taste`)}</div></div>`;
     }
     function sourceDescription(cocktail) {
       const status = String(cocktail.status || '').trim();
@@ -3537,15 +3567,31 @@
       const statusPrefix = `${status.toLowerCase()} `;
       return note.toLowerCase().startsWith(statusPrefix) ? note.slice(status.length).trimStart() : note;
     }
+    function cocktailLinks(cocktail) {
+      const links = [];
+      const seen = new Set();
+      const add = (entry, fallbackLabel = '') => {
+        const url = typeof entry === 'string' ? entry.trim() : String(entry?.url || '').trim();
+        if (!url || seen.has(url)) return;
+        const explicitLabel = typeof entry === 'object' ? String(entry?.label || '').trim() : '';
+        seen.add(url);
+        links.push({label: explicitLabel || fallbackLabel || `Link ${links.length + 1}`, url});
+      };
+      if (Array.isArray(cocktail?.links)) {
+        cocktail.links.forEach((entry, index) => add(entry, index === 0 ? (cocktail.status || 'Source') : `Link ${index + 1}`));
+      }
+      add(cocktail?.url, cocktail?.status || 'Source');
+      return links;
+    }
     function sourceLineMarkup(cocktail) {
       const description = sourceDescription(cocktail);
-      const status = escapeHtml(cocktail.status || 'Source');
-      const label = cocktail.url
-        ? `<a href="${escapeHtml(cocktail.url)}" target="_blank" rel="noopener">${status}</a>`
+      const primaryLink = cocktailLinks(cocktail)[0];
+      const status = escapeHtml(primaryLink?.label || cocktail.status || 'Source');
+      const label = primaryLink
+        ? `<a href="${escapeHtml(primaryLink.url)}" target="_blank" rel="noopener">${status}</a>`
         : `<span>${status}</span>`;
       return `${label}${description ? `<span>${escapeHtml(description)}</span>` : ''}`;
     }
-    const isEditableCocktail = (cocktail) => cocktail.status === 'Custom' || ['Custom', 'In the Wild'].includes(displayType(cocktail));
     const getMyRating = (cocktail) => Number(store.ratings[cocktail.id]) || 0;
     const friendRatingEntries = (cocktail) => store.friendRatings[cocktail.id] || [];
     function getFriendAverage(cocktail) {
@@ -3668,6 +3714,7 @@
     const __BOOKMARK = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 18.5107 28.3203"><g><rect height="28.3203" opacity="0" width="18.5107" x="0" y="0"/><path d="M1.90918 28.3203C2.63672 28.3203 3.13477 27.9736 4.08691 27.0361L8.97461 22.1533C9.02832 22.0947 9.12109 22.0947 9.1748 22.1533L14.0674 27.041C15.0244 27.9785 15.5029 28.3203 16.2402 28.3203C17.3975 28.3203 18.1494 27.5049 18.1494 26.2354L18.1494 4.16016C18.1494 1.58203 16.7334 0.161133 14.1699 0.161133L3.97949 0.161133C1.41113 0.161133 0 1.58203 0 4.16016L0 26.2354C0 27.5049 0.74707 28.3203 1.90918 28.3203ZM3.2373 23.6084C3.07129 23.7744 2.88086 23.7158 2.88086 23.4814L2.88086 4.43359C2.88086 3.48145 3.3252 3.04199 4.27734 3.04199L13.8672 3.04199C14.8193 3.04199 15.2686 3.48145 15.2686 4.43359L15.2686 23.4814C15.2686 23.7158 15.0781 23.7744 14.9072 23.6084L10.0586 18.8721C9.4043 18.2422 8.74512 18.2422 8.09082 18.8721Z"/></g></svg>`;
     const __BOOKMARK_FILL = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 18.5107 28.3203"><g><rect height="28.3203" opacity="0" width="18.5107" x="0" y="0"/><path d="M1.90918 28.3203C2.63672 28.3203 3.13477 27.9736 4.08691 27.0361L8.97461 22.1533C9.02832 22.0947 9.12109 22.0947 9.1748 22.1533L14.0674 27.041C15.0244 27.9785 15.5029 28.3203 16.2402 28.3203C17.3975 28.3203 18.1494 27.5049 18.1494 26.2354L18.1494 4.16016C18.1494 1.58203 16.7334 0.161133 14.1699 0.161133L3.97949 0.161133C1.41113 0.161133 0 1.58203 0 4.16016L0 26.2354C0 27.5049 0.74707 28.3203 1.90918 28.3203Z"/></g></svg>`;
     const __PENCIL = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24.5703 24.2188"><g><rect height="24.2188" opacity="0" width="24.5703" x="0" y="0"/><path d="M2.80762 24.1992L6.61621 22.8027L21.2842 8.13477L16.0791 2.92969L1.41113 17.5977L0.0634766 21.4697C-0.273438 22.4463 0.74707 24.541 2.80762 24.1992ZM17.4512 1.55762L22.6562 6.7627L23.5547 5.86426C24.9121 4.50684 24.9951 3.19336 23.7402 1.93848L22.2705 0.46875C21.0498-0.756836 19.6973-0.654297 18.3496 0.693359Z"/></g></svg>`;
+    const __LINK = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 27.7661 27.5867"><g><rect height="27.5867" opacity="0" width="27.7661" x="0" y="0"/><path d="M14.5667 8.28064L12.4524 10.3949C13.8342 10.5121 14.9231 10.9857 15.6653 11.7328C17.7454 13.8129 17.7502 16.7328 15.6751 18.8031L11.4124 23.0609C9.33228 25.1361 6.42212 25.141 4.34693 23.0658C2.26196 20.9808 2.26685 18.0609 4.33716 15.9955L6.24146 14.0863C5.81177 13.0853 5.6311 11.7914 5.94849 10.6683L2.36939 14.2279C-0.789794 17.3627-0.794676 21.85 2.38403 25.0238C5.56275 28.2074 10.0354 28.183 13.1799 25.0385L17.6428 20.5756C20.7922 17.4213 20.8069 12.9486 17.6331 9.77478C16.9251 9.07166 15.9094 8.50525 14.5667 8.28064ZM12.8381 19.1254L14.9475 17.0062C13.5706 16.8939 12.4817 16.4154 11.7395 15.6683C9.65943 13.5931 9.65454 10.6683 11.7297 8.60291L15.9924 4.34509C18.0725 2.2699 20.9827 2.26502 23.0579 4.33533C25.1428 6.42517 25.1379 9.34021 23.0676 11.4056L21.1633 13.3148C21.593 14.3207 21.7737 15.6097 21.4563 16.7377L25.0354 13.1781C28.1946 10.0433 28.1946 5.55603 25.0208 2.3822C21.8372-0.801391 17.3694-0.78186 14.2249 2.36755L9.76196 6.83044C6.61255 9.97498 6.5979 14.4574 9.77173 17.6312C10.4797 18.3344 11.4905 18.8959 12.8381 19.1254Z"/></g></svg>`;
     const __MUG_FILL = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 26.084 27.9102"><g><rect height="27.9102" opacity="0" width="26.084" x="0" y="0"/><path d="M9.28223 27.9004L11.7188 27.9004C17.3926 27.9004 21.0059 24.8145 21.0059 19.9854L21.0059 4.11133C21.0059 1.43066 16.6309 0 10.498 0C4.37012 0 0 1.43066 0 4.11133L0 19.9854C0 24.8145 3.60352 27.9004 9.28223 27.9004ZM10.498 4.81934C6.11328 4.81934 3.04688 4.31152 3.04688 3.59375C3.04688 2.87109 6.11328 2.36816 10.498 2.36816C14.8828 2.36816 17.959 2.87109 17.959 3.59375C17.959 4.31152 14.8828 4.81934 10.498 4.81934ZM19.3652 20.1514L21.748 20.1514C24.1748 20.1514 25.7227 18.5547 25.7227 16.084L25.7227 10.957C25.7227 8.48145 24.1748 6.87988 21.748 6.87988L19.3652 6.87988L19.3652 9.3457L21.748 9.3457C22.7734 9.3457 23.2568 9.86328 23.2568 10.957L23.2568 16.084C23.2568 17.1729 22.7734 17.6855 21.748 17.6855L19.3652 17.6855Z"/></g></svg>`;
     const __BAG_FILL = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 23.5205 26.3672"><g><rect height="26.3672" opacity="0" width="23.5205" x="0" y="0"/><path d="M4.29199 26.3525L19.082 26.3525C21.6602 26.3525 23.1592 24.8535 23.1592 22.0898L23.1592 9.03809C23.1592 6.2793 21.6553 4.77539 18.8721 4.77539L4.29199 4.77539C1.50879 4.77539 0 6.27441 0 9.03809L0 22.0898C0 24.8584 1.50879 26.3525 4.29199 26.3525ZM6.11816 5.36621L8.83301 5.38086C8.83301 3.66211 9.96094 2.44141 11.582 2.44141C13.1982 2.44141 14.3262 3.66211 14.3262 5.38086L17.041 5.36621C17.041 2.2998 14.7217 0 11.582 0C8.4375 0 6.11816 2.2998 6.11816 5.36621Z"/></g></svg>`;
     const __ARCHIVEBOX_FILL = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 26.0547 23.8379"><g><rect height="23.8379" opacity="0" width="26.0547" x="0" y="0"/><path d="M5.91797 23.8379L19.7656 23.8379C22.4658 23.8379 23.9795 22.3535 23.9795 19.6631L23.9795 8.20801L1.71387 8.20801L1.71387 19.6631C1.71387 22.3584 3.22266 23.8379 5.91797 23.8379ZM8.87207 13.2422C8.21289 13.2422 7.73438 12.7588 7.73438 12.0801L7.73438 11.6797C7.73438 11.001 8.20801 10.5322 8.87207 10.5322L16.8262 10.5322C17.5 10.5322 17.9736 11.001 17.9736 11.6797L17.9736 12.0801C17.9736 12.7588 17.4902 13.2422 16.8262 13.2422ZM2.42188 6.28906L23.2666 6.28906C24.8682 6.28906 25.6934 5.38086 25.6934 3.79395L25.6934 2.51465C25.6934 0.927734 24.8682 0.0244141 23.2666 0.0244141L2.42188 0.0244141C0.874023 0.0244141 0 0.927734 0 2.51465L0 3.79395C0 5.38086 0.830078 6.28906 2.42188 6.28906Z"/></g></svg>`;
@@ -4049,6 +4096,7 @@
       if (key === 'ingredients') return cocktail.ingredientCount;
       if (key === 'time') return cocktail.makeTime;
       if (key === 'glass') return displayGlass(cocktail.glassware);
+      if (key === 'serving') return cocktailServingStyle(cocktail);
       if (key === 'type') return displayType(cocktail);
       if (key === 'status') return statusLabel(cocktail);
       return '';
@@ -4127,6 +4175,31 @@
       popover.innerHTML = options.map((option) => `<button class="try-priority-option${option.selected ? ' active' : ''}${option.remove ? ' remove' : ''}" type="button" data-set-try-priority="${option.value}" aria-pressed="${option.selected}">${option.label}</button>`).join('');
       popover.hidden = false;
       $$('[data-bookmark-id][aria-expanded="true"]').forEach((item) => {
+        if (item !== button) item.setAttribute('aria-expanded', 'false');
+      });
+      button.setAttribute('aria-expanded', 'true');
+      const rect = button.getBoundingClientRect();
+      const popRect = popover.getBoundingClientRect();
+      const left = Math.min(Math.max(12, rect.left + rect.width / 2 - popRect.width / 2), window.innerWidth - popRect.width - 12);
+      const top = rect.bottom + popRect.height + 10 > window.innerHeight ? Math.max(12, rect.top - popRect.height - 8) : rect.bottom + 8;
+      popover.style.left = `${left}px`;
+      popover.style.top = `${top}px`;
+    }
+    function hideCocktailLinkPopover() {
+      const popover = $('#cocktailLinkPopover');
+      if (!popover || popover.hidden) return;
+      popover.hidden = true;
+      popover.innerHTML = '';
+      $$('[data-cocktail-links][aria-expanded="true"]').forEach((button) => button.setAttribute('aria-expanded', 'false'));
+    }
+    function showCocktailLinkPopover(button) {
+      const cocktail = COCKTAILS.find((item) => item.id === button.dataset.cocktailLinks);
+      const links = cocktailLinks(cocktail);
+      if (!links.length) return;
+      const popover = $('#cocktailLinkPopover');
+      popover.innerHTML = links.map((link) => `<a class="cocktail-link-option" href="${escapeHtml(link.url)}" target="_blank" rel="noopener">${__LINK}<span>${escapeHtml(link.label)}</span></a>`).join('');
+      popover.hidden = false;
+      $$('[data-cocktail-links][aria-expanded="true"]').forEach((item) => {
         if (item !== button) item.setAttribute('aria-expanded', 'false');
       });
       button.setAttribute('aria-expanded', 'true');
@@ -4291,11 +4364,12 @@
 	      const servingLabel = `${servings} Serving${servings === 1 ? '' : 's'}`;
 	      const totalVolume = formatTotalVolume(totalIngredientVolume(c, servings));
 	      const detailBases = c.baseLiquor.length ? c.baseLiquor.map(displayBaseLabel).join(', ') : 'NONE';
-	      const isEditableEntry = isEditableCocktail(c);
-	      const editButton = isEditableEntry ? `<button type="button" class="button icon edit-cocktail-btn" data-edit-cocktail-id="${escapeHtml(c.id)}" title="Edit cocktail" aria-label="Edit ${escapeHtml(cocktailDisplayName(c))}">${__PENCIL}</button>` : '';
+	      const editButton = `<button type="button" class="button icon edit-cocktail-btn" data-edit-cocktail-id="${escapeHtml(c.id)}" title="Edit cocktail" aria-label="Edit ${escapeHtml(cocktailDisplayName(c))}">${__PENCIL}</button>`;
+	      const links = cocktailLinks(c);
+	      const linkButton = `<button type="button" class="button icon cocktail-link-button" data-cocktail-links="${escapeHtml(c.id)}" title="Open cocktail links" aria-label="Open links for ${escapeHtml(cocktailDisplayName(c))}" aria-expanded="false" aria-controls="cocktailLinkPopover"${links.length ? '' : ' disabled'}>${__LINK}</button>`;
 	      const sourceLine = sourceLineMarkup(c);
 	      const {lines: ingredientLines, footnote: ingredientFootnote} = ingredientListDetails(c, servings);
-	      return `<tr class="detail-row"><td colspan="12"><div class="detail">
+	      return `<tr class="detail-row"><td colspan="13"><div class="detail">
 	        <div class="detail-grid">
 	          <section class="detail-card mobile-detail-facts">
 	            <h3>Details</h3>
@@ -4322,9 +4396,9 @@
 	              <ul>${ingredientLines}</ul>${ingredientFootnote}
 	              <div class="ingredient-garnish"><h4>Garnish</h4><p>${c.garnish ? escapeHtml(c.garnish) : '<span class="empty">None listed</span>'}</p></div>
 	            </section>
-	            <section class="detail-card"><h3>Method</h3><ol>${c.method.length ? c.method.map((x) => `<li>${escapeHtml(formatMethodLine(x))}</li>`).join('') : '<li class="empty">Not recorded yet</li>'}</ol></section>
+	            <section class="detail-card"><div class="detail-method-header"><h3>Method</h3>${servingStyleTag(c)}</div><ol>${c.method.length ? c.method.map((x) => `<li>${escapeHtml(formatMethodLine(x))}</li>`).join('') : '<li class="empty">Not recorded yet</li>'}</ol></section>
 	          </div>
-	          <section class="detail-card detail-notes-card"><div class="detail-card-header detail-notes-header"><h3>Notes</h3><div class="detail-meta-tags">${compactTypeTag(c, true)}${servingStyleTag(c)}${spiritTags(c)}</div><div class="detail-card-actions">${editButton}<button class="button icon notes-popout-button" type="button" data-popout-note="${escapeHtml(c.id)}" title="Expand notes" aria-label="Expand notes for ${escapeHtml(cocktailDisplayName(c))}">↗</button></div></div>${cocktailGuideMarkup(c)}<textarea class="text-area" data-note-id="${escapeHtml(c.id)}" placeholder="Add a note">${escapeHtml(noteValue)}</textarea><div class="source-line notes-source">${sourceLine}</div></section>
+	          <section class="detail-card detail-notes-card"><div class="detail-card-header detail-notes-header"><h3>Notes</h3><div class="detail-meta-tags">${compactTypeTag(c, true)}${spiritTags(c)}</div><div class="detail-card-actions">${editButton}${linkButton}<button class="button icon notes-popout-button" type="button" data-popout-note="${escapeHtml(c.id)}" title="Expand notes" aria-label="Expand notes for ${escapeHtml(cocktailDisplayName(c))}">↗</button></div></div>${cocktailGuideMarkup(c)}<textarea class="text-area" data-note-id="${escapeHtml(c.id)}" placeholder="Add a note">${escapeHtml(noteValue)}</textarea><div class="source-line notes-source">${sourceLine}</div></section>
 	          ${relatedCard(c)}
 	        </div>
 	      </div></td></tr>`;
@@ -4353,6 +4427,7 @@
 	        <td data-label="Ing.">${c.ingredientCount}</td>
         <td data-label="Time">${c.makeTime} min</td>
         <td data-label="Glassware">${escapeHtml(displayGlass(c.glassware))}</td>
+        <td data-label="Serve">${servingStyleTag(c)}</td>
         <td data-label="Type">${compactTypeTag(c)}</td>
         <td data-label="Status">${escapeHtml(statusLabel(c))}</td>
       </tr>${expanded ? detailTemplate(c) : ''}`;
@@ -4471,7 +4546,7 @@
         return;
       }
       const emptyMessage = state.quick.has('myBar') ? 'No cocktails are ready with the current filters.' : 'No cocktails match the current filters.';
-      $('#cocktailBody').innerHTML = rows.length ? rows.map(rowTemplate).join('') : `<tr><td colspan="12"><div class="no-results">${emptyMessage}</div></td></tr>`;
+      $('#cocktailBody').innerHTML = rows.length ? rows.map(rowTemplate).join('') : `<tr><td colspan="13"><div class="no-results">${emptyMessage}</div></td></tr>`;
       renderMyBarResults(rows);
       const bottleUsage = activeBottleUsage();
       $('#resultMeta').textContent = bottleUsage
@@ -4570,8 +4645,8 @@
 	            fallback.textContent = cocktail.name.slice(0, 1);
 	          }
 	          $('#cocktailNotesIngredients').innerHTML = `<div class="cocktail-notes-module-header"><h3>Ingredients</h3><span class="total-volume">${escapeHtml(formatTotalVolume(totalIngredientVolume(cocktail, servings)))} Total</span></div><ul>${ingredientLines}</ul>${ingredientFootnote}<div class="ingredient-garnish"><h4>Garnish</h4><p>${cocktail.garnish ? escapeHtml(cocktail.garnish) : '<span class="empty">None listed</span>'}</p></div>`;
-	          $('#cocktailNotesMethod').innerHTML = `<h3>Method</h3><ol>${cocktail.method.length ? cocktail.method.map((line) => `<li>${escapeHtml(formatMethodLine(line))}</li>`).join('') : '<li class="empty">Not recorded yet</li>'}</ol>`;
-	          $('#cocktailNotesTags').innerHTML = `${compactTypeTag(cocktail, true)}${servingStyleTag(cocktail)}${spiritTags(cocktail)}`;
+	          $('#cocktailNotesMethod').innerHTML = `<div class="detail-method-header"><h3>Method</h3>${servingStyleTag(cocktail)}</div><ol>${cocktail.method.length ? cocktail.method.map((line) => `<li>${escapeHtml(formatMethodLine(line))}</li>`).join('') : '<li class="empty">Not recorded yet</li>'}</ol>`;
+	          $('#cocktailNotesTags').innerHTML = `${compactTypeTag(cocktail, true)}${spiritTags(cocktail)}`;
 	          $('#cocktailNotesGuide').innerHTML = cocktailGuideMarkup(cocktail);
 	          $('#cocktailNotesTextarea').value = noteValue;
 	          $('#cocktailNotesTextarea').dataset.noteId = cocktail.id;
@@ -6321,6 +6396,39 @@
 	            return [{name: entry.specific || entry.name, subtype, flavor: entry.name.replace(/\s+liqueur$/i, ''), genericOnly: !entry.specific}];
 	          });
 	        }
+	        function addCocktailLinkRow(link = {}, focus = false) {
+	          const row = document.createElement('div');
+	          row.className = 'cocktail-link-row';
+	          row.innerHTML = `<input class="text-input" type="text" data-cocktail-link-label placeholder="Link name" value="${escapeHtml(link.label || '')}" aria-label="Link name"><input class="text-input" type="url" data-cocktail-link-url placeholder="https://…" value="${escapeHtml(link.url || '')}" inputmode="url" aria-label="Link URL"><button class="button cocktail-link-remove" type="button" data-remove-cocktail-link aria-label="Remove link" title="Remove link">×</button>`;
+	          $('#cocktailFormLinkRows').appendChild(row);
+	          if (focus) $('[data-cocktail-link-label]', row).focus();
+	          return row;
+	        }
+	        function renderCocktailLinkRows(cocktail = null) {
+	          const container = $('#cocktailFormLinkRows');
+	          container.innerHTML = '';
+	          const links = cocktail ? cocktailLinks(cocktail) : [];
+	          (links.length ? links : [{label: '', url: ''}]).forEach((link) => addCocktailLinkRow(link));
+	        }
+	        function cocktailLinkEntries() {
+	          const links = [];
+	          for (const row of $$('#cocktailFormLinkRows .cocktail-link-row')) {
+	            const labelInput = $('[data-cocktail-link-label]', row);
+	            const urlInput = $('[data-cocktail-link-url]', row);
+	            const label = labelInput.value.trim();
+	            const url = urlInput.value.trim();
+	            urlInput.setCustomValidity('');
+	            if (!label && !url) continue;
+	            if (!url) {
+	              urlInput.setCustomValidity('Add a URL or remove this link.');
+	              urlInput.reportValidity();
+	              urlInput.focus();
+	              return null;
+	            }
+	            links.push({label: label || `Link ${links.length + 1}`, url});
+	          }
+	          return links;
+	        }
 	        function openCocktailForm(cocktail = null) {
 	          $('#cocktailForm').reset();
 	          refreshCocktailIngredientCatalog();
@@ -6330,7 +6438,7 @@
 	          $('#cocktailFormName').value = cocktail ? cocktail.name : '';
 	          $('#cocktailFormAlternateNames').value = cocktail ? cocktailAlternateNames(cocktail).join(', ') : '';
 	          $('#cocktailFormImage').value = cocktail ? cocktail.image || '' : '';
-	          $('#cocktailFormUrl').value = cocktail ? cocktail.url || '' : '';
+	          renderCocktailLinkRows(cocktail);
 	          populateCocktailFormTypes(cocktail ? displayType(cocktail) : 'In the Wild');
 	          populateCocktailFormBases(cocktail ? cocktail.baseLiquor : []);
 	          populateCocktailFormGlassware(cocktail && cocktail.glassware !== 'Unknown' ? cocktail.glassware : '');
@@ -6360,7 +6468,8 @@
 	          const garnish = $('#cocktailFormGarnish').value.trim();
 	          const noteText = $('#cocktailFormNotes').value.trim();
 	          const image = $('#cocktailFormImage').value.trim();
-	          const url = $('#cocktailFormUrl').value.trim();
+	          const links = cocktailLinkEntries();
+	          if (!links) return;
 	          const editingId = $('#cocktailFormId').value;
 	          const existing = editingId ? COCKTAILS.find((c) => c.id === editingId) : null;
 	          const cocktail = {
@@ -6370,7 +6479,8 @@
 	            type,
 	            originalType: type,
 	            status: existing ? existing.status : 'Custom',
-	            url,
+	            url: links[0]?.url || '',
+	            links,
 	            image,
 	            glassware,
 	            baseLiquor: bases,
@@ -6428,6 +6538,7 @@
 	              id: cocktail.id,
 	              name: cocktail.name,
 	              alternateNames: cocktailAlternateNames(cocktail),
+	              links: cocktailLinks(cocktail),
 	              type: displayType(cocktail),
 	              originalType: cocktail.originalType,
 	              status: cocktail.status,
@@ -7450,6 +7561,16 @@
       openFriendRatings(stars.dataset.ratingId);
     });
     document.addEventListener('click', (event) => {
+      const cocktailLinkButton = event.target.closest('[data-cocktail-links]');
+      if (cocktailLinkButton) {
+        event.preventDefault();
+        event.stopPropagation();
+        const isOpen = cocktailLinkButton.getAttribute('aria-expanded') === 'true';
+        hideCocktailLinkPopover();
+        if (!isOpen) showCocktailLinkPopover(cocktailLinkButton);
+        return;
+      }
+      if (!event.target.closest('#cocktailLinkPopover')) hideCocktailLinkPopover();
       const tryPriorityOption = event.target.closest('[data-set-try-priority]');
       if (tryPriorityOption) {
         const id = $('#tryPriorityPopover').dataset.bookmarkId;
@@ -7830,7 +7951,7 @@
         }
       }
       if (event.key === 'Escape') {
-	        hideInfoPopover(); hideTryPriorityPopover(); closeVersionModal(); closeNotesModal(); closeFriendRatings(); closeCocktailNotes(); closeGlasswareModal(); closeGitHubSyncModal(); closeShoppingListModal(); closeArchiveModal(); closeRemoveBottleModal(); closeCocktailForm(); closeBarModal(); closeInstallModal();
+	        hideInfoPopover(); hideTryPriorityPopover(); hideCocktailLinkPopover(); closeVersionModal(); closeNotesModal(); closeFriendRatings(); closeCocktailNotes(); closeGlasswareModal(); closeGitHubSyncModal(); closeShoppingListModal(); closeArchiveModal(); closeRemoveBottleModal(); closeCocktailForm(); closeBarModal(); closeInstallModal();
         $('#genreMoreMenu').hidden = true;
         $('#genreMoreButton').setAttribute('aria-expanded', 'false');
         refreshShortcutHints(shortcutModifiersHeld(event));
@@ -8077,6 +8198,13 @@
 	      if (event.target === $('#cocktailFormModalOverlay')) closeCocktailForm();
 	    });
 	    $('#cocktailFormAddIngredient').addEventListener('click', () => addCocktailIngredientRow({}, true));
+	    $('#cocktailFormAddLink').addEventListener('click', () => addCocktailLinkRow({}, true));
+	    $('#cocktailFormLinkRows').addEventListener('click', (event) => {
+	      const removeButton = event.target.closest('[data-remove-cocktail-link]');
+	      if (!removeButton) return;
+	      removeButton.closest('.cocktail-link-row')?.remove();
+	      if (!$('#cocktailFormLinkRows .cocktail-link-row')) addCocktailLinkRow();
+	    });
 	    $('#cocktailFormIngredientRows').addEventListener('click', (event) => {
 	      const removeButton = event.target.closest('[data-remove-cocktail-ingredient]');
 	      if (!removeButton) return;
@@ -8322,7 +8450,10 @@
 	        const value = Math.max(0, Math.min(10, Math.round(Number(guide.value))));
 	        store.guides[id] = {...(store.guides[id] || {}), [key]: value};
 	        $$('[data-guide-id]').forEach((field) => {
-	          if (field.dataset.guideId === id && field.dataset.guideKey === key) field.value = value;
+	          if (field.dataset.guideId === id && field.dataset.guideKey === key) {
+	            field.value = value;
+	            field.classList.remove('unrated');
+	          }
 	        });
 	        $$('[data-guide-scale]').forEach((scale) => {
 	          if (scale.dataset.guideScale !== `${id}:${key}`) return;
@@ -8342,7 +8473,7 @@
 	      });
 	      saveCustom();
 	    });
-    const FIXED_COL_WIDTH = { photo: 42, availability: 10, try: 56, rating: 94, ing: 66, time: 76 };
+    const FIXED_COL_WIDTH = { photo: 42, availability: 10, try: 56, rating: 94, ing: 66, time: 76, serving: 58 };
     const PRIORITY_COLS = ['cocktail', 'base', 'type', 'garnish', 'glass'];
     const PRIORITY_FLOOR = { cocktail: 100, base: 90, garnish: 89, type: 71, glass: 120 };
     const PRIORITY_GROW_WEIGHT = { cocktail: 14, base: 20, garnish: 16, type: 12, glass: 12 };
@@ -8361,7 +8492,9 @@
         <td><span class="garnish-cell" data-probe="garnish"></span></td>
         <td></td><td></td>
         <td data-probe="glass"></td>
+        <td></td>
         <td data-probe="type"></td>
+        <td></td>
       `;
       tbody.appendChild(probeRow);
       const nameEl = probeRow.querySelector('[data-probe="name"]');
