@@ -685,10 +685,13 @@
 	    .summary-row:focus-visible { outline: 2px solid var(--accent-2); outline-offset: -2px; }
 	    @keyframes relatedJumpFlash { 0% { background: rgba(194, 154, 82, .3); } 100% { background: transparent; } }
 	    .summary-row.jump-flash { animation: relatedJumpFlash 1.6s ease-out; }
-	    .name-cell { display: flex; align-items: center; min-width: 0; }
+	    .name-cell { display: flex; align-items: center; gap: 5px; min-width: 0; }
 	    .name-cell > div { min-width: 0; }
 	    .availability-slot { display: grid; place-items: center; flex: 0 0 8px; width: 8px; }
-	    .cocktail-name { min-width: 0; font-weight: 720; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+	    .cocktail-name { flex: 1 1 auto; min-width: 0; font-weight: 720; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+	    .cocktail-data-flags { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 1px; height: 14px; padding: 0 3px; border: 1px solid var(--line-soft); border-radius: 4px; background: #0D131B; }
+	    .cocktail-data-flag { min-width: 7px; color: #83A8B8; font-size: 7px; font-weight: 850; line-height: 1; text-align: center; }
+	    .cocktail-data-flag.calories { color: #C5A66B; }
 	    .bar-supported-indicator { flex: 0 0 8px; width: 8px; height: 8px; border-radius: 50%; background: var(--success); box-shadow: 0 0 0 2px rgba(86, 139, 112, .16); }
 	    .status { display: block; color: var(--faint); font-size: 12px; margin-top: 2px; }
 	    .tagline { display: flex; flex-wrap: nowrap; gap: 5px; min-width: 0; overflow: hidden; }
@@ -2360,7 +2363,7 @@
   <button id="floatingResetButton" class="button icon" type="button" title="Reset filters and collapse cocktails" aria-label="Reset filters and collapse cocktails" hidden>↺</button>
   <button id="githubSyncButton" class="button icon" type="button" title="Set up GitHub Sync" aria-label="Set up GitHub Sync" aria-haspopup="dialog" data-sync-state="setup"><span id="githubSyncGlyph"></span></button>
   <script>
-    const BUILD_VERSION = '1.0.1.78';
+    const BUILD_VERSION = '1.0.1.79';
 	    const __ARROW_UP_AND_DOWN_SQUARE_FILL = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24.1846 23.8281"><g><rect height="23.8281" opacity="0" width="24.1846" x="0" y="0"/><path d="M23.8232 4.26758L23.8232 19.5605C23.8232 22.3193 22.3145 23.8232 19.5264 23.8232L4.29199 23.8232C1.50879 23.8232 0 22.3291 0 19.5605L0 4.26758C0 1.49902 1.50879 0 4.29199 0L19.5264 0C22.3145 0 23.8232 1.50391 23.8232 4.26758ZM11.0107 4.45312L7.56836 7.97363C7.33398 8.20312 7.22656 8.48145 7.22656 8.7793C7.22656 9.38477 7.68555 9.80957 8.30566 9.80957C8.64746 9.80957 8.96484 9.65332 9.13574 9.40918L9.80469 8.72559L10.8753 7.30769L10.7812 9.80469L10.7812 14.0039L10.8755 16.506L9.80469 15.0879L9.13574 14.4092C8.96484 14.1553 8.64746 14.0039 8.30566 14.0039C7.68555 14.0039 7.22656 14.4287 7.22656 15.0342C7.22656 15.332 7.33398 15.6055 7.56836 15.8398L11.0107 19.3604C11.2744 19.6484 11.5967 19.8047 11.9873 19.8047C12.3828 19.8047 12.7051 19.6484 12.9736 19.3604L16.4111 15.8398C16.6504 15.6006 16.7529 15.332 16.7529 15.0342C16.7529 14.4287 16.2988 14.0039 15.6689 14.0039C15.3271 14.0039 15.0146 14.1553 14.8438 14.4092L14.1748 15.0879L13.1041 16.5027L13.1982 14.0039L13.1982 9.80469L13.1043 7.31102L14.1748 8.72559L14.8438 9.40918C15.0146 9.65332 15.3271 9.80957 15.6689 9.80957C16.2988 9.80957 16.7529 9.38477 16.7529 8.7793C16.7529 8.48145 16.6504 8.20801 16.4111 7.97363L12.9736 4.45312C12.7051 4.16992 12.3828 4.00879 11.9873 4.00879C11.5967 4.00879 11.2744 4.16992 11.0107 4.45312Z"/></g></svg>`;
 	    const __ARROW_UP_SQUARE_FILL = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24.1846 23.8281"><g><rect height="23.8281" opacity="0" width="24.1846" x="0" y="0"/><path d="M23.8232 4.26758L23.8232 19.5605C23.8232 22.3193 22.3145 23.8232 19.5264 23.8232L4.29199 23.8232C1.50879 23.8232 0 22.3291 0 19.5605L0 4.26758C0 1.49902 1.50879 0 4.29199 0L19.5264 0C22.3145 0 23.8232 1.50391 23.8232 4.26758ZM10.874 5.55664L6.49414 9.78027C6.24512 10.0293 6.1084 10.293 6.1084 10.6543C6.1084 11.3428 6.67969 11.8359 7.32422 11.8359C7.68066 11.8359 8.01758 11.6895 8.25684 11.4258L10 9.58984L10.6642 8.73089L10.5664 10.5762L10.5664 17.3486C10.5664 18.0957 11.2012 18.7402 11.9824 18.7402C12.7734 18.7402 13.3936 18.0957 13.3936 17.3486L13.3936 10.5762L13.2988 8.7285L13.9648 9.58984L15.7031 11.4258C15.9424 11.6895 16.2744 11.8359 16.6309 11.8359C17.2705 11.8359 17.8564 11.3428 17.8564 10.6543C17.8564 10.293 17.7148 10.0293 17.4707 9.78027L13.0908 5.55664C12.7197 5.2002 12.3584 5.07324 11.9824 5.07324C11.6016 5.07324 11.2451 5.2002 10.874 5.55664Z"/></g></svg>`;
 	    const __ARROW_DOWN_APP_FILL = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24.0576 23.7305"><g><rect height="23.7305" opacity="0" width="24.0576" x="0" y="0"/><path d="M21.8799 1.81152C23.0664 2.9834 23.6963 4.7168 23.6963 6.92383L23.6963 16.7822C23.6963 18.9893 23.0615 20.7275 21.8799 21.8994C20.7227 23.0615 18.9844 23.7061 16.7725 23.7061L6.92383 23.7061C4.7168 23.7061 2.97852 23.0664 1.81641 21.8994C0.629883 20.7227 0 18.9893 0 16.7822L0 6.92383C0 4.7168 0.634766 2.97852 1.81641 1.81152C2.97363 0.649414 4.7168 0 6.92383 0L16.7725 0C18.9844 0 20.7178 0.634766 21.8799 1.81152ZM10.4346 6.41113L10.4346 13.1836L10.5323 15.0269L9.86328 14.165L8.125 12.3291C7.88574 12.0703 7.54883 11.9238 7.19238 11.9238C6.54785 11.9238 5.97168 12.4121 5.97168 13.1006C5.97168 13.4619 6.11328 13.7256 6.35742 13.9746L10.7373 18.1982C11.1133 18.5596 11.4648 18.6865 11.8506 18.6865C12.2266 18.6865 12.5879 18.5596 12.9541 18.1982L17.334 13.9746C17.583 13.7256 17.7197 13.4619 17.7197 13.1006C17.7197 12.4121 17.1338 11.9238 16.4941 11.9238C16.1426 11.9238 15.8105 12.0703 15.5713 12.3291L13.833 14.165L13.1654 15.0284L13.2568 13.1836L13.2568 6.41113C13.2568 5.65918 12.6367 5.01953 11.8506 5.01953C11.0645 5.01953 10.4346 5.65918 10.4346 6.41113Z"/></g></svg>`;
@@ -3664,6 +3667,17 @@
       const facts = cocktailStatsMarkup(cocktail?.nutrition);
       return facts ? `<div class="cocktail-guide-with-facts">${facts}${cocktailGuideMarkup(cocktail)}</div>` : cocktailGuideMarkup(cocktail);
     }
+    function cocktailDataFlagsMarkup(cocktail) {
+      const nutrition = cocktail?.nutrition || {};
+      const flags = [];
+      if (nutrition.calories !== null && nutrition.calories !== undefined && nutrition.calories !== '') flags.push(['C', 'Calories', 'calories']);
+      if ([nutrition.standardDrinks, nutrition.abv, nutrition.proof, nutrition.pureAlcoholGrams].some((value) => value !== null && value !== undefined && value !== '')) flags.push(['A', 'Alcohol', 'alcohol']);
+      if (cocktailGuideValue(cocktail.id, 'strength') !== null) flags.push(['S', 'Strength', 'strength']);
+      if (cocktailGuideValue(cocktail.id, 'taste') !== null) flags.push(['T', 'Taste', 'taste']);
+      if (!flags.length) return '';
+      const labels = flags.map(([, label]) => label);
+      return `<span class="cocktail-data-flags" aria-label="Includes ${escapeHtml(labels.join(', '))}" title="Includes: ${escapeHtml(labels.join(', '))}">${flags.map(([letter, label, className]) => `<span class="cocktail-data-flag ${className}" title="${escapeHtml(label)}" aria-hidden="true">${letter}</span>`).join('')}</span>`;
+    }
     function cocktailRawInfoValue(cocktail) {
       const facts = cocktail?.nutrition;
       if (!facts) return '';
@@ -3677,7 +3691,10 @@
       ].filter(Boolean).join('\n');
     }
     function renderCocktailRawPreview() {
-      $('#cocktailFormRawPreview').innerHTML = cocktailFactsItemsMarkup(parseCocktailRawInfo($('#cocktailFormRawInfo').value));
+      const field = $('#cocktailFormRawInfo');
+      const filled = String(field.dataset.smartAddFields || '').split('|').filter(Boolean);
+      const summary = filled.map((label) => `<span class="cocktail-fact"><strong>✓</strong> ${escapeHtml(label)}</span>`).join('');
+      $('#cocktailFormRawPreview').innerHTML = summary + cocktailFactsItemsMarkup(parseCocktailRawInfo(field.value));
     }
     function stripMarkdownLinks(value) {
       return String(value || '').replace(/\[([^\]]*)\]\([^)]*\)/g, '$1');
@@ -3686,32 +3703,60 @@
       return stripMarkdownLinks(value).replace(/\*\*/g, '').replace(/\*/g, '').trim();
     }
     function normalizeMethodStep(value) {
-      return cleanRawPasteText(value).replace(/^((?:[A-Z]{2,}\.?\s*)+)/, (match) => {
+      return cleanRawPasteText(value).replace(/^(?:[-•▪‣]\s*|\d+[.)]\s*)/, '').replace(/^((?:[A-Z]{2,}\.?\s*)+)/, (match) => {
         const lower = match.trim().toLowerCase();
         return `${lower.charAt(0).toUpperCase()}${lower.slice(1)} `;
       });
     }
+    const COCKTAIL_RAW_SECTION_ALIASES = new Map([
+      ['name', 'name'], ['title', 'name'], ['cocktail', 'name'],
+      ['aka', 'aka'], ['also known as', 'aka'], ['alternate names', 'aka'],
+      ['glass', 'glass'], ['glassware', 'glass'], ['prepare', 'prepare'], ['preparation', 'prepare'],
+      ['ingredients', 'ingredients'], ['ingredient', 'ingredients'],
+      ['how to make', 'how to make'], ['method', 'how to make'], ['instructions', 'how to make'], ['directions', 'how to make'],
+      ['garnish', 'garnish'], ['review', 'review'], ['notes', 'review'], ['note', 'review'],
+      ['history', 'history'], ['source', 'source'], ['source link', 'source'], ['links', 'source'],
+      ['nutrition', 'nutrition'], ['nutrition facts', 'nutrition'], ['alcohol', 'alcohol content'], ['alcohol content', 'alcohol content'],
+      ['strength and taste', 'strength and taste'], ['strength taste', 'strength and taste'], ['strength taste guide', 'strength and taste']
+    ]);
+    function cocktailRawSectionKey(value) {
+      const label = cleanRawPasteText(String(value || '').replace(/^#{1,6}\s*/, ''))
+        .replace(/:$/, '').replace(/&/g, 'and').replace(/[^a-z0-9]+/gi, ' ').trim().toLowerCase();
+      return COCKTAIL_RAW_SECTION_ALIASES.get(label) || '';
+    }
     function parseCocktailRawSections(raw) {
       const sections = {};
+      const preamble = [];
       let currentKey = '';
       String(raw || '').split(/\r?\n/).forEach((line) => {
-        const header = line.match(/^\*\*([^*]+)\*\*\s*(.*)$/);
-        if (header && /:$/.test(header[1].trim())) {
-          currentKey = header[1].trim().replace(/:$/, '').toLowerCase();
-          sections[currentKey] = header[2] ? [header[2]] : [];
-        } else if (currentKey) {
-          sections[currentKey].push(line);
+        const trimmed = line.trim();
+        const withoutHeading = trimmed.replace(/^#{1,6}\s*/, '');
+        const bold = withoutHeading.match(/^\*\*([^*]+?)\*\*\s*:?[ \t]*(.*)$/);
+        const cleaned = cleanRawPasteText(withoutHeading);
+        const plain = cleaned.match(/^([^:]{2,48}):\s*(.*)$/);
+        const label = bold ? bold[1] : plain ? plain[1] : cleaned;
+        const key = cocktailRawSectionKey(label);
+        if (key) {
+          currentKey = key;
+          if (!sections[currentKey]) sections[currentKey] = [];
+          const remainder = bold ? bold[2] : plain ? plain[2] : '';
+          if (remainder) sections[currentKey].push(remainder);
+          return;
         }
+        if (currentKey) sections[currentKey].push(line);
+        else if (trimmed) preamble.push(line);
       });
       Object.keys(sections).forEach((key) => { sections[key] = sections[key].join('\n').trim(); });
+      sections._preamble = preamble.join('\n').trim();
       return sections;
     }
     function extractCocktailRawGlass(sections) {
-      const prepareMatch = (sections['prepare'] || '').match(/\[([^\]]+)\]/);
+      const prepareMatch = (sections.prepare || '').match(/\[([^\]]+)\]/);
       if (prepareMatch) return prepareMatch[1].trim();
-      const glassMatch = (sections['glass'] || '').match(/\[([^\]]+)\]/);
+      const glassText = sections.glass || '';
+      const glassMatch = glassText.match(/\[([^\]]+)\]/);
       if (glassMatch) return glassMatch[1].replace(/\s*\d+(?:\.\d+)?\s*(?:oz|ml).*$/i, '').trim();
-      return '';
+      return cleanRawPasteText(glassText.split(/\r?\n/)[0] || '').replace(/^(?:[-•▪‣]\s*)/, '').replace(/\s*[-–—,]?\s*\d+(?:\.\d+)?\s*(?:oz|ml).*$/i, '').trim();
     }
     function applyCocktailFormGlass(rawGlassName) {
       if (!rawGlassName) return;
@@ -3731,16 +3776,21 @@
       const text = String(raw || '');
       if (!text.trim()) return;
       const sections = parseCocktailRawSections(text);
+      const filled = [];
       const unitWords = 'fl\\s*oz|oz|ounces?|ml|cl|dash(?:es)?|drops?|tsp|tbsp|bar\\s*spoons?|cups?|parts?|pinch(?:es)?';
-      const ingredientLineRe = new RegExp(`^((?:${AMOUNT_VALUE_PATTERN})\\s*(?:${unitWords}))\\s+(.+)$`, 'i');
+      const ingredientLineRe = new RegExp(`^((?:${AMOUNT_VALUE_PATTERN})\\s*(?:${unitWords})|(?:a\\s+)?(?:splash|dash|pinch)(?:\\s+of)?|few\\s+drops(?:\\s+of)?|top\\s+with)\\s+(.+)$`, 'i');
+      const ingredientAmountOnlyRe = new RegExp(`^(${AMOUNT_VALUE_PATTERN})\\s+(.+)$`, 'i');
       const parsedIngredients = (sections['ingredients'] || '').split(/\r?\n/)
-        .map((line) => line.trim())
+        .map((line) => cleanRawPasteText(line).replace(/^(?:[-•▪‣]\s*|\d+[.)]\s*)/, '').trim())
         .filter(Boolean)
         .map((line) => {
-          const match = line.match(ingredientLineRe);
+          const match = line.match(ingredientLineRe) || line.match(ingredientAmountOnlyRe);
           if (!match) return null;
-          const name = stripMarkdownLinks(match[2]).replace(/\s*\(?optional\)?\s*$/i, '').replace(/\s+/g, ' ').trim();
-          return name ? {amount: match[1].trim(), name} : null;
+          const rawName = stripMarkdownLinks(match[2]).replace(/^of\s+/i, '').replace(/\s*[[(]?optional[\])]?[ \t]*$/i, '').replace(/\s+/g, ' ').trim();
+          const parts = splitSpecificIngredientLabel(rawName);
+          const name = canonicalCocktailIngredientName(parts.generic);
+          const specific = parts.specific || suggestedCocktailBottle(parts.generic);
+          return name ? {amount: normalizeCocktailIngredientAmount(match[1]), name, specific} : null;
         })
         .filter(Boolean);
       if (parsedIngredients.length) {
@@ -3748,21 +3798,51 @@
         parsedIngredients.forEach((entry) => addCocktailIngredientRow(entry, false, false));
         updateCocktailIngredientSuggestions();
         syncCocktailBasesFromIngredients();
+        filled.push(`${parsedIngredients.length} ingredients`);
       }
-      applyCocktailFormGlass(extractCocktailRawGlass(sections));
+      const explicitName = cleanRawPasteText(sections.name || '').split(/\r?\n/)[0].trim();
+      const preambleName = cleanRawPasteText(sections._preamble || '').split(/\r?\n/).find((line) => line.trim() && !/^https?:\/\//i.test(line.trim()))?.trim() || '';
+      const parsedName = explicitName || (!$('#cocktailFormName').value.trim() && preambleName.length <= 80 ? preambleName : '');
+      if (parsedName) {
+        $('#cocktailFormName').value = parsedName;
+        filled.push('name');
+      }
+      const parsedGlass = extractCocktailRawGlass(sections);
+      if (parsedGlass) {
+        applyCocktailFormGlass(parsedGlass);
+        filled.push('glassware');
+      }
       const methodLines = (sections['how to make'] || '').split(/\r?\n/).map(normalizeMethodStep).filter(Boolean);
-      if (methodLines.length) $('#cocktailFormMethod').value = methodLines.join('\n');
+      if (methodLines.length) {
+        $('#cocktailFormMethod').value = methodLines.join('\n');
+        filled.push('method');
+      }
       const garnish = cleanRawPasteText(sections['garnish'] || '');
-      if (garnish) $('#cocktailFormGarnish').value = garnish;
+      if (garnish) {
+        $('#cocktailFormGarnish').value = garnish.replace(/^(?:[-•▪‣]\s*)/, '');
+        filled.push('garnish');
+      }
       const aka = cleanRawPasteText(sections['aka'] || '');
-      if (aka) $('#cocktailFormAlternateNames').value = aka;
+      if (aka) {
+        $('#cocktailFormAlternateNames').value = aka;
+        filled.push('other names');
+      }
       const strengthMatch = text.match(/Strength\s+(\d+(?:\.\d+)?)\s*\/\s*10/i);
-      if (strengthMatch) setCocktailFormGuideValue('strength', Number(strengthMatch[1]));
-      const tasteMatch = text.match(/Sweet to sour\s+(\d+(?:\.\d+)?)\s*\/\s*10/i);
-      if (tasteMatch) setCocktailFormGuideValue('taste', Number(tasteMatch[1]));
+      if (strengthMatch) {
+        setCocktailFormGuideValue('strength', Number(strengthMatch[1]));
+        filled.push('strength');
+      }
+      const tasteMatch = text.match(/(?:Sweet\s+to\s+(?:dry\/?sour|sour)|Taste)\s+(\d+(?:\.\d+)?)\s*\/\s*10/i);
+      if (tasteMatch) {
+        setCocktailFormGuideValue('taste', Number(tasteMatch[1]));
+        filled.push('taste');
+      }
       const review = cleanRawPasteText((sections['review'] || '').split(/\[View readers/i)[0]);
-      if (review) $('#cocktailFormNotes').value = review;
-      const sourceUrlMatch = text.match(/https?:\/\/\S*\/cocktails\/recipe\/\d+\/[a-z0-9-]+/i);
+      if (review) {
+        $('#cocktailFormNotes').value = review;
+        filled.push('notes');
+      }
+      const sourceUrlMatch = text.match(/https?:\/\/[^\s)\]]+/i);
       const historyMatch = (sections['history'] || '').match(/\[([^\]]*)\]\(([^)]+)\)/);
       const rawLinks = [];
       if (sourceUrlMatch) rawLinks.push({url: sourceUrlMatch[0]});
@@ -3770,7 +3850,11 @@
       if (rawLinks.length) {
         $('#cocktailFormLinkRows').innerHTML = '';
         rawLinks.forEach((link) => addCocktailLinkRow(link, false));
+        filled.push(rawLinks.length === 1 ? 'link' : 'links');
       }
+      const nutrition = parseCocktailRawInfo(text);
+      if (nutrition && [nutrition.calories, nutrition.standardDrinks, nutrition.abv, nutrition.proof, nutrition.pureAlcoholGrams].some((value) => value !== null && value !== undefined)) filled.push('nutrition/alcohol');
+      $('#cocktailFormRawInfo').dataset.smartAddFields = unique(filled).join('|');
       renderCocktailRawPreview();
     }
     function cocktailLinks(cocktail) {
@@ -4615,7 +4699,7 @@
 	      return `<tr class="summary-row" tabindex="0" role="button" aria-expanded="${expanded}" data-id="${escapeHtml(c.id)}">
 	        <td data-label="Photo">${thumbCell(c)}</td>
 	        <td data-label="My Bar"><span class="availability-slot">${supportedIndicator}</span></td>
-	        <td data-label="Cocktail"><div class="name-cell"><div class="cocktail-name">${cocktailNameMarkup(c)}</div></div></td>
+	        <td data-label="Cocktail"><div class="name-cell"><div class="cocktail-name">${cocktailNameMarkup(c)}</div>${cocktailDataFlagsMarkup(c)}</div></td>
 	        <td data-label="Try" class="bookmark-cell">${bookmarkToggle(c)}</td>
 	        <td data-label="Rating"><div class="rating-cell" title="${escapeHtml(ratingTitle)}">${ratingStars(c.id, rating, store.ratingView === 'friends' ? 'friends-view' : '')}<span class="rating-value">${ratingValueLabel(rating)}</span></div></td>
 	        <td data-label="Base Liquor"><div class="tagline">${bases}</div></td>
@@ -6531,7 +6615,7 @@
 	            <button class="button cocktail-ingredient-remove" type="button" tabindex="-1" data-remove-cocktail-ingredient aria-label="Remove ingredient" title="Remove ingredient">×</button>`;
 	          $('#cocktailFormIngredientRows').append(row);
 	          if (refreshSuggestions) updateCocktailIngredientSuggestions();
-	          if (focus) $('[data-cocktail-ingredient-name]', row).focus();
+	          if (focus) $('[data-cocktail-ingredient-amount]', row).focus();
 	          return row;
 	        }
 	        function renderCocktailIngredientRows(cocktail = null) {
@@ -6686,6 +6770,7 @@
 	          const hasUserNotes = cocktail && Object.prototype.hasOwnProperty.call(store.notes, cocktail.id);
 	          $('#cocktailFormNotes').value = cocktail ? (hasUserNotes ? store.notes[cocktail.id] : cocktail.notes.join('\n')) : '';
 	          $('#cocktailFormRawInfo').value = cocktailRawInfoValue(cocktail);
+	          $('#cocktailFormRawInfo').dataset.smartAddFields = '';
 	          renderCocktailRawPreview();
 	          $('#cocktailFormModalOverlay').hidden = false;
 	          $('#cocktailFormName').focus();
@@ -8470,10 +8555,15 @@
 	      });
 	      $$('[data-cocktail-form-guide-scale] span', $('#cocktailFormGuide')).forEach((tick) => tick.classList.remove('active'));
 	    });
-	    $('#cocktailFormRawInfo').addEventListener('input', renderCocktailRawPreview);
+	    $('#cocktailFormRawInfo').addEventListener('input', (event) => {
+	      event.currentTarget.dataset.smartAddFields = '';
+	      renderCocktailRawPreview();
+	    });
     $('#cocktailFormRawInfo').addEventListener('paste', (event) => {
       const pastedText = event.clipboardData?.getData('text/plain');
       if (!pastedText) return;
+      event.preventDefault();
+      event.currentTarget.value = pastedText;
       applyCocktailRawPaste(pastedText);
     });
 	    $('#cocktailFormAddLink').addEventListener('click', () => addCocktailLinkRow({}, true));
@@ -8510,8 +8600,6 @@
 	      event.target.setCustomValidity('');
 	      if (event.target.matches('[data-cocktail-ingredient-name]')) {
 	        const enteredValue = event.target.value;
-	        const canonicalName = canonicalCocktailIngredientName(enteredValue);
-	        if (canonicalName !== event.target.value) event.target.value = canonicalName;
 	        const specificInput = $('[data-cocktail-ingredient-specific]', event.target.closest('.cocktail-ingredient-row'));
 	        const suggestedSpecific = suggestedCocktailBottle(enteredValue);
 	        if (suggestedSpecific && !specificInput.value.trim()) specificInput.value = suggestedSpecific;
