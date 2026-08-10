@@ -1179,8 +1179,9 @@
     .bar-category-header h4 { margin: 0; color: var(--text); font-size: 14px; }
     .bar-category-meta { color: var(--faint); font-size: 11px; }
     .bar-bottle-stack { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
-    .bar-subtype-groups { display: grid; gap: 10px; }
-    .bar-subtype-group { min-width: 0; }
+    .bar-subtype-groups { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-flow: dense; gap: 10px 6px; }
+    .bar-subtype-group { grid-column: span var(--bar-subtype-span, 1); min-width: 0; }
+    .bar-subtype-group .bar-bottle-stack { grid-template-columns: repeat(var(--bar-subtype-span, 1), minmax(0, 1fr)); }
     .bar-subtype-header { display: flex; align-items: baseline; gap: 6px; margin: 0 0 5px; color: var(--muted); }
     .bar-subtype-header h5 { margin: 0; color: var(--muted); font-size: 11px; font-weight: 750; }
     .bar-subtype-header span { color: var(--faint); font-size: 9px; }
@@ -1436,6 +1437,9 @@
           .bar-inventory-toolbar { grid-template-columns: 1fr; align-items: start; height: auto; min-height: 51px; }
           .bar-add-form { grid-template-columns: minmax(140px, 1.4fr) minmax(100px, .7fr) minmax(135px, 1fr) auto auto auto auto; }
           .bar-bottle-stack { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+          .bar-subtype-groups { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+          .bar-subtype-group { grid-column: span var(--bar-subtype-span-compact, 1); }
+          .bar-subtype-group .bar-bottle-stack { grid-template-columns: repeat(var(--bar-subtype-span-compact, 1), minmax(0, 1fr)); }
           #barBottleSubmit { grid-column: 1 / span 3; justify-self: start; }
     }
     @media (min-width: 761px) {
@@ -1569,6 +1573,8 @@
       .neat-tasting-grid { grid-template-columns: 1fr; gap: 8px; }
       .bar-catalog { overflow: visible; padding: 0 12px 12px; }
       .bar-bottle-stack { grid-template-columns: 1fr; }
+      .bar-subtype-groups { grid-template-columns: 1fr; }
+      .bar-subtype-group, .bar-subtype-group .bar-bottle-stack { grid-column: auto; grid-template-columns: 1fr; }
       .bar-bottle-row.expanded { grid-template-columns: 30px minmax(0, 1fr) auto; }
       .bar-bottle-row.expanded .bar-bottle-header-paste { grid-column: 1 / -1; grid-row: 2; }
       .bar-catalog .bar-bottle-row:not(.expanded) .bar-bottle-name,
@@ -2378,7 +2384,7 @@
   <button id="floatingResetButton" class="button icon" type="button" title="Reset filters and collapse cocktails" aria-label="Reset filters and collapse cocktails" hidden>↺</button>
   <button id="githubSyncButton" class="button icon" type="button" title="Set up GitHub Sync" aria-label="Set up GitHub Sync" aria-haspopup="dialog" data-sync-state="setup"><span id="githubSyncGlyph"></span></button>
   <script>
-    const BUILD_VERSION = '1.0.1.82';
+    const BUILD_VERSION = '1.0.1.83';
 	    const __ARROW_UP_AND_DOWN_SQUARE_FILL = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24.1846 23.8281"><g><rect height="23.8281" opacity="0" width="24.1846" x="0" y="0"/><path d="M23.8232 4.26758L23.8232 19.5605C23.8232 22.3193 22.3145 23.8232 19.5264 23.8232L4.29199 23.8232C1.50879 23.8232 0 22.3291 0 19.5605L0 4.26758C0 1.49902 1.50879 0 4.29199 0L19.5264 0C22.3145 0 23.8232 1.50391 23.8232 4.26758ZM11.0107 4.45312L7.56836 7.97363C7.33398 8.20312 7.22656 8.48145 7.22656 8.7793C7.22656 9.38477 7.68555 9.80957 8.30566 9.80957C8.64746 9.80957 8.96484 9.65332 9.13574 9.40918L9.80469 8.72559L10.8753 7.30769L10.7812 9.80469L10.7812 14.0039L10.8755 16.506L9.80469 15.0879L9.13574 14.4092C8.96484 14.1553 8.64746 14.0039 8.30566 14.0039C7.68555 14.0039 7.22656 14.4287 7.22656 15.0342C7.22656 15.332 7.33398 15.6055 7.56836 15.8398L11.0107 19.3604C11.2744 19.6484 11.5967 19.8047 11.9873 19.8047C12.3828 19.8047 12.7051 19.6484 12.9736 19.3604L16.4111 15.8398C16.6504 15.6006 16.7529 15.332 16.7529 15.0342C16.7529 14.4287 16.2988 14.0039 15.6689 14.0039C15.3271 14.0039 15.0146 14.1553 14.8438 14.4092L14.1748 15.0879L13.1041 16.5027L13.1982 14.0039L13.1982 9.80469L13.1043 7.31102L14.1748 8.72559L14.8438 9.40918C15.0146 9.65332 15.3271 9.80957 15.6689 9.80957C16.2988 9.80957 16.7529 9.38477 16.7529 8.7793C16.7529 8.48145 16.6504 8.20801 16.4111 7.97363L12.9736 4.45312C12.7051 4.16992 12.3828 4.00879 11.9873 4.00879C11.5967 4.00879 11.2744 4.16992 11.0107 4.45312Z"/></g></svg>`;
 	    const __ARROW_UP_SQUARE_FILL = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24.1846 23.8281"><g><rect height="23.8281" opacity="0" width="24.1846" x="0" y="0"/><path d="M23.8232 4.26758L23.8232 19.5605C23.8232 22.3193 22.3145 23.8232 19.5264 23.8232L4.29199 23.8232C1.50879 23.8232 0 22.3291 0 19.5605L0 4.26758C0 1.49902 1.50879 0 4.29199 0L19.5264 0C22.3145 0 23.8232 1.50391 23.8232 4.26758ZM10.874 5.55664L6.49414 9.78027C6.24512 10.0293 6.1084 10.293 6.1084 10.6543C6.1084 11.3428 6.67969 11.8359 7.32422 11.8359C7.68066 11.8359 8.01758 11.6895 8.25684 11.4258L10 9.58984L10.6642 8.73089L10.5664 10.5762L10.5664 17.3486C10.5664 18.0957 11.2012 18.7402 11.9824 18.7402C12.7734 18.7402 13.3936 18.0957 13.3936 17.3486L13.3936 10.5762L13.2988 8.7285L13.9648 9.58984L15.7031 11.4258C15.9424 11.6895 16.2744 11.8359 16.6309 11.8359C17.2705 11.8359 17.8564 11.3428 17.8564 10.6543C17.8564 10.293 17.7148 10.0293 17.4707 9.78027L13.0908 5.55664C12.7197 5.2002 12.3584 5.07324 11.9824 5.07324C11.6016 5.07324 11.2451 5.2002 10.874 5.55664Z"/></g></svg>`;
 	    const __ARROW_DOWN_APP_FILL = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24.0576 23.7305"><g><rect height="23.7305" opacity="0" width="24.0576" x="0" y="0"/><path d="M21.8799 1.81152C23.0664 2.9834 23.6963 4.7168 23.6963 6.92383L23.6963 16.7822C23.6963 18.9893 23.0615 20.7275 21.8799 21.8994C20.7227 23.0615 18.9844 23.7061 16.7725 23.7061L6.92383 23.7061C4.7168 23.7061 2.97852 23.0664 1.81641 21.8994C0.629883 20.7227 0 18.9893 0 16.7822L0 6.92383C0 4.7168 0.634766 2.97852 1.81641 1.81152C2.97363 0.649414 4.7168 0 6.92383 0L16.7725 0C18.9844 0 20.7178 0.634766 21.8799 1.81152ZM10.4346 6.41113L10.4346 13.1836L10.5323 15.0269L9.86328 14.165L8.125 12.3291C7.88574 12.0703 7.54883 11.9238 7.19238 11.9238C6.54785 11.9238 5.97168 12.4121 5.97168 13.1006C5.97168 13.4619 6.11328 13.7256 6.35742 13.9746L10.7373 18.1982C11.1133 18.5596 11.4648 18.6865 11.8506 18.6865C12.2266 18.6865 12.5879 18.5596 12.9541 18.1982L17.334 13.9746C17.583 13.7256 17.7197 13.4619 17.7197 13.1006C17.7197 12.4121 17.1338 11.9238 16.4941 11.9238C16.1426 11.9238 15.8105 12.0703 15.5713 12.3291L13.833 14.165L13.1654 15.0284L13.2568 13.1836L13.2568 6.41113C13.2568 5.65918 12.6367 5.01953 11.8506 5.01953C11.0645 5.01953 10.4346 5.65918 10.4346 6.41113Z"/></g></svg>`;
@@ -6197,8 +6203,8 @@
 	              return !coverage || norm(coverage.name) !== norm(recommendation.name);
 	            });
 	            const rows = [
-	              ...bottles.map((bottle) => ({subtype: bottle.subtype, name: bottle.name, html: ownedBottleHtml(bottle, isMixingBottle(bottle) ? exactRecommendationFor(bottle) : null)})),
-	              ...visibleRecommendations.map((recommendation) => ({subtype: recommendation.subtype || '', name: recommendation.name, html: recommendedBottleHtml(recommendation)}))
+	              ...bottles.map((bottle) => ({subtype: bottle.subtype, name: bottle.name, expanded: state.barExpandedBottle === bottle.id, html: ownedBottleHtml(bottle, isMixingBottle(bottle) ? exactRecommendationFor(bottle) : null)})),
+	              ...visibleRecommendations.map((recommendation) => ({subtype: recommendation.subtype || '', name: recommendation.name, expanded: state.barExpandedRecommendation === recommendation.id, html: recommendedBottleHtml(recommendation)}))
 	            ].sort((a, b) => compareBarSubtypes(base, a.subtype, b.subtype) || a.name.localeCompare(b.name));
 	            if (!rows.length) return '';
 	            const bottleRows = state.barGroupBySubtype
@@ -6207,10 +6213,15 @@
 	                  if (!groups.has(key)) groups.set(key, []);
 	                  groups.get(key).push(row);
 	                  return groups;
-	                }, new Map()), ([subtype, subtypeRows]) => `<section class="bar-subtype-group">
+	                }, new Map()), ([subtype, subtypeRows]) => {
+	                  const hasExpandedBottle = subtypeRows.some((item) => item.expanded);
+	                  const subtypeSpan = hasExpandedBottle ? 4 : Math.min(4, subtypeRows.length);
+	                  const compactSpan = hasExpandedBottle ? 2 : Math.min(2, subtypeRows.length);
+	                  return `<section class="bar-subtype-group${hasExpandedBottle ? ' has-expanded' : ''}" style="--bar-subtype-span:${subtypeSpan};--bar-subtype-span-compact:${compactSpan}">
 	                  <div class="bar-subtype-header"><h5>${escapeHtml(subtypeLabel(base, subtype) || displayBaseLabel(base))}</h5><span>${subtypeRows.length}</span></div>
 	                  <div class="bar-bottle-stack">${subtypeRows.map((item) => item.html).join('')}</div>
-	                </section>`).join('')}</div>`
+	                </section>`;
+	                }).join('')}</div>`
 	              : `<div class="bar-bottle-stack">${rows.map((item) => item.html).join('')}</div>`;
 	            const categoryMeta = [
 	              recommendationView !== 'recommended'
