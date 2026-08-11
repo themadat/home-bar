@@ -46,6 +46,10 @@ window.DIFFORDS_DATA = [
       "proof": 35.54,
       "pureAlcoholGrams": 19.1
     },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 83
+    },
     "notes": {
       "review": "This gin-laced creamy Alexander has sadly slipped from popularity, partly knocked by its successors, particularly the Brandy Alexander.",
       "variant": "Without egg white this becomes a Princess Mary, but as Stanley Clisby Arthur explains in his 1937 Famous New Orleans Drinks and How to Mix 'em, it's a lesser cocktail. \"Smooth as cream, delicate as dew, and easily prepared is the Alexander. Some who mix this particular cocktail do not use the white of egg. A mistake, for the albumen gives a froth and an added smoothness which makes this cocktail different. Like all drinks in which egg white is used vigorous shaking is required. Give the Alexander all you've got in elbow grease to make it live up to its reputation - for it is truly Alexander the Great among drinks in its class.\"",
@@ -93,6 +97,10 @@ window.DIFFORDS_DATA = [
       "abv": 8.8,
       "proof": 17.61,
       "pureAlcoholGrams": 14.6
+    },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 505
     },
     "notes": {
       "review": "Bittersweet, lightly effervescent, long and refreshing.",
@@ -148,6 +156,10 @@ window.DIFFORDS_DATA = [
       "abv": null,
       "proof": null,
       "pureAlcoholGrams": 26.3
+    },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 198
     },
     "notes": {
       "review": "Rich apricot and apple with a backbone of botanical gin. Balanced rather than dry or sweet.\n\r\n\n\r\nThis cocktail looks better when stirred, but Harry Craddock's original 1930 recipe is shaken, and the extra dilution helps mellow this spirit-forward classic. Hence, I've added a splash of water to increase the dilution of the stirred recipe. Although an act of heresy, a splash of processed and packaged clear \"apple juice drink\" also works in place of added chilled water.",
@@ -206,6 +218,10 @@ window.DIFFORDS_DATA = [
       "proof": 38.26,
       "pureAlcoholGrams": 19
     },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 71
+    },
     "notes": {
       "review": "This \"Martini\" is unashamedly fun and brash with lurid green apple liqueur at its 'core'.",
       "variant": "A simplified version is made with 45ml (1½oz) vodka, 45ml (1½oz) sour apple liqueur, and 22.5ml (¾oz) lime cordial, with some bars using sour mix in place of the lime cordial.\n\r\n\n\r\nSplit Apple Martini - calvados, vodka, apple juice and bianco americano.\n\r\nCalvados Appletini - calvados, apple juice, lemon juice and sugar syrup.\n\r\nBig Apple Sour Martini - vodka, calvados, apple juice, lemon juice and sugar syrup.\n\r\nBig Apple Martini - gin, vodka, bianco vermouth, calvados, sour apple liqueur, and apple juice.\n\r\nApple Martini (simple) - vodka, gin, apple juice and sugar syrup.\n\r\nApple Martini (with apple schnapps) - vodka, gin, apple schnapps and apple juice.\n\r\nToffee Apple Martini - calvados, vodka, gin, sour apple liqueur, caramel toffee liqueur and apple juice.",
@@ -261,6 +277,10 @@ window.DIFFORDS_DATA = [
       "proof": 42.13,
       "pureAlcoholGrams": 22
     },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 506
+    },
     "notes": {
       "review": "Citrusy, floral gin with a lightly sour finish.",
       "variant": "Blue Moon\n\r\nClean Aviation (vodka-based)\n\r\nTakumis Aviation",
@@ -307,6 +327,10 @@ window.DIFFORDS_DATA = [
       "abv": 26.36,
       "proof": 52.73,
       "pureAlcoholGrams": 10.3
+    },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 82
     },
     "notes": {
       "review": "Probably the best-known and most popular shot-style cocktail.",
@@ -358,6 +382,10 @@ window.DIFFORDS_DATA = [
       "abv": 20.17,
       "proof": 40.35,
       "pureAlcoholGrams": 18.9
+    },
+    "discerningDrinkers": {
+      "rating": 3.5,
+      "ratingCount": 221
     },
     "notes": {
       "review": "This classic salmon-pinky cocktail perfectly combines and balances the light rum with the assertive sourness of lime juice and rich sweetness of pomegranate syrup.",
@@ -417,6 +445,10 @@ window.DIFFORDS_DATA = [
       "proof": 28.34,
       "pureAlcoholGrams": 22
     },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 71
+    },
     "notes": {
       "review": "There's a touch of Tiki to this pineapple rum sour that's made distinctive by peppermint and herbal flavours.",
       "variant": "",
@@ -469,6 +501,10 @@ window.DIFFORDS_DATA = [
       "proof": 33.82,
       "pureAlcoholGrams": 19.5
     },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 471
+    },
     "notes": {
       "review": "The combination of honey and lemon suggests flu relief but don't wait for an ailment before trying this soothing concoction.\n\r\n\n\r\nThe beneficial addition of a splash of orange juice to a Bee's Knees (classically it's just gin, lemon and honey) comes from David Embury's 1948 book The Fine Art of Mixing Drinks where he says, \"The addition of a small amount of orange juice makes for an interesting variation\".",
       "variant": "Alternatively, if making with raw honey (rather than syrup), STIR 4 spoons honey with 22.5ml (¾oz) lemon juice and 10ml (⅓oz) orange juice in base of shaker until honey is dissolved. Add 60ml (2oz gin), SHAKE with ice and fine strain into chilled glass.\n\r\n\n\r\nWith light white rum in place of gin, this drink becomes a Honeysuckle, and with Jamaican rum, it becomes a Honey Bee",
@@ -520,6 +556,10 @@ window.DIFFORDS_DATA = [
       "abv": 4.6,
       "proof": 9.2,
       "pureAlcoholGrams": 6.8
+    },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 58
     },
     "notes": {
       "review": "It's hard not to like this blend of peaches and sparkling wine. Lemon juice adds balance and a citrusy bite, while peach schnapps boosts peachy flavour. If you'd prefer drier, switch prosecco to brut champagne.",
@@ -576,6 +616,10 @@ window.DIFFORDS_DATA = [
       "proof": 51.44,
       "pureAlcoholGrams": 22.1
     },
+    "discerningDrinkers": {
+      "rating": 3.5,
+      "ratingCount": 380
+    },
     "notes": {
       "review": "The classic proportions for a Between the Sheets are most often quoted as being:\n\r\n30ml (1oz) Light rum\n\r\n30ml (1oz) Cognac brandy\n\r\n30ml (1oz) Triple sec liqueur\n\r\n7.5ml (¼oz) Lemon juice\n\r\nThat's three full shots of 40% liquor and a splash of lemon juice, which makes for a boozy cocktail that's just a touch on the tart side. My recipe uses a more manageable 70ml (2⅓oz) of liquor whilst broadly maintaining the classic proportions. (Apologies to Americans struggling to measure 5/6oz (25ml), but the original equal-parts recipe benefits from a smidgen more triple sec.)",
       "variant": "A Between The Sheets isn't necessarily light rum and cognac-based; indeed, three versions span this cocktail's history:\n\r\nNo. 1 - dry gin + light white rum + triple sec + lemon juice\n\r\nNo. 2 - brandy + dry gin + triple sec + lemon juice\n\r\nNo. 3 - brandy + light white rum + triple sec + lemon juice",
@@ -620,6 +664,10 @@ window.DIFFORDS_DATA = [
       "abv": 29.35,
       "proof": 58.7,
       "pureAlcoholGrams": 24.3
+    },
+    "discerningDrinkers": {
+      "rating": 3.5,
+      "ratingCount": 162
     },
     "notes": {
       "review": "This popular cocktail is simple but tasty. Try with just a splash of cola (rather than also with the cream that makes a Colorado Bulldog).",
@@ -678,6 +726,10 @@ window.DIFFORDS_DATA = [
       "proof": null,
       "pureAlcoholGrams": 18.9
     },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 107
+    },
     "notes": {
       "review": "The classic savoury brunch cocktail.",
       "variant": "",
@@ -732,6 +784,10 @@ window.DIFFORDS_DATA = [
       "proof": null,
       "pureAlcoholGrams": 37.9
     },
+    "discerningDrinkers": {
+      "rating": 3.5,
+      "ratingCount": 14
+    },
     "notes": {
       "review": "The showy way to make a simple hot whisky punch.",
       "variant": "",
@@ -780,6 +836,10 @@ window.DIFFORDS_DATA = [
       "abv": 25.79,
       "proof": 51.57,
       "pureAlcoholGrams": 23.3
+    },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 791
     },
     "notes": {
       "review": "Basically, a Negroni with bourbon replacing gin. The original 1927 recipe calls for equal parts, but I've previously favoured a 3:2:2 (45ml bourbon, 30ml rosso vermouth, 30ml red bitter liqueur) recipe. Popular demand (see comments) has led me to adopt a 2:1:1 recipe, as I concede it's better balanced.",
@@ -833,6 +893,10 @@ window.DIFFORDS_DATA = [
       "abv": 15.1,
       "proof": 30.21,
       "pureAlcoholGrams": 16.2
+    },
+    "discerningDrinkers": {
+      "rating": 4.5,
+      "ratingCount": 332
     },
     "notes": {
       "review": "One of the best and most popular drinks to come out of the 1980s.",
@@ -898,6 +962,10 @@ window.DIFFORDS_DATA = [
       "proof": 44.5,
       "pureAlcoholGrams": 21
     },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 163
+    },
     "notes": {
       "review": "This finely balanced, brandy-based classic zings with fresh zesty lemon and layers of complexity added by orange curaçao, maraschino liqueur and aromatic bitters. Balanced to be a smidgen on the sour side to allow for minimal additional sweetness introduced by a crusted rim.",
       "variant": "",
@@ -952,6 +1020,10 @@ window.DIFFORDS_DATA = [
       "abv": 16.25,
       "proof": 32.49,
       "pureAlcoholGrams": 19.7
+    },
+    "discerningDrinkers": {
+      "rating": 3.5,
+      "ratingCount": 239
     },
     "notes": {
       "review": "A fairly dry, complex cocktail. Generous sweet vermouth and orange juice make the Bronx less bitter and fruitier than many of its era, but still challenging to delicate modern palates. A classic that needs a trio of something extras to give it zing;\n\r\n1. Freshly squeezed orange juice\n\r\n2. Orange bitters\n\r\n3. Orange zest twist\n\r\nIt is often claimed that the Bronx is \"the first cocktail to use fruit juice\" other than citrus, but this is just another muddy 'fact' in the Bronx's history.",
@@ -1009,6 +1081,10 @@ window.DIFFORDS_DATA = [
       "proof": null,
       "pureAlcoholGrams": 18.9
     },
+    "discerningDrinkers": {
+      "rating": 4.5,
+      "ratingCount": 369
+    },
     "notes": {
       "review": "If you are European or in North America, you're probably used to this drink being served with crushed ice, but until you have tried it with small cubes or cracked ice, you have not properly experienced a Caipirinha. Be sure to muddle the lime and sugar well and stir both before adding ice and after.",
       "variant": "Caipirinhas - styles-flavours-and-how-to-make",
@@ -1057,6 +1133,10 @@ window.DIFFORDS_DATA = [
       "proof": 37.15,
       "pureAlcoholGrams": 18.9
     },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 225
+    },
     "notes": {
       "review": "Your choice of honey and rum will greatly affect the flavour and, indeed, the success of the finished cocktail. More flavoursome honey demands a more robust rum, so best you're guided by what your local beekeeper supplies. Achieve the perfect balance between sweet honey and sour lime and this is a truly great cocktail.",
       "variant": "",
@@ -1104,6 +1184,10 @@ window.DIFFORDS_DATA = [
       "abv": 22.1,
       "proof": 44.2,
       "pureAlcoholGrams": 19.9
+    },
+    "discerningDrinkers": {
+      "rating": 3.5,
+      "ratingCount": 128
     },
     "notes": {
       "review": "Originally made with Riesling Rhine wine, the Cardinale has become a Negroni made with dry vermouth, producing a lighter cocktail than when made with the more usual sweet vermouth. However, this cocktail really shines when made with Riesling wine as per the original recipe.",
@@ -1159,6 +1243,10 @@ window.DIFFORDS_DATA = [
       "proof": 43.3,
       "pureAlcoholGrams": 19.8
     },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 253
+    },
     "notes": {
       "review": "This recipe is a broad interpretation of Jacob A. Didier's 1909 original and the Casino recipes that follow in Hugo R. Ensslin's 1916 book and other subsequent tomes. Although, as Didier merely specifies \"dashes\" of lemon juice, his recipe may not be so far removed from mine.",
       "variant": "Aviation\n\r\nBlue Moon",
@@ -1212,6 +1300,10 @@ window.DIFFORDS_DATA = [
       "proof": null,
       "pureAlcoholGrams": 19.3
     },
+    "discerningDrinkers": {
+      "rating": 3.5,
+      "ratingCount": 95
+    },
     "notes": {
       "review": "Starts bone dry and becomes slightly sweeter as you reach the dissolving cube at the bottom, depending on how briskly you drink of course.\n\r\n\n\r\nBack in the 1940s, David Embury, an American attorney and amateur bartender, wrote the most succinct instruction on how to make a Classic Champagne Cocktail in his The Fine Art of Mixing Drinks: \"This drink should be served in a pre-chilled saucer champagne glass. Place a medium-sized loaf of sugar in the glass and saturate it with Angostura bitters - about 2 dashes. Fill with thoroughly chilled champagne. Add a twist of lemon or orange peel, or both..\"\n\r\n\n\r\nEmbury also added his opinion of the drink, \"From every point of view, other than cost, this cocktail is a decidedly inferior drink, and no true champagne lover would ever commit the sacrilege of polluting a real vintage champagne by dunking even plain sugar - much less bitters - in it. So if you must... serve this incongruous mess just for the sake of 'putting on the dog,' then, in the name of all that a true lover of the grape holds sacred, use a cheap domestic champagne or even an artificially carbonated white wine.\"\n\r\n\n\r\nTips on how to make\n\r\nDespite Embury's protestations, \"this incongruous mess\" of a drink remains, some 70 years later, one of the most popular champagne cocktails and one of the most enduring classics. So it can't be that bad! Like most cocktails, it's all about the quality of ingredients used and how you use them. Follows eight tips for making a perfect Champagne Cocktail:\n\r\n\n\r\n1. Use a well-chilled, clean glass pre-chilled in a freezer. A flute gives a better drinking experience, but a saucer looks more decadent.\n\r\n\n\r\n2. As cocktail historian David Wondrich says, \"Don't use loose sugar or try to crush the cube - the whole point isn't so much to sweeten the drink as to create bubbles, which the cube will do as it slowly dissolves.\" I prefer a rustic looking brown sugar cube.\n\r\n\n\r\n3. Place a small napkin (bevnap) over the glass and place the cube on top of the napkin. Dash the bitters over the cube to soak the surface thoroughly. The napkin handily absorbs excess bitters and then works, with some dexterous finger work, to act as a stylish chute to direct the soaked cube into the glass.\n\r\n\n\r\n4. Use good quality cognac/brandy and store it in a refrigerator or even freezer prior to use. Consider decanting some into a small bottle for such occasions. Pour a measure of the chilled cognac into the glass over the sugar cube. Room-temperature cognac acts as a heat bomb to wreck this cocktail.\n\r\n\n\r\n5. \"Some prefer an ice cube in theirs, which will (to state the bleeding obvious) prolong the chill at the cost of a certain dilution,\" again, to quote Wondrich. Ice is unnecessary if the sparkling wine, brandy and glass are well chilled.\n\r\n\n\r\n6. The dry biscuity and citrus flavour of a good brut champagne/sparkling wine is integral to this cocktail. Tip the glass at a slight angle and pour the chilled wine down the inside of the glass before straightening the glass to finish the pour to create as little foam as possible. The cube will continuously generate bubbles, so a careful pour will help retain CO2 in the drink and add to the drinking experience.\n\r\n\n\r\n7. As Embury says, \"Add a twist of lemon or orange peel, or both.\" Discard twist(s) after expressing citrus oils.\n\r\n\n\r\n8. Enjoy with friends. This cocktail is not suited to solo consumption and lends itself to a crowd. Depending on the size of your glasses, expect 6 - 8 servings per bottle of sparkling wine, or stretch to 10 if you're a tightwad.",
       "variant": "Business Brace - A bartender named John Dougherty won an 1899 New York cocktail competition with a drink named Business Brace that is very similar to a Champagne Cocktail, the only difference being the addition of a splash of sparkling water with the champagne. His win was recorded in an article in the Kansas City Star and is said to have helped drive the popularity of the Champagne Cocktail.\n\r\n\n\r\nCasino Cocktail - If you replace the bitters with absinthe and float a barspoon of cognac/brandy on top of the drink then the Champagne Cocktail becomes a Casino Cocktail.\n\r\n\n\r\nPrince of Wales Cocktail - A Prince of Wales cocktail is made in the same way as a Champagne Cocktail but with equal parts Cognac and Grand Marnier liqueur.\n\r\n\n\r\nChicago Cocktail - A Chicago Cocktail is made in the same way as the Prince of Wales Cocktail above but with equal parts Cognac and triple sec liqueur.",
@@ -1263,6 +1355,10 @@ window.DIFFORDS_DATA = [
       "abv": 19.57,
       "proof": 39.14,
       "pureAlcoholGrams": 21.7
+    },
+    "discerningDrinkers": {
+      "rating": 4.5,
+      "ratingCount": 311
     },
     "notes": {
       "review": "A swizzle for people like me - Chartreuse lovers. Best enjoyed on a hot summer's evening.",
@@ -1323,6 +1419,10 @@ window.DIFFORDS_DATA = [
       "proof": 28.4,
       "pureAlcoholGrams": 16.8
     },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 124
+    },
     "notes": {
       "review": "Gin-laced, sweet 'n' sour with a fruity blast of rich raspberry toned by dry vermouth.\n\r\n\n\r\nDepending on your raspberry syrup, the finished cocktail may range in colour from a shade of pale yellow to a tinge of pink through to pink red (the cocktail above was photographed made with homemade syrup). You may need to vary the measure of syrup from 12.5ml to as much as 20ml (2/3 oz): this is as much dependent on personal taste as your choice of raspberry syrup.",
       "variant": "Clover Club (Difford's recipe)\n\r\nClover Club (Julie Reiner's recipe)\n\r\nClover Leaf.",
@@ -1381,6 +1481,10 @@ window.DIFFORDS_DATA = [
       "proof": 33.86,
       "pureAlcoholGrams": 18.2
     },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 156
+    },
     "notes": {
       "review": "Yellow Chartreuse replaces triple sec in this riff on the classic Corpse Reviver Cocktail No. 2.",
       "variant": "Corpse Reviver No. 1 (Gilberg's recipe)\n\r\nCorpse Reviver No. 1 (Savoy recipe)\n\r\nCorpse Reviver No. 2 (Duffy/Gaige's recipe)\n\r\nCorpse Reviver No. 2 (Savoy recipe)\n\r\nCorpse Reviver No. 4\n\r\nCorpse Reviver No. 0824\n\r\nCorpse Reviver No. Blue\n\r\nCadáver Reviver\n\r\nBlanche Corpse Reviver\n\r\nSavoy Corpse Reviver (by Joe Gilmore)",
@@ -1438,6 +1542,10 @@ window.DIFFORDS_DATA = [
       "proof": 33.6,
       "pureAlcoholGrams": 18.9
     },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 331
+    },
     "notes": {
       "review": "The Cosmopolitan was originally made with citrus vodka, but it's great with unflavoured vodka or a combination of the two vodkas - my preference. For this recipe, as long as your combined vodka totals 37.5ml (1¼oz) or a splash more, you should end up with a tasty, balanced cocktail. I've previously added orange bitters, but the combination of triple sec liqueur and the bitter oil from the garnish is orangy enough. Like so many cocktails, two or three drops of saline solution help meld all harmoniously.",
       "variant": "Cosmopolitan (Dale DeGroff's recipe)\n\r\nCosmopolitan (1934 recipe)\n\r\nCosmopolitan (Toby Cecchini's recipe)",
@@ -1489,6 +1597,10 @@ window.DIFFORDS_DATA = [
       "abv": null,
       "proof": null,
       "pureAlcoholGrams": 19
+    },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 283
     },
     "notes": {
       "review": "Basically, a rum and coke with a squeeze of lime, but Cuba Libre has much more of a ring about it. Zesty lime and dashes of bitters add layers of complexity, balancing the sweetness of the cola.",
@@ -1545,6 +1657,10 @@ window.DIFFORDS_DATA = [
       "proof": 35.68,
       "pureAlcoholGrams": 15.8
     },
+    "discerningDrinkers": {
+      "rating": 4.5,
+      "ratingCount": 642
+    },
     "notes": {
       "review": "Crisp, light and refreshing. Delicately simple yet with perfectly balanced complexity of flavours.\n\r\n\n\r\nFor an even better Daiquiri: In place of sugar syrup, use two slightly heaped 5ml measuring spoons of powdered sugar. If you like your Daiquiris very slightly tart then knock the excess sugar off so the sugar lays flat on the spoon. The sweeter you like your Daiquiris, the more heaped your loaded spoons should be. (I prefer slightly raised rather than flat.) To ensure the sugar fully dissolves, stir all the ingredients in the base of the shaker prior to adding ice and shaking.\n\r\n\n\r\nTo fill a large coupe, you'll need to scale up this recipe:\n\r\n75 ml (2½ oz) Light white rum\n\r\n22.5 ml (¾ oz) Lime juice\n\r\n15 ml (½ oz) Sugar syrup\n\r\n12 drops Difford's Daiquiri Bitters\n\r\n10 ml (⅓ oz) Chilled water (omit if wet ice)",
       "variant": "Daiquiri No.1 6:2:1 recipe\n\r\nDaiquiri No.1 Embury's 8:2:1 recipe\n\r\nDaiquiri No.1 countdown 3:2:1 recipe",
@@ -1599,6 +1715,10 @@ window.DIFFORDS_DATA = [
       "proof": 17.47,
       "pureAlcoholGrams": 16
     },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 366
+    },
     "notes": {
       "review": "A Daiquiri made with pungent dark rum, topped and made refreshing with spicy ginger beer. Part of the Mule family - but is distinctive due to the assertive flavour of the dark rum.",
       "variant": "Simpler Dark 'N' Stormy Highball",
@@ -1651,6 +1771,10 @@ window.DIFFORDS_DATA = [
       "proof": null,
       "pureAlcoholGrams": 19.5
     },
+    "discerningDrinkers": {
+      "rating": 3,
+      "ratingCount": 8
+    },
     "notes": {
       "review": "This Martini-style classic was originally devoid of sugar syrup but the hint of sweetness mellows the gin and balances the bitters. Alternatively, use Old Tom gin and omit sugar. The splash of chilled water in our recipe helps open and stretch this cocktail.\n\nBe the first to comment",
       "variant": "",
@@ -1702,6 +1826,10 @@ window.DIFFORDS_DATA = [
       "proof": 46.49,
       "pureAlcoholGrams": 22.8
     },
+    "discerningDrinkers": {
+      "rating": 3.5,
+      "ratingCount": 110
+    },
     "notes": {
       "review": "With the right olive brine, this is a delicious, salty, gin-laced, herbal delight.\n\r\n\n\r\nAs with all Martinis, striking a perfect level of dilution and achieving an ice-cold serving temperature (helped by chilling/freezing all ingredients, the glass and garnish) is key. However, a Dirty Martini introduces another element, olive brine. Your choice of olives and accompanying brine will make or break this cocktail. (Beware, olives packed in oil produce a revolting emulsion.) Then there's the question of how much olive brine to use. Depending on personal taste and the intensity of flavour of the olive juice, this varies from 5ml to 22.5ml. I've found that my taste is middle of the road at 10ml (⅓oz) to 15ml (½oz), although if it's very mild olive juice, then I'll happily stretch to 20ml (⅔oz). This cocktail benefits from the little extra that dashes of bitters bring, and I particularly like Bob's Ginseng Bitters in my Dirty Martinis.",
       "variant": "Dirty Vodka Martini\n\r\nFilthy Dirty Martini",
@@ -1750,6 +1878,10 @@ window.DIFFORDS_DATA = [
       "abv": 29.37,
       "proof": 58.74,
       "pureAlcoholGrams": 26.6
+    },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 399
     },
     "notes": {
       "review": "This is my go-to Dry Martini. I chose a 5:1 ratio as our 'preferred' Dry Martini specification in deference to David Embury who writes of this cocktail in his The Fine Art of Mixing Drinks, \"After extensive experimentation I have arrived at the ratio of 5 to 1 as the proportion most pleasing to the average palate. Personally I like a ratio of about 7 to 1 even better, and I know some who prefer a ratio as high as 10 to 1.\"",
@@ -1803,6 +1935,10 @@ window.DIFFORDS_DATA = [
       "proof": 37.13,
       "pureAlcoholGrams": 18.9
     },
+    "discerningDrinkers": {
+      "rating": 4.5,
+      "ratingCount": 674
+    },
     "notes": {
       "review": "Likened to a Vodka & Red Bull for the discerning, this caffeine-loaded cocktail comprises generous slugs of vodka, espresso and coffee liqueur. Although far from a true Martini, the Espresso Martini is perhaps the best-known of the contemporary classic cocktails to emerge from the 1990s.\n\r\n\n\r\nLike every cocktail, an Espresso Martini is only as good as its ingredients. So, you'll need a good vodka and freshly made espresso coffee (or an excellent UHT alternative). The espresso's crema (creamy foam) is key to the success and appearance of the finished cocktail. It may seem perverse to pour a steaming hot shot of espresso coffee into a shaker and then immediately shake with ice, rather than using cold/iced coffee, but let the coffee cool so the crema dies, and you'll kill the cocktail.\n\r\n\n\r\nAs with an espresso coffee, the amount of sugar required to balance this cocktail is very much down to the tastes of individual drinkers, but Dick Bradsell's original recipe included sugar syrup. I've omitted the sugar from the recipe above, but depending on your coffee liqueur, you may want to add 2.5ml (half a bar spoon) or even 5ml (1/6oz) of rich (2:1) sugar syrup. Ideally, use a brown, muscovado, or demerara syrup, or even honey, to add an extra dimension. And if you are using a very dry/bitter coffee liqueur, then added sweetness becomes more necessary than optional.\n\r\n\n\r\nMy scaled-down recipe for small coupettes includes sugar syrup:\n\r\n40ml (1⅓oz) Vodka\n\r\n25ml (5/6oz) Espresso coffee\n\r\n15ml (½oz) Coffee liqueur\n\r\n3.75ml (1/8oz) Sugar syrup\n\r\n2 drop Saline solution\n\r\n\n\r\nIn addition to garnishing with a trio of coffee beans, I also like to express a lemon zest over the surface of the drink and then discard the zest. The lemon oils don't negatively affect the foam, but the lemony aroma adds considerably to the cocktail.",
       "variant": "Some prefer the simpler equal parts version of the Espresso Martini, but I think the recipe above is better balanced.\n\r\n20 best riffs on an Espresso Martini",
@@ -1847,6 +1983,10 @@ window.DIFFORDS_DATA = [
       "abv": 9.21,
       "proof": 18.43,
       "pureAlcoholGrams": 13.8
+    },
+    "discerningDrinkers": {
+      "rating": 3.5,
+      "ratingCount": 95
     },
     "notes": {
       "review": "",
@@ -1893,6 +2033,10 @@ window.DIFFORDS_DATA = [
       "abv": null,
       "proof": null,
       "pureAlcoholGrams": 18.9
+    },
+    "discerningDrinkers": {
+      "rating": 3.5,
+      "ratingCount": 10
     },
     "notes": {
       "review": "Made with a full-bodied and flavoursome base spirit or fortified wine, this is a tasty cocktail. Those perhaps put off by a whole raw egg per drink should give flips a chance. (Health concerns relating to raw eggs taken into account of course.)",
@@ -1948,6 +2092,10 @@ window.DIFFORDS_DATA = [
       "proof": null,
       "pureAlcoholGrams": 21.7
     },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 338
+    },
     "notes": {
       "review": "Fresh, clean, sophisticated – dangerously quaffable.\n\r\n\n\r\nThe use of powdered sugar instead of sugar syrup adds an attractive sherbet note to this cocktail. However, the drink also works well with sugar syrup – use ¼oz/7.5ml sugar syrup in place of the 1½ spoons of powdered sugar.",
       "variant": "Soixante-Quinze (1915 Washington Herald recipe) - with dry gin, applejack bonded, grenadine and lemon juice.\n\r\n\"75\" Cocktail (Vermeire's 1922 recipe) - with dry gin, calvados, lemon juice and grenadine.\n\r\n\"75\" Cocktail (MacElhone's 1926 recipe) - with calvados, dry gin, grenadine and absinthe.\n\r\nFrench 75 (Judge Jr's 1927 recipe) - with lemon juice, powdered sugar, dry gin and champagne.\n\r\nFrench 75 (Difford's recipe) - served in a gun cartridge-like Colins glass, this combines Robert Vermeire's 1922 recipe with the cognac and champagne now synonymous with the French 75.",
@@ -1993,6 +2141,10 @@ window.DIFFORDS_DATA = [
       "abv": 28.35,
       "proof": 56.69,
       "pureAlcoholGrams": 19.2
+    },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 118
     },
     "notes": {
       "review": "The apricot and almond notes in amaretto combine perfectly with brandy in this simple cocktail.",
@@ -2041,6 +2193,10 @@ window.DIFFORDS_DATA = [
       "abv": 15.95,
       "proof": 31.9,
       "pureAlcoholGrams": 16.7
+    },
+    "discerningDrinkers": {
+      "rating": 3.5,
+      "ratingCount": 224
     },
     "notes": {
       "review": "Easy drinking and very fruity. Not really a \"Martini\" at all, yet when made well, this easy-drinking, vodka-laced, 3-ingredient pineapple and raspberry cocktail is hard not to like\n\r\n\n\r\nIf you are using larger glassware, then a third larger version of the above recipe is as follows:\n\r\n- 60ml (1oz) Vodka\n\r\n- 20ml (⅓oz) Black raspberry liqueur\n\r\n- 50ml (1⅔oz) Pineapple juice",
@@ -2097,6 +2253,10 @@ window.DIFFORDS_DATA = [
       "proof": null,
       "pureAlcoholGrams": 21.3
     },
+    "discerningDrinkers": {
+      "rating": 4.5,
+      "ratingCount": 81
+    },
     "notes": {
       "review": "Citrus freshness with tequila's agave notes served frozen.",
       "variant": "Strawberry Margarita (frozen)\n\r\nMargarita on-the-rocks (Difford's recipe)\n\r\nImproved Trashy Margarita\n\r\nMargarita (straight-up)\n\r\nMargarita (frozen)\n\r\nMezcal Margarita",
@@ -2147,6 +2307,10 @@ window.DIFFORDS_DATA = [
       "proof": 10.58,
       "pureAlcoholGrams": 8.9
     },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 418
+    },
     "notes": {
       "review": "A fabulous brunch cocktail.\n\r\n\n\r\nHow you squeeze (and blend) your oranges is key to achieving the \"fluffy\" orange juice that makes this drink special. At New York City's Dante (World's Best Bar 2019) they famously use a high-speed Breville juicer which aerates the juice. Alternatively, juicing with a pillar or elbow press adds bitter zesty oils from the skin to the juice, hence our use of a smidgen of sugar syrup to balance.",
       "variant": "",
@@ -2191,6 +2355,10 @@ window.DIFFORDS_DATA = [
       "abv": 11.01,
       "proof": 22.03,
       "pureAlcoholGrams": 16.2
+    },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 572
     },
     "notes": {
       "review": "One of the simplest and best mixed drinks ever devised, hence its lasting popularity.\n\r\n\n\r\nTo serve as a Highball use a smaller 10oz (295ml) Highball glass (in place of a 12oz (355ml) Collins glass) and fill with 45ml (1.5oz) gin and 90ml (3oz) tonic water along with plenty of ice.",
@@ -2244,6 +2412,10 @@ window.DIFFORDS_DATA = [
       "proof": null,
       "pureAlcoholGrams": 19.5
     },
+    "discerningDrinkers": {
+      "rating": 4.5,
+      "ratingCount": 700
+    },
     "notes": {
       "review": "Jörg, the creator of this cocktail, says, \"Better too much than not enough basil in this drink\". He also specifies that the basil is muddled rather than just broken by the action of shaking as this produces a greener drink. He adds \"Keep in mind: 5 cl Gin is not enough; 6 cl Gin is the recipe; 7 cl Gin is LOVE!\"",
       "variant": "Brazil Basil Smash\n\r\nAntonella Basil Smash\n\r\nGin Basil Sour\n\r\nBramble\n\r\nEarl Grey MarTEAni\n\r\nFallen Angel\n\r\nFitzgerald\n\r\nGin Fix\n\r\nGin Fizz\n\r\nGin Punch No. 1\n\r\nGin Sling\n\r\nGin Sour\n\r\nGin Twist\n\r\nJohn Collins",
@@ -2295,6 +2467,10 @@ window.DIFFORDS_DATA = [
       "abv": 7.3,
       "proof": 14.6,
       "pureAlcoholGrams": 16.2
+    },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 192
     },
     "notes": {
       "review": "Everyone has heard of this clean, refreshing cocktail, but few have experienced the real thing. The Gin Fizz is differentiated from a Gin Collins (properly called a John Collins) by the small (10oz max) highball glass it's served in. (Collins' are served in larger 12oz Collins glasses.) Importantly, a fizz is also served without ice in the glass.",
@@ -2355,6 +2531,10 @@ window.DIFFORDS_DATA = [
       "proof": null,
       "pureAlcoholGrams": 21.2
     },
+    "discerningDrinkers": {
+      "rating": 3.5,
+      "ratingCount": 58
+    },
     "notes": {
       "review": "Zingy ginger and gin's botanical notes make this much more than just another take on the Moscow Mule.",
       "variant": "",
@@ -2404,6 +2584,10 @@ window.DIFFORDS_DATA = [
       "proof": 58.27,
       "pureAlcoholGrams": 23.4
     },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 250
+    },
     "notes": {
       "review": "Scotch diluted and delicately sweetened with added almond notes - simple but tasty. Proportions range from equal parts (45ml scotch to 45ml amaretto) to 4:1 (60ml scotch to 15ml amaretto), and even as dry as 8:1 (60ml scotch to 7.5ml amaretto), but we find 3:1 (60ml scotch to 20ml amaretto) is just enough amaretto to take the edge off the scotch and add a pleasing almondy note without overpowering the flavour of the whisky.",
       "variant": "The Godfather is a member of a family of similar cocktails with different base spirits. Amaretto tends to combine more harmoniously with dark spirits than vodka or gin, and there's something about whisky, particularly the smoky note in Scotch whisky, that sits brilliantly alongside amaretto. Hence, the Godfather has proved the most enduring of the 'God' cocktail family.\n\r\nGodmother (vodka and amaretto)\n\r\nGodchild (brandy and amaretto)\n\r\nThe Boss (bourbon and amaretto)\n\r\nGodfather Sour (Scotch whisky, amaretto, lemon juice, egg white and sugar)\n\r\nFrench Connection (brandy and amaretto)",
@@ -2449,6 +2633,10 @@ window.DIFFORDS_DATA = [
       "abv": 28.35,
       "proof": 56.69,
       "pureAlcoholGrams": 21.3
+    },
+    "discerningDrinkers": {
+      "rating": 3.5,
+      "ratingCount": 48
     },
     "notes": {
       "review": "Almond-flavoured vodka served over ice. Hard not to like but lacks depth of flavour.",
@@ -2501,6 +2689,10 @@ window.DIFFORDS_DATA = [
       "proof": 26.9,
       "pureAlcoholGrams": 16.2
     },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 29
+    },
     "notes": {
       "review": "Tastes remarkably like syllabub.",
       "variant": "",
@@ -2552,6 +2744,10 @@ window.DIFFORDS_DATA = [
       "proof": 45.27,
       "pureAlcoholGrams": 23.8
     },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 47
+    },
     "notes": {
       "review": "A balanced (far from sweet) and flavoursome Margarita with the rich cognac and orange notes of the liqueur adding to this drink's depth of flavour.",
       "variant": "",
@@ -2599,6 +2795,10 @@ window.DIFFORDS_DATA = [
       "abv": 11.27,
       "proof": 22.55,
       "pureAlcoholGrams": 12.7
+    },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 100
     },
     "notes": {
       "review": "It's hard not to like this creamy slightly sweet minty after-dinner treat.",
@@ -2658,6 +2858,10 @@ window.DIFFORDS_DATA = [
       "proof": 57.57,
       "pureAlcoholGrams": 26.2
     },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 77
+    },
     "notes": {
       "review": "Robustly flavoured ingredients brought together harmoniously in a tall, most refreshing swizzle. Worthy of its legendary status.",
       "variant": "Rum Swizzle",
@@ -2709,6 +2913,10 @@ window.DIFFORDS_DATA = [
       "abv": 22.94,
       "proof": 45.87,
       "pureAlcoholGrams": 21.8
+    },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 210
     },
     "notes": {
       "review": "When made well, this classic, which is basically a Sweet Martini influenced by the addition of bittersweet and aromatic fernet liqueur, is delicious. Fernet fanciers may want to up the bittersweet liqueur to 7.5ml (½oz).",
@@ -2765,6 +2973,10 @@ window.DIFFORDS_DATA = [
       "proof": 28.29,
       "pureAlcoholGrams": 18.5
     },
+    "discerningDrinkers": {
+      "rating": 3.5,
+      "ratingCount": 125
+    },
     "notes": {
       "review": "One of the most famous cocktails from the 1970s, the Harvey Wallbanger is a Screwdriver (vodka and orange juice served tall over ice) with a float of Galliano liqueur. It was a huge cocktail in its era, but its reign barely made it into the 1980s as it fell prey to changes in fashion, packaged juice and even Galliano.\n\r\n\n\r\nThe original Galliano, Galliano L'Autentico, was changed by marketeers who reduced its alcohol content from a robust 42.3% to 35% alc./vol., in the 1970s and then eventually to 30% alc./vol., in the 1990s, when the flavour profile was also changed with vanilla predominating. Thankfully, Galliano L'Autentico was reintroduced in 2006 and now sits alongside the more modern version Galliano Vanilla. Both are fine liqueurs, but you'll need Galliano L'Autentico to make an authentic Harvey Wallbanger.\n\r\n\n\r\nThis cocktail must be made with freshly squeezed orange juice. You may be too lazy to squeeze orange juice for breakfast, but at a hotel or bar, you'll have experienced how good freshly squeezed juice can be. It's very different from the comparatively sweet and marmaladey packaged orange juices. Add a splash of vodka and the aromatic herbal peppermint freshness the float of Galliano brings to this tall, refreshing cocktail, and you can start to see why the Harvey Wallbanger was such a hit in the 1970s.\n\r\n\n\r\nA Harvey Wallbanger is traditionally made without sugar syrup or bitters, but is better with them. And beware, shaking (rather than stirring) the first four ingredients deteriorates the cocktail's mouthfeel, making it overtly thin.",
       "variant": "Freddy Fudpucker with tequila in place of vodka.",
@@ -2819,6 +3031,10 @@ window.DIFFORDS_DATA = [
       "proof": 35.73,
       "pureAlcoholGrams": 38.8
     },
+    "discerningDrinkers": {
+      "rating": 4.5,
+      "ratingCount": 296
+    },
     "notes": {
       "review": "This cocktail is also known as a Papa Doble for good reason; it's twice the size of a regular cocktail. Hence, the above recipe will fill one oversized Martini or two regular coupe glasses.\n\r\n\n\r\nIf you've a bone dry palate and would like to sample a proper Hemingway Special, without the addition of sugar, then try the following authentic recipe given to me by Alejandro Bolívar Rodriguez, Head Bartender at El Floridita in Havana, Cuba, where this cocktail is blended and not shaken. Indeed, blending rather than shaking Daiquiris is the default at El Floridita.\n\r\n\n\r\nDaiquiri Hemingway (El Floridita's recipe)\n\r\nGlass: Hurricane\n\r\nGarnish: Straw\n\r\nMethod: BLEND all ingredients with crushed ice for five seconds.\n\r\n90ml (3oz) Light Cuban rum\n\r\n5ml (1 spoon) Maraschino liqueur\n\r\n30ml (1oz) Grapefruit juice\n\r\n15ml (½oz) Lime juice",
       "variant": "",
@@ -2863,6 +3079,10 @@ window.DIFFORDS_DATA = [
       "abv": 9.76,
       "proof": 19.52,
       "pureAlcoholGrams": 16.2
+    },
+    "discerningDrinkers": {
+      "rating": 3.5,
+      "ratingCount": 46
     },
     "notes": {
       "review": "Whiskey and ginger with added shrubbery.",
@@ -2932,6 +3152,10 @@ window.DIFFORDS_DATA = [
       "proof": 36.04,
       "pureAlcoholGrams": 20.8
     },
+    "discerningDrinkers": {
+      "rating": 4.5,
+      "ratingCount": 111
+    },
     "notes": {
       "review": "Two massively flavoursome spirits and two very characterful liqueurs combine harmoniously in this delicious sour.",
       "variant": "Served on-the-rocks in a clay or terracotta mug.",
@@ -2986,6 +3210,10 @@ window.DIFFORDS_DATA = [
       "abv": 6.79,
       "proof": 13.57,
       "pureAlcoholGrams": 9.5
+    },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 134
     },
     "notes": {
       "review": "Sometimes called a Gaelic Coffee and properly known by its Irish name 'Caife Gaelach', the Irish Coffee is traditionally served in a stemmed heatproof glass known as a toddy glass and comprises hot filter coffee, Irish whiskey and sugar (preferably brown sugar) topped with lightly whipped cream. The sweetened whiskey-laced coffee should be topped with a luxurious moustache inducing inch thick layer of cream to sip through.\n\r\n\n\r\nTo ensure your cream floats rather than sinks into the coffee, lightly whip, shake, or blend your cream before pouring over the bowl of a spoon. It also helps if the cream and the spoon are gently warmed. Sweetening the coffee with sugar also amplifies the drink's flavours and helps the cream float. I prefer to use demerara or muscovado sugar syrup.",
@@ -3051,6 +3279,10 @@ window.DIFFORDS_DATA = [
       "proof": 45.12,
       "pureAlcoholGrams": 18.2
     },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 78
+    },
     "notes": {
       "review": "In his 1948 The Fine Art of Mixing Drinks, David Embury says, \"a Jack Rose is nothing but a Pink Apple Car\", and when made with just calvados, lemon juice and one-dimensional sweet grenadine, he's right. Popular recipes tend to be:\n\r\n\n\r\n45ml (1½oz) Calvados/apple jack\n\r\n22.5ml (¾oz) Lime or lemon juice\n\r\n15ml (½oz) Grenadine\n\r\n\n\r\nHowever, the Jack Rose can be so much more with artisanal grenadine &/or raspberry syrup, as per the original 1908 recipe. I also like to split the citrus juices between lemon and lime, again, as per the original recipe, with a dash of bitters as a nod to the third citrus fruit in that recipe. While splitting syrups and citrus juices, it only seems right to also split the base spirit. However, if you don't have bottled-in-bond applejack, then substitute with 60ml (2oz) calvados.",
       "variant": "Pan American Clipper",
@@ -3102,6 +3334,10 @@ window.DIFFORDS_DATA = [
       "proof": 24.24,
       "pureAlcoholGrams": 19.5
     },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 96
+    },
     "notes": {
       "review": "A refreshing balance of sour lemon and sugar, laced with London dry gin and lengthened with soda. Some know this cocktail as a Tom Collins, understandably so, but a Tom Collins is based on old tom gin, while a John Collins is based on London dry gin. I borrow the wise words of David A. Embury (below) to address this confusion on our Tom Collins page.",
       "variant": "In his 1948 The Fine Art of Mixing Drinks David A. Embury says, \"Originally there were two brothers only in the Collins family - Tom and John. During recent years, however, numerous cousins have appeared on the scene - Pedro, Pierre, Sandy, Mike, Jack, the Colonel and several others whose first names have not yet been officially recorded in the baptismal registry.\"\n\r\nCaptain Collins - with Canadian whisky\n\r\nColonel Collins - with bourbon whiskey\n\r\nDutch Collins or Genever Collins (aka Phil Collins) - with genever/jenever/Hollands\n\r\nJack Collins - with calvados\n\r\nJock Collins or Sandy Collins - with Scotch whisky\n\r\nJoe Collins or Vodka Collins - with vodka\n\r\nJohn Collins - with London dry gin\n\r\nJose Collins or Pepito Collins - with tequila\n\r\nMike Collins or Ronan Collins - with Irish whiskey\n\r\nPedro Collins - with light white rum\n\r\nPierre Collins - with cognac/brandy\n\r\nPisco Collins - with pisco\n\r\nRum Collins - with aged rum\n\r\nTom Collins - with old tom gin\n\r\nWhiskey Collins - with bourbon/rye whiskey",
@@ -3150,6 +3386,10 @@ window.DIFFORDS_DATA = [
       "abv": null,
       "proof": null,
       "pureAlcoholGrams": 24
+    },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 7
     },
     "notes": {
       "review": "The key to this drink is serving it ice cold and giving the flavours in the mint time to marry with the spirit. Hence, Juleps are ideally prepared hours in advance of serving. Adjust sugar to balance if using a fortified wine in place of a spirit.",
@@ -3205,6 +3445,10 @@ window.DIFFORDS_DATA = [
       "proof": 24.14,
       "pureAlcoholGrams": 17.2
     },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 697
+    },
     "notes": {
       "review": "Bittersweet and fruity with pungent rum notes, sipped through crushed ice. Properly Tiki-tastic.",
       "variant": "",
@@ -3249,6 +3493,10 @@ window.DIFFORDS_DATA = [
       "abv": 22.06,
       "proof": 44.12,
       "pureAlcoholGrams": 14.2
+    },
+    "discerningDrinkers": {
+      "rating": 3.5,
+      "ratingCount": 52
     },
     "notes": {
       "review": "A bite-sized vodka take on the Margarita.",
@@ -3296,6 +3544,10 @@ window.DIFFORDS_DATA = [
       "abv": 20.5,
       "proof": 41.01,
       "pureAlcoholGrams": 19
+    },
+    "discerningDrinkers": {
+      "rating": 3.5,
+      "ratingCount": 8
     },
     "notes": {
       "review": "Canon Félix Kir's traditional white wine and cassis apéritif with added vodka 'oomph'. A barspoon of pisco adds complexity to this cocktail but if available instead use Marc de Bourgogne, the eau-de-vie Canon Kir would have chosen.",
@@ -3352,6 +3604,10 @@ window.DIFFORDS_DATA = [
       "proof": 44.89,
       "pureAlcoholGrams": 23.5
     },
+    "discerningDrinkers": {
+      "rating": 4.5,
+      "ratingCount": 1311
+    },
     "notes": {
       "review": "Traditionally made with equal parts gin, Green Chartreuse, maraschino liqueur, and lime juice, but like many others (when using a 40%-43% alc./vol. gin), I like to slightly increase the proportion of gin. Chartreuse devotees will love this balanced, tangy cocktail. I'm one!",
       "variant": "50+ riffs on a Last Word\n\r\n20 best variations on a Last Word",
@@ -3403,6 +3659,10 @@ window.DIFFORDS_DATA = [
       "abv": 18.91,
       "proof": 37.82,
       "pureAlcoholGrams": 21.3
+    },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 76
     },
     "notes": {
       "review": "Sherbety lemon - well-balanced and refreshing, but not really a Martini.",
@@ -3469,6 +3729,10 @@ window.DIFFORDS_DATA = [
       "abv": 11.56,
       "proof": 23.12,
       "pureAlcoholGrams": 19.8
+    },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 261
     },
     "notes": {
       "review": "A cooling combination of four different white spirits, triple sec, lemon and lime, crowned with a splash of cola.",
@@ -3539,6 +3803,10 @@ window.DIFFORDS_DATA = [
       "proof": 41.16,
       "pureAlcoholGrams": 27.2
     },
+    "discerningDrinkers": {
+      "rating": 4.5,
+      "ratingCount": 129
+    },
     "notes": {
       "review": "I love Daiquiris and this is basically a classic Daiquiri with a few bells and whistles: orange curaçao, lime juice, almond syrup, amaretto, falernum, white crème de menthe, and absinthe.",
       "variant": "Mai Tai (Trader Vic's)\n\r\nMai Tai (Beaumont-Gantt's)\n\r\nTia Mia\n\r\nBitter Mai Tai\n\r\nWell-oiled Mai Tai",
@@ -3590,6 +3858,10 @@ window.DIFFORDS_DATA = [
       "abv": 50,
       "proof": 57.03,
       "pureAlcoholGrams": 25.8
+    },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 551
     },
     "notes": {
       "review": "I prefer my Manhattans served \"Sweet\", or \"Perfect \" at a push. The Manhattan is complex, challenging and moreish. Best of all, it's available in a style to suit every palate. For me, it's this recipe or the brilliantly simple High Ryeser Manhattan.\n\r\n\n\r\nThe above recipe scaled and reformulated to fit a small (150ml/5oz capacity coupe or nick & nora):\n\r\n30ml (1oz) Bourbon\n\r\n15ml (½oz) Rye whiskey\n\r\n22.5ml (¾oz) Rosso (sweet) vermouth\n\r\n1 dash Aromatic bitters",
@@ -3644,6 +3916,10 @@ window.DIFFORDS_DATA = [
       "abv": 20.91,
       "proof": 41.81,
       "pureAlcoholGrams": 21.3
+    },
+    "discerningDrinkers": {
+      "rating": 4.5,
+      "ratingCount": 288
     },
     "notes": {
       "review": "If desired, for the perfect salt rim you can liquidise or grind sea salt to make it finer, then run a cut slice of lime (or orange) around the outside edge of the glass rim before dipping the outside of the rim into salt. (Only salt the outside of the glass to avoid contaminating the cocktail.)",
@@ -3700,6 +3976,10 @@ window.DIFFORDS_DATA = [
       "proof": 51.37,
       "pureAlcoholGrams": 24.5
     },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 202
+    },
     "notes": {
       "review": "Your choice of genever will make or break this fabulous cocktail. My recipe is based on a medium-dry, rounded, and complex genever (e.g. Rutte Old Simon or Bokma Oude) that will contribute an underlying bready note freshened by zesty orange from the orange curaçao.\n\r\n\n\r\nIf using a higher maltwine (moutwijn), more old-school genever (e.g. Old Duff), then equal parts genever and rosso vermouth work well but Philip Duff himself recommends:\n\r\n30ml (1oz) Oude genever\n\r\n50ml (1⅔oz) Rosso (sweet) vermouth\n\r\n5ml (barspoon) Orange curaçao\n\r\n1 dash Aromatic bitters",
       "variant": "The Martinez was originally based either on Dutch genever or old tom gin but, due to its domination, since pre-prohibition, has mostly been made with London dry gin. However, the Martinez is better when made with old tom gin and perhaps best with genever.\n\r\n\n\r\nThere are numerous Martinez recipes, but along with the juniper spirit base, they broadly call for rosso 'sweet' vermouth &/or dry vermouth, maraschino liqueur &/or orange curacao, and bitters.\n\r\nMartinez - with old tom gin\n\r\nMartinez - London 2008 recipe with genever\n\r\nMartinez - with London dry gin",
@@ -3751,6 +4031,10 @@ window.DIFFORDS_DATA = [
       "proof": 32.74,
       "pureAlcoholGrams": 20.2
     },
+    "discerningDrinkers": {
+      "rating": 3.5,
+      "ratingCount": 206
+    },
     "notes": {
       "review": "When made correctly, this pale-pink cocktail has a perfect balance between the fruit flavours and the spirit of the rum.",
       "variant": "",
@@ -3800,6 +4084,10 @@ window.DIFFORDS_DATA = [
       "abv": 4.72,
       "proof": 9.45,
       "pureAlcoholGrams": 8.5
+    },
+    "discerningDrinkers": {
+      "rating": 3.5,
+      "ratingCount": 85
     },
     "notes": {
       "review": "In his 1948 book The Fine Art of Mixing Drinks, David A. Embury writes of the Mimosa, \"Just another freak champagne mixture. It is not half bad and the ladies usually like it. Use a good quality domestic champagne, medium dry.\" Indeed, when made with freshly squeezed orange juice mixed with a quality dry/brut sparkling wine, this is a great breakfast cocktail, but it's better served without ice as a Buck's Fizz.\n\nBe the first to comment",
@@ -3852,6 +4140,10 @@ window.DIFFORDS_DATA = [
       "abv": null,
       "proof": null,
       "pureAlcoholGrams": 25.1
+    },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 249
     },
     "notes": {
       "review": "When making a Julep it is important to only bruise the mint as crushing the leaves releases bitter, inner juices (- particularly is stirring rather than shaking (which I controversially recommend). Also, be sure to discard the mint stems, which add unwanted bitterness. It is imperative that the cocktail is served ice-cold so both the julep cup and the ingredients should be stored in a refrigerator before use and consider freezing your whiskey.\n\r\n\n\r\nSome, who use the stirring method, like to combine the ingredients in the julep cup in which the cocktail is served. I favour shaking and then straining the mixed cocktail into an ice-filled julep cup. Some proponents of shaking recommend combining the mint and other ingredients in the shaker and placing this, along with the serving vessel (preferably made of metal rather than glass) in a refrigerator for at least 30 minutes prior to adding ice, shaking and serving. The idea being that this ensures well-chilled while also allowing the mint to infuse fully. If you are organised enough to prep this far ahead of drinking, then I recommend fishing out the mint leaves prior to shaking",
@@ -3910,6 +4202,10 @@ window.DIFFORDS_DATA = [
       "abv": null,
       "proof": null,
       "pureAlcoholGrams": 11.8
+    },
+    "discerningDrinkers": {
+      "rating": 4.5,
+      "ratingCount": 126
     },
     "notes": {
       "review": "Recipes for this venerable Tiki classic vary enormously and are often confused with the Aku Aku, which this cocktail morphed into at the hands of its creator, Donn Beach. The original recipe calls for peach brandy (distilled from fermented peaches) rather than peach liqueur (based on neutral spirit), but due to its clarity and clean flavour, I prefer peach schnapps as a substitute.\n\r\n\n\r\nMany recipes blend fresh mint and pineapple, and while blending the mint gives the drink a vibrant green colour, it does resemble stagnant pond water and looks like something you'd only drink for the promise of perceived health-giving properties rather than for pleasure. Hence, my version is shaken, but be sure to use generous amounts of mint to impart colour and flavour.",
@@ -3970,6 +4266,10 @@ window.DIFFORDS_DATA = [
       "proof": null,
       "pureAlcoholGrams": 19
     },
+    "discerningDrinkers": {
+      "rating": 4.5,
+      "ratingCount": 485
+    },
     "notes": {
       "review": "When well made, this Cuban cousin of the Mint Julep is one of the world's greatest and most refreshing cocktails.",
       "variant": "Add one or two dashes Daiquiri Bitters.",
@@ -4025,6 +4325,10 @@ window.DIFFORDS_DATA = [
       "proof": 42.18,
       "pureAlcoholGrams": 20
     },
+    "discerningDrinkers": {
+      "rating": 3.5,
+      "ratingCount": 103
+    },
     "notes": {
       "review": "I've added the merest touch of sugar to the classic recipe and a dash more absinthe to make this old-school cocktail pop. However, approach with caution, unlike the experiments of Serge Voronoff, nothing about this drink is designed to enhance virility.",
       "variant": "",
@@ -4077,6 +4381,10 @@ window.DIFFORDS_DATA = [
       "proof": 21.6,
       "pureAlcoholGrams": 18.9
     },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 341
+    },
     "notes": {
       "review": "\"The vodka drink with a kick\" is simply vodka and ginger beer with a squeeze of lime served over ice. This drink's all-important enlivening spice is provided by the ginger beer, so pick your brand wisely.",
       "variant": "Bohemian Mule; Dead Man's Mule; French Mule; Gin Gin Mule; Jamaican Mule; Mexican Mule; New Orleans Mule; Prickly Pear Mule; Raspberry Mule; Southern Mule; Tennessee Berry Mule; Tuscan Mule",
@@ -4127,6 +4435,10 @@ window.DIFFORDS_DATA = [
       "proof": 35.29,
       "pureAlcoholGrams": 17
     },
+    "discerningDrinkers": {
+      "rating": 4.5,
+      "ratingCount": 758
+    },
     "notes": {
       "review": "Salmon pink in colour. Mezcal adds earthy smoky complexity to this bittersweet, citrusy fresh, aperitivo Last Word riff. And indeed, getting naked can make you famous!",
       "variant": "20 best Last Word variations",
@@ -4174,6 +4486,10 @@ window.DIFFORDS_DATA = [
       "abv": 21.57,
       "proof": 43.15,
       "pureAlcoholGrams": 19.5
+    },
+    "discerningDrinkers": {
+      "rating": 4.5,
+      "ratingCount": 1573
     },
     "notes": {
       "review": "Glowing red, the Negroni manages to be both sophisticated and simple at the same time and is definitely for a grown-up palate - for many it's simply too bitter. It takes its depth from the vermouth, is centred by the bittersweet liqueur, and is made to sing through the vitality of the gin. It makes the perfect aperitivo and, though popular the world over, is the traditional default during aperitivo hour in Milan.\n\r\n\n\r\nIn line with my preferred Negroni proportions, most recipes call for the ingredients to be mixed in equal parts. In his 2003 The Joy of Mixology Gary Regan emphatically states, \"don't experiment with the proportions here - the balance is of primary importance.... and using equal parts of each ingredient is absolutely necessary to achieve perfection.\" However, by 2012 Gary had become \"gaz\" and in The Negroni: A gaz regan Notion he says, \"you can slap my wrist and call me Deborah if it doesn't also work no matter what ratios you use.\" He adds, \"I tend toward around 4 parts gin to one part each of sweet vermouth and Campari\".\n\r\n\n\r\nNot Deborah but Alice Lascelles adds in her Ten Cocktails, \"if you're feeling really cocky, you can even alter the balance of the formula without putting yourself in mortal danger - just make sure you always observe that holy trinity of earthy/spicy (vermouth), bittersweet/syrupy (Campari or similar Italian bitter) and strong/clean gin, vodka or even blanco tequila can work - although gin is always best, I think.\"\n\r\n\n\r\nSome misguided folk call for the Negroni to be shaken but it should, of course, be stirred, although there is something about this no-nonsense drink that doesn't suit fussing about with mixing glasses and strainers, so I prefer the ingredients assembled and mixed directly over ice in the glass in which it is to be served.\n\r\n\n\r\nSome choose to serve Negronis straight-up in a chilled coupe, in which case it's essential to give this noble drink a good stir with ice to provide enough dilution to open up its many botanicals.\n\r\n\n\r\nAlways garnish a Negroni with an orange twist or slice, the use of a lemon is a heinous crime.",
@@ -4235,6 +4551,10 @@ window.DIFFORDS_DATA = [
       "proof": 31.61,
       "pureAlcoholGrams": 23
     },
+    "discerningDrinkers": {
+      "rating": 4.5,
+      "ratingCount": 239
+    },
     "notes": {
       "review": "A classic bourbon-based Whiskey Sour made more interesting – both visually and in flavour by the addition of a float of red wine.\n\r\n\n\r\nEgg white is not classically used in a New York Sour but some prefer this drink with the mouthfeel and change of appearance egg white imparts.\n\r\n\n\r\nBritish bartenders may prefer the following formula based on UK measures:\n\r\n50 ml Bourbon whiskey\n\r\n25 ml Lemon juice\n\r\n12.5 ml Sugar syrup (2:1)\n\r\n1 dash Angostura bitters\n\r\n12.5 ml Egg white (optional)\n\r\n12.5 ml Claret red wine",
       "variant": "Brunswick (a rye whiskey sour with a red wine float but with no egg white)\n\r\nContinental Sour (a whiskey sour with a port wine float)\n\r\nGreenwich Sour (a rye whiskey sour with egg white and a red wine float)\n\r\nNew York Stone Sour (a New York Sour with apricot liqueur and orange juice)\n\r\nNew Yorker (a New York Sour served straight-up with orange juice)",
@@ -4286,6 +4606,10 @@ window.DIFFORDS_DATA = [
       "abv": 28.36,
       "proof": 56.72,
       "pureAlcoholGrams": 19.2
+    },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 249
     },
     "notes": {
       "review": "An agave-based old-fashioned with a wonderful hit of smokiness from the mezcal (depending on your choice of mezcal).\n\r\n\n\r\nLike many cocktails, Philip Ward's original recipe (45ml reposado tequila, 15ml mezcal (Del Maguey Chichicapa or San Luis del Rio), 7.5ml Agave syrup, and 1 dash Angostura Aromatic Bitters) has evolved, with chocolate bitters, or more recently, cocoa bitters now favoured by many in place of aromatic bitters (as per the recipe above).",
@@ -4345,6 +4669,10 @@ window.DIFFORDS_DATA = [
       "proof": null,
       "pureAlcoholGrams": 16.6
     },
+    "discerningDrinkers": {
+      "rating": 4.5,
+      "ratingCount": 232
+    },
     "notes": {
       "review": "A luxurious, minty Daiquiri topped with a splash of fizz.",
       "variant": "The Cab",
@@ -4393,6 +4721,10 @@ window.DIFFORDS_DATA = [
       "abv": 29.4,
       "proof": 58.8,
       "pureAlcoholGrams": 21.6
+    },
+    "discerningDrinkers": {
+      "rating": 4.5,
+      "ratingCount": 352
     },
     "notes": {
       "review": "Rich (medium-dry and spirituous this old-fashioned is all too easy to drink and fortunately, easy to make.",
@@ -4449,6 +4781,10 @@ window.DIFFORDS_DATA = [
       "proof": 20.28,
       "pureAlcoholGrams": 15.8
     },
+    "discerningDrinkers": {
+      "rating": 4.5,
+      "ratingCount": 361
+    },
     "notes": {
       "review": "Reminiscent of a long fruity Margarita with refreshing effervescence.",
       "variant": "Simple Paloma recipe\n\r\nCantaritos",
@@ -4499,6 +4835,10 @@ window.DIFFORDS_DATA = [
       "abv": 16.73,
       "proof": 33.46,
       "pureAlcoholGrams": 16.2
+    },
+    "discerningDrinkers": {
+      "rating": 4.5,
+      "ratingCount": 871
     },
     "notes": {
       "review": "Bittersweet with underlying bourbon character and lemon zestiness.",
@@ -4555,6 +4895,10 @@ window.DIFFORDS_DATA = [
       "proof": 38.16,
       "pureAlcoholGrams": 20.1
     },
+    "discerningDrinkers": {
+      "rating": 3.5,
+      "ratingCount": 43
+    },
     "notes": {
       "review": "This gin-based cocktail elegantly highlights the quality of your apricot liqueur. Off-dry rather than sweet.",
       "variant": "",
@@ -4607,6 +4951,10 @@ window.DIFFORDS_DATA = [
       "abv": 17.31,
       "proof": 34.63,
       "pureAlcoholGrams": 20.4
+    },
+    "discerningDrinkers": {
+      "rating": 4.5,
+      "ratingCount": 551
     },
     "notes": {
       "review": "A Whisky Sour with honey richness, subtle smoke and enlivening ginger spice. A cocktail to slap the palate awake. Then you can't resist keep sipping it.",
@@ -4670,6 +5018,10 @@ window.DIFFORDS_DATA = [
       "proof": null,
       "pureAlcoholGrams": 8.9
     },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 51
+    },
     "notes": {
       "review": "You've not properly experienced an English summer until you've drunk one of these whilst sheltering from the rain.",
       "variant": "",
@@ -4724,6 +5076,10 @@ window.DIFFORDS_DATA = [
       "abv": null,
       "proof": null,
       "pureAlcoholGrams": 18.9
+    },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 144
     },
     "notes": {
       "review": "This fruity, rum-laced cocktail screams for a hot summer's day and a laidback vibe. Too much ice blended into this cocktail detracts from its creaminess.",
@@ -4787,6 +5143,10 @@ window.DIFFORDS_DATA = [
       "proof": 23.63,
       "pureAlcoholGrams": 18.4
     },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 67
+    },
     "notes": {
       "review": "A tangy, balanced combination of rich flavours. The quality of pisco used is crucial to the success of a Pisco Punch.",
       "variant": "This recipe is improved by using the gomme arabic marinade prescribed in Alfredo Micheli's Pisco Punch in place of sugar syrup. If using the marinade drop one of the marinated pineapple wedges and cloves into the drink as the garnish.",
@@ -4848,6 +5208,10 @@ window.DIFFORDS_DATA = [
       "proof": 30.72,
       "pureAlcoholGrams": 19.8
     },
+    "discerningDrinkers": {
+      "rating": 4.5,
+      "ratingCount": 209
+    },
     "notes": {
       "review": "All the Peruvian bartenders I've met prefer their Pisco Sours blended rather than shaken. Indeed, it is a brilliant cocktail when blended, but I prefer my Pisco Sours shaken. (In Cuba, Daiquiris also tend to be blended, but I also prefer these shaken.)\n\r\n\n\r\nWhile some like to omit the egg white, like most sour-style cocktails the Pisco Sour is better with egg, although half the white of a small fresh egg white is plenty (around 15ml/½oz to 20ml/⅔ ). Some also advocate the use of powdered sugar in place of caster sugar syrup, and indeed, this can add to this sour (like the Daiquiri). In which case, you'll need 3 spoons (5ml sized measuring bowl) of powdered sugar in place of the syrup.\n\r\n\n\r\nMore worthy of debate is the choice of pisco. My Peruvian friends favour pisco made from the Quebranta grape or even an acholado (a blend of varieties). However, I prefer to use Peruvian pisco made from the more aromatic Italia grape, preferably mosto verde Italia pisco. Alternatively, there are also good-value Chilean pisco alternatives.\n\r\n\n\r\nConvention has it that the Pisco Sour is garnished with three drops of aromatic bitters symmetrically deposited onto its foaming head. This not only adds to the visual appearance, but the aroma of the bitters also helps mask the wet dog-like smell of egg white. Angostura or similar aromatic bitters are fine, but for authenticity, consider using Peruvian Amargo Chuncho bitters, which are based on various Amazonian barks and herbs. Some also dust the surface of the cocktail or the rim of the glass with cinnamon.\n\r\n\n\r\nSomewhat controversially, if the use of Italia pisco is not enough, I also like to add a dash of orange flower water to my Pisco Sours. I also tend to serve them straight-up in a frozen, heavy-bottomed old-fashioned glass to help lengthen the time the cocktail stays ice cold, but a frozen coupe also works well (and looks better in photos).\n\r\n\n\r\nLastly, I used to specify only lime juice, but I now favour a lime-heavy split between lime and lemon juice. That said, 22.5ml (¾oz) lime juice yields a very tasty, more straightforward cocktail.",
       "variant": "",
@@ -4902,6 +5266,10 @@ window.DIFFORDS_DATA = [
       "abv": 13.36,
       "proof": 26.71,
       "pureAlcoholGrams": 21.6
+    },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 110
     },
     "notes": {
       "review": "A tangy punch that harnesses the strength and rich flavours of the rum.",
@@ -4962,6 +5330,10 @@ window.DIFFORDS_DATA = [
       "proof": null,
       "pureAlcoholGrams": 26.6
     },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 495
+    },
     "notes": {
       "review": "A passion fruit and vanilla crowd-pleaser that's balanced with zesty lime, often served with sparkling wine on the side.",
       "variant": "Gargoyle No. 2 (published 1937)",
@@ -5013,6 +5385,10 @@ window.DIFFORDS_DATA = [
       "abv": 22.77,
       "proof": 45.54,
       "pureAlcoholGrams": 19.6
+    },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 115
     },
     "notes": {
       "review": "The bittersweet herbal notes from the vermouth and Cynar combine harmoniously with the cachaça. Depending on how punchy you like your cocktails you may want to increase or decrease the amount of cachaça (anywhere between 45 and 60ml).",
@@ -5083,6 +5459,10 @@ window.DIFFORDS_DATA = [
       "proof": 23,
       "pureAlcoholGrams": 19.6
     },
+    "discerningDrinkers": {
+      "rating": 4.5,
+      "ratingCount": 210
+    },
     "notes": {
       "review": "One of the great classic cocktails. The perfect balance of sweet and sour is enhanced by the incredibly smooth, almost fluffy mouthfeel.\n\r\n\n\r\nSome Ramos Gin Fizz recipes, and indeed Henry Charles Ramos' original recipe, call for old tom gin (also our preference), in which case you may need to reduce the amount of sugar syrup depending on your old tom, personal tastes and the sourness of your citrus fruit.",
       "variant": "Gin Fizz",
@@ -5130,6 +5510,10 @@ window.DIFFORDS_DATA = [
       "abv": 50,
       "proof": 64.35,
       "pureAlcoholGrams": 24.2
+    },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 191
     },
     "notes": {
       "review": "This Manhattan-like cocktail is rightly recognised as being a contemporary classic cocktail. Also great served on-the-rocks in an old-fashioned glass.\n\r\n\n\r\nPrevious recipe (updated November 2023): 60ml (2oz) Straight rye whiskey, 15ml (½oz) Punt E Mes, and 15ml (½oz) Luxardo Maraschino liqueur.",
@@ -5185,6 +5569,10 @@ window.DIFFORDS_DATA = [
       "abv": 50,
       "proof": 61.04,
       "pureAlcoholGrams": 20.8
+    },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 167
     },
     "notes": {
       "review": "Charles H. Baker says of this twist on a Sazerac, \"Treat this one with the respect it deserves, gentleman.\" As this relation to the Sazerac, I previously rinsed a chilled old-fashioned glass with absinthe before pouring the stirred cocktail into the absinthe-rinsed glass (without ice in the glass). However, this cocktail looks better and is better appreciated when served in a Nick & Nora glass. If you prefer more generous coupe proportions, then:\n\r\n45ml (1½oz) Bottled-in-bond straight rye whiskey\n\r\n22.5ml (¾oz) Straight Bourbon\n\r\n22.5ml (¾oz) Rosso vermouth\n\r\n10ml (⅓oz) Cherry Heering\n\r\n3 dashes Absinthe",
@@ -5242,6 +5630,10 @@ window.DIFFORDS_DATA = [
       "proof": 33.82,
       "pureAlcoholGrams": 21.8
     },
+    "discerningDrinkers": {
+      "rating": 3.5,
+      "ratingCount": 78
+    },
     "notes": {
       "review": "Citrus freshness with a brandy backbone lightened and dried with a splash of brut fizz.",
       "variant": "",
@@ -5289,6 +5681,10 @@ window.DIFFORDS_DATA = [
       "abv": 19.65,
       "proof": 39.3,
       "pureAlcoholGrams": 18.7
+    },
+    "discerningDrinkers": {
+      "rating": 4.5,
+      "ratingCount": 12
     },
     "notes": {
       "review": "Salmon-pink and wonderfully aromatic with dry vermouth and kirsch with a blast pf fruity redcurrant syrup.",
@@ -5351,6 +5747,10 @@ window.DIFFORDS_DATA = [
       "proof": 28.05,
       "pureAlcoholGrams": 21.1
     },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 39
+    },
     "notes": {
       "review": "Well-balanced, complex and refreshing.",
       "variant": "",
@@ -5399,6 +5799,10 @@ window.DIFFORDS_DATA = [
       "abv": 31.53,
       "proof": 63.07,
       "pureAlcoholGrams": 19.2
+    },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 192
     },
     "notes": {
       "review": "The liqueur smooths and wonderfully combines with Scotch whisky. The proportions of Scotch to Drambuie vary wildly and are a matter of taste. However, somewhere around 3:1 appears to be preferred by most.",
@@ -5467,6 +5871,10 @@ window.DIFFORDS_DATA = [
       "proof": 35.8,
       "pureAlcoholGrams": 27.2
     },
+    "discerningDrinkers": {
+      "rating": 4.5,
+      "ratingCount": 330
+    },
     "notes": {
       "review": "If you are rightly concerned about chucking expensive absinthe down the drain then consider straining into a shot glass and serve on the side. The roughly seven-to-one with ice melt proportion used to rinse the glass produces a tasty chaser.",
       "variant": "Sazerac made New Orleans' style - with straight rye whiskey.\n\r\nHighland Sazerac - with Chartreause, brandy and single malt scotch.\n\r\nJP Sazerac - with brand and rye whiskey.\n\r\nCaribbean Sazerac - with a trio of rums and grenadine syrup.\n\r\nChocolate Sazerac - with bourbon and white crème de cacao.\n\r\nGrand Sazerac - with cognac orange liqueur.\n\r\nSage Sazerac - with Pastis, sage leaves and birch eau-de-vie.",
@@ -5528,6 +5936,10 @@ window.DIFFORDS_DATA = [
       "proof": 45.2,
       "pureAlcoholGrams": 21.9
     },
+    "discerningDrinkers": {
+      "rating": 3.5,
+      "ratingCount": 163
+    },
     "notes": {
       "review": "Just on the dry/tart side, crisp and superbly refreshing without being overly citrusy.\n\r\n\n\r\nI've used bonded-strength rye whisky, so you'll need to up the measure if using standard-strength rye. I've also used a 'rich' 2:1 grenadine syrup. If using homemade 1:1 syrup pomegranate syrup for your grenadine, up the measure to 7.5ml (¼oz). The quality of your pomegranate syrup/grenadine will make or break the finished cocktail.",
       "variant": "Outlaw",
@@ -5579,6 +5991,10 @@ window.DIFFORDS_DATA = [
       "proof": 27.48,
       "pureAlcoholGrams": 15.9
     },
+    "discerningDrinkers": {
+      "rating": 3.5,
+      "ratingCount": 80
+    },
     "notes": {
       "review": "The temperature at which this cocktail is served, and the freshness of the orange juice are crucial to its success, but it's perhaps better made into a Harvey Wallbanger.\n\r\n\n\r\nMy own preference is to make Screwdrivers with a whopping 75ml of vodka, 90ml orange juice, 7.5ml rich sugar syrup, and 3 dashes of orange bitters, served in a Collins glass. I like the grainy bite the generous measure of vodka adds, but it's a punchy cocktail, so I have cut the ingredients back by a third and used a smaller Highball glass for sobriety, while retaining the ratios.",
       "variant": "Harvey Wallbanger",
@@ -5626,6 +6042,10 @@ window.DIFFORDS_DATA = [
       "abv": 9.49,
       "proof": 18.97,
       "pureAlcoholGrams": 15.8
+    },
+    "discerningDrinkers": {
+      "rating": 3.5,
+      "ratingCount": 62
     },
     "notes": {
       "review": "Many don't bother to shake this simple drink, instead simply \"building\" by pouring ingredients into ice-filled glass and then briefly stirring to mix.",
@@ -5687,6 +6107,10 @@ window.DIFFORDS_DATA = [
       "proof": 21.76,
       "pureAlcoholGrams": 19.8
     },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 100
+    },
     "notes": {
       "review": "Sweet fruitiness masks the alcohol in this easy-drinking, long cocktail.\n\r\n\n\r\n\"Sex\" is associated with red (e.g.red light district) and is represented in this drink in the form of vodka, cranberry juice, and black raspberry liqueur. These 'sexy' ingredients sit atop the sandy yellow \"beach\"– consisting of peach schnapps, orange juice, and pineapple juice.",
       "variant": "A cocktail from the 1980s with numerous different recipes, this layered version by yours truly.",
@@ -5743,6 +6167,10 @@ window.DIFFORDS_DATA = [
       "abv": 11.88,
       "proof": 23.75,
       "pureAlcoholGrams": 12.7
+    },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 29
     },
     "notes": {
       "review": "This age old cocktail is said to have been the drink for which the waxed paper straw was invented. To quote Harry Johnson, from his 1882 Bartender's Manual, \"It is a very refreshing drink for old and young.\"",
@@ -5801,6 +6229,10 @@ window.DIFFORDS_DATA = [
       "abv": 19.08,
       "proof": 38.15,
       "pureAlcoholGrams": 18.9
+    },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 411
     },
     "notes": {
       "review": "Cognac shines over freshening lemon and orange zestiness. Hopefully, you'll find this recipe perfectly balanced, but those with a sweet tooth may prefer to serve in a glass with a sugar rim - as has become traditional for a Sidecar.\n\r\n\n\r\nThe proportions of this cocktail are debated as much as the Sidecar's origin (see below). The earliest published recipe (Robert Vermeire's 1922 Cocktails: How to Mix Them and Harry McElhone's 1922 ABC of Cocktails) follows an equal parts formula (1 x brandy, 1 x triple sec and 1 x lemon juice) and, perhaps due to ease rather than balance, remains popular.\n\r\n\n\r\nIn his 1948 Fine Art of Mixing Drinks, David A. Embury writes of the 'equal parts' Sidecar, \"This is the most perfect example of a magnificent drink gone wrong\". He argues, \"Essentially the Side Car is nothing but a Daiquiri with brandy in the place of rum and Cointreau in the place of sugar syrup or orgeat.\" Embury then gives his 8:2:1 Daiquiri formula (2 brandy, ½ triple sec and ¼ lemon juice).\n\r\n\n\r\nIn his 1930 The Savoy Cocktail Book, Harry Craddock calls for 2 brandy, 1 triple sec and 1 lemon juice.\n\r\n\n\r\nSome refer to MacElhone and Vermiere's equal parts recipe as belonging to \"the French school,\" while the Savoy's 2:1:1 formula is said to be from the \"English school.\"\n\r\n\n\r\nMy previous recipe of 6:3:2 recipe (45ml brandy, 22.5ml triple sec and 15ml lemon juice) [replaced 15 Dec 25] takes the middle ground between The Savoy and the 'equal parts' camp, but the Sidecar is better when the triple sec's sweetness is bolstered by a spoon of sugar syrup and the proportion of liqueur lowered and the lemon juice raised. As per the recipe above. Or, even better, add Pineau des Charentes in place of sugar syrup and follow my Sidecar recipe.",
@@ -5865,6 +6297,10 @@ window.DIFFORDS_DATA = [
       "proof": 30.18,
       "pureAlcoholGrams": 22.3
     },
+    "discerningDrinkers": {
+      "rating": 4.5,
+      "ratingCount": 471
+    },
     "notes": {
       "review": "Beautifully balanced, fruity and complex with just enough gin to add a spirituous bite. We're indebted to Dale DeGroff for sharing this recipe, which he, in turn, was given by a former bartender at Singapore's Raffles Hotel.",
       "variant": "",
@@ -5913,6 +6349,10 @@ window.DIFFORDS_DATA = [
       "abv": null,
       "proof": null,
       "pureAlcoholGrams": 15.8
+    },
+    "discerningDrinkers": {
+      "rating": 3.5,
+      "ratingCount": 15
     },
     "notes": {
       "review": "Chilli spice smoothed by honey with vanilla vodka and lime juice.",
@@ -5963,6 +6403,10 @@ window.DIFFORDS_DATA = [
       "proof": 21.78,
       "pureAlcoholGrams": 13.1
     },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 159
+    },
     "notes": {
       "review": "Basically, a Spritzer with a generous splash of Italian red bitter liqueur - dry and very refreshing. The perfect aperitivo.\n\r\n\n\r\nIn Venice, this is based on the local white wines of the region: Pinot Grigio, Soave, or Prosecco, but as this cocktail has travelled, prosecco has become dominant. However, I prefer, as I first encountered this cocktail, with Pinot Grigio.",
       "variant": "",
@@ -6007,6 +6451,10 @@ window.DIFFORDS_DATA = [
       "abv": 26.2,
       "proof": 52.41,
       "pureAlcoholGrams": 23.2
+    },
+    "discerningDrinkers": {
+      "rating": 3.5,
+      "ratingCount": 61
     },
     "notes": {
       "review": "Classically the Stinger is shaken and served straight-up in a chilled coupe. However, I think it makes for a more refreshing peppermint and brandy digestif when served over crushed ice.",
@@ -6066,6 +6514,10 @@ window.DIFFORDS_DATA = [
       "proof": 19.09,
       "pureAlcoholGrams": 19.6
     },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 114
+    },
     "notes": {
       "review": "Unusually combining gin and cognac, lengthened and spiced with ginger beer, this vintage classic was originally designed as a hangover cure.",
       "variant": "",
@@ -6123,6 +6575,10 @@ window.DIFFORDS_DATA = [
       "abv": 12.29,
       "proof": 24.59,
       "pureAlcoholGrams": 22.1
+    },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 161
     },
     "notes": {
       "review": "This 1970s zesty citrus version of the Tequila Sunrise looks the part and comes with a sweet treat at the bottom of the glass.",
@@ -6186,6 +6642,10 @@ window.DIFFORDS_DATA = [
       "proof": 44.47,
       "pureAlcoholGrams": 23.2
     },
+    "discerningDrinkers": {
+      "rating": 4.5,
+      "ratingCount": 121
+    },
     "notes": {
       "review": "Rhum agricole and allspice dram play a huge role in what is one of the most complex of all classic Tiki cocktails.",
       "variant": "",
@@ -6235,6 +6695,10 @@ window.DIFFORDS_DATA = [
       "proof": 52.09,
       "pureAlcoholGrams": 17
     },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 172
+    },
     "notes": {
       "review": "Chartreuse fans will love this Irish whiskey-forward nightcap.",
       "variant": "",
@@ -6280,6 +6744,10 @@ window.DIFFORDS_DATA = [
       "abv": 22.62,
       "proof": 45.25,
       "pureAlcoholGrams": 23.7
+    },
+    "discerningDrinkers": {
+      "rating": 3.5,
+      "ratingCount": 11
     },
     "notes": {
       "review": "An ice cold but warming combo of Scotch, honey and lemon.\n\nBe the first to comment",
@@ -6332,6 +6800,10 @@ window.DIFFORDS_DATA = [
       "proof": 33.63,
       "pureAlcoholGrams": 19
     },
+    "discerningDrinkers": {
+      "rating": 4.5,
+      "ratingCount": 322
+    },
     "notes": {
       "review": "The flavour of agave is king in this simple Margarita, made without the traditional orange liqueur.",
       "variant": "Tommy's Mezcal Margarita; Matador Margarita (Tommy's Style; Smoky Tommy's Margarita; Hot Tommy",
@@ -6380,6 +6852,10 @@ window.DIFFORDS_DATA = [
       "abv": 18.65,
       "proof": 37.29,
       "pureAlcoholGrams": 16.9
+    },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 30
     },
     "notes": {
       "review": "Bone dry and boozy, this cocktail is aimed at those who have a penchant for both sherry and aquavit, not to mention bittersweet artichoke liqueurs - hardly mass market then. Nor are Aston Martin cars but I want one.\n\r\n\n\r\nBe warned - use the wrong sherry and this drink falls apart - don't be tempted to sub manzanilla with a fino.",
@@ -6430,6 +6906,10 @@ window.DIFFORDS_DATA = [
       "abv": 50,
       "proof": 36.12,
       "pureAlcoholGrams": 21.8
+    },
+    "discerningDrinkers": {
+      "rating": 4.5,
+      "ratingCount": 207
     },
     "notes": {
       "review": "This deep lurid reddy-brown cocktail won't be to everybody's taste but that's only to be expected with one-and-a-half shots of bitters. However, if you like cough candy then perhaps this cocktail is for you.",
@@ -6494,6 +6974,10 @@ window.DIFFORDS_DATA = [
       "proof": 46.07,
       "pureAlcoholGrams": 21.3
     },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 74
+    },
     "notes": {
       "review": "Inspired by the numerous other Tuxedo recipes, this combines the best of them with a faint hint of sweetness (from the bianco vermouth and old tom gin) to balance dry sherry and dashes of absinthe and bitters.",
       "variant": "Tuxedo \"Original\" - equal parts (1½oz/45ml) old tom gin and (1½oz/45ml) dry vermouth with 2 dashes maraschino; 1 dash absinthe; 2 or 3 dashes of orange bitters.\n\r\nTuxedo No. 1 (Savoy & Duffy's recipe) - equal parts dry gin and dry vermouth with lemon peel and absinthe.\n\r\nTuxedo No. 2 (Savoy & Duffy's recipe) - equal parts dry gin and dry vermouth with maraschino, orange bitters and absinthe.\n\r\nTuxedo No. 3 (Lowe & Straub's recipe) - two-thirds dry gin to one-third dry vermouth with sherry, maraschino, absinthe and aromatic bitters.\n\r\nTuxedo No.4 (AKA Tussetto) - two-thirds dry gin to one-third dry sherry with orange bitters.\n\r\nFlora Bar's Tuxedo No.2 - in an absinthe-rinsed glass with dry gin, bianco vermouth, maraschino liqueur and orange bitters.",
@@ -6554,6 +7038,10 @@ window.DIFFORDS_DATA = [
       "proof": null,
       "pureAlcoholGrams": 18.9
     },
+    "discerningDrinkers": {
+      "rating": 3.5,
+      "ratingCount": 31
+    },
     "notes": {
       "review": "Something of a supercharged Bloody Maria with a hint of sweet grenadine.\n\nBe the first to comment",
       "variant": "",
@@ -6610,6 +7098,10 @@ window.DIFFORDS_DATA = [
       "proof": 28.96,
       "pureAlcoholGrams": 17.9
     },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 4
+    },
     "notes": {
       "review": "A balanced and refreshingly cleansing chamomile grappa sour.",
       "variant": "",
@@ -6658,6 +7150,10 @@ window.DIFFORDS_DATA = [
       "abv": 28.2,
       "proof": 56.41,
       "pureAlcoholGrams": 27.2
+    },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 190
     },
     "notes": {
       "review": "Yes, yes, it's a spirituous cocktail without fruit juices that best shows its crystalline beauty when stirred rather than shaken. However, it's the one Martini that no bartender should lecture a drinker who prefers, like James Bond, their Martinis \"shaken not stirred\".\n\r\n\n\r\nVespers should be shaken! An action that aerates the cocktail, making it colder and more dilute than simply stirring. Surprisingly, shaking (rather than stirring) a Martini also amplifies the aromatised wine/vermouth. Shaking also gives the drink a slightly clouded appearance and can leave tiny shards of ice on the cocktail's surface. The clouded appearance impacts visual appeal, but the ice shards are easily removed with a fine strainer when pouring.",
@@ -6717,6 +7213,10 @@ window.DIFFORDS_DATA = [
       "proof": 56.74,
       "pureAlcoholGrams": 22.3
     },
+    "discerningDrinkers": {
+      "rating": 4.5,
+      "ratingCount": 804
+    },
     "notes": {
       "review": "A Sweet Manhattan served on-the-rocks with added herbal complexity and an all-important splash and dash or two of New Orleans bitters.\n\r\n\n\r\nDriven by comments on Difford's Guide, particularly one left in January 2021, I changed my Vieux Carré recipe to use 25% less whiskey, cognac, and vermouth but the same 10ml of Bénédictine, so amplifying the herbal richness it contributes. I also doubled the Creole bitters. For those who liked the previous recipe:\n\r\n30 ml Bourbon\n\r\n30 ml Cognac\n\r\n30 ml Rosso vermouth\n\r\n10 ml Bénédictine D.O.M. (this was 7.5ml pre-April 2020 & in my 15th book)\n\r\n1 dash Aromatic bitters\n\r\n1 dash Creole-style bitters\n\r\n\n\r\nMy quest for the perfect Vieux Carré continued in June 2022 when I succumbed to the calls to use rye instead of bourbon, in keeping with the original recipe. For the record, I tried a 50/50 mix of the two whiskies, but this did not work as well, and neither did either bourbon or indeed rye.",
       "variant": "Près du Quai - based on Jamaican aged rum with a touch of funk.\n\r\nVieille Place - with gentian and amaretto liqueurs.",
@@ -6775,6 +7275,10 @@ window.DIFFORDS_DATA = [
       "abv": 45,
       "proof": 32,
       "pureAlcoholGrams": 21.6
+    },
+    "discerningDrinkers": {
+      "rating": 4.5,
+      "ratingCount": 747
     },
     "notes": {
       "review": "Citrus sourness mellowed by a touch of sugar and invigorated by a blast of toasty bourbon whiskey.\n\r\n\n\r\nMany assert a classic \"Golden Ratio\" for all sours, from the Daiquiri to the Whiskey Sour. This broad approach can produce cocktails roughly balanced to personal tastes, but each sour recipe should have its own nuance according to the base spirit used. For example, my go-to light white rum-based Daiquiri changes if I use a well-aged rum. In the case of a Whiskey Sour, I'm looking for the best balance using a wheat-forward straight bourbon whiskey with a 45% alc./vol.\n\r\n\n\r\nThe classic 8:3:4 sour proportions:\n\r\n• 2 parts strong ingredient (60ml / 2oz whiskey)\n\r\n• 3/4 part sour ingredient (22.5ml / ¾oz lemon juice)\n\r\n• 1 part sweet ingredient (30ml / 1oz sugar syrup)\n\r\nproduce a cocktail that's sweet rather than sour, particularly if you are using a 2:1 rich sugar syrup, as in all Difford's Guide recipes.\n\r\n\n\r\nFor years, my own go-to Whiskey Sour recipe conformed to a 4:2:1 formula:\n\r\n• 4 parts whiskey 60ml (2oz)\n\r\n• 2 parts lemon juice 30ml (1oz)\n\r\n• 1 part rich 2:1 sugar syrup 15ml (½oz)\n\r\nThis formula is for you if you like your Whiskey Sours on the sour side. [If making with a 1:1 simple syrup, then up the sugar to 22.5ml (¾oz).]\n\r\n\n\r\nIn August 2023, ahead of Whiskey Sour Day, I experimented with other ratios such as 8:3:2 formula:\n\r\n• 8 parts whiskey 60ml (2oz)\n\r\n• 3 parts lemon juice 22.5ml (¾oz)\n\r\n• 2 part rich 2:1 sugar syrup 15ml (½oz)\n\r\nThis is tasty and a little more whiskey-forward, but the sour element and lemon flavour are noticeably diminished. [If making with a 1:1 simple syrup, then up the sugar to 22.5ml (¾oz).]\n\r\n\n\r\nEventually, I arrived at my new preferred 6:3:2 formula:\n\r\n• 6 parts whiskey 60ml (2oz)\n\r\n• 3 parts lemon juice 30ml (1oz)\n\r\n• 2 part rich 2:1 sugar syrup 20ml (⅔oz)\n\r\n[If making with a 1:1 simple syrup, you'd need to use 30ml, thus making this a simple and memorable 2:1:1 formula, the most common formula used in the USA where simple syrup is more popular than rich 2:1 syrup.]",
@@ -6838,6 +7342,10 @@ window.DIFFORDS_DATA = [
       "proof": 36.99,
       "pureAlcoholGrams": 23.3
     },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 400
+    },
     "notes": {
       "review": "A silky and delicious gin-laced classic with a sour finish.\n\r\n\n\r\nMy White Lady recipe is authentic to the proportions in Harry Craddock's 1930 recipe (see below) in using 2 parts dry gin, 1 part triple sec and 1 part lemon juice, but the sugar in modern-day triple secs (such as Cointreau) fails to balance lemon's citrus acidity (many triple sec liqueurs have become drier post-2000) so, depending on the sourness of your lemons, it is desirable to add a dash or even splash of sugar syrup.\n\r\n\n\r\nLed by The Savoy's American Bar itself, where Peter Dorelli always made his signature White Lady with egg white, this addition has become the norm in most countries. However, while the Japanese enjoy raw fish, the trend of adding raw egg to sour cocktails has yet to catch on there, with Japanese bartenders such as Hidetsugo Ueno San vehemently opposed to using egg white in any cocktail.\n\r\n\n\r\nI believe the Japanese omission of egg white is more a cultural judgement than one of taste, and egg white rounds a White Lady. It also makes it white. Beneath the attractive fluffy white foam produced by aerating the egg lies a dirty yellow drink that hardly befits the name. Those against the use of egg white argue that the drink is not named after its colour but the numerous ghostly white ladies of mythology. Maybe, but dirty yellow is not as visually appealing as a fluffy white head, and the drink's better with it!",
       "variant": "Sabot - Champagne White Lady\n\r\nChelsea Sidecar - Gin-based Sidecar\n\r\nBoxcar - a White Lady in a sugar-rimmed glass wth a splash of grenadine.",
@@ -6886,6 +7394,10 @@ window.DIFFORDS_DATA = [
       "abv": 20.22,
       "proof": 40.44,
       "pureAlcoholGrams": 26
+    },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 322
     },
     "notes": {
       "review": "One of the best-known cocktails of the modern era, the White Russian, consists of vodka and coffee liqueur served on the rocks, sipped over a silky layer of cream or milk.\n\r\n\n\r\nA White Russian can be as simple as equal measures vodka, coffee liqueur and fresh cream poured over ice. However, it looks better if you stir at least the first two ingredients and then layer cream on the surface of the drink (as above). Or, some prefer to shake all three ingredients to make a properly integrated cocktail.",
@@ -6946,6 +7458,10 @@ window.DIFFORDS_DATA = [
       "abv": 12.6,
       "proof": 25.19,
       "pureAlcoholGrams": 18.9
+    },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 84
     },
     "notes": {
       "review": "With its sunny colour and tropical fruity flavour and rum base, the Yellow Bird certainly evokes the Caribbean. Two rums and three fruit juices, but the ripe banana and peppermint freshness of the two liqueurs that most influence this lightly Tiki cocktail.",
@@ -7028,6 +7544,10 @@ window.DIFFORDS_DATA = [
       "abv": 18.38,
       "proof": 36.77,
       "pureAlcoholGrams": 26.6
+    },
+    "discerningDrinkers": {
+      "rating": 4,
+      "ratingCount": 145
     },
     "notes": {
       "review": "Powerful funky rum and delicate cinnamon spice, partially tamed by rich fruit and sweetened clove.\n\r\n\n\r\nArriving at a definitive Zombie is not straightforward due to Ernest Raymond Beaumont-Gantt (AKA Don The Beachcomber), the originator of this heavily rum-laced fruit punch, changing his recipe over two decades.\n\r\n\n\r\nInterpretation of his Original 1930s recipe:\n\r\n\n\r\nBLEND all ingredients with crushed ice and pour into a chilled Collins glass.\n\r\n- 45ml (1½oz) Aged blended Jamaican rum\n\r\n- 45ml (1½oz) Gold Puerto Rican-style light rum\n\r\n- 30ml (1oz) 151-proof Demerara rum\n\r\n- 22.5ml (¾ml) Lime juice (freshly squeezed)\n\r\n- 15ml (½oz) Falernum liqueur\n\r\n- 10ml (⅓oz) Grapefruit juice (freshly squeezed)\n\r\n- 5ml (spoon) Cinnamon syrup\n\r\n- 5ml (spoon) Grenadine syrup\n\r\n- 1 dash Angostura bitters\n\r\n- 3 dash Absinthe\n\r\n\n\r\nOver the years, he introduced ingredients such as passion fruit syrup, pineapple juice, maraschino liqueur and brown sugar syrup. And according to Tiki historian Jeff \"Beachbum\" Berry, the mixing method also changed from blended to shaken.\n\r\n\n\r\nInterpretation of his 1950s recipe:\n\r\n\n\r\nSHAKE first all ingredients with ice and strain into glass filled with crushed ice.\n\r\n- 30ml (1oz) Light white Puerto Rican-style rum\n\r\n- 30ml (1oz) Gold Puerto Rican-style light rum\n\r\n- 30ml (1oz) 151-proof Demerara rum\n\r\n- 30ml (1oz) Passion fruit syrup\n\r\n- 30ml (1oz) Pineapple juice\n\r\n- 30ml (1oz) Lemon juice\n\r\n- 30ml (1oz) Lime juice\n\r\n- 5ml (spoon) Brown sugar syrup (2:1)\n\r\n- 1 dash Angostura bitters\n\r\n\n\r\nMy recipe leans heavily on the original recipe published by Jeff Berry in his excellent book Sippin' Safari, which Jeff sourced from the 1937 notebook of Don Beach's waiter Dick Santiago. However, I've added the pineapple juice, which the Beachcomber introduced in later recipes, and reduced the rum to what are still zombifying proportions.",

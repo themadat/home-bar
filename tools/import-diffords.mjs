@@ -283,6 +283,18 @@ function nutritionValues(html, recipe) {
   };
 }
 
+function discerningDrinkersRating(html) {
+  const label = /Discerning Drinkers\s*\(([\d,]+)\s+ratings?\)/i.exec(html);
+  if (!label) return null;
+  const ratingStart = html.indexOf('<div class="rating">', label.index + label[0].length);
+  if (ratingStart === -1) return null;
+  const icons = [...html.slice(ratingStart, ratingStart + 4000).matchAll(/#svg-icon-star(?:-(half|empty))?/gi)].slice(0, 5);
+  if (icons.length !== 5) return null;
+  const rating = icons.reduce((total, icon) => total + (icon[1]?.toLowerCase() === 'empty' ? 0 : icon[1]?.toLowerCase() === 'half' ? 0.5 : 1), 0);
+  const ratingCount = Number(label[1].replace(/,/g, ''));
+  return rating > 0 ? {rating, ratingCount: Number.isFinite(ratingCount) ? ratingCount : 0} : null;
+}
+
 function extractRecipe(html, localCocktail, match) {
   const recipe = jsonLdRecipe(html);
   const genericNames = (recipe.recipeIngredient || []).map(normalizeIngredientName);
@@ -303,6 +315,7 @@ function extractRecipe(html, localCocktail, match) {
     .map((step) => step.text);
   const guide = guideValues(html);
   const nutrition = nutritionValues(html, recipe);
+  const discerningDrinkers = discerningDrinkersRating(html);
   const notes = {
     review: sectionText(html, 'anchor-review'),
     variant: sectionText(html, 'anchor-variant'),
@@ -325,6 +338,7 @@ function extractRecipe(html, localCocktail, match) {
     garnish,
     guide,
     nutrition,
+    discerningDrinkers,
     notes
   };
 }
@@ -338,6 +352,7 @@ function coverage(recipe) {
     review: Boolean(recipe.notes.review),
     variant: Boolean(recipe.notes.variant),
     history: Boolean(recipe.notes.history),
+    discerningDrinkers: Boolean(recipe.discerningDrinkers?.rating),
     nutrition: recipe.nutrition.calories !== null,
     alcoholContent: [recipe.nutrition.standardDrinks, recipe.nutrition.abv, recipe.nutrition.proof, recipe.nutrition.pureAlcoholGrams].some((value) => value !== null)
   };
