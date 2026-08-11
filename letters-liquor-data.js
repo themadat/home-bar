@@ -273,5 +273,11 @@
   };
   window.LETTERS_LIQUOR_DATA.forEach((entry) => {
     entry.tags = (tagsBySourceNumber[entry.sourceNumber] || []).slice();
+    const notes = window.LETTERS_LIQUOR_NOTES?.[entry.sourceNumber] || {};
+    entry.notes = {
+      story: String(notes.story || ''),
+      drink: String(notes.drink || ''),
+      lettering: String(notes.lettering || '')
+    };
   });
 }());
