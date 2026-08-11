@@ -178,6 +178,14 @@
         .quick-chip:hover { border-color: var(--accent); color: var(--text); }
         .quick-chip.active { background: var(--accent-soft); border-color: var(--accent); color: var(--text); }
         .quick-chip.stat-filter.active { color: var(--accent); }
+        .quick-chip.iba-type-unforget { border-color: #6D638C; background: rgba(86, 77, 119, .2); color: #BFC5DB; }
+        .quick-chip.iba-type-classic { border-color: #4B6680; background: rgba(42, 67, 91, .28); color: #B7CAD8; }
+        .quick-chip.iba-type-new-era { border-color: #557C94; background: rgba(67, 105, 128, .24); color: #C4DCE8; }
+        .quick-chip.iba-type-unforget:hover, .quick-chip.iba-type-unforget.active,
+        .quick-chip.iba-type-classic:hover, .quick-chip.iba-type-classic.active,
+        .quick-chip.iba-type-new-era:hover, .quick-chip.iba-type-new-era.active {
+          border-color: currentColor; color: var(--text); box-shadow: inset 0 0 0 1px currentColor;
+        }
         .source-era, .source-diffords {
           --source-color: #B5BCC4;
           --source-border: #68717B;
@@ -705,19 +713,20 @@
 	    .summary-row:focus-visible { outline: 2px solid var(--accent-2); outline-offset: -2px; }
 	    @keyframes relatedJumpFlash { 0% { background: rgba(194, 154, 82, .3); } 100% { background: transparent; } }
 	    .summary-row.jump-flash { animation: relatedJumpFlash 1.6s ease-out; }
-	    .name-cell { display: flex; align-items: center; gap: 5px; min-width: 0; }
+	    .name-cell { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 7px; min-width: 0; }
 	    .name-cell > div { min-width: 0; }
 	    .availability-slot { display: grid; place-items: center; flex: 0 0 8px; width: 8px; }
-	    .cocktail-name { flex: 1 1 auto; min-width: 0; font-weight: 720; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+	    .cocktail-name { min-width: 0; font-weight: 720; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 	    .cocktail-data-flags { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 1px; height: 14px; padding: 0 3px; border: 1px solid var(--line-soft); border-radius: 4px; background: #0D131B; }
-	    .cocktail-data-flag { min-width: 7px; color: #83A8B8; font-size: 7px; font-weight: 850; line-height: 1; text-align: center; }
-	    .cocktail-data-flag.calories { color: #C5A66B; }
+	    .cocktail-data-flag { min-width: 7px; color: #B5BCC4; font-size: 7px; font-weight: 850; line-height: 1; text-align: center; }
 	    .cocktail-row-markers { flex: 0 0 auto; display: grid; justify-items: end; gap: 2px; }
+	    .cocktail-marker-tags { display: inline-flex; align-items: center; justify-content: flex-end; gap: 2px; min-width: 0; }
 	    .cocktail-source-flag {
-	      display: inline-flex; align-items: center; justify-content: center; min-width: 26px; height: 13px; padding: 0 4px;
+	      display: inline-flex; align-items: center; justify-content: center; min-width: 0; height: 13px; padding: 0 4px;
 	      border: 1px solid var(--source-border, #725D39); border-radius: 4px; background: var(--source-bg, rgba(194, 154, 82, .1)); color: var(--source-color, #CDB37D);
 	      font-size: 7px; font-weight: 850; line-height: 1;
 	    }
+	    .cocktail-marker-tags .table-type-tag { min-height: 13px; height: 13px; padding: 0 4px; border-radius: 4px; font-size: 7px; }
 	    .bar-supported-indicator { flex: 0 0 8px; width: 8px; height: 8px; border-radius: 50%; background: var(--success); box-shadow: 0 0 0 2px rgba(86, 139, 112, .16); }
 	    .status { display: block; color: var(--faint); font-size: 12px; margin-top: 2px; }
 	    .tagline { display: flex; flex-wrap: nowrap; gap: 5px; min-width: 0; overflow: hidden; }
@@ -759,7 +768,7 @@
     .friend-rating-remove { width: 30px; height: 30px; min-height: 0; color: var(--faint); }
     .friend-rating-remove:hover { color: #F0C8CB; border-color: var(--danger); }
     .detail-row td { min-width: 0; overflow: hidden; background: #0B1017; padding: 0; }
-    .cocktail-alternate-names { color: var(--muted); font-size: .88em; font-weight: 550; }
+	    .cocktail-alternate-names { display: block; margin-top: 2px; color: var(--muted); font-size: .82em; font-weight: 550; line-height: 1.05; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .detail { padding: 8px; border-bottom: 1px solid var(--line); }
     .detail-grid { display: grid; grid-template-columns: minmax(0, 20fr) minmax(0, 20fr) minmax(0, 30fr) minmax(0, 30fr); gap: 8px; min-width: 0; }
     .recipe-detail-row { display: contents; }
@@ -1869,9 +1878,9 @@
           <button class="quick-chip source-era era-war-years" type="button" data-quick="lnlEraWarYears">War Years</button>
           <button class="quick-chip source-era era-dark-ages" type="button" data-quick="lnlEraDarkAges">Dark Ages</button>
           <button class="quick-chip source-era era-revival" type="button" data-quick="lnlEraRevival">Revival</button>
-          <button class="quick-chip" type="button" data-quick="ibaUnforgettable">Unforgettable</button>
-          <button class="quick-chip" type="button" data-quick="ibaContemporary">Contemporary</button>
-          <button class="quick-chip" type="button" data-quick="ibaNewEra">New Era</button>
+          <button class="quick-chip iba-type-unforget" type="button" data-quick="ibaUnforgettable">Unforgettable</button>
+          <button class="quick-chip iba-type-classic" type="button" data-quick="ibaContemporary">Contemporary</button>
+          <button class="quick-chip iba-type-new-era" type="button" data-quick="ibaNewEra">New Era</button>
           <button class="quick-chip source-diffords" type="button" data-quick="diffords">Difford's</button>
           <button class="quick-chip" type="button" data-quick="toTry">Try</button>
           <button class="quick-chip" type="button" data-quick="favs">Favs</button>
@@ -1962,29 +1971,27 @@
             <col data-table-col="cocktail">
             <col data-table-col="try">
             <col data-table-col="rating">
+            <col data-table-col="serving">
             <col data-table-col="base">
             <col data-table-col="garnish">
             <col data-table-col="ing">
             <col data-table-col="time">
             <col data-table-col="glass">
-            <col data-table-col="serving">
-            <col data-table-col="type">
             <col data-table-col="status">
           </colgroup>
           <thead>
             <tr>
 	              <th data-col="photo" style="width: 42px;" aria-label="Photo"></th>
 	              <th data-col="availability" style="width: 10px;" aria-label="My Bar availability"></th>
-	              <th class="sortable-column" data-col="cocktail" data-sort-key="name" aria-sort="none" style="width: 14%;"><button class="table-sort-button" type="button" data-table-sort="name"><span>Cocktail</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
+	              <th class="sortable-column" data-col="cocktail" data-sort-key="name" aria-sort="none" style="width: 28%;"><button class="table-sort-button" type="button" data-table-sort="name"><span>Cocktail</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
 	              <th class="sortable-column" data-col="try" data-sort-key="try" aria-sort="none" style="width: 56px;"><button class="table-sort-button" type="button" data-table-sort="try"><span>Try</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
 	              <th class="sortable-column" data-col="rating" data-sort-key="rating" aria-sort="none" style="width: 94px;"><div class="rating-header-group"><button class="table-sort-button" type="button" data-table-sort="rating"><span>Rating</span><span class="table-sort-icon" aria-hidden="true"></span></button><div id="ratingViewPill" class="rating-unlocked-controls" data-view="mine" hidden><button id="ratingAudienceToggle" class="rating-audience-toggle" type="button" data-view="mine" title="Show friends average" aria-label="Show friends average">Mine</button><button class="table-sort-button rating-pill-sort" type="button" data-table-sort="rating"><span class="visually-hidden">Rating</span><span class="table-sort-icon" aria-hidden="true"></span></button></div></div></th>
+	              <th class="sortable-column" data-col="serving" data-sort-key="serving" aria-sort="none" style="width: 88px;"><button class="table-sort-button" type="button" data-table-sort="serving"><span>Serve</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
 	              <th class="sortable-column" data-col="base" data-sort-key="base" aria-sort="none" style="width: 20%;"><button class="table-sort-button" type="button" data-table-sort="base"><span>Base Liquor</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
 	              <th class="sortable-column" data-col="garnish" data-sort-key="garnish" aria-sort="none" style="width: 16%;"><button class="table-sort-button" type="button" data-table-sort="garnish"><span>Garnish</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
 	              <th class="sortable-column" data-col="ing" data-sort-key="ingredients" aria-sort="none" style="width: 56px;"><button class="table-sort-button" type="button" data-table-sort="ingredients"><span>Ing.</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
 	              <th class="sortable-column" data-col="time" data-sort-key="time" aria-sort="none" style="width: 76px;"><button class="table-sort-button" type="button" data-table-sort="time"><span>Time</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
 	              <th class="sortable-column" data-col="glass" data-sort-key="glass" aria-sort="none" style="width: 12%;"><button class="table-sort-button" type="button" data-table-sort="glass"><span>Glassware</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
-	              <th class="sortable-column" data-col="serving" data-sort-key="serving" aria-sort="none" style="width: 88px;"><button class="table-sort-button" type="button" data-table-sort="serving"><span>Serve</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
-	              <th class="sortable-column" data-col="type" data-sort-key="type" aria-sort="none" style="width: 12%;"><button class="table-sort-button" type="button" data-table-sort="type"><span>Type</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
 	              <th class="sortable-column" data-col="status" data-sort-key="status" aria-sort="none" style="width: 7%;"><button class="table-sort-button" type="button" data-table-sort="status"><span>Status</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
             </tr>
           </thead>
@@ -2470,7 +2477,7 @@
   <button id="githubSyncButton" class="button icon" type="button" title="Set up GitHub Sync" aria-label="Set up GitHub Sync" aria-haspopup="dialog" data-sync-state="setup"><span id="githubSyncGlyph"></span></button>
   <script src="letters-liquor-data.js"></script>
   <script>
-    const BUILD_VERSION = '1.0.1.88';
+    const BUILD_VERSION = '1.0.1.89';
 	    const __RECTANGLE_SPLIT_3X1 = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 30.3223 23.8281"><g><rect height="23.8281" opacity="0" width="30.3223" x="0" y="0"/><path d="M9.09668 22.4658L11.875 22.4658L11.875 1.36719L9.09668 1.36719ZM18.0859 22.4658L20.8545 22.4658L20.8545 1.36719L18.0859 1.36719ZM4.29199 23.8281L25.6641 23.8281C28.457 23.8281 29.9609 22.3242 29.9609 19.5654L29.9609 4.27246C29.9609 1.50879 28.457 0.00976562 25.6641 0.00976562L4.29199 0.00976562C1.50879 0.00976562 0 1.50391 0 4.27246L0 19.5654C0 22.334 1.50879 23.8281 4.29199 23.8281ZM4.58008 20.9424C3.47656 20.9424 2.89062 20.3906 2.89062 19.2334L2.89062 4.60449C2.89062 3.45215 3.47656 2.89551 4.58008 2.89551L25.376 2.89551C26.4697 2.89551 27.0654 3.45215 27.0654 4.60449L27.0654 19.2334C27.0654 20.3906 26.4697 20.9424 25.376 20.9424Z"/></g></svg>`;
 	    const __ARROW_UP_AND_DOWN_SQUARE_FILL = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24.1846 23.8281"><g><rect height="23.8281" opacity="0" width="24.1846" x="0" y="0"/><path d="M23.8232 4.26758L23.8232 19.5605C23.8232 22.3193 22.3145 23.8232 19.5264 23.8232L4.29199 23.8232C1.50879 23.8232 0 22.3291 0 19.5605L0 4.26758C0 1.49902 1.50879 0 4.29199 0L19.5264 0C22.3145 0 23.8232 1.50391 23.8232 4.26758ZM11.0107 4.45312L7.56836 7.97363C7.33398 8.20312 7.22656 8.48145 7.22656 8.7793C7.22656 9.38477 7.68555 9.80957 8.30566 9.80957C8.64746 9.80957 8.96484 9.65332 9.13574 9.40918L9.80469 8.72559L10.8753 7.30769L10.7812 9.80469L10.7812 14.0039L10.8755 16.506L9.80469 15.0879L9.13574 14.4092C8.96484 14.1553 8.64746 14.0039 8.30566 14.0039C7.68555 14.0039 7.22656 14.4287 7.22656 15.0342C7.22656 15.332 7.33398 15.6055 7.56836 15.8398L11.0107 19.3604C11.2744 19.6484 11.5967 19.8047 11.9873 19.8047C12.3828 19.8047 12.7051 19.6484 12.9736 19.3604L16.4111 15.8398C16.6504 15.6006 16.7529 15.332 16.7529 15.0342C16.7529 14.4287 16.2988 14.0039 15.6689 14.0039C15.3271 14.0039 15.0146 14.1553 14.8438 14.4092L14.1748 15.0879L13.1041 16.5027L13.1982 14.0039L13.1982 9.80469L13.1043 7.31102L14.1748 8.72559L14.8438 9.40918C15.0146 9.65332 15.3271 9.80957 15.6689 9.80957C16.2988 9.80957 16.7529 9.38477 16.7529 8.7793C16.7529 8.48145 16.6504 8.20801 16.4111 7.97363L12.9736 4.45312C12.7051 4.16992 12.3828 4.00879 11.9873 4.00879C11.5967 4.00879 11.2744 4.16992 11.0107 4.45312Z"/></g></svg>`;
 	    const __ARROW_UP_SQUARE_FILL = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24.1846 23.8281"><g><rect height="23.8281" opacity="0" width="24.1846" x="0" y="0"/><path d="M23.8232 4.26758L23.8232 19.5605C23.8232 22.3193 22.3145 23.8232 19.5264 23.8232L4.29199 23.8232C1.50879 23.8232 0 22.3291 0 19.5605L0 4.26758C0 1.49902 1.50879 0 4.29199 0L19.5264 0C22.3145 0 23.8232 1.50391 23.8232 4.26758ZM10.874 5.55664L6.49414 9.78027C6.24512 10.0293 6.1084 10.293 6.1084 10.6543C6.1084 11.3428 6.67969 11.8359 7.32422 11.8359C7.68066 11.8359 8.01758 11.6895 8.25684 11.4258L10 9.58984L10.6642 8.73089L10.5664 10.5762L10.5664 17.3486C10.5664 18.0957 11.2012 18.7402 11.9824 18.7402C12.7734 18.7402 13.3936 18.0957 13.3936 17.3486L13.3936 10.5762L13.2988 8.7285L13.9648 9.58984L15.7031 11.4258C15.9424 11.6895 16.2744 11.8359 16.6309 11.8359C17.2705 11.8359 17.8564 11.3428 17.8564 10.6543C17.8564 10.293 17.7148 10.0293 17.4707 9.78027L13.0908 5.55664C12.7197 5.2002 12.3584 5.07324 11.9824 5.07324C11.6016 5.07324 11.2451 5.2002 10.874 5.55664Z"/></g></svg>`;
@@ -3287,7 +3294,7 @@
         }
         function cocktailNameMarkup(cocktail) {
           const aliases = cocktailAlternateNames(cocktail);
-          return `${escapeHtml(cocktail.name)}${aliases.length ? ` <span class="cocktail-alternate-names">(${escapeHtml(aliases.join(', '))})</span>` : ''}`;
+          return `${escapeHtml(cocktail.name)}${aliases.length ? `<span class="cocktail-alternate-names">(${escapeHtml(aliases.join(', '))})</span>` : ''}`;
         }
         function normalizeCocktailAlternateNames(cocktail) {
           if (!cocktail || typeof cocktail !== 'object') return cocktail;
@@ -4901,7 +4908,7 @@
 	      return badges.join('');
 	    }
 	    function cocktailRowSourceFlag(cocktail) {
-	      return cocktail.lnlSource ? `<span class="cocktail-source-flag source-era era-${classToken(cocktail.lnlSource.era)}" title="Letters &amp; Liquor recipe available">L&amp;L</span>` : '';
+	      return cocktail.lnlSource ? `<span class="cocktail-source-flag source-era era-${classToken(cocktail.lnlSource.era)}" title="Letters &amp; Liquor ${escapeHtml(cocktail.lnlSource.era)} recipe available">${escapeHtml(cocktail.lnlSource.era)}</span>` : '';
 	    }
 	    function recipeComparisonColumn(cocktail, option, servings) {
 	      const source = recipeSource(cocktail, option.key);
@@ -4970,7 +4977,7 @@
 	            </section>
 	            <section class="detail-card"><div class="detail-method-header"><h3>Method</h3>${servingStyleTag(recipeView)}</div><ol>${recipeView.method.length ? recipeView.method.map((x) => `<li>${escapeHtml(formatMethodLine(x))}</li>`).join('') : '<li class="empty">Not recorded yet</li>'}</ol></section>
 	          </div>`;
-	      return `<tr class="detail-row"><td colspan="13"><div class="detail">
+	      return `<tr class="detail-row"><td colspan="12"><div class="detail">
 	        <div class="detail-grid">
 	          <section class="detail-card mobile-detail-facts">
 	            <h3>Details</h3>
@@ -5003,16 +5010,15 @@
 	      return `<tr class="summary-row" tabindex="0" role="button" aria-expanded="${expanded}" data-id="${escapeHtml(c.id)}">
 	        <td data-label="Photo">${thumbCell(c)}</td>
 	        <td data-label="My Bar"><span class="availability-slot">${supportedIndicator}</span></td>
-	        <td data-label="Cocktail"><div class="name-cell"><div class="cocktail-name">${cocktailNameMarkup(c)}</div><div class="cocktail-row-markers">${cocktailDataFlagsMarkup(c)}${cocktailRowSourceFlag(c)}</div></div></td>
+	        <td data-label="Cocktail"><div class="name-cell"><div class="cocktail-name">${cocktailNameMarkup(c)}</div><div class="cocktail-row-markers">${cocktailDataFlagsMarkup(c)}<span class="cocktail-marker-tags">${cocktailRowSourceFlag(c)}${compactTypeTag(c)}</span></div></div></td>
 	        <td data-label="Try" class="bookmark-cell">${bookmarkToggle(c)}</td>
 	        <td data-label="Rating"><div class="rating-cell" title="${escapeHtml(ratingTitle)}">${ratingStars(c.id, rating, store.ratingView === 'friends' ? 'friends-view' : '')}<span class="rating-value">${ratingValueLabel(rating)}</span></div></td>
+	        <td data-label="Serve">${servingStyleTag(c)}</td>
 	        <td data-label="Base Liquor"><div class="tagline">${bases}</div></td>
 	        <td data-label="Garnish"><span class="garnish-cell">${escapeHtml(garnish)}</span></td>
 	        <td data-label="Ing.">${c.ingredientCount}</td>
         <td data-label="Time">${c.makeTime} min</td>
         <td data-label="Glassware">${escapeHtml(displayGlass(c.glassware))}</td>
-        <td data-label="Serve">${servingStyleTag(c)}</td>
-        <td data-label="Type">${compactTypeTag(c)}</td>
         <td data-label="Status">${escapeHtml(statusLabel(c))}</td>
       </tr>${expanded ? detailTemplate(c) : ''}`;
     }
@@ -5130,7 +5136,7 @@
         return;
       }
       const emptyMessage = state.quick.has('myBar') ? 'No cocktails are ready with the current filters.' : 'No cocktails match the current filters.';
-      $('#cocktailBody').innerHTML = rows.length ? rows.map(rowTemplate).join('') : `<tr><td colspan="13"><div class="no-results">${emptyMessage}</div></td></tr>`;
+      $('#cocktailBody').innerHTML = rows.length ? rows.map(rowTemplate).join('') : `<tr><td colspan="12"><div class="no-results">${emptyMessage}</div></td></tr>`;
       renderMyBarResults(rows);
       const bottleUsage = activeBottleUsage();
       $('#resultMeta').textContent = bottleUsage
@@ -9250,9 +9256,9 @@
 	      saveCustom();
 	    });
     const FIXED_COL_WIDTH = { photo: 42, availability: 10, try: 56, rating: 94, ing: 66, time: 76, serving: 88 };
-    const PRIORITY_COLS = ['cocktail', 'base', 'type', 'garnish', 'glass'];
-    const PRIORITY_FLOOR = { cocktail: 100, base: 90, garnish: 89, type: 71, glass: 120 };
-    const PRIORITY_GROW_WEIGHT = { cocktail: 14, base: 20, garnish: 16, type: 12, glass: 12 };
+    const PRIORITY_COLS = ['cocktail', 'base', 'garnish', 'glass'];
+    const PRIORITY_FLOOR = { cocktail: 180, base: 90, garnish: 89, glass: 120 };
+    const PRIORITY_GROW_WEIGHT = { cocktail: 30, base: 20, garnish: 16, glass: 12 };
     function measurePriorityColumnNeeds() {
       const table = $('.table-wrap table');
       const tbody = $('#cocktailBody');
@@ -9262,25 +9268,24 @@
       probeRow.innerHTML = `
 	    <td></td>
 	    <td></td>
-	    <td><div class="name-cell"><div class="cocktail-name" data-probe="name"></div></div></td>
-	    <td></td><td></td>
+	    <td><div class="name-cell"><div class="cocktail-name" data-probe="name"></div><div class="cocktail-row-markers" data-probe="markers"></div></div></td>
+	    <td></td><td></td><td></td>
         <td><div class="tagline" data-probe="base"></div></td>
         <td><span class="garnish-cell" data-probe="garnish"></span></td>
         <td></td><td></td>
         <td data-probe="glass"></td>
         <td></td>
-        <td data-probe="type"></td>
-        <td></td>
       `;
       tbody.appendChild(probeRow);
       const nameEl = probeRow.querySelector('[data-probe="name"]');
+      const markerEl = probeRow.querySelector('[data-probe="markers"]');
       const baseEl = probeRow.querySelector('[data-probe="base"]');
       const garnishEl = probeRow.querySelector('[data-probe="garnish"]');
       const glassEl = probeRow.querySelector('[data-probe="glass"]');
-      const typeEl = probeRow.querySelector('[data-probe="type"]');
-      let maxName = 0, maxBase = 0, maxGarnish = 0, maxGlass = 0, maxType = 0;
+      let maxName = 0, maxBase = 0, maxGarnish = 0, maxGlass = 0;
       COCKTAILS.forEach((c) => {
-        nameEl.textContent = cocktailDisplayName(c);
+        nameEl.innerHTML = cocktailNameMarkup(c);
+        markerEl.innerHTML = `${cocktailDataFlagsMarkup(c)}<span class="cocktail-marker-tags">${cocktailRowSourceFlag(c)}${compactTypeTag(c)}</span>`;
         maxName = Math.max(maxName, nameEl.closest('.name-cell').scrollWidth);
         baseEl.innerHTML = c.baseLiquor.map((base) => `<span class="mini-tag base-tag base-${classToken(base)}">${escapeHtml(displayBaseLabel(base))}</span>`).join('');
         maxBase = Math.max(maxBase, baseEl.scrollWidth);
@@ -9288,8 +9293,6 @@
         maxGarnish = Math.max(maxGarnish, garnishEl.scrollWidth);
         glassEl.textContent = displayGlass(c.glassware);
         maxGlass = Math.max(maxGlass, glassEl.scrollWidth);
-        typeEl.textContent = displayType(c);
-        maxType = Math.max(maxType, typeEl.scrollWidth);
       });
       tbody.removeChild(probeRow);
       const PAD = 24;
@@ -9297,7 +9300,6 @@
         cocktail: maxName + PAD,
         base: maxBase + PAD,
         garnish: maxGarnish + PAD,
-        type: maxType + PAD,
         glass: maxGlass + PAD
       };
     }
@@ -9327,6 +9329,11 @@
         widths[col] += give;
         remaining -= give;
       });
+      if (widths.base > 250) {
+        const shift = widths.base - 250;
+        widths.base -= shift;
+        widths.cocktail += shift;
+      }
       if (remaining > 0) {
         const unassigned = remaining;
         const totalWeight = PRIORITY_COLS.reduce((sum, col) => sum + PRIORITY_GROW_WEIGHT[col], 0);
@@ -9347,7 +9354,7 @@
         if (th) th.style.width = width;
         if (tableCol) tableCol.style.width = width;
       });
-	  table.classList.toggle('type-labels-full', widths.type >= 124);
+	  table.classList.add('type-labels-full');
     }
     let resizeTimer = null;
     function scheduleColumnWidthUpdate() {
