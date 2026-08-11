@@ -325,8 +325,7 @@ function extractRecipe(html, localCocktail, match) {
     garnish,
     guide,
     nutrition,
-    notes,
-    tags: Array.isArray(recipe.keywords) ? recipe.keywords.map(String) : []
+    notes
   };
 }
 
