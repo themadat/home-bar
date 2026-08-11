@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-11T16:02:14.771Z",
+  "generatedAt": "2026-08-11T16:27:39.748Z",
   "source": "https://www.diffordsguide.com",
   "totalCocktails": 142,
   "statuses": {
@@ -15,6 +15,7 @@
     "review": 129,
     "variant": 87,
     "history": 127,
+    "discerningDrinkers": 130,
     "nutrition": 102,
     "alcoholContent": 130
   },
@@ -34,6 +35,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -92,6 +94,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -111,6 +114,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": false,
         "alcoholContent": true
       }
@@ -130,6 +134,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -149,6 +154,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -168,6 +174,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -187,6 +194,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -206,6 +214,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -264,6 +273,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -283,6 +293,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -302,6 +313,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -321,6 +333,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -340,6 +353,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": false,
         "alcoholContent": true
       }
@@ -359,6 +373,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": false,
         "alcoholContent": true
       }
@@ -378,6 +393,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -397,6 +413,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -416,6 +433,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -446,6 +464,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -465,6 +484,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": false,
         "alcoholContent": true
       }
@@ -490,6 +510,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -509,6 +530,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -528,6 +550,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -547,6 +570,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": false,
         "alcoholContent": true
       }
@@ -566,6 +590,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -585,6 +610,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -643,6 +669,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -662,6 +689,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -681,6 +709,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": false,
         "alcoholContent": true
       }
@@ -700,6 +729,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -719,6 +749,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -738,6 +769,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": false,
         "alcoholContent": true
       }
@@ -757,6 +789,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -815,6 +848,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -834,6 +868,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -853,6 +888,7 @@
         "review": false,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -872,6 +908,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": false,
         "alcoholContent": true
       }
@@ -891,6 +928,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": false,
         "alcoholContent": true
       }
@@ -910,6 +948,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": false,
         "alcoholContent": true
       }
@@ -929,6 +968,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -948,6 +988,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": false,
         "alcoholContent": true
       }
@@ -967,6 +1008,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -986,6 +1028,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -1005,6 +1048,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": false,
         "alcoholContent": true
       }
@@ -1024,6 +1068,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -1043,6 +1088,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": false,
         "alcoholContent": true
       }
@@ -1062,6 +1108,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -1081,6 +1128,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -1100,6 +1148,7 @@
         "review": true,
         "variant": false,
         "history": false,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -1119,6 +1168,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -1138,6 +1188,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -1157,6 +1208,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -1176,6 +1228,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -1195,6 +1248,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -1214,6 +1268,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -1233,6 +1288,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -1291,6 +1347,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -1310,6 +1367,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -1329,6 +1387,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -1348,6 +1407,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -1367,6 +1427,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": false,
         "alcoholContent": true
       }
@@ -1386,6 +1447,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -1405,6 +1467,7 @@
         "review": true,
         "variant": false,
         "history": false,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -1424,6 +1487,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -1443,6 +1507,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -1462,6 +1527,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -1481,6 +1547,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -1500,6 +1567,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -1519,6 +1587,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -1538,6 +1607,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -1557,6 +1627,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -1576,6 +1647,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -1595,6 +1667,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -1614,6 +1687,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": false,
         "alcoholContent": true
       }
@@ -1633,6 +1707,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": false,
         "alcoholContent": true
       }
@@ -1652,6 +1727,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": false,
         "alcoholContent": true
       }
@@ -1671,6 +1747,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -1690,6 +1767,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -1709,6 +1787,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -1728,6 +1807,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -1747,6 +1827,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -1766,6 +1847,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -1785,6 +1867,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": false,
         "alcoholContent": true
       }
@@ -1804,6 +1887,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -1834,6 +1918,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -1853,6 +1938,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -1872,6 +1958,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -1891,6 +1978,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -1910,6 +1998,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": false,
         "alcoholContent": true
       }
@@ -1929,6 +2018,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": false,
         "alcoholContent": true
       }
@@ -1948,6 +2038,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": false,
         "alcoholContent": true
       }
@@ -1967,6 +2058,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -1986,6 +2078,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -2005,6 +2098,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": false,
         "alcoholContent": true
       }
@@ -2063,6 +2157,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -2082,6 +2177,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -2101,6 +2197,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": false,
         "alcoholContent": true
       }
@@ -2120,6 +2217,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -2139,6 +2237,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -2158,6 +2257,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -2177,6 +2277,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": false,
         "alcoholContent": true
       }
@@ -2196,6 +2297,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -2215,6 +2317,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -2234,6 +2337,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -2253,6 +2357,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -2272,6 +2377,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -2291,6 +2397,7 @@
         "review": true,
         "variant": true,
         "history": false,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -2310,6 +2417,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -2329,6 +2437,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -2348,6 +2457,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -2386,6 +2496,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": false,
         "alcoholContent": true
       }
@@ -2405,6 +2516,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -2424,6 +2536,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": false,
         "alcoholContent": true
       }
@@ -2443,6 +2556,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -2462,6 +2576,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -2481,6 +2596,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -2500,6 +2616,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -2519,6 +2636,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -2538,6 +2656,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -2596,6 +2715,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -2615,6 +2735,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -2634,6 +2755,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -2653,6 +2775,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": false,
         "alcoholContent": true
       }
@@ -2672,6 +2795,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -2691,6 +2815,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -2710,6 +2835,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -2768,6 +2894,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -2787,6 +2914,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -2806,6 +2934,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -2825,6 +2954,7 @@
         "review": true,
         "variant": true,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": true,
         "alcoholContent": true
       }
@@ -2844,6 +2974,7 @@
         "review": true,
         "variant": false,
         "history": true,
+        "discerningDrinkers": true,
         "nutrition": false,
         "alcoholContent": true
       }
