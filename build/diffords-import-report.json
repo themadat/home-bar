@@ -1,0 +1,2852 @@
+{
+  "generatedAt": "2026-08-11T04:19:26.654Z",
+  "source": "https://www.diffordsguide.com",
+  "totalCocktails": 142,
+  "statuses": {
+    "imported": 130,
+    "unmatched": 10,
+    "ambiguous": 2
+  },
+  "fieldCoverage": {
+    "ingredients": 130,
+    "method": 130,
+    "strength": 120,
+    "taste": 120,
+    "review": 129,
+    "variant": 87,
+    "history": 127,
+    "nutrition": 102,
+    "alcoholContent": 130
+  },
+  "items": [
+    {
+      "id": "alexander",
+      "name": "Alexander",
+      "status": "imported",
+      "sourceName": "Alexander",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/35/alexander",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "amaretto-martini",
+      "name": "Amaretto Martini",
+      "status": "unmatched",
+      "candidates": [
+        {
+          "name": "Marsala Martini",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/3450/marsala-martini"
+        },
+        {
+          "name": "Amaretto Sour",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/53/amaretto-sour"
+        },
+        {
+          "name": "Almond Martini",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/51/almond-martini"
+        },
+        {
+          "name": "Blush Martini",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/278/blush-martini"
+        },
+        {
+          "name": "Gingerbread Martini",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/3408/gingerbread-martini"
+        },
+        {
+          "name": "Amaretto Stone Sour",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/30054/amaretto-stone-sour"
+        },
+        {
+          "name": "Pistachio Martini",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/30944/pistachio-martini"
+        },
+        {
+          "name": "Canteen Martini",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/367/canteen-martini"
+        }
+      ]
+    },
+    {
+      "id": "americano",
+      "name": "Americano",
+      "status": "imported",
+      "sourceName": "Americano",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/61/americano",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "angel-face",
+      "name": "Angel Face",
+      "status": "imported",
+      "sourceName": "Angel Face",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/521/angel-face",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": false,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "lnl-appletini",
+      "name": "Appletini",
+      "status": "imported",
+      "sourceName": "Appletini (Sour Apple Martini)",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1797/appletini-sour-apple-martini",
+      "overridden": true,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "aviation",
+      "name": "Aviation",
+      "status": "imported",
+      "sourceName": "Aviation (Difford's recipe)",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/127/aviation-diffords-recipe",
+      "overridden": true,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "legacy-b-52",
+      "name": "B-52",
+      "status": "imported",
+      "sourceName": "B-52 Shot",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/133/b-52-shot",
+      "overridden": true,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "legacy-bacardi",
+      "name": "Bacardi",
+      "status": "imported",
+      "sourceName": "Bacardi Cocktail",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/143/bacardi-cocktail",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "legacy-barracuda",
+      "name": "Barracuda",
+      "status": "imported",
+      "sourceName": "Barracuda",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/4823/barracuda",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "lnl-barrel-aged-negroni",
+      "name": "Barrel-Aged Negroni",
+      "status": "unmatched",
+      "candidates": [
+        {
+          "name": "Negroni Cocktail",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/1392/negroni-cocktail"
+        },
+        {
+          "name": "Iron Negroni",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/4599/iron-negroni"
+        },
+        {
+          "name": "Alpine Negroni",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/5414/alpine-negroni"
+        },
+        {
+          "name": "Toffee Negroni",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/6169/toffee-negroni"
+        },
+        {
+          "name": "Christmas Negroni",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/10731/christmas-negroni"
+        },
+        {
+          "name": "Fridge Negroni",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/30008/fridge-negroni"
+        },
+        {
+          "name": "Scotch Negroni",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/1759/scotch-negroni"
+        },
+        {
+          "name": "Sicilian Negroni",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/1772/sicilian-negroni"
+        }
+      ]
+    },
+    {
+      "id": "bees-knees",
+      "name": "Bee’s Knees",
+      "status": "imported",
+      "sourceName": "Bee's Knees",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/2144/bees-knees",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "bellini",
+      "name": "Bellini",
+      "status": "imported",
+      "sourceName": "Bellini (Difford's recipe)",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/202/bellini-diffords-recipe",
+      "overridden": true,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "between-the-sheets",
+      "name": "Between the Sheets",
+      "status": "imported",
+      "sourceName": "Between The Sheets",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/209/between-the-sheets",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "black-russian",
+      "name": "Black Russian",
+      "status": "imported",
+      "sourceName": "Black Russian",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/236/black-russian",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "bloody-mary",
+      "name": "Bloody Mary",
+      "status": "imported",
+      "sourceName": "Bloody Mary",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/251/bloody-mary",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": false,
+        "taste": false,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": false,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "lnl-blue-blazer",
+      "name": "Blue Blazer",
+      "status": "imported",
+      "sourceName": "Blue Blazer",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/256/blue-blazer",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": false,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "boulevardier",
+      "name": "Boulevardier",
+      "status": "imported",
+      "sourceName": "Boulevardier",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/2955/boulevardier",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "bramble",
+      "name": "Bramble",
+      "status": "imported",
+      "sourceName": "Bramble",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/305/bramble",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "brandy-crusta",
+      "name": "Brandy Crusta",
+      "status": "imported",
+      "sourceName": "Brandy Crusta",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/310/brandy-crusta",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "lnl-brandy-punch",
+      "name": "Brandy Punch",
+      "status": "ambiguous",
+      "candidates": [
+        {
+          "name": "Brandy Cocktail",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/2146/brandy-cocktail"
+        }
+      ]
+    },
+    {
+      "id": "lnl-bronx",
+      "name": "Bronx",
+      "status": "imported",
+      "sourceName": "Bronx",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/325/bronx",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "caipirinha",
+      "name": "Caipirinha",
+      "status": "imported",
+      "sourceName": "Caipirinha",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/354/caipirinha",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": false,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "lnl-calibogus",
+      "name": "Calibogus",
+      "status": "unmatched",
+      "candidates": []
+    },
+    {
+      "id": "canchanchara",
+      "name": "Canchanchara",
+      "status": "imported",
+      "sourceName": "Canchànchara",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/570/canchanchara",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "cardinale",
+      "name": "Cardinale",
+      "status": "imported",
+      "sourceName": "Cardinale",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/572/cardinale",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "casino",
+      "name": "Casino",
+      "status": "imported",
+      "sourceName": "Casino",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/2332/casino",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "champagne-cocktail",
+      "name": "Champagne Cocktail",
+      "status": "imported",
+      "sourceName": "Champagne Cocktail",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/393/champagne-cocktail",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": false,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "chartreuse-swizzle",
+      "name": "Chartreuse Swizzle",
+      "status": "imported",
+      "sourceName": "Chartreuse Swizzle",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/2336/chartreuse-swizzle",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "clover-club",
+      "name": "Clover Club",
+      "status": "imported",
+      "sourceName": "Clover Club",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/2344/clover-club",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "cookies-and-cream",
+      "name": "Cookies and Cream",
+      "status": "unmatched",
+      "candidates": [
+        {
+          "name": "Creamsicle",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/483/creamsicle"
+        },
+        {
+          "name": "Bananas & Cream",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/164/bananas-and-cream"
+        },
+        {
+          "name": "Cream Cake",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/486/cream-cake"
+        },
+        {
+          "name": "Smoking Hand",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/41930/smoking-hand"
+        },
+        {
+          "name": "Fairy Cream",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/3419/fairy-cream"
+        },
+        {
+          "name": "Landing Gear",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/4913/landing-gear"
+        },
+        {
+          "name": "Creamy Creamsicle",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/485/creamy-creamsicle"
+        },
+        {
+          "name": "Strawberries & Cream",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/20196/strawberries-and-cream"
+        }
+      ]
+    },
+    {
+      "id": "corpse-reviver-2",
+      "name": "Corpse Reviver #2",
+      "status": "imported",
+      "sourceName": "Corpse Reviver No.2 (Contemporary Recipe)",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/2355/corpse-reviver-no2-contemporary-recipe",
+      "overridden": true,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "cosmopolitan",
+      "name": "Cosmopolitan",
+      "status": "imported",
+      "sourceName": "Cosmopolitan Cocktail (Difford's recipe)",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/472/cosmopolitan-cocktail-diffords-recipe",
+      "overridden": true,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "cuba-libre",
+      "name": "Cuba Libre",
+      "status": "imported",
+      "sourceName": "Cuba Libre",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/495/cuba-libre",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": false,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "daiquiri",
+      "name": "Daiquiri",
+      "status": "imported",
+      "sourceName": "Daiquiri (Difford's recipe)",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/611/daiquiri-diffords-recipe",
+      "overridden": true,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "dark-n-stormy",
+      "name": "Dark ‘n’ Stormy",
+      "status": "imported",
+      "sourceName": "Dark 'N' Stormy (Difford's recipe)",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/619/dark-n-stormy-diffords-recipe",
+      "overridden": true,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "legacy-derby",
+      "name": "Derby",
+      "status": "imported",
+      "sourceName": "Derby Cocktail",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/4932/derby-cocktail",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": false,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "legacy-dirty-martini",
+      "name": "Dirty Martini",
+      "status": "imported",
+      "sourceName": "Dirty Martini",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/650/dirty-martini",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "dons-special-daiquiri",
+      "name": "Don’s Special Daiquiri",
+      "status": "unmatched",
+      "candidates": [
+        {
+          "name": "Cantineros Gentleman Daiquiri",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/4027/cantineros-gentleman-daiquiri"
+        },
+        {
+          "name": "Lithuanian Daiquiri",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/4030/lithuanian-daiquiri"
+        },
+        {
+          "name": "Noble Daiquiri",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/4000/noble-daiquiri"
+        },
+        {
+          "name": "Daiquiri (Difford's recipe)",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/611/daiquiri-diffords-recipe"
+        },
+        {
+          "name": "Triple Daiquiri",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/4809/triple-daiquiri"
+        },
+        {
+          "name": "Daiquiri No. 1 (6:2:1 formula)",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/5020/daiquiri-no-1-621-formula"
+        },
+        {
+          "name": "Daiquiri (on-the-rocks)",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/2365/daiquiri-on-the-rocks"
+        },
+        {
+          "name": "Christmas Daiquiri",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/6533/christmas-daiquiri"
+        }
+      ]
+    },
+    {
+      "id": "dry-martini",
+      "name": "Dry Martini",
+      "status": "imported",
+      "sourceName": "Dry Martini 'Preferred' (5:1 ratio)",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/676/dry-martini-preferred-51-ratio",
+      "overridden": true,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "espresso-martini",
+      "name": "Espresso Martini",
+      "status": "imported",
+      "sourceName": "Espresso Martini",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/725/espresso-martini",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "fernandito",
+      "name": "Fernandito",
+      "status": "imported",
+      "sourceName": "Fernandito",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/17620/fernandito",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": false,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "lnl-flip",
+      "name": "Flip",
+      "status": "imported",
+      "sourceName": "Flip Cocktail (generic recipe)",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/761/flip-cocktail-generic-recipe",
+      "overridden": true,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": false,
+        "taste": false,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": false,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "french-75",
+      "name": "French 75",
+      "status": "imported",
+      "sourceName": "French 75",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/790/french-75",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": false,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "french-connection",
+      "name": "French Connection",
+      "status": "imported",
+      "sourceName": "French Connection",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/2415/french-connection",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": false,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "french-martini",
+      "name": "French Martini",
+      "status": "imported",
+      "sourceName": "French Martini",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/798/french-martini",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "lnl-frozen-margarita",
+      "name": "Frozen Margarita",
+      "status": "imported",
+      "sourceName": "Margarita (frozen)",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1256/margarita-frozen",
+      "overridden": true,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": false,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "garibaldi",
+      "name": "Garibaldi",
+      "status": "imported",
+      "sourceName": "Garibaldi",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/825/garibaldi",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "lnl-gin-and-tonic",
+      "name": "Gin and Tonic",
+      "status": "imported",
+      "sourceName": "Gin and Tonic",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/835/gin-and-tonic",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "gin-basil-smash",
+      "name": "Gin Basil Smash",
+      "status": "imported",
+      "sourceName": "Gin Basil Smash",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/3282/gin-basil-smash",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": false,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "gin-fizz",
+      "name": "Gin Fizz",
+      "status": "imported",
+      "sourceName": "Gin Fizz",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/840/gin-fizz",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "lnl-gin-gin-mule",
+      "name": "Gin Gin Mule",
+      "status": "imported",
+      "sourceName": "Gin Gin Mule",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/843/gin-gin-mule",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": false,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "legacy-godfather",
+      "name": "Godfather",
+      "status": "imported",
+      "sourceName": "Godfather Cocktail",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/864/godfather-cocktail",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "legacy-godmother",
+      "name": "Godmother",
+      "status": "imported",
+      "sourceName": "Godmother",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/9219/godmother",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "legacy-golden-dream",
+      "name": "Golden Dream",
+      "status": "imported",
+      "sourceName": "Golden Dream",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/875/golden-dream",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": false,
+        "history": false,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "grand-margarita",
+      "name": "Grand Margarita",
+      "status": "imported",
+      "sourceName": "Cadillac Margarita (AKA Grand Margarita)",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/889/cadillac-margarita-aka-grand-margarita",
+      "overridden": true,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "grasshopper",
+      "name": "Grasshopper",
+      "status": "imported",
+      "sourceName": "Grasshopper",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/2674/grasshopper",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "lnl-green-swizzle",
+      "name": "Green Swizzle",
+      "status": "imported",
+      "sourceName": "Green Swizzle",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/915/green-swizzle",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "hanky-panky",
+      "name": "Hanky Panky",
+      "status": "imported",
+      "sourceName": "Hanky Panky",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/930/hanky-panky",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "legacy-harvey-wallbanger",
+      "name": "Harvey Wallbanger",
+      "status": "imported",
+      "sourceName": "Harvey Wallbanger",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/936/harvey-wallbanger",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "hemingway-special",
+      "name": "Hemingway Special",
+      "status": "imported",
+      "sourceName": "Hemingway Special Daiquiri (Papa Doble)",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/954/hemingway-special-daiquiri-papa-doble",
+      "overridden": true,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "horses-neck",
+      "name": "Horse’s Neck",
+      "status": "imported",
+      "sourceName": "Horse's Neck with a Kick",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/979/horses-neck-with-a-kick",
+      "overridden": true,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": false,
+        "taste": false,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "iba-tiki",
+      "name": "IBA Tiki",
+      "status": "unmatched",
+      "candidates": [
+        {
+          "name": "Tiki Max",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/1956/tiki-max"
+        },
+        {
+          "name": "Espresso Martiki",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/6395/espresso-martiki"
+        },
+        {
+          "name": "Tiki Margarita",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/1955/tiki-margarita"
+        },
+        {
+          "name": "Martiki",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/4714/martiki"
+        },
+        {
+          "name": "Maui Tiki Tiki",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/4032/maui-tiki-tiki"
+        },
+        {
+          "name": "Garibaldi",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/825/garibaldi"
+        },
+        {
+          "name": "Blood Orange Garibaldi",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/25002/blood-orange-garibaldi"
+        },
+        {
+          "name": "Archibald's Last Memory",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/4261/archibalds-last-memory"
+        }
+      ]
+    },
+    {
+      "id": "illegal",
+      "name": "Illegal",
+      "status": "imported",
+      "sourceName": "Illegal Margarita",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/17623/illegal-margarita",
+      "overridden": true,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "irish-coffee",
+      "name": "Irish Coffee",
+      "status": "imported",
+      "sourceName": "Irish Coffee",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1021/irish-coffee",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "lnl-jack-rose",
+      "name": "Jack Rose",
+      "status": "imported",
+      "sourceName": "Jack Rose Cocktail",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1039/jack-rose-cocktail",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "john-collins",
+      "name": "John Collins",
+      "status": "imported",
+      "sourceName": "John Collins",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1069/john-collins",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "lnl-julep",
+      "name": "Julep",
+      "status": "imported",
+      "sourceName": "Julep (Generic Name)",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1075/julep-generic-name",
+      "overridden": true,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": false,
+        "taste": false,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": false,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "jungle-bird",
+      "name": "Jungle Bird",
+      "status": "imported",
+      "sourceName": "Jungle Bird",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1082/jungle-bird",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "legacy-kamikaze",
+      "name": "Kamikaze",
+      "status": "imported",
+      "sourceName": "Kamikaze",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1087/kamikaze",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": false,
+        "taste": false,
+        "review": true,
+        "variant": false,
+        "history": false,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "kir",
+      "name": "Kir",
+      "status": "imported",
+      "sourceName": "Kir Cocktail",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1108/kir-cocktail",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": false,
+        "taste": false,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "last-word",
+      "name": "Last Word",
+      "status": "imported",
+      "sourceName": "Last Word",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1133/last-word",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "lemon-drop-martini",
+      "name": "Lemon Drop Martini",
+      "status": "imported",
+      "sourceName": "Lemon Drop Martini",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1144/lemon-drop-martini",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "long-island-iced-tea",
+      "name": "Long Island Iced Tea",
+      "status": "imported",
+      "sourceName": "Long Island Iced Tea",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1190/long-island-iced-tea",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "mai-tai",
+      "name": "Mai Tai",
+      "status": "imported",
+      "sourceName": "Mai Tai (Difford's recipe)",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1221/mai-tai-diffords-recipe",
+      "overridden": true,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "manhattan",
+      "name": "Manhattan",
+      "status": "imported",
+      "sourceName": "Manhattan (Sweet)",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1247/manhattan-sweet",
+      "overridden": true,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "margarita",
+      "name": "Margarita",
+      "status": "imported",
+      "sourceName": "Margarita (straight-up)",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1254/margarita-straight-up",
+      "overridden": true,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "martinez",
+      "name": "Martinez",
+      "status": "imported",
+      "sourceName": "Martinez (Difford's recipe)",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1264/martinez-diffords-recipe",
+      "overridden": true,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "mary-pickford",
+      "name": "Mary Pickford",
+      "status": "imported",
+      "sourceName": "Mary Pickford Cocktail",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1268/mary-pickford-cocktail",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "mimosa",
+      "name": "Mimosa",
+      "status": "imported",
+      "sourceName": "Mimosa",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1324/mimosa",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "mint-julep",
+      "name": "Mint Julep",
+      "status": "imported",
+      "sourceName": "Mint Julep",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1330/mint-julep",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": false,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "missionarys-downfall",
+      "name": "Missionary’s Downfall",
+      "status": "imported",
+      "sourceName": "Missionary's Downfall",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1334/missionarys-downfall",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": false,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "mojito",
+      "name": "Mojito",
+      "status": "imported",
+      "sourceName": "Mojito Cocktail",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1341/mojito-cocktail",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": false,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "monkey-gland",
+      "name": "Monkey Gland",
+      "status": "imported",
+      "sourceName": "Monkey Gland",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1349/monkey-gland",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "moscow-mule",
+      "name": "Moscow Mule",
+      "status": "imported",
+      "sourceName": "Moscow Mule",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1366/moscow-mule",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "naked-and-famous",
+      "name": "Naked and Famous",
+      "status": "imported",
+      "sourceName": "Naked and Famous",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/3640/naked-and-famous",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "negroni",
+      "name": "Negroni",
+      "status": "imported",
+      "sourceName": "Negroni Cocktail",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1392/negroni-cocktail",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "new-york-sour",
+      "name": "New York Sour",
+      "status": "imported",
+      "sourceName": "New York Sour",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/3398/new-york-sour",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "lnl-oaxaca-old-fashioned",
+      "name": "Oaxaca Old Fashioned",
+      "status": "imported",
+      "sourceName": "Oaxaca Old-Fashioned",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/3003/oaxaca-old-fashioned",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "old-cuban",
+      "name": "Old Cuban",
+      "status": "imported",
+      "sourceName": "Old Cuban",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/2529/old-cuban",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": false,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "old-fashioned",
+      "name": "Old Fashioned",
+      "status": "imported",
+      "sourceName": "Old Fashioned",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/4782/old-fashioned",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "legacy-orgasm",
+      "name": "Orgasm",
+      "status": "unmatched",
+      "candidates": [
+        {
+          "name": "Screaming Orgasm",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/2747/screaming-orgasm"
+        }
+      ]
+    },
+    {
+      "id": "paloma",
+      "name": "Paloma",
+      "status": "imported",
+      "sourceName": "Paloma",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1456/paloma",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "paper-plane",
+      "name": "Paper Plane",
+      "status": "imported",
+      "sourceName": "Paper Plane",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/3630/paper-plane",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "paradise",
+      "name": "Paradise",
+      "status": "imported",
+      "sourceName": "Paradise",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1466/paradise",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "penicillin",
+      "name": "Penicillin",
+      "status": "imported",
+      "sourceName": "Penicillin cocktail",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/2539/penicillin-cocktail",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "lnl-pimms-cup",
+      "name": "Pimm's Cup",
+      "status": "imported",
+      "sourceName": "Pimm's Cup (or Classic Pimm's)",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1523/pimms-cup-or-classic-pimms",
+      "overridden": true,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": false,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "pina-colada",
+      "name": "Piña Colada",
+      "status": "imported",
+      "sourceName": "Pina Colada",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1526/pina-colada",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": false,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "pisco-punch",
+      "name": "Pisco Punch",
+      "status": "imported",
+      "sourceName": "Pisco Punch (Difford's recipe)",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1557/pisco-punch-diffords-recipe",
+      "overridden": true,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": false,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "pisco-sour",
+      "name": "Pisco Sour",
+      "status": "imported",
+      "sourceName": "Pisco Sour (Difford's recipe)",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1563/pisco-sour-diffords-recipe",
+      "overridden": true,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "planters-punch",
+      "name": "Planter’s Punch",
+      "status": "imported",
+      "sourceName": "Planter's Punch",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1566/planters-punch",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "porn-star-martini",
+      "name": "Porn Star Martini",
+      "status": "imported",
+      "sourceName": "Porn Star Martini",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/2883/porn-star-martini",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": false,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "porto-flip",
+      "name": "Porto Flip",
+      "status": "unmatched",
+      "candidates": [
+        {
+          "name": "Portobello Star Manhattan (Perfect)",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/3242/portobello-star-manhattan-perfect"
+        },
+        {
+          "name": "Three Storms Flip",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/4832/three-storms-flip"
+        },
+        {
+          "name": "Brandy Flip",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/313/brandy-flip"
+        },
+        {
+          "name": "Canary Flip",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/366/canary-flip"
+        },
+        {
+          "name": "Flip Cocktail (generic recipe)",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/761/flip-cocktail-generic-recipe"
+        },
+        {
+          "name": "Flipping Good",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/2411/flipping-good"
+        },
+        {
+          "name": "Fumigator Flip",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/2419/fumigator-flip"
+        },
+        {
+          "name": "New York Flip",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/2520/new-york-flip"
+        }
+      ]
+    },
+    {
+      "id": "rabo-de-galo",
+      "name": "Rabo de Galo",
+      "status": "imported",
+      "sourceName": "Rabo-de-Galo",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/3889/rabo-de-galo",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "ramos-fizz",
+      "name": "Ramos Fizz",
+      "status": "imported",
+      "sourceName": "Ramos Gin Fizz",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1628/ramos-gin-fizz",
+      "overridden": true,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "lnl-red-hook",
+      "name": "Red Hook",
+      "status": "imported",
+      "sourceName": "Red Hook",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/2892/red-hook",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": false,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "remember-the-maine",
+      "name": "Remember the Maine",
+      "status": "imported",
+      "sourceName": "Remember the Maine",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1668/remember-the-maine",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "lnl-ritz-cocktail",
+      "name": "Ritz Cocktail",
+      "status": "imported",
+      "sourceName": "Ritz Cocktail",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1677/ritz-cocktail",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "legacy-rose",
+      "name": "Rose",
+      "status": "imported",
+      "sourceName": "Rose (by Johnny Milta)",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1691/rose-by-johnny-milta",
+      "overridden": true,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "russian-spring-punch",
+      "name": "Russian Spring Punch",
+      "status": "imported",
+      "sourceName": "Russian Spring Punch",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1720/russian-spring-punch",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": false,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "rusty-nail",
+      "name": "Rusty Nail",
+      "status": "imported",
+      "sourceName": "Rusty Nail",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1721/rusty-nail",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "sazerac",
+      "name": "Sazerac",
+      "status": "imported",
+      "sourceName": "Sazerac (Difford's split base)",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1752/sazerac-diffords-split-base",
+      "overridden": true,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "lnl-scofflaw",
+      "name": "Scofflaw",
+      "status": "imported",
+      "sourceName": "Scofflaw",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1755/scofflaw",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "legacy-screwdriver",
+      "name": "Screwdriver",
+      "status": "imported",
+      "sourceName": "Screwdriver (Difford's recipe)",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1762/screwdriver-diffords-recipe",
+      "overridden": true,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "sea-breeze",
+      "name": "Sea Breeze",
+      "status": "imported",
+      "sourceName": "Seabreeze",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1763/seabreeze",
+      "overridden": true,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "sex-on-the-beach",
+      "name": "Sex on the Beach",
+      "status": "imported",
+      "sourceName": "Sex On The Beach",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/4266/sex-on-the-beach",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": false,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "sherry-cobbler",
+      "name": "Sherry Cobbler",
+      "status": "imported",
+      "sourceName": "Sherry Cobbler",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/2895/sherry-cobbler",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "sidecar",
+      "name": "Sidecar",
+      "status": "imported",
+      "sourceName": "Sidecar",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/4791/sidecar",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "singapore-sling",
+      "name": "Singapore Sling",
+      "status": "imported",
+      "sourceName": "Singapore Sling",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/4627/singapore-sling",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "south-side",
+      "name": "South Side",
+      "status": "ambiguous",
+      "candidates": [
+        {
+          "name": "South Side Rickey",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/3488/south-side-rickey"
+        },
+        {
+          "name": "South Side Royale",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/1849/south-side-royale"
+        },
+        {
+          "name": "South Side Fizz",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/2584/south-side-fizz"
+        }
+      ]
+    },
+    {
+      "id": "spicy-fifty",
+      "name": "Spicy Fifty",
+      "status": "imported",
+      "sourceName": "Spicy Fifty",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/3611/spicy-fifty",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": false,
+        "taste": false,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": false,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "spritz",
+      "name": "Spritz",
+      "status": "imported",
+      "sourceName": "Spritz Al Bitter (Spritz Veneziano)",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1861/spritz-al-bitter-spritz-veneziano",
+      "overridden": true,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "stinger",
+      "name": "Stinger",
+      "status": "imported",
+      "sourceName": "Stinger",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1874/stinger",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": false,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "suffering-bastard",
+      "name": "Suffering Bastard",
+      "status": "imported",
+      "sourceName": "Suffering Bastard",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/2588/suffering-bastard",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "tequila-sunrise",
+      "name": "Tequila Sunrise",
+      "status": "imported",
+      "sourceName": "Tequila Sunrise",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1935/tequila-sunrise",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "three-dots-and-a-dash",
+      "name": "Three Dots and a Dash",
+      "status": "imported",
+      "sourceName": "Three Dots and a Dash",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/4792/three-dots-and-a-dash",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "tipperary",
+      "name": "Tipperary",
+      "status": "imported",
+      "sourceName": "Tipperary No.1",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1958/tipperary-no1",
+      "overridden": true,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "lnl-toddy",
+      "name": "Toddy",
+      "status": "imported",
+      "sourceName": "Toddy Cocktail",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1964/toddy-cocktail",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": false,
+        "taste": false,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "tommys-margarita",
+      "name": "Tommy’s Margarita",
+      "status": "imported",
+      "sourceName": "Tommy's Margarita",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/1975/tommys-margarita",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "too-much-too-soon",
+      "name": "Too Much, Too Soon",
+      "status": "unmatched",
+      "candidates": [
+        {
+          "name": "Too Soon",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/5858/too-soon"
+        },
+        {
+          "name": "Are you Man-hattan enough?",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/36819/are-you-man-hattan-enough"
+        },
+        {
+          "name": "Tootie Fruity Lifesaver",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/1978/tootie-fruity-lifesaver"
+        },
+        {
+          "name": "Too Ache Sidecar",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/2865/too-ache-sidecar"
+        },
+        {
+          "name": "Tootsie Roll",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/4909/tootsie-roll"
+        },
+        {
+          "name": "Too Close For Comfort",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/1977/too-close-for-comfort"
+        },
+        {
+          "name": "Shark's Tooth (by Don Beach)",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/2577/sharks-tooth-by-don-beach"
+        },
+        {
+          "name": "Greyhound's Tooth",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/2803/greyhounds-tooth"
+        }
+      ]
+    },
+    {
+      "id": "lnl-trident",
+      "name": "Trident",
+      "status": "imported",
+      "sourceName": "Trident",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/3473/trident",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": false,
+        "taste": false,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "trinidad-sour",
+      "name": "Trinidad Sour",
+      "status": "imported",
+      "sourceName": "Trinidad Sour",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/3328/trinidad-sour",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "tuxedo",
+      "name": "Tuxedo",
+      "status": "imported",
+      "sourceName": "Tuxedo (Difford's recipe)",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/4606/tuxedo-diffords-recipe",
+      "overridden": true,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "legacy-vampiro",
+      "name": "Vampiro",
+      "status": "imported",
+      "sourceName": "Vampiro",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/2024/vampiro",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": false,
+        "taste": false,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": false,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "ve-n-to",
+      "name": "Ve.n.to",
+      "status": "imported",
+      "sourceName": "Ve.n.to",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/16591/vento",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "vesper",
+      "name": "Vesper",
+      "status": "imported",
+      "sourceName": "Vesper Dry Martini",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/2597/vesper-dry-martini",
+      "overridden": true,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "vieux-carre",
+      "name": "Vieux Carré",
+      "status": "imported",
+      "sourceName": "Vieux Carré Cocktail",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/2048/vieux-carre-cocktail",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "lnl-whiskey-ginger",
+      "name": "Whiskey Ginger",
+      "status": "unmatched",
+      "candidates": [
+        {
+          "name": "Gingerbread Old Fashioned No. 2",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/29989/gingerbread-old-fashioned-no-2"
+        },
+        {
+          "name": "Whiskey Daisy No.3",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/10378/whiskey-daisy-no3"
+        },
+        {
+          "name": "Ginger Cosmo",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/849/ginger-cosmo"
+        },
+        {
+          "name": "Gingerbread Old Fashioned",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/10628/gingerbread-old-fashioned"
+        },
+        {
+          "name": "Gingerbread Cocktail",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/857/gingerbread-cocktail"
+        },
+        {
+          "name": "Toasted Ginger Godfather",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/10469/toasted-ginger-godfather"
+        },
+        {
+          "name": "Ginger Gold Rush",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/2935/ginger-gold-rush"
+        },
+        {
+          "name": "Old Fashioned Cocktail (Difford's recipe)",
+          "url": "https://www.diffordsguide.com/cocktails/recipe/1427/old-fashioned-cocktail-diffords-recipe"
+        }
+      ]
+    },
+    {
+      "id": "whiskey-sour",
+      "name": "Whiskey Sour",
+      "status": "imported",
+      "sourceName": "Whiskey Sour (Difford's recipe)",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/2083/whiskey-sour-diffords-recipe",
+      "overridden": true,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "white-lady",
+      "name": "White Lady",
+      "status": "imported",
+      "sourceName": "White Lady",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/2091/white-lady",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "lnl-white-russian",
+      "name": "White Russian",
+      "status": "imported",
+      "sourceName": "White Russian Cocktail",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/2093/white-russian-cocktail",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "legacy-yellow-bird",
+      "name": "Yellow Bird",
+      "status": "imported",
+      "sourceName": "Yellow Bird",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/2113/yellow-bird",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": true,
+        "history": true,
+        "nutrition": true,
+        "alcoholContent": true
+      }
+    },
+    {
+      "id": "zombie",
+      "name": "Zombie",
+      "status": "imported",
+      "sourceName": "Zombie",
+      "url": "https://www.diffordsguide.com/cocktails/recipe/2131/zombie",
+      "overridden": false,
+      "coverage": {
+        "ingredients": true,
+        "method": true,
+        "strength": true,
+        "taste": true,
+        "review": true,
+        "variant": false,
+        "history": true,
+        "nutrition": false,
+        "alcoholContent": true
+      }
+    }
+  ]
+}
