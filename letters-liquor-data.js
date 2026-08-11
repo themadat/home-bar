@@ -46,7 +46,7 @@
       ['2 oz Campari', '2 oz Vermouth, Sweet (Italian/Rosso)', '2 oz Seltzer'],
       ['Combine in a Collins glass, stir briefly, add ice, and garnish.'],
       'Lemon twist',
-      {ingredientNames: ['Campari', 'Vermouth, Sweet (Italian/Rosso)', 'Seltzer'], liqueurs: [{name: 'Campari', subtype: 'Bitter liqueurs', flavor: 'bitter orange, herbs'}]}),
+      {glassware: 'Collins glass', ingredientNames: ['Campari', 'Vermouth, Sweet (Italian/Rosso)', 'Seltzer'], liqueurs: [{name: 'Campari', subtype: 'Bitter liqueurs', flavor: 'bitter orange, herbs'}]}),
     recipe('old-fashioned', 10, 'Old Fashioned', '1870s',
       ['1 tsp Sugar [Sugar Cube]', '1 Splash Water', '3 dashes Bitter, Aromatic [Abbott\'s]', '3 oz Rye Whiskey [Anchor]'],
       ['Soak the sugar with water and bitters in a chilled tumbler and muddle to a slurry.', 'Add the spirit and a large ice cube.'],
