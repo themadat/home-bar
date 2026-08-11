@@ -2598,11 +2598,11 @@
   </div>
   <button id="floatingResetButton" class="button icon" type="button" title="Reset filters and collapse cocktails" aria-label="Reset filters and collapse cocktails" hidden>↺</button>
   <button id="githubSyncButton" class="button icon" type="button" title="Set up GitHub Sync" aria-label="Set up GitHub Sync" aria-haspopup="dialog" data-sync-state="setup"><span id="githubSyncGlyph"></span></button>
-  <script src="letters-liquor-notes.js?v=1.0.1.103"></script>
-  <script src="letters-liquor-data.js?v=1.0.1.103"></script>
-  <script src="diffords-data.js?v=1.0.1.103"></script>
+  <script src="letters-liquor-notes.js?v=1.0.1.104"></script>
+  <script src="letters-liquor-data.js?v=1.0.1.104"></script>
+  <script src="diffords-data.js?v=1.0.1.104"></script>
   <script>
-    const BUILD_VERSION = '1.0.1.103';
+    const BUILD_VERSION = '1.0.1.104';
 	    const __PHOTO = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 30.3223 23.8281"><g><rect height="23.8281" opacity="0" width="30.3223" x="0" y="0"/><path d="M5.01953 22.5928L24.7852 22.5928C27.5879 22.5928 28.9404 21.2598 28.7109 18.8818L21.2256 11.8945C20.6641 11.377 20.0098 11.123 19.3311 11.123C18.6377 11.123 18.0176 11.3623 17.4414 11.875L11.7529 16.9629L9.42383 14.8584C8.8916 14.3848 8.31543 14.1406 7.71973 14.1406C7.11426 14.1406 6.62109 14.3701 6.10352 14.8438L1.41113 19.0234C1.47461 21.3623 2.69531 22.5928 5.01953 22.5928ZM4.29199 23.8281L25.6641 23.8281C28.457 23.8281 29.9609 22.3242 29.9609 19.5654L29.9609 4.27246C29.9609 1.50879 28.457 0.00976562 25.6641 0.00976562L4.29199 0.00976562C1.50879 0.00976562 0 1.50391 0 4.27246L0 19.5654C0 22.334 1.50879 23.8281 4.29199 23.8281ZM4.58008 20.9424C3.47656 20.9424 2.89062 20.3906 2.89062 19.2334L2.89062 4.60449C2.89062 3.45215 3.47656 2.89551 4.58008 2.89551L25.376 2.89551C26.4697 2.89551 27.0654 3.45215 27.0654 4.60449L27.0654 19.2334C27.0654 20.3906 26.4697 20.9424 25.376 20.9424Z"/><path d="M10.1807 12.2949C11.8652 12.2949 13.252 10.9082 13.252 9.20898C13.252 7.52441 11.8652 6.12305 10.1807 6.12305C8.48145 6.12305 7.09961 7.52441 7.09961 9.20898C7.09961 10.9082 8.48145 12.2949 10.1807 12.2949Z"/></g></svg>`;
 	    const __RECTANGLE_SPLIT_3X1 = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 30.3223 23.8281"><g><rect height="23.8281" opacity="0" width="30.3223" x="0" y="0"/><path d="M9.09668 22.4658L11.875 22.4658L11.875 1.36719L9.09668 1.36719ZM18.0859 22.4658L20.8545 22.4658L20.8545 1.36719L18.0859 1.36719ZM4.29199 23.8281L25.6641 23.8281C28.457 23.8281 29.9609 22.3242 29.9609 19.5654L29.9609 4.27246C29.9609 1.50879 28.457 0.00976562 25.6641 0.00976562L4.29199 0.00976562C1.50879 0.00976562 0 1.50391 0 4.27246L0 19.5654C0 22.334 1.50879 23.8281 4.29199 23.8281ZM4.58008 20.9424C3.47656 20.9424 2.89062 20.3906 2.89062 19.2334L2.89062 4.60449C2.89062 3.45215 3.47656 2.89551 4.58008 2.89551L25.376 2.89551C26.4697 2.89551 27.0654 3.45215 27.0654 4.60449L27.0654 19.2334C27.0654 20.3906 26.4697 20.9424 25.376 20.9424Z"/></g></svg>`;
 	    const __ARROW_UP_AND_DOWN_SQUARE_FILL = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24.1846 23.8281"><g><rect height="23.8281" opacity="0" width="24.1846" x="0" y="0"/><path d="M23.8232 4.26758L23.8232 19.5605C23.8232 22.3193 22.3145 23.8232 19.5264 23.8232L4.29199 23.8232C1.50879 23.8232 0 22.3291 0 19.5605L0 4.26758C0 1.49902 1.50879 0 4.29199 0L19.5264 0C22.3145 0 23.8232 1.50391 23.8232 4.26758ZM11.0107 4.45312L7.56836 7.97363C7.33398 8.20312 7.22656 8.48145 7.22656 8.7793C7.22656 9.38477 7.68555 9.80957 8.30566 9.80957C8.64746 9.80957 8.96484 9.65332 9.13574 9.40918L9.80469 8.72559L10.8753 7.30769L10.7812 9.80469L10.7812 14.0039L10.8755 16.506L9.80469 15.0879L9.13574 14.4092C8.96484 14.1553 8.64746 14.0039 8.30566 14.0039C7.68555 14.0039 7.22656 14.4287 7.22656 15.0342C7.22656 15.332 7.33398 15.6055 7.56836 15.8398L11.0107 19.3604C11.2744 19.6484 11.5967 19.8047 11.9873 19.8047C12.3828 19.8047 12.7051 19.6484 12.9736 19.3604L16.4111 15.8398C16.6504 15.6006 16.7529 15.332 16.7529 15.0342C16.7529 14.4287 16.2988 14.0039 15.6689 14.0039C15.3271 14.0039 15.0146 14.1553 14.8438 14.4092L14.1748 15.0879L13.1041 16.5027L13.1982 14.0039L13.1982 9.80469L13.1043 7.31102L14.1748 8.72559L14.8438 9.40918C15.0146 9.65332 15.3271 9.80957 15.6689 9.80957C16.2988 9.80957 16.7529 9.38477 16.7529 8.7793C16.7529 8.48145 16.6504 8.20801 16.4111 7.97363L12.9736 4.45312C12.7051 4.16992 12.3828 4.00879 11.9873 4.00879C11.5967 4.00879 11.2744 4.16992 11.0107 4.45312Z"/></g></svg>`;
@@ -4720,9 +4720,26 @@
       const requiredSubtype = bittersSubtype(requirementName);
       return bottle.subtype === requiredSubtype || flavoringSubtypeForName(bottle.name) === requiredSubtype;
     }
-    function missingRequirementsFor(cocktail) {
+    function cocktailDependencyForIngredient(cocktail, index) {
+      const ingredientName = cocktail.ingredientNames[index] || parseIngredientLine(cocktail.ingredients[index] || '').name;
+      const ingredientKey = norm(ingredientName);
+      if (!ingredientKey) return null;
+      return COCKTAILS.find((candidate) => candidate.id !== cocktail.id
+        && unique([candidate.name, ...cocktailAlternateNames(candidate)]).some((name) => norm(name) === ingredientKey)) || null;
+    }
+    function cocktailDependencies(cocktail) {
+      return unique(cocktail.ingredientNames.map((_, index) => cocktailDependencyForIngredient(cocktail, index)).filter(Boolean));
+    }
+    function missingRequirementsFor(cocktail, seen = new Set()) {
+      if (seen.has(cocktail.id)) return [];
+      const nextSeen = new Set(seen).add(cocktail.id);
+      const dependencies = cocktailDependencies(cocktail);
+      if (dependencies.length && dependencies.length === cocktail.ingredientNames.length) {
+        return [...new Map(dependencies.flatMap((dependency) => missingRequirementsFor(dependency, nextSeen)).map((item) => [item.key, item])).values()];
+      }
       if (!cocktail.baseLiquor.length) return [{type: 'spirit', base: '', subtype: '', key: 'spirit::none'}];
-      const missing = [];
+      const missing = dependencies.flatMap((dependency) => missingRequirementsFor(dependency, nextSeen));
+      const dependencyNames = new Set(dependencies.flatMap((dependency) => [dependency.name, ...cocktailAlternateNames(dependency)]).map(norm));
       const tags = baseSubtypeTags(cocktail);
       const requiredBitters = bittersRequirements(cocktail);
       cocktail.baseLiquor.forEach((base) => {
@@ -4756,6 +4773,7 @@
         }
       });
       nonAlcoholicIngredientTags(cocktail).forEach((name) => {
+        if (dependencyNames.has(norm(name))) return;
         const flavoringSubtype = flavoringSubtypeForName(name);
         const available = flavoringSubtype
           ? store.bar.some((bottle) => bottleMatchesFlavoring(bottle, name))
@@ -4764,7 +4782,7 @@
           missing.push({type: 'ingredient', name, key: `ingredient:${name}`});
         }
       });
-      return missing;
+      return [...new Map(missing.map((item) => [item.key, item])).values()];
     }
     function canMakeFromBar(cocktail) {
       return missingRequirementsFor(cocktail).length === 0;
@@ -4775,6 +4793,8 @@
       const parts = ingredientDisplayParts(cocktail, index);
       const normalizedNames = unique([rawName, parts.generic, parts.specific]).map(norm).filter(Boolean);
       const matchesName = (name) => normalizedNames.includes(norm(name));
+      const dependency = cocktailDependencyForIngredient(cocktail, index);
+      if (dependency) return missingRequirementsFor(dependency).length > 0;
       const liqueur = cocktail.liqueurs.find((item) => normalizedNames.some((candidate) => candidate === norm(item.name)
         || candidate.includes(norm(item.name))
         || norm(item.name).includes(candidate)));
@@ -5224,6 +5244,7 @@
 	    function recipeSourceControls(cocktail) {
 	      if (!cocktail.lnlSource && !cocktail.diffordsSource) return '';
 	      const selected = selectedRecipeSourceKey(cocktail);
+	      const sourceCount = RECIPE_SOURCE_OPTIONS.filter((source) => availableRecipeSource(cocktail, source.key)).length;
 	      const options = RECIPE_SOURCE_OPTIONS.map((source) => {
 	        const enabled = availableRecipeSource(cocktail, source.key);
 	        const title = enabled ? `Show ${source.label} recipe` : `${source.label} recipe not imported`;
@@ -5233,7 +5254,10 @@
 	        return `<button type="button" class="recipe-source-option${sourceClass}${selected === source.key ? ' active' : ''}" data-recipe-source="${source.key}" data-cocktail-id="${escapeHtml(cocktail.id)}" title="${escapeHtml(title)}" aria-label="${escapeHtml(title)}" aria-pressed="${selected === source.key}"${enabled ? '' : ' disabled'}>${escapeHtml(source.label)}</button>`;
 	      }).join('');
 	      const comparing = state.recipeCompare.has(cocktail.id);
-	      return `<div class="recipe-source-controls" aria-label="Recipe source">${options}<button type="button" class="recipe-compare-toggle${comparing ? ' active' : ''}" data-compare-recipes="${escapeHtml(cocktail.id)}" title="${comparing ? 'Show one recipe' : 'Compare all recipe sources'}" aria-label="${comparing ? 'Show one recipe' : 'Compare all recipe sources'}" aria-pressed="${comparing}">${__RECTANGLE_SPLIT_3X1}</button></div>`;
+	      const compareToggle = sourceCount > 1
+	        ? `<button type="button" class="recipe-compare-toggle${comparing ? ' active' : ''}" data-compare-recipes="${escapeHtml(cocktail.id)}" title="${comparing ? 'Show one recipe' : 'Compare all recipe sources'}" aria-label="${comparing ? 'Show one recipe' : 'Compare all recipe sources'}" aria-pressed="${comparing}">${__RECTANGLE_SPLIT_3X1}</button>`
+	        : '';
+	      return `<div class="recipe-source-controls" aria-label="Recipe source">${options}${compareToggle}</div>`;
 	    }
 	    function cocktailSourceBadges(cocktail) {
 	      const badges = [];
@@ -5264,10 +5288,10 @@
 	      const servingStepper = `<div class="serving-stepper" aria-label="Servings"><button type="button" data-serving-step="-1" data-cocktail-id="${escapeHtml(cocktail.id)}" aria-label="Decrease servings" ${servings <= 1 ? 'disabled' : ''}>−</button><span class="serving-count">${escapeHtml(servingLabel)}</span><button type="button" data-serving-step="1" data-cocktail-id="${escapeHtml(cocktail.id)}" aria-label="Increase servings">+</button></div>`;
 	      return `<section class="detail-card recipe-source-column${sourceClass}"><h3><span>${escapeHtml(option.label)}</span>${meta ? `<span class="recipe-source-meta"><span class="recipe-source-time">${escapeHtml(meta)}</span></span>` : ''}</h3><div class="recipe-source-section recipe-source-ingredients"><div class="recipe-source-ingredient-tools"><span class="recipe-source-total">${escapeHtml(totalVolume)} Total</span>${servingStepper}</div><h4>Ingredients</h4><ul>${ingredients}</ul>${ingredientFootnote}</div><div class="recipe-source-section recipe-source-inline"><h4>Garnish</h4><p>${variant.garnish ? escapeHtml(variant.garnish) : '<span class="empty">None listed</span>'}</p></div><div class="recipe-source-section recipe-source-inline"><h4>Glassware</h4><p>${escapeHtml(recipeGlasswareLabel(variant))}</p></div><div class="recipe-source-section"><h4>Method</h4><ol>${method}</ol></div></section>`;
 	    }
-	    function recipeComparison(cocktail, servings) {
+	    function recipeComparison(cocktail, servings, includeControls = true) {
 	      const availableOptions = RECIPE_SOURCE_OPTIONS.filter((option) => availableRecipeSource(cocktail, option.key));
 	      const sourceCount = availableOptions.length;
-	      const sourceControls = cocktail.lnlSource ? '' : recipeSourceControls(cocktail);
+	      const sourceControls = includeControls ? recipeSourceControls(cocktail) : '';
 	      return `<div class="recipe-compare-header"><h3>Recipes</h3><div class="recipe-compare-tools"><span class="recipe-source-count">${sourceCount} Source${sourceCount === 1 ? '' : 's'}</span>${sourceControls}</div></div><div class="recipe-source-comparison" style="--recipe-source-count:${Math.max(1, sourceCount)}">${availableOptions.map((option) => recipeComparisonColumn(cocktail, option, servings)).join('')}</div>`;
 	    }
 	    function lettersLiquorArtworkMarkup(cocktail) {
@@ -5310,7 +5334,7 @@
 	      const links = cocktailLinks(c);
 	      const linkButton = `<button type="button" class="button icon cocktail-link-button" data-cocktail-links="${escapeHtml(c.id)}" title="Open cocktail links" aria-label="Open links for ${escapeHtml(cocktailDisplayName(c))}" aria-expanded="false" aria-controls="cocktailLinkPopover"${links.length ? '' : ' disabled'}>${__LINK}</button>`;
 	      const {lines: ingredientLines, footnote: ingredientFootnote} = ingredientListDetails(recipeView, servings);
-	      const comparingRecipes = Boolean(c.lnlSource) || state.recipeCompare.has(c.id);
+	      const comparingRecipes = state.recipeCompare.has(c.id);
 	      const recipeDetails = comparingRecipes
 	        ? recipeComparison(c, servings)
 	        : `<div class="recipe-detail-row">
@@ -5615,7 +5639,7 @@
 	          const sourceCount = RECIPE_SOURCE_OPTIONS.filter((option) => availableRecipeSource(cocktail, option.key)).length;
 	          if (sourceCount) {
 	            recipeContainer.classList.remove('single-recipe', 'cocktail-notes-module', 'ingredients-card');
-	            recipeContainer.innerHTML = recipeComparison(cocktail, servings);
+	            recipeContainer.innerHTML = recipeComparison(cocktail, servings, false);
 	            return;
 	          }
 	          recipeContainer.classList.add('single-recipe', 'cocktail-notes-module', 'ingredients-card');
