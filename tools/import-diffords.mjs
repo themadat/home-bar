@@ -196,6 +196,29 @@ function recipeHeaderImage(html) {
   return decodeHtml(gallery?.[1] || '').trim();
 }
 
+function recipeGalleryImages(html) {
+  const gallery = /<div\b[^>]*\sid=["']anchor-gallery["'][^>]*>/i.exec(html);
+  if (!gallery) return [];
+  const start = gallery.index;
+  const endCandidates = ['anchor-review', 'anchor-variant', 'anchor-history', 'anchor-nutrition']
+    .map((anchor) => html.indexOf(`id="${anchor}"`, start + gallery[0].length))
+    .filter((index) => index > start);
+  const end = endCandidates.length ? Math.min(...endCandidates) : Math.min(html.length, start + 20000);
+  const seen = new Set();
+  const images = [];
+  for (const match of html.slice(start, end).matchAll(/<img\b[^>]*src=["']([^"']+)["']/gi)) {
+    const source = decodeHtml(match[1]).trim();
+    if (!/cdn\.diffordsguide\.com\/cocktail\/[^/]+\/lifestyle\/\d+\//i.test(source)) continue;
+    const image = source.replace(/\/256x\.webp(?=\?|$)/i, '/1024x.webp');
+    const key = image.replace(/\?.*$/, '');
+    if (seen.has(key)) continue;
+    seen.add(key);
+    images.push(image);
+    if (images.length === 3) break;
+  }
+  return images;
+}
+
 function ingredientAmounts(html) {
   const table = html.match(/<table\b[^>]*class="[^"]*legacy-ingredients-table[^"]*"[^>]*>([\s\S]*?)<\/table>/i)?.[1] || '';
   return [...table.matchAll(/<tr\b[^>]*>([\s\S]*?)<\/tr>/gi)].flatMap((row) => {
@@ -342,6 +365,7 @@ function extractRecipe(html, localCocktail, match) {
     sourceName: String(recipe.name || match.name),
     url: String(recipe.url || match.url),
     image: recipeHeaderImage(html) || metaImage(html, 'og:image') || String(recipe.image?.url || ''),
+    galleryImages: recipeGalleryImages(html),
     key: 'diffords',
     label: "Difford's",
     available: ingredients.length > 0,

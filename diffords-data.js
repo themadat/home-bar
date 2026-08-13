@@ -5,6 +5,9 @@ window.DIFFORDS_DATA = [
     "sourceName": "Alexander",
     "url": "https://www.diffordsguide.com/cocktails/recipe/35/alexander",
     "image": "https://cdn.diffordsguide.com/cocktail/gO3nrB/default/0/512x.webp?v=1737701571",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/gO3nrB/lifestyle/0/1024x.webp?v=1737701571"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -61,6 +64,9 @@ window.DIFFORDS_DATA = [
     "sourceName": "Americano",
     "url": "https://www.diffordsguide.com/cocktails/recipe/61/americano",
     "image": "https://cdn.diffordsguide.com/cocktail/3r09wO/default/0/512x.webp?v=1737701571",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/3r09wO/lifestyle/0/1024x.webp?v=1737701571"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -113,6 +119,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Angel Face",
     "url": "https://www.diffordsguide.com/cocktails/recipe/521/angel-face",
     "image": "https://cdn.diffordsguide.com/cocktail/PAGKMA/default/0/512x.webp?v=1737701573",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/PAGKMA/lifestyle/1/1024x.webp?v=1737701573",
+      "https://cdn.diffordsguide.com/cocktail/PAGKMA/lifestyle/0/1024x.webp?v=1737701573"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -172,6 +182,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Appletini (Sour Apple Martini)",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1797/appletini-sour-apple-martini",
     "image": "https://cdn.diffordsguide.com/cocktail/JRJ6ER/default/0/512x.webp?v=1737701581",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/JRJ6ER/lifestyle/1/1024x.webp?v=1737701581",
+      "https://cdn.diffordsguide.com/cocktail/JRJ6ER/lifestyle/0/1024x.webp?v=1737701581"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -233,6 +247,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Aviation (Difford's recipe)",
     "url": "https://www.diffordsguide.com/cocktails/recipe/127/aviation-diffords-recipe",
     "image": "https://cdn.diffordsguide.com/cocktail/3O7WqO/default/1/512x.webp?v=1763653857",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/3O7WqO/lifestyle/1/1024x.webp?v=1763654029",
+      "https://cdn.diffordsguide.com/cocktail/3O7WqO/lifestyle/0/1024x.webp?v=1763654020"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -292,6 +310,9 @@ window.DIFFORDS_DATA = [
     "sourceName": "B-52 Shot",
     "url": "https://www.diffordsguide.com/cocktails/recipe/133/b-52-shot",
     "image": "https://cdn.diffordsguide.com/cocktail/3r4KWA/default/0/512x.webp?v=1737701572",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/3r4KWA/lifestyle/0/1024x.webp?v=1737701572"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -343,6 +364,9 @@ window.DIFFORDS_DATA = [
     "sourceName": "Bacardi Cocktail",
     "url": "https://www.diffordsguide.com/cocktails/recipe/143/bacardi-cocktail",
     "image": "https://cdn.diffordsguide.com/cocktail/DAq3ZO/default/0/512x.webp?v=1737701572",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/DAq3ZO/lifestyle/0/1024x.webp?v=1737701572"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -398,6 +422,9 @@ window.DIFFORDS_DATA = [
     "sourceName": "Barracuda",
     "url": "https://www.diffordsguide.com/cocktails/recipe/4823/barracuda",
     "image": "https://cdn.diffordsguide.com/cocktail/RD256r/default/0/512x.webp?v=1737701601",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/RD256r/lifestyle/0/1024x.webp?v=1737701601"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -460,6 +487,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Bee's Knees",
     "url": "https://www.diffordsguide.com/cocktails/recipe/2144/bees-knees",
     "image": "https://cdn.diffordsguide.com/cocktail/Ov8lKA/default/0/512x.webp?v=1737701584",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -516,6 +544,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Bellini (Difford's recipe)",
     "url": "https://www.diffordsguide.com/cocktails/recipe/202/bellini-diffords-recipe",
     "image": "https://cdn.diffordsguide.com/cocktail/7RYJQA/default/1/512x.webp?v=1741278131",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/7RYJQA/lifestyle/1/1024x.webp?v=1741278223",
+      "https://cdn.diffordsguide.com/cocktail/7RYJQA/lifestyle/0/1024x.webp?v=1741278195"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -572,6 +604,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Between The Sheets",
     "url": "https://www.diffordsguide.com/cocktails/recipe/209/between-the-sheets",
     "image": "https://cdn.diffordsguide.com/cocktail/JRJd8r/default/1/512x.webp?v=1763653683",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/JRJd8r/lifestyle/1/1024x.webp?v=1763653856",
+      "https://cdn.diffordsguide.com/cocktail/JRJd8r/lifestyle/0/1024x.webp?v=1763653843"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -631,6 +667,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Black Russian",
     "url": "https://www.diffordsguide.com/cocktails/recipe/236/black-russian",
     "image": "https://cdn.diffordsguide.com/cocktail/gApzgO/default/0/512x.webp?v=1737701572",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -680,6 +717,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Bloody Mary",
     "url": "https://www.diffordsguide.com/cocktails/recipe/251/bloody-mary",
     "image": "https://cdn.diffordsguide.com/cocktail/Nrb6nr/default/1/512x.webp?v=1746711599",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/Nrb6nr/lifestyle/1/1024x.webp?v=1746711674",
+      "https://cdn.diffordsguide.com/cocktail/Nrb6nr/lifestyle/0/1024x.webp?v=1746711666"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -741,6 +782,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Blue Blazer",
     "url": "https://www.diffordsguide.com/cocktails/recipe/256/blue-blazer",
     "image": "https://cdn.diffordsguide.com/cocktail/nOzv7O/default/0/512x.webp?v=1737701572",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -799,6 +841,9 @@ window.DIFFORDS_DATA = [
     "sourceName": "Boulevardier",
     "url": "https://www.diffordsguide.com/cocktails/recipe/2955/boulevardier",
     "image": "https://cdn.diffordsguide.com/cocktail/AMQNDA/default/0/512x.webp?v=1737701590",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/AMQNDA/lifestyle/0/1024x.webp?v=1737701590"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -852,6 +897,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Bramble",
     "url": "https://www.diffordsguide.com/cocktails/recipe/305/bramble",
     "image": "https://cdn.diffordsguide.com/cocktail/PrL7NA/default/0/512x.webp?v=1737701572",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -909,6 +955,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Brandy Crusta",
     "url": "https://www.diffordsguide.com/cocktails/recipe/310/brandy-crusta",
     "image": "https://cdn.diffordsguide.com/cocktail/LR1gar/default/0/512x.webp?v=1774608616",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/LR1gar/lifestyle/3/1024x.webp?v=1774608723",
+      "https://cdn.diffordsguide.com/cocktail/LR1gar/lifestyle/2/1024x.webp?v=1774608670"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -977,6 +1027,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Bronx",
     "url": "https://www.diffordsguide.com/cocktails/recipe/325/bronx",
     "image": "https://cdn.diffordsguide.com/cocktail/LRZ2pR/default/0/512x.webp?v=1737701572",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -1036,6 +1087,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Caipirinha",
     "url": "https://www.diffordsguide.com/cocktails/recipe/354/caipirinha",
     "image": "https://cdn.diffordsguide.com/cocktail/LR1oar/default/0/512x.webp?v=1737701572",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -1096,6 +1148,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Canchànchara",
     "url": "https://www.diffordsguide.com/cocktails/recipe/570/canchanchara",
     "image": "https://cdn.diffordsguide.com/cocktail/GrWMpR/default/0/512x.webp?v=1737701573",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -1148,6 +1201,9 @@ window.DIFFORDS_DATA = [
     "sourceName": "Cardinale",
     "url": "https://www.diffordsguide.com/cocktails/recipe/572/cardinale",
     "image": "https://cdn.diffordsguide.com/cocktail/vAxo8R/default/0/512x.webp?v=1737701573",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/vAxo8R/lifestyle/0/1024x.webp?v=1737701573"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -1200,6 +1256,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Casino",
     "url": "https://www.diffordsguide.com/cocktails/recipe/2332/casino",
     "image": "https://cdn.diffordsguide.com/cocktail/reLXWA/default/0/512x.webp?v=1737701585",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/reLXWA/lifestyle/1/1024x.webp?v=1737701585",
+      "https://cdn.diffordsguide.com/cocktail/reLXWA/lifestyle/0/1024x.webp?v=1737701585"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -1258,6 +1318,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Champagne Cocktail",
     "url": "https://www.diffordsguide.com/cocktails/recipe/393/champagne-cocktail",
     "image": "https://cdn.diffordsguide.com/cocktail/PrL9NO/default/0/512x.webp?v=1737701573",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -1315,6 +1376,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Chartreuse Swizzle",
     "url": "https://www.diffordsguide.com/cocktails/recipe/2336/chartreuse-swizzle",
     "image": "https://cdn.diffordsguide.com/cocktail/ApbBqO/default/0/512x.webp?v=1737701585",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -1371,6 +1433,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Clover Club",
     "url": "https://www.diffordsguide.com/cocktails/recipe/2344/clover-club",
     "image": "https://cdn.diffordsguide.com/cocktail/Ov8j6A/default/0/512x.webp?v=1737701585",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/Ov8j6A/lifestyle/1/1024x.webp?v=1737701585",
+      "https://cdn.diffordsguide.com/cocktail/Ov8j6A/lifestyle/0/1024x.webp?v=1737701585"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -1434,6 +1500,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Corpse Reviver No.2 (Contemporary Recipe)",
     "url": "https://www.diffordsguide.com/cocktails/recipe/2355/corpse-reviver-no2-contemporary-recipe",
     "image": "https://cdn.diffordsguide.com/cocktail/AMQYNA/default/0/512x.webp?v=1737701585",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -1496,6 +1563,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Cosmopolitan Cocktail (Difford's recipe)",
     "url": "https://www.diffordsguide.com/cocktails/recipe/472/cosmopolitan-cocktail-diffords-recipe",
     "image": "https://cdn.diffordsguide.com/cocktail/vAxmdr/default/0/512x.webp?v=1737701573",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/vAxmdr/lifestyle/1/1024x.webp?v=1737701573",
+      "https://cdn.diffordsguide.com/cocktail/vAxmdr/lifestyle/0/1024x.webp?v=1737701573"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -1557,6 +1628,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Cuba Libre",
     "url": "https://www.diffordsguide.com/cocktails/recipe/495/cuba-libre",
     "image": "https://cdn.diffordsguide.com/cocktail/Nrb22r/default/0/512x.webp?v=1737701573",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -1613,6 +1685,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Daiquiri (Difford's recipe)",
     "url": "https://www.diffordsguide.com/cocktails/recipe/611/daiquiri-diffords-recipe",
     "image": "https://cdn.diffordsguide.com/cocktail/zAM3bO/default/0/512x.webp?v=1758195717",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/zAM3bO/lifestyle/1/1024x.webp?v=1758195755",
+      "https://cdn.diffordsguide.com/cocktail/zAM3bO/lifestyle/0/1024x.webp?v=1758195746"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -1672,6 +1748,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Dark 'N' Stormy (Difford's recipe)",
     "url": "https://www.diffordsguide.com/cocktails/recipe/619/dark-n-stormy-diffords-recipe",
     "image": "https://cdn.diffordsguide.com/cocktail/wrN0ZR/default/0/512x.webp?v=1737701574",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -1730,6 +1807,9 @@ window.DIFFORDS_DATA = [
     "sourceName": "Derby Cocktail",
     "url": "https://www.diffordsguide.com/cocktails/recipe/4932/derby-cocktail",
     "image": "https://cdn.diffordsguide.com/cocktail/reGE0R/default/0/512x.webp?v=1737701601",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/reGE0R/lifestyle/0/1024x.webp?v=1737701602"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -1786,6 +1866,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Dirty Martini",
     "url": "https://www.diffordsguide.com/cocktails/recipe/650/dirty-martini",
     "image": "https://cdn.diffordsguide.com/cocktail/kA68KO/default/1/512x.webp?v=1759491089",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/kA68KO/lifestyle/1/1024x.webp?v=1759491228",
+      "https://cdn.diffordsguide.com/cocktail/kA68KO/lifestyle/0/1024x.webp?v=1759491218"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -1841,6 +1925,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Dry Martini 'Preferred' (5:1 ratio)",
     "url": "https://www.diffordsguide.com/cocktails/recipe/676/dry-martini-preferred-51-ratio",
     "image": "https://cdn.diffordsguide.com/cocktail/GrexqA/default/1/512x.webp?v=1784885905",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/GrexqA/lifestyle/1/1024x.webp?v=1784886384",
+      "https://cdn.diffordsguide.com/cocktail/GrexqA/lifestyle/0/1024x.webp?v=1784885959"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -1894,6 +1982,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Espresso Martini",
     "url": "https://www.diffordsguide.com/cocktails/recipe/725/espresso-martini",
     "image": "https://cdn.diffordsguide.com/cocktail/LRZqYO/default/0/512x.webp?v=1762165086",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/LRZqYO/lifestyle/1/1024x.webp?v=1762165151",
+      "https://cdn.diffordsguide.com/cocktail/LRZqYO/lifestyle/0/1024x.webp?v=1762165139"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -1950,6 +2042,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Fernandito",
     "url": "https://www.diffordsguide.com/cocktails/recipe/17620/fernandito",
     "image": "https://cdn.diffordsguide.com/cocktail/RopNwA/default/0/512x.webp?v=1737701627",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/RopNwA/lifestyle/1/1024x.webp?v=1737701627",
+      "https://cdn.diffordsguide.com/cocktail/RopNwA/lifestyle/0/1024x.webp?v=1737701627"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -1999,6 +2095,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Flip Cocktail (generic recipe)",
     "url": "https://www.diffordsguide.com/cocktails/recipe/761/flip-cocktail-generic-recipe",
     "image": "https://cdn.diffordsguide.com/cocktail/3r0wGA/default/0/512x.webp?v=1737701574",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -2049,6 +2146,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "French 75",
     "url": "https://www.diffordsguide.com/cocktails/recipe/790/french-75",
     "image": "https://cdn.diffordsguide.com/cocktail/7RYK2r/default/0/512x.webp?v=1737701574",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -2107,6 +2205,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "French Connection",
     "url": "https://www.diffordsguide.com/cocktails/recipe/2415/french-connection",
     "image": "https://cdn.diffordsguide.com/cocktail/A9nkWr/default/0/512x.webp?v=1737701586",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -2157,6 +2256,11 @@ window.DIFFORDS_DATA = [
     "sourceName": "French Martini",
     "url": "https://www.diffordsguide.com/cocktails/recipe/798/french-martini",
     "image": "https://cdn.diffordsguide.com/cocktail/LR1DvO/default/1/512x.webp?v=1777024083",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/LR1DvO/lifestyle/5/1024x.webp?v=1777024505",
+      "https://cdn.diffordsguide.com/cocktail/LR1DvO/lifestyle/4/1024x.webp?v=1777024349",
+      "https://cdn.diffordsguide.com/cocktail/LR1DvO/lifestyle/3/1024x.webp?v=1737701574"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -2209,6 +2313,11 @@ window.DIFFORDS_DATA = [
     "sourceName": "Margarita (frozen)",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1256/margarita-frozen",
     "image": "https://cdn.diffordsguide.com/cocktail/nOzD4A/default/0/512x.webp?v=1772804600",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/nOzD4A/lifestyle/2/1024x.webp?v=1772804662",
+      "https://cdn.diffordsguide.com/cocktail/nOzD4A/lifestyle/1/1024x.webp?v=1772804653",
+      "https://cdn.diffordsguide.com/cocktail/nOzD4A/lifestyle/0/1024x.webp?v=1737701576"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -2268,6 +2377,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Garibaldi",
     "url": "https://www.diffordsguide.com/cocktails/recipe/825/garibaldi",
     "image": "https://cdn.diffordsguide.com/cocktail/LRZ73A/default/0/512x.webp?v=1737701574",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -2322,6 +2432,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Gin and Tonic",
     "url": "https://www.diffordsguide.com/cocktails/recipe/835/gin-and-tonic",
     "image": "https://cdn.diffordsguide.com/cocktail/gO3QKA/default/0/512x.webp?v=1737701574",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -2371,6 +2482,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Gin Basil Smash",
     "url": "https://www.diffordsguide.com/cocktails/recipe/3282/gin-basil-smash",
     "image": "https://cdn.diffordsguide.com/cocktail/A2jenA/default/0/512x.webp?v=1737701591",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -2427,6 +2539,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Gin Fizz",
     "url": "https://www.diffordsguide.com/cocktails/recipe/840/gin-fizz",
     "image": "https://cdn.diffordsguide.com/cocktail/ZAPK6R/default/0/512x.webp?v=1762164109",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/ZAPK6R/lifestyle/1/1024x.webp?v=1762164082",
+      "https://cdn.diffordsguide.com/cocktail/ZAPK6R/lifestyle/0/1024x.webp?v=1762164072"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -2483,6 +2599,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Gin Gin Mule",
     "url": "https://www.diffordsguide.com/cocktails/recipe/843/gin-gin-mule",
     "image": "https://cdn.diffordsguide.com/cocktail/DAqe1A/default/0/512x.webp?v=1737701574",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/DAqe1A/lifestyle/1/1024x.webp?v=1737701574",
+      "https://cdn.diffordsguide.com/cocktail/DAqe1A/lifestyle/0/1024x.webp?v=1737701574"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -2546,6 +2666,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Godfather Cocktail",
     "url": "https://www.diffordsguide.com/cocktails/recipe/864/godfather-cocktail",
     "image": "https://cdn.diffordsguide.com/cocktail/GRoezr/default/0/512x.webp?v=1737701574",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/GRoezr/lifestyle/1/1024x.webp?v=1737701574",
+      "https://cdn.diffordsguide.com/cocktail/GRoezr/lifestyle/0/1024x.webp?v=1737701574"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -2599,6 +2723,9 @@ window.DIFFORDS_DATA = [
     "sourceName": "Godmother",
     "url": "https://www.diffordsguide.com/cocktails/recipe/9219/godmother",
     "image": "https://cdn.diffordsguide.com/cocktail/rNw3oO/default/0/512x.webp?v=1737701612",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/rNw3oO/lifestyle/0/1024x.webp?v=1737701612"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -2649,6 +2776,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Golden Dream",
     "url": "https://www.diffordsguide.com/cocktails/recipe/875/golden-dream",
     "image": "https://cdn.diffordsguide.com/cocktail/7AQ0MR/default/0/512x.webp?v=1737701574",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -2704,6 +2832,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Cadillac Margarita (AKA Grand Margarita)",
     "url": "https://www.diffordsguide.com/cocktails/recipe/889/cadillac-margarita-aka-grand-margarita",
     "image": "https://cdn.diffordsguide.com/cocktail/KO5X2r/default/0/512x.webp?v=1737701575",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -2759,6 +2888,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Grasshopper",
     "url": "https://www.diffordsguide.com/cocktails/recipe/2674/grasshopper",
     "image": "https://cdn.diffordsguide.com/cocktail/rgbgQA/default/0/512x.webp?v=1737701587",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/rgbgQA/lifestyle/1/1024x.webp?v=1737701587",
+      "https://cdn.diffordsguide.com/cocktail/rgbgQA/lifestyle/0/1024x.webp?v=1737701587"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -2811,6 +2944,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Green Swizzle",
     "url": "https://www.diffordsguide.com/cocktails/recipe/915/green-swizzle",
     "image": "https://cdn.diffordsguide.com/cocktail/zA9XER/default/0/512x.webp?v=1737701575",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -2873,6 +3007,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Hanky Panky",
     "url": "https://www.diffordsguide.com/cocktails/recipe/930/hanky-panky",
     "image": "https://cdn.diffordsguide.com/cocktail/Yrg9vR/default/2/512x.webp?v=1771602542",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/Yrg9vR/lifestyle/1/1024x.webp?v=1771602636",
+      "https://cdn.diffordsguide.com/cocktail/Yrg9vR/lifestyle/0/1024x.webp?v=1771602622"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -2929,6 +3067,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Harvey Wallbanger",
     "url": "https://www.diffordsguide.com/cocktails/recipe/936/harvey-wallbanger",
     "image": "https://cdn.diffordsguide.com/cocktail/gApQvr/default/0/512x.webp?v=1766065465",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/gApQvr/lifestyle/1/1024x.webp?v=1766065531",
+      "https://cdn.diffordsguide.com/cocktail/gApQvr/lifestyle/0/1024x.webp?v=1766065520"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -2988,6 +3130,9 @@ window.DIFFORDS_DATA = [
     "sourceName": "Hemingway Special Daiquiri (Papa Doble)",
     "url": "https://www.diffordsguide.com/cocktails/recipe/954/hemingway-special-daiquiri-papa-doble",
     "image": "https://cdn.diffordsguide.com/cocktail/LR1meR/default/0/512x.webp?v=1737701575",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/LR1meR/lifestyle/0/1024x.webp?v=1737701575"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -3046,6 +3191,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Horse's Neck with a Kick",
     "url": "https://www.diffordsguide.com/cocktails/recipe/979/horses-neck-with-a-kick",
     "image": "https://cdn.diffordsguide.com/cocktail/gO3pbR/default/0/512x.webp?v=1737701575",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -3095,6 +3241,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Illegal Margarita",
     "url": "https://www.diffordsguide.com/cocktails/recipe/17623/illegal-margarita",
     "image": "https://cdn.diffordsguide.com/cocktail/RDkw1O/default/0/512x.webp?v=1737701627",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/RDkw1O/lifestyle/1/1024x.webp?v=1737701627",
+      "https://cdn.diffordsguide.com/cocktail/RDkw1O/lifestyle/0/1024x.webp?v=1737701627"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -3167,6 +3317,9 @@ window.DIFFORDS_DATA = [
     "sourceName": "Irish Coffee",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1021/irish-coffee",
     "image": "https://cdn.diffordsguide.com/cocktail/PAGqZO/default/0/512x.webp?v=1737701575",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/PAGqZO/lifestyle/0/1024x.webp?v=1737701575"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -3226,6 +3379,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Jack Rose Cocktail",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1039/jack-rose-cocktail",
     "image": "https://cdn.diffordsguide.com/cocktail/BrVLwR/default/1/512x.webp?v=1763654375",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/BrVLwR/lifestyle/1/1024x.webp?v=1763654554",
+      "https://cdn.diffordsguide.com/cocktail/BrVLwR/lifestyle/0/1024x.webp?v=1763654545"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -3294,6 +3451,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "John Collins",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1069/john-collins",
     "image": "https://cdn.diffordsguide.com/cocktail/LRZmZO/default/0/512x.webp?v=1737701575",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -3349,6 +3507,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Julep (Generic Name)",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1075/julep-generic-name",
     "image": "https://cdn.diffordsguide.com/cocktail/7AQd0R/default/0/512x.webp?v=1737701575",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -3402,6 +3561,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Jungle Bird",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1082/jungle-bird",
     "image": "https://cdn.diffordsguide.com/cocktail/4A2MnR/default/0/512x.webp?v=1737701575",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -3460,6 +3620,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Kamikaze",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1087/kamikaze",
     "image": "https://cdn.diffordsguide.com/cocktail/DAq4DR/default/0/512x.webp?v=1737701575",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -3509,6 +3670,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Kir Cocktail",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1108/kir-cocktail",
     "image": "https://cdn.diffordsguide.com/cocktail/oOnv7O/default/0/512x.webp?v=1737701575",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -3560,6 +3722,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Last Word",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1133/last-word",
     "image": "https://cdn.diffordsguide.com/cocktail/3r47bA/default/0/512x.webp?v=1781258017",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/3r47bA/lifestyle/1/1024x.webp?v=1781258080",
+      "https://cdn.diffordsguide.com/cocktail/3r47bA/lifestyle/0/1024x.webp?v=1781258057"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -3619,6 +3785,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Lemon Drop Martini",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1144/lemon-drop-martini",
     "image": "https://cdn.diffordsguide.com/cocktail/7OvwBR/default/0/512x.webp?v=1737701576",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -3675,6 +3842,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Long Island Iced Tea",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1190/long-island-iced-tea",
     "image": "https://cdn.diffordsguide.com/cocktail/7RYBlA/default/1/512x.webp?v=1767877879",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/7RYBlA/lifestyle/1/1024x.webp?v=1767878109",
+      "https://cdn.diffordsguide.com/cocktail/7RYBlA/lifestyle/0/1024x.webp?v=1767878047"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -3745,6 +3916,9 @@ window.DIFFORDS_DATA = [
     "sourceName": "Mai Tai (Difford's recipe)",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1221/mai-tai-diffords-recipe",
     "image": "https://cdn.diffordsguide.com/cocktail/PAGJWR/default/0/512x.webp?v=1737701576",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/PAGJWR/lifestyle/0/1024x.webp?v=1756479528"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -3818,6 +3992,9 @@ window.DIFFORDS_DATA = [
     "sourceName": "Manhattan (Sweet)",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1247/manhattan-sweet",
     "image": "https://cdn.diffordsguide.com/cocktail/NAm1xA/default/0/512x.webp?v=1737701576",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/NAm1xA/lifestyle/0/1024x.webp?v=1737701576"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -3874,6 +4051,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Margarita (straight-up)",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1254/margarita-straight-up",
     "image": "https://cdn.diffordsguide.com/cocktail/LR13xr/default/0/512x.webp?v=1747899181",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/LR13xr/lifestyle/1/1024x.webp?v=1747899251",
+      "https://cdn.diffordsguide.com/cocktail/LR13xr/lifestyle/0/1024x.webp?v=1747899237"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -3932,6 +4113,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Martinez (Difford's recipe)",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1264/martinez-diffords-recipe",
     "image": "https://cdn.diffordsguide.com/cocktail/GRozJO/default/0/512x.webp?v=1737701576",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/GRozJO/lifestyle/1/1024x.webp?v=1737701576",
+      "https://cdn.diffordsguide.com/cocktail/GRozJO/lifestyle/0/1024x.webp?v=1737701576"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -3991,6 +4176,9 @@ window.DIFFORDS_DATA = [
     "sourceName": "Mary Pickford Cocktail",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1268/mary-pickford-cocktail",
     "image": "https://cdn.diffordsguide.com/cocktail/nRwowR/default/0/512x.webp?v=1737701576",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/nRwowR/lifestyle/0/1024x.webp?v=1737701576"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -4046,6 +4234,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Mimosa",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1324/mimosa",
     "image": "https://cdn.diffordsguide.com/cocktail/nRwkvR/default/0/512x.webp?v=1737701576",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/nRwkvR/lifestyle/2/1024x.webp?v=1774776057",
+      "https://cdn.diffordsguide.com/cocktail/nRwkvR/lifestyle/1/1024x.webp?v=1774775300"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -4100,6 +4292,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Mint Julep",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1330/mint-julep",
     "image": "https://cdn.diffordsguide.com/cocktail/YrgkBr/default/1/512x.webp?v=1742476668",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/YrgkBr/lifestyle/1/1024x.webp?v=1742476824",
+      "https://cdn.diffordsguide.com/cocktail/YrgkBr/lifestyle/0/1024x.webp?v=1742476772"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -4156,6 +4352,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Missionary's Downfall",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1334/missionarys-downfall",
     "image": "https://cdn.diffordsguide.com/cocktail/POlkbr/default/0/512x.webp?v=1737701576",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -4218,6 +4415,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Mojito Cocktail",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1341/mojito-cocktail",
     "image": "https://cdn.diffordsguide.com/cocktail/YAkkNA/default/0/512x.webp?v=1737701576",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -4281,6 +4479,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Monkey Gland",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1349/monkey-gland",
     "image": "https://cdn.diffordsguide.com/cocktail/PrLPBr/default/0/512x.webp?v=1737701576",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -4340,6 +4539,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Moscow Mule",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1366/moscow-mule",
     "image": "https://cdn.diffordsguide.com/cocktail/6RabLA/default/0/512x.webp?v=1737701576",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -4396,6 +4596,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Naked and Famous",
     "url": "https://www.diffordsguide.com/cocktails/recipe/3640/naked-and-famous",
     "image": "https://cdn.diffordsguide.com/cocktail/AP7eVR/default/0/512x.webp?v=1737701594",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -4450,6 +4651,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Negroni Cocktail",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1392/negroni-cocktail",
     "image": "https://cdn.diffordsguide.com/cocktail/oryvaO/default/0/512x.webp?v=1737701576",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/oryvaO/lifestyle/1/1024x.webp?v=1737701576",
+      "https://cdn.diffordsguide.com/cocktail/oryvaO/lifestyle/0/1024x.webp?v=1737701576"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -4502,6 +4707,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "New York Sour",
     "url": "https://www.diffordsguide.com/cocktails/recipe/3398/new-york-sour",
     "image": "https://cdn.diffordsguide.com/cocktail/R1jyYA/default/0/512x.webp?v=1737701592",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -4566,6 +4772,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Oaxaca Old-Fashioned",
     "url": "https://www.diffordsguide.com/cocktails/recipe/3003/oaxaca-old-fashioned",
     "image": "https://cdn.diffordsguide.com/cocktail/AmlaWR/default/0/512x.webp?v=1781256813",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/AmlaWR/lifestyle/1/1024x.webp?v=1781256895",
+      "https://cdn.diffordsguide.com/cocktail/AmlaWR/lifestyle/0/1024x.webp?v=1781256869"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -4622,6 +4832,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Old Cuban",
     "url": "https://www.diffordsguide.com/cocktails/recipe/2529/old-cuban",
     "image": "https://cdn.diffordsguide.com/cocktail/r8aD1O/default/0/512x.webp?v=1737701586",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -4684,6 +4895,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Old Fashioned",
     "url": "https://www.diffordsguide.com/cocktails/recipe/4782/old-fashioned",
     "image": "https://cdn.diffordsguide.com/cocktail/A2Q8eR/default/0/512x.webp?v=1737701577",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -4737,6 +4949,9 @@ window.DIFFORDS_DATA = [
     "sourceName": "Paloma",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1456/paloma",
     "image": "https://cdn.diffordsguide.com/cocktail/nOzMmr/default/0/512x.webp?v=1737701577",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/nOzMmr/lifestyle/0/1024x.webp?v=1763717590"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -4796,6 +5011,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Paper Plane",
     "url": "https://www.diffordsguide.com/cocktails/recipe/3630/paper-plane",
     "image": "https://cdn.diffordsguide.com/cocktail/rgb0wA/default/0/512x.webp?v=1737701594",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/rgb0wA/lifestyle/1/1024x.webp?v=1737701594",
+      "https://cdn.diffordsguide.com/cocktail/rgb0wA/lifestyle/0/1024x.webp?v=1737701594"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -4851,6 +5070,9 @@ window.DIFFORDS_DATA = [
     "sourceName": "Paradise",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1466/paradise",
     "image": "https://cdn.diffordsguide.com/cocktail/6Ra3qr/default/0/512x.webp?v=1737701577",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/6Ra3qr/lifestyle/0/1024x.webp?v=1737701577"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -4910,6 +5132,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Penicillin cocktail",
     "url": "https://www.diffordsguide.com/cocktails/recipe/2539/penicillin-cocktail",
     "image": "https://cdn.diffordsguide.com/cocktail/rVQZpA/default/0/512x.webp?v=1739983925",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/rVQZpA/lifestyle/1/1024x.webp?v=1740045425",
+      "https://cdn.diffordsguide.com/cocktail/rVQZpA/lifestyle/0/1024x.webp?v=1740045400"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -4967,6 +5193,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Pimm's Cup (or Classic Pimm's)",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1523/pimms-cup-or-classic-pimms",
     "image": "https://cdn.diffordsguide.com/cocktail/vRDg6O/default/0/512x.webp?v=1737701577",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -5033,6 +5260,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Pina Colada",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1526/pina-colada",
     "image": "https://cdn.diffordsguide.com/cocktail/GrW9PR/default/2/512x.webp?v=1778237996",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/GrW9PR/lifestyle/1/1024x.webp?v=1778238105",
+      "https://cdn.diffordsguide.com/cocktail/GrW9PR/lifestyle/0/1024x.webp?v=1778238079"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -5092,6 +5323,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Pisco Punch (Difford's recipe)",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1557/pisco-punch-diffords-recipe",
     "image": "https://cdn.diffordsguide.com/cocktail/VRjxQr/default/0/512x.webp?v=1737701577",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -5158,6 +5390,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Pisco Sour (Difford's recipe)",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1563/pisco-sour-diffords-recipe",
     "image": "https://cdn.diffordsguide.com/cocktail/wrNvor/default/0/512x.webp?v=1737701577",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/wrNvor/lifestyle/1/1024x.webp?v=1737701577",
+      "https://cdn.diffordsguide.com/cocktail/wrNvor/lifestyle/0/1024x.webp?v=1737701577"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -5223,6 +5459,9 @@ window.DIFFORDS_DATA = [
     "sourceName": "Planter's Punch",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1566/planters-punch",
     "image": "https://cdn.diffordsguide.com/cocktail/6RaNmA/default/0/512x.webp?v=1737701577",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/6RaNmA/lifestyle/0/1024x.webp?v=1737701577"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -5282,6 +5521,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Porn Star Martini",
     "url": "https://www.diffordsguide.com/cocktails/recipe/2883/porn-star-martini",
     "image": "https://cdn.diffordsguide.com/cocktail/rVQNLA/default/1/512x.webp?v=1757005228",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/rVQNLA/lifestyle/2/1024x.webp?v=1757005426",
+      "https://cdn.diffordsguide.com/cocktail/rVQNLA/lifestyle/1/1024x.webp?v=1757005417"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -5345,6 +5588,9 @@ window.DIFFORDS_DATA = [
     "sourceName": "Rabo-de-Galo",
     "url": "https://www.diffordsguide.com/cocktails/recipe/3889/rabo-de-galo",
     "image": "https://cdn.diffordsguide.com/cocktail/O5KWwA/default/0/512x.webp?v=1737701595",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/O5KWwA/lifestyle/0/1024x.webp?v=1737701595"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -5401,6 +5647,9 @@ window.DIFFORDS_DATA = [
     "sourceName": "Ramos Gin Fizz",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1628/ramos-gin-fizz",
     "image": "https://cdn.diffordsguide.com/cocktail/vAxD8A/default/0/512x.webp?v=1737701578",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/vAxD8A/lifestyle/0/1024x.webp?v=1737701578"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -5474,6 +5723,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Red Hook",
     "url": "https://www.diffordsguide.com/cocktails/recipe/2892/red-hook",
     "image": "https://cdn.diffordsguide.com/cocktail/ry8XNA/default/0/512x.webp?v=1737701589",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/ry8XNA/lifestyle/1/1024x.webp?v=1737701589",
+      "https://cdn.diffordsguide.com/cocktail/ry8XNA/lifestyle/0/1024x.webp?v=1737701589"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -5526,6 +5779,11 @@ window.DIFFORDS_DATA = [
     "sourceName": "Remember the Maine",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1668/remember-the-maine",
     "image": "https://cdn.diffordsguide.com/cocktail/nRwaMr/default/1/512x.webp?v=1741266855",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/nRwaMr/lifestyle/4/1024x.webp?v=1741269112",
+      "https://cdn.diffordsguide.com/cocktail/nRwaMr/lifestyle/3/1024x.webp?v=1741269073",
+      "https://cdn.diffordsguide.com/cocktail/nRwaMr/lifestyle/1/1024x.webp?v=1737701579"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -5585,6 +5843,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Ritz Cocktail",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1677/ritz-cocktail",
     "image": "https://cdn.diffordsguide.com/cocktail/3r4yzO/default/2/512x.webp?v=1737978781",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/3r4yzO/lifestyle/1/1024x.webp?v=1737979223",
+      "https://cdn.diffordsguide.com/cocktail/3r4yzO/lifestyle/0/1024x.webp?v=1737978824"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -5645,6 +5907,9 @@ window.DIFFORDS_DATA = [
     "sourceName": "Rose (by Johnny Milta)",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1691/rose-by-johnny-milta",
     "image": "https://cdn.diffordsguide.com/cocktail/NAmDeR/default/0/512x.webp?v=1737701579",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/NAmDeR/lifestyle/0/1024x.webp?v=1737701579"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -5697,6 +5962,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Russian Spring Punch",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1720/russian-spring-punch",
     "image": "https://cdn.diffordsguide.com/cocktail/GRoYNr/default/0/512x.webp?v=1737701580",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -5762,6 +6028,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Rusty Nail",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1721/rusty-nail",
     "image": "https://cdn.diffordsguide.com/cocktail/PAG52O/default/0/512x.webp?v=1737701580",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/PAG52O/lifestyle/1/1024x.webp?v=1737701580",
+      "https://cdn.diffordsguide.com/cocktail/PAG52O/lifestyle/0/1024x.webp?v=1737701580"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -5815,6 +6085,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Sazerac (Difford's split base)",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1752/sazerac-diffords-split-base",
     "image": "https://cdn.diffordsguide.com/cocktail/oOn59r/default/0/512x.webp?v=1737701580",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -5886,6 +6157,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Scofflaw",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1755/scofflaw",
     "image": "https://cdn.diffordsguide.com/cocktail/zAMbbr/default/0/512x.webp?v=1772805912",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/zAMbbr/lifestyle/1/1024x.webp?v=1772807291",
+      "https://cdn.diffordsguide.com/cocktail/zAMbbr/lifestyle/0/1024x.webp?v=1772805964"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -5951,6 +6226,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Screwdriver (Difford's recipe)",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1762/screwdriver-diffords-recipe",
     "image": "https://cdn.diffordsguide.com/cocktail/XOdeyR/default/0/512x.webp?v=1766065185",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/XOdeyR/lifestyle/1/1024x.webp?v=1766065367",
+      "https://cdn.diffordsguide.com/cocktail/XOdeyR/lifestyle/0/1024x.webp?v=1766065356"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -6006,6 +6285,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Seabreeze",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1763/seabreeze",
     "image": "https://cdn.diffordsguide.com/cocktail/wrN1ZA/default/0/512x.webp?v=1737701580",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -6058,6 +6338,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Sex On The Beach",
     "url": "https://www.diffordsguide.com/cocktails/recipe/4266/sex-on-the-beach",
     "image": "https://cdn.diffordsguide.com/cocktail/RaL2yO/default/0/512x.webp?v=1737701598",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -6122,6 +6403,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Sherry Cobbler",
     "url": "https://www.diffordsguide.com/cocktails/recipe/2895/sherry-cobbler",
     "image": "https://cdn.diffordsguide.com/cocktail/rbl1oR/default/0/512x.webp?v=1737701589",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -6183,6 +6465,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Sidecar",
     "url": "https://www.diffordsguide.com/cocktails/recipe/4791/sidecar",
     "image": "https://cdn.diffordsguide.com/cocktail/Am6dvr/default/0/512x.webp?v=1766067685",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/Am6dvr/lifestyle/1/1024x.webp?v=1766067745",
+      "https://cdn.diffordsguide.com/cocktail/Am6dvr/lifestyle/0/1024x.webp?v=1766067736"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -6245,6 +6531,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Singapore Sling",
     "url": "https://www.diffordsguide.com/cocktails/recipe/4627/singapore-sling",
     "image": "https://cdn.diffordsguide.com/cocktail/O7W8DO/default/0/512x.webp?v=1737701600",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -6312,6 +6599,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Spicy Fifty",
     "url": "https://www.diffordsguide.com/cocktails/recipe/3611/spicy-fifty",
     "image": "https://cdn.diffordsguide.com/cocktail/AMQ84A/default/0/512x.webp?v=1737701593",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -6365,6 +6653,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Spritz Al Bitter (Spritz Veneziano)",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1861/spritz-al-bitter-spritz-veneziano",
     "image": "https://cdn.diffordsguide.com/cocktail/3r0VGR/default/1/512x.webp?v=1746709118",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/3r0VGR/lifestyle/1/1024x.webp?v=1746709214",
+      "https://cdn.diffordsguide.com/cocktail/3r0VGR/lifestyle/0/1024x.webp?v=1746709205"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -6418,6 +6710,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Stinger",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1874/stinger",
     "image": "https://cdn.diffordsguide.com/cocktail/Yrg1JR/default/0/512x.webp?v=1737701582",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -6467,6 +6760,9 @@ window.DIFFORDS_DATA = [
     "sourceName": "Suffering Bastard",
     "url": "https://www.diffordsguide.com/cocktails/recipe/2588/suffering-bastard",
     "image": "https://cdn.diffordsguide.com/cocktail/Ov8mDA/default/0/512x.webp?v=1737701587",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/Ov8mDA/lifestyle/0/1024x.webp?v=1737701587"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -6529,6 +6825,9 @@ window.DIFFORDS_DATA = [
     "sourceName": "Tequila Sunrise",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1935/tequila-sunrise",
     "image": "https://cdn.diffordsguide.com/cocktail/gO3KKO/default/0/512x.webp?v=1737701582",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/gO3KKO/lifestyle/0/1024x.webp?v=1737701582"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -6591,6 +6890,9 @@ window.DIFFORDS_DATA = [
     "sourceName": "Three Dots and a Dash",
     "url": "https://www.diffordsguide.com/cocktails/recipe/4792/three-dots-and-a-dash",
     "image": "https://cdn.diffordsguide.com/cocktail/rygBjR/default/0/512x.webp?v=1737701600",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/rygBjR/lifestyle/0/1024x.webp?v=1737701600"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -6657,6 +6959,9 @@ window.DIFFORDS_DATA = [
     "sourceName": "Tipperary No.1",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1958/tipperary-no1",
     "image": "https://cdn.diffordsguide.com/cocktail/RE7Zyr/default/0/512x.webp?v=1737701583",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/RE7Zyr/lifestyle/0/1024x.webp?v=1737701583"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -6710,6 +7015,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Toddy Cocktail",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1964/toddy-cocktail",
     "image": "https://cdn.diffordsguide.com/cocktail/Ro6PzO/default/0/512x.webp?v=1737701583",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -6760,6 +7066,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Tommy's Margarita",
     "url": "https://www.diffordsguide.com/cocktails/recipe/1975/tommys-margarita",
     "image": "https://cdn.diffordsguide.com/cocktail/AQQ2MA/default/0/512x.webp?v=1737701583",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -6815,6 +7122,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Trident",
     "url": "https://www.diffordsguide.com/cocktails/recipe/3473/trident",
     "image": "https://cdn.diffordsguide.com/cocktail/r8adPO/default/0/512x.webp?v=1737701592",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -6868,6 +7176,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Trinidad Sour",
     "url": "https://www.diffordsguide.com/cocktails/recipe/3328/trinidad-sour",
     "image": "https://cdn.diffordsguide.com/cocktail/Ax0gGA/default/0/512x.webp?v=1737701592",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -6922,6 +7231,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Tuxedo (Difford's recipe)",
     "url": "https://www.diffordsguide.com/cocktails/recipe/4606/tuxedo-diffords-recipe",
     "image": "https://cdn.diffordsguide.com/cocktail/A6gyer/default/0/512x.webp?v=1737701600",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -6989,6 +7299,7 @@ window.DIFFORDS_DATA = [
     "sourceName": "Vampiro",
     "url": "https://www.diffordsguide.com/cocktails/recipe/2024/vampiro",
     "image": "https://cdn.diffordsguide.com/cocktail/RwN7QO/default/0/512x.webp?v=1737701583",
+    "galleryImages": [],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -7053,6 +7364,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Ve.n.to",
     "url": "https://www.diffordsguide.com/cocktails/recipe/16591/vento",
     "image": "https://cdn.diffordsguide.com/cocktail/AmGwyO/default/0/512x.webp?v=1737701625",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/AmGwyO/lifestyle/1/1024x.webp?v=1737701625",
+      "https://cdn.diffordsguide.com/cocktail/AmGwyO/lifestyle/0/1024x.webp?v=1737701625"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -7113,6 +7428,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Vesper Dry Martini",
     "url": "https://www.diffordsguide.com/cocktails/recipe/2597/vesper-dry-martini",
     "image": "https://cdn.diffordsguide.com/cocktail/RJeLeO/default/0/512x.webp?v=1774605568",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/RJeLeO/lifestyle/1/1024x.webp?v=1774605659",
+      "https://cdn.diffordsguide.com/cocktail/RJeLeO/lifestyle/0/1024x.webp?v=1774605649"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -7166,6 +7485,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Vieux Carré Cocktail",
     "url": "https://www.diffordsguide.com/cocktails/recipe/2048/vieux-carre-cocktail",
     "image": "https://cdn.diffordsguide.com/cocktail/ry8g4A/default/0/512x.webp?v=1737701583",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/ry8g4A/lifestyle/1/1024x.webp?v=1756804480",
+      "https://cdn.diffordsguide.com/cocktail/ry8g4A/lifestyle/0/1024x.webp?v=1737701583"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -7228,6 +7551,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Whiskey Sour (Difford's recipe)",
     "url": "https://www.diffordsguide.com/cocktails/recipe/2083/whiskey-sour-diffords-recipe",
     "image": "https://cdn.diffordsguide.com/cocktail/rVQbYA/default/0/512x.webp?v=1737701584",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/rVQbYA/lifestyle/1/1024x.webp?v=1737701584",
+      "https://cdn.diffordsguide.com/cocktail/rVQbYA/lifestyle/0/1024x.webp?v=1737701584"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -7291,6 +7618,11 @@ window.DIFFORDS_DATA = [
     "sourceName": "White Lady",
     "url": "https://www.diffordsguide.com/cocktails/recipe/2091/white-lady",
     "image": "https://cdn.diffordsguide.com/cocktail/AmlyLR/default/0/512x.webp?v=1772797512",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/AmlyLR/lifestyle/5/1024x.webp?v=1772797584",
+      "https://cdn.diffordsguide.com/cocktail/AmlyLR/lifestyle/4/1024x.webp?v=1772797572",
+      "https://cdn.diffordsguide.com/cocktail/AmlyLR/lifestyle/3/1024x.webp?v=1737701584"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -7357,6 +7689,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "White Russian Cocktail",
     "url": "https://www.diffordsguide.com/cocktails/recipe/2093/white-russian-cocktail",
     "image": "https://cdn.diffordsguide.com/cocktail/rLkY8A/default/0/512x.webp?v=1737701584",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/rLkY8A/lifestyle/1/1024x.webp?v=1737701584",
+      "https://cdn.diffordsguide.com/cocktail/rLkY8A/lifestyle/0/1024x.webp?v=1737701584"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -7410,6 +7746,9 @@ window.DIFFORDS_DATA = [
     "sourceName": "Yellow Bird",
     "url": "https://www.diffordsguide.com/cocktails/recipe/2113/yellow-bird",
     "image": "https://cdn.diffordsguide.com/cocktail/RjlVlr/default/0/512x.webp?v=1737701584",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/RjlVlr/lifestyle/0/1024x.webp?v=1737701584"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
@@ -7474,6 +7813,10 @@ window.DIFFORDS_DATA = [
     "sourceName": "Zombie",
     "url": "https://www.diffordsguide.com/cocktails/recipe/2131/zombie",
     "image": "https://cdn.diffordsguide.com/cocktail/AQQW0A/default/1/512x.webp?v=1777025812",
+    "galleryImages": [
+      "https://cdn.diffordsguide.com/cocktail/AQQW0A/lifestyle/2/1024x.webp?v=1777025892",
+      "https://cdn.diffordsguide.com/cocktail/AQQW0A/lifestyle/1/1024x.webp?v=1777025866"
+    ],
     "key": "diffords",
     "label": "Difford's",
     "available": true,
