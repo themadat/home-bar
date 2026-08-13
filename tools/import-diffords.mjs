@@ -181,6 +181,21 @@ function jsonLdRecipe(html) {
   throw new Error('Recipe JSON-LD was not found.');
 }
 
+function metaImage(html, property) {
+  for (const match of html.matchAll(/<meta\b[^>]*>/gi)) {
+    const tag = match[0];
+    const key = tag.match(/(?:property|name)=["']([^"']+)["']/i)?.[1];
+    if (key?.toLowerCase() !== property.toLowerCase()) continue;
+    return decodeHtml(tag.match(/content=["']([^"']+)["']/i)?.[1] || '').trim();
+  }
+  return '';
+}
+
+function recipeHeaderImage(html) {
+  const gallery = html.match(/<div\b[^>]*class=["'][^"']*\blegacy-gallery\b[^"']*["'][^>]*>\s*<img\b[^>]*src=["']([^"']+)["']/i);
+  return decodeHtml(gallery?.[1] || '').trim();
+}
+
 function ingredientAmounts(html) {
   const table = html.match(/<table\b[^>]*class="[^"]*legacy-ingredients-table[^"]*"[^>]*>([\s\S]*?)<\/table>/i)?.[1] || '';
   return [...table.matchAll(/<tr\b[^>]*>([\s\S]*?)<\/tr>/gi)].flatMap((row) => {
@@ -326,7 +341,7 @@ function extractRecipe(html, localCocktail, match) {
     id: localCocktail.id,
     sourceName: String(recipe.name || match.name),
     url: String(recipe.url || match.url),
-    image: String(recipe.image?.url || ''),
+    image: recipeHeaderImage(html) || metaImage(html, 'og:image') || String(recipe.image?.url || ''),
     key: 'diffords',
     label: "Difford's",
     available: ingredients.length > 0,
