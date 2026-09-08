@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# check.sh - one-command parse check for Pickle Score.
+# check.sh - one-command parse check for Home Bar.
 #
 # Runs assets/js companions through jsc, then extracts the main inline
 # <script> from index.html and parses it wrapped in a function so DOM code does

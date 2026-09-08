@@ -2,7 +2,7 @@
 """
 generate-icons.py
 ------------------
-Generate every favicon / PWA / Apple touch icon asset Cocktail List needs
+Generate every favicon / PWA / Apple touch icon asset Home Bar needs
 from a single source PNG: build/icon-sources/source-material/app_icon.png
 
 The source is a square, full-bleed dark navy image with a gold coupe-glass
