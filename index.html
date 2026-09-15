@@ -80,9 +80,6 @@
     }
     .topbar-actions { display: flex; gap: 8px; align-items: center; }
     .topbar-actions .topbar-meta { max-width: 165px; }
-    .topbar-quick-filter-slot { display: flex; align-items: center; min-width: 0; }
-    .topbar-quick-filter-slot:empty { display: none; }
-    .topbar-quick-filter-slot .quick-filter-scroll { width: 100%; }
     .topbar-search {
       display: flex; align-items: center; gap: 8px; min-width: 0; height: var(--control-h);
       border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); padding: 0 9px;
@@ -160,9 +157,9 @@
         }
         .quick-filter-row::-webkit-scrollbar { display: none; }
         @media (min-width: 1101px) {
-          .topbar-quick-filter-slot .quick-filter-scroll { gap: 3px; }
-          .topbar-quick-filter-slot .quick-filter-row { gap: 4px; }
-          .topbar-quick-filter-slot .quick-chip { height: 21px; padding-inline: 8px; font-size: 10px; }
+          .list-quick-filter-bar .quick-filter-scroll { gap: 3px; }
+          .list-quick-filter-bar .quick-filter-row { gap: 4px; }
+          .list-quick-filter-bar .quick-chip { height: 21px; padding-inline: 8px; font-size: 10px; }
         }
         .mobile-filter-toggle, .mobile-section-count { display: none; }
         #mobileAdvancedFiltersToggle { display: none !important; }
@@ -1987,7 +1984,7 @@
 
     /* Keep bar tools, search/filter controls, and app status in distinct groups. */
     .topbar {
-      grid-template-columns: 180px auto minmax(180px, 1fr) minmax(330px, 420px) auto;
+      grid-template-columns: 180px auto minmax(180px, 1fr) auto;
       gap: 12px; align-items: center;
     }
     .topbar-title { grid-column: 1; }
@@ -1996,7 +1993,7 @@
     .topbar-search { grid-column: 3; min-width: 0; }
     .topbar-search-icon { display: grid; place-items: center; }
     .topbar-search-icon .sf-symbol { width: 22px; height: 22px; fill: currentColor; }
-    .topbar-actions { grid-column: 5; display: flex; align-items: center; gap: 4px; min-width: 0; }
+    .topbar-actions { grid-column: 4; display: flex; align-items: center; gap: 4px; min-width: 0; }
     .topbar .button.header-action {
       display: inline-flex; flex-direction: column; align-items: center; justify-content: center;
       flex: 0 0 50px; width: 50px; height: 48px; min-height: 48px; padding: 4px 2px;
@@ -2017,14 +2014,19 @@
     .cloud-sync-copy strong { font-size: 11px; font-weight: 650; }
     .cloud-sync-copy small { font-size: 10px; color: var(--muted); }
     .cloud-sync-copy strong, .cloud-sync-copy small { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .topbar-quick-filter-slot { grid-column: 4; display: flex; align-items: center; gap: 6px; min-width: 0; }
+    .list-quick-filter-bar {
+      position: sticky; top: var(--sticky-header-height, 0px); z-index: 19;
+      display: flex; align-items: center; gap: 8px; width: 100%; min-width: 0;
+      margin: 0 0 8px; padding: 7px 0;
+      border-block: 1px solid var(--line); background: rgba(8, 11, 16, .96);
+      backdrop-filter: blur(14px);
+    }
     .quick-filter-stack { display: grid; gap: 4px; min-width: 0; flex: 1; }
     .quick-filter-controls .topbar-meta { max-width: none; font-size: 11px; }
     .quick-filter-controls #resetFilters { flex-basis: 42px; width: 42px; }
     @media (min-width: 1201px) and (max-width: 1700px) {
       .topbar { grid-template-columns: 180px auto minmax(180px, 1fr) auto; gap: 8px 12px; }
       .topbar-actions { grid-column: 4; grid-row: 1; }
-      .topbar-quick-filter-slot { grid-column: 3 / -1; grid-row: 2; }
     }
     @media (min-width: 761px) and (max-width: 1200px) {
       .topbar { grid-template-columns: minmax(310px, 1fr) minmax(180px, 1fr); gap: 8px 12px; }
@@ -2032,20 +2034,19 @@
       .topbar-left-actions { grid-column: 1; grid-row: 2; }
       .topbar-search { grid-column: 2; grid-row: 2; }
       .topbar-actions { grid-column: 2; grid-row: 1; justify-content: flex-end; }
-      .topbar-quick-filter-slot { grid-column: 1 / -1; grid-row: 3; }
     }
     @media (max-width: 760px) {
       .topbar { grid-template-columns: minmax(0, 1fr); gap: 8px; }
       .topbar-title { grid-column: 1; grid-row: 1; }
       .topbar-left-actions { grid-column: 1; grid-row: 2; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); }
       .topbar-search { grid-column: 1; grid-row: 3; }
-      .topbar-quick-filter-slot { grid-column: 1; grid-row: 4; }
-      .topbar-actions { grid-column: 1; grid-row: 5; justify-content: flex-end; }
+      .topbar-actions { grid-column: 1; grid-row: 4; justify-content: flex-end; }
       .topbar-left-actions .button.header-action { width: 100%; min-width: 0; }
       .topbar .button.header-action { flex-basis: 44px; }
       .topbar .button-label { font-size: 9px; }
       .topbar #githubSyncButton { flex: 1; width: auto; min-width: 0; }
       .quick-filter-controls .quick-chip { padding-inline: 7px; font-size: 10px; }
+      .list-quick-filter-bar { gap: 5px; }
     }
     #updateAppButton[data-update-available="true"] .button-icon { color: #ff7367; }
     #updateAppButton[aria-busy="true"] .button-icon { animation: sync-pulse 1s ease-in-out infinite; }
@@ -2091,27 +2092,10 @@
           <input id="searchInput" class="text-input" type="search" placeholder="Search cocktails" autocomplete="off">
           <kbd class="topbar-search-shortcut" aria-hidden="true">/</kbd>
         </label>
-	        <div id="topbarQuickFilterSlot" class="topbar-quick-filter-slot quick-filter-controls" aria-label="Quick filters"><button id="resetFilters" class="button icon" type="button" title="Reset sort and filters" aria-label="Reset sort and filters">↺</button><div class="quick-filter-stack"><div id="quickFilterScroll" class="quick-filter-scroll">
-          <div class="quick-filter-row quick-filter-primary">
-            <button class="quick-chip" type="button" data-quick="myBar"><span class="bar-supported-indicator" aria-hidden="true"></span><span>My Bar</span></button>
-            <button class="quick-chip stat-filter" type="button" data-stat-filter="neat" aria-pressed="false">Neat</button>
-            <button class="quick-chip" type="button" data-quick="favs">Favs</button>
-            <button class="quick-chip" type="button" data-quick="hof">HOF</button>
-            <button class="quick-chip" type="button" data-quick="toTry">Try</button>
-            <button id="genreMoreButton" class="quick-chip" type="button" aria-expanded="false" aria-controls="genreMoreMenu" aria-label="More filters">&hellip;<span id="genreMoreCount" class="genre-more-count"></span></button>
-            <button id="mobileAdvancedFiltersToggle" class="mobile-filter-toggle" type="button" aria-expanded="false" aria-controls="pillFilters" aria-label="Show Base, Garnish, Glassware, Type, and Rating filters"><span class="mobile-filter-chevron" aria-hidden="true"></span></button>
-          </div>
-          <div class="quick-filter-row quick-filter-sources">
-            <button class="quick-chip stat-filter filter-custom" type="button" data-stat-filter="custom" aria-pressed="false">Custom</button>
-            <button class="quick-chip filter-lnl" type="button" data-quick="lnl">L&amp;L</button>
-            <button class="quick-chip filter-iba" type="button" data-quick="iba">IBA</button>
-            <button class="quick-chip source-diffords" type="button" data-quick="diffords">Difford's</button>
-          </div>
-        </div><div id="topbarMeta" class="topbar-meta"><span id="resultMeta"></span><span class="meta-sep">·</span><button id="filterSummaryToggle" class="filter-summary-toggle" type="button" aria-expanded="false" aria-controls="quickFilterScroll pillFilters"><span id="activeMeta"></span></button></div></div></div>
         <div class="topbar-actions" aria-label="Application actions"><button id="githubSyncButton" class="button cloud-sync-status" type="button" title="Set up GitHub Sync" aria-label="Set up GitHub Sync" aria-haspopup="dialog" data-sync-state="setup"><span id="githubSyncGlyph"></span><span class="cloud-sync-copy"><strong id="githubSyncLabel">Saved locally</strong><small id="githubSyncMessage">GitHub Sync is optional</small></span></button><button id="updateAppButton" class="button icon" type="button" title="Check for updates and force refresh" aria-label="Update — check for updates and force refresh"><svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.0576 23.7305" aria-hidden="true" focusable="false"><g><rect opacity="0" height="23.7305" width="24.0576" x="0" y="0"/><path fill="currentColor" fill-opacity="0.85" d="M0 6.7334L2.89551 6.7334C2.93457 5.47363 3.27148 4.53125 3.90625 3.90137C4.53125 3.28613 5.48828 2.93945 6.74805 2.89551L6.74805 0C4.62402 0.0390625 2.93945 0.678711 1.81641 1.81152C0.668945 2.94434 0.0341797 4.61426 0 6.7334ZM15.0342 2.88574L15.0342 0L8.66211 0L8.66211 2.88574ZM20.8057 6.7334L23.6963 6.7334C23.6621 4.61426 23.0322 2.94434 21.8799 1.81152C20.752 0.673828 19.0771 0.0390625 16.9482 0L16.9482 2.89551C18.2129 2.93945 19.1602 3.27637 19.79 3.90137C20.4297 4.53125 20.7617 5.47363 20.8057 6.7334ZM20.8105 15.083L23.6963 15.083L23.6963 8.65723L20.8105 8.65723ZM16.9482 23.7061C19.0771 23.6719 20.7568 23.0273 21.8799 21.8994C23.0322 20.7666 23.6475 19.1113 23.6963 17.002L20.7959 17.002C20.7617 18.252 20.4297 19.1699 19.79 19.8047C19.1602 20.4297 18.2129 20.7715 16.9482 20.8154ZM15.0342 23.7061L15.0342 20.8203L8.66211 20.8203L8.66211 23.7061ZM6.74805 23.7061L6.74805 20.8154C5.48828 20.7715 4.53613 20.4297 3.90625 19.8047C3.27148 19.1699 2.93457 18.252 2.90039 17.002L0 17.002C0.0488281 19.1113 0.664062 20.7617 1.81641 21.8994C2.94434 23.0371 4.62402 23.6719 6.74805 23.7061ZM0 15.083L2.89062 15.083L2.89062 8.65723L0 8.65723Z"/><path fill="currentColor" fill-opacity="0.85" d="M11.5576 14.2529C12.2803 14.2529 12.7783 13.8623 12.8467 13.3496C12.8516 13.2959 12.8564 13.2275 12.8662 13.1787C12.9395 12.5732 13.418 12.1582 14.1846 11.6602C15.4639 10.835 16.1523 10.1221 16.1523 8.74023C16.1523 6.68457 14.2773 5.41016 11.9482 5.41016C9.81934 5.41016 8.32031 6.35742 7.89062 7.57324C7.8125 7.80273 7.76367 8.01758 7.76367 8.26172C7.76367 8.88672 8.24707 9.34082 8.85254 9.34082C9.32617 9.34082 9.67773 9.15527 9.93164 8.80371L10.0732 8.60352C10.4492 7.94434 11.0107 7.59277 11.7236 7.59277C12.627 7.59277 13.2568 8.14941 13.2568 8.8916C13.2568 9.62891 12.7393 10 11.6992 10.7178C10.7959 11.3428 10.1953 11.9629 10.1953 12.9785C10.1953 13.0273 10.1953 13.0713 10.1953 13.1152C10.1953 13.8623 10.6836 14.2529 11.5576 14.2529ZM11.543 18.1982C12.4219 18.1982 13.1055 17.6172 13.1055 16.7676C13.1055 15.9229 12.4316 15.3369 11.543 15.3369C10.6641 15.3369 9.9707 15.9229 9.9707 16.7676C9.9707 17.6074 10.6689 18.1982 11.543 18.1982Z"/></g></svg></button><button id="notesButton" class="button icon" type="button" title="Notes" aria-label="Notes" aria-haspopup="dialog"></button><button id="settingsButton" class="button icon" type="button" title="Settings" aria-label="Settings" aria-haspopup="dialog"><svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 27.6074 27.2461"><g><rect height="27.2461" opacity="0" width="27.6074" x="0" y="0"/><path d="M12.4707 27.2412L14.7803 27.2412C15.6396 27.2412 16.2842 26.7188 16.4795 25.874L17.0898 23.3252C17.4365 23.208 17.7783 23.0664 18.0908 22.9248L20.3125 24.3018C21.0303 24.7461 21.8799 24.6729 22.4707 24.0723L24.0967 22.4561C24.6924 21.8555 24.7656 20.9863 24.3018 20.2686L22.9443 18.0615C23.0859 17.7441 23.2227 17.4219 23.3252 17.0947L25.8984 16.4844C26.7383 16.2891 27.2461 15.6445 27.2461 14.7852L27.2461 12.5146C27.2461 11.665 26.7383 11.0205 25.8984 10.8203L23.3545 10.21C23.2324 9.85352 23.0908 9.52148 22.9639 9.2334L24.3311 6.97754C24.7803 6.24023 24.7168 5.41992 24.1064 4.81445L22.4609 3.18848C21.8555 2.6416 21.084 2.52441 20.3711 2.94434L18.0908 4.35059C17.7881 4.19922 17.4512 4.07227 17.0947 3.94531L16.4795 1.3623C16.2793 0.522461 15.6396 0 14.7803 0L12.4707 0C11.6064 0 10.9717 0.522461 10.7666 1.36719L10.1611 3.92578C9.80957 4.04297 9.45801 4.17969 9.14551 4.34082L6.87988 2.94434C6.15723 2.52441 5.37109 2.6123 4.78516 3.19336L3.13965 4.81445C2.5293 5.41992 2.46582 6.24023 2.91992 6.97754L4.28223 9.2334C4.15527 9.52148 4.01367 9.85352 3.89648 10.21L1.35254 10.8203C0.517578 11.0205 0 11.665 0 12.5146L0 14.7852C0 15.6445 0.517578 16.2891 1.35254 16.4844L3.9209 17.0947C4.02832 17.4219 4.16016 17.7441 4.30176 18.0615L2.94434 20.2686C2.48535 20.9863 2.55859 21.8555 3.1543 22.4561L4.77539 24.0723C5.37109 24.6729 6.2207 24.7461 6.93359 24.3018L9.16016 22.9248C9.47266 23.0664 9.80957 23.208 10.1611 23.3252L10.7666 25.874C10.9668 26.7188 11.6064 27.2412 12.4707 27.2412ZM13.623 17.9932C11.2109 17.9932 9.24805 16.0303 9.24805 13.6182C9.24805 11.2012 11.2109 9.24316 13.623 9.24316C16.04 9.24316 17.998 11.2012 17.998 13.6182C17.998 16.0303 16.04 17.9932 13.623 17.9932Z"/></g></svg></button>
-        </div>
-      </div>
-    </header>
+	        </div>
+	      </div>
+	    </header>
     <aside id="whatsNewBanner" class="whats-new-banner" aria-labelledby="whatsNewTitle" hidden>
       <div class="whats-new-copy"><small>What’s New · <span id="whatsNewVersion"></span></small><strong id="whatsNewTitle">A clearer bar toolbar</strong><p>Bar tools sit before search. Reset and result counts stay with quick filters, with expanded Cloud Sync and matching template symbols.</p></div>
       <div class="whats-new-actions"><button id="whatsNewDetails" class="button" type="button">Details</button><button id="whatsNewDismiss" class="button icon" type="button" aria-label="Dismiss What’s New">×</button></div>
@@ -2193,8 +2177,25 @@
           </div>
           <span id="myBarReadyCount" class="my-bar-section-count"></span>
         </div>
-      </section>
-      <div id="cocktailListSection" class="table-wrap">
+	      </section>
+	      <div id="topbarQuickFilterSlot" class="list-quick-filter-bar quick-filter-controls" aria-label="Quick filters"><button id="resetFilters" class="button icon" type="button" title="Reset sort and filters" aria-label="Reset sort and filters">↺</button><div class="quick-filter-stack"><div id="quickFilterScroll" class="quick-filter-scroll">
+          <div class="quick-filter-row quick-filter-primary">
+            <button class="quick-chip" type="button" data-quick="myBar"><span class="bar-supported-indicator" aria-hidden="true"></span><span>My Bar</span></button>
+            <button class="quick-chip stat-filter" type="button" data-stat-filter="neat" aria-pressed="false">Neat</button>
+            <button class="quick-chip" type="button" data-quick="favs">Favs</button>
+            <button class="quick-chip" type="button" data-quick="hof">HOF</button>
+            <button class="quick-chip" type="button" data-quick="toTry">Try</button>
+            <button id="genreMoreButton" class="quick-chip" type="button" aria-expanded="false" aria-controls="genreMoreMenu" aria-label="More filters">&hellip;<span id="genreMoreCount" class="genre-more-count"></span></button>
+            <button id="mobileAdvancedFiltersToggle" class="mobile-filter-toggle" type="button" aria-expanded="false" aria-controls="pillFilters" aria-label="Show Base, Garnish, Glassware, Type, and Rating filters"><span class="mobile-filter-chevron" aria-hidden="true"></span></button>
+          </div>
+          <div class="quick-filter-row quick-filter-sources">
+            <button class="quick-chip stat-filter filter-custom" type="button" data-stat-filter="custom" aria-pressed="false">Custom</button>
+            <button class="quick-chip filter-lnl" type="button" data-quick="lnl">L&amp;L</button>
+            <button class="quick-chip filter-iba" type="button" data-quick="iba">IBA</button>
+            <button class="quick-chip source-diffords" type="button" data-quick="diffords">Difford's</button>
+          </div>
+        </div><div id="topbarMeta" class="topbar-meta"><span id="resultMeta"></span><span class="meta-sep">·</span><button id="filterSummaryToggle" class="filter-summary-toggle" type="button" aria-expanded="false" aria-controls="quickFilterScroll pillFilters"><span id="activeMeta"></span></button></div></div></div>
+	      <div id="cocktailListSection" class="table-wrap">
         <div id="lettersLiquorTableBanner" class="lnl-table-banner" hidden></div>
         <table class="cocktail-table">
           <colgroup>
@@ -2733,7 +2734,7 @@
   <script src="letters-liquor-data.js?v=2.0.0.118"></script>
   <script src="diffords-data.js?v=2.0.0.118"></script>
   <script>
-    const BUILD_VERSION = '2.0.0.118';
+    const BUILD_VERSION = '2.0.0.119';
 	    const __PHOTO = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 30.3223 23.8281"><g><rect height="23.8281" opacity="0" width="30.3223" x="0" y="0"/><path d="M5.01953 22.5928L24.7852 22.5928C27.5879 22.5928 28.9404 21.2598 28.7109 18.8818L21.2256 11.8945C20.6641 11.377 20.0098 11.123 19.3311 11.123C18.6377 11.123 18.0176 11.3623 17.4414 11.875L11.7529 16.9629L9.42383 14.8584C8.8916 14.3848 8.31543 14.1406 7.71973 14.1406C7.11426 14.1406 6.62109 14.3701 6.10352 14.8438L1.41113 19.0234C1.47461 21.3623 2.69531 22.5928 5.01953 22.5928ZM4.29199 23.8281L25.6641 23.8281C28.457 23.8281 29.9609 22.3242 29.9609 19.5654L29.9609 4.27246C29.9609 1.50879 28.457 0.00976562 25.6641 0.00976562L4.29199 0.00976562C1.50879 0.00976562 0 1.50391 0 4.27246L0 19.5654C0 22.334 1.50879 23.8281 4.29199 23.8281ZM4.58008 20.9424C3.47656 20.9424 2.89062 20.3906 2.89062 19.2334L2.89062 4.60449C2.89062 3.45215 3.47656 2.89551 4.58008 2.89551L25.376 2.89551C26.4697 2.89551 27.0654 3.45215 27.0654 4.60449L27.0654 19.2334C27.0654 20.3906 26.4697 20.9424 25.376 20.9424Z"/><path d="M10.1807 12.2949C11.8652 12.2949 13.252 10.9082 13.252 9.20898C13.252 7.52441 11.8652 6.12305 10.1807 6.12305C8.48145 6.12305 7.09961 7.52441 7.09961 9.20898C7.09961 10.9082 8.48145 12.2949 10.1807 12.2949Z"/></g></svg>`;
 	    const __RECTANGLE_SPLIT_3X1 = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 30.3223 23.8281"><g><rect height="23.8281" opacity="0" width="30.3223" x="0" y="0"/><path d="M9.09668 22.4658L11.875 22.4658L11.875 1.36719L9.09668 1.36719ZM18.0859 22.4658L20.8545 22.4658L20.8545 1.36719L18.0859 1.36719ZM4.29199 23.8281L25.6641 23.8281C28.457 23.8281 29.9609 22.3242 29.9609 19.5654L29.9609 4.27246C29.9609 1.50879 28.457 0.00976562 25.6641 0.00976562L4.29199 0.00976562C1.50879 0.00976562 0 1.50391 0 4.27246L0 19.5654C0 22.334 1.50879 23.8281 4.29199 23.8281ZM4.58008 20.9424C3.47656 20.9424 2.89062 20.3906 2.89062 19.2334L2.89062 4.60449C2.89062 3.45215 3.47656 2.89551 4.58008 2.89551L25.376 2.89551C26.4697 2.89551 27.0654 3.45215 27.0654 4.60449L27.0654 19.2334C27.0654 20.3906 26.4697 20.9424 25.376 20.9424Z"/></g></svg>`;
 	    const __ARROW_UP_AND_DOWN_SQUARE_FILL = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24.1846 23.8281"><g><rect height="23.8281" opacity="0" width="24.1846" x="0" y="0"/><path d="M23.8232 4.26758L23.8232 19.5605C23.8232 22.3193 22.3145 23.8232 19.5264 23.8232L4.29199 23.8232C1.50879 23.8232 0 22.3291 0 19.5605L0 4.26758C0 1.49902 1.50879 0 4.29199 0L19.5264 0C22.3145 0 23.8232 1.50391 23.8232 4.26758ZM11.0107 4.45312L7.56836 7.97363C7.33398 8.20312 7.22656 8.48145 7.22656 8.7793C7.22656 9.38477 7.68555 9.80957 8.30566 9.80957C8.64746 9.80957 8.96484 9.65332 9.13574 9.40918L9.80469 8.72559L10.8753 7.30769L10.7812 9.80469L10.7812 14.0039L10.8755 16.506L9.80469 15.0879L9.13574 14.4092C8.96484 14.1553 8.64746 14.0039 8.30566 14.0039C7.68555 14.0039 7.22656 14.4287 7.22656 15.0342C7.22656 15.332 7.33398 15.6055 7.56836 15.8398L11.0107 19.3604C11.2744 19.6484 11.5967 19.8047 11.9873 19.8047C12.3828 19.8047 12.7051 19.6484 12.9736 19.3604L16.4111 15.8398C16.6504 15.6006 16.7529 15.332 16.7529 15.0342C16.7529 14.4287 16.2988 14.0039 15.6689 14.0039C15.3271 14.0039 15.0146 14.1553 14.8438 14.4092L14.1748 15.0879L13.1041 16.5027L13.1982 14.0039L13.1982 9.80469L13.1043 7.31102L14.1748 8.72559L14.8438 9.40918C15.0146 9.65332 15.3271 9.80957 15.6689 9.80957C16.2988 9.80957 16.7529 9.38477 16.7529 8.7793C16.7529 8.48145 16.6504 8.20801 16.4111 7.97363L12.9736 4.45312C12.7051 4.16992 12.3828 4.00879 11.9873 4.00879C11.5967 4.00879 11.2744 4.16992 11.0107 4.45312Z"/></g></svg>`;
@@ -3611,6 +3612,13 @@
     const isCustomCocktail = (cocktail) => cocktail.status === 'Custom' || Object.prototype.hasOwnProperty.call(store.assignments, cocktail.id);
     const $ = (sel, root = document) => root.querySelector(sel);
     const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+    const appHeader = $('header');
+    const syncStickyHeaderHeight = () => {
+      document.documentElement.style.setProperty('--sticky-header-height', `${appHeader.offsetHeight}px`);
+    };
+    const stickyHeaderObserver = new ResizeObserver(syncStickyHeaderHeight);
+    stickyHeaderObserver.observe(appHeader);
+    syncStickyHeaderHeight();
 	    $('#lettersLiquorGalleryButton').innerHTML = __PHOTO;
     function setFiltersVisible(visible) {
       document.body.classList.toggle('filters-visible', visible);
