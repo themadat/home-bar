@@ -1705,7 +1705,7 @@
       .modal.modal-glassware .modal-header {
         display: grid;
         grid-template-columns: minmax(0, 1fr) auto auto;
-        grid-template-rows: auto auto;
+        grid-template-rows: auto;
         gap: 8px 10px;
       }
       #glasswareModalTitle { grid-column: 1; grid-row: 1; }
@@ -1813,7 +1813,7 @@
       .bar-opportunity-grid { grid-template-columns: 1fr; }
       .topbar { grid-template-columns: 1fr; gap: 7px 5px; padding: 8px 0; }
       .topbar-title { grid-column: 1; min-width: 0; }
-      .topbar-search { grid-column: 1; height: 44px; padding-inline: 10px; }
+      .topbar-search-group { grid-column: 1; height: 44px; padding-inline: 10px; }
       .topbar-search .text-input { font-size: 16px; }
       .topbar-actions { grid-column: 1; gap: 4px; justify-content: space-between; }
       .topbar-actions .button.icon { width: 44px; height: 44px; }
@@ -1983,7 +1983,7 @@
     .topbar-title { grid-column: 1; }
     .topbar-title h1 { white-space: nowrap; }
     .topbar-left-actions { grid-column: 2; display: flex; align-items: center; gap: 2px; min-width: 0; }
-    .topbar-search { grid-column: 3; min-width: 0; }
+    .topbar-search-group { grid-column: 3; min-width: 0; }
     .topbar-search-icon { display: grid; place-items: center; }
     .topbar-search-icon .sf-symbol { width: 22px; height: 22px; fill: currentColor; }
     .topbar-actions { grid-column: 4; display: flex; align-items: center; gap: 4px; min-width: 0; }
@@ -2009,7 +2009,7 @@
     .cloud-sync-copy strong, .cloud-sync-copy small { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .list-quick-filter-bar {
       position: sticky; top: var(--sticky-header-height, 0px); z-index: 19;
-      display: grid; grid-template-rows: auto auto; gap: 4px; width: calc(100vw - 24px); min-width: 0;
+      display: grid; grid-template-rows: auto; gap: 4px; width: calc(100vw - 24px); min-width: 0;
       margin: 0 auto; padding: 7px 0;
       border-block: 1px solid var(--line); background: rgba(8, 11, 16, .96);
       backdrop-filter: blur(14px);
@@ -2030,14 +2030,14 @@
       .topbar { grid-template-columns: minmax(310px, 1fr) minmax(180px, 1fr); gap: 8px 12px; }
       .topbar-title { grid-column: 1; grid-row: 1; }
       .topbar-left-actions { grid-column: 1; grid-row: 2; }
-      .topbar-search { grid-column: 2; grid-row: 2; }
+      .topbar-search-group { grid-column: 2; grid-row: 2; }
       .topbar-actions { grid-column: 2; grid-row: 1; justify-content: flex-end; }
     }
     @media (max-width: 760px) {
       .topbar { grid-template-columns: minmax(0, 1fr); gap: 8px; }
       .topbar-title { grid-column: 1; grid-row: 1; }
       .topbar-left-actions { grid-column: 1; grid-row: 2; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); }
-      .topbar-search { grid-column: 1; grid-row: 3; }
+      .topbar-search-group { grid-column: 1; grid-row: 3; }
       .topbar-actions { grid-column: 1; grid-row: 4; justify-content: flex-end; }
       .topbar-left-actions .button.header-action { width: 100%; min-width: 0; }
       .topbar .button.header-action { flex-basis: 44px; }
@@ -2103,6 +2103,19 @@
     @keyframes cloud-status-spin { to { transform: rotate(360deg); } }
     @media (prefers-reduced-motion: reduce) { #githubSyncButton .sync-rotation { animation: none !important; } }
     @media (forced-colors: active) { .topbar #githubSyncButton { background: ButtonFace; color: ButtonText; border-color: ButtonText; } #githubSyncButton .cloud-sync-copy strong, #githubSyncButton .cloud-sync-copy small { color: ButtonText; } }
+
+    .topbar-search-group { display: flex; align-items: center; gap: 6px; min-width: 0; }
+    .topbar-search-group .topbar-search { flex: 1; min-width: 0; }
+    .topbar-search-group .clear-filters-button { flex: 0 0 auto; display: inline-flex; flex-direction: column; justify-content: center; gap: 2px; width: 42px; min-height: 44px; padding: 3px; border-color: transparent; background: transparent; font-size: 10px; }
+    .topbar-search-group .clear-filters-button:hover { background: var(--panel-2); }
+    .topbar-search-group .clear-filters-button .sf-symbol { width: 22px; height: 22px; }
+    [data-responsive-quick][hidden], .genre-menu-item[hidden] { display: none !important; }
+    @media (max-width: 400px) {
+      .topbar-search-group { gap: 3px; }
+      .topbar-search { gap: 5px; padding-inline: 7px; }
+      .topbar-search .topbar-meta { font-size: 10px; }
+      .topbar-search-group .clear-filters-button { width: 36px; }
+    }
   </style>
 </head>
 <body>
@@ -2121,18 +2134,21 @@
           </div>
         </div>
 <div class="topbar-left-actions" aria-label="Bar tools"><button id="lettersLiquorGalleryButton" class="button icon" type="button" title="Letters &amp; Liquor gallery" aria-label="Letters &amp; Liquor gallery" aria-haspopup="dialog"></button><button id="glasswareButton" class="button icon" type="button" title="Drinkware" aria-label="Drinkware" aria-haspopup="dialog"></button><button id="manageBarButton" class="button icon" type="button" title="Manage My Bar" aria-label="Manage My Bar"><svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 14.4629 30.6543"><g><rect height="30.6543" opacity="0" width="14.4629" x="0" y="0"/><path d="M3.56445 3.71582L10.5469 3.71582C11.3379 3.71582 11.9092 3.15918 11.9092 2.35352L11.9092 1.3623C11.9092 0.561523 11.3379 0 10.5469 0L3.56445 0C2.76367 0 2.20703 0.561523 2.20703 1.3623L2.20703 2.35352C2.20703 3.15918 2.76367 3.71582 3.56445 3.71582ZM0.0146484 10.0732L14.0869 10.0732C14.0381 8.62793 13.7842 7.56348 12.9443 6.43066L12.666 6.0498C12.3291 5.58105 11.748 5.24902 11.167 5.24902L2.93457 5.24902C2.35352 5.24902 1.77246 5.58105 1.43066 6.0498L1.15234 6.43066C0.317383 7.56348 0.0634766 8.62793 0.0146484 10.0732ZM0 11.9043L0 24.3164L14.1016 24.3164L14.1016 11.9043ZM7.04102 22.3779C5.24414 22.3779 4.06738 21.2354 4.06738 19.502C4.06738 18.623 4.47754 17.9004 4.67773 17.4365C5.14648 16.4258 5.92285 15.1123 6.5918 14.1113C6.71387 13.9062 6.88965 13.7988 7.04102 13.7988C7.2168 13.7988 7.37305 13.9062 7.49512 14.1113C8.16406 15.1123 8.95508 16.4258 9.41406 17.4365C9.62402 17.9004 10.0195 18.623 10.0195 19.502C10.0195 21.2354 8.83789 22.3779 7.04102 22.3779ZM0 26.1475L0 26.333C0 29.126 1.38672 30.6348 3.88672 30.6348L10.21 30.6348C12.7148 30.6348 14.1016 29.126 14.1016 26.333L14.1016 26.1475Z"/></g></svg></button><button id="archiveButton" class="button icon" type="button" title="Archive" aria-label="Archive" aria-haspopup="dialog"></button><button id="shoppingListButton" class="button icon" type="button" title="Shopping List" aria-label="Shopping List" aria-haspopup="dialog"></button><button id="addCocktailButton" class="button icon" type="button" title="Add cocktail" aria-label="Add cocktail">+</button></div>
+        <div class="topbar-search-group">
         <div class="topbar-search" role="search">
           <span class="topbar-search-icon" aria-hidden="true"><svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 25.8008 25.459"><g><rect opacity="0" height="25.459" width="25.8008" x="0" y="0"/><path d="M12.7148 25.4395C19.7363 25.4395 25.4395 19.7461 25.4395 12.7246C25.4395 5.70312 19.7363 0 12.7148 0C5.69336 0 0 5.70312 0 12.7246C0 19.7461 5.69336 25.4395 12.7148 25.4395ZM12.7148 23.623C6.68945 23.623 1.81641 18.75 1.81641 12.7246C1.81641 6.69922 6.68945 1.82617 12.7148 1.82617C18.7402 1.82617 23.6133 6.69922 23.6133 12.7246C23.6133 18.75 18.7402 23.623 12.7148 23.623Z"/><path d="M11.3184 16.4453C14.1797 16.4453 16.5039 14.1211 16.5039 11.2598C16.5039 8.39844 14.1797 6.06445 11.3184 6.06445C8.4668 6.06445 6.12305 8.4082 6.12305 11.2598C6.12305 14.1113 8.4668 16.4453 11.3184 16.4453ZM11.3184 14.9609C9.28711 14.9609 7.60742 13.2812 7.60742 11.25C7.60742 9.22852 9.28711 7.54883 11.3184 7.54883C13.3594 7.54883 15.0195 9.21875 15.0195 11.25C15.0195 13.2812 13.3594 14.9609 11.3184 14.9609ZM18.3496 19.2969C18.8867 19.2969 19.2578 18.9062 19.2578 18.3594C19.2578 18.0957 19.1309 17.8613 18.9453 17.6758L14.9121 13.623L13.5059 14.9023L17.5586 18.9453C17.7832 19.1895 18.0273 19.2969 18.3496 19.2969Z"/></g></svg></span>
           <input id="searchInput" aria-label="Search cocktails" class="text-input" type="search" placeholder="Search cocktails" autocomplete="off">
 <div id="topbarMeta" class="topbar-meta"><span id="resultMeta"></span><span class="meta-sep">·</span><button id="filterSummaryToggle" class="filter-summary-toggle" type="button" aria-expanded="false" aria-controls="quickFilterScroll pillFilters"><span id="activeMeta"></span></button></div>
           <kbd class="topbar-search-shortcut" aria-hidden="true">/</kbd>
         </div>
+<button id="resetFilters" class="button clear-filters-button" type="button" title="Clear sort and filters (Control+Option+Shift+C)" aria-label="Clear sort and filters"><svg class="sf-symbol" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24.1846 23.8281" aria-hidden="true" focusable="false"><g><rect opacity="0" height="23.8281" width="24.1846" x="0" y="0"/><path fill="currentColor" fill-opacity="0.85" d="M4.29199 23.8232L19.5264 23.8232C22.3145 23.8232 23.8232 22.3193 23.8232 19.5605L23.8232 4.26758C23.8232 1.50391 22.3145 0 19.5264 0L4.29199 0C1.50879 0 0 1.49902 0 4.26758L0 19.5605C0 22.3291 1.50879 23.8232 4.29199 23.8232ZM4.58008 20.9326C3.47656 20.9326 2.89062 20.3857 2.89062 19.2285L2.89062 4.59961C2.89062 3.44727 3.47656 2.89062 4.58008 2.89062L19.2383 2.89062C20.332 2.89062 20.9326 3.44727 20.9326 4.59961L20.9326 19.2285C20.9326 20.3857 20.332 20.9326 19.2383 20.9326Z"/><path fill="currentColor" fill-opacity="0.85" d="M8.84766 16.7676L16.7725 8.83301C17.0117 8.59863 17.1484 8.2959 17.1484 7.97363C17.1484 7.27539 16.6064 6.74316 15.9082 6.74316C15.5518 6.74316 15.2588 6.86035 15.0195 7.10938L7.0752 15.0293C6.83105 15.2734 6.69434 15.5664 6.69434 15.8936C6.69434 16.5918 7.24121 17.1387 7.93457 17.1387C8.30566 17.1387 8.60352 17.0117 8.84766 16.7676ZM15.0049 16.7676C15.2441 17.0117 15.5371 17.1387 15.9082 17.1387C16.6064 17.1387 17.1484 16.5918 17.1484 15.8936C17.1484 15.5664 17.0117 15.2734 16.7725 15.0293L8.83301 7.10938C8.58887 6.86035 8.30078 6.74316 7.93457 6.74316C7.24121 6.74316 6.69434 7.27539 6.69434 7.97363C6.69434 8.2959 6.83105 8.59863 7.0752 8.83301Z"/></g></svg><span>Clear</span></button>
+        </div>
         <div class="topbar-actions" aria-label="Application actions"><button id="githubSyncButton" class="button cloud-sync-status" data-cloud-sync type="button" title="Set up GitHub Sync" aria-label="Set up GitHub Sync" aria-haspopup="dialog" data-sync-state="setup"><span id="githubSyncGlyph" class="floating-status-icon" aria-hidden="true"></span><span class="cloud-sync-copy"><strong id="githubSyncLabel">Saved locally</strong><small id="githubSyncMessage">GitHub · Sign In Required</small></span></button><button id="updateAppButton" class="button icon" type="button" title="Check for updates and force refresh" aria-label="Update — check for updates and force refresh"><svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.0576 23.7305" aria-hidden="true" focusable="false"><g><rect opacity="0" height="23.7305" width="24.0576" x="0" y="0"/><path fill="currentColor" fill-opacity="0.85" d="M0 6.7334L2.89551 6.7334C2.93457 5.47363 3.27148 4.53125 3.90625 3.90137C4.53125 3.28613 5.48828 2.93945 6.74805 2.89551L6.74805 0C4.62402 0.0390625 2.93945 0.678711 1.81641 1.81152C0.668945 2.94434 0.0341797 4.61426 0 6.7334ZM15.0342 2.88574L15.0342 0L8.66211 0L8.66211 2.88574ZM20.8057 6.7334L23.6963 6.7334C23.6621 4.61426 23.0322 2.94434 21.8799 1.81152C20.752 0.673828 19.0771 0.0390625 16.9482 0L16.9482 2.89551C18.2129 2.93945 19.1602 3.27637 19.79 3.90137C20.4297 4.53125 20.7617 5.47363 20.8057 6.7334ZM20.8105 15.083L23.6963 15.083L23.6963 8.65723L20.8105 8.65723ZM16.9482 23.7061C19.0771 23.6719 20.7568 23.0273 21.8799 21.8994C23.0322 20.7666 23.6475 19.1113 23.6963 17.002L20.7959 17.002C20.7617 18.252 20.4297 19.1699 19.79 19.8047C19.1602 20.4297 18.2129 20.7715 16.9482 20.8154ZM15.0342 23.7061L15.0342 20.8203L8.66211 20.8203L8.66211 23.7061ZM6.74805 23.7061L6.74805 20.8154C5.48828 20.7715 4.53613 20.4297 3.90625 19.8047C3.27148 19.1699 2.93457 18.252 2.90039 17.002L0 17.002C0.0488281 19.1113 0.664062 20.7617 1.81641 21.8994C2.94434 23.0371 4.62402 23.6719 6.74805 23.7061ZM0 15.083L2.89062 15.083L2.89062 8.65723L0 8.65723Z"/><path fill="currentColor" fill-opacity="0.85" d="M11.5576 14.2529C12.2803 14.2529 12.7783 13.8623 12.8467 13.3496C12.8516 13.2959 12.8564 13.2275 12.8662 13.1787C12.9395 12.5732 13.418 12.1582 14.1846 11.6602C15.4639 10.835 16.1523 10.1221 16.1523 8.74023C16.1523 6.68457 14.2773 5.41016 11.9482 5.41016C9.81934 5.41016 8.32031 6.35742 7.89062 7.57324C7.8125 7.80273 7.76367 8.01758 7.76367 8.26172C7.76367 8.88672 8.24707 9.34082 8.85254 9.34082C9.32617 9.34082 9.67773 9.15527 9.93164 8.80371L10.0732 8.60352C10.4492 7.94434 11.0107 7.59277 11.7236 7.59277C12.627 7.59277 13.2568 8.14941 13.2568 8.8916C13.2568 9.62891 12.7393 10 11.6992 10.7178C10.7959 11.3428 10.1953 11.9629 10.1953 12.9785C10.1953 13.0273 10.1953 13.0713 10.1953 13.1152C10.1953 13.8623 10.6836 14.2529 11.5576 14.2529ZM11.543 18.1982C12.4219 18.1982 13.1055 17.6172 13.1055 16.7676C13.1055 15.9229 12.4316 15.3369 11.543 15.3369C10.6641 15.3369 9.9707 15.9229 9.9707 16.7676C9.9707 17.6074 10.6689 18.1982 11.543 18.1982Z"/></g></svg></button><button id="notesButton" class="button icon" type="button" title="Notes" aria-label="Notes" aria-haspopup="dialog"></button><button id="settingsButton" class="button icon" type="button" title="Settings" aria-label="Settings" aria-haspopup="dialog"><svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 27.6074 27.2461"><g><rect height="27.2461" opacity="0" width="27.6074" x="0" y="0"/><path d="M12.4707 27.2412L14.7803 27.2412C15.6396 27.2412 16.2842 26.7188 16.4795 25.874L17.0898 23.3252C17.4365 23.208 17.7783 23.0664 18.0908 22.9248L20.3125 24.3018C21.0303 24.7461 21.8799 24.6729 22.4707 24.0723L24.0967 22.4561C24.6924 21.8555 24.7656 20.9863 24.3018 20.2686L22.9443 18.0615C23.0859 17.7441 23.2227 17.4219 23.3252 17.0947L25.8984 16.4844C26.7383 16.2891 27.2461 15.6445 27.2461 14.7852L27.2461 12.5146C27.2461 11.665 26.7383 11.0205 25.8984 10.8203L23.3545 10.21C23.2324 9.85352 23.0908 9.52148 22.9639 9.2334L24.3311 6.97754C24.7803 6.24023 24.7168 5.41992 24.1064 4.81445L22.4609 3.18848C21.8555 2.6416 21.084 2.52441 20.3711 2.94434L18.0908 4.35059C17.7881 4.19922 17.4512 4.07227 17.0947 3.94531L16.4795 1.3623C16.2793 0.522461 15.6396 0 14.7803 0L12.4707 0C11.6064 0 10.9717 0.522461 10.7666 1.36719L10.1611 3.92578C9.80957 4.04297 9.45801 4.17969 9.14551 4.34082L6.87988 2.94434C6.15723 2.52441 5.37109 2.6123 4.78516 3.19336L3.13965 4.81445C2.5293 5.41992 2.46582 6.24023 2.91992 6.97754L4.28223 9.2334C4.15527 9.52148 4.01367 9.85352 3.89648 10.21L1.35254 10.8203C0.517578 11.0205 0 11.665 0 12.5146L0 14.7852C0 15.6445 0.517578 16.2891 1.35254 16.4844L3.9209 17.0947C4.02832 17.4219 4.16016 17.7441 4.30176 18.0615L2.94434 20.2686C2.48535 20.9863 2.55859 21.8555 3.1543 22.4561L4.77539 24.0723C5.37109 24.6729 6.2207 24.7461 6.93359 24.3018L9.16016 22.9248C9.47266 23.0664 9.80957 23.208 10.1611 23.3252L10.7666 25.874C10.9668 26.7188 11.6064 27.2412 12.4707 27.2412ZM13.623 17.9932C11.2109 17.9932 9.24805 16.0303 9.24805 13.6182C9.24805 11.2012 11.2109 9.24316 13.623 9.24316C16.04 9.24316 17.998 11.2012 17.998 13.6182C17.998 16.0303 16.04 17.9932 13.623 17.9932Z"/></g></svg></button>
 	        </div>
 	      </div>
 	    </header>
     <aside id="whatsNewBanner" class="whats-new-banner" aria-labelledby="whatsNewTitle" hidden>
-      <div class="whats-new-copy"><small>What’s New · <span id="whatsNewVersion"></span></small><strong id="whatsNewTitle">Search details and familiar sync status</strong><p>Result counts and filter details now sit inside search. Cloud Sync uses the template’s status text, colors, and symbols.</p></div>
+      <div class="whats-new-copy"><small>What’s New · <span id="whatsNewVersion"></span></small><strong id="whatsNewTitle">More filters when there’s room</strong><p>Weak, Strong, Sweet, Dry, All Spirit, and Spirit Forward appear as space allows. Clear is beside search.</p></div>
       <div class="whats-new-actions"><button id="whatsNewDetails" class="button" type="button">Details</button><button id="whatsNewDismiss" class="button icon" type="button" aria-label="Dismiss What’s New">×</button></div>
       <span class="whats-new-timer" aria-hidden="true"></span>
     </aside>
@@ -2225,9 +2241,10 @@
             <button class="quick-chip filter-iba" type="button" data-quick="iba">IBA</button>
             <button class="quick-chip source-diffords" type="button" data-quick="diffords">Difford's</button>
             <button id="mobileAdvancedFiltersToggle" class="mobile-filter-toggle" type="button" aria-expanded="false" aria-controls="pillFilters" aria-label="Show Base, Garnish, Glassware, Type, and Rating filters"><span class="mobile-filter-chevron" aria-hidden="true"></span></button>
+<button class="quick-chip" type="button" data-responsive-quick data-quick="diffordsWeak" data-short-label="Weak" hidden>Weak</button><button class="quick-chip" type="button" data-responsive-quick data-quick="diffordsStrong" data-short-label="Strong" hidden>Strong</button><button class="quick-chip" type="button" data-responsive-quick data-quick="diffordsSweet" data-short-label="Sweet" hidden>Sweet</button><button class="quick-chip" type="button" data-responsive-quick data-quick="diffordsDrySour" data-short-label="Dry" hidden>Dry</button><button class="quick-chip" type="button" data-responsive-quick data-quick="allSpirit" data-short-label="All Spirit" hidden>All Spirit</button><button class="quick-chip" type="button" data-responsive-quick data-quick="spiritForward" data-short-label="Spirit Forward" hidden>Spirit Forward</button>
             <button id="genreMoreButton" class="quick-chip" type="button" aria-expanded="false" aria-controls="genreMoreMenu" aria-label="More filters">&hellip;<span id="genreMoreCount" class="genre-more-count"></span></button>
           </div>
-        </div><div class="quick-filter-footer"><button id="resetFilters" class="button clear-filters-button" type="button" title="Clear sort and filters (Control+Option+Shift+C)" aria-label="Clear sort and filters"><svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.0576 23.7305" aria-hidden="true" focusable="false"><g><rect opacity="0" height="23.7305" width="24.0576" x="0" y="0"/><path fill="currentColor" fill-opacity="0.85" d="M6.92383 23.7061L16.7725 23.7061C18.9844 23.7061 20.7227 23.0615 21.8799 21.8994C23.0615 20.7275 23.6963 18.9893 23.6963 16.7822L23.6963 6.92383C23.6963 4.7168 23.0664 2.9834 21.8799 1.81152C20.7178 0.634766 18.9844 0 16.7725 0L6.92383 0C4.7168 0 2.97363 0.649414 1.81641 1.81152C0.634766 2.97852 0 4.7168 0 6.92383L0 16.7822C0 18.9893 0.629883 20.7227 1.81641 21.8994C2.97852 23.0664 4.7168 23.7061 6.92383 23.7061ZM7.08984 20.8203C5.64941 20.8203 4.59473 20.4834 3.90625 19.8047C3.21777 19.1211 2.89062 18.0713 2.89062 16.6211L2.89062 7.08984C2.89062 5.63965 3.21777 4.58496 3.90625 3.90137C4.58496 3.22754 5.64941 2.88574 7.08984 2.88574L16.6113 2.88574C18.0518 2.88574 19.1064 3.22266 19.79 3.90137C20.4834 4.58496 20.8105 5.63965 20.8105 7.08984L20.8105 16.6211C20.8105 18.0713 20.4834 19.1211 19.79 19.8047C19.1113 20.4785 18.0518 20.8203 16.6113 20.8203Z"/><path fill="currentColor" fill-opacity="0.85" d="M8.78418 16.7041L16.7139 8.76953C16.9531 8.54004 17.085 8.23242 17.085 7.91504C17.085 7.21191 16.5479 6.67969 15.8496 6.67969C15.4883 6.67969 15.2002 6.79688 14.9561 7.0459L7.0166 14.9707C6.77246 15.21 6.63574 15.5029 6.63574 15.835C6.63574 16.5332 7.17773 17.0752 7.87598 17.0752C8.24707 17.0752 8.54004 16.9482 8.78418 16.7041ZM14.9414 16.7041C15.1855 16.9482 15.4785 17.0752 15.8496 17.0752C16.5479 17.0752 17.085 16.5332 17.085 15.835C17.085 15.5029 16.9531 15.21 16.7139 14.9707L8.76953 7.0459C8.52539 6.79688 8.2373 6.67969 7.87598 6.67969C7.17773 6.67969 6.63574 7.21191 6.63574 7.91504C6.63574 8.23242 6.77246 8.54004 7.0166 8.76953Z"/></g></svg><span>Clear</span></button></div></div>
+        </div></div>
 	      <div id="cocktailListSection" class="table-wrap">
         <div id="lettersLiquorTableBanner" class="lnl-table-banner" hidden></div>
         <table class="cocktail-table">
@@ -2320,7 +2337,7 @@
         </div>
         <div class="modal-body">
           <section>
-            <h3>What’s New · 2.0.0.121</h3>
+            <h3>What’s New · 2.0.0.122</h3><ul><li>Six extra quick filters appear as space allows and remain available under More on smaller screens.</li><li>Clear is anchored to the right of search with the supplied symbol.</li></ul><h3>2.0.0.121</h3>
             <ul><li>Result counts and filter details inside the search bar, before the shortcut.</li><li>Cloud Sync presentation matched to app-template, including pending and transfer states.</li></ul>
             <h3>2.0.0.118</h3>
             <ul><li>Bar tools grouped before search; Reset and filter counts grouped with quick filters.</li><li>Expanded Cloud Sync status and the template’s search and Update symbols.</li></ul>
@@ -2765,11 +2782,11 @@
   </div>
   <button id="floatingResetButton" class="button icon" type="button" title="Reset filters and collapse cocktails" aria-label="Reset filters and collapse cocktails" hidden>↺</button>
 
-  <script src="letters-liquor-notes.js?v=2.0.0.121"></script>
-  <script src="letters-liquor-data.js?v=2.0.0.121"></script>
-  <script src="diffords-data.js?v=2.0.0.121"></script>
+  <script src="letters-liquor-notes.js?v=2.0.0.122"></script>
+  <script src="letters-liquor-data.js?v=2.0.0.122"></script>
+  <script src="diffords-data.js?v=2.0.0.122"></script>
   <script>
-    const BUILD_VERSION = '2.0.0.121';
+    const BUILD_VERSION = '2.0.0.122';
 	    const __PHOTO = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 30.3223 23.8281"><g><rect height="23.8281" opacity="0" width="30.3223" x="0" y="0"/><path d="M5.01953 22.5928L24.7852 22.5928C27.5879 22.5928 28.9404 21.2598 28.7109 18.8818L21.2256 11.8945C20.6641 11.377 20.0098 11.123 19.3311 11.123C18.6377 11.123 18.0176 11.3623 17.4414 11.875L11.7529 16.9629L9.42383 14.8584C8.8916 14.3848 8.31543 14.1406 7.71973 14.1406C7.11426 14.1406 6.62109 14.3701 6.10352 14.8438L1.41113 19.0234C1.47461 21.3623 2.69531 22.5928 5.01953 22.5928ZM4.29199 23.8281L25.6641 23.8281C28.457 23.8281 29.9609 22.3242 29.9609 19.5654L29.9609 4.27246C29.9609 1.50879 28.457 0.00976562 25.6641 0.00976562L4.29199 0.00976562C1.50879 0.00976562 0 1.50391 0 4.27246L0 19.5654C0 22.334 1.50879 23.8281 4.29199 23.8281ZM4.58008 20.9424C3.47656 20.9424 2.89062 20.3906 2.89062 19.2334L2.89062 4.60449C2.89062 3.45215 3.47656 2.89551 4.58008 2.89551L25.376 2.89551C26.4697 2.89551 27.0654 3.45215 27.0654 4.60449L27.0654 19.2334C27.0654 20.3906 26.4697 20.9424 25.376 20.9424Z"/><path d="M10.1807 12.2949C11.8652 12.2949 13.252 10.9082 13.252 9.20898C13.252 7.52441 11.8652 6.12305 10.1807 6.12305C8.48145 6.12305 7.09961 7.52441 7.09961 9.20898C7.09961 10.9082 8.48145 12.2949 10.1807 12.2949Z"/></g></svg>`;
 	    const __RECTANGLE_SPLIT_3X1 = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 30.3223 23.8281"><g><rect height="23.8281" opacity="0" width="30.3223" x="0" y="0"/><path d="M9.09668 22.4658L11.875 22.4658L11.875 1.36719L9.09668 1.36719ZM18.0859 22.4658L20.8545 22.4658L20.8545 1.36719L18.0859 1.36719ZM4.29199 23.8281L25.6641 23.8281C28.457 23.8281 29.9609 22.3242 29.9609 19.5654L29.9609 4.27246C29.9609 1.50879 28.457 0.00976562 25.6641 0.00976562L4.29199 0.00976562C1.50879 0.00976562 0 1.50391 0 4.27246L0 19.5654C0 22.334 1.50879 23.8281 4.29199 23.8281ZM4.58008 20.9424C3.47656 20.9424 2.89062 20.3906 2.89062 19.2334L2.89062 4.60449C2.89062 3.45215 3.47656 2.89551 4.58008 2.89551L25.376 2.89551C26.4697 2.89551 27.0654 3.45215 27.0654 4.60449L27.0654 19.2334C27.0654 20.3906 26.4697 20.9424 25.376 20.9424Z"/></g></svg>`;
 	    const __ARROW_UP_AND_DOWN_SQUARE_FILL = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24.1846 23.8281"><g><rect height="23.8281" opacity="0" width="24.1846" x="0" y="0"/><path d="M23.8232 4.26758L23.8232 19.5605C23.8232 22.3193 22.3145 23.8232 19.5264 23.8232L4.29199 23.8232C1.50879 23.8232 0 22.3291 0 19.5605L0 4.26758C0 1.49902 1.50879 0 4.29199 0L19.5264 0C22.3145 0 23.8232 1.50391 23.8232 4.26758ZM11.0107 4.45312L7.56836 7.97363C7.33398 8.20312 7.22656 8.48145 7.22656 8.7793C7.22656 9.38477 7.68555 9.80957 8.30566 9.80957C8.64746 9.80957 8.96484 9.65332 9.13574 9.40918L9.80469 8.72559L10.8753 7.30769L10.7812 9.80469L10.7812 14.0039L10.8755 16.506L9.80469 15.0879L9.13574 14.4092C8.96484 14.1553 8.64746 14.0039 8.30566 14.0039C7.68555 14.0039 7.22656 14.4287 7.22656 15.0342C7.22656 15.332 7.33398 15.6055 7.56836 15.8398L11.0107 19.3604C11.2744 19.6484 11.5967 19.8047 11.9873 19.8047C12.3828 19.8047 12.7051 19.6484 12.9736 19.3604L16.4111 15.8398C16.6504 15.6006 16.7529 15.332 16.7529 15.0342C16.7529 14.4287 16.2988 14.0039 15.6689 14.0039C15.3271 14.0039 15.0146 14.1553 14.8438 14.4092L14.1748 15.0879L13.1041 16.5027L13.1982 14.0039L13.1982 9.80469L13.1043 7.31102L14.1748 8.72559L14.8438 9.40918C15.0146 9.65332 15.3271 9.80957 15.6689 9.80957C16.2988 9.80957 16.7529 9.38477 16.7529 8.7793C16.7529 8.48145 16.6504 8.20801 16.4111 7.97363L12.9736 4.45312C12.7051 4.16992 12.3828 4.00879 11.9873 4.00879C11.5967 4.00879 11.2744 4.16992 11.0107 4.45312Z"/></g></svg>`;
@@ -8989,6 +9006,30 @@
     function updateStickyTop() {
       syncStickyHeaderHeight();
     }
+    function fitResponsiveQuickFilters() {
+      const row = $('#quickFilterScroll .quick-filter-primary');
+      const extra = $$('[data-responsive-quick]', row);
+      if (!extra.length) return;
+      const focused = document.activeElement;
+      extra.forEach((chip) => { chip.hidden = false; });
+      const gap = parseFloat(getComputedStyle(row).columnGap) || 0;
+      const fixed = Array.from(row.children).filter((chip) => !chip.hasAttribute('data-responsive-quick') && getComputedStyle(chip).display !== 'none');
+      let available = $('#quickFilterScroll').clientWidth - fixed.reduce((sum, chip) => sum + chip.getBoundingClientRect().width, 0) - gap * Math.max(0, fixed.length - 1);
+      let full = false;
+      extra.forEach((chip) => {
+        const needed = chip.getBoundingClientRect().width + gap;
+        chip.hidden = full || needed + 2 > available;
+        if (chip.hidden) full = true;
+        else available -= needed;
+      });
+      const promoted = new Set(extra.filter((chip) => !chip.hidden).map((chip) => chip.dataset.quick));
+      $$('#genreMenuItems [data-quick]').forEach((chip) => { chip.closest('.genre-menu-item').hidden = promoted.has(chip.dataset.quick); });
+      const hiddenActive = $$('#genreMenuItems [data-quick]').filter((chip) => !chip.closest('.genre-menu-item').hidden && state.quick.has(chip.dataset.quick)).length
+        + $$('#genreMenuItems [data-stat-filter]').filter((chip) => state.statFilter === chip.dataset.statFilter).length;
+      $('#genreMoreCount').textContent = hiddenActive ? ` ${hiddenActive}` : '';
+      $('#genreMoreButton').classList.toggle('active', hiddenActive > 0);
+      if (extra.includes(focused) && focused.hidden) $('#genreMoreButton').focus();
+    }
     function renderGenreFilters() {
       store.favoriteGenreFilters = unique(store.favoriteGenreFilters).filter((id) => GENRE_FILTER_IDS.has(id));
 	      const statFilterMarkup = (id, className) => {
@@ -9063,7 +9104,7 @@
 	        const active = state.quick.has(id);
 	        chip.classList.toggle('active', active);
 	        chip.setAttribute('aria-pressed', String(active));
-	        const label = isTagFilterId(id) ? `#${tagFromFilterId(id)}` : QUICK_FILTER_LABEL_MAP.get(id);
+	        const label = chip.dataset.shortLabel || (isTagFilterId(id) ? `#${tagFromFilterId(id)}` : QUICK_FILTER_LABEL_MAP.get(id));
 	        if (label) {
 	          const count = quickFilterCount(id);
 	          chip.innerHTML = id === 'myBar'
@@ -9076,7 +9117,8 @@
 	        const label = STAT_FILTER_LABEL_MAP.get(chip.dataset.statFilter);
 	        if (label) chip.textContent = `${label} (${statFilterCount(chip.dataset.statFilter)})`;
 	      });
-	    }
+	      fitResponsiveQuickFilters();
+    }
 	    function setMobileAdvancedFiltersExpanded(expanded) {
 	      $('#pillFilters').classList.toggle('mobile-expanded', expanded);
 	      $('#mobileAdvancedFiltersToggle').setAttribute('aria-expanded', String(expanded));
@@ -10258,6 +10300,9 @@
       observedTableWidth = nextWidth;
       scheduleColumnWidthUpdate();
     });
+    const quickFilterWidthObserver = new ResizeObserver(fitResponsiveQuickFilters);
+    quickFilterWidthObserver.observe($('#quickFilterScroll'));
+    document.fonts.ready.then(fitResponsiveQuickFilters);
     tableWrapResizeObserver.observe($('.table-wrap'));
 	    render();
 	    applyColumnWidths();
