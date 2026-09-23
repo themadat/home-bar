@@ -2879,7 +2879,7 @@
   <script src="letters-liquor-data.js?v=2.0.0.125"></script>
   <script src="diffords-data.js?v=2.0.0.125"></script>
   <script>
-    const BUILD_VERSION = '2.0.0.132';
+    const BUILD_VERSION = '2.0.0.133';
     const CURRENT_RELEASE = {
       title: 'Smarter My Bar availability',
       summary: 'Availability now considers every recipe variation, and Settings includes a complete cocktail-measure reference.',
@@ -2907,6 +2907,7 @@
         if (ibaTikiRecipe) {
           ibaTikiRecipe.ingredients = ['30 ml Rum, White [Aged] [Ron Profundo Havana Club]', '30 ml Rum, Dark [Smokey] [Ron Smoky Havana Club]', '15 ml Almond Liqueur [Amaretto]', '5 ml Hazelnut Liqueur [Frangelico]', '1/24 oz Cherry Liqueur [Maraschino]', '30 ml Passion Fruit Puree', '90 ml Pineapple Juice [Fresh]', '30 ml Lime Juice [Fresh]', '1 piece Gengibre Slice'];
           ibaTikiRecipe.ingredientNames = ['Rum, White', 'Rum, Dark', 'Amaretto', 'Frangelico', 'Maraschino Liqueur', 'Passion Fruit Puree', 'Pineapple Juice', 'Lime Juice', 'Gengibre Slice'];
+          ibaTikiRecipe.ingredientBottles = ['Ron Profundo Havana Club', 'Ron Smoky Havana Club', 'Amaretto', 'Frangelico', 'Maraschino', 'Fresh', 'Fresh', 'Fresh', ''];
           ibaTikiRecipe.ingredientCount = ibaTikiRecipe.ingredients.length;
         }
         const grandMargaritaRecipe = COCKTAILS.find((cocktail) => cocktail.id === 'grand-margarita');
@@ -4237,7 +4238,10 @@
           const explicitSpecific = String(cocktail.ingredientBottles?.[index] || '').trim();
           if (explicitSpecific) {
             const displayed = splitSpecificIngredientLabel(displayIngredientName(rawName, cocktail));
-            return {generic: displayed.generic || rawName, specific: normalizeIngredientSpecific(explicitSpecific)};
+            const sourceBrackets = Array.from(sourceLine.matchAll(/\[([^\]]+)\]/g), (match) => match[1].trim());
+            const qualifier = sourceBrackets.length > 1 ? sourceBrackets[0] : '';
+            const generic = qualifier ? `${displayed.generic || rawName} [${qualifier}]` : (displayed.generic || rawName);
+            return {generic, specific: normalizeIngredientSpecific(explicitSpecific)};
           }
           const normalized = norm(rawName);
           const bittersRequirement = displayedBittersRequirement(sourceLine);
