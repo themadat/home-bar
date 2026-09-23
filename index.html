@@ -81,14 +81,15 @@
     .topbar-actions { display: flex; gap: 8px; align-items: center; }
     .topbar-actions .topbar-meta { max-width: 165px; }
     .topbar-search {
-      display: flex; align-items: center; gap: 8px; min-width: 0; height: var(--control-h);
+      position: relative; display: flex; align-items: center; gap: 8px; min-width: 0; height: var(--control-h);
       border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); padding: 0 9px;
     }
-    .topbar-search:focus-within { border-color: var(--accent-2); box-shadow: 0 0 0 2px rgba(84, 126, 146, .22); }
+    .topbar-search:focus-within { border-color: var(--accent-2); background: color-mix(in srgb, var(--accent-2) 7%, var(--panel)); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-2) 32%, transparent), inset 0 0 0 1px var(--accent-2); }
     .topbar-search-icon { color: var(--faint); font-size: 15px; line-height: 1; }
     .topbar-search .text-input {
-      min-width: 0; min-height: 0; height: auto; padding: 0; border: 0; background: transparent; box-shadow: none;
+      min-width: 0; min-height: 0; height: auto; padding: 0; border: 0; outline: 0; background: transparent; box-shadow: none;
     }
+    .topbar-search .text-input:focus { border: 0; outline: 0; box-shadow: none; }
     .topbar-search-shortcut {
       display: grid; place-items: center; flex: 0 0 auto; min-width: 20px; height: 20px;
       border: 1px solid var(--line); border-radius: 4px; color: var(--faint); background: #0C1118;
@@ -2073,6 +2074,12 @@
     .settings-info-section h3 { margin: 0; font-size: 13px; }
     .settings-info-section p { max-width: 68ch; line-height: 1.55; }
     .settings-info-section strong { color: var(--text); }
+    .measure-conversion-table { width: 100%; margin-top: 10px; border-collapse: collapse; font-size: 12px; line-height: 1.3; }
+    .measure-conversion-table th, .measure-conversion-table td { padding: 4px 7px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    .measure-conversion-table th { color: var(--muted); font-size: 10px; letter-spacing: .05em; text-transform: uppercase; }
+    .measure-conversion-table td:first-child { color: var(--accent); font-weight: 750; white-space: nowrap; }
+    .measure-conversion-table td:nth-child(2) { color: var(--accent-2); font-weight: 750; white-space: nowrap; }
+    .measure-conversion-table td:last-child { color: var(--muted); }
     .app-update-status { position: fixed; right: 16px; bottom: 16px; z-index: 120; max-width: min(420px, calc(100vw - 32px)); padding: 12px 16px; border: 1px solid var(--accent-2); border-radius: var(--radius); background: var(--panel); color: var(--text); box-shadow: var(--shadow); }
     @media (max-width: 760px) {
       .whats-new-banner { align-items: flex-start; margin-inline: 8px; gap: 8px; }
@@ -2117,21 +2124,20 @@
     @media (prefers-reduced-motion: reduce) { #githubSyncButton .sync-rotation { animation: none !important; } }
     @media (forced-colors: active) { .topbar #githubSyncButton { background: ButtonFace; color: ButtonText; border-color: ButtonText; } #githubSyncButton .cloud-sync-copy strong, #githubSyncButton .cloud-sync-copy small { color: ButtonText; } }
 
-    .topbar-search-group { display: flex; align-items: center; gap: 6px; min-width: 0; }
+    .topbar-search-group { display: flex; align-items: center; min-width: 0; }
     .topbar-search-group .topbar-search { flex: 1; min-width: 0; }
-    .topbar-search-group .clear-filters-button { flex: 0 0 auto; display: inline-flex; flex-direction: column; justify-content: center; gap: 2px; width: 42px; min-height: 44px; padding: 3px; border-color: transparent; background: transparent; font-size: 10px; }
+    .topbar-search .clear-filters-button { align-self: stretch; flex: 0 0 52px; display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; width: 52px; min-height: 0; margin: 0 -9px 0 0; padding: 2px 0; border: 0; border-left: 1px solid var(--line); border-radius: 0 var(--radius) var(--radius) 0; background: transparent; font-size: 10px; }
     .topbar-search-group .clear-filters-button:hover { background: var(--panel-2); }
-    .topbar-search-group .clear-filters-button .sf-symbol { width: 22px; height: 22px; }
+    .topbar-search .clear-filters-button .sf-symbol { width: 26px; height: 26px; }
     [data-responsive-quick][hidden], .genre-menu-item[hidden] { display: none !important; }
     @media (max-width: 400px) {
-      .topbar-search-group { gap: 3px; }
       .topbar-search { gap: 5px; padding-inline: 7px; }
       .topbar-search .topbar-meta { font-size: 10px; }
-      .topbar-search-group .clear-filters-button { width: 36px; }
+      .topbar-search .clear-filters-button { flex-basis: 46px; width: 46px; margin-right: -7px; }
     }
     .topbar-search-group, .topbar-search-group .topbar-search { height: 48px; min-height: 48px; }
     .topbar-search-group { padding-inline: 0; }
-    .topbar-search-group .clear-filters-button { height: 48px; }
+    .topbar-search .clear-filters-button { height: 100%; }
     #resetFilters:disabled { opacity: .3; cursor: default; background: transparent; }
     [data-shortcut]::after { min-width: 20px; height: 20px; padding: 0 4px; font-size: 12px; }
     .hover-hint { position: fixed; z-index: 1000; max-width: min(360px, calc(100vw - 24px)); padding: 10px 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); color: var(--text); font-size: 15px; line-height: 1.45; box-shadow: var(--shadow); pointer-events: none; }
@@ -2178,8 +2184,8 @@
           <input id="searchInput" aria-label="Search cocktails" class="text-input" type="search" placeholder="Search cocktails" autocomplete="off">
 <div id="topbarMeta" class="topbar-meta"><span id="resultMeta"></span><span class="meta-sep">·</span><button id="filterSummaryToggle" class="filter-summary-toggle" type="button" aria-expanded="false" aria-controls="quickFilterScroll pillFilters"><span id="activeMeta"></span></button></div>
           <kbd class="topbar-search-shortcut" aria-hidden="true">/</kbd>
-        </div>
 <button id="resetFilters" class="button clear-filters-button" type="button" title="Clear sort and filters (Control+Option+Shift+C)" aria-label="Clear sort and filters"><svg class="sf-symbol" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24.1846 23.8281" aria-hidden="true" focusable="false"><g><rect opacity="0" height="23.8281" width="24.1846" x="0" y="0"/><path fill="currentColor" fill-opacity="0.85" d="M4.29199 23.8232L19.5264 23.8232C22.3145 23.8232 23.8232 22.3193 23.8232 19.5605L23.8232 4.26758C23.8232 1.50391 22.3145 0 19.5264 0L4.29199 0C1.50879 0 0 1.49902 0 4.26758L0 19.5605C0 22.3291 1.50879 23.8232 4.29199 23.8232ZM4.58008 20.9326C3.47656 20.9326 2.89062 20.3857 2.89062 19.2285L2.89062 4.59961C2.89062 3.44727 3.47656 2.89062 4.58008 2.89062L19.2383 2.89062C20.332 2.89062 20.9326 3.44727 20.9326 4.59961L20.9326 19.2285C20.9326 20.3857 20.332 20.9326 19.2383 20.9326Z"/><path fill="currentColor" fill-opacity="0.85" d="M8.84766 16.7676L16.7725 8.83301C17.0117 8.59863 17.1484 8.2959 17.1484 7.97363C17.1484 7.27539 16.6064 6.74316 15.9082 6.74316C15.5518 6.74316 15.2588 6.86035 15.0195 7.10938L7.0752 15.0293C6.83105 15.2734 6.69434 15.5664 6.69434 15.8936C6.69434 16.5918 7.24121 17.1387 7.93457 17.1387C8.30566 17.1387 8.60352 17.0117 8.84766 16.7676ZM15.0049 16.7676C15.2441 17.0117 15.5371 17.1387 15.9082 17.1387C16.6064 17.1387 17.1484 16.5918 17.1484 15.8936C17.1484 15.5664 17.0117 15.2734 16.7725 15.0293L8.83301 7.10938C8.58887 6.86035 8.30078 6.74316 7.93457 6.74316C7.24121 6.74316 6.69434 7.27539 6.69434 7.97363C6.69434 8.2959 6.83105 8.59863 7.0752 8.83301Z"/></g></svg><span>Clear</span></button>
+        </div>
         </div>
         <div class="topbar-actions" aria-label="Application actions"><button id="githubSyncButton" class="button cloud-sync-status" data-cloud-sync type="button" title="Set up GitHub Sync" aria-label="Set up GitHub Sync" aria-haspopup="dialog" data-sync-state="setup"><span id="githubSyncGlyph" class="floating-status-icon" aria-hidden="true"></span><span class="cloud-sync-copy"><strong id="githubSyncLabel">Saved locally</strong><small id="githubSyncMessage">GitHub · Sign In Required</small></span></button><button id="updateAppButton" class="button icon" type="button" title="Check for updates and force refresh" aria-label="Update — check for updates and force refresh"><svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.0576 23.7305" aria-hidden="true" focusable="false"><g><rect opacity="0" height="23.7305" width="24.0576" x="0" y="0"/><path fill="currentColor" fill-opacity="0.85" d="M0 6.7334L2.89551 6.7334C2.93457 5.47363 3.27148 4.53125 3.90625 3.90137C4.53125 3.28613 5.48828 2.93945 6.74805 2.89551L6.74805 0C4.62402 0.0390625 2.93945 0.678711 1.81641 1.81152C0.668945 2.94434 0.0341797 4.61426 0 6.7334ZM15.0342 2.88574L15.0342 0L8.66211 0L8.66211 2.88574ZM20.8057 6.7334L23.6963 6.7334C23.6621 4.61426 23.0322 2.94434 21.8799 1.81152C20.752 0.673828 19.0771 0.0390625 16.9482 0L16.9482 2.89551C18.2129 2.93945 19.1602 3.27637 19.79 3.90137C20.4297 4.53125 20.7617 5.47363 20.8057 6.7334ZM20.8105 15.083L23.6963 15.083L23.6963 8.65723L20.8105 8.65723ZM16.9482 23.7061C19.0771 23.6719 20.7568 23.0273 21.8799 21.8994C23.0322 20.7666 23.6475 19.1113 23.6963 17.002L20.7959 17.002C20.7617 18.252 20.4297 19.1699 19.79 19.8047C19.1602 20.4297 18.2129 20.7715 16.9482 20.8154ZM15.0342 23.7061L15.0342 20.8203L8.66211 20.8203L8.66211 23.7061ZM6.74805 23.7061L6.74805 20.8154C5.48828 20.7715 4.53613 20.4297 3.90625 19.8047C3.27148 19.1699 2.93457 18.252 2.90039 17.002L0 17.002C0.0488281 19.1113 0.664062 20.7617 1.81641 21.8994C2.94434 23.0371 4.62402 23.6719 6.74805 23.7061ZM0 15.083L2.89062 15.083L2.89062 8.65723L0 8.65723Z"/><path fill="currentColor" fill-opacity="0.85" d="M11.5576 14.2529C12.2803 14.2529 12.7783 13.8623 12.8467 13.3496C12.8516 13.2959 12.8564 13.2275 12.8662 13.1787C12.9395 12.5732 13.418 12.1582 14.1846 11.6602C15.4639 10.835 16.1523 10.1221 16.1523 8.74023C16.1523 6.68457 14.2773 5.41016 11.9482 5.41016C9.81934 5.41016 8.32031 6.35742 7.89062 7.57324C7.8125 7.80273 7.76367 8.01758 7.76367 8.26172C7.76367 8.88672 8.24707 9.34082 8.85254 9.34082C9.32617 9.34082 9.67773 9.15527 9.93164 8.80371L10.0732 8.60352C10.4492 7.94434 11.0107 7.59277 11.7236 7.59277C12.627 7.59277 13.2568 8.14941 13.2568 8.8916C13.2568 9.62891 12.7393 10 11.6992 10.7178C10.7959 11.3428 10.1953 11.9629 10.1953 12.9785C10.1953 13.0273 10.1953 13.0713 10.1953 13.1152C10.1953 13.8623 10.6836 14.2529 11.5576 14.2529ZM11.543 18.1982C12.4219 18.1982 13.1055 17.6172 13.1055 16.7676C13.1055 15.9229 12.4316 15.3369 11.543 15.3369C10.6641 15.3369 9.9707 15.9229 9.9707 16.7676C9.9707 17.6074 10.6689 18.1982 11.543 18.1982Z"/></g></svg></button><button id="notesButton" class="button icon" type="button" title="Notes" aria-label="Notes" aria-haspopup="dialog"></button><button id="settingsButton" class="button icon" type="button" title="Settings" aria-label="Settings" aria-haspopup="dialog"><svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 27.6074 27.2461"><g><rect height="27.2461" opacity="0" width="27.6074" x="0" y="0"/><path d="M12.4707 27.2412L14.7803 27.2412C15.6396 27.2412 16.2842 26.7188 16.4795 25.874L17.0898 23.3252C17.4365 23.208 17.7783 23.0664 18.0908 22.9248L20.3125 24.3018C21.0303 24.7461 21.8799 24.6729 22.4707 24.0723L24.0967 22.4561C24.6924 21.8555 24.7656 20.9863 24.3018 20.2686L22.9443 18.0615C23.0859 17.7441 23.2227 17.4219 23.3252 17.0947L25.8984 16.4844C26.7383 16.2891 27.2461 15.6445 27.2461 14.7852L27.2461 12.5146C27.2461 11.665 26.7383 11.0205 25.8984 10.8203L23.3545 10.21C23.2324 9.85352 23.0908 9.52148 22.9639 9.2334L24.3311 6.97754C24.7803 6.24023 24.7168 5.41992 24.1064 4.81445L22.4609 3.18848C21.8555 2.6416 21.084 2.52441 20.3711 2.94434L18.0908 4.35059C17.7881 4.19922 17.4512 4.07227 17.0947 3.94531L16.4795 1.3623C16.2793 0.522461 15.6396 0 14.7803 0L12.4707 0C11.6064 0 10.9717 0.522461 10.7666 1.36719L10.1611 3.92578C9.80957 4.04297 9.45801 4.17969 9.14551 4.34082L6.87988 2.94434C6.15723 2.52441 5.37109 2.6123 4.78516 3.19336L3.13965 4.81445C2.5293 5.41992 2.46582 6.24023 2.91992 6.97754L4.28223 9.2334C4.15527 9.52148 4.01367 9.85352 3.89648 10.21L1.35254 10.8203C0.517578 11.0205 0 11.665 0 12.5146L0 14.7852C0 15.6445 0.517578 16.2891 1.35254 16.4844L3.9209 17.0947C4.02832 17.4219 4.16016 17.7441 4.30176 18.0615L2.94434 20.2686C2.48535 20.9863 2.55859 21.8555 3.1543 22.4561L4.77539 24.0723C5.37109 24.6729 6.2207 24.7461 6.93359 24.3018L9.16016 22.9248C9.47266 23.0664 9.80957 23.208 10.1611 23.3252L10.7666 25.874C10.9668 26.7188 11.6064 27.2412 12.4707 27.2412ZM13.623 17.9932C11.2109 17.9932 9.24805 16.0303 9.24805 13.6182C9.24805 11.2012 11.2109 9.24316 13.623 9.24316C16.04 9.24316 17.998 11.2012 17.998 13.6182C17.998 16.0303 16.04 17.9932 13.623 17.9932Z"/></g></svg></button>
 	        </div>
@@ -2577,8 +2583,49 @@
             <h3 id="substitutionInfoTitle">Ingredient substitutions</h3>
             <p><strong>Aperol = sweet orange with gentle bitterness.</strong><br><strong>Campari = bitter orange with a much stronger herbal bite.</strong></p>
             <p>They <em>can</em> substitute for each other, but they’ll substantially change the drink. Campari in an Aperol Spritz makes it darker, stronger, and much more bitter. Aperol in a Negroni makes it sweeter, lighter, and less assertive.</p>
-            <p><strong>Green = powerful, spicy, intensely herbal.</strong><br><strong>Yellow = sweeter, softer, honeyed and floral.</strong></p>
+            <p><strong>Green (Verte) = powerful, spicy, intensely herbal.</strong><br><strong>Yellow (Jaune) = sweeter, softer, honeyed and floral.</strong></p>
             <p>Wouldn’t generally substitute these <strong>1:1</strong>. Green can completely overpower a drink designed for Yellow. If replacing Green with Yellow, you’ll usually get a sweeter, much less herbal cocktail.</p>
+          </section>
+          <section class="settings-info-section" aria-labelledby="measureConversionTitle">
+            <h3 id="measureConversionTitle">Cocktail measure conversions</h3>
+            <table class="measure-conversion-table">
+              <thead><tr><th scope="col">Metric / drops</th><th scope="col">US measure</th><th scope="col">Note</th></tr></thead>
+              <tbody>
+                <tr><td>12 drops</td><td>1 dash</td><td></td></tr>
+                <tr><td>1.25 ml</td><td>1/24 oz</td><td>4 dashes</td></tr>
+                <tr><td>2.5 ml</td><td>1/12 oz</td><td>Approx. half barspoon</td></tr>
+                <tr><td>3.75 ml</td><td>1/8 oz</td><td></td></tr>
+                <tr><td>5 ml</td><td>1/6 oz</td><td>Approx. one barspoon/teaspoon</td></tr>
+                <tr><td>7.5 ml</td><td>1/4 oz</td><td></td></tr>
+                <tr><td>10 ml</td><td>1/3 oz</td><td></td></tr>
+                <tr><td>11.25 ml</td><td>3/8 oz</td><td></td></tr>
+                <tr><td>12.5 ml</td><td>5/12 oz</td><td></td></tr>
+                <tr><td>15 ml</td><td>1/2 oz</td><td>Approx. one tablespoon</td></tr>
+                <tr><td>17.5 ml</td><td>7/12 oz</td><td></td></tr>
+                <tr><td>18.75 ml</td><td>5/8 oz</td><td></td></tr>
+                <tr><td>20 ml</td><td>2/3 oz</td><td>Standard measure in Europe</td></tr>
+                <tr><td>22.5 ml</td><td>3/4 oz</td><td></td></tr>
+                <tr><td>25 ml</td><td>5/6 oz</td><td>Standard measure in UK</td></tr>
+                <tr><td>30 ml</td><td>1 oz</td><td>Standard measure in US/Can/Aust/NZ/Asia</td></tr>
+                <tr><td>35 ml</td><td>1 1/6 oz</td><td>Standard measure in Scotland</td></tr>
+                <tr><td>37.5 ml</td><td>1 1/4 oz</td><td>1½ standard UK measures</td></tr>
+                <tr><td>40 ml</td><td>1 1/3 oz</td><td></td></tr>
+                <tr><td>45 ml</td><td>1 1/2 oz</td><td>1½ standard US measures</td></tr>
+                <tr><td>50 ml</td><td>1 2/3 oz</td><td>2 standard UK measures</td></tr>
+                <tr><td>52.5 ml</td><td>1 3/4 oz</td><td></td></tr>
+                <tr><td>55 ml</td><td>1 5/6 oz</td><td></td></tr>
+                <tr><td>60 ml</td><td>2 oz</td><td></td></tr>
+                <tr><td>65 ml</td><td>2 1/6 oz</td><td></td></tr>
+                <tr><td>67.5 ml</td><td>2 1/4 oz</td><td></td></tr>
+                <tr><td>70 ml</td><td>2 1/3 oz</td><td></td></tr>
+                <tr><td>75 ml</td><td>2 1/2 oz</td><td></td></tr>
+                <tr><td>80 ml</td><td>2 2/3 oz</td><td></td></tr>
+                <tr><td>85 ml</td><td>2 3/4 oz</td><td></td></tr>
+                <tr><td>90 ml</td><td>3 oz</td><td></td></tr>
+                <tr><td>100 ml</td><td>3 1/3 oz</td><td></td></tr>
+                <tr><td>105 ml</td><td>3 1/2 oz</td><td></td></tr>
+              </tbody>
+            </table>
           </section>
         </section>
         <form id="githubSyncForm" class="modal-body sync-form">
@@ -2832,15 +2879,16 @@
   <script src="letters-liquor-data.js?v=2.0.0.125"></script>
   <script src="diffords-data.js?v=2.0.0.125"></script>
   <script>
-    const BUILD_VERSION = '2.0.0.130';
+    const BUILD_VERSION = '2.0.0.132';
     const CURRENT_RELEASE = {
-      title: 'More cocktail sources and bottle guides',
-      summary: 'Compare Alaska recipes, see accurate IBA Tiki availability, and browse expanded bottle-family guides.',
+      title: 'Smarter My Bar availability',
+      summary: 'Availability now considers every recipe variation, and Settings includes a complete cocktail-measure reference.',
       changes: [
-        'Added Liquor.com as a recipe source, beginning with its Alaska recipe.',
-        'Corrected IBA Tiki ingredients and availability so missing required rums are shown in red.',
-        'Expanded the Rum, Tequila, Gin, Brandy, Whisk(e)y, Wine, Beer, Liqueurs, and Flavorings guides.',
-        'Widened guide tables and improved deployment labels for versioned notifications.'
+        'A cocktail is green when at least one recipe variation is fully available, and yellow when one is available with substitutions.',
+        'Source-specific requirements now correctly identify missing bottles such as Sour Apple Liqueur in the Difford’s Appletini.',
+        'IBA Tiki now treats Aged and Smokey as descriptive bottle indicators while requiring standard White and Dark rum types.',
+        'Built Clear into the search field and synchronized the deployment notification title with the app version.',
+        'Added Chartreuse’s Jaune and Verte names plus drop, dash, metric, and ounce conversions to Settings.'
       ]
     };
 	    const __PHOTO = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 30.3223 23.8281"><g><rect height="23.8281" opacity="0" width="30.3223" x="0" y="0"/><path d="M5.01953 22.5928L24.7852 22.5928C27.5879 22.5928 28.9404 21.2598 28.7109 18.8818L21.2256 11.8945C20.6641 11.377 20.0098 11.123 19.3311 11.123C18.6377 11.123 18.0176 11.3623 17.4414 11.875L11.7529 16.9629L9.42383 14.8584C8.8916 14.3848 8.31543 14.1406 7.71973 14.1406C7.11426 14.1406 6.62109 14.3701 6.10352 14.8438L1.41113 19.0234C1.47461 21.3623 2.69531 22.5928 5.01953 22.5928ZM4.29199 23.8281L25.6641 23.8281C28.457 23.8281 29.9609 22.3242 29.9609 19.5654L29.9609 4.27246C29.9609 1.50879 28.457 0.00976562 25.6641 0.00976562L4.29199 0.00976562C1.50879 0.00976562 0 1.50391 0 4.27246L0 19.5654C0 22.334 1.50879 23.8281 4.29199 23.8281ZM4.58008 20.9424C3.47656 20.9424 2.89062 20.3906 2.89062 19.2334L2.89062 4.60449C2.89062 3.45215 3.47656 2.89551 4.58008 2.89551L25.376 2.89551C26.4697 2.89551 27.0654 3.45215 27.0654 4.60449L27.0654 19.2334C27.0654 20.3906 26.4697 20.9424 25.376 20.9424Z"/><path d="M10.1807 12.2949C11.8652 12.2949 13.252 10.9082 13.252 9.20898C13.252 7.52441 11.8652 6.12305 10.1807 6.12305C8.48145 6.12305 7.09961 7.52441 7.09961 9.20898C7.09961 10.9082 8.48145 12.2949 10.1807 12.2949Z"/></g></svg>`;
@@ -2857,8 +2905,8 @@
         }
         const ibaTikiRecipe = COCKTAILS.find((cocktail) => cocktail.id === 'iba-tiki');
         if (ibaTikiRecipe) {
-          ibaTikiRecipe.ingredients = ['30 ml Rum, White Aged [Ron Profundo Havana Club]', '30 ml Rum, Dark Smokey [Ron Smoky Havana Club]', '15 ml Almond Liqueur [Amaretto]', '5 ml Hazelnut Liqueur [Frangelico]', '0.5 ml Cherry Liqueur [Maraschino]', '30 ml Passion Fruit Puree', '90 ml Pineapple Juice [Fresh]', '30 ml Lime Juice [Fresh]', '1 piece Gengibre Slice'];
-          ibaTikiRecipe.ingredientNames = ['Rum, White Aged', 'Rum, Dark Smokey', 'Amaretto', 'Frangelico', 'Maraschino Liqueur', 'Passion Fruit Puree', 'Pineapple Juice', 'Lime Juice', 'Ginger'];
+          ibaTikiRecipe.ingredients = ['30 ml Rum, White [Aged] [Ron Profundo Havana Club]', '30 ml Rum, Dark [Smokey] [Ron Smoky Havana Club]', '15 ml Almond Liqueur [Amaretto]', '5 ml Hazelnut Liqueur [Frangelico]', '1/24 oz Cherry Liqueur [Maraschino]', '30 ml Passion Fruit Puree', '90 ml Pineapple Juice [Fresh]', '30 ml Lime Juice [Fresh]', '1 piece Gengibre Slice'];
+          ibaTikiRecipe.ingredientNames = ['Rum, White', 'Rum, Dark', 'Amaretto', 'Frangelico', 'Maraschino Liqueur', 'Passion Fruit Puree', 'Pineapple Juice', 'Lime Juice', 'Gengibre Slice'];
           ibaTikiRecipe.ingredientCount = ibaTikiRecipe.ingredients.length;
         }
         const grandMargaritaRecipe = COCKTAILS.find((cocktail) => cocktail.id === 'grand-margarita');
@@ -3183,7 +3231,8 @@
           ['Fruit, Blackberry', ['blackberry','creme de mure']],
           ['Fruit, Passion Fruit', ['passion fruit','passoa']],
           ['Fruit, Peach', ['peach liqueur','peach brandy','peach schnapps']],
-          ['Fruit, Raspberry', ['raspberry liqueur','chambord']]
+          ['Fruit, Raspberry', ['raspberry liqueur','chambord']],
+          ['Fruit, Other', ['sour apple liqueur','apple liqueur','apple schnapps','apple pucker']]
         ];
         const fruitLiqueurSubtypeForName = (name) => {
           const text = String(name || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, ' ').trim();
@@ -3661,6 +3710,7 @@
       if (['lemon fresh','lemon peel','lemon wheel'].includes(key)) return 'Lemon';
       if (key === 'lime fresh') return 'Lime';
       if (key === 'mint') return 'Mint Leaves';
+      if (key === 'gengibre slice') return 'Ginger';
       if (key === 'orange wheel') return 'Orange';
       if (['sparking lemonade','sparkling lemonade'].includes(key)) return 'Lemonade, Sparkling';
       if (key === 'splash water') return 'Water';
@@ -3982,7 +4032,7 @@
         }
         function parseIngredientLine(line) {
           const trimmed = line.trim();
-	      const match = trimmed.match(/^(?:[\d.\/⁄½⅓⅔¼¾⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞]+(?:\s+[\d\/⁄½⅓⅔¼¾⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞]+)?(?:\s*-\s*[\d.\/⁄½⅓⅔¼¾⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞]+)?\s*(?:oz|ml|cl|dash(?:es)?|drops?|tsp|tbsp|bar\s*spoons?|cups?|parts?|pinch(?:es)?|fresh|dried|swaths?|grinds?|cubes?|wedges?|slices?|sprigs?|leaves?|chunks?|scoops?)?|(?:a\s+)?(?:few\s+drops|pinch|splash|top\s+up(?:\s+with)?)(?:\s+of)?)\s+(.+)$/i);
+	      const match = trimmed.match(/^(?:[\d.\/⁄½⅓⅔¼¾⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞]+(?:\s+[\d\/⁄½⅓⅔¼¾⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞]+)?(?:\s*-\s*[\d.\/⁄½⅓⅔¼¾⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞]+)?\s*(?:oz|ml|cl|dash(?:es)?|drops?|tsp|tbsp|bar\s*spoons?|cups?|parts?|pieces?|pinch(?:es)?|fresh|dried|swaths?|grinds?|cubes?|wedges?|slices?|sprigs?|leaves?|chunks?|scoops?)?|(?:a\s+)?(?:few\s+drops|pinch|splash|top\s+up(?:\s+with)?)(?:\s+of)?)\s+(.+)$/i);
           return { line: trimmed, name: (match ? match[1] : trimmed).trim() };
         }
         const escapeRegExp = (value) => String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -4006,7 +4056,7 @@
           if (cocktail.baseLiquor.includes(base)) tags.push({base, subtype, value: subtypeValue(base, subtype)});
         }
         function baseSubtypeTags(cocktail) {
-          const text = norm([...cocktail.ingredientNames, ...cocktail.ingredients].join(' '));
+          const text = norm([...cocktail.ingredientNames, ...cocktail.ingredients.map((line) => String(line).replace(/\[[^\]]*\]/g, ''))].join(' '));
           const tags = [];
           const add = (base, subtype) => addSubtype(tags, cocktail, base, subtype);
           if (cocktail.baseLiquor.includes('Liqueurs')) cocktail.liqueurs.forEach((liqueur) => add('Liqueurs', canonicalLiqueurSubtype(liqueur.name, liqueur.subtype)));
@@ -4281,6 +4331,8 @@
 	          return `${amount} ${/^fl\s*oz$|^ounces?$|^oz$/i.test(unit) ? 'oz' : unit}`;
 	        }
 	        function imperialExistingOunces(amount, servings) {
+	          const scaled = amount * servings;
+	          if (scaled > 0 && scaled < 0.25) return `${mixedFraction(scaled, 24)} oz`;
 	          const rounded = nearestImperialFraction(amount * servings);
 	          return `${mixedFraction(rounded.value, rounded.denominator)} oz`;
 	        }
@@ -4358,7 +4410,7 @@
 	        }
 	        function ingredientLineMarkup(line, genericName = '', specificName = '', infoButton = '', substituteName = '') {
 	          const text = String(line || '').trim().replace(/\bLime Juice Juice\b/gi, 'Lime Juice');
-	          const standardMatch = text.match(new RegExp(`^${AMOUNT_PATTERN}\\s+(oz|tsp|tbsp|teaspoons?|tablespoons?|dash(?:es)?|drops?|bar\\s*spoons?|pinch(?:es)?|fresh|dried|swaths?|grinds?|cubes?|wedges?|slices?|sprigs?|leaves?|chunks?|scoops?)\\s+(.+)$`, 'i'));
+	          const standardMatch = text.match(new RegExp(`^${AMOUNT_PATTERN}\\s+(oz|tsp|tbsp|teaspoons?|tablespoons?|dash(?:es)?|drops?|bar\\s*spoons?|pieces?|pinch(?:es)?|fresh|dried|swaths?|grinds?|cubes?|wedges?|slices?|sprigs?|leaves?|chunks?|scoops?)\\s+(.+)$`, 'i'));
 	          const amountOnlyMatch = text.match(new RegExp(`^${AMOUNT_PATTERN}\\s+(.+)$`, 'i'));
 	          const dashOnlyMatch = text.match(/^(?:a\s+)?dash(?:es)?(?:\s+of)?\s+(.+)$/i);
 	          const fewDropsMatch = text.match(/^(?:a\s+)?few\s+drops(?:\s+of)?\s+(.+)$/i);
@@ -4372,7 +4424,7 @@
 	          const originalMeasureMatch = parsedNameWithMeasure.match(/^\(([^)]+)\)\s+(.+)$/);
 	          const parsedName = originalMeasureMatch ? originalMeasureMatch[2] : parsedNameWithMeasure;
 	          const displayName = genericName || parsedName;
-	          const isCompact = /^(?:dash(?:es)?|drops?|few drops|tsp|teaspoons?|pinch(?:es)?|splash|top up|fresh|dried|swaths?|grinds?|cubes?|wedges?|slices?|sprigs?|leaves?|chunks?|scoops?)$/i.test(unit);
+	          const isCompact = /^(?:dash(?:es)?|drops?|few drops|tsp|teaspoons?|pieces?|pinch(?:es)?|splash|top up|fresh|dried|swaths?|grinds?|cubes?|wedges?|slices?|sprigs?|leaves?|chunks?|scoops?)$/i.test(unit);
 	          const displayUnit = isCompact ? (amount ? unit.toLowerCase() : titleWords(unit)) : unit;
 	          const amountClass = amount && !/\s/.test(amount) && (/[\/⁄]/.test(amount) || VULGAR_FRACTION_VALUES.has(amount)) ? ' ingredient-amount-fraction' : '';
 	          const specificMarkup = specificName
@@ -5109,22 +5161,40 @@
         })
         .filter((parts) => parts.generic);
     const nonAlcoholicIngredientTags = (cocktail) => unique(nonAlcoholicIngredientParts(cocktail).map((parts) => parts.generic));
+    function sourceRecipeClassification(source, cocktail) {
+      const names = cloneRecipeLines(source.ingredientNames);
+      const classifications = names.map(inferBottleClassification);
+      const baseLiquor = Array.isArray(source.baseLiquor) && source.baseLiquor.length
+        ? cloneRecipeLines(source.baseLiquor)
+        : unique(classifications.filter(Boolean).map((item) => item.base).filter((base) => base !== 'Flavorings'));
+      const inferredLiqueurs = names.flatMap((name, index) => {
+        const classification = classifications[index];
+        return classification?.base === 'Liqueurs'
+          ? [{name, subtype: classification.subtype || 'Other, Specialty', flavor: '', genericOnly: false}]
+          : [];
+      });
+      return {
+        baseLiquor: baseLiquor.length ? baseLiquor : cocktail.baseLiquor,
+        liqueurs: Array.isArray(source.liqueurs) ? source.liqueurs.map((liqueur) => ({...liqueur})) : inferredLiqueurs
+      };
+    }
     function pantryRecipeVariant(cocktail, source) {
+      const classification = sourceRecipeClassification(source, cocktail);
       return {
         ...cocktail,
         ingredients: cloneRecipeLines(source.ingredients),
         ingredientNames: cloneRecipeLines(source.ingredientNames),
         ingredientBottles: cloneRecipeLines(source.ingredientBottles),
-        liqueurs: Array.isArray(source.liqueurs) && source.liqueurs.length
-          ? source.liqueurs.map((liqueur) => ({...liqueur}))
-          : cocktail.liqueurs
+        baseLiquor: classification.baseLiquor,
+        liqueurs: classification.liqueurs
       };
     }
     function pantryRecipeVariants(cocktail) {
       return [
         cocktail,
         ...(cocktail.lnlSource?.available === false ? [] : (cocktail.lnlSource ? [pantryRecipeVariant(cocktail, cocktail.lnlSource)] : [])),
-        ...(cocktail.diffordsSource?.available === false ? [] : (cocktail.diffordsSource ? [pantryRecipeVariant(cocktail, cocktail.diffordsSource)] : []))
+        ...(cocktail.diffordsSource?.available === false ? [] : (cocktail.diffordsSource ? [pantryRecipeVariant(cocktail, cocktail.diffordsSource)] : [])),
+        ...(cocktail.liquorSource?.available === false ? [] : (cocktail.liquorSource ? [pantryRecipeVariant(cocktail, cocktail.liquorSource)] : []))
       ];
     }
     const pantryIngredientTags = (cocktail) => unique(
@@ -5164,7 +5234,8 @@
       ['Amaretto', 'Disaronno'],
       ['Maraschino Liqueur', 'Maraschino Luxardo', 'Luxardo Maraschino'],
       ['Cherry Brandy', 'Cherry Liqueur'],
-      ['Peach Schnapps', 'Peach Liqueur']
+      ['Peach Schnapps', 'Peach Liqueur'],
+      ['Sour Apple Liqueur', 'Apple Liqueur', 'Apple Schnapps', 'Apple Pucker', 'DeKuyper Apple Pucker']
     ];
     function namedBottleAliases(name) {
       const normalized = norm(name);
@@ -5373,7 +5444,7 @@
       const substituteRequirement = {name: substituteName, subtype: requirement.subtype, genericOnly: false};
       return store.bar.some((bottle) => bottleMatchesLiqueurRequirement(bottle, substituteRequirement)) ? substituteName : '';
     }
-    function barAvailability(cocktail) {
+    function singleRecipeBarAvailability(cocktail) {
       const missing = missingRequirementsFor(cocktail);
       if (!missing.length) return {state: 'exact', missing, substitutions: []};
       const substitutions = missing.map((requirement) => ({requirement, substitute: barSubstituteForRequirement(requirement)}));
@@ -5382,6 +5453,13 @@
         missing,
         substitutions
       };
+    }
+    function barAvailability(cocktail) {
+      const variants = pantryRecipeVariants(cocktail).map(singleRecipeBarAvailability);
+      return variants.find((availability) => availability.state === 'exact')
+        || variants.find((availability) => availability.state === 'substitute')
+        || variants[0]
+        || {state: 'missing', missing: [], substitutions: []};
     }
     function canMakeFromBar(cocktail) {
       return barAvailability(cocktail).state !== 'missing';
@@ -5848,17 +5926,15 @@
 	    function recipeCocktail(cocktail, key = selectedRecipeSourceKey(cocktail)) {
 	      const source = recipeSource(cocktail, key);
 	      if (!source || source.available === false) return cocktail;
+	      const recipeVariant = pantryRecipeVariant(cocktail, source);
 	      return {
-	        ...cocktail,
+	        ...recipeVariant,
 	        ingredients: cloneRecipeLines(source.ingredients),
 	        ingredientNames: cloneRecipeLines(source.ingredientNames),
 	        ingredientBottles: cloneRecipeLines(source.ingredientBottles),
 	        method: cloneRecipeLines(source.method),
 	        garnish: String(source.garnish || ''),
 	        glassware: String(source.glassware || cocktail.glassware || 'Unknown'),
-	        liqueurs: Array.isArray(source.liqueurs) && source.liqueurs.length
-	          ? source.liqueurs.map((liqueur) => ({...liqueur}))
-	          : cocktail.liqueurs,
 	        ingredientCount: source.ingredients.length
 	      };
 	    }
@@ -5869,7 +5945,7 @@
 	      return displayGlass(glassware) || 'Unknown';
 	    }
 	    function recipeSourceControls(cocktail) {
-	      if (!cocktail.lnlSource && !cocktail.diffordsSource) return '';
+	      if (!cocktail.lnlSource && !cocktail.diffordsSource && !cocktail.liquorSource) return '';
 	      const selected = selectedRecipeSourceKey(cocktail);
 	      const sourceCount = RECIPE_SOURCE_OPTIONS.filter((source) => availableRecipeSource(cocktail, source.key)).length;
 	      const options = RECIPE_SOURCE_OPTIONS.map((source) => {
