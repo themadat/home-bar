@@ -1293,13 +1293,6 @@
     }
     #githubSyncButton:hover { transform: translateY(-1px); }
     #githubSyncButton .sf-symbol { display: block; width: 33px; height: 33px; fill: currentColor; margin: auto; }
-    #floatingResetButton {
-      position: fixed; right: calc(86px + env(safe-area-inset-right)); bottom: calc(18px + env(safe-area-inset-bottom));
-      z-index: 80; width: 58px; height: 58px; min-height: 58px; border-radius: 50%;
-      border: 1px solid var(--accent); background: #2A2316; color: #E0BD72;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, .42); padding: 0; font-size: 27px; line-height: 1;
-    }
-    #floatingResetButton:hover { transform: translateY(-1px); }
     @keyframes sync-pulse { 50% { opacity: .3; } }
     .sync-overview-icon[data-sync-state="clean"] { color: var(--success); }
     .sync-overview-icon[data-sync-state="setup"] { color: #B993DB; }
@@ -2075,13 +2068,12 @@
     .settings-tab:hover { color: var(--text); }
     .settings-tab[aria-selected="true"] { border-bottom-color: var(--accent); color: var(--text); }
     .settings-tab-panel[hidden] { display: none; }
-    .settings-info-section { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
+    .settings-info-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(360px, .9fr); gap: 22px; align-items: start; }
+    .settings-info-section { min-width: 0; }
+    .settings-info-section + .settings-info-section { padding-left: 22px; border-left: 1px solid var(--line); }
     .settings-info-section h3 { margin: 0; font-size: 13px; }
     .settings-info-section p { max-width: 68ch; line-height: 1.55; }
     .settings-info-section strong { color: var(--text); }
-    .substitute-notes { display: grid; gap: 10px; margin: 10px 0 0; padding: 0; list-style: none; }
-    .substitute-notes li { padding: 10px 12px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel-2); }
-    .substitute-notes p { margin: 5px 0 0; }
     .measure-conversion-table { width: 100%; margin-top: 10px; border-collapse: collapse; font-size: 12px; line-height: 1.3; }
     .measure-conversion-table th, .measure-conversion-table td { padding: 4px 7px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
     .measure-conversion-table th { color: var(--muted); font-size: 10px; letter-spacing: .05em; text-transform: uppercase; }
@@ -2147,9 +2139,11 @@
     .topbar-search-group { padding-inline: 0; }
     .topbar-search .clear-filters-button { height: 100%; }
     #resetFilters:disabled { opacity: .3; cursor: default; background: transparent; }
-    [data-shortcut]::after { min-width: 20px; height: 20px; padding: 0 4px; font-size: 12px; }
+    [data-shortcut]::after { min-width: 14px; height: 14px; padding: 0 2px; font-size: 8px; }
     .hover-hint { position: fixed; z-index: 1000; max-width: min(360px, calc(100vw - 24px)); padding: 10px 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); color: var(--text); font-size: 15px; line-height: 1.45; box-shadow: var(--shadow); pointer-events: none; }
     @media (max-width: 760px) {
+      .settings-info-grid { grid-template-columns: 1fr; }
+      .settings-info-section + .settings-info-section { padding: 16px 0 0; border-left: 0; border-top: 1px solid var(--line); }
       .topbar { grid-template-columns: minmax(0, 1fr) auto; gap: 6px; }
       .topbar-title { grid-column: 1; grid-row: 1; }
       .topbar-actions { grid-column: 2; grid-row: 1; gap: 0; }
@@ -2586,14 +2580,14 @@
         </div>
         <section id="appPreferences" class="app-preferences" aria-label="App preferences" hidden>
           <div class="settings-tabs" role="tablist" aria-label="Settings sections">
-            <button id="settingsTabSettings" class="settings-tab" type="button" role="tab" aria-selected="true" aria-controls="settingsPanelSettings" data-settings-tab="settings">Settings</button>
-            <button id="settingsTabInfo" class="settings-tab" type="button" role="tab" aria-selected="false" aria-controls="settingsPanelInfo" data-settings-tab="info" tabindex="-1">Info</button>
+            <button id="settingsTabSettings" class="settings-tab" type="button" role="tab" aria-selected="false" aria-controls="settingsPanelSettings" data-settings-tab="settings" tabindex="-1">Settings</button>
+            <button id="settingsTabInfo" class="settings-tab" type="button" role="tab" aria-selected="true" aria-controls="settingsPanelInfo" data-settings-tab="info">Info</button>
           </div>
-          <div id="settingsPanelSettings" class="settings-tab-panel" role="tabpanel" aria-labelledby="settingsTabSettings">
+          <div id="settingsPanelSettings" class="settings-tab-panel" role="tabpanel" aria-labelledby="settingsTabSettings" hidden>
           <label for="whatsNewDismissSeconds">What’s New dismissal (seconds)<input id="whatsNewDismissSeconds" class="text-input" type="number" min="1" max="300" step="1" required value="20" aria-describedby="whatsNewDismissHelp"></label>
           <p id="whatsNewDismissHelp">Automatically dismiss after 1–300 seconds. Default: 20 seconds. Saved on this device.</p>
           </div>
-          <div id="settingsPanelInfo" class="settings-tab-panel" role="tabpanel" aria-labelledby="settingsTabInfo" hidden>
+          <div id="settingsPanelInfo" class="settings-tab-panel settings-info-grid" role="tabpanel" aria-labelledby="settingsTabInfo">
           <section class="settings-info-section" aria-labelledby="substitutionInfoTitle">
             <h3 id="substitutionInfoTitle">Ingredient substitutions</h3>
             <h4>Aperol and Campari</h4>
@@ -2601,14 +2595,8 @@
             <p>They <em>can</em> substitute for each other, but they’ll substantially change the drink. Campari in an Aperol Spritz makes it darker, stronger, and much more bitter. Aperol in a Negroni makes it sweeter, lighter, and less assertive.</p>
             <h4>Chartreuse colors</h4>
             <p><strong>Green (Verte) = powerful, spicy, intensely herbal.</strong><br><strong>Yellow (Jaune) = sweeter, softer, honeyed and floral.</strong></p>
-            <p>Don’t generally substitute these <strong>1:1</strong>. Green can overpower a drink designed for Yellow; Yellow replacing Green produces a sweeter, much less herbal cocktail.</p>
-            <h4>Alternatives to Yellow Chartreuse</h4>
-            <ol class="substitute-notes">
-              <li><strong>Liquore Strega</strong><p><em>Why it works:</em> It shares a similar honeyed, herbal, and bright-yellow profile with notes of mint and saffron.</p><p><em>How to use:</em> Use as a 1:1 replacement in most cocktails, such as a <em>Naked and Famous</em>. It runs a bit cheaper and is easier to find. <a href="https://www.youtube.com/shorts/dAIBA4RpOvI" target="_blank" rel="noopener">Source 1</a> · <a href="https://cocktailswithsuderman.substack.com/p/blend-your-way-to-a-less-expensive" target="_blank" rel="noopener">Source 2</a></p></li>
-              <li><strong>Bénédictine D.O.M.</strong><p><em>Why it works:</em> It offers a rich, honey-forward sweetness and a complex botanical backbone with a similar monastic history.</p><p><em>How to use:</em> It is sweeter and heavier on spice and vanilla, so use slightly less or balance with extra citrus.</p></li>
-              <li><strong>Dolin Génépy (or Génépy le Chamois)</strong><p><em>Why it works:</em> An alpine herbal liqueur that captures a similar botanical and earthy complexity, though it leans slightly sweeter and less spicy.</p><p><em>How to use:</em> Great as a 1:1 swap in lighter or herbal shaken cocktails. <a href="https://abarabove.com/chartreuse-substitutes/" target="_blank" rel="noopener">Source</a></p></li>
-              <li><strong>Faccia Brutto Centerbe (Giallo)</strong><p><em>Why it works:</em> A craft, New York-made herbal liqueur that provides an authentic green/yellow herbal punch when traditional Chartreuse is unavailable.</p></li>
-            </ol>
+            <p>They aren’t usually a <strong>1:1</strong> swap: Green can overpower a Yellow recipe, while Yellow makes a Green recipe sweeter and much less herbal.</p>
+            <p><strong>Yellow substitutes:</strong> Strega is a mint-and-saffron, honeyed 1:1 option; Dolin Génépy is earthier and works 1:1 in lighter drinks; Bénédictine is sweeter and spicier, so use slightly less or add citrus; Faccia Brutto Centerbe Giallo supplies a similarly assertive herbal profile. <a href="https://www.youtube.com/shorts/dAIBA4RpOvI" target="_blank" rel="noopener">Strega</a> · <a href="https://cocktailswithsuderman.substack.com/p/blend-your-way-to-a-less-expensive" target="_blank" rel="noopener">Blend</a> · <a href="https://abarabove.com/chartreuse-substitutes/" target="_blank" rel="noopener">Guide</a></p>
             <h4>Bénédictine D.O.M. and B&amp;B</h4>
             <p><strong>For most cocktails, start with a 1:1 substitution.</strong> B&amp;B makes the drink less sweet and less herbal, with more brandy character. That works particularly well in whiskey- and cognac-based drinks where brandy isn’t out of place.</p>
             <p><strong>To make B&amp;B behave more like D.O.M.:</strong> B&amp;B is approximately 60% Bénédictine, so the mathematical equivalent is <strong>1 oz Bénédictine ≈ 1⅔ oz B&amp;B</strong>. That is usually a poor cocktail substitution because it also adds considerably more brandy and alcohol.</p>
@@ -2902,21 +2890,19 @@
       </div>
     </div>
   </div>
-  <button id="floatingResetButton" class="button icon" type="button" title="Reset filters and collapse cocktails" aria-label="Reset filters and collapse cocktails" hidden>↺</button>
-
   <script src="letters-liquor-notes.js?v=2.0.0.125"></script>
   <script src="letters-liquor-data.js?v=2.0.0.125"></script>
   <script src="diffords-data.js?v=2.0.0.125"></script>
   <script>
-    const BUILD_VERSION = '2.0.0.136';
+    const BUILD_VERSION = '2.0.0.137';
     const CURRENT_RELEASE = {
-      title: 'Tabbed Settings and expanded substitution guide',
-      summary: 'Settings and reference information are now separated, with cleaner Chartreuse and Bénédictine guidance.',
+      title: 'Faster shortcuts and a cleaner Info reference',
+      summary: 'Settings now opens to a compact, side-by-side reference with quicker access to common actions.',
       changes: [
-        'Added dedicated Settings and Info tabs.',
-        'Moved substitutions and measurement conversions into Info.',
-        'Consolidated the Green, Yellow, and alternative Chartreuse notes.',
-        'Added practical B&B-to-Bénédictine D.O.M. ratios and balancing guidance.'
+        'Added shortcuts for Gallery, Add, Settings, and Sync with smaller hint badges.',
+        'Removed the floating reset button.',
+        'Placed substitutions and measurement conversions side by side.',
+        'Made Info the default tab and shortened the Chartreuse guidance.'
       ]
     };
 	    const __PHOTO = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 30.3223 23.8281"><g><rect height="23.8281" opacity="0" width="30.3223" x="0" y="0"/><path d="M5.01953 22.5928L24.7852 22.5928C27.5879 22.5928 28.9404 21.2598 28.7109 18.8818L21.2256 11.8945C20.6641 11.377 20.0098 11.123 19.3311 11.123C18.6377 11.123 18.0176 11.3623 17.4414 11.875L11.7529 16.9629L9.42383 14.8584C8.8916 14.3848 8.31543 14.1406 7.71973 14.1406C7.11426 14.1406 6.62109 14.3701 6.10352 14.8438L1.41113 19.0234C1.47461 21.3623 2.69531 22.5928 5.01953 22.5928ZM4.29199 23.8281L25.6641 23.8281C28.457 23.8281 29.9609 22.3242 29.9609 19.5654L29.9609 4.27246C29.9609 1.50879 28.457 0.00976562 25.6641 0.00976562L4.29199 0.00976562C1.50879 0.00976562 0 1.50391 0 4.27246L0 19.5654C0 22.334 1.50879 23.8281 4.29199 23.8281ZM4.58008 20.9424C3.47656 20.9424 2.89062 20.3906 2.89062 19.2334L2.89062 4.60449C2.89062 3.45215 3.47656 2.89551 4.58008 2.89551L25.376 2.89551C26.4697 2.89551 27.0654 3.45215 27.0654 4.60449L27.0654 19.2334C27.0654 20.3906 26.4697 20.9424 25.376 20.9424Z"/><path d="M10.1807 12.2949C11.8652 12.2949 13.252 10.9082 13.252 9.20898C13.252 7.52441 11.8652 6.12305 10.1807 6.12305C8.48145 6.12305 7.09961 7.52441 7.09961 9.20898C7.09961 10.9082 8.48145 12.2949 10.1807 12.2949Z"/></g></svg>`;
@@ -3992,10 +3978,11 @@
     [
       ['#resetFilters', 'C', 'Control+Alt+Shift+C'],
       ['#updateAppButton', 'R', 'Control+Alt+Shift+R'],
-      ['#githubSyncButton', 'S', 'Control+Alt+Shift+S'],
+      ['#githubSyncButton', 's', 'Control+Alt+Shift+S'],
+      ['#lettersLiquorGalleryButton', 'G', 'Control+Alt+Shift+G'],
+      ['#addCocktailButton', 'A', 'Control+Alt+Shift+A'],
+      ['#settingsButton', ',', 'Control+Alt+Shift+,'],
       ['#manageBarButton', 'B', 'Control+Alt+Shift+B'],
-      ['#archiveButton', 'A', 'Control+Alt+Shift+A'],
-      ['#shoppingListButton', 'G', 'Control+Alt+Shift+G'],
       ['#versionPill', 'V', 'Control+Alt+Shift+V'],
       ['#notesButton', 'N', 'Control+Alt+Shift+N'],
       ['#glasswareButton', 'D', 'Control+Alt+Shift+D'],
@@ -4004,7 +3991,7 @@
       ['#glasswareCondenseButton', 'C', 'Control+Alt+Shift+C'],
       ['#glasswareModalClose', 'Esc', 'Escape'],
 	      ['#lnlGalleryClose', 'Esc', 'Escape'],
-      ['#githubSyncNow', 'S', 'Control+Alt+Shift+S'],
+      ['#githubSyncNow', 's', 'Control+Alt+Shift+S'],
       ['#cocktailFormSave', 'S', 'Control+Alt+Shift+S'],
       ['#cocktailFormClose', 'Esc', 'Escape'],
       ['#shoppingListModalClose', 'Esc', 'Escape'],
@@ -4024,6 +4011,10 @@
       control.setAttribute('aria-keyshortcuts', keys);
     });
     $('#updateAppButton').title = 'Update — check for updates and force refresh (Control+Option+Shift+R)';
+    $('#lettersLiquorGalleryButton').title = 'Letters & Liquor gallery (Control+Option+Shift+G)';
+    $('#addCocktailButton').title = 'Add cocktail (Control+Option+Shift+A)';
+    $('#settingsButton').title = 'Settings (Control+Option+Shift+,)';
+    $('#githubSyncButton').title = 'GitHub Sync (Control+Option+Shift+S)';
     const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (m) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
     const norm = (value) => String(value ?? '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, ' ').trim();
         function parseCocktailAlternateNames(value, primaryName = '') {
@@ -6307,7 +6298,7 @@
 	    }
     function renderTable() {
       updateRatingAudienceUi();
-      updateFloatingResetButton();
+      updateResetButton();
       renderTableSortHeaders();
 	      renderLettersLiquorTableBanner();
       const rows = filteredCocktails();
@@ -6337,13 +6328,8 @@
           const total = activeFilterCount();
           return total ? `${total} filter${total === 1 ? '' : 's'}` : 'No filters';
         }
-        function updateFloatingResetButton() {
+        function updateResetButton() {
           $('#resetFilters').disabled = !(activeFilterCount() || state.ingredientQ || state.sort !== 'name' || state.sortDirection !== 'default' || state.expanded.size || state.recipeSingle.size);
-          const button = $('#floatingResetButton');
-          const visible = activeFilterCount() > 0 || state.expanded.size > 1;
-          button.hidden = !visible;
-          button.title = activeFilterCount() > 0 ? 'Reset filters and collapse cocktails' : 'Collapse open cocktails';
-          button.setAttribute('aria-label', button.title);
         }
 	        function renderStats() {
 	          $('#versionPill').textContent = `v${BUILD_VERSION}`;
@@ -6691,7 +6677,7 @@
 	          githubSyncModalMode = mode;
               $('#appPreferences').hidden = mode !== 'settings';
 	          $('#githubSyncForm').hidden = false;
-	          if (mode === 'settings') setSettingsTab('settings');
+	          if (mode === 'settings') setSettingsTab('info');
 	          resetSyncCloseAction();
 	          $('#githubSyncChangesPanel').hidden = true;
 	          populateGitHubSyncForm();
@@ -6701,7 +6687,7 @@
 	          $('#githubSyncModalOverlay').hidden = false;
 	          updateGitHubSyncInterface(true);
 	          if (mode === 'settings') {
-	            $('#settingsTabSettings').focus();
+	            $('#settingsTabInfo').focus();
 	          } else if ($('#githubSyncSettingsPanel').hidden) {
 	            $('#githubSyncNow').focus();
 	          } else {
@@ -9999,9 +9985,10 @@
       }
       else if (event.code === 'KeyB' && shoppingListOpen) control = $('#shoppingListBarButton');
       else if (event.code === 'KeyB' && noModalOpen) control = $('#manageBarButton');
-      else if (event.code === 'KeyA' && noModalOpen) control = $('#archiveButton');
+      else if (event.code === 'KeyA' && noModalOpen) control = $('#addCocktailButton');
       else if (event.code === 'KeyG' && barOpen) control = $('#barShoppingListButton');
-      else if (event.code === 'KeyG' && noModalOpen) control = $('#shoppingListButton');
+      else if (event.code === 'KeyG' && noModalOpen) control = $('#lettersLiquorGalleryButton');
+      else if (event.code === 'Comma' && noModalOpen) control = $('#settingsButton');
       else if (event.code === 'KeyV' && barOpen) control = $('#barRecommendationsToggle');
       else if (event.code === 'KeyV' && noModalOpen) control = $('#versionPill');
       else if (event.code === 'KeyN' && noModalOpen) control = $('#notesButton');
@@ -10120,7 +10107,6 @@
 	    $('#importFile').addEventListener('change', (event) => importUserDataFile(event.target.files[0]));
 	    $('#exportData').addEventListener('click', exportUserData);
 	    $('#resetFilters').addEventListener('click', resetSortAndFilters);
-	    $('#floatingResetButton').addEventListener('click', resetSortAndFilters);
 	    $('#versionPill').addEventListener('click', openVersionModal);
 	    $('#versionModalClose').addEventListener('click', closeVersionModal);
 	    $('#versionModalOverlay').addEventListener('click', (event) => {
