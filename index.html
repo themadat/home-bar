@@ -1999,6 +1999,7 @@
     .header-action .button-icon { display: grid; place-items: center; height: 22px; font-size: 23px; line-height: 1; }
     .topbar .header-action .sf-symbol { width: 20px; height: 22px; max-height: 22px; }
     .header-action .button-label { font-size: 10px; font-weight: 650; line-height: 1.2; white-space: nowrap; }
+    .header-action .button-label u { text-decoration-thickness: 1px; text-underline-offset: 2px; }
     .topbar #githubSyncButton {
       position: static; inset: auto; z-index: auto; display: flex; flex-direction: row;
       align-items: center; gap: 8px; flex: 0 1 190px; width: 190px; height: 48px; min-height: 48px;
@@ -2894,15 +2895,15 @@
   <script src="letters-liquor-data.js?v=2.0.0.125"></script>
   <script src="diffords-data.js?v=2.0.0.125"></script>
   <script>
-    const BUILD_VERSION = '2.0.0.137';
+    const BUILD_VERSION = '2.0.0.138';
     const CURRENT_RELEASE = {
-      title: 'Faster shortcuts and a cleaner Info reference',
-      summary: 'Settings now opens to a compact, side-by-side reference with quicker access to common actions.',
+      title: 'Single-key bar navigation',
+      summary: 'The main bar tools are easier to reach from the keyboard, with visible access keys in their labels.',
       changes: [
-        'Added shortcuts for Gallery, Add, Settings, and Sync with smaller hint badges.',
-        'Removed the floating reset button.',
-        'Placed substitutions and measurement conversions side by side.',
-        'Made Info the default tab and shortened the Chartreuse guidance.'
+        'Added G, D, B, E, and P single-key shortcuts for the main bar tools.',
+        'Underlined each access key in its toolbar label.',
+        'Kept the Sync shortcut hint attached to the local/GitHub status control.',
+        'Ensured Escape closes any open modal.'
       ]
     };
 	    const __PHOTO = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 30.3223 23.8281"><g><rect height="23.8281" opacity="0" width="30.3223" x="0" y="0"/><path d="M5.01953 22.5928L24.7852 22.5928C27.5879 22.5928 28.9404 21.2598 28.7109 18.8818L21.2256 11.8945C20.6641 11.377 20.0098 11.123 19.3311 11.123C18.6377 11.123 18.0176 11.3623 17.4414 11.875L11.7529 16.9629L9.42383 14.8584C8.8916 14.3848 8.31543 14.1406 7.71973 14.1406C7.11426 14.1406 6.62109 14.3701 6.10352 14.8438L1.41113 19.0234C1.47461 21.3623 2.69531 22.5928 5.01953 22.5928ZM4.29199 23.8281L25.6641 23.8281C28.457 23.8281 29.9609 22.3242 29.9609 19.5654L29.9609 4.27246C29.9609 1.50879 28.457 0.00976562 25.6641 0.00976562L4.29199 0.00976562C1.50879 0.00976562 0 1.50391 0 4.27246L0 19.5654C0 22.334 1.50879 23.8281 4.29199 23.8281ZM4.58008 20.9424C3.47656 20.9424 2.89062 20.3906 2.89062 19.2334L2.89062 4.60449C2.89062 3.45215 3.47656 2.89551 4.58008 2.89551L25.376 2.89551C26.4697 2.89551 27.0654 3.45215 27.0654 4.60449L27.0654 19.2334C27.0654 20.3906 26.4697 20.9424 25.376 20.9424Z"/><path d="M10.1807 12.2949C11.8652 12.2949 13.252 10.9082 13.252 9.20898C13.252 7.52441 11.8652 6.12305 10.1807 6.12305C8.48145 6.12305 7.09961 7.52441 7.09961 9.20898C7.09961 10.9082 8.48145 12.2949 10.1807 12.2949Z"/></g></svg>`;
@@ -3978,20 +3979,17 @@
     [
       ['#resetFilters', 'C', 'Control+Alt+Shift+C'],
       ['#updateAppButton', 'R', 'Control+Alt+Shift+R'],
-      ['#githubSyncButton', 's', 'Control+Alt+Shift+S'],
-      ['#lettersLiquorGalleryButton', 'G', 'Control+Alt+Shift+G'],
+      ['#githubSyncButton', 'S', 'Control+Alt+Shift+S'],
       ['#addCocktailButton', 'A', 'Control+Alt+Shift+A'],
       ['#settingsButton', ',', 'Control+Alt+Shift+,'],
-      ['#manageBarButton', 'B', 'Control+Alt+Shift+B'],
       ['#versionPill', 'V', 'Control+Alt+Shift+V'],
       ['#notesButton', 'N', 'Control+Alt+Shift+N'],
-      ['#glasswareButton', 'D', 'Control+Alt+Shift+D'],
       ['#glasswareAddToggle', 'A', 'Control+Alt+Shift+A'],
       ['#glasswareExpandButton', 'E', 'Control+Alt+Shift+E'],
       ['#glasswareCondenseButton', 'C', 'Control+Alt+Shift+C'],
       ['#glasswareModalClose', 'Esc', 'Escape'],
 	      ['#lnlGalleryClose', 'Esc', 'Escape'],
-      ['#githubSyncNow', 's', 'Control+Alt+Shift+S'],
+      ['#githubSyncNow', 'S', 'Control+Alt+Shift+S'],
       ['#cocktailFormSave', 'S', 'Control+Alt+Shift+S'],
       ['#cocktailFormClose', 'Esc', 'Escape'],
       ['#shoppingListModalClose', 'Esc', 'Escape'],
@@ -4011,7 +4009,11 @@
       control.setAttribute('aria-keyshortcuts', keys);
     });
     $('#updateAppButton').title = 'Update — check for updates and force refresh (Control+Option+Shift+R)';
-    $('#lettersLiquorGalleryButton').title = 'Letters & Liquor gallery (Control+Option+Shift+G)';
+    $('#lettersLiquorGalleryButton').title = 'Letters & Liquor gallery (G)';
+    $('#glasswareButton').title = 'Drinkware (D)';
+    $('#manageBarButton').title = 'Manage My Bar (B)';
+    $('#archiveButton').title = 'Archive (E)';
+    $('#shoppingListButton').title = 'Shopping List (P)';
     $('#addCocktailButton').title = 'Add cocktail (Control+Option+Shift+A)';
     $('#settingsButton').title = 'Settings (Control+Option+Shift+,)';
     $('#githubSyncButton').title = 'GitHub Sync (Control+Option+Shift+S)';
@@ -10008,9 +10010,24 @@
     document.addEventListener('keydown', (event) => {
       refreshShortcutHints(shortcutModifiersHeld(event));
       if (runKeyboardShortcut(event)) return;
+      const active = document.activeElement;
+      const isEditable = active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA' || active.tagName === 'SELECT' || active.isContentEditable);
+      if (!event.repeat && !event.ctrlKey && !event.metaKey && !event.altKey && !event.shiftKey && !isEditable && !anyModalOpen()) {
+        const singleKeyControls = {
+          g: $('#lettersLiquorGalleryButton'),
+          d: $('#glasswareButton'),
+          b: $('#manageBarButton'),
+          e: $('#archiveButton'),
+          p: $('#shoppingListButton')
+        };
+        const control = singleKeyControls[event.key.toLowerCase()];
+        if (control && !control.disabled) {
+          event.preventDefault();
+          control.click();
+          return;
+        }
+      }
       if (!event.ctrlKey && !event.metaKey && !event.altKey && event.key === '/') {
-        const active = document.activeElement;
-        const isEditable = active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA' || active.tagName === 'SELECT' || active.isContentEditable);
         if (!isEditable) {
           const glasswareOpen = !$('#glasswareModalOverlay').hidden;
           if (glasswareOpen) {
@@ -10759,6 +10776,10 @@
         glasswareButton: 'Drinkware', manageBarButton: 'My Bar', archiveButton: 'Archive',
         shoppingListButton: 'Shopping', addCocktailButton: 'Add'
       };
+      const singleKeyLabels = {
+        lettersLiquorGalleryButton: 'G', glasswareButton: 'D', manageBarButton: 'B',
+        archiveButton: 'E', shoppingListButton: 'P'
+      };
       Object.entries(labels).forEach(([id, text]) => {
         const button = $('#' + id);
         button.classList.add('header-action');
@@ -10768,7 +10789,17 @@
         while (button.firstChild) icon.appendChild(button.firstChild);
         const label = document.createElement('span');
         label.className = 'button-label';
-        label.textContent = text;
+        const shortcut = singleKeyLabels[id];
+        const shortcutIndex = shortcut ? text.toLowerCase().indexOf(shortcut.toLowerCase()) : -1;
+        if (shortcutIndex >= 0) {
+          label.append(document.createTextNode(text.slice(0, shortcutIndex)));
+          const underlined = document.createElement('u');
+          underlined.textContent = text[shortcutIndex];
+          label.append(underlined, document.createTextNode(text.slice(shortcutIndex + 1)));
+          button.setAttribute('aria-keyshortcuts', shortcut);
+        } else {
+          label.textContent = text;
+        }
         button.append(icon, label);
       });
       updateStickyTop();
