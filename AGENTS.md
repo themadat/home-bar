@@ -10,6 +10,10 @@ After every prompt that changes `index.html`, increment the last (BUILD) segment
 finishing the turn (e.g. `1.0.0.1` -> `1.0.0.2`). Only bump MAJOR/MINOR/PATCH if the user
 explicitly asks for that.
 
+Keep the version in the `name: Deploy Home Bar v...` line in
+`.github/workflows/deploy.yml` synchronized with `BUILD_VERSION`; GitHub Mobile uses that fixed
+workflow name in deployment push notifications.
+
 ## End of turn
 
 After making changes, always give the user a single copy-paste-ready terminal command (in a
