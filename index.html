@@ -2074,6 +2074,9 @@
     .settings-info-section h3 { margin: 0; font-size: 13px; }
     .settings-info-section p { max-width: 68ch; line-height: 1.55; }
     .settings-info-section strong { color: var(--text); }
+    .substitute-notes { display: grid; gap: 10px; margin: 10px 0 0; padding: 0; list-style: none; }
+    .substitute-notes li { padding: 10px 12px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel-2); }
+    .substitute-notes p { margin: 5px 0 0; }
     .measure-conversion-table { width: 100%; margin-top: 10px; border-collapse: collapse; font-size: 12px; line-height: 1.3; }
     .measure-conversion-table th, .measure-conversion-table td { padding: 4px 7px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
     .measure-conversion-table th { color: var(--muted); font-size: 10px; letter-spacing: .05em; text-transform: uppercase; }
@@ -2585,6 +2588,13 @@
             <p>They <em>can</em> substitute for each other, but they’ll substantially change the drink. Campari in an Aperol Spritz makes it darker, stronger, and much more bitter. Aperol in a Negroni makes it sweeter, lighter, and less assertive.</p>
             <p><strong>Green (Verte) = powerful, spicy, intensely herbal.</strong><br><strong>Yellow (Jaune) = sweeter, softer, honeyed and floral.</strong></p>
             <p>Wouldn’t generally substitute these <strong>1:1</strong>. Green can completely overpower a drink designed for Yellow. If replacing Green with Yellow, you’ll usually get a sweeter, much less herbal cocktail.</p>
+            <h4>Yellow Chartreuse substitutes</h4>
+            <ol class="substitute-notes">
+              <li><strong>Liquore Strega</strong><p><em>Why it works:</em> It shares a similar honeyed, herbal, and bright-yellow profile with notes of mint and saffron.</p><p><em>How to use:</em> Use as a 1:1 replacement in most cocktails, such as a <em>Naked and Famous</em>. It runs a bit cheaper and is easier to find. <a href="https://www.youtube.com/shorts/dAIBA4RpOvI" target="_blank" rel="noopener">Source 1</a> · <a href="https://cocktailswithsuderman.substack.com/p/blend-your-way-to-a-less-expensive" target="_blank" rel="noopener">Source 2</a></p></li>
+              <li><strong>Bénédictine D.O.M.</strong><p><em>Why it works:</em> It offers a rich, honey-forward sweetness and a complex botanical backbone with a similar monastic history.</p><p><em>How to use:</em> It is sweeter and heavier on spice and vanilla, so use slightly less or balance with extra citrus.</p></li>
+              <li><strong>Dolin Génépy (or Génépy le Chamois)</strong><p><em>Why it works:</em> An alpine herbal liqueur that captures a similar botanical and earthy complexity, though it leans slightly sweeter and less spicy.</p><p><em>How to use:</em> Great as a 1:1 swap in lighter or herbal shaken cocktails. <a href="https://abarabove.com/chartreuse-substitutes/" target="_blank" rel="noopener">Source</a></p></li>
+              <li><strong>Faccia Brutto Centerbe (Giallo)</strong><p><em>Why it works:</em> A craft, New York-made herbal liqueur that provides an authentic green/yellow herbal punch when traditional Chartreuse is unavailable.</p></li>
+            </ol>
           </section>
           <section class="settings-info-section" aria-labelledby="measureConversionTitle">
             <h3 id="measureConversionTitle">Cocktail measure conversions</h3>
@@ -2879,14 +2889,15 @@
   <script src="letters-liquor-data.js?v=2.0.0.125"></script>
   <script src="diffords-data.js?v=2.0.0.125"></script>
   <script>
-    const BUILD_VERSION = '2.0.0.134';
+    const BUILD_VERSION = '2.0.0.135';
     const CURRENT_RELEASE = {
-      title: 'Complete IBA Tiki bottle details',
-      summary: 'The IBA Tiki now keeps its rum descriptors and named Havana Club bottles visible together.',
+      title: 'Yellow Chartreuse substitute guide',
+      summary: 'Settings now includes practical alternatives for Yellow Chartreuse with flavor and usage guidance.',
       changes: [
-        'Restored Ron Profundo Havana Club after the White rum’s Aged indicator.',
-        'Restored Ron Smoky Havana Club after the Dark rum’s Smokey indicator.',
-        'Updated the ingredient renderer to preserve both bracketed descriptors in their intended order.'
+        'Added Liquore Strega with 1:1 cocktail guidance and supporting sources.',
+        'Added Bénédictine D.O.M. with sweetness and balancing guidance.',
+        'Added Dolin Génépy and Génépy le Chamois with a substitution source.',
+        'Added Faccia Brutto Centerbe Giallo as a craft herbal alternative.'
       ]
     };
 	    const __PHOTO = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 30.3223 23.8281"><g><rect height="23.8281" opacity="0" width="30.3223" x="0" y="0"/><path d="M5.01953 22.5928L24.7852 22.5928C27.5879 22.5928 28.9404 21.2598 28.7109 18.8818L21.2256 11.8945C20.6641 11.377 20.0098 11.123 19.3311 11.123C18.6377 11.123 18.0176 11.3623 17.4414 11.875L11.7529 16.9629L9.42383 14.8584C8.8916 14.3848 8.31543 14.1406 7.71973 14.1406C7.11426 14.1406 6.62109 14.3701 6.10352 14.8438L1.41113 19.0234C1.47461 21.3623 2.69531 22.5928 5.01953 22.5928ZM4.29199 23.8281L25.6641 23.8281C28.457 23.8281 29.9609 22.3242 29.9609 19.5654L29.9609 4.27246C29.9609 1.50879 28.457 0.00976562 25.6641 0.00976562L4.29199 0.00976562C1.50879 0.00976562 0 1.50391 0 4.27246L0 19.5654C0 22.334 1.50879 23.8281 4.29199 23.8281ZM4.58008 20.9424C3.47656 20.9424 2.89062 20.3906 2.89062 19.2334L2.89062 4.60449C2.89062 3.45215 3.47656 2.89551 4.58008 2.89551L25.376 2.89551C26.4697 2.89551 27.0654 3.45215 27.0654 4.60449L27.0654 19.2334C27.0654 20.3906 26.4697 20.9424 25.376 20.9424Z"/><path d="M10.1807 12.2949C11.8652 12.2949 13.252 10.9082 13.252 9.20898C13.252 7.52441 11.8652 6.12305 10.1807 6.12305C8.48145 6.12305 7.09961 7.52441 7.09961 9.20898C7.09961 10.9082 8.48145 12.2949 10.1807 12.2949Z"/></g></svg>`;
