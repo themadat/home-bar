@@ -1,4 +1,6 @@
-name: Deploy Home Bar to GitHub Pages
+name: Deploy Home Bar
+
+run-name: Deploy ${{ github.event.head_commit.message }}
 
 # Production:  main   -> https://themadat.github.io/home-bar/
 # Beta:        beta   -> https://themadat.github.io/home-bar/beta/
@@ -26,7 +28,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout source
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Decide destination subfolder
         id: dest
