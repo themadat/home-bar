@@ -22,10 +22,11 @@ workflow name in deployment push notifications.
 
 After making changes, always give the user a single copy-paste-ready terminal command (in a
 ` ```bash ` fenced block) that stages `index.html` (and any other changed files), commits with a
-short one-line summary of what was done, and pushes to `origin`. Example shape:
+short one-line summary of what was done, includes the current `BUILD_VERSION`, and pushes to
+`origin`. Example shape:
 
 ```bash
-git add index.html && git commit -m "Short summary of what changed" && git push origin main
+git add index.html && git commit -m "v1.0.0.2 — Short summary of what changed" && git push origin main
 ```
 
 Do not run this command yourself — the user runs it. Do not combine multiple unrelated changes
