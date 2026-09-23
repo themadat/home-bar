@@ -1116,6 +1116,7 @@
     .install-steps li { color: var(--text); line-height: 1.5; }
     .install-note { margin: 0; color: var(--faint); font-size: 12px; }
     .modal.modal-sync { max-width: 920px; }
+    #githubSyncModalOverlay:has(#appPreferences:not([hidden])) .modal-sync { max-width: 1120px; max-height: 88vh; }
     .modal.modal-version { max-width: 980px; max-height: 85vh; }
 	    .modal.modal-lnl-gallery { width: calc(100vw - 64px); max-width: 1040px; height: calc(100dvh - 48px); max-height: none; display: flex; flex-direction: column; overflow: hidden; }
     .lnl-gallery-body { flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: 0 16px 20px; }
@@ -2069,7 +2070,7 @@
     .settings-tab:hover { color: var(--text); }
     .settings-tab[aria-selected="true"] { border-bottom-color: var(--accent); color: var(--text); }
     .settings-tab-panel[hidden] { display: none; }
-    .settings-info-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(360px, .9fr); gap: 22px; align-items: start; }
+    .settings-info-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(500px, 1.1fr); gap: 22px; align-items: start; }
     .settings-info-section { min-width: 0; }
     .settings-info-section + .settings-info-section { padding-left: 22px; border-left: 1px solid var(--line); }
     .settings-info-section h3 { margin: 0; font-size: 13px; }
@@ -2080,7 +2081,9 @@
     .measure-conversion-table th { color: var(--muted); font-size: 10px; letter-spacing: .05em; text-transform: uppercase; }
     .measure-conversion-table td:first-child { color: var(--accent); font-weight: 750; white-space: nowrap; }
     .measure-conversion-table td:nth-child(2) { color: var(--accent-2); font-weight: 750; white-space: nowrap; }
-    .measure-conversion-table td:last-child { color: var(--muted); }
+    .measure-conversion-table th:first-child { width: 72px; white-space: nowrap; }
+    .measure-conversion-table th:nth-child(2) { width: 68px; white-space: nowrap; }
+    .measure-conversion-table td:last-child { color: var(--muted); white-space: nowrap; }
     .app-update-status { position: fixed; right: 16px; bottom: 16px; z-index: 120; max-width: min(420px, calc(100vw - 32px)); padding: 12px 16px; border: 1px solid var(--accent-2); border-radius: var(--radius); background: var(--panel); color: var(--text); box-shadow: var(--shadow); }
     @media (max-width: 760px) {
       .whats-new-banner { align-items: flex-start; margin-inline: 8px; gap: 8px; }
@@ -2145,6 +2148,7 @@
     @media (max-width: 760px) {
       .settings-info-grid { grid-template-columns: 1fr; }
       .settings-info-section + .settings-info-section { padding: 16px 0 0; border-left: 0; border-top: 1px solid var(--line); }
+      .measure-conversion-table td:last-child { white-space: normal; }
       .topbar { grid-template-columns: minmax(0, 1fr) auto; gap: 6px; }
       .topbar-title { grid-column: 1; grid-row: 1; }
       .topbar-actions { grid-column: 2; grid-row: 1; gap: 0; }
@@ -2895,15 +2899,15 @@
   <script src="letters-liquor-data.js?v=2.0.0.125"></script>
   <script src="diffords-data.js?v=2.0.0.125"></script>
   <script>
-    const BUILD_VERSION = '2.0.0.138';
+    const BUILD_VERSION = '2.0.0.139';
     const CURRENT_RELEASE = {
-      title: 'Single-key bar navigation',
-      summary: 'The main bar tools are easier to reach from the keyboard, with visible access keys in their labels.',
+      title: 'Roomier Settings reference',
+      summary: 'The Settings modal now gives its side-by-side reference content more width and height.',
       changes: [
-        'Added G, D, B, E, and P single-key shortcuts for the main bar tools.',
-        'Underlined each access key in its toolbar label.',
-        'Kept the Sync shortcut hint attached to the local/GitHub status control.',
-        'Ensured Escape closes any open modal.'
+        'Widened and slightly increased the height of the Settings modal.',
+        'Narrowed the metric and US measurement columns.',
+        'Kept desktop conversion notes on one line.',
+        'Retained wrapping on narrow mobile screens.'
       ]
     };
 	    const __PHOTO = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 30.3223 23.8281"><g><rect height="23.8281" opacity="0" width="30.3223" x="0" y="0"/><path d="M5.01953 22.5928L24.7852 22.5928C27.5879 22.5928 28.9404 21.2598 28.7109 18.8818L21.2256 11.8945C20.6641 11.377 20.0098 11.123 19.3311 11.123C18.6377 11.123 18.0176 11.3623 17.4414 11.875L11.7529 16.9629L9.42383 14.8584C8.8916 14.3848 8.31543 14.1406 7.71973 14.1406C7.11426 14.1406 6.62109 14.3701 6.10352 14.8438L1.41113 19.0234C1.47461 21.3623 2.69531 22.5928 5.01953 22.5928ZM4.29199 23.8281L25.6641 23.8281C28.457 23.8281 29.9609 22.3242 29.9609 19.5654L29.9609 4.27246C29.9609 1.50879 28.457 0.00976562 25.6641 0.00976562L4.29199 0.00976562C1.50879 0.00976562 0 1.50391 0 4.27246L0 19.5654C0 22.334 1.50879 23.8281 4.29199 23.8281ZM4.58008 20.9424C3.47656 20.9424 2.89062 20.3906 2.89062 19.2334L2.89062 4.60449C2.89062 3.45215 3.47656 2.89551 4.58008 2.89551L25.376 2.89551C26.4697 2.89551 27.0654 3.45215 27.0654 4.60449L27.0654 19.2334C27.0654 20.3906 26.4697 20.9424 25.376 20.9424Z"/><path d="M10.1807 12.2949C11.8652 12.2949 13.252 10.9082 13.252 9.20898C13.252 7.52441 11.8652 6.12305 10.1807 6.12305C8.48145 6.12305 7.09961 7.52441 7.09961 9.20898C7.09961 10.9082 8.48145 12.2949 10.1807 12.2949Z"/></g></svg>`;
