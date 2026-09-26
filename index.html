@@ -738,6 +738,15 @@
 	    th[data-col="photo"], th[data-col="availability"] { padding: 0; }
 	    td[data-label="Photo"] { padding-left: 4px; padding-right: 4px; }
 	    td[data-label="My Bar"] { padding-left: 1px; padding-right: 1px; }
+	    th[data-col="recipe"], td[data-label="Recipe"] { padding-left: 5px; padding-right: 5px; }
+	    .recipe-source-slots { display: grid; grid-template-columns: repeat(4, 18px); align-items: center; justify-content: center; gap: 3px; width: 81px; margin: 0 auto; }
+	    .recipe-source-slot { display: grid; place-items: center; width: 18px; height: 18px; }
+	    .recipe-source-symbol { display: block; width: 18px; height: 18px; }
+	    .recipe-source-symbol svg { display: block; width: 18px; height: 18px; fill: currentColor; }
+	    .recipe-source-symbol-diffords { color: #6FA7BD; }
+	    .recipe-source-symbol-iba { color: #D45D5D; }
+	    .recipe-source-symbol-lnl { color: #E0BD72; }
+	    .recipe-source-symbol-other { color: #70A98A; }
 	    th[data-col="try"] .table-sort-button { gap: 3px; padding-inline: 5px; }
 	    td[data-label="Cocktail"] { padding-left: 4px; }
 	    .summary-row td { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -1903,12 +1912,12 @@
         border: 1px solid var(--line); border-radius: 6px; background: var(--panel-2); font-size: 10px;
       }
       .table-sort-icon, .table-sort-icon .sf-symbol { width: 12px; height: 12px; flex-basis: 12px; }
-	      .summary-row { display: grid; grid-template-columns: 42px 10px minmax(0, 1fr) 34px 94px; align-items: center; border: 1px solid var(--line); border-radius: var(--radius); margin-bottom: 8px; overflow: hidden; }
+	      .summary-row { display: grid; grid-template-columns: 42px 10px minmax(0, 1fr) 91px 34px 94px; align-items: center; border: 1px solid var(--line); border-radius: var(--radius); margin-bottom: 8px; overflow: hidden; }
 	      .summary-row td { display: block; width: auto; min-width: 0; border-bottom: 0; padding: 7px 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
       .summary-row td::before { display: none; }
 	      .summary-row td:nth-child(2) { padding-left: 1px; padding-right: 1px; }
 	      .summary-row td:nth-child(3) { padding-left: 4px; }
-      .summary-row td:nth-child(n + 6) { display: none; }
+	      .summary-row td:nth-child(n + 7) { display: none; }
 	      .summary-row .availability-slot { width: 8px; flex-basis: 8px; }
       .summary-row .cocktail-name { white-space: nowrap; }
       .summary-row .cocktail-alternate-names { display: block; margin-top: 2px; font-size: 9px; line-height: 1.1; overflow: hidden; text-overflow: ellipsis; }
@@ -2309,6 +2318,7 @@
             <col data-table-col="photo">
             <col data-table-col="availability">
             <col data-table-col="cocktail">
+            <col data-table-col="recipe">
             <col data-table-col="try">
             <col data-table-col="rating">
             <col data-table-col="serving">
@@ -2323,7 +2333,8 @@
             <tr>
 	              <th data-col="photo" style="width: 42px;" aria-label="Photo"></th>
 	              <th data-col="availability" style="width: 10px;" aria-label="My Bar availability"></th>
-	              <th class="sortable-column" data-col="cocktail" data-sort-key="name" aria-sort="none" style="width: 28%;"><button class="table-sort-button" type="button" data-table-sort="name"><span>Cocktail</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
+	              <th class="sortable-column" data-col="cocktail" data-sort-key="name" aria-sort="none" style="width: 22%;"><button class="table-sort-button" type="button" data-table-sort="name"><span>Cocktail</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
+	              <th data-col="recipe" style="width: 91px;" title="Recipe sources: Difford's, IBA, L&amp;L, Other">Recipe</th>
 	              <th class="sortable-column" data-col="try" data-sort-key="try" aria-sort="none" style="width: 56px;"><button class="table-sort-button" type="button" data-table-sort="try"><span>Try</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
 	              <th class="sortable-column" data-col="rating" data-sort-key="rating" aria-sort="none" style="width: 94px;"><div class="rating-header-group"><button class="table-sort-button" type="button" data-table-sort="rating"><span>Rating</span><span class="table-sort-icon" aria-hidden="true"></span></button><div id="ratingViewPill" class="rating-unlocked-controls" data-view="mine" hidden><button id="ratingAudienceToggle" class="rating-audience-toggle" type="button" data-view="mine" title="Show friends average" aria-label="Show friends average">Mine</button><button class="table-sort-button rating-pill-sort" type="button" data-table-sort="rating"><span class="visually-hidden">Rating</span><span class="table-sort-icon" aria-hidden="true"></span></button></div></div></th>
 	              <th class="sortable-column" data-col="serving" data-sort-key="serving" aria-sort="none" style="width: 88px;"><button class="table-sort-button" type="button" data-table-sort="serving"><span>Serve</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
@@ -2905,15 +2916,15 @@
   <script src="letters-liquor-data.js?v=2.0.0.125"></script>
   <script src="diffords-data.js?v=2.0.0.125"></script>
   <script>
-    const BUILD_VERSION = '2.0.0.140';
+    const BUILD_VERSION = '2.0.0.141';
     const CURRENT_RELEASE = {
-      title: 'Sidebar navigation for Settings',
-      summary: 'Settings and Info now use the app-template-style icon sidebar, with clearer measurement headings.',
+      title: 'At-a-glance recipe sources',
+      summary: 'The cocktail list now shows which recipe collections are available without opening each drink.',
       changes: [
-        'Moved Settings and Info into icon-based sidebar tabs.',
-        'Matched the selected, hover, and compact mobile tab behavior to the app template.',
-        'Widened the Metric / drops and US measure columns so their headings remain visible.',
-        'Kept conversion notes on one line on desktop.'
+        'Added a Recipe column between Cocktail and Try.',
+        'Shows fixed-position symbols for Difford’s, IBA, Letters & Liquor, and other recipes.',
+        'Uses blue, red, gold, and green source colors for quick scanning.',
+        'Took the new column width from the Cocktail column and kept source positions aligned.'
       ]
     };
 	    const __PHOTO = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 30.3223 23.8281"><g><rect height="23.8281" opacity="0" width="30.3223" x="0" y="0"/><path d="M5.01953 22.5928L24.7852 22.5928C27.5879 22.5928 28.9404 21.2598 28.7109 18.8818L21.2256 11.8945C20.6641 11.377 20.0098 11.123 19.3311 11.123C18.6377 11.123 18.0176 11.3623 17.4414 11.875L11.7529 16.9629L9.42383 14.8584C8.8916 14.3848 8.31543 14.1406 7.71973 14.1406C7.11426 14.1406 6.62109 14.3701 6.10352 14.8438L1.41113 19.0234C1.47461 21.3623 2.69531 22.5928 5.01953 22.5928ZM4.29199 23.8281L25.6641 23.8281C28.457 23.8281 29.9609 22.3242 29.9609 19.5654L29.9609 4.27246C29.9609 1.50879 28.457 0.00976562 25.6641 0.00976562L4.29199 0.00976562C1.50879 0.00976562 0 1.50391 0 4.27246L0 19.5654C0 22.334 1.50879 23.8281 4.29199 23.8281ZM4.58008 20.9424C3.47656 20.9424 2.89062 20.3906 2.89062 19.2334L2.89062 4.60449C2.89062 3.45215 3.47656 2.89551 4.58008 2.89551L25.376 2.89551C26.4697 2.89551 27.0654 3.45215 27.0654 4.60449L27.0654 19.2334C27.0654 20.3906 26.4697 20.9424 25.376 20.9424Z"/><path d="M10.1807 12.2949C11.8652 12.2949 13.252 10.9082 13.252 9.20898C13.252 7.52441 11.8652 6.12305 10.1807 6.12305C8.48145 6.12305 7.09961 7.52441 7.09961 9.20898C7.09961 10.9082 8.48145 12.2949 10.1807 12.2949Z"/></g></svg>`;
@@ -5949,6 +5960,31 @@
 	      const source = recipeSource(cocktail, key);
 	      return source && source.available !== false && Array.isArray(source.ingredients) && source.ingredients.length > 0;
 	    }
+	    const RECIPE_SOURCE_SYMBOL_PATHS = {
+	      diffords: 'M23.8232 4.26758L23.8232 19.5605C23.8232 22.3193 22.3145 23.8232 19.5264 23.8232L4.29199 23.8232C1.50879 23.8232 0 22.3291 0 19.5605L0 4.26758C0 1.49902 1.50879 0 4.29199 0L19.5264 0C22.3145 0 23.8232 1.50391 23.8232 4.26758ZM8.68652 5.95703C7.65625 5.95703 7.12891 6.55762 7.12891 7.6123L7.12891 16.0889C7.12891 17.1533 7.65137 17.7539 8.68652 17.7539L11.9922 17.7539C15.6299 17.7539 17.7002 15.6396 17.7002 11.8359C17.7002 8.07129 15.6543 5.95703 11.9922 5.95703ZM14.7412 11.8555C14.7412 14.375 13.6621 15.5615 11.5576 15.5615L9.92676 15.5615L9.92676 8.14941L11.5576 8.14941C13.6523 8.14941 14.7412 9.39941 14.7412 11.8555Z',
+	      iba: 'M23.8232 4.26758L23.8232 19.5605C23.8232 22.3193 22.3145 23.8232 19.5264 23.8232L4.29199 23.8232C1.50879 23.8232 0 22.3291 0 19.5605L0 4.26758C0 1.49902 1.50879 0 4.29199 0L19.5264 0C22.3145 0 23.8232 1.50391 23.8232 4.26758ZM10.4248 7.49023L10.4248 16.2207C10.4248 17.2754 10.9766 17.9395 11.9678 17.9395C12.9639 17.9395 13.5254 17.29 13.5254 16.2207L13.5254 7.49023C13.5254 6.41113 12.9639 5.76172 11.9678 5.76172C10.9766 5.76172 10.4248 6.42578 10.4248 7.49023Z',
+	      lnl: 'M23.8232 4.26758L23.8232 19.5605C23.8232 22.3193 22.3145 23.8232 19.5264 23.8232L4.29199 23.8232C1.50879 23.8232 0 22.3291 0 19.5605L0 4.26758C0 1.49902 1.50879 0 4.29199 0L19.5264 0C22.3145 0 23.8232 1.50391 23.8232 4.26758ZM8.06152 7.48535L8.06152 16.0303C8.06152 17.0947 8.61328 17.7539 9.60449 17.7539L15.2539 17.7539C16.0498 17.7539 16.5576 17.2998 16.5576 16.5186C16.5576 15.7568 16.0449 15.3076 15.2539 15.3076L11.167 15.3076L11.167 7.48535C11.167 6.41602 10.6006 5.76172 9.60449 5.76172C8.6084 5.76172 8.06152 6.4209 8.06152 7.48535Z',
+	      other: 'M23.8232 4.26758L23.8232 19.5605C23.8232 22.3193 22.3145 23.8232 19.5264 23.8232L4.29199 23.8232C1.50879 23.8232 0 22.3291 0 19.5605L0 4.26758C0 1.49902 1.50879 0 4.29199 0L19.5264 0C22.3145 0 23.8232 1.50391 23.8232 4.26758ZM6.21094 11.8555C6.21094 15.6152 8.61816 18.0273 11.9727 18.0273C15.3271 18.0273 17.7393 15.6152 17.7393 11.8555C17.7393 8.09082 15.3271 5.67871 11.9727 5.67871C8.61816 5.67871 6.21094 8.09082 6.21094 11.8555ZM14.8389 11.8555C14.8389 14.2578 13.6719 15.708 11.9727 15.708C10.2783 15.708 9.10645 14.2578 9.10645 11.8555C9.10645 9.44336 10.2783 8.00293 11.9727 8.00293C13.6719 8.00293 14.8389 9.44336 14.8389 11.8555Z'
+	    };
+	    function recipeSourceIndicators(cocktail) {
+	      const hasIba = availableRecipeSource(cocktail, 'iba');
+	      const hasLnl = availableRecipeSource(cocktail, 'lnl');
+	      const hasDiffords = availableRecipeSource(cocktail, 'diffords');
+	      const hasLiquor = availableRecipeSource(cocktail, 'liquor');
+	      const hasOther = hasLiquor || (!hasIba && !hasLnl && !hasDiffords && Array.isArray(cocktail.ingredients) && cocktail.ingredients.length > 0);
+	      const sources = [
+	        ['diffords', "Difford's", hasDiffords],
+	        ['iba', 'IBA', hasIba],
+	        ['lnl', 'L&L', hasLnl],
+	        ['other', 'Other', hasOther]
+	      ];
+	      const availableLabels = sources.filter(([, , available]) => available).map(([, label]) => label);
+	      const slots = sources.map(([key, label, available]) => available
+	        ? `<span class="recipe-source-slot"><span class="recipe-source-symbol recipe-source-symbol-${key}" title="${escapeHtml(label)} recipe" aria-hidden="true"><svg viewBox="0 0 24.1846 23.8281" focusable="false"><path fill="currentColor" fill-opacity="0.85" d="${RECIPE_SOURCE_SYMBOL_PATHS[key]}"/></svg></span></span>`
+	        : '<span class="recipe-source-slot" aria-hidden="true"></span>'
+	      ).join('');
+	      return `<div class="recipe-source-slots" role="img" aria-label="Recipes: ${escapeHtml(availableLabels.join(', ') || 'none')}">${slots}</div>`;
+	    }
 	    function selectedRecipeSourceKey(cocktail) {
 	      const requested = state.recipeSource[cocktail.id];
 	      if (requested && availableRecipeSource(cocktail, requested)) return requested;
@@ -6118,7 +6154,7 @@
 	              <div class="ingredient-method"><div class="detail-method-header"><h4>Method</h4>${servingStyleTag(recipeView)}</div><ol>${recipeView.method.length ? recipeView.method.map((x) => `<li>${escapeHtml(formatMethodLine(x))}</li>`).join('') : '<li class="empty">Not recorded yet</li>'}</ol></div>
 	            </section>
 	          </div>`;
-	      return `<tr class="detail-row"><td colspan="12"><div class="detail">
+	      return `<tr class="detail-row"><td colspan="13"><div class="detail">
 	        <div class="detail-grid${comparingRecipes ? ' has-recipe-comparison' : ''}">
 	          <section class="detail-card mobile-detail-facts">
 	            <h3>Details</h3>
@@ -6158,6 +6194,7 @@
 	        <td data-label="Photo">${thumbCell(c)}</td>
 	        <td data-label="My Bar"><span class="availability-slot">${supportedIndicator}</span></td>
 	        <td data-label="Cocktail"><div class="name-cell"><div class="cocktail-name">${cocktailNameMarkup(c)}</div><div class="cocktail-row-markers">${cocktailDataFlagsMarkup(c)}<span class="cocktail-marker-tags">${compactTypeTag(c)}${cocktailRowSourceFlag(c)}</span></div></div></td>
+	        <td data-label="Recipe">${recipeSourceIndicators(c)}</td>
 	        <td data-label="Try" class="bookmark-cell">${bookmarkToggle(c)}</td>
 	        <td data-label="Rating"><div class="rating-cell" title="${escapeHtml(ratingTitle)}">${ratingStars(c.id, rating, store.ratingView === 'friends' ? 'friends-view' : '')}<span class="rating-value">${ratingValueLabel(rating)}</span></div></td>
 	        <td data-label="Serve">${servingStyleTag(c)}</td>
@@ -6325,7 +6362,7 @@
         return;
       }
       const emptyMessage = state.quick.has('myBar') ? 'No cocktails are ready with the current filters.' : 'No cocktails match the current filters.';
-      $('#cocktailBody').innerHTML = rows.length ? rows.map(rowTemplate).join('') : `<tr><td colspan="12"><div class="no-results">${emptyMessage}</div></td></tr>`;
+      $('#cocktailBody').innerHTML = rows.length ? rows.map(rowTemplate).join('') : `<tr><td colspan="13"><div class="no-results">${emptyMessage}</div></td></tr>`;
       renderMyBarResults(rows);
       const bottleUsage = activeBottleUsage();
       $('#resultMeta').textContent = bottleUsage
@@ -10651,7 +10688,7 @@
 	      });
 	      saveCustom();
 	    });
-    const FIXED_COL_WIDTH = { photo: 42, availability: 10, try: 56, rating: 94, ing: 66, time: 76, serving: 88 };
+    const FIXED_COL_WIDTH = { photo: 42, availability: 10, recipe: 91, try: 56, rating: 94, ing: 66, time: 76, serving: 88 };
     const PRIORITY_COLS = ['cocktail', 'base', 'garnish', 'glass'];
     const PRIORITY_FLOOR = { cocktail: 180, base: 90, garnish: 89, glass: 120 };
     const PRIORITY_GROW_WEIGHT = { cocktail: 30, base: 20, garnish: 16, glass: 12 };
@@ -10665,7 +10702,7 @@
 	    <td></td>
 	    <td></td>
 	    <td><div class="name-cell"><div class="cocktail-name" data-probe="name"></div><div class="cocktail-row-markers" data-probe="markers"></div></div></td>
-	    <td></td><td></td><td></td>
+	    <td></td><td></td><td></td><td></td>
         <td><div class="tagline" data-probe="base"></div></td>
         <td><span class="garnish-cell" data-probe="garnish"></span></td>
         <td></td><td></td>
@@ -10713,7 +10750,8 @@
       });
       const fixedTotal = Object.values(FIXED_COL_WIDTH).reduce((sum, w) => sum + w, 0);
       const tableWidth = $('.table-wrap').clientWidth;
-      let remaining = Math.max(0, tableWidth - fixedTotal);
+      const recipeWidth = FIXED_COL_WIDTH.recipe || 0;
+      let remaining = Math.max(0, tableWidth - fixedTotal + recipeWidth);
       const widths = {};
       PRIORITY_COLS.forEach((col) => {
         widths[col] = Math.min(PRIORITY_FLOOR[col], remaining);
@@ -10743,6 +10781,7 @@
         });
         remaining = 0;
       }
+      widths.cocktail = Math.max(90, widths.cocktail - recipeWidth);
       PRIORITY_COLS.forEach((col) => {
         const th = table.querySelector(`th[data-col="${col}"]`);
         const tableCol = table.querySelector(`col[data-table-col="${col}"]`);
