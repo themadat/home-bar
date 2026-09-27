@@ -1,44 +1,16 @@
 # Agent instructions
 
-## Build number
+## Keep context small
+- Use the source map in README.md to locate code. Search explicit files with `rg -n --max-columns 200 --max-columns-preview`; read only relevant functions or records.
+- Never dump whole large files, datasets, SVG payloads, exports, or full diffs. Start with `git diff --stat`; bound further output. `.rgignore` excludes bulk content from default searches; pass its path explicitly when needed.
+- Batch related edits; run focused validation once after the final change (`bash build/check.sh`). Check the browser when loading, layout, or interaction changes.
+- Keep reports concise. Avoid unrelated refactoring, new tracking files, and additional agents unless requested or necessary.
 
-`index.html` has a `const BUILD_VERSION = 'MAJOR.MINOR.PATCH.BUILD';` line (search for
-`BUILD_VERSION =`). It's shown to the user as the `v...` pill under the app title and in the
-version modal.
+## Release a batch
+- Keep BUILD_VERSION and CURRENT_RELEASE in index.html; the updater reads the version from HTML.
+- For app changes, run `python3 build/release.py --title "..." --summary "..." --change "..."` (repeat --change as needed). It bumps BUILD once relative to HEAD, reuses that version for uncommitted refinements, and synchronizes asset URLs and the workflow name.
+- Notes must accurately describe the completed batch. No bump for docs/instructions/tooling alone. Change MAJOR/MINOR/PATCH only when explicitly requested.
 
-After every prompt that changes `index.html`, increment the last (BUILD) segment by 1 before
-finishing the turn (e.g. `1.0.0.1` -> `1.0.0.2`). Only bump MAJOR/MINOR/PATCH if the user
-explicitly asks for that.
-
-For every build-number change, also update the `CURRENT_RELEASE` title, summary, and changes in
-`index.html` so the What’s New banner and version modal accurately describe that prompt’s user-
-visible changes. Never advance `BUILD_VERSION` while reusing stale release notes.
-
-Keep the version in the `name: Deploy Home Bar v...` line in
-`.github/workflows/deploy.yml` synchronized with `BUILD_VERSION`; GitHub Mobile uses that fixed
-workflow name in deployment push notifications.
-
-## End of turn
-
-After making changes, always give the user a single copy-paste-ready terminal command (in a
-` ```bash ` fenced block) that stages `index.html` (and any other changed files), commits with a
-short one-line summary of what was done, includes the current `BUILD_VERSION`, and pushes to
-`origin`. Example shape:
-
-```bash
-git add index.html && git commit -m "v1.0.0.2 — Short summary of what changed" && git push origin main
-```
-
-Do not run this command yourself — the user runs it. Do not combine multiple unrelated changes
-into one vague summary; describe what actually changed in that turn.
-
-## `continue`
-
-When the user sends only:
-
-```text
-continue
-```
-
-inspect Git status, recent changes, and any existing handoff or plan, then resume unfinished work.
-Do not create a replacement status file or tracking system.
+## Finish
+- After changes, provide one copy-paste-ready bash command staging changed files, committing with the current version and a short specific summary, and pushing to origin on the current branch. Never run it yourself.
+- On `continue`, inspect Git status, recent changes, and any existing handoff/plan, then resume unfinished work. Do not create replacement tracking files.

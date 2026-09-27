@@ -1,4 +1,4 @@
-name: Deploy Home Bar v2.0.0.143
+name: Deploy Home Bar v2.0.0.144
 
 run-name: Deploy ${{ github.event.head_commit.message }}
 
@@ -29,6 +29,9 @@ jobs:
     steps:
       - name: Checkout source
         uses: actions/checkout@v6
+
+      - name: Validate app assets and release
+        run: bash build/check.sh
 
       - name: Decide destination subfolder
         id: dest
