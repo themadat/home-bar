@@ -1,0 +1,10 @@
+# Bulk content: search explicit paths when working on these records/assets.
+data/
+assets/js/icons.js
+letters-liquor-data.js
+letters-liquor-notes.js
+diffords-data.js
+exports/
+assets/svgs/
+assets/world-map*.svg
+build/diffords-import-report.json

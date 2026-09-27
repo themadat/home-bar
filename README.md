@@ -1,60 +1,67 @@
 # Home Bar
 
-A searchable cocktail collection with ratings, notes, recipes, a home bar inventory,
-glassware tracking, and optional GitHub Sync. Install it from your browser for
-quick access from your home screen.
+A searchable cocktail collection with recipes, ratings, notes, bar inventory,
+drinkware tracking, and optional GitHub Sync.
 
-Use **Home Bar** as the app name and **home-bar** for the repository and local folder.
+[Production](https://themadat.github.io/home-bar/) ·
+[Beta](https://themadat.github.io/home-bar/beta/) ·
+[Alpha](https://themadat.github.io/home-bar/alpha/)
 
-- Repository: [themadat/home-bar](https://github.com/themadat/home-bar)
-- Website: [Home Bar](https://themadat.github.io/home-bar/)
-- Beta: [Home Bar beta](https://themadat.github.io/home-bar/beta/)
-- Alpha: [Home Bar alpha](https://themadat.github.io/home-bar/alpha/)
+## Run and check
 
-## Run locally
+Run `python3 -m http.server 8990`, then open `http://localhost:8990/`.
+No package installation or build step is required. Run `bash build/check.sh`
+for JavaScript syntax, local asset paths, startup order, and release consistency.
+The checker uses Node.js, or JavaScriptCore on macOS.
 
-From the repository folder, run `python3 -m http.server 8990` and open
-[localhost:8990](http://localhost:8990/). There is no package installation or app
-build step. On macOS, run `bash build/check.sh` to check the main JavaScript syntax.
+## Source map
 
-## Deploy
+Read only the files relevant to the change. All paths below are repository-relative.
 
-Push to `main`, `beta`, or `alpha` to run the **Deploy Home Bar to GitHub Pages**
-workflow. It publishes to the root, `beta/`, or `alpha/` folder of the `gh-pages`
-branch. In GitHub **Settings → Pages**, use **Deploy from a branch**, select
-`gh-pages`, and choose `/ (root)`.
+| File | Responsibility |
+| --- | --- |
+| `index.html` | Page structure, dialogs, current version/release, ordered script tags |
+| `assets/css/app.css` | Styles and responsive layout |
+| `assets/js/app.js` | Shared state, configuration, event registration, startup |
+| `assets/js/ingredients.js` | Ingredient normalization, measurements, raw recipe parsing |
+| `assets/js/ratings.js` | Ratings, bookmarks, photos, source notes |
+| `assets/js/availability.js` | Bar matching, substitutions, filtering, sorting |
+| `assets/js/render.js` | Table rows, recipe detail, comparison, popovers |
+| `assets/js/dialogs.js` | Settings, notes, gallery, drinkware, ingredient checklist |
+| `assets/js/bar.js` | Bottles, shopping, recommendations, neat pours |
+| `assets/js/cocktail-editor.js` | Recipe editor and export |
+| `assets/js/sync.js` | GitHub Sync, import, snapshot validation |
+| `assets/js/interface.js` | Filters, keyboard shortcuts, responsive table sizing |
+| `assets/js/icons.js` | Bulk static SVG strings; inspect only for icon changes |
+| `data/cocktails.js` | Base cocktail records, formatted for targeted reads by id |
+| `letters-liquor-*.js`, `diffords-data.js` | Supplemental datasets |
+| `tools/import-diffords.mjs` | Difford's data importer |
 
-## Finish the repository and folder rename
+Feature scripts contain function declarations sharing the original global scope;
+load them before `app.js`. Keep initialization in `app.js` in its existing order.
+Do not add async/defer or module wrappers without reviewing these dependencies.
+Keep BUILD_VERSION in the HTML: existing installations extract it to detect updates.
 
-The links above use the new name. Complete these steps to move the existing site:
+Default `rg` searches skip bulk datasets, icons, and exports via `.rgignore`.
+Search an explicit path to include them, e.g.:
 
-1. Export a current JSON backup from the app on each device with unsynced data.
-2. While signed into GitHub as `themadat` (or another repository administrator),
-   open the existing repository's **Settings → General**, change **Repository name**
-   from `cocktail-list` to `home-bar`, and click **Rename**. In the repository's
-   **About** settings, set its website to `https://themadat.github.io/home-bar/`.
-3. Point this clone at the renamed repository with
-   `git remote set-url origin git@gh-personal:themadat/home-bar.git`. This preserves
-   the existing personal SSH host alias. Commit and push the Home Bar changes to
-   `main`, then wait for the deployment and GitHub Pages build to finish.
-4. After pushing, rename the local `cocktail-list` folder to `home-bar` and reopen
-   that folder in Codex and any other editors or Git clients. The saved Codex
-   project label can be `home-bar`; its folder path must also point to the new location.
-5. Open the new website, confirm your data is present, update bookmarks, and
-   recreate home-screen shortcuts or installed web apps from the new URL.
+```bash
+rg -n --max-columns 200 --max-columns-preview '"id": "alexander"' data/cocktails.js
+```
 
-GitHub redirects old repository links, but **does not redirect the old GitHub Pages
-project URL**. See [GitHub's repository rename documentation](https://docs.github.com/en/repositories/creating-and-managing-repositories/renaming-a-repository).
+## Release and deploy
 
-Existing `cocktail...` browser storage keys are intentionally retained for data
-compatibility. The Pages hostname remains `themadat.github.io`, so local storage
-in the same browser profile remains available at the new path. Keep your JSON
-backup until you have checked the new site and any installed app. If GitHub Sync
-uses this renamed repository, update its repository setting to `home-bar`; a
-separate data repository does not need to be renamed.
+Prepare one version per uncommitted batch (repeat with revised notes while refining):
 
-## Versioning
+```bash
+python3 build/release.py --title "Release title" --summary "What changed" --change "Specific improvement"
+bash build/check.sh
+```
 
-This rename starts release **2.0.0**. The app stores and displays a fourth build
-segment in `BUILD_VERSION`, so this release is **2.0.0.116**, incrementing the
-previous build from 115 to 116. Future changes follow `AGENTS.md`.
+The release helper increments only BUILD relative to HEAD, then synchronizes the
+workflow name and all local JS/CSS cache versions. Commit the batch before starting
+the next release. Instructions/docs/tooling-only changes do not require a bump.
+
+Push to `main`, `beta`, or `alpha` to deploy to the corresponding `gh-pages` folder.
+GitHub Pages must serve `gh-pages` at `/ (root)`. Relative asset paths work in all
+three locations. Keep existing browser-storage keys for user-data compatibility.

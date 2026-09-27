@@ -6,7 +6,8 @@ import vm from 'node:vm';
 import {fileURLToPath} from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const INDEX_PATH = path.join(ROOT, 'index.html');
+const COCKTAILS_PATH = path.join(ROOT, 'data', 'cocktails.js');
+const APP_PATH = path.join(ROOT, 'assets', 'js', 'app.js');
 const LNL_PATH = path.join(ROOT, 'letters-liquor-data.js');
 const OVERRIDES_PATH = path.join(ROOT, 'tools', 'diffords-overrides.json');
 const OUTPUT_PATH = path.join(ROOT, 'diffords-data.js');
@@ -69,15 +70,15 @@ function unique(values) {
   return [...new Set(values.filter(Boolean))];
 }
 
-function parseIndexCocktails(indexText) {
-  const cocktailLine = indexText.split('\n').find((line) => line.trimStart().startsWith('const COCKTAILS = '));
-  if (!cocktailLine) throw new Error('Could not find the COCKTAILS dataset in index.html.');
-  const builtIn = JSON.parse(cocktailLine.slice(cocktailLine.indexOf('['), cocktailLine.lastIndexOf('];') + 1));
+function parseBundledCocktails(dataText, appText) {
+  const cocktailMatch = dataText.match(/const COCKTAILS = (\[[\s\S]*\]);\s*$/);
+  if (!cocktailMatch) throw new Error('Could not find the COCKTAILS dataset in data/cocktails.js.');
+  const builtIn = JSON.parse(cocktailMatch[1]);
 
-  const unshiftMatch = indexText.match(/COCKTAILS\.unshift\((\{"id":"amaretto-martini"[^\n]+\})\);/);
+  const unshiftMatch = appText.match(/COCKTAILS\.unshift\((\{"id":"amaretto-martini"[^\n]+\})\);/);
   if (unshiftMatch) builtIn.push(JSON.parse(unshiftMatch[1]));
 
-  const seedMatch = indexText.match(/const SEED_CUSTOM_COCKTAILS = (\[[\s\S]*?\n\s*\]);/);
+  const seedMatch = appText.match(/const SEED_CUSTOM_COCKTAILS = (\[[\s\S]*?\n\s*\]);/);
   if (seedMatch) {
     const seedCocktails = vm.runInNewContext(`(${seedMatch[1]})`, Object.create(null));
     builtIn.push(...seedCocktails);
@@ -110,8 +111,10 @@ async function loadOverrides() {
 }
 
 async function loadCocktails() {
-  const indexText = await fs.readFile(INDEX_PATH, 'utf8');
-  const combined = [...parseIndexCocktails(indexText), ...await parseLettersLiquorCocktails()];
+  const [dataText, appText] = await Promise.all([
+    fs.readFile(COCKTAILS_PATH, 'utf8'), fs.readFile(APP_PATH, 'utf8')
+  ]);
+  const combined = [...parseBundledCocktails(dataText, appText), ...await parseLettersLiquorCocktails()];
   const byId = new Map();
   combined.forEach((cocktail) => {
     if (!cocktail?.id || !cocktail?.name) return;
