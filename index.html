@@ -544,7 +544,7 @@
     }
     .info-popover {
       position: fixed;
-      z-index: 70;
+      z-index: 110;
       max-width: min(340px, calc(100vw - 24px));
       border: 1px solid var(--line);
       background: var(--panel-2);
@@ -907,6 +907,7 @@
     .ingredient-fraction-align { display: inline-grid; grid-template-columns: 1ch 1.15em; column-gap: var(--ingredient-spacing); align-items: baseline; justify-items: end; }
     .ingredient-fraction-whole:empty { visibility: hidden; }
     .ingredient-fraction-glyph { justify-self: center; }
+    .ingredient-fraction-small { font-size: .75em; }
     .ingredient-unit { grid-row: 1; grid-column: 3; justify-self: end; color: var(--muted); text-align: right; white-space: nowrap; }
     .ingredient-measure-numbered .ingredient-unit { grid-column: 2 / 4; }
     .ingredient-measure-label-only .ingredient-unit { grid-column: 1 / 4; }
@@ -2916,15 +2917,16 @@
   <script src="letters-liquor-data.js?v=2.0.0.125"></script>
   <script src="diffords-data.js?v=2.0.0.125"></script>
   <script>
-    const BUILD_VERSION = '2.0.0.141';
+    const BUILD_VERSION = '2.0.0.142';
     const CURRENT_RELEASE = {
-      title: 'At-a-glance recipe sources',
-      summary: 'The cocktail list now shows which recipe collections are available without opening each drink.',
+      title: 'Consistent ingredients and recipe details',
+      summary: 'Unified specialty ingredient labels and availability, with clearer recipe amounts and working fullscreen info.',
       changes: [
-        'Added a Recipe column between Cocktail and Try.',
-        'Shows fixed-position symbols for Difford’s, IBA, Letters & Liquor, and other recipes.',
-        'Uses blue, red, gold, and green source colors for quick scanning.',
-        'Took the new column width from the Cocktail column and kept source positions aligned.'
+        'Standardized Chartreuse, Bénédictine, Fernet, Cynar, and Cachaça ingredient labels.',
+        'Fixed Fernet and accented peach purée availability across recipe sources.',
+        'Added Cointreau, triple sec, and Grand Marnier comparison and substitution guidance.',
+        'Moved absinthe rinse into the amount column and reduced fractions smaller than ⅛.',
+        'Made ingredient info popups visible above the fullscreen cocktail view.'
       ]
     };
 	    const __PHOTO = `<svg class="sf-symbol" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 30.3223 23.8281"><g><rect height="23.8281" opacity="0" width="30.3223" x="0" y="0"/><path d="M5.01953 22.5928L24.7852 22.5928C27.5879 22.5928 28.9404 21.2598 28.7109 18.8818L21.2256 11.8945C20.6641 11.377 20.0098 11.123 19.3311 11.123C18.6377 11.123 18.0176 11.3623 17.4414 11.875L11.7529 16.9629L9.42383 14.8584C8.8916 14.3848 8.31543 14.1406 7.71973 14.1406C7.11426 14.1406 6.62109 14.3701 6.10352 14.8438L1.41113 19.0234C1.47461 21.3623 2.69531 22.5928 5.01953 22.5928ZM4.29199 23.8281L25.6641 23.8281C28.457 23.8281 29.9609 22.3242 29.9609 19.5654L29.9609 4.27246C29.9609 1.50879 28.457 0.00976562 25.6641 0.00976562L4.29199 0.00976562C1.50879 0.00976562 0 1.50391 0 4.27246L0 19.5654C0 22.334 1.50879 23.8281 4.29199 23.8281ZM4.58008 20.9424C3.47656 20.9424 2.89062 20.3906 2.89062 19.2334L2.89062 4.60449C2.89062 3.45215 3.47656 2.89551 4.58008 2.89551L25.376 2.89551C26.4697 2.89551 27.0654 3.45215 27.0654 4.60449L27.0654 19.2334C27.0654 20.3906 26.4697 20.9424 25.376 20.9424Z"/><path d="M10.1807 12.2949C11.8652 12.2949 13.252 10.9082 13.252 9.20898C13.252 7.52441 11.8652 6.12305 10.1807 6.12305C8.48145 6.12305 7.09961 7.52441 7.09961 9.20898C7.09961 10.9082 8.48145 12.2949 10.1807 12.2949Z"/></g></svg>`;
@@ -3303,6 +3305,7 @@
         };
         const LIQUEUR_BAR_SUBTYPES = [...FRUIT_LIQUEUR_SUBTYPES, 'Herb, Brandy', 'Herb, Anise', 'Herb, Mint', 'Herb, Other', 'Other, Specialty'];
         function canonicalLiqueurSubtype(name, subtype) {
+          if (/chart(?:reuse|ruse)|benedictine|fernet|cynar/i.test(String(name).normalize('NFD').replace(/[\u0300-\u036f]/g, ''))) return 'Herb, Other';
           if (LIQUEUR_BAR_SUBTYPES.includes(subtype)) return subtype;
           const fruitSubtype = fruitLiqueurSubtypeForName(name);
           if (subtype === 'Fruits liqueurs' || subtype === 'Fruit Liqueur') return fruitSubtype || 'Fruit, Other';
@@ -3317,7 +3320,11 @@
         const FLAVOR_LED_LIQUEUR_SUBTYPES = new Set(['Chocolate liqueurs','Coffee liqueurs','Floral liqueurs','Nuts liqueurs']);
         const SUPERFINE_SUGAR = 'Sugar [Superfine]';
         const WHITE_SUGAR_INFO = 'White, preferably cane: cane sugar comes only from sugar cane, rather than sugar beets or a cane/beet blend. Taste and sweetness are essentially identical and the sugars can be used interchangeably, but cane sugar is slightly purer, caramelizes better, and contains fewer impurities.';
+        const ORANGE_LIQUEUR_INFO = 'Triple sec is a category; Cointreau is a premium 40% ABV triple sec. Grand Marnier blends orange liqueur with Cognac, adding oak, vanilla, and richness.\n\nCointreau ↔ triple sec: substitute 1:1. Lower-proof triple sec may taste sweeter and less intensely orange; reduce other syrup to taste.\n\nCointreau → Grand Marnier: substitute 1:1 for a richer, heavier, less crisp drink.\n\nGrand Marnier → Cointreau: substitute 1:1 for a brighter, cleaner drink without Cognac richness.';
         const INGREDIENT_INFO = {
+          'Cointreau': ORANGE_LIQUEUR_INFO,
+          'Triple Sec': ORANGE_LIQUEUR_INFO,
+          'Grand Marnier': ORANGE_LIQUEUR_INFO,
           'Honey Syrup': 'Mix 2 parts honey with 1 part warm water. A 2:1 honey-to-water ratio is the best all-purpose cocktail ratio.',
           'Lemonade, Sparkling': 'Mix together:\n\n- 2 oz lemon juice\n- 1–1½ oz simple syrup\n- 6–8 oz sparkling water',
           'Lime Cordial': 'Mix together:\n\n- 1 oz fresh lime juice\n- ½–¾ oz simple syrup',
@@ -3341,7 +3348,7 @@
           'Egg White (Pasteurised)': 'Egg White',
           'Espresso': 'Coffee [Espresso]',
           'Evaporated Milk': 'Milk, Evaporated',
-          'Fernet-Branca': 'Fernet [Fernet-Branca]',
+          'Fernet-Branca': 'Herb, Other Liqueur [Fernet (Amaro, Italian)]',
           'Fresh Lemon Juice': 'Lemon Juice [Fresh]',
           'Fresh Squeezed Lemon Juice': 'Lemon Juice [Fresh]',
           'Heavy Cream': 'Cream [Heavy]',
@@ -3399,7 +3406,7 @@
           'Cherry Brandy Luxardo': 'Cherry Liqueur [Luxardo Cherry Brandy]',
           'Curacao': 'Orange Liqueur [Curacao]',
           'Donn’s Mix*': "Donn's Mix",
-          'Fernet Branca': 'Bitter Liqueur [Fernet-Branca]',
+          'Fernet Branca': 'Herb, Other Liqueur [Fernet (Amaro, Italian)]',
           'Licor Amaretto': 'Almond Liqueur [Amaretto]',
           'Licor Frangelico': 'Hazelnut Nut Liqueur [Frangelico]',
           'Maraschino Luxardo': 'Cherry Liqueur [Luxardo Maraschino]',
@@ -3545,6 +3552,9 @@
 	    });
     SEED_CUSTOM_COCKTAILS.push(...LETTERS_LIQUOR_CUSTOM_COCKTAILS);
     const SPECIALTY_LIQUEUR_INGREDIENTS = [
+      {pattern: /fernet/i, name: 'Fernet-Branca', flavor: 'herbs'},
+      {pattern: /cynar/i, name: 'Cynar', flavor: 'herbs'},
+      {pattern: /b[eé]n[eé]dictine/i, name: 'Bénédictine', flavor: 'herbs'},
       {pattern: /chart(?:reuse|ruse)/i, name: 'Chartreuse', flavor: 'herbal botanicals'},
       {pattern: /licor\s*43/i, name: 'Licor 43', flavor: 'vanilla, citrus, spice'},
       {pattern: /(?:dolin\s+)?gen[eé]p[yi]\s+(?:le\s+)?chamois/i, name: 'Dolin Genepy Le Chamois', flavor: 'alpine herbs, floral notes, gentle sweetness'}
@@ -3567,11 +3577,11 @@
           : specialty.name;
         if (existing) {
           existing.name = specialtyName;
-          existing.subtype = 'Other, Specialty';
+          existing.subtype = canonicalLiqueurSubtype(specialtyName, 'Other, Specialty');
           return;
         }
         if (specialty.pattern.test(ingredientText)) {
-          cocktail.liqueurs.push({name: specialtyName, subtype: 'Other, Specialty', flavor: specialty.flavor});
+          cocktail.liqueurs.push({name: specialtyName, subtype: canonicalLiqueurSubtype(specialtyName, 'Other, Specialty'), flavor: specialty.flavor});
         }
       });
       return cocktail;
@@ -3734,6 +3744,7 @@
     const normalizePantryIngredientName = (name) => {
       const genericName = String(name || '').trim().replace(/\s+\[[^\]]+\]$/, '').trim();
       const key = bottleSearchText(genericName);
+      if (key === 'white peach puree') return 'White Peach Purée';
       if (key === 'pinch of salt') return 'Salt';
       if (key === 'donn s mix') return "Donn's Mix";
       if (key === 'basil') return 'Basil Leaves';
@@ -4075,6 +4086,7 @@
         }
         function parseIngredientLine(line) {
           const trimmed = line.trim();
+          if (/^(?:(?:1\s+)?absinthe\s+rinse|(?:a\s+)?rinse(?:\s+of)?\s+absinthe)$/i.test(trimmed)) return {line: trimmed, name: 'Absinthe'};
 	      const match = trimmed.match(/^(?:[\d.\/⁄½⅓⅔¼¾⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞]+(?:\s+[\d\/⁄½⅓⅔¼¾⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞]+)?(?:\s*-\s*[\d.\/⁄½⅓⅔¼¾⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞]+)?\s*(?:oz|ml|cl|dash(?:es)?|drops?|tsp|tbsp|bar\s*spoons?|cups?|parts?|pieces?|pinch(?:es)?|fresh|dried|swaths?|grinds?|cubes?|wedges?|slices?|sprigs?|leaves?|chunks?|scoops?)?|(?:a\s+)?(?:few\s+drops|pinch|splash|top\s+up(?:\s+with)?)(?:\s+of)?)\s+(.+)$/i);
           return { line: trimmed, name: (match ? match[1] : trimmed).trim() };
         }
@@ -4202,7 +4214,18 @@
         function liqueurTypeLabel(subtype) {
           return LIQUEUR_SUBTYPE_LABELS[subtype] || String(subtype || 'Liqueur').replace(/\s*liqueurs$/i, ' Liqueur');
         }
+        function specialtyIngredientLabel(name) {
+          const key = norm(name);
+          if (/chart(?:reuse|ruse)/.test(key)) return 'Herb, Other Liqueur [Chartreuse (Green or Yellow)]';
+          if (key.includes('benedictine')) return 'Herb, Other Liqueur [Bénédictine D.O.M.]';
+          if (/fernet|cynar/.test(key)) return 'Herb, Other Liqueur [Fernet (Amaro, Italian)]';
+          if (key.includes('cachaca')) return 'Sugarcane, Other Spirit [Cachaça (Brazilian)]';
+          if (key === 'absinthe rinse') return 'Absinthe';
+          if (key === 'white peach puree') return 'White Peach Purée';
+          return '';
+        }
         function liqueurIngredientLabel(liqueur) {
+          if (specialtyIngredientLabel(liqueur.name)) return specialtyIngredientLabel(liqueur.name);
           const subtype = canonicalLiqueurSubtype(liqueur.name, liqueur.subtype);
           const fruitType = subtype.startsWith('Fruit, ') ? subtype.slice('Fruit, '.length) : '';
           const base = fruitType ? `${fruitType} Liqueur` : liqueurTypeLabel(subtype);
@@ -4222,6 +4245,7 @@
           return leftName === rightName || leftName.includes(rightName) || rightName.includes(leftName);
         }
         function displayIngredientName(name, cocktail) {
+          if (specialtyIngredientLabel(name)) return specialtyIngredientLabel(name);
           if (INGREDIENT_LABEL_OVERRIDES[name]) return INGREDIENT_LABEL_OVERRIDES[name];
           const normalized = norm(name);
           if (normalized === 'basil' || normalized === 'basil leaves') return 'Basil Leaves';
@@ -4277,6 +4301,8 @@
         function ingredientDisplayParts(cocktail, index) {
           const rawName = cocktail.ingredientNames[index] || parseIngredientLine(cocktail.ingredients[index] || '').name;
           const sourceLine = String(cocktail.ingredients[index] || '');
+          const specialtyLabel = specialtyIngredientLabel(rawName);
+          if (specialtyLabel) return splitSpecificIngredientLabel(specialtyLabel);
           const explicitSpecific = String(cocktail.ingredientBottles?.[index] || '').trim();
           if (explicitSpecific) {
             const displayed = splitSpecificIngredientLabel(displayIngredientName(rawName, cocktail));
@@ -4424,6 +4450,7 @@
 	          return `${mixedFraction(rounded.value, rounded.denominator)} oz`;
 	        }
 	        function formatIngredientLine(line, cocktail, servings = 1) {
+	          if (/^(?:1\s+)?absinthe\s+rinse$/i.test(String(line || '').trim())) return 'Rinse Absinthe';
 	          if (/^(?:(?:a|1)\s+)?splash(?:\s+of)?\s+water$/i.test(String(line || '').trim())) return 'Splash Water';
 	          if (/^top\s+up(?:\s+with)?\s+(?:top\s+up(?:\s+with)?\s+)?soda(?:\s+\(club\s+soda\))?\s+water$/i.test(String(line || '').trim())) return 'Top Up Soda Water';
 	          const sugarCube = String(line || '').match(/\b(\d+(?:\.\d+)?|\d+\/\d+|a|an|one)\s+sugar cubes?\b/i);
@@ -4452,9 +4479,10 @@
 	          const fraction = slashMatch
 	            ? (VULGAR_FRACTIONS.get(`${slashMatch[2]}/${slashMatch[3]}`) || `${slashMatch[2]}⁄${slashMatch[3]}`)
 	            : vulgarMatch[2];
-	          return `<span class="ingredient-fraction-align"><span class="ingredient-fraction-whole">${escapeHtml(whole)}</span><span class="ingredient-fraction-glyph">${escapeHtml(fraction)}</span></span>`;
+	          return `<span class="ingredient-fraction-align"><span class="ingredient-fraction-whole">${escapeHtml(whole)}</span><span class="ingredient-fraction-glyph${!whole && parseRecipeAmount(text) < 1 / 8 ? ' ingredient-fraction-small' : ''}">${escapeHtml(fraction)}</span></span>`;
 	        }
 	        function ingredientLineMarkup(line, genericName = '', specificName = '', infoButton = '', substituteName = '') {
+	          if (/^(?:(?:1\s+)?absinthe\s+rinse|(?:a\s+)?rinse(?:\s+of)?\s+absinthe)$/i.test(String(line || '').trim())) return `<span class="ingredient-measure ingredient-measure-compact ingredient-measure-label-only"><span class="ingredient-amount"></span><span class="ingredient-unit ingredient-unit-compact">Rinse</span></span><span class="ingredient-name-group"><button type="button" class="ingredient-name" data-detail-ingredient="Absinthe">Absinthe</button>${infoButton}</span>`;
 	          const text = String(line || '').trim().replace(/\bLime Juice Juice\b/gi, 'Lime Juice');
 	          const standardMatch = text.match(new RegExp(`^${AMOUNT_PATTERN}\\s+(oz|tsp|tbsp|teaspoons?|tablespoons?|dash(?:es)?|drops?|bar\\s*spoons?|pieces?|pinch(?:es)?|fresh|dried|swaths?|grinds?|cubes?|wedges?|slices?|sprigs?|leaves?|chunks?|scoops?)\\s+(.+)$`, 'i'));
 	          const amountOnlyMatch = text.match(new RegExp(`^${AMOUNT_PATTERN}\\s+(.+)$`, 'i'));
@@ -5176,7 +5204,7 @@
     const ALL_SPIRIT_EXCLUDE_TOKENS = ['juice','soda','water','syrup','sugar','cordial','cream','milk','egg','puree','ginger','ginger ale','ginger beer','mint','basil','cola','coffee','cold brew','espresso','cloves','pepper','salt','seasoning','sauce','vanilla extract','olive brine','agave nectar','pineapple','tomato','donn','grenadine','orgeat','falernum','honey','fresh lime','fresh ginger','lemon wheel','orange wheel','lime','lemon'];
     const SPIRIT_FORWARD_EXCLUDE_TOKENS = ['juice','soda','cordial','cream','milk','egg','puree','ginger','ginger ale','ginger beer','mint','basil','cola','coffee','cold brew','espresso','cloves','pepper','seasoning','sauce','vanilla extract','agave nectar','pineapple','tomato','donn','orgeat','falernum','honey','fresh lime','fresh ginger','lemon wheel','orange wheel','lime','lemon'];
     const isAllAlcoholic = (names, excludeTokens) => names.length > 0 && names.every((name) => {
-      const n = name.toLowerCase();
+      const n = norm(name);
       return !excludeTokens.some((token) => n.includes(token));
     });
     const isAllSpirit = (cocktail) => isAllAlcoholic(cocktail.ingredientNames || [], ALL_SPIRIT_EXCLUDE_TOKENS);
@@ -5189,7 +5217,7 @@
       return `<div class="spirit-tags">${badges.map((label) => `<span class="spirit-tag">${escapeHtml(label)}</span>`).join('')}</div>`;
     }
     const isNonAlcoholicIngredientName = (name) => {
-      const n = String(name || '').toLowerCase();
+      const n = norm(name);
       return ALL_SPIRIT_EXCLUDE_TOKENS.some((token) => n.includes(token));
     };
     const nonAlcoholicIngredientParts = (cocktail) => cocktail.ingredientNames
@@ -7063,6 +7091,7 @@
           if (has('cream liqueur', 'irish cream', 'baileys')) return {base: 'Liqueurs', subtype: 'Cream liqueurs'};
           if (has('mint liqueur', 'creme de menthe', 'crème de menthe')) return {base: 'Liqueurs', subtype: 'Herb, Mint'};
           if (has('pernod', 'absinthe', 'sambuca', 'galliano', 'anise liqueur')) return {base: 'Liqueurs', subtype: 'Herb, Anise'};
+          if (has('fernet', 'cynar', 'chartreuse', 'chartruse')) return {base: 'Liqueurs', subtype: 'Herb, Other'};
           if (has('chartreuse', 'chartruse', 'licor 43', 'genepy le chamois', 'genepi le chamois')) return {base: 'Liqueurs', subtype: 'Other, Specialty'};
           if (has('benedictine', 'bénédictine', 'herbal liqueur')) return {base: 'Liqueurs', subtype: 'Herb, Other'};
 	          if (has('amaretto')) return {base: 'Liqueurs', subtype: 'Nuts liqueurs'};
