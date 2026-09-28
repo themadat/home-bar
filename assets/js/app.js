@@ -968,6 +968,7 @@ let storedFriendRatings = {};
       };
     });
         const state = {
+          shoppingView: 'buy', shoppingCategory: 'all', shoppingPriceDescending: false,
           q: '', ingredientQ: '', sort: 'name', sortDirection: 'default', pantrySort: 'alpha', statFilter: 'all', expanded: new Set(), barExpandedBottle: '', barExpandedRecommendation: '', neatExpandedBottle: '', bottleUsageId: '', bottleUsageOverride: null, pendingRemoveBottleId: '',
 	          futureBarPreview: false,
 	          barRecommendationView: 'owned',
@@ -1124,7 +1125,9 @@ const getRating = (cocktail) => store.ratingView === 'friends' ? getFriendAverag
 let friendRatingCocktailId = '';
     let editingFriendRatingName = '';
 
-$('#shoppingListButton').innerHTML = __BAG_FILL;
+$('#shoppingListButton').innerHTML = __SHOPPING_LIST;
+$('#shoppingAllToggle').innerHTML = __SHOPPING_ALL + 'All';
+$('#shoppingLiquorToggle').innerHTML = __SHOPPING_LIQUOR + 'Liquor';
     $('#barShoppingListButton').innerHTML = __BAG_FILL;
     $('#archiveButton').innerHTML = __ARCHIVEBOX_FILL;
     $('#notesButton').innerHTML = __LIST_CLIPBOARD_FILL;
@@ -1949,6 +1952,10 @@ $('#importData').addEventListener('click', () => $('#importFile').click());
 	    $('#githubSyncForget').addEventListener('click', forgetGitHubSync);
 	    $('#githubSyncCloseAction').addEventListener('click', closeGitHubSyncModal);
 	    $('#shoppingListButton').addEventListener('click', openShoppingListModal);
+    [['shoppingBuyToggle', 'shoppingView', 'buy'], ['shoppingHaveToggle', 'shoppingView', 'have'], ['shoppingAllToggle', 'shoppingCategory', 'all'], ['shoppingLiquorToggle', 'shoppingCategory', 'liquor']].forEach(([id, key, value]) => {
+      $('#' + id).addEventListener('click', () => { state[key] = value; renderShoppingList(); });
+    });
+    $('#shoppingPriceSort').addEventListener('click', () => { state.shoppingPriceDescending = !state.shoppingPriceDescending; renderShoppingList(); });
 	    $('#shoppingListModalClose').addEventListener('click', closeShoppingListModal);
 	    $('#shoppingListBarButton').addEventListener('click', () => {
 	      closeShoppingListModal();
