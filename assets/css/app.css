@@ -1485,7 +1485,7 @@
     .bar-bottle-fields { display: grid; gap: 6px; }
     .bar-bottle-field-row { display: grid; gap: 6px; min-width: 0; }
     .bar-bottle-identity-row { grid-template-columns: minmax(180px, 1.2fr) minmax(120px, .7fr) minmax(180px, 1fr); }
-    .bar-bottle-purchase-row { grid-template-columns: minmax(80px, .28fr) minmax(170px, .72fr) minmax(240px, 1.2fr); }
+    .bar-bottle-purchase-row { grid-template-columns: repeat(2, minmax(80px, .28fr)) minmax(120px, .72fr) minmax(160px, 1.2fr); }
     .bar-bottle-profile-row { grid-template-columns: minmax(70px, .28fr) minmax(110px, .55fr) minmax(160px, 1fr) minmax(95px, .45fr) minmax(105px, .48fr); }
     .bar-bottle-detail .form-label { font-size: 9px; }
     .bar-bottle-detail .text-input { height: 30px; min-height: 30px; padding: 4px 8px; }
@@ -1765,7 +1765,7 @@
       .bar-add-form #barBottleSubmit.icon-only { width: 100%; min-width: 0; max-width: 34px; justify-self: center; }
       .bar-paste-meta { grid-column: 1 / -1; }
       .bar-bottle-purchase-row { grid-template-columns: 80px minmax(0, 1fr); }
-      .bar-bottle-purchase-row .bar-bottle-product-url { grid-column: 1 / -1; }
+      .bar-bottle-purchase-row .form-field:nth-child(n + 3) { grid-column: 1 / -1; }
       .bar-bottle-identity-row { grid-template-columns: 1fr 1fr; }
       .bar-bottle-identity-row .bar-bottle-name-field { grid-column: 1 / -1; }
       .bar-bottle-profile-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }

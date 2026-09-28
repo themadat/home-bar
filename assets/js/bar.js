@@ -200,7 +200,8 @@ function editableBottleDetailHtml(bottle) {
 	                <label class="form-field"><span class="form-label">Sub-type</span><select class="text-input" data-bottle-subtype="${escapeHtml(bottle.id)}"${subtypeDisabled ? ' disabled' : ''}>${bottleSubtypeOptionsHtml(bottle.base, bottle.subtype || '')}</select></label>
 	              </div>
 	              <div class="bar-bottle-field-row bar-bottle-purchase-row">
-	                <label class="form-field"><span class="form-label">Price</span><span class="bar-price-input"><input class="text-input" type="number" min="0" step="0.01" inputmode="decimal" data-bottle-price="${escapeHtml(bottle.id)}" value="${escapeHtml(bottle.price ?? '')}" placeholder="0.00"></span></label>
+	                <label class="form-field"><span class="form-label">750ml Price</span><span class="bar-price-input"><input class="text-input" type="number" min="0" step="0.01" inputmode="decimal" data-bottle-price="${escapeHtml(bottle.id)}" value="${escapeHtml(bottle.price ?? '')}" placeholder="0.00"></span></label>
+	                <label class="form-field"><span class="form-label">375ml Price</span><span class="bar-price-input"><input class="text-input" type="number" min="0" step="0.01" inputmode="decimal" data-bottle-price375="${escapeHtml(bottle.id)}" value="${escapeHtml(bottle.price375 ?? '')}" placeholder="0.00"></span></label>
 	                <label class="form-field"><span class="form-label">Location</span><input class="text-input" type="text" data-bottle-location="${escapeHtml(bottle.id)}" value="${escapeHtml(bottle.totalWineLocation || '')}" placeholder="Aisle, side, bay, shelf, or Backwall"></label>
 	                <label class="form-field bar-bottle-product-url"><span class="form-label">URL</span><input class="text-input" type="url" data-bottle-url="${escapeHtml(bottle.id)}" value="${escapeHtml(bottle.totalWineUrl || '')}" placeholder="https://www.totalwine.com/.../p/..."></label>
 	              </div>
@@ -323,7 +324,7 @@ function ensureSavedRecommendation(recommendationId) {
 	            purpose: recommendation.purpose === 'sipping' ? 'sipping' : 'mixing', useInCocktails: recommendation.useInCocktails === true,
 	            notes: recommendation.notes || '', favorite: recommendation.favorite === true, shoppingList: recommendation.shoppingList === true, recommended: true,
 	            recommendationSourceId: recommendation.recommendationSourceId || recommendation.id,
-	            price: normalizeBottlePrice(recommendation.price), totalWineLocation: recommendation.location || '', totalWineUrl: recommendation.url || '',
+	            price: normalizeBottlePrice(recommendation.price), price375: normalizeBottlePrice(recommendation.price375), totalWineLocation: recommendation.location || '', totalWineUrl: recommendation.url || '',
 	            country: recommendation.country || '', abv: defaultBottleAbv(recommendation.base, recommendation.subtype, recommendation.abv), taste: defaultBottleTaste(recommendation.base, recommendation.subtype, recommendation.taste),
 	            storage: normalizeBottleStorage(recommendation.storage) || defaultBottleStorage(recommendation.base, recommendation.subtype, recommendation.name),
 	            expirationMonths: normalizeExpirationMonths(recommendation.expirationMonths) || defaultExpirationMonths(recommendation.base, recommendation.subtype, recommendation.name),
@@ -334,9 +335,15 @@ function ensureSavedRecommendation(recommendationId) {
 	          return saved;
 	        }
 
+function bottleSizePrices(bottle) {
+          const regular = formatBottlePrice(bottle.price) || 'Price Not Set';
+          const small = formatBottlePrice(bottle.price375);
+          return `750ml: ${regular}${small ? ` · 375ml: ${small}` : ''}`;
+        }
+
 function shoppingBottleHtml(bottle, owned = false) {
 	          const purchaseUrl = /^https?:\/\//i.test(bottle.totalWineUrl || '') ? bottle.totalWineUrl : totalWineSearchUrl(bottle.name);
-	          const price = formatBottlePrice(bottle.price) || 'Price Not Set';
+	          const price = bottleSizePrices(bottle);
 	          const location = bottle.totalWineLocation || 'Location Not Set';
 	          const extraDetails = [bottleHas375mlOption(bottle.name, bottle.has375ml) ? '375ml Option: Aisle 08' : '', owned ? 'In My Bar' : 'Restock'].filter(Boolean);
 	          const details = [price, location, ...extraDetails].join(' · ');
@@ -356,7 +363,7 @@ function shoppingBottleHtml(bottle, owned = false) {
 function shoppingRecommendationHtml(recommendation) {
 	          const type = subtypeLabel(recommendation.base, recommendation.subtype || '') || recommendation.type || displayBaseLabel(recommendation.base);
 	          const purchaseUrl = /^https?:\/\//i.test(recommendation.url || '') ? recommendation.url : totalWineSearchUrl(recommendation.name);
-	          const price = formatBottlePrice(recommendation.price) || 'Price Not Set';
+	          const price = bottleSizePrices(recommendation);
 	          const location = recommendation.location || 'Location Not Set';
 	          const extraDetails = [bottleHas375mlOption(recommendation.name, recommendation.has375ml) ? '375ml Option: Aisle 08' : '', 'Recommended'].filter(Boolean);
 	          const details = [price, location, ...extraDetails].join(' · ');
@@ -390,7 +397,8 @@ function recommendationDetailHtml(recommendation) {
 	          return `<div class="bar-bottle-detail">
 	            <div class="bar-bottle-fields">
 	              <div class="bar-bottle-field-row bar-bottle-purchase-row">
-	                ${field('Price', price)}
+	                ${field('750ml Price', price)}
+                ${field('375ml Price', formatBottlePrice(recommendation.price375) || 'Not Set')}
 	                ${field('Location', location)}
 	                ${field('URL', 'Total Wine & More', url)}
 	              </div>
@@ -633,7 +641,7 @@ function addRecommendedBottle(recommendationId) {
 	            id: `bar-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
 	            kind: 'spirit', name: recommendation.name, base: recommendation.base, subtype: recommendation.subtype,
 	            purpose: 'mixing', useInCocktails: false, notes: '', favorite: false, shoppingList: false, recommended: false,
-	            price: normalizeBottlePrice(recommendation.price), totalWineLocation: recommendation.location || '', totalWineUrl: recommendation.url,
+	            price: normalizeBottlePrice(recommendation.price), price375: normalizeBottlePrice(recommendation.price375), totalWineLocation: recommendation.location || '', totalWineUrl: recommendation.url,
 	            country: recommendation.country || '', abv: defaultBottleAbv(recommendation.base, recommendation.subtype, recommendation.abv), taste: defaultBottleTaste(recommendation.base, recommendation.subtype, recommendation.taste),
 	            storage: normalizeBottleStorage(recommendation.storage) || defaultBottleStorage(recommendation.base, recommendation.subtype, recommendation.name),
 	            expirationMonths: normalizeExpirationMonths(recommendation.expirationMonths) || defaultExpirationMonths(recommendation.base, recommendation.subtype, recommendation.name),
@@ -796,7 +804,7 @@ function submitBarForm(event) {
 	          const update = {
 	            id: bottleId, kind: 'spirit', name, base, subtype, purpose: recommended ? 'mixing' : purpose, useInCocktails: recommended ? false : useInCocktails,
 	            notes: state.barDraftDetails.notes || '', favorite: recommended ? false : favorite, shoppingList: false, recommended,
-	            price: normalizeBottlePrice(state.barDraftDetails.price),
+	            price: normalizeBottlePrice(state.barDraftDetails.price), price375: normalizeBottlePrice(state.barDraftDetails.price375),
 	            totalWineLocation: state.barDraftDetails.totalWineLocation || '',
 	            totalWineUrl: state.barDraftDetails.totalWineUrl || '',
 	            country: state.barDraftDetails.country || '',

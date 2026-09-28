@@ -769,6 +769,7 @@ function sanitizeBar(value) {
 	            const recommended = item.recommended === true;
 	            const recommendationSourceId = typeof item.recommendationSourceId === 'string' ? item.recommendationSourceId : '';
 	            const price = normalizeBottlePrice(item.price);
+            const price375 = normalizeBottlePrice(item.price375);
 	            const totalWineLocation = typeof item.totalWineLocation === 'string' ? item.totalWineLocation : '';
 	            const totalWineUrl = typeof item.totalWineUrl === 'string' ? item.totalWineUrl : '';
 	            const country = typeof item.country === 'string' ? item.country.trim() : '';
@@ -781,7 +782,7 @@ function sanitizeBar(value) {
 	            const standardExpiration = defaultExpirationMonths(base, subtype, name);
 	            const expirationMonths = base === 'Flavorings' && standardExpiration !== '' ? standardExpiration : savedExpiration || standardExpiration;
 	            const has375ml = migrateBottleHas375mlOption(name, item.has375ml);
-	            return {id, kind, name, base, subtype, purpose, useInCocktails, notes, favorite, shoppingList, recommended, recommendationSourceId, price, totalWineLocation, totalWineUrl, country, abv, taste, storage, expirationMonths, has375ml, ...(archivedAt !== undefined && {archivedAt})};
+	            return {id, kind, name, base, subtype, purpose, useInCocktails, notes, favorite, shoppingList, recommended, recommendationSourceId, price, price375, totalWineLocation, totalWineUrl, country, abv, taste, storage, expirationMonths, has375ml, ...(archivedAt !== undefined && {archivedAt})};
 	          }).filter(Boolean);
 	        }
 
