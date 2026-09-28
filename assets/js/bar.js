@@ -336,18 +336,18 @@ function ensureSavedRecommendation(recommendationId) {
 
 function shoppingBottleHtml(bottle, owned = false) {
 	          const purchaseUrl = /^https?:\/\//i.test(bottle.totalWineUrl || '') ? bottle.totalWineUrl : totalWineSearchUrl(bottle.name);
-	          const price = formatBottlePrice(bottle.price) || 'Price not set';
-	          const location = bottle.totalWineLocation || 'Location not set';
-	          const extraDetails = [bottleHas375mlOption(bottle.name, bottle.has375ml) ? '375ml option: Aisle 08' : '', owned ? 'In My Bar' : 'Restock'].filter(Boolean);
+	          const price = formatBottlePrice(bottle.price) || 'Price Not Set';
+	          const location = bottle.totalWineLocation || 'Location Not Set';
+	          const extraDetails = [bottleHas375mlOption(bottle.name, bottle.has375ml) ? '375ml Option: Aisle 08' : '', owned ? 'In My Bar' : 'Restock'].filter(Boolean);
 	          const details = [price, location, ...extraDetails].join(' · ');
 	          return `<article class="bar-bottle-row shopping-item ${owned ? 'shopping-owned' : 'shopping-restock'}">
-	            <button type="button" class="recommended-left-action" data-toggle-bottle-shopping="${escapeHtml(bottle.id)}" aria-label="${owned ? 'Move' : 'Restock'} ${escapeHtml(bottle.name)}${owned ? ' to Shopping List' : ''}" title="${owned ? 'Move to Shopping List' : 'Mark restocked'}">${owned ? __BAG_FILL : '+'}</button>
+	            <button type="button" class="recommended-left-action" data-toggle-bottle-shopping="${escapeHtml(bottle.id)}" aria-label="${owned ? 'Move' : 'Restock'} ${escapeHtml(bottle.name)}${owned ? ' to Shopping List' : ''}" title="${owned ? 'Move to Shopping List' : 'Mark Restocked'}">${owned ? __BAG_FILL : '+'}</button>
 	            <span class="shopping-item-copy">
-	              <span class="shopping-item-primary"><button type="button" class="bar-bottle-name" data-shopping-bottle-cocktails="${escapeHtml(bottle.id)}" aria-label="Show cocktails using ${escapeHtml(bottle.name)}" title="Show cocktails using this bottle">${escapeHtml(bottle.name)}</button><span class="shopping-item-type">${escapeHtml(bottleStyleName(bottle))}</span></span>
+	              <span class="shopping-item-primary"><button type="button" class="bar-bottle-name" data-shopping-bottle-cocktails="${escapeHtml(bottle.id)}" aria-label="Show Cocktails Using ${escapeHtml(bottle.name)}" title="Show Cocktails Using This Bottle">${escapeHtml(bottle.name)}</button><span class="shopping-item-type">${escapeHtml(bottleStyleName(bottle))}</span></span>
 	              <span class="shopping-item-secondary" title="${escapeHtml(details)}"><span>${escapeHtml(price)}</span><span aria-hidden="true">·</span><a class="shopping-location-link" href="${escapeHtml(purchaseUrl)}" target="_blank" rel="noopener noreferrer" title="Open ${escapeHtml(bottle.name)} at Total Wine &amp; More">${escapeHtml(location)}</a>${extraDetails.map((detail) => `<span aria-hidden="true">·</span><span>${escapeHtml(detail)}</span>`).join('')}</span>
 	            </span>
 	            <span class="bar-bottle-actions"><span class="bar-bottle-action-row">
-	              <button type="button" class="${bottleHas375mlOption(bottle.name, bottle.has375ml) ? 'active' : ''}" data-bottle-small-size="${escapeHtml(bottle.id)}" aria-pressed="${bottleHas375mlOption(bottle.name, bottle.has375ml)}" aria-label="${bottleHas375mlOption(bottle.name, bottle.has375ml) ? '375ml size available' : 'Mark 375ml size as available'} for ${escapeHtml(bottle.name)}" title="${bottleHas375mlOption(bottle.name, bottle.has375ml) ? '375ml option available in Aisle 08' : 'Mark 375ml option available'}">${__ALIGN_VERTICAL_BOTTOM_FILL}</button>
+	              <button type="button" class="${bottleHas375mlOption(bottle.name, bottle.has375ml) ? 'active' : ''}" data-bottle-small-size="${escapeHtml(bottle.id)}" aria-pressed="${bottleHas375mlOption(bottle.name, bottle.has375ml)}" aria-label="${bottleHas375mlOption(bottle.name, bottle.has375ml) ? '375ml Size Available' : 'Mark 375ml Size as Available'} for ${escapeHtml(bottle.name)}" title="${bottleHas375mlOption(bottle.name, bottle.has375ml) ? '375ml Option Available in Aisle 08' : 'Mark 375ml Option Available'}">${__ALIGN_VERTICAL_BOTTOM_FILL}</button>
 	              ${owned ? '' : `<button type="button" class="shopping-remove-button" data-toggle-bottle-shopping="${escapeHtml(bottle.id)}" aria-label="Remove ${escapeHtml(bottle.name)} from Shopping List" title="Remove from Shopping List">×</button>`}
 	            </span></span>
 	          </article>`;
@@ -356,20 +356,20 @@ function shoppingBottleHtml(bottle, owned = false) {
 function shoppingRecommendationHtml(recommendation) {
 	          const type = subtypeLabel(recommendation.base, recommendation.subtype || '') || recommendation.type || displayBaseLabel(recommendation.base);
 	          const purchaseUrl = /^https?:\/\//i.test(recommendation.url || '') ? recommendation.url : totalWineSearchUrl(recommendation.name);
-	          const price = formatBottlePrice(recommendation.price) || 'Price not set';
-	          const location = recommendation.location || 'Location not set';
-	          const extraDetails = [bottleHas375mlOption(recommendation.name, recommendation.has375ml) ? '375ml option: Aisle 08' : '', 'Recommended'].filter(Boolean);
+	          const price = formatBottlePrice(recommendation.price) || 'Price Not Set';
+	          const location = recommendation.location || 'Location Not Set';
+	          const extraDetails = [bottleHas375mlOption(recommendation.name, recommendation.has375ml) ? '375ml Option: Aisle 08' : '', 'Recommended'].filter(Boolean);
 	          const details = [price, location, ...extraDetails].join(' · ');
 	          return `<article class="bar-bottle-row shopping-item recommended">
 	            <span class="bar-bottle-left">
 	              <button class="recommended-left-action" type="button" data-add-recommended="${escapeHtml(recommendation.id)}" aria-label="Add ${escapeHtml(recommendation.name)} to My Bar" title="Add to My Bar">+</button>
 	            </span>
 	            <span class="shopping-item-copy">
-	              <span class="shopping-item-primary"><button type="button" class="bar-bottle-name" data-shopping-recommendation-cocktails="${escapeHtml(recommendation.id)}" aria-label="Show cocktails using ${escapeHtml(recommendation.name)}" title="Show cocktails using this bottle">${escapeHtml(recommendation.name)}</button><span class="shopping-item-type">${escapeHtml(type)}</span></span>
+	              <span class="shopping-item-primary"><button type="button" class="bar-bottle-name" data-shopping-recommendation-cocktails="${escapeHtml(recommendation.id)}" aria-label="Show Cocktails Using ${escapeHtml(recommendation.name)}" title="Show Cocktails Using This Bottle">${escapeHtml(recommendation.name)}</button><span class="shopping-item-type">${escapeHtml(type)}</span></span>
 	              <span class="shopping-item-secondary" title="${escapeHtml(details)}"><span>${escapeHtml(price)}</span><span aria-hidden="true">·</span><a class="shopping-location-link" href="${escapeHtml(purchaseUrl)}" target="_blank" rel="noopener noreferrer" title="Open ${escapeHtml(recommendation.name)} at Total Wine &amp; More">${escapeHtml(location)}</a>${extraDetails.map((detail) => `<span aria-hidden="true">·</span><span>${escapeHtml(detail)}</span>`).join('')}</span>
 	            </span>
 	            <span class="bar-bottle-actions"><span class="bar-bottle-action-row">
-	              <button type="button" class="${bottleHas375mlOption(recommendation.name, recommendation.has375ml) ? 'active' : ''}" data-recommendation-small-size="${escapeHtml(recommendation.id)}" aria-pressed="${bottleHas375mlOption(recommendation.name, recommendation.has375ml)}" aria-label="${bottleHas375mlOption(recommendation.name, recommendation.has375ml) ? '375ml size available' : 'Mark 375ml size as available'} for ${escapeHtml(recommendation.name)}" title="${bottleHas375mlOption(recommendation.name, recommendation.has375ml) ? '375ml option available in Aisle 08' : 'Mark 375ml option available'}">${__ALIGN_VERTICAL_BOTTOM_FILL}</button>
+	              <button type="button" class="${bottleHas375mlOption(recommendation.name, recommendation.has375ml) ? 'active' : ''}" data-recommendation-small-size="${escapeHtml(recommendation.id)}" aria-pressed="${bottleHas375mlOption(recommendation.name, recommendation.has375ml)}" aria-label="${bottleHas375mlOption(recommendation.name, recommendation.has375ml) ? '375ml Size Available' : 'Mark 375ml Size as Available'} for ${escapeHtml(recommendation.name)}" title="${bottleHas375mlOption(recommendation.name, recommendation.has375ml) ? '375ml Option Available in Aisle 08' : 'Mark 375ml Option Available'}">${__ALIGN_VERTICAL_BOTTOM_FILL}</button>
 	              <button type="button" class="shopping-remove-button" data-toggle-recommended-shopping="${escapeHtml(recommendation.id)}" aria-label="Remove ${escapeHtml(recommendation.name)} from Shopping List" title="Remove from Shopping List">×</button>
 	            </span></span>
 	          </article>`;
