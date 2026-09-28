@@ -901,6 +901,7 @@ const cloneDiffordsNotes = (notes) => ({
 	        recommended: item.recommended === true,
 	        recommendationSourceId: typeof item.recommendationSourceId === 'string' ? item.recommendationSourceId : '',
         price: savedPrice === '' ? normalizeBottlePrice(recommendation?.price) : savedPrice,
+        price375: normalizeBottlePrice(item.price375),
         totalWineLocation: savedLocation || recommendation?.location || '',
         totalWineUrl: savedUrl || recommendation?.url || '',
         country: savedCountry,
@@ -2254,10 +2255,10 @@ $('#importData').addEventListener('click', () => $('#importFile').click());
 	      showPantryIngredientCocktails(ingredient.dataset.pantryIngredient);
 	    });
 	    document.addEventListener('input', (event) => {
-	      const bottlePrice = event.target.closest && event.target.closest('[data-bottle-price]');
+	      const bottlePrice = event.target.closest && event.target.closest('[data-bottle-price], [data-bottle-price375]');
 	      if (bottlePrice) {
-	        const bottle = store.bar.find((item) => item.id === bottlePrice.dataset.bottlePrice);
-	        if (bottle) { bottle.price = normalizeBottlePrice(bottlePrice.value); saveCustom(); syncBottleCompletenessIndicator(bottle); }
+	        const bottle = store.bar.find((item) => item.id === (bottlePrice.dataset.bottlePrice || bottlePrice.dataset.bottlePrice375));
+	        if (bottle) { bottle[bottlePrice.hasAttribute('data-bottle-price375') ? 'price375' : 'price'] = normalizeBottlePrice(bottlePrice.value); saveCustom(); syncBottleCompletenessIndicator(bottle); }
 	        return;
 	      }
 	      const bottleLocation = event.target.closest && event.target.closest('[data-bottle-location]');
