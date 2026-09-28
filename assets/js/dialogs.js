@@ -461,28 +461,37 @@ function compareShoppingItems(a, b) {
 	        }
 
 function renderShoppingList() {
-	          const restocks = store.bar.filter((bottle) => bottle.kind !== 'ingredient' && bottle.shoppingList === true && bottle.recommended !== true);
-	          const needed = allRecommendedBottles().filter((recommendation) => {
-	            const source = recommendation.sourceBottleId && store.bar.find((bottle) => bottle.id === recommendation.sourceBottleId);
-	            return source?.shoppingList === true;
-	          });
-	          const items = [
-	            ...restocks.map((bottle) => ({name: bottle.name, location: bottle.totalWineLocation, price: bottle.price, html: shoppingBottleHtml(bottle)})),
-	            ...needed.map((recommendation) => ({name: recommendation.name, location: recommendation.location, price: recommendation.price, html: shoppingRecommendationHtml(recommendation)}))
-	          ].sort(compareShoppingItems);
-	          const count = items.length;
-	          const knownPrices = items.map((item) => normalizeBottlePrice(item.price)).filter((price) => price !== '').map(Number);
-	          const expectedTotal = knownPrices.reduce((total, price) => total + price, 0);
-	          $('#shoppingListCount').textContent = `${count} item${count === 1 ? '' : 's'}`;
-	          $('#shoppingListTotal').textContent = count === 0
-	            ? 'Est. $0'
-	            : knownPrices.length === 0
-	              ? 'Est. —'
-	              : `Est. ${formatBottlePrice(expectedTotal)}${knownPrices.length < count ? '+' : ''}`;
-	          $('#shoppingListItems').innerHTML = count
-	            ? items.map((item) => item.html).join('')
-	            : '<p class="shopping-list-empty">Your shopping list is empty.</p>';
-	        }
+          const owned = state.shoppingView === 'have';
+          const matchesCategory = (bottle) => state.shoppingCategory === 'all' || ['Vodka', 'Gin', 'Tequila', 'Whiskey', 'Rum', 'Brandy', 'Liqueurs'].includes(bottle.base);
+          const bottles = store.bar.filter((bottle) => bottle.kind !== 'ingredient' && bottle.recommended !== true && (owned ? bottle.shoppingList !== true : bottle.shoppingList === true) && matchesCategory(bottle));
+          const needed = owned ? [] : allRecommendedBottles().filter((recommendation) => {
+            const source = recommendation.sourceBottleId && store.bar.find((bottle) => bottle.id === recommendation.sourceBottleId);
+            return source?.shoppingList === true && matchesCategory(recommendation);
+          });
+          const items = [
+            ...bottles.map((bottle) => ({name: bottle.name, location: bottle.totalWineLocation, price: bottle.price, html: shoppingBottleHtml(bottle, owned)})),
+            ...needed.map((recommendation) => ({name: recommendation.name, location: recommendation.location, price: recommendation.price, html: shoppingRecommendationHtml(recommendation)}))
+          ].sort(owned ? compareShoppingPrices : compareShoppingItems);
+          const count = items.length;
+          const knownPrices = items.map((item) => normalizeBottlePrice(item.price)).filter((price) => price !== '').map(Number);
+          const expectedTotal = knownPrices.reduce((total, price) => total + price, 0);
+          $('#shoppingListCount').textContent = `${count} item${count === 1 ? '' : 's'}`;
+          $('#shoppingListTotal').textContent = count === 0 ? 'Est. $0' : knownPrices.length === 0 ? 'Est. —' : `Est. ${formatBottlePrice(expectedTotal)}${knownPrices.length < count ? '+' : ''}`;
+          $('#shoppingBuyToggle').setAttribute('aria-pressed', !owned);
+          $('#shoppingHaveToggle').setAttribute('aria-pressed', owned);
+          $('#shoppingAllToggle').setAttribute('aria-pressed', state.shoppingCategory === 'all');
+          $('#shoppingLiquorToggle').setAttribute('aria-pressed', state.shoppingCategory === 'liquor');
+          $('#shoppingPriceSort').hidden = !owned;
+          $('#shoppingPriceSort').textContent = state.shoppingPriceDescending ? '750 ml: High to low ↓' : '750 ml: Low to high ↑';
+          $('#shoppingListItems').innerHTML = count ? items.map((item) => item.html).join('') : `<p class="shopping-list-empty">${state.shoppingCategory === 'liquor' ? 'No liquor bottles' : 'No bottles'} ${owned ? 'in your bar' : 'to buy'}.</p>`;
+        }
+
+function compareShoppingPrices(a, b) {
+          const aPrice = normalizeBottlePrice(a.price);
+          const bPrice = normalizeBottlePrice(b.price);
+          if (aPrice === '' || bPrice === '') return (aPrice === '') - (bPrice === '') || a.name.localeCompare(b.name);
+          return (aPrice - bPrice) * (state.shoppingPriceDescending ? -1 : 1) || a.name.localeCompare(b.name);
+        }
 
 function openShoppingListModal() {
 	          renderShoppingList();

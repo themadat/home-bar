@@ -2165,3 +2165,10 @@
       #barBottleList .bar-category,
       #barBottleList .bar-subtype-group { grid-column: 1 / -1; }
     }
+
+    .shopping-controls, .shopping-toggle { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .shopping-controls { gap: 10px; }
+    .shopping-controls .button { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; }
+    .shopping-controls .button[hidden] { display: none; }
+    .shopping-toggle .button[aria-pressed="true"] { color: var(--accent); background: var(--accent-soft); border-color: var(--accent); }
+    .shopping-controls .sf-symbol, .shopping-owned .recommended-left-action .sf-symbol { width: 15px; height: 17px; }
