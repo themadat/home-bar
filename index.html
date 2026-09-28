@@ -15,7 +15,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Home Bar">
   <meta name="mobile-web-app-capable" content="yes">
-  <link rel="stylesheet" href="assets/css/app.css?v=2.0.0.145">
+  <link rel="stylesheet" href="assets/css/app.css?v=2.0.0.146">
 </head>
 <body>
   <div class="app">
@@ -392,10 +392,10 @@
           <button id="shoppingListModalClose" class="button icon" type="button" aria-label="Close">×</button>
         </div>
         <div class="modal-body">
-          <div class="shopping-controls" aria-label="Bottle list controls">
-            <div class="shopping-toggle" role="group" aria-label="Bottle status"><button class="button" id="shoppingBuyToggle" type="button" aria-pressed="true">To buy</button><button class="button" id="shoppingHaveToggle" type="button" aria-pressed="false">I have</button></div>
-            <div class="shopping-toggle" role="group" aria-label="Bottle category"><button class="button" id="shoppingAllToggle" type="button" aria-pressed="true">All</button><button class="button" id="shoppingLiquorToggle" type="button" aria-pressed="false">Liquor</button></div>
-            <button class="button" id="shoppingPriceSort" type="button" hidden>750 ml: Low to high ↑</button>
+          <div class="shopping-controls" aria-label="Bottle List Controls">
+            <div class="shopping-toggle" role="group" aria-label="Bottle Status"><button class="button" id="shoppingBuyToggle" type="button" aria-pressed="true">To Buy</button><button class="button" id="shoppingHaveToggle" type="button" aria-pressed="false">I Have</button></div>
+            <div class="shopping-toggle" role="group" aria-label="Bottle Category"><button class="button" id="shoppingAllToggle" type="button" aria-pressed="true">All</button><button class="button" id="shoppingSpiritsToggle" type="button" aria-pressed="false">Liquor &amp; Liqueurs</button><button class="button" id="shoppingLiquorToggle" type="button" aria-pressed="false">Liquor Only</button></div>
+            <button class="button" id="shoppingPriceSort" type="button" hidden>750 ml: Low to High ↑</button>
           </div>
           <div id="shoppingListItems" class="shopping-list"></div>
           <p class="shopping-list-disclaimer">Prices and availability depend on the selected Total Wine &amp; More store.</p>
@@ -754,32 +754,31 @@
       </div>
     </div>
   </div>
-  <script src="letters-liquor-notes.js?v=2.0.0.145"></script>
-  <script src="letters-liquor-data.js?v=2.0.0.145"></script>
-  <script src="diffords-data.js?v=2.0.0.145"></script>
+  <script src="letters-liquor-notes.js?v=2.0.0.146"></script>
+  <script src="letters-liquor-data.js?v=2.0.0.146"></script>
+  <script src="diffords-data.js?v=2.0.0.146"></script>
   <script>
-const BUILD_VERSION = '2.0.0.145';
+const BUILD_VERSION = '2.0.0.146';
     const CURRENT_RELEASE = {
-      "title": "Shopping and owned bottle lists",
-      "summary": "Switch between bottles to buy and bottles on hand, with category filtering and owned bottle price sorting.",
+      "title": "Expanded Shopping List Filters",
+      "summary": "Separate liquor-only bottles from liquor and liqueurs, including vermouth.",
       "changes": [
-        "Add To buy and I have views with All and Liquor filters.",
-        "Sort owned bottles by 750 ml price in either direction, keeping missing prices last.",
-        "Use the supplied list icon to the left of My Bar."
+        "Add All, Liquor & Liqueurs, and Liquor Only filters with supplied icons.",
+        "Use title case for shopping list buttons and labels."
       ]
     };
   </script>
-  <script src="data/cocktails.js?v=2.0.0.145"></script>
-  <script src="assets/js/icons.js?v=2.0.0.145"></script>
-  <script src="assets/js/ingredients.js?v=2.0.0.145"></script>
-  <script src="assets/js/ratings.js?v=2.0.0.145"></script>
-  <script src="assets/js/availability.js?v=2.0.0.145"></script>
-  <script src="assets/js/render.js?v=2.0.0.145"></script>
-  <script src="assets/js/dialogs.js?v=2.0.0.145"></script>
-  <script src="assets/js/bar.js?v=2.0.0.145"></script>
-  <script src="assets/js/cocktail-editor.js?v=2.0.0.145"></script>
-  <script src="assets/js/sync.js?v=2.0.0.145"></script>
-  <script src="assets/js/interface.js?v=2.0.0.145"></script>
-  <script src="assets/js/app.js?v=2.0.0.145"></script>
+  <script src="data/cocktails.js?v=2.0.0.146"></script>
+  <script src="assets/js/icons.js?v=2.0.0.146"></script>
+  <script src="assets/js/ingredients.js?v=2.0.0.146"></script>
+  <script src="assets/js/ratings.js?v=2.0.0.146"></script>
+  <script src="assets/js/availability.js?v=2.0.0.146"></script>
+  <script src="assets/js/render.js?v=2.0.0.146"></script>
+  <script src="assets/js/dialogs.js?v=2.0.0.146"></script>
+  <script src="assets/js/bar.js?v=2.0.0.146"></script>
+  <script src="assets/js/cocktail-editor.js?v=2.0.0.146"></script>
+  <script src="assets/js/sync.js?v=2.0.0.146"></script>
+  <script src="assets/js/interface.js?v=2.0.0.146"></script>
+  <script src="assets/js/app.js?v=2.0.0.146"></script>
 </body>
 </html>

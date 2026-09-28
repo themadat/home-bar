@@ -462,7 +462,7 @@ function compareShoppingItems(a, b) {
 
 function renderShoppingList() {
           const owned = state.shoppingView === 'have';
-          const matchesCategory = (bottle) => state.shoppingCategory === 'all' || ['Vodka', 'Gin', 'Tequila', 'Whiskey', 'Rum', 'Brandy', 'Liqueurs'].includes(bottle.base);
+          const matchesCategory = (bottle) => state.shoppingCategory === 'all' || ['Vodka', 'Gin', 'Tequila', 'Whiskey', 'Rum', 'Brandy'].includes(bottle.base) || (state.shoppingCategory === 'spirits' && ['Vermouth', 'Liqueurs'].includes(bottle.base));
           const bottles = store.bar.filter((bottle) => bottle.kind !== 'ingredient' && bottle.recommended !== true && (owned ? bottle.shoppingList !== true : bottle.shoppingList === true) && matchesCategory(bottle));
           const needed = owned ? [] : allRecommendedBottles().filter((recommendation) => {
             const source = recommendation.sourceBottleId && store.bar.find((bottle) => bottle.id === recommendation.sourceBottleId);
@@ -475,14 +475,15 @@ function renderShoppingList() {
           const count = items.length;
           const knownPrices = items.map((item) => normalizeBottlePrice(item.price)).filter((price) => price !== '').map(Number);
           const expectedTotal = knownPrices.reduce((total, price) => total + price, 0);
-          $('#shoppingListCount').textContent = `${count} item${count === 1 ? '' : 's'}`;
+          $('#shoppingListCount').textContent = `${count} Item${count === 1 ? '' : 's'}`;
           $('#shoppingListTotal').textContent = count === 0 ? 'Est. $0' : knownPrices.length === 0 ? 'Est. —' : `Est. ${formatBottlePrice(expectedTotal)}${knownPrices.length < count ? '+' : ''}`;
           $('#shoppingBuyToggle').setAttribute('aria-pressed', !owned);
           $('#shoppingHaveToggle').setAttribute('aria-pressed', owned);
           $('#shoppingAllToggle').setAttribute('aria-pressed', state.shoppingCategory === 'all');
+          $('#shoppingSpiritsToggle').setAttribute('aria-pressed', state.shoppingCategory === 'spirits');
           $('#shoppingLiquorToggle').setAttribute('aria-pressed', state.shoppingCategory === 'liquor');
           $('#shoppingPriceSort').hidden = !owned;
-          $('#shoppingPriceSort').textContent = state.shoppingPriceDescending ? '750 ml: High to low ↓' : '750 ml: Low to high ↑';
+          $('#shoppingPriceSort').textContent = state.shoppingPriceDescending ? '750 ml: High to Low ↓' : '750 ml: Low to High ↑';
           $('#shoppingListItems').innerHTML = count ? items.map((item) => item.html).join('') : `<p class="shopping-list-empty">${state.shoppingCategory === 'liquor' ? 'No liquor bottles' : 'No bottles'} ${owned ? 'in your bar' : 'to buy'}.</p>`;
         }
 
