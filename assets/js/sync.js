@@ -13,6 +13,7 @@ function parseStoredJson(key) {
 function storedGitHubSyncSettings() {
 	          const saved = parseStoredJson(GITHUB_SYNC_SETTINGS_KEY);
 	          return {
+	            autoSync: saved.autoSync !== false,
 	            owner: typeof saved.owner === 'string' && saved.owner.trim() ? saved.owner : 'themadat',
 	            repo: typeof saved.repo === 'string' && saved.repo.trim() ? saved.repo : 'app-data',
 	            branch: typeof saved.branch === 'string' && saved.branch.trim() ? saved.branch : 'main',
@@ -352,6 +353,7 @@ async function showGitHubSyncChanges() {
 
 function populateGitHubSyncForm() {
 	          const settings = storedGitHubSyncSettings();
+	          $('#githubSyncAutoSync').checked = settings.autoSync;
 	          $('#githubSyncOwner').value = settings.owner;
 	          $('#githubSyncRepo').value = settings.repo;
 	          $('#githubSyncBranch').value = settings.branch;
@@ -363,6 +365,7 @@ function populateGitHubSyncForm() {
 
 function gitHubSyncFormValues() {
 	          const settings = {
+	            autoSync: $('#githubSyncAutoSync').checked,
 	            owner: $('#githubSyncOwner').value.trim(),
 	            repo: $('#githubSyncRepo').value.trim().replace(/\.git$/i, ''),
 	            branch: $('#githubSyncBranch').value.trim() || 'main',
@@ -526,7 +529,76 @@ function rememberGitHubSync(settings, sha, exportedAt, data) {
 	          updateGitHubSyncButton();
 	        }
 
+function scheduleGitHubAutoSync() {
+          clearTimeout(githubSyncRuntime.autoTimer);
+          githubSyncRuntime.autoTimer = 0;
+          const settings = storedGitHubSyncSettings();
+          const meta = parseStoredJson(GITHUB_SYNC_META_KEY);
+          if (!settings.autoSync || !githubSyncConfigured() || meta.target !== gitHubSyncTarget(settings) || !meta.sha || !meta.dataHash) return;
+          githubSyncRuntime.autoTimer = setTimeout(() => {
+            githubSyncRuntime.autoTimer = 0;
+            const run = () => autoSyncGitHubData();
+            if (navigator.locks?.request) {
+              navigator.locks.request('home-bar-sync-' + gitHubSyncTarget(settings), run).catch(() => {});
+            } else run();
+          }, Math.min(60000, 1200 * 2 ** githubSyncRuntime.autoFailures));
+        }
+
+function gitHubAutoSyncReady() {
+          return document.visibilityState !== 'hidden' && navigator.onLine !== false
+            && !githubSyncBusy && !githubSyncRuntime.checking
+            && !document.querySelector('.modal-overlay:not([hidden])')
+            && !document.activeElement?.matches('input, textarea, select, [contenteditable="true"]');
+        }
+
+async function autoSyncGitHubData() {
+          if (!gitHubAutoSyncReady()) return;
+          const settings = storedGitHubSyncSettings();
+          const token = storedGitHubSyncToken();
+          const target = gitHubSyncTarget(settings);
+          const meta = parseStoredJson(GITHUB_SYNC_META_KEY);
+          if (!settings.autoSync || !token || meta.target !== target || !meta.sha || !meta.dataHash) return;
+          const stillCurrent = () => storedGitHubSyncSettings().autoSync
+            && gitHubSyncTarget(storedGitHubSyncSettings()) === target && storedGitHubSyncToken() === token;
+          setGitHubSyncBusy(true);
+          githubSyncRuntime.error = '';
+          try {
+            // Never create a missing shared file silently. First sync remains manual.
+            const remote = await readGitHubDataFile(settings, token);
+            if (!stillCurrent()) return;
+            const data = userDataSnapshot();
+            const localHash = syncDataFingerprint(data);
+            const remoteHash = syncDataFingerprint(remote.data);
+            Object.assign(githubSyncRuntime, {remoteSha: remote.sha, remoteHash, remoteData: remote.data, checkedAt: new Date().toISOString(), offline: false});
+            const plan = gitHubSyncPlan({remoteExists: true, hasBaseline: true,
+              localHasSavedData: true, localHash, remoteHash,
+              baselineHash: meta.dataHash, remoteSha: remote.sha, baselineSha: meta.sha});
+            if (plan === 'choose') throw new Error('Both copies changed. Open GitHub Sync to review them; automatic sync is paused.');
+            if (plan === 'download') {
+              // Editing may have started while the request was in flight.
+              if (document.visibilityState === 'hidden' || document.querySelector('.modal-overlay:not([hidden])')
+                || document.activeElement?.matches('input, textarea, select, [contenteditable="true"]')) return;
+              applyGitHubData(settings, remote);
+            } else if (plan === 'upload') {
+              const sha = await uploadGitHubData(settings, token, remote, data);
+              if (!stillCurrent()) return;
+              // Remember exactly what was uploaded; edits made during PUT stay dirty.
+              rememberGitHubSync(settings, sha, data.exportedAt, data);
+            } else rememberGitHubSync(settings, remote.sha, remote.data.exportedAt, data);
+            githubSyncRuntime.autoFailures = 0;
+          } catch (error) {
+            if (stillCurrent()) {
+              githubSyncRuntime.error = error.message || 'Automatic sync failed. Your edits remain on this device.';
+              githubSyncRuntime.offline = isGitHubNetworkError(error);
+              githubSyncRuntime.autoFailures = Math.min(6, githubSyncRuntime.autoFailures + 1);
+            }
+          } finally {
+            setGitHubSyncBusy(false);
+          }
+        }
+
 async function checkGitHubSyncStatus(force = false) {
+          scheduleGitHubAutoSync();
 	          if (!githubSyncConfigured() || githubSyncRuntime.checking || githubSyncBusy) return;
 	          const settings = storedGitHubSyncSettings();
 	          const token = storedGitHubSyncToken();
@@ -609,6 +681,7 @@ function applyGitHubData(settings, remote) {
 	        }
 
 async function synchronizeGitHubData() {
+          if (githubSyncBusy || githubSyncRuntime.checking) return;
 	          try {
 	            const {settings, token} = gitHubSyncFormValues();
 	            saveGitHubSyncCredentials(settings, token);

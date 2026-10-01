@@ -1103,6 +1103,7 @@ const saveCustom = () => {
 	      localStorage.setItem('cocktailAppNotes', store.appNotes);
 	      localStorage.setItem('cocktailGlassware', JSON.stringify(store.glassware));
 	      if (typeof updateGitHubSyncButton === 'function') updateGitHubSyncButton();
+          scheduleGitHubAutoSync();
 	    };
     const displayType = (cocktail) => store.assignments[cocktail.id] || cocktail.type;
 
@@ -1313,7 +1314,7 @@ const GITHUB_SYNC_ICONS = {
             let githubSyncOperation = '';
 	        let githubSyncAutoCloseTimer = 0;
 	        let githubSyncAutoCloseInterval = 0;
-	        const githubSyncRuntime = {checking: false, remoteSha: '', remoteHash: '', remoteData: null, checkedAt: '', error: '', offline: false};
+	        const githubSyncRuntime = {autoTimer: 0, autoFailures: 0, checking: false, remoteSha: '', remoteHash: '', remoteData: null, checkedAt: '', error: '', offline: false};
 
 // Cloud status presentation mirrors app-template; reconciliation stays local to Home Bar.
         
@@ -2355,6 +2356,14 @@ let resizeTimer = null;
 	    render();
 	    applyColumnWidths();
 	    setTimeout(() => checkGitHubSyncStatus(), 500);
+        setInterval(() => { if (!githubSyncRuntime.autoTimer) scheduleGitHubAutoSync(); }, 30000);
+        window.addEventListener('focus', scheduleGitHubAutoSync);
+        $('#githubSyncAutoSync').addEventListener('change', () => {
+          const settings = storedGitHubSyncSettings();
+          settings.autoSync = $('#githubSyncAutoSync').checked;
+          localStorage.setItem(GITHUB_SYNC_SETTINGS_KEY, JSON.stringify(settings));
+          scheduleGitHubAutoSync();
+        });
 	    setInterval(() => checkGitHubSyncStatus(), GITHUB_SYNC_CHECK_INTERVAL);
 	    document.addEventListener('visibilitychange', () => {
 	      if (document.visibilityState === 'visible') checkGitHubSyncStatus();
@@ -2406,9 +2415,6 @@ let resizeTimer = null;
       let statusTimer = 0;
       let checking = false;
       let checkingBackground = false;
-      let availableVersion = null;
-      let lastActivity = Date.now();
-      let automaticUpdatePaused = false;
       let duration = 20;
       let seen = false;
       try {
@@ -2504,19 +2510,12 @@ let resizeTimer = null;
       }
       function markAvailable(version) {
         const available = versionIsNewer(version);
-        availableVersion = available ? version : null;
         updateButton.dataset.updateAvailable = String(available);
         $('.button-icon', updateButton).innerHTML = available ? UPDATE_READY_ICON : UPDATE_APP_ICON;
         updateButton.title = (available ? 'Update available — install v' + version + ' and refresh' : 'Check for updates and force refresh') + ' (Control+Option+Shift+R)';
         updateButton.setAttribute('aria-label', available ? 'Update — new version available' : 'Update — check for updates and force refresh');
       }
-      function canAutoUpdate() {
-        return !automaticUpdatePaused && document.visibilityState !== 'hidden'
-          && Date.now() - lastActivity >= 30000 && !githubSyncBusy
-          && !document.querySelector('.modal-overlay:not([hidden])')
-          && !document.activeElement?.matches('input, textarea, select, [contenteditable="true"]');
-      }
-      async function refreshApp(automatic = false) {
+      async function refreshApp() {
         if (checking) return;
         checking = true;
         updateButton.disabled = true;
@@ -2528,14 +2527,11 @@ let resizeTimer = null;
           catch { throw new Error('Your changes could not be saved. Update was paused to keep them safe.'); }
           const release = await readAvailableRelease();
           markAvailable(release.version);
-          // Recheck after the network request: the user may have started editing.
-          if (automatic && (!availableVersion || !canAutoUpdate())) return;
           // Home Bar has no service worker. A fresh navigation bypasses the old HTML
           // URL; build-versioned script URLs load the deployed data files.
           location.replace(release.target.href);
           navigating = true;
         } catch (error) {
-          if (automatic) automaticUpdatePaused = true;
           showStatus(error.name === 'AbortError' ? 'The update check timed out. Please try again.' : error.message);
         } finally {
           if (!navigating) {
@@ -2552,18 +2548,10 @@ let resizeTimer = null;
         catch { /* Background checks never interrupt the user. */ }
         finally { checkingBackground = false; }
       }
-      updateButton.addEventListener('click', () => refreshApp());
-      ['pointerdown', 'keydown', 'input', 'wheel', 'touchstart'].forEach((name) => {
-        window.addEventListener(name, () => { lastActivity = Date.now(); }, {passive: true});
-      });
-      document.addEventListener('visibilitychange', checkAvailableUpdate);
-      window.addEventListener('focus', checkAvailableUpdate);
-      setInterval(() => {
-        if (availableVersion && canAutoUpdate()) refreshApp(true);
-      }, 1000);
+      updateButton.addEventListener('click', refreshApp);
       window.addEventListener('online', checkAvailableUpdate);
       renderRelease();
-      // Detect releases on startup and periodically; apply them when safely idle.
+      // Check once per visit and periodically; new releases are indicated in the header.
       setTimeout(checkAvailableUpdate, 1000);
       setInterval(checkAvailableUpdate, 5 * 60 * 1000);
     })();

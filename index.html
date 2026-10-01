@@ -15,7 +15,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Home Bar">
   <meta name="mobile-web-app-capable" content="yes">
-  <link rel="stylesheet" href="assets/css/app.css?v=2.0.0.148">
+  <link rel="stylesheet" href="assets/css/app.css?v=2.0.0.149">
 </head>
 <body>
   <div class="app">
@@ -523,6 +523,7 @@
             <span id="githubSyncStatusText" class="sync-status-message">Enter your private repository and token to begin.</span>
             <button id="githubSyncSeeChanges" class="button sync-see-changes" type="button" hidden>Compare Copies</button>
           </div>
+          <label class="sync-remember"><input id="githubSyncAutoSync" type="checkbox" checked> Auto Sync — sync saved edits and check GitHub automatically after the first sync. Conflicts require review.</label>
           <section id="githubSyncChangesPanel" class="sync-changes-panel" aria-labelledby="githubSyncChangesTitle" hidden>
             <div class="sync-changes-header">
               <strong id="githubSyncChangesTitle">Compare This Device and GitHub</strong>
@@ -754,31 +755,32 @@
       </div>
     </div>
   </div>
-  <script src="letters-liquor-notes.js?v=2.0.0.148"></script>
-  <script src="letters-liquor-data.js?v=2.0.0.148"></script>
-  <script src="diffords-data.js?v=2.0.0.148"></script>
+  <script src="letters-liquor-notes.js?v=2.0.0.149"></script>
+  <script src="letters-liquor-data.js?v=2.0.0.149"></script>
+  <script src="diffords-data.js?v=2.0.0.149"></script>
   <script>
-const BUILD_VERSION = '2.0.0.148';
+const BUILD_VERSION = '2.0.0.149';
     const CURRENT_RELEASE = {
-      "title": "Automatic App Updates",
-      "summary": "Home Bar automatically loads new releases when safely idle.",
+      "title": "Automatic GitHub Sync",
+      "summary": "Keep Home Bar data synchronized with GitHub automatically after the first sync.",
       "changes": [
-        "Check for releases on startup, every five minutes, and when returning to the app.",
-        "Apply new releases after 30 seconds of inactivity, waiting for dialogs, text editing, and GitHub sync to finish; keep manual Update available."
+        "Sync saved edits automatically and check for shared changes every 30 seconds, on return, and on reconnection.",
+        "Add an Auto Sync toggle; defer downloads during editing and require manual review when both copies changed.",
+        "Restore manual installation of app releases; automatic updates now apply to GitHub data syncing."
       ]
     };
   </script>
-  <script src="data/cocktails.js?v=2.0.0.148"></script>
-  <script src="assets/js/icons.js?v=2.0.0.148"></script>
-  <script src="assets/js/ingredients.js?v=2.0.0.148"></script>
-  <script src="assets/js/ratings.js?v=2.0.0.148"></script>
-  <script src="assets/js/availability.js?v=2.0.0.148"></script>
-  <script src="assets/js/render.js?v=2.0.0.148"></script>
-  <script src="assets/js/dialogs.js?v=2.0.0.148"></script>
-  <script src="assets/js/bar.js?v=2.0.0.148"></script>
-  <script src="assets/js/cocktail-editor.js?v=2.0.0.148"></script>
-  <script src="assets/js/sync.js?v=2.0.0.148"></script>
-  <script src="assets/js/interface.js?v=2.0.0.148"></script>
-  <script src="assets/js/app.js?v=2.0.0.148"></script>
+  <script src="data/cocktails.js?v=2.0.0.149"></script>
+  <script src="assets/js/icons.js?v=2.0.0.149"></script>
+  <script src="assets/js/ingredients.js?v=2.0.0.149"></script>
+  <script src="assets/js/ratings.js?v=2.0.0.149"></script>
+  <script src="assets/js/availability.js?v=2.0.0.149"></script>
+  <script src="assets/js/render.js?v=2.0.0.149"></script>
+  <script src="assets/js/dialogs.js?v=2.0.0.149"></script>
+  <script src="assets/js/bar.js?v=2.0.0.149"></script>
+  <script src="assets/js/cocktail-editor.js?v=2.0.0.149"></script>
+  <script src="assets/js/sync.js?v=2.0.0.149"></script>
+  <script src="assets/js/interface.js?v=2.0.0.149"></script>
+  <script src="assets/js/app.js?v=2.0.0.149"></script>
 </body>
 </html>
