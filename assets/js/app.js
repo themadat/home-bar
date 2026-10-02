@@ -581,6 +581,39 @@ const TABLE_SORT_ICONS = { default: __ARROW_UP_AND_DOWN_SQUARE_FILL, ascending: 
       COCKTAILS.push(cocktail);
     });
     const LETTERS_LIQUOR_SOURCE_BY_ID = new Map(LETTERS_LIQUOR_DATA.map((entry) => [entry.targetId, lettersLiquorSource(entry)]));
+
+    const CLASSIC_RECIPES = Array.isArray(window.CLASSIC_RECIPES) ? window.CLASSIC_RECIPES : [];
+    const CLASSIC_SOURCE_BY_ID = new Map();
+    const CLASSIC_BUNDLED_COCKTAILS = [];
+    const CLASSIC_CUSTOM_COCKTAILS = [];
+    CLASSIC_RECIPES.forEach((entry) => {
+      const source = {
+        key: 'classic', label: 'Classic', sourceName: entry.name, available: true,
+        ingredients: cloneRecipeLines(entry.ingredients), ingredientNames: cloneRecipeLines(entry.ingredientNames),
+        baseLiquor: cloneRecipeLines(entry.baseLiquor), liqueurs: (entry.liqueurs || []).map((item) => ({...item})),
+        method: cloneRecipeLines(entry.method), garnish: String(entry.garnish || ''), glassware: String(entry.glassware || ''),
+        notes: cloneRecipeLines(entry.notes)
+      };
+      CLASSIC_SOURCE_BY_ID.set(entry.targetId, source);
+      const existing = COCKTAILS.find((cocktail) => cocktail.id === entry.targetId);
+      if (existing) {
+        existing.classicSource = source;
+        CLASSIC_BUNDLED_COCKTAILS.push(existing);
+        return;
+      }
+      const cocktail = {
+        id: entry.targetId, name: entry.name, type: 'Custom', originalType: 'Custom', status: 'Custom',
+        url: '', links: [], image: '', glassware: source.glassware,
+        baseLiquor: source.baseLiquor.slice(), ingredientCount: source.ingredients.length, makeTime: 2,
+        dateAdded: 2026, dateRemoved: null, addedRemoved: 'Classic recipe collection',
+        ingredients: source.ingredients.slice(), ingredientNames: source.ingredientNames.slice(), method: source.method.slice(),
+        garnish: source.garnish, notes: [], liqueurs: source.liqueurs.map((item) => ({...item})),
+        sourceNote: 'Classic recipe supplied by the user; preparation method not recorded.', classicSource: source
+      };
+      CLASSIC_CUSTOM_COCKTAILS.push(cocktail);
+      CLASSIC_BUNDLED_COCKTAILS.push(cocktail);
+      COCKTAILS.push(cocktail);
+    });
     
 	    const DIFFORDS_DATA = Array.isArray(window.DIFFORDS_DATA) ? window.DIFFORDS_DATA : [];
 
@@ -610,6 +643,7 @@ const cloneDiffordsNotes = (notes) => ({
 	      if (!cocktail.nutrition && hasFacts) cocktail.nutrition = {...facts};
 	    });
     SEED_CUSTOM_COCKTAILS.push(...LETTERS_LIQUOR_CUSTOM_COCKTAILS);
+    SEED_CUSTOM_COCKTAILS.push(...CLASSIC_CUSTOM_COCKTAILS);
     const SPECIALTY_LIQUEUR_INGREDIENTS = [
       {pattern: /fernet/i, name: 'Fernet-Branca', flavor: 'herbs'},
       {pattern: /cynar/i, name: 'Cynar', flavor: 'herbs'},
@@ -688,6 +722,7 @@ const cloneDiffordsNotes = (notes) => ({
       ...IBA_TYPE_FILTERS.map((filter) => ({...filter, className: `iba-type-${filter.id === 'ibaUnforgettable' ? 'unforget' : filter.id === 'ibaContemporary' ? 'classic' : 'new-era'}`})),
       {id: 'diffords', label: "Difford's", className: 'source-diffords'},
       {id: 'liquor', label: 'Liquor.com', className: 'source-liquor'},
+      {id: 'classic', label: 'Classic', className: 'source-classic'},
       ...DIFFORDS_GUIDE_FILTERS.map((filter) => ({...filter, className: 'source-diffords'}))
     ];
     const ALL_MORE_QUICK_FILTERS = [...MORE_SOURCE_FILTERS, ...MORE_QUICK_FILTERS];
@@ -696,7 +731,7 @@ const cloneDiffordsNotes = (notes) => ({
     const IBA_TYPE_FILTER_IDS = new Set(IBA_TYPE_FILTERS.map((filter) => filter.id));
     const GENRE_FILTER_IDS = new Set(GENRE_FILTERS.map((filter) => filter.id));
     const QUICK_FILTER_LABEL_MAP = new Map([
-      ['toTry', 'Try'], ['favs', 'Favs'], ['myBar', 'My Bar'], ['lnl', 'L&L'], ['iba', 'IBA'], ['diffords', "Difford's"], ['liquor', 'Liquor.com'],
+      ['toTry', 'Try'], ['favs', 'Favs'], ['myBar', 'My Bar'], ['lnl', 'L&L'], ['iba', 'IBA'], ['diffords', "Difford's"], ['liquor', 'Liquor.com'], ['classic', 'Classic'],
       ...TITLE_QUICK_FILTERS.map((filter) => [filter.id, filter.label]),
       ...DIFFORDS_GUIDE_FILTERS.map((filter) => [filter.id, filter.label]),
       ...LNL_ERA_FILTERS.map((filter) => [filter.id, filter.label]),
@@ -956,7 +991,7 @@ let storedFriendRatings = {};
     };
     if (JSON.stringify(storedBar) !== JSON.stringify(migratedBar)) localStorage.setItem('cocktailBar', JSON.stringify(migratedBar));
     if (JSON.stringify(storedArchive) !== JSON.stringify(migratedArchive)) localStorage.setItem('cocktailArchive', JSON.stringify(migratedArchive));
-    store.customCocktails = store.customCocktails.map(refreshBundledLettersLiquorCocktail);
+    store.customCocktails = store.customCocktails.map(refreshBundledCocktailSources);
     store.customCocktails.forEach(normalizeSpecialtyLiqueurIngredients);
     store.customCocktails.forEach((cocktail) => {
       const existingIndex = COCKTAILS.findIndex((item) => item.id === cocktail.id);
@@ -965,7 +1000,8 @@ let storedFriendRatings = {};
         ...COCKTAILS[existingIndex], ...cocktail,
         lnlSource: COCKTAILS[existingIndex].lnlSource || cocktail.lnlSource,
         diffordsSource: COCKTAILS[existingIndex].diffordsSource || cocktail.diffordsSource,
-        liquorSource: COCKTAILS[existingIndex].liquorSource || cocktail.liquorSource
+        liquorSource: COCKTAILS[existingIndex].liquorSource || cocktail.liquorSource,
+        classicSource: COCKTAILS[existingIndex].classicSource || cocktail.classicSource
       };
     });
         const state = {
@@ -1147,7 +1183,7 @@ const unique = (items) => Array.from(new Set(items.filter(Boolean)));
 const tagFilterId = (tag) => `${TAG_FILTER_PREFIX}${encodeURIComponent(tag)}`;
     const isTagFilterId = (id) => String(id || '').startsWith(TAG_FILTER_PREFIX);
 
-const sourceNotesMarkup = (cocktail) => `${lettersLiquorNotesMarkup(cocktail)}${diffordsNotesMarkup(cocktail)}`;
+const sourceNotesMarkup = (cocktail) => `${lettersLiquorNotesMarkup(cocktail)}${diffordsNotesMarkup(cocktail)}${classicNotesMarkup(cocktail)}`;
     
     const ALL_SPIRIT_EXCLUDE_TOKENS = ['juice','soda','water','syrup','sugar','cordial','cream','milk','egg','puree','ginger','ginger ale','ginger beer','mint','basil','cola','coffee','cold brew','espresso','cloves','pepper','salt','seasoning','sauce','vanilla extract','olive brine','agave nectar','pineapple','tomato','donn','grenadine','orgeat','falernum','honey','fresh lime','fresh ginger','lemon wheel','orange wheel','lime','lemon'];
     const SPIRIT_FORWARD_EXCLUDE_TOKENS = ['juice','soda','cordial','cream','milk','egg','puree','ginger','ginger ale','ginger beer','mint','basil','cola','coffee','cold brew','espresso','cloves','pepper','seasoning','sauce','vanilla extract','agave nectar','pineapple','tomato','donn','orgeat','falernum','honey','fresh lime','fresh ginger','lemon wheel','orange wheel','lime','lemon'];
@@ -1219,10 +1255,12 @@ const RECIPE_SOURCE_OPTIONS = [
 	      {key: 'iba', label: 'IBA'},
 	      {key: 'lnl', label: 'L&L'},
 	      {key: 'diffords', label: "Difford's"},
-	      {key: 'liquor', label: 'Liquor.com'}
+	      {key: 'liquor', label: 'Liquor.com'},
+	      {key: 'classic', label: 'Classic'}
 	    ];
 
 const RECIPE_SOURCE_SYMBOL_PATHS = {
+	      classic: 'M23.8232 4.26758L23.8232 19.5605C23.8232 22.3193 22.3145 23.8232 19.5264 23.8232L4.29199 23.8232C1.50879 23.8232 0 22.3291 0 19.5605L0 4.26758C0 1.49902 1.50879 0 4.29199 0L19.5264 0C22.3145 0 23.8232 1.50391 23.8232 4.26758ZM6.26465 11.8555C6.26465 15.5908 8.50586 18.0273 11.9678 18.0273C14.3066 18.0273 16.2109 16.9287 16.8506 15.2002C16.958 14.9365 16.9971 14.7021 16.9971 14.4482C16.9971 13.7207 16.5186 13.2861 15.7129 13.2861C15.1465 13.2861 14.7803 13.5205 14.4922 14.0723C14.0723 15.0879 13.1934 15.6494 12.0068 15.6494C10.2881 15.6494 9.16992 14.1602 9.16992 11.8555C9.16992 9.55566 10.2881 8.05176 12.0117 8.05176C13.1934 8.05176 14.0771 8.62793 14.4971 9.64844C14.8047 10.2197 15.1318 10.4395 15.7129 10.4395C16.5186 10.4395 16.9971 10.0049 16.9971 9.27246C16.9971 9.00391 16.958 8.78906 16.8506 8.52051C16.2061 6.79688 14.2871 5.67871 11.9678 5.67871C8.51074 5.67871 6.26465 8.12012 6.26465 11.8555Z',
 	      diffords: 'M23.8232 4.26758L23.8232 19.5605C23.8232 22.3193 22.3145 23.8232 19.5264 23.8232L4.29199 23.8232C1.50879 23.8232 0 22.3291 0 19.5605L0 4.26758C0 1.49902 1.50879 0 4.29199 0L19.5264 0C22.3145 0 23.8232 1.50391 23.8232 4.26758ZM8.68652 5.95703C7.65625 5.95703 7.12891 6.55762 7.12891 7.6123L7.12891 16.0889C7.12891 17.1533 7.65137 17.7539 8.68652 17.7539L11.9922 17.7539C15.6299 17.7539 17.7002 15.6396 17.7002 11.8359C17.7002 8.07129 15.6543 5.95703 11.9922 5.95703ZM14.7412 11.8555C14.7412 14.375 13.6621 15.5615 11.5576 15.5615L9.92676 15.5615L9.92676 8.14941L11.5576 8.14941C13.6523 8.14941 14.7412 9.39941 14.7412 11.8555Z',
 	      iba: 'M23.8232 4.26758L23.8232 19.5605C23.8232 22.3193 22.3145 23.8232 19.5264 23.8232L4.29199 23.8232C1.50879 23.8232 0 22.3291 0 19.5605L0 4.26758C0 1.49902 1.50879 0 4.29199 0L19.5264 0C22.3145 0 23.8232 1.50391 23.8232 4.26758ZM10.4248 7.49023L10.4248 16.2207C10.4248 17.2754 10.9766 17.9395 11.9678 17.9395C12.9639 17.9395 13.5254 17.29 13.5254 16.2207L13.5254 7.49023C13.5254 6.41113 12.9639 5.76172 11.9678 5.76172C10.9766 5.76172 10.4248 6.42578 10.4248 7.49023Z',
 	      lnl: 'M23.8232 4.26758L23.8232 19.5605C23.8232 22.3193 22.3145 23.8232 19.5264 23.8232L4.29199 23.8232C1.50879 23.8232 0 22.3291 0 19.5605L0 4.26758C0 1.49902 1.50879 0 4.29199 0L19.5264 0C22.3145 0 23.8232 1.50391 23.8232 4.26758ZM8.06152 7.48535L8.06152 16.0303C8.06152 17.0947 8.61328 17.7539 9.60449 17.7539L15.2539 17.7539C16.0498 17.7539 16.5576 17.2998 16.5576 16.5186C16.5576 15.7568 16.0449 15.3076 15.2539 15.3076L11.167 15.3076L11.167 7.48535C11.167 6.41602 10.6006 5.76172 9.60449 5.76172C8.6084 5.76172 8.06152 6.4209 8.06152 7.48535Z',
@@ -2334,7 +2372,7 @@ $('#importData').addEventListener('click', () => $('#importFile').click());
 	      });
 	      saveCustom();
 	    });
-    const FIXED_COL_WIDTH = { photo: 42, availability: 10, recipe: 91, try: 56, rating: 94, ing: 66, time: 76, serving: 88 };
+    const FIXED_COL_WIDTH = { photo: 42, availability: 10, recipe: 112, try: 56, rating: 94, ing: 66, time: 76, serving: 88 };
     const PRIORITY_COLS = ['cocktail', 'base', 'garnish', 'glass'];
     const PRIORITY_FLOOR = { cocktail: 180, base: 90, garnish: 89, glass: 120 };
     const PRIORITY_GROW_WEIGHT = { cocktail: 30, base: 20, garnish: 16, glass: 12 };
@@ -2555,4 +2593,3 @@ let resizeTimer = null;
       setTimeout(checkAvailableUpdate, 1000);
       setInterval(checkAvailableUpdate, 5 * 60 * 1000);
     })();
-

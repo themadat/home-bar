@@ -313,7 +313,8 @@ function submitCocktailForm(event) {
 	            sourceNote: existing ? existing.sourceNote : 'Logged in the field — details pending.',
 	            lnlSource: existing?.lnlSource || null,
 	            diffordsSource: existing?.diffordsSource || null,
-	            liquorSource: existing?.liquorSource || null
+	            liquorSource: existing?.liquorSource || null,
+	            classicSource: existing?.classicSource || null
 	          };
 	          if (Object.keys(guide).length) store.guides[cocktail.id] = guide;
 	          else delete store.guides[cocktail.id];

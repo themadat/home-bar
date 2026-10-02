@@ -15,7 +15,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Home Bar">
   <meta name="mobile-web-app-capable" content="yes">
-  <link rel="stylesheet" href="assets/css/app.css?v=2.0.0.149">
+  <link rel="stylesheet" href="assets/css/app.css?v=2.0.0.150">
 </head>
 <body>
   <div class="app">
@@ -139,6 +139,7 @@
             <button class="quick-chip filter-lnl" type="button" data-quick="lnl">L&amp;L</button>
             <button class="quick-chip filter-iba" type="button" data-quick="iba">IBA</button>
             <button class="quick-chip source-diffords" type="button" data-quick="diffords">Difford's</button>
+            <button class="quick-chip source-classic" type="button" data-quick="classic">Classic</button>
             <button id="mobileAdvancedFiltersToggle" class="mobile-filter-toggle" type="button" aria-expanded="false" aria-controls="pillFilters" aria-label="Show Base, Garnish, Glassware, Type, and Rating filters"><span class="mobile-filter-chevron" aria-hidden="true"></span></button>
 <button class="quick-chip" type="button" data-responsive-quick data-quick="diffordsWeak" data-short-label="Weak" hidden>Weak</button><button class="quick-chip" type="button" data-responsive-quick data-quick="diffordsStrong" data-short-label="Strong" hidden>Strong</button><button class="quick-chip" type="button" data-responsive-quick data-quick="diffordsSweet" data-short-label="Sweet" hidden>Sweet</button><button class="quick-chip" type="button" data-responsive-quick data-quick="diffordsDrySour" data-short-label="Dry" hidden>Dry</button><button class="quick-chip" type="button" data-responsive-quick data-quick="allSpirit" data-short-label="All Spirit" hidden>All Spirit</button><button class="quick-chip" type="button" data-responsive-quick data-quick="spiritForward" data-short-label="Spirit Forward" hidden>Spirit Forward</button><button class="quick-chip" type="button" data-responsive-quick data-quick="sour" data-short-label="Sour" hidden>Sour</button><button class="quick-chip" type="button" data-responsive-quick data-quick="bitter" data-short-label="Bitter" hidden>Bitter</button><button class="quick-chip" type="button" data-responsive-quick data-quick="tropical" data-short-label="Tropical" hidden>Tropical</button><button class="quick-chip" type="button" data-responsive-quick data-quick="dessert" data-short-label="Dessert" hidden>Dessert</button><button class="quick-chip" type="button" data-responsive-quick data-quick="herbal" data-short-label="Herbal" hidden>Herbal</button><button class="quick-chip" type="button" data-responsive-quick data-quick="sparkling" data-short-label="Sparkling" hidden>Sparkling</button><button class="quick-chip" type="button" data-responsive-quick data-quick="lowAbv" data-short-label="Low ABV" hidden>Low ABV</button><button class="quick-chip" type="button" data-responsive-quick data-quick="nonAlcoholic" data-short-label="Non-Alcoholic" hidden>Non-Alcoholic</button>
             <button id="genreMoreButton" class="quick-chip" type="button" aria-expanded="false" aria-controls="genreMoreMenu" aria-label="More filters">&hellip;<span id="genreMoreCount" class="genre-more-count"></span></button>
@@ -167,7 +168,7 @@
 	              <th data-col="photo" style="width: 42px;" aria-label="Photo"></th>
 	              <th data-col="availability" style="width: 10px;" aria-label="My Bar availability"></th>
 	              <th class="sortable-column" data-col="cocktail" data-sort-key="name" aria-sort="none" style="width: 22%;"><button class="table-sort-button" type="button" data-table-sort="name"><span>Cocktail</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
-	              <th data-col="recipe" style="width: 91px;" title="Recipe sources: Difford's, IBA, L&amp;L, Other">Recipe</th>
+	              <th data-col="recipe" style="width: 112px;" title="Recipe sources: Difford's, IBA, L&amp;L, Other, Classic">Recipe</th>
 	              <th class="sortable-column" data-col="try" data-sort-key="try" aria-sort="none" style="width: 56px;"><button class="table-sort-button" type="button" data-table-sort="try"><span>Try</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
 	              <th class="sortable-column" data-col="rating" data-sort-key="rating" aria-sort="none" style="width: 94px;"><div class="rating-header-group"><button class="table-sort-button" type="button" data-table-sort="rating"><span>Rating</span><span class="table-sort-icon" aria-hidden="true"></span></button><div id="ratingViewPill" class="rating-unlocked-controls" data-view="mine" hidden><button id="ratingAudienceToggle" class="rating-audience-toggle" type="button" data-view="mine" title="Show friends average" aria-label="Show friends average">Mine</button><button class="table-sort-button rating-pill-sort" type="button" data-table-sort="rating"><span class="visually-hidden">Rating</span><span class="table-sort-icon" aria-hidden="true"></span></button></div></div></th>
 	              <th class="sortable-column" data-col="serving" data-sort-key="serving" aria-sort="none" style="width: 88px;"><button class="table-sort-button" type="button" data-table-sort="serving"><span>Serve</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
@@ -755,32 +756,34 @@
       </div>
     </div>
   </div>
-  <script src="letters-liquor-notes.js?v=2.0.0.149"></script>
-  <script src="letters-liquor-data.js?v=2.0.0.149"></script>
-  <script src="diffords-data.js?v=2.0.0.149"></script>
+  <script src="letters-liquor-notes.js?v=2.0.0.150"></script>
+  <script src="letters-liquor-data.js?v=2.0.0.150"></script>
+  <script src="diffords-data.js?v=2.0.0.150"></script>
+  <script src="data/classic-recipes.js?v=2.0.0.150"></script>
   <script>
-const BUILD_VERSION = '2.0.0.149';
+const BUILD_VERSION = '2.0.0.150';
     const CURRENT_RELEASE = {
-      "title": "Automatic GitHub Sync",
-      "summary": "Keep Home Bar data synchronized with GitHub automatically after the first sync.",
+      "title": "Classic Recipe Collection",
+      "summary": "Add 60 Classic recipes with purple recipe controls and the Classic C icon.",
       "changes": [
-        "Sync saved edits automatically and check for shared changes every 30 seconds, on return, and on reconnection.",
-        "Add an Auto Sync toggle; defer downloads during editing and require manual review when both copies changed.",
-        "Restore manual installation of app releases; automatic updates now apply to GitHub data syncing."
+        "Add 33 drinks, including Tom Collins and Corpse Reviver #1, and attach Classic variants to 27 existing drinks.",
+        "Add a Classic filter, purple recipe badges, and comparison and selection controls using the supplied C icon.",
+        "Preserve Classic sources through edits and imports, and include Classic variants in My Bar matching.",
+        "Keep supplied recipe amounts and garnishes; leave unprovided methods unrecorded and flag the missing Sazerac syrup unit."
       ]
     };
   </script>
-  <script src="data/cocktails.js?v=2.0.0.149"></script>
-  <script src="assets/js/icons.js?v=2.0.0.149"></script>
-  <script src="assets/js/ingredients.js?v=2.0.0.149"></script>
-  <script src="assets/js/ratings.js?v=2.0.0.149"></script>
-  <script src="assets/js/availability.js?v=2.0.0.149"></script>
-  <script src="assets/js/render.js?v=2.0.0.149"></script>
-  <script src="assets/js/dialogs.js?v=2.0.0.149"></script>
-  <script src="assets/js/bar.js?v=2.0.0.149"></script>
-  <script src="assets/js/cocktail-editor.js?v=2.0.0.149"></script>
-  <script src="assets/js/sync.js?v=2.0.0.149"></script>
-  <script src="assets/js/interface.js?v=2.0.0.149"></script>
-  <script src="assets/js/app.js?v=2.0.0.149"></script>
+  <script src="data/cocktails.js?v=2.0.0.150"></script>
+  <script src="assets/js/icons.js?v=2.0.0.150"></script>
+  <script src="assets/js/ingredients.js?v=2.0.0.150"></script>
+  <script src="assets/js/ratings.js?v=2.0.0.150"></script>
+  <script src="assets/js/availability.js?v=2.0.0.150"></script>
+  <script src="assets/js/render.js?v=2.0.0.150"></script>
+  <script src="assets/js/dialogs.js?v=2.0.0.150"></script>
+  <script src="assets/js/bar.js?v=2.0.0.150"></script>
+  <script src="assets/js/cocktail-editor.js?v=2.0.0.150"></script>
+  <script src="assets/js/sync.js?v=2.0.0.150"></script>
+  <script src="assets/js/interface.js?v=2.0.0.150"></script>
+  <script src="assets/js/app.js?v=2.0.0.150"></script>
 </body>
 </html>

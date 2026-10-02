@@ -269,6 +269,12 @@ function diffordsNotesMarkup(cocktail) {
 	      return `<div class="lnl-notes-sections diffords-notes-sections" aria-label="Difford's Guide notes">${sections.map(([label, content]) => `<details class="lnl-note-section"><summary>${escapeHtml(label)}</summary><div class="lnl-note-copy">${lettersLiquorNoteBody(content)}</div></details>`).join('')}</div>`;
 	    }
 
+function classicNotesMarkup(cocktail) {
+      const notes = cloneRecipeLines(cocktail?.classicSource?.notes);
+      if (!notes.length) return '';
+      return `<div class="lnl-notes-sections" aria-label="Classic recipe notes"><details class="lnl-note-section"><summary>Classic Recipe Notes</summary><div class="lnl-note-copy">${notes.map((note) => `<p>${escapeHtml(note)}</p>`).join('')}</div></details></div>`;
+    }
+
 function getCounts(items, getValues) {
       const counts = new Map();
       items.forEach((item) => unique(getValues(item)).forEach((value) => counts.set(value, (counts.get(value) || 0) + 1)));
