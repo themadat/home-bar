@@ -189,6 +189,7 @@
           --source-border: #68717B;
           --source-bg: rgba(146, 154, 163, .12);
         }
+        .source-classic { --source-color: #BB8CE3; --source-border: #8056A5; --source-bg: rgba(187, 140, 227, .13); }
         .source-liquor { --source-color: #E0B36A; --source-border: #8D6A35; --source-bg: rgba(224, 179, 106, .12); }
         .era-archaic { --source-color: #C96A72; --source-border: #965158; --source-bg: rgba(201, 106, 114, .13); }
         .era-baroque { --source-color: #D38A52; --source-border: #9A673F; --source-bg: rgba(211, 138, 82, .13); }
@@ -197,11 +198,11 @@
         .era-war-years { --source-color: #5E91B8; --source-border: #496F8B; --source-bg: rgba(94, 145, 184, .13); }
         .era-dark-ages { --source-color: #7078B8; --source-border: #565D8D; --source-bg: rgba(112, 120, 184, .13); }
         .era-revival { --source-color: #9A73BE; --source-border: #73588D; --source-bg: rgba(154, 115, 190, .13); }
-        .quick-chip.source-era, .quick-chip.source-diffords, .quick-chip.source-liquor {
+        .quick-chip.source-era, .quick-chip.source-diffords, .quick-chip.source-liquor, .quick-chip.source-classic {
           border-color: var(--source-border); background: var(--source-bg); color: var(--source-color);
         }
-        .quick-chip.source-era:hover, .quick-chip.source-diffords:hover, .quick-chip.source-liquor:hover,
-        .quick-chip.source-era.active, .quick-chip.source-diffords.active, .quick-chip.source-liquor.active {
+        .quick-chip.source-era:hover, .quick-chip.source-diffords:hover, .quick-chip.source-liquor:hover, .quick-chip.source-classic:hover,
+        .quick-chip.source-era.active, .quick-chip.source-diffords.active, .quick-chip.source-liquor.active, .quick-chip.source-classic.active {
           border-color: var(--source-color); background: var(--source-bg); color: var(--text);
           box-shadow: inset 0 0 0 1px var(--source-color);
         }
@@ -721,7 +722,7 @@
 	    td[data-label="Photo"] { padding-left: 4px; padding-right: 4px; }
 	    td[data-label="My Bar"] { padding-left: 1px; padding-right: 1px; }
 	    th[data-col="recipe"], td[data-label="Recipe"] { padding-left: 5px; padding-right: 5px; }
-	    .recipe-source-slots { display: grid; grid-template-columns: repeat(4, 18px); align-items: center; justify-content: center; gap: 3px; width: 81px; margin: 0 auto; }
+	    .recipe-source-slots { display: grid; grid-template-columns: repeat(5, 18px); align-items: center; justify-content: center; gap: 3px; width: 102px; margin: 0 auto; }
 	    .recipe-source-slot { display: grid; place-items: center; width: 18px; height: 18px; }
 	    .recipe-source-symbol { display: block; width: 18px; height: 18px; }
 	    .recipe-source-symbol svg { display: block; width: 18px; height: 18px; fill: currentColor; }
@@ -729,6 +730,7 @@
 	    .recipe-source-symbol-iba { color: #D45D5D; }
 	    .recipe-source-symbol-lnl { color: #E0BD72; }
 	    .recipe-source-symbol-other { color: #70A98A; }
+	    .recipe-source-symbol-classic { color: #BB8CE3; }
 	    th[data-col="try"] .table-sort-button { gap: 3px; padding-inline: 5px; }
 	    td[data-label="Cocktail"] { padding-left: 4px; }
 	    .summary-row td { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -824,10 +826,10 @@
 	      display: inline-flex; align-items: center; min-height: 18px; padding: 1px 6px; border: 1px solid var(--source-border, #725D39);
 	      border-radius: 999px; background: var(--source-bg, rgba(194, 154, 82, .1)); color: var(--source-color, #D7C08F); font-size: 8px; font-weight: 750; white-space: nowrap;
 	    }
-	    .recipe-source-option.source-era, .recipe-source-option.source-diffords, .recipe-source-option.source-liquor {
+	    .recipe-source-option.source-era, .recipe-source-option.source-diffords, .recipe-source-option.source-liquor, .recipe-source-option.source-classic {
 	      border-color: var(--source-border); background: var(--source-bg); color: var(--source-color);
 	    }
-	    .recipe-source-option.source-era.active, .recipe-source-option.source-diffords.active, .recipe-source-option.source-liquor.active {
+	    .recipe-source-option.source-era.active, .recipe-source-option.source-diffords.active, .recipe-source-option.source-liquor.active, .recipe-source-option.source-classic.active {
 	      border-color: var(--source-color); background: var(--source-bg); color: var(--text);
 	      box-shadow: inset 0 0 0 1px var(--source-color);
 	    }
@@ -840,7 +842,7 @@
 	    .recipe-source-count { color: var(--faint); font-size: 9px; font-weight: 700; white-space: nowrap; }
 	    .recipe-source-comparison { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(var(--recipe-source-count, 1), minmax(0, 1fr)); gap: 8px; min-width: 0; }
 	    .recipe-source-column { max-height: 300px; }
-	    .recipe-source-column.source-era, .recipe-source-column.source-diffords, .recipe-source-column.source-liquor, .recipe-source-column.source-iba { border-color: var(--source-border); }
+	    .recipe-source-column.source-era, .recipe-source-column.source-diffords, .recipe-source-column.source-liquor, .recipe-source-column.source-classic, .recipe-source-column.source-iba { border-color: var(--source-border); }
 	    .recipe-source-column.source-iba { --source-color: #B7CAD8; --source-border: #4B6680; }
 	    .recipe-source-column.source-iba.iba-type-unforget { --source-color: #BFC5DB; --source-border: #6D638C; }
 	    .recipe-source-column.source-iba.iba-type-classic { --source-color: #B7CAD8; --source-border: #4B6680; }

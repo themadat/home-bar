@@ -13,7 +13,9 @@ function canonicalLiqueurSubtype(name, subtype) {
           return 'Herb, Other';
         }
 
-function refreshBundledLettersLiquorCocktail(cocktail) {
+function refreshBundledCocktailSources(cocktail) {
+      const classicSource = CLASSIC_SOURCE_BY_ID.get(cocktail?.id);
+      if (classicSource) cocktail = {...cocktail, classicSource};
       const source = LETTERS_LIQUOR_SOURCE_BY_ID.get(cocktail?.id);
       if (!source) return cocktail;
       const refreshed = {...cocktail, lnlSource: source};

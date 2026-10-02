@@ -42,7 +42,8 @@ function pantryRecipeVariants(cocktail) {
         cocktail,
         ...(cocktail.lnlSource?.available === false ? [] : (cocktail.lnlSource ? [pantryRecipeVariant(cocktail, cocktail.lnlSource)] : [])),
         ...(cocktail.diffordsSource?.available === false ? [] : (cocktail.diffordsSource ? [pantryRecipeVariant(cocktail, cocktail.diffordsSource)] : [])),
-        ...(cocktail.liquorSource?.available === false ? [] : (cocktail.liquorSource ? [pantryRecipeVariant(cocktail, cocktail.liquorSource)] : []))
+        ...(cocktail.liquorSource?.available === false ? [] : (cocktail.liquorSource ? [pantryRecipeVariant(cocktail, cocktail.liquorSource)] : [])),
+        ...(cocktail.classicSource?.available === false ? [] : (cocktail.classicSource ? [pantryRecipeVariant(cocktail, cocktail.classicSource)] : []))
       ];
     }
 
@@ -419,7 +420,7 @@ function matchesGenre(cocktail, genreId) {
 
 function isMatch(cocktail, ignoreMyBar = false) {
           const type = displayType(cocktail);
-          const hay = norm([cocktail.name, ...cocktailAlternateNames(cocktail), type, cocktail.originalType, cocktail.glassware, displayGlass(cocktail.glassware), cocktail.status, cocktail.addedRemoved, cocktail.garnish, ...cocktailTags(cocktail), ...garnishTags(cocktail), ...cocktail.baseLiquor, ...cocktail.baseLiquor.map(displayBaseLabel), ...baseSubtypeTags(cocktail).map((tag) => tag.subtype), ...ingredientTags(cocktail), ...cocktail.ingredientNames, ...cocktail.ingredients].join(' '));
+          const hay = norm([cocktail.name, cocktail.classicSource?.sourceName, ...cocktailAlternateNames(cocktail), type, cocktail.originalType, cocktail.glassware, displayGlass(cocktail.glassware), cocktail.status, cocktail.addedRemoved, cocktail.garnish, ...cocktailTags(cocktail), ...garnishTags(cocktail), ...cocktail.baseLiquor, ...cocktail.baseLiquor.map(displayBaseLabel), ...baseSubtypeTags(cocktail).map((tag) => tag.subtype), ...ingredientTags(cocktail), ...cocktail.ingredientNames, ...cocktail.ingredients].join(' '));
           if (state.statFilter === 'neat') return false;
           if (state.statFilter === 'current' && cocktail.status !== 'Current IBA') return false;
           if (state.statFilter === 'legacy' && cocktail.status !== 'Former IBA') return false;
@@ -450,6 +451,7 @@ function isMatch(cocktail, ignoreMyBar = false) {
           if (state.quick.has('iba') && !['Current IBA', 'Former IBA'].includes(cocktail.status)) return false;
           if (state.quick.has('diffords') && !cocktail.diffordsSource) return false;
           if (state.quick.has('liquor') && !cocktail.liquorSource) return false;
+          if (state.quick.has('classic') && !cocktail.classicSource) return false;
           if (DIFFORDS_GUIDE_FILTERS.some((filter) => {
             if (!state.quick.has(filter.id)) return false;
             const value = Number(cocktail.diffordsSource?.guide?.[filter.guideKey]);

@@ -264,6 +264,7 @@ function recipeSource(cocktail, key) {
 	      if (key === 'lnl') return cocktail.lnlSource || null;
 	      if (key === 'diffords') return cocktail.diffordsSource || null;
 	      if (key === 'liquor') return cocktail.liquorSource || null;
+	      if (key === 'classic') return cocktail.classicSource || null;
 	      return null;
 	    }
 
@@ -277,12 +278,14 @@ function recipeSourceIndicators(cocktail) {
 	      const hasLnl = availableRecipeSource(cocktail, 'lnl');
 	      const hasDiffords = availableRecipeSource(cocktail, 'diffords');
 	      const hasLiquor = availableRecipeSource(cocktail, 'liquor');
-	      const hasOther = hasLiquor || (!hasIba && !hasLnl && !hasDiffords && Array.isArray(cocktail.ingredients) && cocktail.ingredients.length > 0);
+	      const hasClassic = availableRecipeSource(cocktail, 'classic');
+	      const hasOther = hasLiquor || (!hasIba && !hasLnl && !hasDiffords && !hasClassic && Array.isArray(cocktail.ingredients) && cocktail.ingredients.length > 0);
 	      const sources = [
 	        ['diffords', "Difford's", hasDiffords],
 	        ['iba', 'IBA', hasIba],
 	        ['lnl', 'L&L', hasLnl],
-	        ['other', 'Other', hasOther]
+	        ['other', 'Other', hasOther],
+	        ['classic', 'Classic', hasClassic]
 	      ];
 	      const availableLabels = sources.filter(([, , available]) => available).map(([, label]) => label);
 	      const slots = sources.map(([key, label, available]) => available
@@ -299,6 +302,7 @@ function selectedRecipeSourceKey(cocktail) {
 	      if (availableRecipeSource(cocktail, 'lnl')) return 'lnl';
 	      if (availableRecipeSource(cocktail, 'diffords')) return 'diffords';
 	      if (availableRecipeSource(cocktail, 'liquor')) return 'liquor';
+	      if (availableRecipeSource(cocktail, 'classic')) return 'classic';
 	      return '';
 	    }
 
@@ -326,7 +330,7 @@ function recipeGlasswareLabel(cocktail) {
 	    }
 
 function recipeSourceControls(cocktail) {
-	      if (!cocktail.lnlSource && !cocktail.diffordsSource && !cocktail.liquorSource) return '';
+	      if (!cocktail.lnlSource && !cocktail.diffordsSource && !cocktail.liquorSource && !cocktail.classicSource) return '';
 	      const selected = selectedRecipeSourceKey(cocktail);
 	      const sourceCount = RECIPE_SOURCE_OPTIONS.filter((source) => availableRecipeSource(cocktail, source.key)).length;
 	      const options = RECIPE_SOURCE_OPTIONS.map((source) => {
@@ -334,7 +338,7 @@ function recipeSourceControls(cocktail) {
 	        const title = enabled ? `Show ${source.label} recipe` : `${source.label} recipe not imported`;
 	        const sourceClass = source.key === 'lnl' && cocktail.lnlSource
 	          ? ` source-era era-${classToken(cocktail.lnlSource.era)}`
-	          : (source.key === 'diffords' ? ' source-diffords' : (source.key === 'liquor' ? ' source-liquor' : ''));
+	          : (['diffords', 'liquor', 'classic'].includes(source.key) ? ` source-${source.key}` : '');
 	        return `<button type="button" class="recipe-source-option${sourceClass}${selected === source.key ? ' active' : ''}" data-recipe-source="${source.key}" data-cocktail-id="${escapeHtml(cocktail.id)}" title="${escapeHtml(title)}" aria-label="${escapeHtml(title)}" aria-pressed="${selected === source.key}"${enabled ? '' : ' disabled'}>${escapeHtml(source.label)}</button>`;
 	      }).join('');
 	      const comparing = sourceCount > 1 && !state.recipeSingle.has(cocktail.id);
@@ -349,6 +353,7 @@ function cocktailSourceBadges(cocktail) {
 	      if (cocktail.lnlSource) badges.push(`<span class="source-meta-tag source-era era-${classToken(cocktail.lnlSource.era)}" title="Letters &amp; Liquor">${escapeHtml(cocktail.lnlSource.era)} | ${escapeHtml(cocktail.lnlSource.time)}</span>`);
 	      if (cocktail.diffordsSource) badges.push('<span class="source-meta-tag source-diffords">Difford\'s Guide</span>');
 	      if (cocktail.liquorSource) badges.push('<span class="source-meta-tag source-liquor">Liquor.com</span>');
+	      if (cocktail.classicSource) badges.push('<span class="source-meta-tag source-classic">Classic</span>');
 	      return badges.join('');
 	    }
 
@@ -363,7 +368,7 @@ function recipeComparisonColumn(cocktail, option, servings) {
 	        ? ibaRecipeSourceClass(cocktail)
 	        : option.key === 'lnl' && cocktail.lnlSource
 	          ? ` source-era era-${classToken(cocktail.lnlSource.era)}`
-	          : (option.key === 'diffords' ? ' source-diffords' : (option.key === 'liquor' ? ' source-liquor' : ''));
+	          : (['diffords', 'liquor', 'classic'].includes(option.key) ? ` source-${option.key}` : '');
 	      if (!available) {
 	        return `<section class="detail-card recipe-source-column${sourceClass}"><h3><span>${escapeHtml(option.label)}</span></h3><p class="recipe-source-unavailable">Recipe not imported.</p></section>`;
 	      }

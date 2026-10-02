@@ -34,6 +34,7 @@ Read only the files relevant to the change. All paths below are repository-relat
 | `assets/js/interface.js` | Filters, keyboard shortcuts, responsive table sizing |
 | `assets/js/icons.js` | Bulk static SVG strings; inspect only for icon changes |
 | `data/cocktails.js` | Base cocktail records, formatted for targeted reads by id |
+| `data/classic-recipes.js` | Classic recipe variants and new drinks from the supplied collection |
 | `letters-liquor-*.js`, `diffords-data.js` | Supplemental datasets |
 | `tools/import-diffords.mjs` | Difford's data importer |
 

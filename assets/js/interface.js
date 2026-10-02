@@ -38,7 +38,7 @@ function renderGenreFilters() {
 	        statFilterMarkup('current', 'filter-current'),
 	        statFilterMarkup('legacy', 'filter-legacy')
 	      ].join('');
-	      const promotedQuickIds = new Set(['lnl', 'iba', 'diffords']);
+	      const promotedQuickIds = new Set(['lnl', 'iba', 'diffords', 'classic']);
       const quickFilters = ALL_MORE_QUICK_FILTERS.filter((filter) => !promotedQuickIds.has(filter.id)).map((filter) => `<div class="genre-menu-item core-filter">
         <button class="quick-chip genre-menu-filter${filter.className ? ` ${escapeHtml(filter.className)}` : ''}" type="button" data-quick="${escapeHtml(filter.id)}">${escapeHtml(filter.label)}</button>
       </div>`).join('');
@@ -75,6 +75,7 @@ function quickFilterCount(id) {
 	      if (id === 'iba') return COCKTAILS.filter((c) => ['Current IBA', 'Former IBA'].includes(c.status)).length;
 	      if (id === 'diffords') return COCKTAILS.filter((c) => c.diffordsSource).length;
 	      if (id === 'liquor') return COCKTAILS.filter((c) => c.liquorSource).length;
+	      if (id === 'classic') return COCKTAILS.filter((c) => c.classicSource).length;
 	      const diffordsGuideFilter = DIFFORDS_GUIDE_FILTERS.find((filter) => filter.id === id);
 	      if (diffordsGuideFilter) return COCKTAILS.filter((cocktail) => {
 	        const value = Number(cocktail.diffordsSource?.guide?.[diffordsGuideFilter.guideKey]);

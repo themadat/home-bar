@@ -51,7 +51,7 @@ function syncComparableData(data) {
 	            bookmarks: source.bookmarks || {},
 	            bar: (source.bar || []).map(migrateBarItem),
 	            ...(source.archivedBar?.length ? {archivedBar: source.archivedBar.map(migrateBarItem)} : {}),
-	            customCocktails: (source.customCocktails || []).map(refreshBundledLettersLiquorCocktail).map(normalizeSpecialtyLiqueurIngredients),
+	            customCocktails: (source.customCocktails || []).map(refreshBundledCocktailSources).map(normalizeSpecialtyLiqueurIngredients),
 	            appNotes: source.appNotes || '',
 	            glassware: source.glassware || []
 	          };
@@ -929,7 +929,7 @@ function importUserData(data, options = {}) {
 	          const importedCocktails = hasImportedCocktails
 	            ? data.customCocktails
 	              .filter((c) => c && typeof c.id === 'string' && typeof c.name === 'string' && Array.isArray(c.ingredientNames))
-	              .map(refreshBundledLettersLiquorCocktail)
+	              .map(refreshBundledCocktailSources)
 	              .map(normalizeSpecialtyLiqueurIngredients)
 	              .map(normalizeCocktailAlternateNames)
 	            : [];
@@ -972,13 +972,18 @@ function importUserData(data, options = {}) {
 	              ...cocktail,
 	              lnlSource: cocktail.lnlSource || existing.lnlSource,
 	              diffordsSource: existing.diffordsSource || cocktail.diffordsSource,
-	              liquorSource: existing.liquorSource || cocktail.liquorSource
+	              liquorSource: existing.liquorSource || cocktail.liquorSource,
+	              classicSource: existing.classicSource || cocktail.classicSource
 	            } : cocktail;
 	            if (existingIdx !== -1) COCKTAILS[existingIdx] = mergedCocktail;
 	            else COCKTAILS.unshift(mergedCocktail);
 	            const storeIdx = store.customCocktails.findIndex((c) => c.id === cocktail.id);
 	            if (storeIdx !== -1) store.customCocktails[storeIdx] = mergedCocktail;
 	            else store.customCocktails.unshift(mergedCocktail);
+	          });
+	          // Keep all bundled Classic recipes when an older snapshot omits their drinks.
+	          CLASSIC_BUNDLED_COCKTAILS.forEach((cocktail) => {
+	            if (!COCKTAILS.some((item) => item.id === cocktail.id)) COCKTAILS.push(cocktail);
 	          });
 	          refreshRelatedFrequencies();
 	          saveCustom();
