@@ -1,5 +1,16 @@
 // Classic-script function declarations; shared state is initialized in app.js.
+function nutLiqueurSubtypeForName(name) {
+          const text = norm(name);
+          if (/amaretto|disaronno|almond/.test(text)) return 'Nut, Almond';
+          if (/frangelico|hazelnut/.test(text)) return 'Nut, Hazelnut';
+          if (/pistachio/.test(text)) return 'Nut, Pistachio';
+          if (/peanut butter/.test(text)) return 'Nut, Peanut Butter';
+          return '';
+        }
+
 function canonicalLiqueurSubtype(name, subtype) {
+          if (/\b(?:aperol|campari)\b/i.test(name)) return 'Bitter liqueurs';
+          if (['Nuts liqueurs', 'Nut Liqueur', 'Nut'].includes(subtype)) return nutLiqueurSubtypeForName(name) || 'Nut, Other';
           if (/chart(?:reuse|ruse)|benedictine|fernet|cynar/i.test(String(name).normalize('NFD').replace(/[\u0300-\u036f]/g, ''))) return 'Herb, Other';
           if (LIQUEUR_BAR_SUBTYPES.includes(subtype)) return subtype;
           const fruitSubtype = fruitLiqueurSubtypeForName(name);
@@ -266,11 +277,14 @@ function syncSubtypeFilters() {
         }
 
 function liqueurTypeLabel(subtype) {
+          if (String(subtype).startsWith('Nut, ')) return `${subtype} Liqueur`;
           return LIQUEUR_SUBTYPE_LABELS[subtype] || String(subtype || 'Liqueur').replace(/\s*liqueurs$/i, ' Liqueur');
         }
 
 function specialtyIngredientLabel(name) {
           const key = norm(name);
+          if (/\baperol\b/.test(key)) return 'Bitter Liqueur [Aperol]';
+          if (/\bcampari\b/.test(key)) return 'Bitter Liqueur [Campari]';
           if (/chart(?:reuse|ruse)/.test(key)) return `Herb, Other Liqueur [Chartreuse (${key.includes('yellow') ? 'Yellow' : 'Green'})]`;
           if (key.includes('benedictine')) return 'Herb, Other Liqueur [Bénédictine D.O.M.]';
           if (key.includes('cynar')) return 'Herb, Other Liqueur [Cynar (Amaro, Italian)]';

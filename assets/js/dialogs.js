@@ -690,6 +690,7 @@ function inferBottleClassification(value) {
 	          const name = norm(value);
 	          if (!name) return null;
               if (/\bpuree\b|\bginger\s+(?:beer|ale)\b/.test(name) || /^(?:fresh )?ginger(?: root)?$/.test(name)) return null;
+              if (/\b(?:aperol|campari)\b/.test(name)) return {base: 'Liqueurs', subtype: 'Bitter liqueurs'};
               if (name.includes('falernum') || name === 'sweet spiced syrup') return {base: 'Flavorings', subtype: 'Syrup, Other'};
 	          const recommendation = RECOMMENDED_BOTTLES.find((item) => {
 	            const recommendedName = norm(item.name);
@@ -764,7 +765,7 @@ function inferBottleClassification(value) {
           if (has('fernet', 'cynar', 'chartreuse', 'chartruse')) return {base: 'Liqueurs', subtype: 'Herb, Other'};
           if (has('chartreuse', 'chartruse', 'licor 43', 'genepy le chamois', 'genepi le chamois')) return {base: 'Liqueurs', subtype: 'Other, Specialty'};
           if (has('benedictine', 'bénédictine', 'herbal liqueur')) return {base: 'Liqueurs', subtype: 'Herb, Other'};
-	          if (has('amaretto')) return {base: 'Liqueurs', subtype: 'Nuts liqueurs'};
+	          if (has('amaretto', 'disaronno', 'frangelico') || (has('liqueur') && nutLiqueurSubtypeForName(name))) return {base: 'Liqueurs', subtype: nutLiqueurSubtypeForName(name)};
 	          if (has('coffee liqueur')) return {base: 'Liqueurs', subtype: 'Coffee liqueurs'};
 	          if (has('chocolate liqueur', 'creme de cacao', 'crème de cacao')) return {base: 'Liqueurs', subtype: 'Chocolate liqueurs'};
 	          if (has('liqueur', 'amaro', 'aperitif', 'apéritif')) return {base: 'Liqueurs', subtype: ''};

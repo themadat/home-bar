@@ -288,7 +288,7 @@ function barSubstituteForRequirement(requirement) {
       if (requiredName.includes('benedictine') && requirement.allowBandB && store.bar.some(isBandBBottle)) return 'B&B';
       const substituteName = requiredName === 'aperol'
         ? 'Campari'
-        : (chartreuseBottleColor(requirement.name) === 'yellow' ? 'Green Chartreuse' : '');
+        : (requiredName === 'campari' ? 'Aperol' : (chartreuseBottleColor(requirement.name) === 'yellow' ? 'Green Chartreuse' : ''));
       if (!substituteName) return '';
       const substituteRequirement = {name: substituteName, subtype: requirement.subtype, genericOnly: false};
       return store.bar.some((bottle) => bottleMatchesLiqueurRequirement(bottle, substituteRequirement)) ? substituteName : '';

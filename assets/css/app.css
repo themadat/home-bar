@@ -1903,6 +1903,7 @@
 	      .summary-row td:nth-child(2) { padding-left: 1px; padding-right: 1px; }
 	      .summary-row td:nth-child(3) { padding-left: 4px; }
 	      .summary-row td:nth-child(n + 7) { display: none; }
+          .summary-row td[data-label="Prep"]:not(:empty) { display: flex; gap: 4px; grid-column: 3 / -1; padding-top: 0; }
 	      .summary-row .availability-slot { width: 8px; flex-basis: 8px; }
       .summary-row .cocktail-name { white-space: nowrap; }
       .summary-row .cocktail-alternate-names { display: block; margin-top: 2px; font-size: 9px; line-height: 1.1; overflow: hidden; text-overflow: ellipsis; }
@@ -2174,3 +2175,6 @@
     .shopping-controls .button[hidden] { display: none; }
     .shopping-toggle .button[aria-pressed="true"] { color: var(--accent); background: var(--accent-soft); border-color: var(--accent); }
     .shopping-controls .sf-symbol, .shopping-owned .recommended-left-action .sf-symbol { width: 15px; height: 17px; }
+
+    .prep-shake { color: #B9DDED; border-color: rgba(84, 126, 146, .8); background: rgba(84, 126, 146, .2); }
+    .prep-stir { color: #D9BDEA; border-color: rgba(158, 116, 184, .8); background: rgba(158, 116, 184, .2); }
