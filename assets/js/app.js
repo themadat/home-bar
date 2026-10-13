@@ -377,6 +377,7 @@ const TABLE_SORT_ICONS = { default: __ARROW_UP_AND_DOWN_SQUARE_FILL, ascending: 
         const WHITE_SUGAR_INFO = 'White, preferably cane: cane sugar comes only from sugar cane, rather than sugar beets or a cane/beet blend. Taste and sweetness are essentially identical and the sugars can be used interchangeably, but cane sugar is slightly purer, caramelizes better, and contains fewer impurities.';
         const ORANGE_LIQUEUR_INFO = 'Triple sec is a category; Cointreau is a premium 40% ABV triple sec. Grand Marnier blends orange liqueur with Cognac, adding oak, vanilla, and richness.\n\nCointreau ↔ triple sec: substitute 1:1. Lower-proof triple sec may taste sweeter and less intensely orange; reduce other syrup to taste.\n\nCointreau → Grand Marnier: substitute 1:1 for a richer, heavier, less crisp drink.\n\nGrand Marnier → Cointreau: substitute 1:1 for a brighter, cleaner drink without Cognac richness.';
         const INGREDIENT_INFO = {
+          'Cream [Whipped]': 'Whip together in a cold bowl:\n\n- 1 cup cold heavy cream\n- 1.5 tbsp powdered sugar (optional)\n- ½ tsp vanilla (optional)\n\nWhip until soft (creamier) or stiff (holds shape), usually about 2–4 minutes. For cocktails, soft whipped cream stays pourable for floats.',
           'Cointreau': ORANGE_LIQUEUR_INFO,
           'Triple Sec': ORANGE_LIQUEUR_INFO,
           'Grand Marnier': ORANGE_LIQUEUR_INFO,
@@ -823,7 +824,7 @@ const cloneDiffordsNotes = (notes) => ({
       if (['egg white pasteurized','egg white pasteurised'].includes(key)) return 'Egg White';
       if (key === 'cream of coconut') return 'Coconut Cream';
       if (key === 'evaporated milk') return 'Milk, Evaporated';
-      if (['heavy cream','heavy double cream'].includes(key)) return 'Cream';
+      if (['heavy cream','heavy double cream','whipping cream','whipped cream'].includes(key)) return 'Cream';
       if (['lemon fresh','lemon peel','lemon wheel'].includes(key)) return 'Lemon';
       if (key === 'lime fresh') return 'Lime';
       if (key === 'mint') return 'Mint Leaves';
