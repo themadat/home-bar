@@ -689,7 +689,7 @@ function updateBarSubtypeSelect() {
 function inferBottleClassification(value) {
 	          const name = norm(value);
 	          if (!name) return null;
-              if (/\bpuree\b/.test(name)) return null;
+              if (/\bpuree\b|\bginger\s+(?:beer|ale)\b/.test(name) || /^(?:fresh )?ginger(?: root)?$/.test(name)) return null;
               if (name.includes('falernum') || name === 'sweet spiced syrup') return {base: 'Flavorings', subtype: 'Syrup, Other'};
 	          const recommendation = RECOMMENDED_BOTTLES.find((item) => {
 	            const recommendedName = norm(item.name);
@@ -709,7 +709,7 @@ function inferBottleClassification(value) {
 	          if (has('old tom gin')) return {base: 'Gin', subtype: 'Old Tom Gin'};
 	          if (has('genever', 'jenever')) return {base: 'Gin', subtype: 'Genever (Jenever)'};
 	          if (has('new western gin', 'contemporary gin')) return {base: 'Gin', subtype: 'Contemporary/New Western'};
-	          if (has('gin')) return {base: 'Gin', subtype: 'London Dry'};
+	          if (/\bgin\b/.test(name)) return {base: 'Gin', subtype: 'London Dry'};
 	          if (has('flavored vodka', 'infused vodka', 'vodka citron', 'vanilla vodka')) return {base: 'Vodka', subtype: 'Flavored/Infused'};
 	          if (has('vodka')) return {base: 'Vodka', subtype: 'Plain'};
 	          if (has('mezcal')) return {base: 'Tequila', subtype: 'Mezcal'};
