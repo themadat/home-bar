@@ -318,6 +318,7 @@ function displayIngredientName(name, cocktail) {
           if (normalized === 'egg white and yolk') return 'Egg';
           if (normalized === 'egg white pasteurized' || normalized === 'egg white pasteurised') return 'Egg White';
           if (normalized === 'evaporated milk') return 'Milk, Evaporated';
+          if (normalized === 'whipping cream' || normalized === 'whipped cream') return 'Cream [Whipped]';
           if (normalized === 'heavy cream') return 'Cream [Heavy]';
           if (normalized === 'heavy double cream') return 'Cream [Heavy/Double]';
           if (normalized === 'hot filter coffee') return 'Coffee';
