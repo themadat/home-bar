@@ -366,11 +366,16 @@ const TABLE_SORT_ICONS = { default: __ARROW_UP_AND_DOWN_SQUARE_FILL, ascending: 
           'Herb, Anise': 'Herb, Anise Liqueur',
           'Herb, Mint': 'Herb, Mint Liqueur',
           'Herb, Other': 'Herb, Other Liqueur',
-          'Nuts liqueurs': 'Nut Liqueur',
+          'Nuts liqueurs': 'Nut, Other Liqueur',
+          'Nut, Almond': 'Nut, Almond Liqueur',
+          'Nut, Hazelnut': 'Nut, Hazelnut Liqueur',
+          'Nut, Pistachio': 'Nut, Pistachio Liqueur',
+          'Nut, Peanut Butter': 'Nut, Peanut Butter Liqueur',
+          'Nut, Other': 'Nut, Other Liqueur',
           'Other, Specialty': 'Other, Specialty Liqueur',
           'Whisk(e)y liqueurs': 'Whiskey Liqueur'
         };
-        const LIQUEUR_BAR_SUBTYPES = [...FRUIT_LIQUEUR_SUBTYPES, 'Herb, Brandy', 'Herb, Anise', 'Herb, Mint', 'Herb, Other', 'Other, Specialty'];
+        const LIQUEUR_BAR_SUBTYPES = [...FRUIT_LIQUEUR_SUBTYPES, 'Nut, Almond', 'Nut, Hazelnut', 'Nut, Pistachio', 'Nut, Peanut Butter', 'Nut, Other', 'Herb, Brandy', 'Herb, Anise', 'Herb, Mint', 'Herb, Other', 'Other, Specialty'];
         
         const FLAVOR_LED_LIQUEUR_SUBTYPES = new Set(['Chocolate liqueurs','Coffee liqueurs','Floral liqueurs','Nuts liqueurs']);
         const SUPERFINE_SUGAR = 'Sugar [Superfine]';
@@ -465,7 +470,7 @@ const TABLE_SORT_ICONS = { default: __ARROW_UP_AND_DOWN_SQUARE_FILL, ascending: 
           'Donn’s Mix*': "Donn's Mix",
           'Fernet Branca': 'Herb, Other Liqueur [Fernet (Amaro, Italian)]',
           'Licor Amaretto': 'Almond Liqueur [Amaretto]',
-          'Licor Frangelico': 'Hazelnut Nut Liqueur [Frangelico]',
+          'Licor Frangelico': 'Nut, Hazelnut Liqueur [Frangelico]',
           'Maraschino Luxardo': 'Cherry Liqueur [Luxardo Maraschino]',
           'Orange Curacao': 'Orange Liqueur [Orange Curacao]'
         };
@@ -2375,7 +2380,7 @@ $('#importData').addEventListener('click', () => $('#importFile').click());
 	      });
 	      saveCustom();
 	    });
-    const FIXED_COL_WIDTH = { photo: 42, availability: 10, recipe: 112, try: 56, rating: 94, ing: 66, time: 76, serving: 88 };
+    const FIXED_COL_WIDTH = { photo: 42, availability: 10, recipe: 112, try: 56, rating: 94, prep: 70, ing: 66, time: 76, serving: 88 };
     const PRIORITY_COLS = ['cocktail', 'base', 'garnish', 'glass'];
     const PRIORITY_FLOOR = { cocktail: 180, base: 90, garnish: 89, glass: 120 };
     const PRIORITY_GROW_WEIGHT = { cocktail: 30, base: 20, garnish: 16, glass: 12 };

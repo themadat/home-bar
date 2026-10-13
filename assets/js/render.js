@@ -284,8 +284,8 @@ function recipeSourceIndicators(cocktail) {
 	        ['diffords', "Difford's", hasDiffords],
 	        ['iba', 'IBA', hasIba],
 	        ['lnl', 'L&L', hasLnl],
-	        ['other', 'Other', hasOther],
-	        ['classic', 'Classic', hasClassic]
+	        ['classic', 'Classic', hasClassic],
+	        ['other', 'Other', hasOther]
 	      ];
 	      const availableLabels = sources.filter(([, , available]) => available).map(([, label]) => label);
 	      const slots = sources.map(([key, label, available]) => available
@@ -476,7 +476,7 @@ function detailTemplate(c) {
 	              <div class="ingredient-method"><div class="detail-method-header"><h4>Method</h4>${servingStyleTag(recipeView)}</div><ol>${recipeView.method.length ? recipeView.method.map((x) => `<li>${escapeHtml(formatMethodLine(x))}</li>`).join('') : '<li class="empty">Not recorded yet</li>'}</ol></div>
 	            </section>
 	          </div>`;
-	      return `<tr class="detail-row"><td colspan="13"><div class="detail">
+	      return `<tr class="detail-row"><td colspan="14"><div class="detail">
 	        <div class="detail-grid${comparingRecipes ? ' has-recipe-comparison' : ''}">
 	          <section class="detail-card mobile-detail-facts">
 	            <h3>Details</h3>
@@ -520,6 +520,7 @@ function rowTemplate(c) {
 	        <td data-label="Recipe">${recipeSourceIndicators(c)}</td>
 	        <td data-label="Try" class="bookmark-cell">${bookmarkToggle(c)}</td>
 	        <td data-label="Rating"><div class="rating-cell" title="${escapeHtml(ratingTitle)}">${ratingStars(c.id, rating, store.ratingView === 'friends' ? 'friends-view' : '')}<span class="rating-value">${ratingValueLabel(rating)}</span></div></td>
+	        <td data-label="Prep">${preparationTags(c)}</td>
 	        <td data-label="Serve">${servingStyleTag(c)}</td>
 	        <td data-label="Base Liquor"><div class="tagline">${bases}</div></td>
 	        <td data-label="Garnish"><span class="garnish-cell">${escapeHtml(garnish)}</span></td>
@@ -528,6 +529,15 @@ function rowTemplate(c) {
         <td data-label="Glassware">${escapeHtml(displayGlass(c.glassware))}</td>
         <td data-label="Status">${escapeHtml(statusLabel(c))}</td>
       </tr>${expanded ? detailTemplate(c) : ''}`;
+    }
+
+function preparationTags(cocktail) {
+      const recipe = recipeCocktail(cocktail);
+      const method = (recipe.method || []).join(' ');
+      const preparations = [];
+      if (/\bshak(?:e|es|en|ing)\b/i.test(method)) preparations.push('Shake');
+      else if (/\bstir(?:s|red|ring)?\b/i.test(method)) preparations.push('Stir');
+      return preparations.map((prep) => `<span class="serving-style-tag prep-${prep.toLowerCase()}">${prep}</span>`).join(' ');
     }
 
 function barOpportunityThumb(cocktail) {

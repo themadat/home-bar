@@ -1,4 +1,4 @@
-name: Deploy Home Bar v2.0.0.154
+name: Deploy Home Bar v2.0.0.155
 
 run-name: Deploy ${{ github.event.head_commit.message }}
 

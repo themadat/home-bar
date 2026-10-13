@@ -15,7 +15,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Home Bar">
   <meta name="mobile-web-app-capable" content="yes">
-  <link rel="stylesheet" href="assets/css/app.css?v=2.0.0.154">
+  <link rel="stylesheet" href="assets/css/app.css?v=2.0.0.155">
 </head>
 <body>
   <div class="app">
@@ -155,6 +155,7 @@
             <col data-table-col="recipe">
             <col data-table-col="try">
             <col data-table-col="rating">
+            <col data-table-col="prep">
             <col data-table-col="serving">
             <col data-table-col="base">
             <col data-table-col="garnish">
@@ -168,9 +169,10 @@
 	              <th data-col="photo" style="width: 42px;" aria-label="Photo"></th>
 	              <th data-col="availability" style="width: 10px;" aria-label="My Bar availability"></th>
 	              <th class="sortable-column" data-col="cocktail" data-sort-key="name" aria-sort="none" style="width: 22%;"><button class="table-sort-button" type="button" data-table-sort="name"><span>Cocktail</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
-	              <th data-col="recipe" style="width: 112px;" title="Recipe sources: Difford's, IBA, L&amp;L, Other, Classic">Recipe</th>
+	              <th data-col="recipe" style="width: 112px;" title="Recipe sources: Difford's, IBA, L&amp;L, Classic, Other">Recipe</th>
 	              <th class="sortable-column" data-col="try" data-sort-key="try" aria-sort="none" style="width: 56px;"><button class="table-sort-button" type="button" data-table-sort="try"><span>Try</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
 	              <th class="sortable-column" data-col="rating" data-sort-key="rating" aria-sort="none" style="width: 94px;"><div class="rating-header-group"><button class="table-sort-button" type="button" data-table-sort="rating"><span>Rating</span><span class="table-sort-icon" aria-hidden="true"></span></button><div id="ratingViewPill" class="rating-unlocked-controls" data-view="mine" hidden><button id="ratingAudienceToggle" class="rating-audience-toggle" type="button" data-view="mine" title="Show friends average" aria-label="Show friends average">Mine</button><button class="table-sort-button rating-pill-sort" type="button" data-table-sort="rating"><span class="visually-hidden">Rating</span><span class="table-sort-icon" aria-hidden="true"></span></button></div></div></th>
+	              <th data-col="prep" style="width: 70px;">Prep</th>
 	              <th class="sortable-column" data-col="serving" data-sort-key="serving" aria-sort="none" style="width: 88px;"><button class="table-sort-button" type="button" data-table-sort="serving"><span>Serve</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
 	              <th class="sortable-column" data-col="base" data-sort-key="base" aria-sort="none" style="width: 20%;"><button class="table-sort-button" type="button" data-table-sort="base"><span>Base Liquor</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
 	              <th class="sortable-column" data-col="garnish" data-sort-key="garnish" aria-sort="none" style="width: 16%;"><button class="table-sort-button" type="button" data-table-sort="garnish"><span>Garnish</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
@@ -756,33 +758,33 @@
       </div>
     </div>
   </div>
-  <script src="letters-liquor-notes.js?v=2.0.0.154"></script>
-  <script src="letters-liquor-data.js?v=2.0.0.154"></script>
-  <script src="diffords-data.js?v=2.0.0.154"></script>
-  <script src="data/classic-recipes.js?v=2.0.0.154"></script>
+  <script src="letters-liquor-notes.js?v=2.0.0.155"></script>
+  <script src="letters-liquor-data.js?v=2.0.0.155"></script>
+  <script src="diffords-data.js?v=2.0.0.155"></script>
+  <script src="data/classic-recipes.js?v=2.0.0.155"></script>
   <script>
-const BUILD_VERSION = '2.0.0.154';
+const BUILD_VERSION = '2.0.0.155';
     const CURRENT_RELEASE = {
-      "title": "One soda water pantry entry",
-      "summary": "Consolidate club soda and seltzer under Soda Water in My Bar while preserving recipe wording.",
+      "title": "Prep pills and liqueur categories",
+      "summary": "Add recipe preparation pills, reorder source badges, and refine bitter and nut liqueurs.",
       "changes": [
-        "List only Soda Water in the pantry and migrate saved Club Soda and Seltzer entries to Soda Water.",
-        "Keep Club Soda in recipes with an info note explaining Soda Water plus a pinch of salt.",
-        "Count Soda Water toward Club Soda recipes and retain missing ingredient highlighting."
+        "Place Classic before Other in the Recipe column and add colored Shake and Stir pills between Rating and Serve.",
+        "Display Aperol and Campari as Bitter Liqueur [brand] and allow yellow substitutions in both directions.",
+        "Replace the Nut subtype with Almond, Hazelnut, Pistachio, Peanut Butter, and Other nut categories, including saved bottle migration."
       ]
     };
   </script>
-  <script src="data/cocktails.js?v=2.0.0.154"></script>
-  <script src="assets/js/icons.js?v=2.0.0.154"></script>
-  <script src="assets/js/ingredients.js?v=2.0.0.154"></script>
-  <script src="assets/js/ratings.js?v=2.0.0.154"></script>
-  <script src="assets/js/availability.js?v=2.0.0.154"></script>
-  <script src="assets/js/render.js?v=2.0.0.154"></script>
-  <script src="assets/js/dialogs.js?v=2.0.0.154"></script>
-  <script src="assets/js/bar.js?v=2.0.0.154"></script>
-  <script src="assets/js/cocktail-editor.js?v=2.0.0.154"></script>
-  <script src="assets/js/sync.js?v=2.0.0.154"></script>
-  <script src="assets/js/interface.js?v=2.0.0.154"></script>
-  <script src="assets/js/app.js?v=2.0.0.154"></script>
+  <script src="data/cocktails.js?v=2.0.0.155"></script>
+  <script src="assets/js/icons.js?v=2.0.0.155"></script>
+  <script src="assets/js/ingredients.js?v=2.0.0.155"></script>
+  <script src="assets/js/ratings.js?v=2.0.0.155"></script>
+  <script src="assets/js/availability.js?v=2.0.0.155"></script>
+  <script src="assets/js/render.js?v=2.0.0.155"></script>
+  <script src="assets/js/dialogs.js?v=2.0.0.155"></script>
+  <script src="assets/js/bar.js?v=2.0.0.155"></script>
+  <script src="assets/js/cocktail-editor.js?v=2.0.0.155"></script>
+  <script src="assets/js/sync.js?v=2.0.0.155"></script>
+  <script src="assets/js/interface.js?v=2.0.0.155"></script>
+  <script src="assets/js/app.js?v=2.0.0.155"></script>
 </body>
 </html>
