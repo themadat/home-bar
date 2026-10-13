@@ -1,6 +1,7 @@
 // Classic-script function declarations; shared state is initialized in app.js.
 function nutLiqueurSubtypeForName(name) {
-          const text = norm(name);
+          // Saved bottles are migrated before app.js initializes the shared norm helper.
+          const text = String(name ?? '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, ' ').trim();
           if (/amaretto|disaronno|almond/.test(text)) return 'Nut, Almond';
           if (/frangelico|hazelnut/.test(text)) return 'Nut, Hazelnut';
           if (/pistachio/.test(text)) return 'Nut, Pistachio';
