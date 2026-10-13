@@ -377,7 +377,7 @@ const TABLE_SORT_ICONS = { default: __ARROW_UP_AND_DOWN_SQUARE_FILL, ascending: 
         const WHITE_SUGAR_INFO = 'White, preferably cane: cane sugar comes only from sugar cane, rather than sugar beets or a cane/beet blend. Taste and sweetness are essentially identical and the sugars can be used interchangeably, but cane sugar is slightly purer, caramelizes better, and contains fewer impurities.';
         const ORANGE_LIQUEUR_INFO = 'Triple sec is a category; Cointreau is a premium 40% ABV triple sec. Grand Marnier blends orange liqueur with Cognac, adding oak, vanilla, and richness.\n\nCointreau ↔ triple sec: substitute 1:1. Lower-proof triple sec may taste sweeter and less intensely orange; reduce other syrup to taste.\n\nCointreau → Grand Marnier: substitute 1:1 for a richer, heavier, less crisp drink.\n\nGrand Marnier → Cointreau: substitute 1:1 for a brighter, cleaner drink without Cognac richness.';
         const INGREDIENT_INFO = {
-          'Club Soda': 'Use seltzer with a pinch of salt. Club soda and seltzer can be used interchangeably in cocktails; having either counts toward recipes calling for either.',
+          'Club Soda': 'Use Soda Water (seltzer) with a pinch of salt. Having Soda Water in your pantry counts toward recipes calling for Club Soda.',
           'Cream [Whipped]': 'Whip together in a cold bowl:\n\n- 1 cup cold heavy cream\n- 1.5 tbsp powdered sugar (optional)\n- ½ tsp vanilla (optional)\n\nWhip until soft (creamier) or stiff (holds shape), usually about 2–4 minutes. For cocktails, soft whipped cream stays pourable for floats.',
           'Cointreau': ORANGE_LIQUEUR_INFO,
           'Triple Sec': ORANGE_LIQUEUR_INFO,
@@ -815,6 +815,7 @@ const cloneDiffordsNotes = (notes) => ({
     const normalizePantryIngredientName = (name) => {
       const genericName = String(name || '').trim().replace(/\s+\[[^\]]+\]$/, '').trim();
       const key = bottleSearchText(genericName);
+      if (['club soda','seltzer','soda water'].includes(key)) return 'Soda Water';
       if (key === 'white peach puree') return 'White Peach Purée';
       if (key === 'pinch of salt') return 'Salt';
       if (key === 'donn s mix') return "Donn's Mix";

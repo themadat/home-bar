@@ -902,7 +902,7 @@ function updateBarRecommendationControls() {
 	        }
 
 function allNonAlcoholicIngredientNames() {
-	          return unique([...COCKTAILS.flatMap(pantryIngredientTags), 'Seltzer']).filter((name) => !flavoringSubtypeForName(name));
+	          return unique(COCKTAILS.flatMap(pantryIngredientTags)).filter((name) => !flavoringSubtypeForName(name));
 	        }
 
 function renderIngredientChecklist() {

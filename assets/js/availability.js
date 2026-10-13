@@ -222,10 +222,9 @@ function cocktailDependencies(cocktail) {
 
 function bottleMatchesPantryIngredient(bottle, name) {
       if (bottle.kind !== 'ingredient') return false;
-      const carbonatedWaterNames = ['club soda', 'seltzer', 'soda water'];
       const required = norm(normalizePantryIngredientName(name));
       const owned = norm(normalizePantryIngredientName(bottle.name));
-      return owned === required || (carbonatedWaterNames.includes(required) && carbonatedWaterNames.includes(owned));
+      return owned === required;
     }
 
 function missingRequirementsFor(cocktail, seen = new Set()) {
@@ -350,7 +349,8 @@ function ingredientMissingFromBar(cocktail, index, missing = missingRequirements
       const missingPantryIngredient = missing.some((item) => {
         if (item.type !== 'ingredient') return false;
         const itemParts = splitSpecificIngredientLabel(item.name);
-        return matchesName(item.name)
+        return norm(normalizePantryIngredientName(parts.generic)) === norm(item.name)
+          || matchesName(item.name)
           || (normalizedNames.includes(norm(itemParts.generic)) && (!itemParts.specific || normalizedNames.includes(norm(itemParts.specific))));
       });
       if (missingPantryIngredient) return true;
