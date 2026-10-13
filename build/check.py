@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check the actual HTML entry point without executing application code."""
+"""Check the HTML entry point and focused startup regressions."""
 import re
 import shutil
 import subprocess
@@ -68,7 +68,26 @@ def main():
                 # Never echo an offending source line: it may be an entire dataset.
                 diagnostic = re.search(r'(?:SyntaxError|ReferenceError):[^\n]+', result.stderr + result.stdout)
                 raise SystemExit(f'PARSE FAIL {name}: {diagnostic[0] if diagnostic else "parser rejected script"}')
+        # Legacy saved nut bottles migrate before app.js initializes norm.
+        # Keep that initialization order here so a late-helper dependency fails.
+        target.write_text((ROOT / 'assets/js/ingredients.js').read_text() + '''
+for (const legacy of ['Nuts liqueurs', 'Nut Liqueur', 'Nut']) {
+    for (const [name, expected] of [
+        ['Amaretto', 'Nut, Almond'], ['Frangelico', 'Nut, Hazelnut'],
+        ['Pistachio Liqueur', 'Nut, Pistachio'],
+        ['Peanut-Butter Liqueur', 'Nut, Peanut Butter'], ['Walnut', 'Nut, Other']
+    ]) {
+        if (canonicalLiqueurSubtype(name, legacy) !== expected)
+            throw new Error('Saved nut liqueur migration failed: ' + name);
+    }
+}
+const norm = () => { throw new Error('Migration must not depend on late startup helpers'); };
+''')
+        result = subprocess.run([node or str(jsc), str(target)], capture_output=True, text=True)
+        if result.returncode:
+            raise SystemExit('STARTUP FAIL: saved nut liqueur migration before shared helpers initialize')
     print(f'PARSE OK {len(scripts)} scripts and combined scope; local assets exist')
+    print('STARTUP OK legacy nut liqueur migrations before shared helper initialization')
 
 
 if __name__ == '__main__':
