@@ -220,6 +220,14 @@ function cocktailDependencies(cocktail) {
       return unique(cocktail.ingredientNames.map((_, index) => cocktailDependencyForIngredient(cocktail, index)).filter(Boolean));
     }
 
+function bottleMatchesPantryIngredient(bottle, name) {
+      if (bottle.kind !== 'ingredient') return false;
+      const carbonatedWaterNames = ['club soda', 'seltzer', 'soda water'];
+      const required = norm(normalizePantryIngredientName(name));
+      const owned = norm(normalizePantryIngredientName(bottle.name));
+      return owned === required || (carbonatedWaterNames.includes(required) && carbonatedWaterNames.includes(owned));
+    }
+
 function missingRequirementsFor(cocktail, seen = new Set()) {
       if (seen.has(cocktail.id)) return [];
       const nextSeen = new Set(seen).add(cocktail.id);
@@ -267,7 +275,7 @@ function missingRequirementsFor(cocktail, seen = new Set()) {
         const flavoringSubtype = flavoringSubtypeForName(name);
         const available = flavoringSubtype
           ? store.bar.some((bottle) => bottleMatchesFlavoring(bottle, name))
-          : store.bar.some((bottle) => bottle.kind === 'ingredient' && bottle.name === name);
+          : store.bar.some((bottle) => bottleMatchesPantryIngredient(bottle, name));
         if (!available) {
           missing.push({type: 'ingredient', name, key: `ingredient:${name}`});
         }
