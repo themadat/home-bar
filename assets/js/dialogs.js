@@ -87,12 +87,169 @@ function closeVersionModal() {
 function openNotesModal() {
 	          $('#notesTextarea').value = store.appNotes;
 	          $('#notesModalOverlay').hidden = false;
-	          requestAnimationFrame(() => $('#notesTextarea').focus());
+              setNotesMode(localStorage.getItem('cocktailAppNotesMode') === 'preview' ? 'preview' : 'edit');
 	        }
 
 function closeNotesModal() {
 	          $('#notesModalOverlay').hidden = true;
+              scheduleGitHubAutoSync();
 	        }
+
+function notesInlineMarkup(text, depth = 0) {
+          if (depth > 8) return escapeHtml(text);
+          // Only generated markup is trusted; every text fragment and attribute is escaped.
+          const tokens = /\\([\\`*_[\]()#>+-])|`([^`\n]+)`|\[([^\]\n]+)\]\(([^\s)]+)\)|\*\*([^\n]+?)\*\*|__([^\n]+?)__|\*([^*\n]+)\*|_([^_\n]+)_/g;
+          let html = '', offset = 0, match;
+          while ((match = tokens.exec(text))) {
+            html += escapeHtml(text.slice(offset, match.index));
+            if (match[1]) html += escapeHtml(match[1]);
+            else if (match[2]) html += `<code>${escapeHtml(match[2])}</code>`;
+            else if (match[3]) {
+              const label = notesInlineMarkup(match[3], depth + 1);
+              const url = match[4];
+              html += /^(https?:\/\/|mailto:)/i.test(url)
+                ? `<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">${label}</a>` : label;
+            } else {
+              const tag = match[5] || match[6] ? 'strong' : 'em';
+              html += `<${tag}>${notesInlineMarkup(match[5] || match[6] || match[7] || match[8], depth + 1)}</${tag}>`;
+            }
+            offset = tokens.lastIndex;
+          }
+          return html + escapeHtml(text.slice(offset));
+        }
+
+function notesMarkdownMarkup(text, folded = []) {
+          const lines = text.replace(/\r\n?/g, '\n').split('\n');
+          const closed = new Set(folded);
+          const sections = [], occurrences = new Map();
+          let html = '', paragraph = [], list = '', quote = [];
+          const flush = () => {
+            if (paragraph.length) html += `<p>${paragraph.map((line) => notesInlineMarkup(line)).join('<br>')}</p>`;
+            if (quote.length) html += `<blockquote>${quote.map((line) => notesInlineMarkup(line)).join('<br>')}</blockquote>`;
+            if (list) html += `</${list}>`;
+            paragraph = []; quote = []; list = '';
+          };
+          for (let index = 0; index < lines.length; index += 1) {
+            const line = lines[index];
+            const heading = /^(#{1,6})[ \t]+(.+?)(?:[ \t]+#+)?[ \t]*$/.exec(line);
+            const item = /^\s*(?:([-+*])|\d+[.)])\s+(.*)$/.exec(line);
+            if (/^```/.test(line)) {
+              flush();
+              const code = [];
+              while (++index < lines.length && !/^```\s*$/.test(lines[index])) code.push(lines[index]);
+              html += `<pre><code>${escapeHtml(code.join('\n'))}</code></pre>`;
+            } else if (heading) {
+              flush();
+              const level = heading[1].length;
+              while (sections.length && sections[sections.length - 1].level >= level) {
+                html += '</div></details>'; sections.pop();
+              }
+              const parentPath = sections[sections.length - 1]?.path || [];
+              const identity = JSON.stringify([...parentPath, heading[2]]);
+              const occurrence = (occurrences.get(identity) || 0) + 1;
+              occurrences.set(identity, occurrence);
+              const path = [...parentPath, [heading[2], occurrence]];
+              const key = JSON.stringify(path);
+              html += `<details class="notes-section" data-note-section="${escapeHtml(key)}"${closed.has(key) ? '' : ' open'}><summary><h${level}>${notesInlineMarkup(heading[2])}</h${level}></summary><div class="notes-section-body">`;
+              sections.push({level, path});
+            } else if (!line.trim()) flush();
+            else if (item) {
+              const type = item[1] ? 'ul' : 'ol';
+              if (paragraph.length || quote.length || (list && list !== type)) flush();
+              if (!list) {
+                const start = type === 'ol' ? ` start="${Number.parseInt(line.trim(), 10)}"` : '';
+                html += `<${type}${start}>`; list = type;
+              }
+              const task = /^\[([ xX])\]\s+(.*)$/.exec(item[2]);
+              html += task
+                ? `<li class="notes-task"><label><input type="checkbox" data-note-task="${index}"${task[1] !== ' ' ? ' checked' : ''}><span>${notesInlineMarkup(task[2])}</span></label></li>`
+                : `<li>${notesInlineMarkup(item[2])}</li>`;
+            } else if (/^>\s?/.test(line)) {
+              if (paragraph.length || list) flush();
+              quote.push(line.replace(/^>\s?/, ''));
+            } else {
+              if (quote.length || list) flush();
+              paragraph.push(line);
+            }
+          }
+          flush();
+          while (sections.length) { html += '</div></details>'; sections.pop(); }
+          return html || '<p class="empty">Your formatted notes will appear here. Add a heading in Edit to create a collapsible section.</p>';
+        }
+
+function renderNotesPreview() {
+          let folded;
+          try { folded = JSON.parse(localStorage.getItem('cocktailAppNotesFolds') || '[]'); }
+          catch (error) { folded = []; }
+          $('#notesPreview').innerHTML = notesMarkdownMarkup(store.appNotes, Array.isArray(folded) ? folded : []);
+          const hasHeadings = Boolean($('#notesPreview').querySelector('details'));
+          $('#notesExpandAll').disabled = !hasHeadings;
+          $('#notesCollapseAll').disabled = !hasHeadings;
+        }
+
+function setNotesMode(mode) {
+          const preview = mode === 'preview';
+          if (preview) renderNotesPreview();
+          $('#notesTextarea').hidden = preview;
+          $('#notesFormatting').hidden = preview;
+          $('#notesPreview').hidden = !preview;
+          $('#notesPreviewTools').hidden = !preview;
+          $('#notesEditButton').setAttribute('aria-pressed', String(!preview));
+          $('#notesPreviewButton').setAttribute('aria-pressed', String(preview));
+          localStorage.setItem('cocktailAppNotesMode', mode);
+          requestAnimationFrame(() => $(preview ? '#notesPreview' : '#notesTextarea').focus());
+        }
+
+function saveNotesFolds() {
+          const folded = Array.from($('#notesPreview').querySelectorAll('details:not([open])'), (section) => section.dataset.noteSection);
+          localStorage.setItem('cocktailAppNotesFolds', JSON.stringify(folded));
+        }
+
+function setAllNotesSections(open) {
+          $('#notesPreview').querySelectorAll('details').forEach((section) => { section.open = open; });
+          saveNotesFolds();
+        }
+
+function saveAppNotes() {
+          store.appNotes = $('#notesTextarea').value;
+          // Keep typing durable without rewriting every other saved collection per keystroke.
+          localStorage.setItem('cocktailAppNotes', store.appNotes);
+          $('#notesSaveStatus').textContent = 'Saved on this device';
+          githubSyncRuntime.lastLocalEditAt = Date.now();
+          scheduleGitHubAutoSync();
+          clearTimeout(githubSyncRuntime.notesStatusTimer);
+          githubSyncRuntime.notesStatusTimer = setTimeout(updateGitHubSyncButton, 300);
+        }
+
+function formatAppNotes(format) {
+          const editor = $('#notesTextarea');
+          let start = editor.selectionStart, end = editor.selectionEnd;
+          let selected = editor.value.slice(start, end), replacement;
+          const wrappers = {bold: '**', italic: '*', code: '`'};
+          if (wrappers[format]) {
+            selected = selected || 'text';
+            replacement = wrappers[format] + selected + wrappers[format];
+          } else if (format === 'link') replacement = `[${selected || 'link text'}](https://example.com)`;
+          else {
+            start = start === 0 ? 0 : editor.value.lastIndexOf('\n', start - 1) + 1;
+            // A selection ending just after a newline excludes the following line.
+            const lineEnd = editor.value.indexOf('\n', end > start && editor.value[end - 1] === '\n' ? end - 1 : end);
+            end = lineEnd === -1 ? editor.value.length : lineEnd;
+            const prefixes = {h1: '# ', h2: '## ', h3: '### ', bullet: '- ', task: '- [ ] ', quote: '> '};
+            replacement = editor.value.slice(start, end).split('\n').map((line, index) => {
+              const prefix = format === 'number' ? `${index + 1}. ` : prefixes[format];
+              return prefix + line.replace(/^(?:#{1,6}\s+|>\s?|\s*(?:[-+*]|\d+[.)])\s+(?:\[[ xX]\]\s+)?)/, '');
+            }).join('\n');
+          }
+          editor.focus();
+          // Native insertion preserves the textarea's undo history where supported.
+          editor.setSelectionRange(start, end);
+          if (!document.execCommand('insertText', false, replacement)) {
+            editor.setRangeText(replacement, start, end, 'end');
+          }
+          if (wrappers[format]) editor.setSelectionRange(start + wrappers[format].length, start + wrappers[format].length + selected.length);
+          saveAppNotes();
+        }
 
 function renderCocktailNotesIngredients(cocktail) {
 	          const servings = servingCount(cocktail.id);

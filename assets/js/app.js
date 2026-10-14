@@ -1153,6 +1153,7 @@ const saveCustom = () => {
 	      localStorage.setItem('cocktailCustomCocktails', JSON.stringify(store.customCocktails));
 	      localStorage.setItem('cocktailAppNotes', store.appNotes);
 	      localStorage.setItem('cocktailGlassware', JSON.stringify(store.glassware));
+          githubSyncRuntime.lastLocalEditAt = Date.now();
 	      if (typeof updateGitHubSyncButton === 'function') updateGitHubSyncButton();
           scheduleGitHubAutoSync();
 	    };
@@ -1367,7 +1368,7 @@ const GITHUB_SYNC_ICONS = {
             let githubSyncOperation = '';
 	        let githubSyncAutoCloseTimer = 0;
 	        let githubSyncAutoCloseInterval = 0;
-	        const githubSyncRuntime = {autoTimer: 0, autoFailures: 0, checking: false, remoteSha: '', remoteHash: '', remoteData: null, checkedAt: '', error: '', offline: false};
+	        const githubSyncRuntime = {autoTimer: 0, autoFailures: 0, lastLocalEditAt: 0, notesStatusTimer: 0, checking: false, remoteSha: '', remoteHash: '', remoteData: null, checkedAt: '', error: '', offline: false};
 
 // Cloud status presentation mirrors app-template; reconciliation stays local to Home Bar.
         
@@ -1910,10 +1911,36 @@ $('#importData').addEventListener('click', () => $('#importFile').click());
 	    $('#cocktailNotesOverlay').addEventListener('click', (event) => {
 	      if (event.target === $('#cocktailNotesOverlay')) closeCocktailNotes();
 	    });
-	    $('#notesTextarea').addEventListener('input', () => {
-	      store.appNotes = $('#notesTextarea').value;
-	      saveCustom();
-	    });
+        $('#notesTextarea').addEventListener('input', saveAppNotes);
+        $('#notesEditButton').addEventListener('click', () => setNotesMode('edit'));
+        $('#notesPreviewButton').addEventListener('click', () => setNotesMode('preview'));
+        $('#notesFormatting').addEventListener('pointerdown', (event) => {
+          if (event.target.closest('button')) event.preventDefault();
+        });
+        $('#notesFormatting').addEventListener('click', (event) => {
+          const button = event.target.closest('[data-note-format]');
+          if (button) formatAppNotes(button.dataset.noteFormat);
+        });
+        $('#notesTextarea').addEventListener('keydown', (event) => {
+          if ((event.metaKey || event.ctrlKey) && !event.altKey && ['b', 'i'].includes(event.key.toLowerCase())) {
+            event.preventDefault();
+            formatAppNotes(event.key.toLowerCase() === 'b' ? 'bold' : 'italic');
+          }
+        });
+        $('#notesExpandAll').addEventListener('click', () => setAllNotesSections(true));
+        $('#notesCollapseAll').addEventListener('click', () => setAllNotesSections(false));
+        $('#notesPreview').addEventListener('toggle', (event) => {
+          if (event.target.matches('details')) saveNotesFolds();
+        }, true);
+        $('#notesPreview').addEventListener('change', (event) => {
+          const task = event.target.closest('[data-note-task]');
+          if (!task) return;
+          const lines = $('#notesTextarea').value.replace(/\r\n?/g, '\n').split('\n');
+          const index = Number(task.dataset.noteTask);
+          lines[index] = lines[index].replace(/^(\s*[-+*]\s+|\s*\d+[.)]\s+)\[[ xX]\]/, `$1[${task.checked ? 'x' : ' '}]`);
+          $('#notesTextarea').value = lines.join('\n');
+          saveAppNotes();
+        });
 	    $('#jumpToNeatPours').addEventListener('click', () => $('#neatPoursSection').scrollIntoView({behavior: 'smooth', block: 'start'}));
 	    $('#jumpToCocktails').addEventListener('click', () => {
 	      const target = $('#myBarReadyHeader').hidden ? $('#cocktailListSection') : $('#myBarReadyHeader');
@@ -2411,6 +2438,11 @@ let resizeTimer = null;
 	    setTimeout(() => checkGitHubSyncStatus(), 500);
         setInterval(() => { if (!githubSyncRuntime.autoTimer) scheduleGitHubAutoSync(); }, 30000);
         window.addEventListener('focus', scheduleGitHubAutoSync);
+        window.addEventListener('online', () => {
+          githubSyncRuntime.offline = false;
+          githubSyncRuntime.autoFailures = 0;
+          checkGitHubSyncStatus(true);
+        });
         $('#githubSyncAutoSync').addEventListener('change', () => {
           const settings = storedGitHubSyncSettings();
           settings.autoSync = $('#githubSyncAutoSync').checked;
