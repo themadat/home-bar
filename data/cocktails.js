@@ -1669,7 +1669,7 @@ const COCKTAILS = [
       "30 ml Passion Fruit Puree",
       "90 Fresh Pineapple Juice",
       "30 Fresh Lime Juice",
-      "1 pc Gengibre Slice"
+      "1 slice Ginger"
     ],
     "ingredientNames": [
       "Rum",
@@ -1682,7 +1682,7 @@ const COCKTAILS = [
       "Ginger"
     ],
     "method": [
-      "In a cocktail shaker muddle a thin slice of Gengibre, Pour all other ingredients.",
+      "In a cocktail shaker muddle a thin slice of ginger, then pour all other ingredients.",
       "Shake vigorously with ice.",
       "Strain into a chilled Tiki glass filled with pebbled ice."
     ],
