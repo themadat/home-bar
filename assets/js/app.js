@@ -327,8 +327,12 @@ const TABLE_SORT_ICONS = { default: __ARROW_UP_AND_DOWN_SQUARE_FILL, ascending: 
           'Beer::Cider/Mead': 'Hard cider is fermented from apples, while mead is fermented from honey.',
           'Beer::Specialty/Sour': 'Unique or mixed-fermentation beers that break traditional ale and lager molds.'
         };
-        const FRUIT_LIQUEUR_SUBTYPES = ['Fruit, Apricot','Fruit, Blackcurrant','Fruit, Blackberry','Fruit, Cherry','Fruit, Orange','Fruit, Passion Fruit','Fruit, Peach','Fruit, Raspberry','Fruit, Other'];
+        const FRUIT_LIQUEUR_SUBTYPES = ['Fruit, Apple','Fruit, Banana','Fruit, Black Raspberry','Fruit, Apricot','Fruit, Blackcurrant','Fruit, Blackberry','Fruit, Cherry','Fruit, Orange','Fruit, Passion Fruit','Fruit, Peach','Fruit, Raspberry','Fruit, Sloe Berry','Fruit, Other'];
         const FRUIT_LIQUEUR_MATCHERS = [
+          ['Fruit, Sloe Berry', ['sloe gin']],
+          ['Fruit, Apple', ['sour apple liqueur','apple liqueur','apple schnapps','apple pucker']],
+          ['Fruit, Banana', ['banana liqueur']],
+          ['Fruit, Black Raspberry', ['black raspberry liqueur']],
           ['Fruit, Orange', ['cointreau','triple sec','curacao','grand marnier','orange liqueur']],
           ['Fruit, Cherry', ['maraschino','sangue morlacco','cherry liqueur','cherry brandy','kirsch']],
           ['Fruit, Apricot', ['apricot liqueur','apricot brandy']],
@@ -361,6 +365,7 @@ const TABLE_SORT_ICONS = { default: __ARROW_UP_AND_DOWN_SQUARE_FILL, ascending: 
           'Fruit, Peach': 'Fruit, Peach Liqueur',
           'Fruit, Raspberry': 'Fruit, Raspberry Liqueur',
           'Fruit, Other': 'Fruit, Other Liqueur',
+          'Fruit, Sloe Berry': 'Fruit, Sloe Berry Liqueur',
           'Herbs and Anise liqueurs': 'Herb and Anise Liqueur',
           'Herb, Brandy': 'Herb, Brandy Liqueur',
           'Herb, Anise': 'Herb, Anise Liqueur',
@@ -375,7 +380,7 @@ const TABLE_SORT_ICONS = { default: __ARROW_UP_AND_DOWN_SQUARE_FILL, ascending: 
           'Other, Specialty': 'Other, Specialty Liqueur',
           'Whisk(e)y liqueurs': 'Whiskey Liqueur'
         };
-        const LIQUEUR_BAR_SUBTYPES = [...FRUIT_LIQUEUR_SUBTYPES, 'Nut, Almond', 'Nut, Hazelnut', 'Nut, Pistachio', 'Nut, Peanut Butter', 'Nut, Other', 'Herb, Brandy', 'Herb, Anise', 'Herb, Mint', 'Herb, Other', 'Other, Specialty'];
+        const LIQUEUR_BAR_SUBTYPES = [...FRUIT_LIQUEUR_SUBTYPES, 'Floral, Violet', 'Floral, Elderflower', 'Nut, Almond', 'Nut, Hazelnut', 'Nut, Pistachio', 'Nut, Peanut Butter', 'Nut, Other', 'Herb, Brandy', 'Herb, Anise', 'Herb, Mint', 'Herb, Other', 'Other, Specialty'];
         
         const FLAVOR_LED_LIQUEUR_SUBTYPES = new Set(['Chocolate liqueurs','Coffee liqueurs','Floral liqueurs','Nuts liqueurs']);
         const SUPERFINE_SUGAR = 'Sugar [Superfine]';
@@ -410,7 +415,7 @@ const TABLE_SORT_ICONS = { default: __ARROW_UP_AND_DOWN_SQUARE_FILL, ascending: 
           'Egg White (Pasteurised)': 'Egg White',
           'Espresso': 'Coffee [Espresso]',
           'Evaporated Milk': 'Milk, Evaporated',
-          'Fernet-Branca': 'Herb, Other Liqueur [Fernet (Amaro, Italian)]',
+          'Fernet-Branca': 'Herb, Other Liqueur [Fernet-Branca]',
           'Fresh Lemon Juice': 'Lemon Juice [Fresh]',
           'Fresh Squeezed Lemon Juice': 'Lemon Juice [Fresh]',
           'Heavy Cream': 'Cream [Heavy]',
@@ -465,14 +470,14 @@ const TABLE_SORT_ICONS = { default: __ARROW_UP_AND_DOWN_SQUARE_FILL, ascending: 
         };
         const INGREDIENT_LINE_LABELS = {
           'Bitter Campari': 'Bitter Liqueur [Campari]',
-          'Cherry Brandy Luxardo': 'Cherry Liqueur [Luxardo Cherry Brandy]',
-          'Curacao': 'Orange Liqueur [Curacao]',
+          'Cherry Brandy Luxardo': 'Fruit, Cherry Liqueur [Luxardo Cherry Brandy]',
+          'Curacao': 'Fruit, Orange Liqueur [Curaçao]',
           'Donn’s Mix*': "Donn's Mix",
-          'Fernet Branca': 'Herb, Other Liqueur [Fernet (Amaro, Italian)]',
-          'Licor Amaretto': 'Almond Liqueur [Amaretto]',
+          'Fernet Branca': 'Herb, Other Liqueur [Fernet-Branca]',
+          'Licor Amaretto': 'Nut, Almond Liqueur [Amaretto]',
           'Licor Frangelico': 'Nut, Hazelnut Liqueur [Frangelico]',
-          'Maraschino Luxardo': 'Cherry Liqueur [Luxardo Maraschino]',
-          'Orange Curacao': 'Orange Liqueur [Orange Curacao]'
+          'Maraschino Luxardo': 'Fruit, Cherry Liqueur [Luxardo Maraschino]',
+          'Orange Curacao': 'Fruit, Orange Liqueur [Curaçao]'
         };
     const SEED_CUSTOM_COCKTAILS = [
       {

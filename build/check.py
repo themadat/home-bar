@@ -86,8 +86,35 @@ const norm = () => { throw new Error('Migration must not depend on late startup 
         result = subprocess.run([node or str(jsc), str(target)], capture_output=True, text=True)
         if result.returncode:
             raise SystemExit('STARTUP FAIL: saved nut liqueur migration before shared helpers initialize')
+        app = (ROOT / 'assets/js/app.js').read_text()
+        config = app[app.index('const FRUIT_LIQUEUR_SUBTYPES'):app.index('const ORANGE_LIQUEUR_INFO')]
+        helpers = app[app.index('    const norm ='):app.index('        const displayGlass')]
+        target.write_text((ROOT / 'assets/js/ingredients.js').read_text() + config + helpers + '''
+for (const [name, expected] of [
+    ['Maraschino Liqueur', 'Fruit, Cherry Liqueur [Maraschino]'],
+    ['Maraschino Luxardo', 'Fruit, Cherry Liqueur [Luxardo Maraschino]'],
+    ['Orange Curacao', 'Fruit, Orange Liqueur [Curaçao]'],
+    ['Blue Curaçao', 'Fruit, Orange Liqueur [Curaçao (Blue)]'],
+    ['Dry Curacao', 'Fruit, Orange Liqueur [Curaçao (Dry)]'],
+    ['Nut, Almond Liqueur [Amaretto]', 'Nut, Almond Liqueur [Amaretto]'],
+    ['Peach Liqueur', 'Fruit, Peach Liqueur'],
+    ['Herb, Whiskey [Drambuie]', 'Whiskey Liqueur [Drambuie]']
+]) {
+    const recipe = {ingredientNames: [name], ingredients: ['1 oz ' + name], liqueurs: []};
+    const parts = ingredientDisplayParts(recipe, 0);
+    const label = parts.generic + (parts.specific ? ' [' + parts.specific + ']' : '');
+    if (label !== expected) throw new Error('Liqueur label mismatch: ' + name);
+}
+const branded = {ingredientNames: ['Amaretto'], ingredients: ['1 oz Amaretto'], ingredientBottles: ['Disaronno Amaretto'], liqueurs: []};
+if (ingredientDisplayParts(branded, 0).specific !== 'Disaronno Amaretto') throw new Error('Lost explicit brand');
+if (standardizedLiqueurLabel('Maraschino Cherries')) throw new Error('Garnish became liqueur');
+''')
+        result = subprocess.run([node or str(jsc), str(target)], capture_output=True, text=True)
+        if result.returncode:
+            raise SystemExit('LABEL FAIL: liqueur aliases, brands, or style qualifiers')
     print(f'PARSE OK {len(scripts)} scripts and combined scope; local assets exist')
     print('STARTUP OK legacy nut liqueur migrations before shared helper initialization')
+    print('LABEL OK liqueur aliases, brands, style qualifiers, and garnish exclusion')
 
 
 if __name__ == '__main__':

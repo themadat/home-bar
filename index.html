@@ -15,7 +15,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Home Bar">
   <meta name="mobile-web-app-capable" content="yes">
-  <link rel="stylesheet" href="assets/css/app.css?v=2.0.0.156">
+  <link rel="stylesheet" href="assets/css/app.css?v=2.0.0.157">
 </head>
 <body>
   <div class="app">
@@ -758,32 +758,33 @@
       </div>
     </div>
   </div>
-  <script src="letters-liquor-notes.js?v=2.0.0.156"></script>
-  <script src="letters-liquor-data.js?v=2.0.0.156"></script>
-  <script src="diffords-data.js?v=2.0.0.156"></script>
-  <script src="data/classic-recipes.js?v=2.0.0.156"></script>
+  <script src="letters-liquor-notes.js?v=2.0.0.157"></script>
+  <script src="letters-liquor-data.js?v=2.0.0.157"></script>
+  <script src="diffords-data.js?v=2.0.0.157"></script>
+  <script src="data/classic-recipes.js?v=2.0.0.157"></script>
   <script>
-const BUILD_VERSION = '2.0.0.156';
+const BUILD_VERSION = '2.0.0.157';
     const CURRENT_RELEASE = {
-      "title": "Fix startup with saved nut liqueurs",
-      "summary": "Restore app startup when saved bar or archived bottles use legacy nut liqueur categories.",
+      "title": "Standardize liqueur recipe labels",
+      "summary": "Use consistent liqueur categories and bracketed ingredient names across recipe sources and saved custom recipes.",
       "changes": [
-        "Remove an initialization-order dependency from nut liqueur migration.",
-        "Add a regression check for saved nut categories before shared helpers initialize."
+        "Standardize fruit, nut, floral, herbal, and whiskey liqueur labels.",
+        "Consolidate Curaçao names and retain Blue or Dry inside brackets; preserve Luxardo Maraschino when specified.",
+        "Verify saved-data startup, source aliases, brand preservation, and style qualifiers."
       ]
     };
   </script>
-  <script src="data/cocktails.js?v=2.0.0.156"></script>
-  <script src="assets/js/icons.js?v=2.0.0.156"></script>
-  <script src="assets/js/ingredients.js?v=2.0.0.156"></script>
-  <script src="assets/js/ratings.js?v=2.0.0.156"></script>
-  <script src="assets/js/availability.js?v=2.0.0.156"></script>
-  <script src="assets/js/render.js?v=2.0.0.156"></script>
-  <script src="assets/js/dialogs.js?v=2.0.0.156"></script>
-  <script src="assets/js/bar.js?v=2.0.0.156"></script>
-  <script src="assets/js/cocktail-editor.js?v=2.0.0.156"></script>
-  <script src="assets/js/sync.js?v=2.0.0.156"></script>
-  <script src="assets/js/interface.js?v=2.0.0.156"></script>
-  <script src="assets/js/app.js?v=2.0.0.156"></script>
+  <script src="data/cocktails.js?v=2.0.0.157"></script>
+  <script src="assets/js/icons.js?v=2.0.0.157"></script>
+  <script src="assets/js/ingredients.js?v=2.0.0.157"></script>
+  <script src="assets/js/ratings.js?v=2.0.0.157"></script>
+  <script src="assets/js/availability.js?v=2.0.0.157"></script>
+  <script src="assets/js/render.js?v=2.0.0.157"></script>
+  <script src="assets/js/dialogs.js?v=2.0.0.157"></script>
+  <script src="assets/js/bar.js?v=2.0.0.157"></script>
+  <script src="assets/js/cocktail-editor.js?v=2.0.0.157"></script>
+  <script src="assets/js/sync.js?v=2.0.0.157"></script>
+  <script src="assets/js/interface.js?v=2.0.0.157"></script>
+  <script src="assets/js/app.js?v=2.0.0.157"></script>
 </body>
 </html>

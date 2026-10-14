@@ -13,6 +13,13 @@ function canonicalLiqueurSubtype(name, subtype) {
           if (/\b(?:aperol|campari)\b/i.test(name)) return 'Bitter liqueurs';
           if (['Nuts liqueurs', 'Nut Liqueur', 'Nut'].includes(subtype)) return nutLiqueurSubtypeForName(name) || 'Nut, Other';
           if (/chart(?:reuse|ruse)|benedictine|fernet|cynar/i.test(String(name).normalize('NFD').replace(/[\u0300-\u036f]/g, ''))) return 'Herb, Other';
+          const earlyName = String(name || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+          if (/drambuie/.test(earlyName) || subtype === 'Herb, Whiskey') return 'Whisk(e)y liqueurs';
+          if (/sloe gin/.test(earlyName)) return 'Fruit, Sloe Berry';
+          if (subtype === 'Floral liqueurs') {
+            if (/violet/.test(earlyName)) return 'Floral, Violet';
+            if (/elderflower/.test(earlyName)) return 'Floral, Elderflower';
+          }
           if (LIQUEUR_BAR_SUBTYPES.includes(subtype)) return subtype;
           const fruitSubtype = fruitLiqueurSubtypeForName(name);
           if (subtype === 'Fruits liqueurs' || subtype === 'Fruit Liqueur') return fruitSubtype || 'Fruit, Other';
@@ -278,20 +285,80 @@ function syncSubtypeFilters() {
         }
 
 function liqueurTypeLabel(subtype) {
-          if (String(subtype).startsWith('Nut, ')) return `${subtype} Liqueur`;
+          if (/^(?:Fruit|Nut|Floral), /.test(String(subtype))) return `${subtype} Liqueur`;
           return LIQUEUR_SUBTYPE_LABELS[subtype] || String(subtype || 'Liqueur').replace(/\s*liqueurs$/i, ' Liqueur');
         }
 
+// Resolve source aliases at display time so bundled and saved recipes share labels.
+function standardizedLiqueurLabel(name) {
+          const text = String(name || '').trim();
+          const key = norm(text);
+          if (/\bcuracao\b/.test(key) && !/\b(?:syrup|non alcoholic)\b/.test(key)) {
+            const style = /\bblue\b/.test(key) ? ' (Blue)' : /\bdry\b/.test(key) ? ' (Dry)' : '';
+            return `Fruit, Orange Liqueur [Curaçao${style}]`;
+          }
+          if (/\bmaraschino\b/.test(key) && !/\b(?:cherries|cherry|syrup|juice)\b/.test(key.replace(/^(?:fruit )?cherry liqueur /, ''))) {
+            return `Fruit, Cherry Liqueur [${key.includes('luxardo') ? 'Luxardo Maraschino' : 'Maraschino'}]`;
+          }
+          const aliases = [
+            ['Fruit, Apricot', 'Apricot Brandy', ['apricot brandy']],
+            ['Fruit, Blackberry', 'Crème de Mûre', ['creme de mure']],
+            ['Fruit, Blackcurrant', 'Crème de Cassis', ['creme de cassis']],
+            ['Fruit, Cherry', 'Luxardo Cherry Brandy', ['cherry brandy luxardo', 'luxardo cherry brandy']],
+            ['Fruit, Cherry', 'Cherry Brandy', ['cherry brandy']],
+            ['Fruit, Cherry', 'Cherry Sangue Morlacco', ['cherry sangue morlacco', 'sangue morlacco']],
+            ['Fruit, Orange', 'Cointreau', ['cointreau']],
+            ['Fruit, Orange', 'Triple Sec', ['triple sec']],
+            ['Fruit, Orange', 'Grand Marnier', ['grand marnier']],
+            ['Fruit, Peach', 'Peach Brandy', ['peach brandy']],
+            ['Fruit, Peach', 'Peach Schnapps', ['peach schnapps']],
+            ['Fruit, Sloe Berry', 'Sloe Gin', ['sloe gin']],
+            ['Nut, Almond', 'Amaretto', ['amaretto', 'licor amaretto', 'amaretto liqueur']],
+            ['Nut, Hazelnut', 'Frangelico', ['frangelico', 'licor frangelico']],
+            ['Herb, Anise', 'Absinthe', ['absinthe']],
+            ['Herb, Anise', 'Pernod', ['pernod']],
+            ['Herb, Anise', 'Galliano', ['galliano', 'galliano liqueur']],
+            ['Herb, Mint', 'Crème de Menthe', ['creme de menthe']],
+            ['Herb, Other', 'Allspice Liqueur', ['allspice liqueur', 'pimento dram', 'allspice dram']],
+            ['Herb, Other', "Pimm's No. 1", ['pimm s no 1', 'pimms no 1']],
+            ['Floral, Violet', 'Crème de Violette', ['creme de violette']],
+            ['Floral, Elderflower', 'Elderflower Cordial', ['elderflower cordial']],
+            ['Herb, Other', 'Ginger Liqueur', ['ginger liqueur']],
+            ['Herb, Other', 'Honey Herbal Liqueur', ['honey herbal liqueur']],
+            ['Herb, Other', 'Chamomile Liqueur', ['chamomile/camomile liqueur', 'chamomile camomile liqueur', 'chamomile liqueur', 'camomile liqueur']],
+            ['Herb, Other', 'Fruit Cup Liqueur', ['fruit cup liqueur']],
+            ['Cream', 'Irish Cream', ['irish cream liqueur']],
+            ['Chocolate', 'Crème de Cacao', ['creme de cacao']],
+            ['Cream', 'Baileys Irish Cream', ['baileys irish cream']],
+            ['Whiskey', 'Drambuie', ['drambuie']],
+            ['Bitter', 'Amaro Nonino', ['amaro nonino']]
+          ];
+          // An existing bracketed label carries the more specific ingredient name.
+          const bracket = text.match(/\[([^\]]+)\]$/);
+          const identity = norm(bracket ? bracket[1] : text);
+          const match = aliases.find(([, , names]) => names.includes(identity));
+          if (match) return `${match[0]} Liqueur [${match[1]}]`;
+          const genericAliases = {'passionfruit liqueur': 'Fruit, Passion Fruit Liqueur', 'sour apple liqueur': 'Fruit, Apple Liqueur [Sour Apple]', 'coffee liqueur': 'Coffee Liqueur', 'honey liqueur': 'Honey Liqueur'};
+          if (genericAliases[identity]) return genericAliases[identity];
+          const generic = text.match(/^(?:Fruit,\s*)?(Apple|Apricot|Banana|Black Raspberry|Blackberry|Blackcurrant|Cherry|Orange|Passion Fruit|Peach|Raspberry|Sloe Berry) Liqueur$/i);
+          if (generic) return `Fruit, ${titleWords(generic[1])} Liqueur`;
+          const nut = text.match(/^(?:Nut,\s*)?(Almond|Hazelnut|Pistachio|Peanut Butter) Liqueur$/i);
+          if (nut) return `Nut, ${titleWords(nut[1])} Liqueur`;
+          return '';
+        }
+
 function specialtyIngredientLabel(name) {
+          const standardized = standardizedLiqueurLabel(name);
+          if (standardized) return standardized;
           const key = norm(name);
           if (/\baperol\b/.test(key)) return 'Bitter Liqueur [Aperol]';
           if (/\bcampari\b/.test(key)) return 'Bitter Liqueur [Campari]';
           if (/chart(?:reuse|ruse)/.test(key)) return `Herb, Other Liqueur [Chartreuse (${key.includes('yellow') ? 'Yellow' : 'Green'})]`;
           if (key.includes('benedictine')) return 'Herb, Other Liqueur [Bénédictine D.O.M.]';
-          if (key.includes('cynar')) return 'Herb, Other Liqueur [Cynar (Amaro, Italian)]';
+          if (key.includes('cynar')) return 'Herb, Other Liqueur [Cynar]';
           if (key.includes('falernum')) return 'Sweet Spiced Syrup [Falernum (Caribbean)]';
           if (key.includes('puree')) return titleWords(key).replace(/Puree/g, 'Purée');
-          if (/fernet/.test(key)) return 'Herb, Other Liqueur [Fernet (Amaro, Italian)]';
+          if (/fernet/.test(key)) return `Herb, Other Liqueur [${key.includes('branca') ? 'Fernet-Branca' : 'Fernet'}]`;
           if (key.includes('cachaca')) return 'Sugarcane, Other Spirit [Cachaça (Brazilian)]';
           if (key === 'absinthe rinse') return 'Absinthe';
           if (key === 'white peach puree') return 'White Peach Purée';
@@ -301,14 +368,11 @@ function specialtyIngredientLabel(name) {
 function liqueurIngredientLabel(liqueur) {
           if (specialtyIngredientLabel(liqueur.name)) return specialtyIngredientLabel(liqueur.name);
           const subtype = canonicalLiqueurSubtype(liqueur.name, liqueur.subtype);
-          const fruitType = subtype.startsWith('Fruit, ') ? subtype.slice('Fruit, '.length) : '';
-          const base = fruitType ? `${fruitType} Liqueur` : liqueurTypeLabel(subtype);
-          const lead = !fruitType && FLAVOR_LED_LIQUEUR_SUBTYPES.has(subtype) ? titleWords(String(liqueur.flavor || '').split(',')[0]) : '';
-          const label = subtype === 'Nuts liqueurs' && norm(lead) === 'almond'
-            ? 'Almond Liqueur'
-            : `${lead && !norm(base).startsWith(norm(lead)) ? `${lead} ` : ''}${base}`;
-          const genericNames = [label, base, lead ? `${lead} Liqueur` : ''].map(norm);
-          return genericNames.includes(norm(liqueur.name)) ? liqueur.name : `${label} [${liqueur.name}]`;
+          const base = liqueurTypeLabel(subtype);
+          const flavor = titleWords(String(liqueur.flavor || '').split(',')[0]);
+          const label = subtype === 'Floral liqueurs' && flavor ? `Floral, ${flavor} Liqueur` : base;
+          const genericNames = [label, base, subtype.startsWith('Fruit, ') ? `${subtype.slice(7)} Liqueur` : ''].map(norm);
+          return genericNames.includes(norm(liqueur.name)) ? label : `${label} [${liqueur.name}]`;
         }
 
 function normalizedIngredientIdentity(value) {
@@ -384,6 +448,15 @@ function displayedBittersRequirement(sourceLine) {
 function ingredientDisplayParts(cocktail, index) {
           const rawName = cocktail.ingredientNames[index] || parseIngredientLine(cocktail.ingredients[index] || '').name;
           const sourceLine = String(cocktail.ingredients[index] || '');
+          const explicitBottle = String(cocktail.ingredientBottles?.[index] || '').trim();
+          const sourceName = parseIngredientLine(sourceLine).name;
+          const standardized = standardizedLiqueurLabel(explicitBottle || sourceName) || standardizedLiqueurLabel(rawName);
+          if (standardized) {
+            const parts = splitSpecificIngredientLabel(standardized);
+            if (explicitBottle && !standardizedLiqueurLabel(explicitBottle)) parts.specific = normalizeIngredientSpecific(explicitBottle);
+            else if (!parts.specific) parts.specific = normalizeIngredientSpecific(sourceName.match(/\[([^\]]+)\]$/)?.[1] || '');
+            return parts;
+          }
           const specialtyLabel = specialtyIngredientLabel(/chart(?:reuse|ruse)/i.test(rawName) ? `${rawName} ${sourceLine}` : rawName);
           if (specialtyLabel) return splitSpecificIngredientLabel(specialtyLabel);
           const explicitSpecific = String(cocktail.ingredientBottles?.[index] || '').trim();
