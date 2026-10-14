@@ -1914,6 +1914,14 @@ $('#importData').addEventListener('click', () => $('#importFile').click());
         $('#notesTextarea').addEventListener('input', saveAppNotes);
         $('#notesEditButton').addEventListener('click', () => setNotesMode('edit'));
         $('#notesPreviewButton').addEventListener('click', () => setNotesMode('preview'));
+        $('#notesModalOverlay').addEventListener('keydown', (event) => {
+          if ((event.metaKey || event.ctrlKey) && !event.altKey && !event.shiftKey && event.key === 'Enter') {
+            event.preventDefault();
+            event.stopPropagation();
+            setNotesMode($('#notesTextarea').hidden ? 'edit' : 'preview');
+          }
+        });
+        $('#notesPreview').addEventListener('dblclick', editNotesAtPoint);
         $('#notesFormatting').addEventListener('pointerdown', (event) => {
           if (event.target.closest('button')) event.preventDefault();
         });
@@ -1922,6 +1930,10 @@ $('#importData').addEventListener('click', () => $('#importFile').click());
           if (button) formatAppNotes(button.dataset.noteFormat);
         });
         $('#notesTextarea').addEventListener('keydown', (event) => {
+          if (event.key === 'Tab' && !event.metaKey && !event.ctrlKey && !event.altKey && indentAppNotes(event.shiftKey)) {
+            event.preventDefault();
+            return;
+          }
           if ((event.metaKey || event.ctrlKey) && !event.altKey && ['b', 'i'].includes(event.key.toLowerCase())) {
             event.preventDefault();
             formatAppNotes(event.key.toLowerCase() === 'b' ? 'bold' : 'italic');
