@@ -9,8 +9,8 @@ const TABLE_SORT_ICONS = { default: __ARROW_UP_AND_DOWN_SQUARE_FILL, ascending: 
         }
         const ibaTikiRecipe = COCKTAILS.find((cocktail) => cocktail.id === 'iba-tiki');
         if (ibaTikiRecipe) {
-          ibaTikiRecipe.ingredients = ['30 ml Rum, White [Aged] [Ron Profundo Havana Club]', '30 ml Rum, Dark [Smokey] [Ron Smoky Havana Club]', '15 ml Almond Liqueur [Amaretto]', '5 ml Hazelnut Liqueur [Frangelico]', '1/24 oz Cherry Liqueur [Maraschino]', '30 ml Passion Fruit Puree', '90 ml Pineapple Juice [Fresh]', '30 ml Lime Juice [Fresh]', '1 piece Gengibre Slice'];
-          ibaTikiRecipe.ingredientNames = ['Rum, White', 'Rum, Dark', 'Amaretto', 'Frangelico', 'Maraschino Liqueur', 'Passion Fruit Puree', 'Pineapple Juice', 'Lime Juice', 'Gengibre Slice'];
+          ibaTikiRecipe.ingredients = ['30 ml Rum, White [Aged] [Ron Profundo Havana Club]', '30 ml Rum, Dark [Smokey] [Ron Smoky Havana Club]', '15 ml Almond Liqueur [Amaretto]', '5 ml Hazelnut Liqueur [Frangelico]', '1/24 oz Cherry Liqueur [Maraschino]', '30 ml Passion Fruit Puree', '90 ml Pineapple Juice [Fresh]', '30 ml Lime Juice [Fresh]', '1 slice Ginger'];
+          ibaTikiRecipe.ingredientNames = ['Rum, White', 'Rum, Dark', 'Amaretto', 'Frangelico', 'Maraschino Liqueur', 'Passion Fruit Puree', 'Pineapple Juice', 'Lime Juice', 'Ginger'];
           ibaTikiRecipe.ingredientBottles = ['Ron Profundo Havana Club', 'Ron Smoky Havana Club', 'Amaretto', 'Frangelico', 'Maraschino', 'Fresh', 'Fresh', 'Fresh', ''];
           ibaTikiRecipe.ingredientCount = ibaTikiRecipe.ingredients.length;
         }
@@ -387,6 +387,7 @@ const TABLE_SORT_ICONS = { default: __ARROW_UP_AND_DOWN_SQUARE_FILL, ascending: 
         const WHITE_SUGAR_INFO = 'White, preferably cane: cane sugar comes only from sugar cane, rather than sugar beets or a cane/beet blend. Taste and sweetness are essentially identical and the sugars can be used interchangeably, but cane sugar is slightly purer, caramelizes better, and contains fewer impurities.';
         const ORANGE_LIQUEUR_INFO = 'Triple sec is a category; Cointreau is a premium 40% ABV triple sec. Grand Marnier blends orange liqueur with Cognac, adding oak, vanilla, and richness.\n\nCointreau ↔ triple sec: substitute 1:1. Lower-proof triple sec may taste sweeter and less intensely orange; reduce other syrup to taste.\n\nCointreau → Grand Marnier: substitute 1:1 for a richer, heavier, less crisp drink.\n\nGrand Marnier → Cointreau: substitute 1:1 for a brighter, cleaner drink without Cognac richness.';
         const INGREDIENT_INFO = {
+          'Ginger': 'For 1 slice Ginger, use either:\n\n- 1/8 tsp ground ginger\n- 1/2 tsp finely grated fresh ginger',
           'Club Soda': 'Use Soda Water (seltzer) with a pinch of salt. Having Soda Water in your pantry counts toward recipes calling for Club Soda.',
           'Cream [Whipped]': 'Whip together in a cold bowl:\n\n- 1 cup cold heavy cream\n- 1.5 tbsp powdered sugar (optional)\n- ½ tsp vanilla (optional)\n\nWhip until soft (creamier) or stiff (holds shape), usually about 2–4 minutes. For cocktails, soft whipped cream stays pourable for floats.',
           'Cointreau': ORANGE_LIQUEUR_INFO,
