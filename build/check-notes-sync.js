@@ -49,13 +49,23 @@ const reset = () => {
   assert(!inline.includes('<img') && inline.includes('&lt;img'), 'Raw HTML must remain text');
   assert(!notesInlineMarkup('[unsafe](javascript:alert)').includes('<a'), 'Unsafe link protocol');
   assert(notesInlineMarkup('[safe](https://example.com/"onclick="bad)').includes('&quot;'), 'Link attribute escaping');
-  const markdown = notesMarkdownMarkup('# Parent\nintro\n## Child\n- [ ] task\n- [x] done\n# Next\n1. First\n2. Second\n> quote\n```\n# code heading\n```');
+  const withoutSources = (html) => html.replace(/<span data-note-start="\d+">|<\/span>/g, '');
+  const markdown = withoutSources(notesMarkdownMarkup('# Parent\nintro\n## Child\n- [ ] task\n- [x] done\n# Next\n1. First\n2. Second\n> quote\n```\n# code heading\n```'));
   assert((markdown.match(/<details /g) || []).length === 3, 'Only actual headings become sections');
   assert(markdown.includes('</div></details></div></details><details'), 'Nested headings close before next peer');
   assert(markdown.includes('data-note-task="3"') && markdown.includes(' checked'), 'Checklist source lines and states');
   assert(markdown.includes('<ol start="1">') && markdown.includes('<blockquote>quote</blockquote>'), 'Lists and quotes');
-  assert(notesMarkdownMarkup('# C#').includes('C#</h1>'), 'Keep literal hashes in headings');
+  assert(withoutSources(notesMarkdownMarkup('# C#')).includes('C#</h1>'), 'Keep literal hashes in headings');
   assert(!notesMarkdownMarkup('# Parent', [JSON.stringify([['Parent', 1]])]).includes(' open'), 'Restore collapsed heading');
+  const nested = withoutSources(notesMarkdownMarkup('- Parent\n  1. Child\n    - [ ] Grandchild\n  2. Sibling\n- Next'));
+  assert(nested.includes('<li>Parent<ol start="1"><li>Child<ul><li class="notes-task">'), 'Mixed list levels nest inside parent items');
+  assert(nested.includes('</ul></li><li>Sibling</li></ol></li><li>Next'), 'Nested lists close at each dedent');
+  assert(notesMarkdownMarkup('**bold** and `code`').includes('data-note-start="2">bold') && notesMarkdownMarkup('**bold** and `code`').includes('data-note-start="14">code'), 'Formatted text retains exact Markdown source offsets');
+  const indented = notesIndentEdit('- one\n- two\nplain', 0, 12, false);
+  assert(indented.replacement === '  - one\n  - two' && indented.start === 2 && indented.end === 16, 'Indent selected list lines without the next line');
+  const outdented = notesIndentEdit('  - one', 7, 7, true);
+  assert(outdented.replacement === '- one' && outdented.start === 5 && outdented.end === 5, 'Outdent preserves cursor');
+  assert(notesIndentEdit('plain', 0, 0, false) === null && notesIndentEdit('', 0, 0, false) === null, 'Tab remains navigation outside lists');
 
   const plan = (localHash, remoteHash, extra = {}) => gitHubSyncPlan({remoteExists: true, hasBaseline: true, localHasSavedData: true, baselineHash: 'base', localHash, remoteHash, ...extra});
   assert(plan('edit', 'base', {remoteSha: 'new-sha', baselineSha: 'old-sha'}) === 'upload', 'SHA-only remote change must not conflict');

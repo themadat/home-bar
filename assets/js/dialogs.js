@@ -95,49 +95,60 @@ function closeNotesModal() {
               scheduleGitHubAutoSync();
 	        }
 
-function notesInlineMarkup(text, depth = 0) {
-          if (depth > 8) return escapeHtml(text);
+function notesSourceText(text, start) {
+          const escaped = escapeHtml(text);
+          return start === null || !text ? escaped : `<span data-note-start="${start}">${escaped}</span>`;
+        }
+
+function notesInlineMarkup(text, depth = 0, sourceStart = null) {
+          if (depth > 8) return notesSourceText(text, sourceStart);
+          const at = (offset) => sourceStart === null ? null : sourceStart + offset;
           // Only generated markup is trusted; every text fragment and attribute is escaped.
           const tokens = /\\([\\`*_[\]()#>+-])|`([^`\n]+)`|\[([^\]\n]+)\]\(([^\s)]+)\)|\*\*([^\n]+?)\*\*|__([^\n]+?)__|\*([^*\n]+)\*|_([^_\n]+)_/g;
           let html = '', offset = 0, match;
           while ((match = tokens.exec(text))) {
-            html += escapeHtml(text.slice(offset, match.index));
-            if (match[1]) html += escapeHtml(match[1]);
-            else if (match[2]) html += `<code>${escapeHtml(match[2])}</code>`;
+            html += notesSourceText(text.slice(offset, match.index), at(offset));
+            if (match[1]) html += notesSourceText(match[1], at(match.index + 1));
+            else if (match[2]) html += `<code>${notesSourceText(match[2], at(match.index + 1))}</code>`;
             else if (match[3]) {
-              const label = notesInlineMarkup(match[3], depth + 1);
+              const label = notesInlineMarkup(match[3], depth + 1, at(match.index + 1));
               const url = match[4];
               html += /^(https?:\/\/|mailto:)/i.test(url)
                 ? `<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">${label}</a>` : label;
             } else {
               const tag = match[5] || match[6] ? 'strong' : 'em';
-              html += `<${tag}>${notesInlineMarkup(match[5] || match[6] || match[7] || match[8], depth + 1)}</${tag}>`;
+              html += `<${tag}>${notesInlineMarkup(match[5] || match[6] || match[7] || match[8], depth + 1, at(match.index + (tag === 'strong' ? 2 : 1)))}</${tag}>`;
             }
             offset = tokens.lastIndex;
           }
-          return html + escapeHtml(text.slice(offset));
+          return html + notesSourceText(text.slice(offset), at(offset));
         }
 
 function notesMarkdownMarkup(text, folded = []) {
           const lines = text.replace(/\r\n?/g, '\n').split('\n');
+          const starts = []; let position = 0;
+          lines.forEach((line) => { starts.push(position); position += line.length + 1; });
           const closed = new Set(folded);
           const sections = [], occurrences = new Map();
-          let html = '', paragraph = [], list = '', quote = [];
+          let html = '', paragraph = [], quote = [];
+          const lists = [];
+          const closeList = () => { const list = lists.pop(); html += `</li></${list.type}>`; };
+          const inline = ({text, start}) => notesInlineMarkup(text, 0, start);
           const flush = () => {
-            if (paragraph.length) html += `<p>${paragraph.map((line) => notesInlineMarkup(line)).join('<br>')}</p>`;
-            if (quote.length) html += `<blockquote>${quote.map((line) => notesInlineMarkup(line)).join('<br>')}</blockquote>`;
-            if (list) html += `</${list}>`;
-            paragraph = []; quote = []; list = '';
+            if (paragraph.length) html += `<p>${paragraph.map(inline).join('<br>')}</p>`;
+            if (quote.length) html += `<blockquote>${quote.map(inline).join('<br>')}</blockquote>`;
+            while (lists.length) closeList();
+            paragraph = []; quote = [];
           };
           for (let index = 0; index < lines.length; index += 1) {
             const line = lines[index];
             const heading = /^(#{1,6})[ \t]+(.+?)(?:[ \t]+#+)?[ \t]*$/.exec(line);
-            const item = /^\s*(?:([-+*])|\d+[.)])\s+(.*)$/.exec(line);
+            const item = /^([ \t]*)(?:([-+*])|(\d+)[.)])[ \t]+(.*)$/.exec(line);
             if (/^```/.test(line)) {
               flush();
-              const code = [];
+              const code = [], codeStart = starts[index + 1];
               while (++index < lines.length && !/^```\s*$/.test(lines[index])) code.push(lines[index]);
-              html += `<pre><code>${escapeHtml(code.join('\n'))}</code></pre>`;
+              html += `<pre><code>${notesSourceText(code.join('\n'), codeStart ?? starts[index])}</code></pre>`;
             } else if (heading) {
               flush();
               const level = heading[1].length;
@@ -150,26 +161,31 @@ function notesMarkdownMarkup(text, folded = []) {
               occurrences.set(identity, occurrence);
               const path = [...parentPath, [heading[2], occurrence]];
               const key = JSON.stringify(path);
-              html += `<details class="notes-section" data-note-section="${escapeHtml(key)}"${closed.has(key) ? '' : ' open'}><summary><h${level}>${notesInlineMarkup(heading[2])}</h${level}></summary><div class="notes-section-body">`;
+              html += `<details class="notes-section" data-note-section="${escapeHtml(key)}"${closed.has(key) ? '' : ' open'}><summary><h${level}>${notesInlineMarkup(heading[2], 0, starts[index] + line.indexOf(heading[2], heading[1].length))}</h${level}></summary><div class="notes-section-body">`;
               sections.push({level, path});
             } else if (!line.trim()) flush();
             else if (item) {
-              const type = item[1] ? 'ul' : 'ol';
-              if (paragraph.length || quote.length || (list && list !== type)) flush();
-              if (!list) {
-                const start = type === 'ol' ? ` start="${Number.parseInt(line.trim(), 10)}"` : '';
-                html += `<${type}${start}>`; list = type;
-              }
-              const task = /^\[([ xX])\]\s+(.*)$/.exec(item[2]);
+              const type = item[2] ? 'ul' : 'ol';
+              const indent = item[1].replace(/\t/g, '    ').length;
+              if (paragraph.length || quote.length) flush();
+              while (lists.length && lists[lists.length - 1].indent > indent) closeList();
+              if (lists.length && lists[lists.length - 1].indent === indent && lists[lists.length - 1].type !== type) closeList();
+              if (!lists.length || lists[lists.length - 1].indent < indent) {
+                html += `<${type}${type === 'ol' ? ` start="${Number(item[3])}"` : ''}>`;
+                lists.push({type, indent});
+              } else html += '</li>';
+              const contentStart = starts[index] + line.length - item[4].length;
+              const task = /^\[([ xX])\][ \t]+(.*)$/.exec(item[4]);
               html += task
-                ? `<li class="notes-task"><label><input type="checkbox" data-note-task="${index}"${task[1] !== ' ' ? ' checked' : ''}><span>${notesInlineMarkup(task[2])}</span></label></li>`
-                : `<li>${notesInlineMarkup(item[2])}</li>`;
+                ? `<li class="notes-task"><label><input type="checkbox" data-note-task="${index}"${task[1] !== ' ' ? ' checked' : ''}><span>${notesInlineMarkup(task[2], 0, contentStart + item[4].length - task[2].length)}</span></label>`
+                : `<li>${notesInlineMarkup(item[4], 0, contentStart)}`;
             } else if (/^>\s?/.test(line)) {
-              if (paragraph.length || list) flush();
-              quote.push(line.replace(/^>\s?/, ''));
+              if (paragraph.length || lists.length) flush();
+              const text = line.replace(/^>\s?/, '');
+              quote.push({text, start: starts[index] + line.length - text.length});
             } else {
-              if (quote.length || list) flush();
-              paragraph.push(line);
+              if (quote.length || lists.length) flush();
+              paragraph.push({text: line, start: starts[index]});
             }
           }
           flush();
@@ -181,13 +197,13 @@ function renderNotesPreview() {
           let folded;
           try { folded = JSON.parse(localStorage.getItem('cocktailAppNotesFolds') || '[]'); }
           catch (error) { folded = []; }
-          $('#notesPreview').innerHTML = notesMarkdownMarkup(store.appNotes, Array.isArray(folded) ? folded : []);
+          $('#notesPreview').innerHTML = notesMarkdownMarkup($('#notesTextarea').value, Array.isArray(folded) ? folded : []);
           const hasHeadings = Boolean($('#notesPreview').querySelector('details'));
           $('#notesExpandAll').disabled = !hasHeadings;
           $('#notesCollapseAll').disabled = !hasHeadings;
         }
 
-function setNotesMode(mode) {
+function setNotesMode(mode, cursor = null) {
           const preview = mode === 'preview';
           if (preview) renderNotesPreview();
           $('#notesTextarea').hidden = preview;
@@ -197,12 +213,59 @@ function setNotesMode(mode) {
           $('#notesEditButton').setAttribute('aria-pressed', String(!preview));
           $('#notesPreviewButton').setAttribute('aria-pressed', String(preview));
           localStorage.setItem('cocktailAppNotesMode', mode);
-          requestAnimationFrame(() => $(preview ? '#notesPreview' : '#notesTextarea').focus());
+          requestAnimationFrame(() => {
+            const target = $(preview ? '#notesPreview' : '#notesTextarea');
+            target.focus();
+            if (!preview && cursor !== null) {
+              target.setSelectionRange(cursor, cursor);
+              const line = target.value.slice(0, cursor).split('\n').length - 1;
+              target.scrollTop = Math.max(0, line * parseFloat(getComputedStyle(target).lineHeight) - target.clientHeight / 2);
+            }
+          });
         }
 
 function saveNotesFolds() {
           const folded = Array.from($('#notesPreview').querySelectorAll('details:not([open])'), (section) => section.dataset.noteSection);
           localStorage.setItem('cocktailAppNotesFolds', JSON.stringify(folded));
+        }
+
+function editNotesAtPoint(event) {
+          if (event.target.closest('input, button')) return;
+          const caret = document.caretPositionFromPoint?.(event.clientX, event.clientY);
+          const range = !caret && document.caretRangeFromPoint?.(event.clientX, event.clientY);
+          const node = caret?.offsetNode || range?.startContainer;
+          const offset = caret?.offset ?? range?.startOffset;
+          const span = (node?.nodeType === Node.TEXT_NODE ? node.parentElement : node)?.closest('[data-note-start]');
+          if (!span || !$('#notesPreview').contains(span)) return;
+          const prefix = document.createRange();
+          prefix.setStart(span, 0);
+          prefix.setEnd(node, offset);
+          event.preventDefault();
+          setNotesMode('edit', Number(span.dataset.noteStart) + prefix.toString().length);
+        }
+
+function notesIndentEdit(value, start, end, outdent) {
+          const from = start === 0 ? 0 : value.lastIndexOf('\n', start - 1) + 1;
+          const last = end > start && value[end - 1] === '\n' ? end - 1 : end;
+          const newline = value.indexOf('\n', last);
+          const to = newline === -1 ? value.length : newline;
+          const lines = value.slice(from, to).split('\n');
+          const isList = (line) => /^[ \t]*(?:[-+*]|\d+[.)])[ \t]+/.test(line);
+          if (!lines.some(isList) || !lines.every((line) => !line.trim() || isList(line))) return null;
+          const deltas = lines.map((line) => !line.trim() ? 0 : outdent ? -(line.startsWith('\t') ? 1 : Math.min(2, /^ */.exec(line)[0].length)) : 2);
+          const replacement = lines.map((line, index) => deltas[index] > 0 ? '  ' + line : line.slice(-deltas[index])).join('\n');
+          return {from, to, replacement, start: Math.max(from, start + deltas[0]), end: Math.max(from, end + deltas.reduce((sum, delta) => sum + delta, 0))};
+        }
+
+function indentAppNotes(outdent) {
+          const editor = $('#notesTextarea');
+          const edit = notesIndentEdit(editor.value, editor.selectionStart, editor.selectionEnd, outdent);
+          if (!edit) return false;
+          editor.setSelectionRange(edit.from, edit.to);
+          if (!document.execCommand('insertText', false, edit.replacement)) editor.setRangeText(edit.replacement, edit.from, edit.to, 'end');
+          editor.setSelectionRange(edit.start, edit.end);
+          saveAppNotes();
+          return true;
         }
 
 function setAllNotesSections(open) {
@@ -238,7 +301,8 @@ function formatAppNotes(format) {
             const prefixes = {h1: '# ', h2: '## ', h3: '### ', bullet: '- ', task: '- [ ] ', quote: '> '};
             replacement = editor.value.slice(start, end).split('\n').map((line, index) => {
               const prefix = format === 'number' ? `${index + 1}. ` : prefixes[format];
-              return prefix + line.replace(/^(?:#{1,6}\s+|>\s?|\s*(?:[-+*]|\d+[.)])\s+(?:\[[ xX]\]\s+)?)/, '');
+              const indent = format.startsWith('h') ? '' : /^[ \t]*/.exec(line)[0];
+              return indent + prefix + line.trimStart().replace(/^(?:#{1,6}\s+|>\s?|(?:[-+*]|\d+[.)])\s+(?:\[[ xX]\]\s+)?)/, '');
             }).join('\n');
           }
           editor.focus();
