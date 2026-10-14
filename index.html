@@ -15,7 +15,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Home Bar">
   <meta name="mobile-web-app-capable" content="yes">
-  <link rel="stylesheet" href="assets/css/app.css?v=2.0.0.159">
+  <link rel="stylesheet" href="assets/css/app.css?v=2.0.0.160">
 </head>
 <body>
   <div class="app">
@@ -268,10 +268,34 @@
       <div class="modal modal-notes" role="dialog" aria-modal="true" aria-labelledby="notesModalTitle">
         <div class="modal-header">
           <h2 id="notesModalTitle">Notes</h2>
+          <div class="notes-mode-controls" role="group" aria-label="Notes view">
+            <button id="notesEditButton" class="button" type="button" aria-pressed="true">Edit</button>
+            <button id="notesPreviewButton" class="button" type="button" aria-pressed="false">Preview</button>
+          </div>
           <button id="notesModalClose" class="button icon" type="button" aria-label="Close">×</button>
         </div>
         <div class="modal-body">
-          <textarea id="notesTextarea" class="text-area notes-textarea" placeholder="Jot down anything — recipes to try, shopping reminders, party planning…" aria-label="Notes"></textarea>
+          <div id="notesFormatting" class="notes-toolbar" role="group" aria-label="Markdown formatting">
+            <button class="button" type="button" data-note-format="bold" title="Bold (⌘/Ctrl+B)" aria-label="Bold"><b>B</b></button>
+            <button class="button" type="button" data-note-format="italic" title="Italic (⌘/Ctrl+I)" aria-label="Italic"><i>I</i></button>
+            <button class="button" type="button" data-note-format="h1" title="Heading 1">H1</button>
+            <button class="button" type="button" data-note-format="h2" title="Heading 2">H2</button>
+            <button class="button" type="button" data-note-format="h3" title="Heading 3">H3</button>
+            <button class="button" type="button" data-note-format="bullet">Bullets</button>
+            <button class="button" type="button" data-note-format="number">Numbered</button>
+            <button class="button" type="button" data-note-format="task">Checklist</button>
+            <button class="button" type="button" data-note-format="link">Link</button>
+            <button class="button" type="button" data-note-format="quote">Quote</button>
+            <button class="button" type="button" data-note-format="code">Code</button>
+          </div>
+          <div id="notesPreviewTools" class="notes-toolbar" role="group" aria-label="Heading sections" hidden>
+            <button id="notesExpandAll" class="button" type="button">Expand all</button>
+            <button id="notesCollapseAll" class="button" type="button">Collapse all</button>
+            <span>Click a heading to fold its section.</span>
+          </div>
+          <textarea id="notesTextarea" class="text-area notes-textarea" placeholder="Jot down anything — recipes to try, shopping reminders, party planning…" aria-label="Notes" aria-describedby="notesHelp"></textarea>
+          <div id="notesPreview" class="notes-preview" role="region" aria-label="Formatted notes" tabindex="0" hidden></div>
+          <div class="notes-footer"><span id="notesHelp">Markdown supported. Preview to fold headings.</span><span id="notesSaveStatus" role="status">Saved on this device</span></div>
         </div>
       </div>
     </div>
@@ -758,32 +782,34 @@
       </div>
     </div>
   </div>
-  <script src="letters-liquor-notes.js?v=2.0.0.159"></script>
-  <script src="letters-liquor-data.js?v=2.0.0.159"></script>
-  <script src="diffords-data.js?v=2.0.0.159"></script>
-  <script src="data/classic-recipes.js?v=2.0.0.159"></script>
+  <script src="letters-liquor-notes.js?v=2.0.0.160"></script>
+  <script src="letters-liquor-data.js?v=2.0.0.160"></script>
+  <script src="diffords-data.js?v=2.0.0.160"></script>
+  <script src="data/classic-recipes.js?v=2.0.0.160"></script>
   <script>
-const BUILD_VERSION = '2.0.0.159';
+const BUILD_VERSION = '2.0.0.160';
     const CURRENT_RELEASE = {
-      "title": "Correct Falernum classification and Chartreuse Swizzle",
-      "summary": "Classify Velvet Falernum as a liqueur and show Chartreuse Swizzle as stirred and served on ice.",
+      "title": "Markdown notes and steadier GitHub sync",
+      "summary": "Write formatted notes in a larger modal, fold heading sections, and keep edits safe while GitHub sync retries.",
       "changes": [
-        "Classify Velvet Falernum as Liqueurs / Herb, Other in saved bottles, recipe sources, and new bottle entry while keeping nonalcoholic falernum syrup separate.",
-        "Show Stir for Prep and Ice for Serve on Chartreuse Swizzle across recipe sources."
+        "Add Markdown formatting tools, Edit and Preview modes, interactive checklists, and remembered collapsible heading sections to the main Notes modal.",
+        "Expand Notes to 1200px on desktop and the full viewport on mobile while preserving plain-text autosave, import, and export.",
+        "Serialize GitHub sync operations, read fresh file versions, retry stale uploads only when remote content is unchanged, and retain edits made during uploads for the next sync.",
+        "Save note text immediately without rewriting other collections, wait for editing to settle, and retry failed automatic sync with backoff and reconnect handling."
       ]
     };
   </script>
-  <script src="data/cocktails.js?v=2.0.0.159"></script>
-  <script src="assets/js/icons.js?v=2.0.0.159"></script>
-  <script src="assets/js/ingredients.js?v=2.0.0.159"></script>
-  <script src="assets/js/ratings.js?v=2.0.0.159"></script>
-  <script src="assets/js/availability.js?v=2.0.0.159"></script>
-  <script src="assets/js/render.js?v=2.0.0.159"></script>
-  <script src="assets/js/dialogs.js?v=2.0.0.159"></script>
-  <script src="assets/js/bar.js?v=2.0.0.159"></script>
-  <script src="assets/js/cocktail-editor.js?v=2.0.0.159"></script>
-  <script src="assets/js/sync.js?v=2.0.0.159"></script>
-  <script src="assets/js/interface.js?v=2.0.0.159"></script>
-  <script src="assets/js/app.js?v=2.0.0.159"></script>
+  <script src="data/cocktails.js?v=2.0.0.160"></script>
+  <script src="assets/js/icons.js?v=2.0.0.160"></script>
+  <script src="assets/js/ingredients.js?v=2.0.0.160"></script>
+  <script src="assets/js/ratings.js?v=2.0.0.160"></script>
+  <script src="assets/js/availability.js?v=2.0.0.160"></script>
+  <script src="assets/js/render.js?v=2.0.0.160"></script>
+  <script src="assets/js/dialogs.js?v=2.0.0.160"></script>
+  <script src="assets/js/bar.js?v=2.0.0.160"></script>
+  <script src="assets/js/cocktail-editor.js?v=2.0.0.160"></script>
+  <script src="assets/js/sync.js?v=2.0.0.160"></script>
+  <script src="assets/js/interface.js?v=2.0.0.160"></script>
+  <script src="assets/js/app.js?v=2.0.0.160"></script>
 </body>
 </html>

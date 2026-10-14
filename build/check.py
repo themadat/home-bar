@@ -116,9 +116,16 @@ if (standardizedLiqueurLabel('Maraschino Cherries')) throw new Error('Garnish be
         result = subprocess.run([node or str(jsc), str(target)], capture_output=True, text=True)
         if result.returncode:
             raise SystemExit('LABEL FAIL: liqueur aliases, brands, or style qualifiers')
+        target.write_text('\n'.join((ROOT / path).read_text() for path in [
+            'assets/js/dialogs.js', 'assets/js/sync.js', 'build/check-notes-sync.js'
+        ]))
+        result = subprocess.run([node or str(jsc), str(target)], capture_output=True, text=True)
+        if result.returncode or 'NOTES/SYNC OK' not in result.stdout:
+            raise SystemExit('NOTES/SYNC FAIL: ' + (result.stderr + result.stdout)[-1500:])
     print(f'PARSE OK {len(scripts)} scripts and combined scope; local assets exist')
     print('STARTUP OK legacy nut liqueur migrations before shared helper initialization')
     print('LABEL OK liqueur aliases, brands, style qualifiers, and garnish exclusion')
+    print('NOTES/SYNC OK safe Markdown, heading sections, upload races, retries, and shared locking')
 
 
 if __name__ == '__main__':

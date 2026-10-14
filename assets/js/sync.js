@@ -103,7 +103,7 @@ function gitHubSyncStateInfo() {
 	          const localHash = syncDataFingerprint();
 	          const baselineHash = meta.dataHash || githubSyncRuntime.remoteHash;
 	          const localDirty = Boolean(baselineHash && baselineHash !== localHash);
-	          const remoteChanged = Boolean(githubSyncRuntime.remoteSha && meta.sha && githubSyncRuntime.remoteSha !== meta.sha);
+          const remoteChanged = Boolean(githubSyncRuntime.remoteHash && meta.dataHash && githubSyncRuntime.remoteHash !== meta.dataHash);
 	          const synced = meta.syncedAt ? relativeSyncTime(meta.syncedAt) : 'never';
 	          const checkedAt = githubSyncRuntime.checkedAt || meta.checkedAt;
 	          const checked = checkedAt ? relativeSyncTime(checkedAt) : 'not checked yet';
@@ -448,7 +448,7 @@ async function verifyGitHubSyncTarget(settings, token) {
 	        }
 
 async function readGitHubDataFile(settings, token, allowMissing = false) {
-	          const response = await fetch(`${githubContentsUrl(settings)}?ref=${encodeURIComponent(settings.branch)}`, {headers: githubHeaders(token)});
+	          const response = await fetch(`${githubContentsUrl(settings)}?ref=${encodeURIComponent(settings.branch)}`, {headers: githubHeaders(token), cache: 'no-store'});
 	          if (response.status === 404) {
 	            if (allowMissing) return null;
 	            throw new Error(`No Home Bar data file exists at "${settings.path}" yet. Choose Sync to create it.`);
@@ -525,9 +525,20 @@ function rememberGitHubSync(settings, sha, exportedAt, data) {
 	          localStorage.setItem(GITHUB_SYNC_META_KEY, JSON.stringify({
 	            target: gitHubSyncTarget(settings), sha, dataHash, exportedAt: exportedAt || '', syncedAt: now, checkedAt: now
 	          }));
-	          Object.assign(githubSyncRuntime, {checking: false, remoteSha: sha, remoteHash: dataHash, remoteData: data, checkedAt: now, error: '', offline: false});
+	          Object.assign(githubSyncRuntime, {checking: false, remoteSha: sha, remoteHash: dataHash, remoteData: data, checkedAt: now, error: '', offline: false, autoFailures: 0});
 	          updateGitHubSyncButton();
 	        }
+
+function withGitHubSyncLock(run) {
+          // All GitHub operations share a lock, including other tabs on this origin.
+          return navigator.locks?.request ? navigator.locks.request('home-bar-github-sync', run) : run();
+        }
+
+function gitHubUploadSnapshot() {
+          // userDataSnapshot contains live maps/arrays. Freeze the upload copy before awaiting
+          // PUT so edits during the request cannot accidentally become the synced baseline.
+          return JSON.parse(JSON.stringify(userDataSnapshot()));
+        }
 
 function scheduleGitHubAutoSync() {
           clearTimeout(githubSyncRuntime.autoTimer);
@@ -537,21 +548,26 @@ function scheduleGitHubAutoSync() {
           if (!settings.autoSync || !githubSyncConfigured() || meta.target !== gitHubSyncTarget(settings) || !meta.sha || !meta.dataHash) return;
           githubSyncRuntime.autoTimer = setTimeout(() => {
             githubSyncRuntime.autoTimer = 0;
-            const run = () => autoSyncGitHubData();
-            if (navigator.locks?.request) {
-              navigator.locks.request('home-bar-sync-' + gitHubSyncTarget(settings), run).catch(() => {});
-            } else run();
-          }, Math.min(60000, 1200 * 2 ** githubSyncRuntime.autoFailures));
+            autoSyncGitHubData().catch(() => {});
+          }, Math.min(60000, 2500 * 2 ** githubSyncRuntime.autoFailures));
+        }
+
+function gitHubEditingActive() {
+          return document.visibilityState === 'hidden'
+            || Date.now() - githubSyncRuntime.lastLocalEditAt < 2500
+            || Boolean(document.querySelector('.modal-overlay:not([hidden])'))
+            || Boolean(document.activeElement?.matches('input, textarea, select, [contenteditable="true"]'));
         }
 
 function gitHubAutoSyncReady() {
-          return document.visibilityState !== 'hidden' && navigator.onLine !== false
-            && !githubSyncBusy && !githubSyncRuntime.checking
-            && !document.querySelector('.modal-overlay:not([hidden])')
-            && !document.activeElement?.matches('input, textarea, select, [contenteditable="true"]');
+          return navigator.onLine !== false && !githubSyncBusy && !githubSyncRuntime.checking && !gitHubEditingActive();
         }
 
 async function autoSyncGitHubData() {
+          return withGitHubSyncLock(runGitHubAutoSync);
+        }
+
+async function runGitHubAutoSync() {
           if (!gitHubAutoSyncReady()) return;
           const settings = storedGitHubSyncSettings();
           const token = storedGitHubSyncToken();
@@ -565,19 +581,18 @@ async function autoSyncGitHubData() {
           try {
             // Never create a missing shared file silently. First sync remains manual.
             const remote = await readGitHubDataFile(settings, token);
-            if (!stillCurrent()) return;
-            const data = userDataSnapshot();
+            if (!stillCurrent() || gitHubEditingActive()) return;
+            const data = gitHubUploadSnapshot();
             const localHash = syncDataFingerprint(data);
             const remoteHash = syncDataFingerprint(remote.data);
             Object.assign(githubSyncRuntime, {remoteSha: remote.sha, remoteHash, remoteData: remote.data, checkedAt: new Date().toISOString(), offline: false});
             const plan = gitHubSyncPlan({remoteExists: true, hasBaseline: true,
               localHasSavedData: true, localHash, remoteHash,
-              baselineHash: meta.dataHash, remoteSha: remote.sha, baselineSha: meta.sha});
+              baselineHash: meta.dataHash});
             if (plan === 'choose') throw new Error('Both copies changed. Open GitHub Sync to review them; automatic sync is paused.');
             if (plan === 'download') {
               // Editing may have started while the request was in flight.
-              if (document.visibilityState === 'hidden' || document.querySelector('.modal-overlay:not([hidden])')
-                || document.activeElement?.matches('input, textarea, select, [contenteditable="true"]')) return;
+              if (gitHubEditingActive()) return;
               applyGitHubData(settings, remote);
             } else if (plan === 'upload') {
               const sha = await uploadGitHubData(settings, token, remote, data);
@@ -594,10 +609,16 @@ async function autoSyncGitHubData() {
             }
           } finally {
             setGitHubSyncBusy(false);
+            if (githubSyncRuntime.autoFailures || syncDataFingerprint() !== parseStoredJson(GITHUB_SYNC_META_KEY).dataHash) scheduleGitHubAutoSync();
           }
         }
 
 async function checkGitHubSyncStatus(force = false) {
+          if (githubSyncRuntime.checking || githubSyncBusy) return;
+          return withGitHubSyncLock(() => runGitHubSyncStatusCheck(force));
+        }
+
+async function runGitHubSyncStatusCheck(force = false) {
           scheduleGitHubAutoSync();
 	          if (!githubSyncConfigured() || githubSyncRuntime.checking || githubSyncBusy) return;
 	          const settings = storedGitHubSyncSettings();
@@ -642,12 +663,12 @@ async function checkGitHubSyncStatus(force = false) {
 	          }
 	        }
 
-function gitHubSyncPlan({remoteExists, hasBaseline, localHasSavedData, localHash, remoteHash, baselineHash, remoteSha, baselineSha}) {
+function gitHubSyncPlan({remoteExists, hasBaseline, localHasSavedData, localHash, remoteHash, baselineHash}) {
 	          if (!remoteExists) return 'upload';
 	          if (localHash === remoteHash) return 'clean';
 	          if (!hasBaseline) return localHasSavedData ? 'choose' : 'download';
 	          const localChanged = localHash !== baselineHash;
-	          const remoteChanged = remoteSha !== baselineSha;
+	          const remoteChanged = remoteHash !== baselineHash;
 	          if (localChanged && remoteChanged) return 'choose';
 	          if (remoteChanged) return 'download';
 	          if (localChanged) return 'upload';
@@ -662,13 +683,33 @@ async function uploadGitHubData(settings, token, remote, data) {
 	            content: utf8ToBase64(JSON.stringify(data, null, 2)),
 	            branch: settings.branch
 	          };
-	          if (remote?.sha) body.sha = remote.sha;
-	          const response = await fetch(githubContentsUrl(settings), {
-	            method: 'PUT', headers: {...githubHeaders(token), 'Content-Type': 'application/json'}, body: JSON.stringify(body)
-	          });
-	          if (!response.ok) throw await githubResponseError(response);
-	          const saved = await response.json();
-	          return saved.content?.sha || remote?.sha || '';
+              let current = remote;
+              for (let attempt = 0; attempt < 2; attempt += 1) {
+                if (current?.sha) body.sha = current.sha;
+                const response = await fetch(githubContentsUrl(settings), {
+                  method: 'PUT', headers: {...githubHeaders(token), 'Content-Type': 'application/json'}, body: JSON.stringify(body)
+                });
+                if (response.ok) {
+                  const saved = await response.json();
+                  if (!saved.content?.sha) throw new Error('GitHub did not confirm the saved file. Sync again to verify it.');
+                  return saved.content.sha;
+                }
+                if (attempt === 0 && [409, 422].includes(response.status)) {
+                  const latest = await readGitHubDataFile(settings, token);
+                  const latestHash = syncDataFingerprint(latest.data);
+                  Object.assign(githubSyncRuntime, {remoteSha: latest.sha, remoteHash: latestHash, remoteData: latest.data});
+                  // A completed PUT whose response was lost needs no second write.
+                  if (latestHash === syncDataFingerprint(data)) return latest.sha;
+                  // Retry only when the remote content is unchanged. A real competing edit
+                  // must go through normal conflict review, even after a manual upload choice.
+                  if (current && latestHash === syncDataFingerprint(current.data)) {
+                    current = latest;
+                    continue;
+                  }
+                  throw new Error('GitHub changed during the upload. Your edits are saved on this device. Open GitHub Sync to review both copies.');
+                }
+                throw await githubResponseError(response);
+              }
 	        }
 
 function applyGitHubData(settings, remote) {
@@ -682,6 +723,11 @@ function applyGitHubData(settings, remote) {
 
 async function synchronizeGitHubData() {
           if (githubSyncBusy || githubSyncRuntime.checking) return;
+          return withGitHubSyncLock(runGitHubManualSync);
+        }
+
+async function runGitHubManualSync() {
+          if (githubSyncBusy || githubSyncRuntime.checking) return;
 	          try {
 	            const {settings, token} = gitHubSyncFormValues();
 	            saveGitHubSyncCredentials(settings, token);
@@ -690,7 +736,7 @@ async function synchronizeGitHubData() {
 	            setGitHubSyncStatus('Checking GitHub…');
 	            await verifyGitHubSyncTarget(settings, token);
 	            const remote = await readGitHubDataFile(settings, token, true);
-	            const data = userDataSnapshot();
+	            const data = gitHubUploadSnapshot();
 	            const localHash = syncDataFingerprint(data);
 	            const remoteHash = remote ? syncDataFingerprint(remote.data) : '';
 	            const meta = parseStoredJson(GITHUB_SYNC_META_KEY);
@@ -702,9 +748,7 @@ async function synchronizeGitHubData() {
 	              localHasSavedData: hasPersistedHomeBarData(),
 	              localHash,
 	              remoteHash,
-	              baselineHash: meta.dataHash || '',
-	              remoteSha: remote?.sha || '',
-	              baselineSha: meta.sha || ''
+	              baselineHash: meta.dataHash || ''
 	            });
 	            if (plan === 'choose') {
 	              const message = hasBaseline
@@ -731,7 +775,8 @@ async function synchronizeGitHubData() {
 	              setGitHubSyncStatus('Updating GitHub from this device…');
 	              const sha = await uploadGitHubData(settings, token, remote, data);
 	              rememberGitHubSync(settings, sha, data.exportedAt, data);
-	              setGitHubSyncStatus('Synced. GitHub now has this device’s latest data.', 'success');
+                  const pending = syncDataFingerprint() !== syncDataFingerprint(data);
+	              setGitHubSyncStatus(pending ? 'Uploaded the saved copy. Newer edits are saved on this device and queued for sync.' : 'Synced. GitHub now has this device’s latest data.', 'success');
 	              showSyncCloseAction();
 	              startSyncAutoClose();
 	              return;
@@ -751,10 +796,17 @@ async function synchronizeGitHubData() {
 	          } finally {
 	            setGitHubSyncBusy(false);
 	            updateGitHubSyncInterface(false);
+                scheduleGitHubAutoSync();
 	          }
 	        }
 
 async function downloadLatestGitHubData() {
+          if (githubSyncBusy || githubSyncRuntime.checking) return;
+          return withGitHubSyncLock(runGitHubDownload);
+        }
+
+async function runGitHubDownload() {
+              if (githubSyncBusy || githubSyncRuntime.checking) return;
 	          if (!confirm('Replace all Home Bar data on this device with the latest GitHub copy? Any changes that have not been uploaded will be lost.')) return;
 	          try {
 	            const {settings, token} = gitHubSyncFormValues();

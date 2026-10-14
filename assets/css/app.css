@@ -1127,9 +1127,45 @@
 	    .lnl-gallery-lettering { aspect-ratio: 1; }
 	    .lnl-gallery-tabletop { aspect-ratio: 1600 / 856; }
     .lnl-gallery-pair figcaption { color: var(--faint); font-size: 10px; text-align: center; }
-    .modal.modal-notes { max-width: 900px; width: calc(100vw - 32px); height: calc(100dvh - 64px); max-height: none; display: flex; flex-direction: column; overflow: hidden; }
-    .modal.modal-notes .modal-body { flex: 1 1 auto; min-height: 0; display: flex; }
+    .modal.modal-notes { max-width: 1200px; width: calc(100vw - 32px); height: calc(100dvh - 32px); max-height: none; display: flex; flex-direction: column; overflow: hidden; }
+    .modal.modal-notes .modal-header { flex: 0 0 auto; gap: 10px; }
+    .notes-mode-controls { display: flex; gap: 4px; margin-left: auto; }
+    .notes-mode-controls [aria-pressed="true"] { background: var(--panel-2); border-color: var(--muted); }
+    .modal.modal-notes .modal-body { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; gap: 10px; overflow: hidden; }
+    .notes-toolbar { flex: 0 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 5px; }
+    .notes-toolbar .button { min-height: 30px; padding: 4px 9px; }
+    .notes-toolbar > span, .notes-footer { color: var(--muted); font-size: 11px; }
+    .notes-footer { flex: 0 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; }
     .notes-textarea { flex: 1 1 auto; width: 100%; resize: none; font-size: 15px; line-height: 1.6; }
+    .notes-preview { flex: 1 1 auto; min-height: 0; overflow-y: auto; overflow-wrap: anywhere; border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 22px; font-size: 15px; line-height: 1.6; }
+    .notes-preview p { margin: 0 0 12px; white-space: pre-wrap; }
+    .notes-preview .notes-section { margin: 0 0 12px; }
+    .notes-preview .notes-section > summary { cursor: pointer; padding: 5px 0; color: var(--text); }
+    .notes-preview .notes-section > summary:hover { color: var(--accent); }
+    .notes-preview .notes-section > summary > :is(h1, h2, h3, h4, h5, h6) { display: inline; margin: 0; color: inherit; text-transform: none; letter-spacing: normal; font-weight: 700; line-height: 1.3; }
+    .notes-preview h1 { font-size: 26px; }
+    .notes-preview h2 { font-size: 22px; }
+    .notes-preview .notes-section > summary > h3 { font-size: 18px; }
+    .notes-preview :is(h4, h5, h6) { font-size: 16px; }
+    .notes-section-body { padding: 8px 0 0 16px; border-left: 1px solid var(--line); margin-left: 3px; }
+    .notes-preview :is(ul, ol) { margin: 0 0 12px; padding-left: 24px; }
+    .notes-preview .notes-task { list-style: none; margin-left: -20px; }
+    .notes-task label { display: flex; align-items: baseline; gap: 8px; }
+    .notes-task input { flex: 0 0 auto; }
+    .notes-task input:checked + span { text-decoration: line-through; color: var(--muted); }
+    .notes-preview blockquote { margin: 0 0 12px; padding: 7px 14px; border-left: 3px solid var(--muted); color: var(--muted); white-space: pre-wrap; }
+    .notes-preview code { border-radius: 4px; padding: 2px 5px; background: var(--panel-2); font-size: .9em; }
+    .notes-preview pre { overflow-x: auto; padding: 12px; background: var(--panel-2); border-radius: var(--radius); }
+    .notes-preview pre code { padding: 0; }
+    .notes-preview a { color: var(--accent); text-decoration: underline; }
+    html:has(#notesModalOverlay:not([hidden])), body:has(#notesModalOverlay:not([hidden])) { overflow: hidden; }
+    @media (max-width: 600px) {
+      #notesModalOverlay { padding: 0; }
+      .modal.modal-notes { width: 100vw; height: 100dvh; border-radius: 0; }
+      .modal.modal-notes .modal-body { padding: 10px; }
+      .notes-preview { padding: 12px; }
+      .notes-toolbar > span { width: 100%; }
+    }
     #glasswareModalOverlay { align-items: flex-start; padding-top: 0; }
     .modal.modal-glassware { max-width: 960px; width: calc(100vw - 32px); height: calc(100dvh - 64px); max-height: none; display: flex; flex-direction: column; overflow: hidden; }
     .modal.modal-glassware .modal-body { flex: 1 1 auto; min-height: 0; overflow-y: auto; overflow-x: auto; display: block; padding: 0; }
