@@ -792,6 +792,7 @@ const cloneDiffordsNotes = (notes) => ({
     const flavoringSubtypeForName = (name) => {
       const text = bottleSearchText(name);
       if (!text) return '';
+      if (isFalernumLiqueur(name)) return '';
       if (text.includes('falernum') || text === 'sweet spiced syrup') return 'Syrup, Other';
       if (text.includes('pineapple juice')) return 'Juice, Pineapple';
       if (text.includes('orange bitter')) return 'Bitter, Orange';
@@ -915,6 +916,7 @@ const cloneDiffordsNotes = (notes) => ({
           taste: replacement.taste
         };
       }
+      if (isFalernumLiqueur(item.name)) item = {...item, kind: 'spirit', base: 'Liqueurs', subtype: 'Herb, Other'};
       if (item.kind === 'ingredient') {
         const ingredientName = normalizePantryIngredientName(item.name);
         const flavoringSubtype = flavoringSubtypeForName(ingredientName);
@@ -1213,7 +1215,7 @@ const sourceNotesMarkup = (cocktail) => `${lettersLiquorNotesMarkup(cocktail)}${
     };
     const nonAlcoholicIngredientParts = (cocktail) => cocktail.ingredientNames
         .flatMap((rawName, index) => {
-          const classification = inferBottleClassification(rawName);
+          const classification = inferBottleClassification(isFalernumLiqueur(cocktail.ingredientBottles?.[index] || cocktail.ingredients?.[index]) ? (cocktail.ingredientBottles?.[index] || parseIngredientLine(cocktail.ingredients[index]).name) : rawName);
           const include = (!classification || classification.base === 'Flavorings')
             && !cocktail.liqueurs.some((liqueur) => norm(liqueur.name) === norm(rawName))
             && (isNonAlcoholicIngredientName(rawName) || /falernum/i.test(rawName));
@@ -1250,7 +1252,7 @@ const BITTERSWEET_VERMOUTH = 'Vermouth, Bittersweet';
     const barHasAngosturaBitters = () => store.bar.some((bottle) => bottleMatchesNamedBottle(bottle, 'Flavorings', 'Angostura Bitters'));
     
     const bottleMatchesFlavoring = (bottle, ingredientName) => {
-      if (/falernum|sweet spiced syrup/.test(norm(ingredientName))) return isMixingBottle(bottle) && norm(bottle.name).includes('falernum');
+      if (/falernum|sweet spiced syrup/.test(norm(ingredientName))) return isMixingBottle(bottle) && norm(bottle.name).includes('falernum') && (!/falernum\s+syrup|non[ -]?alcoholic/i.test(ingredientName) || !isFalernumLiqueur(bottle.name));
       const subtype = flavoringSubtypeForName(ingredientName);
       const matchesSubtype = Boolean(subtype) && isMixingBottle(bottle) && bottle.base === 'Flavorings' && bottle.subtype === subtype;
       if (!matchesSubtype || norm(ingredientName) !== 'sugar syrup rich') return matchesSubtype;

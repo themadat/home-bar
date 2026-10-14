@@ -540,6 +540,7 @@ function rowTemplate(c) {
     }
 
 function preparationTags(cocktail) {
+      if (cocktail.id === 'chartreuse-swizzle') return '<span class="serving-style-tag prep-stir">Stir</span>';
       const recipe = recipeCocktail(cocktail);
       const method = (recipe.method || []).join(' ');
       const preparations = [];

@@ -71,6 +71,8 @@ def main():
         # Legacy saved nut bottles migrate before app.js initializes norm.
         # Keep that initialization order here so a late-helper dependency fails.
         target.write_text((ROOT / 'assets/js/ingredients.js').read_text() + '''
+if (!isFalernumLiqueur('John D. Taylor’s Velvet Falernum') || isFalernumLiqueur('Non-alcoholic Falernum Syrup')) throw new Error('Falernum classification failed');
+if (canonicalLiqueurSubtype('Velvet Falernum', 'Syrup, Other') !== 'Herb, Other') throw new Error('Falernum migration failed');
 for (const legacy of ['Nuts liqueurs', 'Nut Liqueur', 'Nut']) {
     for (const [name, expected] of [
         ['Amaretto', 'Nut, Almond'], ['Frangelico', 'Nut, Hazelnut'],
@@ -91,6 +93,8 @@ const norm = () => { throw new Error('Migration must not depend on late startup 
         helpers = app[app.index('    const norm ='):app.index('        const displayGlass')]
         target.write_text((ROOT / 'assets/js/ingredients.js').read_text() + config + helpers + '''
 for (const [name, expected] of [
+    ['Velvet Falernum', 'Herb, Other Liqueur [Velvet Falernum]'],
+    ['Falernum Syrup', 'Sweet Spiced Syrup [Falernum (Caribbean)]'],
     ['Maraschino Liqueur', 'Fruit, Cherry Liqueur [Maraschino]'],
     ['Maraschino Luxardo', 'Fruit, Cherry Liqueur [Luxardo Maraschino]'],
     ['Orange Curacao', 'Fruit, Orange Liqueur [Curaçao]'],

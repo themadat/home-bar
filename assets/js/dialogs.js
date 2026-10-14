@@ -691,6 +691,7 @@ function inferBottleClassification(value) {
 	          if (!name) return null;
               if (/\bpuree\b|\bginger\s+(?:beer|ale)\b/.test(name) || /^(?:fresh )?ginger(?: root)?$/.test(name)) return null;
               if (/\b(?:aperol|campari)\b/.test(name)) return {base: 'Liqueurs', subtype: 'Bitter liqueurs'};
+              if (isFalernumLiqueur(value)) return {base: 'Liqueurs', subtype: 'Herb, Other'};
               if (name.includes('falernum') || name === 'sweet spiced syrup') return {base: 'Flavorings', subtype: 'Syrup, Other'};
 	          const recommendation = RECOMMENDED_BOTTLES.find((item) => {
 	            const recommendedName = norm(item.name);
