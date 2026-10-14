@@ -2178,3 +2178,8 @@
 
     .prep-shake { color: #B9DDED; border-color: rgba(84, 126, 146, .8); background: rgba(84, 126, 146, .2); }
     .prep-stir { color: #D9BDEA; border-color: rgba(158, 116, 184, .8); background: rgba(158, 116, 184, .2); }
+
+.recipe-header-link { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.recipe-source-column h3 > .recipe-header-link { display: flex; align-items: center; justify-content: space-between; gap: 6px; width: 100%; }
+.recipe-header-link:hover { text-decoration-thickness: 2px; }
+.recipe-header-link:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; border-radius: 2px; }
