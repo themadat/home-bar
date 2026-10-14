@@ -268,6 +268,13 @@ function recipeSource(cocktail, key) {
 	      return null;
 	    }
 
+function recipeHeaderLink(cocktail, key, content) {
+          const source = recipeSource(cocktail, key);
+          const url = String(key === 'iba' || !key ? cocktail.url || '' : source?.url || '').trim();
+          if (!/^https?:\/\//i.test(url)) return content;
+          return `<a class="recipe-header-link" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" title="Open original recipe (new tab)">${content}</a>`;
+        }
+
 function availableRecipeSource(cocktail, key) {
 	      const source = recipeSource(cocktail, key);
 	      return source && source.available !== false && Array.isArray(source.ingredients) && source.ingredients.length > 0;
@@ -376,10 +383,11 @@ function recipeComparisonColumn(cocktail, option, servings) {
 	      const {lines: ingredients, footnote: ingredientFootnote} = ingredientListDetails(variant, servings);
 	      const method = variant.method.length ? variant.method.map((line) => `<li>${escapeHtml(formatMethodLine(line))}</li>`).join('') : '<li class="empty">Not recorded</li>';
 	      const meta = recipeComparisonMeta(cocktail, option.key, source);
+	      const heading = recipeHeaderLink(cocktail, option.key, `<span>${escapeHtml(option.label)}</span>${meta ? `<span class="recipe-source-meta"><span class="recipe-source-time">${escapeHtml(meta)}</span></span>` : ''}`);
 	      const totalVolume = formatTotalVolume(totalIngredientVolume(variant, servings));
 	      const servingLabel = `${servings} Serving${servings === 1 ? '' : 's'}`;
 	      const servingStepper = `<div class="serving-stepper" aria-label="Servings"><button type="button" data-serving-step="-1" data-cocktail-id="${escapeHtml(cocktail.id)}" aria-label="Decrease servings" ${servings <= 1 ? 'disabled' : ''}>−</button><span class="serving-count">${escapeHtml(servingLabel)}</span><button type="button" data-serving-step="1" data-cocktail-id="${escapeHtml(cocktail.id)}" aria-label="Increase servings">+</button></div>`;
-	      return `<section class="detail-card recipe-source-column${sourceClass}"><h3><span>${escapeHtml(option.label)}</span>${meta ? `<span class="recipe-source-meta"><span class="recipe-source-time">${escapeHtml(meta)}</span></span>` : ''}</h3><div class="recipe-source-section recipe-source-ingredients"><div class="recipe-source-ingredient-tools"><span class="recipe-source-total">${escapeHtml(totalVolume)} Total</span>${servingStepper}</div><h4>Ingredients</h4><ul>${ingredients}</ul>${ingredientFootnote}</div><div class="recipe-source-section recipe-source-inline"><h4>Garnish</h4><p>${variant.garnish ? escapeHtml(variant.garnish) : '<span class="empty">None listed</span>'}</p></div><div class="recipe-source-section recipe-source-inline"><h4>Glassware</h4><p>${escapeHtml(recipeGlasswareLabel(variant))}</p></div><div class="recipe-source-section"><h4>Method</h4><ol>${method}</ol></div></section>`;
+	      return `<section class="detail-card recipe-source-column${sourceClass}"><h3>${heading}</h3><div class="recipe-source-section recipe-source-ingredients"><div class="recipe-source-ingredient-tools"><span class="recipe-source-total">${escapeHtml(totalVolume)} Total</span>${servingStepper}</div><h4>Ingredients</h4><ul>${ingredients}</ul>${ingredientFootnote}</div><div class="recipe-source-section recipe-source-inline"><h4>Garnish</h4><p>${variant.garnish ? escapeHtml(variant.garnish) : '<span class="empty">None listed</span>'}</p></div><div class="recipe-source-section recipe-source-inline"><h4>Glassware</h4><p>${escapeHtml(recipeGlasswareLabel(variant))}</p></div><div class="recipe-source-section"><h4>Method</h4><ol>${method}</ol></div></section>`;
 	    }
 
 function recipeComparison(cocktail, servings, includeControls = true) {
@@ -459,7 +467,7 @@ function detailTemplate(c) {
 	        : `<div class="recipe-detail-row">
 	            <section class="detail-card ingredients-card">
 	              <div class="detail-card-header">
-	                <h3>Ingredients</h3>
+	                <h3>${recipeHeaderLink(c, selectedSource, 'Ingredients')}</h3>
 	                ${recipeSourceControls(c)}
 	                <div class="ingredients-tools">
 	                  <span class="total-volume">${escapeHtml(totalVolume)} Total</span>
