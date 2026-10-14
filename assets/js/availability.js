@@ -9,19 +9,21 @@ function spiritTags(cocktail) {
 
 function sourceRecipeClassification(source, cocktail) {
       const names = cloneRecipeLines(source.ingredientNames);
-      const classifications = names.map(inferBottleClassification);
+      const classificationNames = names.map((name, index) => isFalernumLiqueur(source.ingredientBottles?.[index] || source.ingredients?.[index]) ? (source.ingredientBottles?.[index] || parseIngredientLine(source.ingredients[index]).name) : name);
+      const classifications = classificationNames.map(inferBottleClassification);
       const baseLiquor = Array.isArray(source.baseLiquor) && source.baseLiquor.length
         ? cloneRecipeLines(source.baseLiquor)
         : unique(classifications.filter(Boolean).map((item) => item.base).filter((base) => base !== 'Flavorings'));
-      const inferredLiqueurs = names.flatMap((name, index) => {
+      const inferredLiqueurs = classificationNames.flatMap((name, index) => {
         const classification = classifications[index];
         return classification?.base === 'Liqueurs'
           ? [{name, subtype: classification.subtype || 'Other, Specialty', flavor: '', genericOnly: false}]
           : [];
       });
+      if (inferredLiqueurs.some((item) => isFalernumLiqueur(item.name)) && !baseLiquor.includes('Liqueurs')) baseLiquor.push('Liqueurs');
       return {
         baseLiquor: baseLiquor.length ? baseLiquor : cocktail.baseLiquor,
-        liqueurs: Array.isArray(source.liqueurs) ? source.liqueurs.filter((liqueur) => !/falernum|pur[eé]e/i.test(liqueur.name)).map((liqueur) => ({...liqueur})) : inferredLiqueurs
+        liqueurs: Array.isArray(source.liqueurs) ? source.liqueurs.filter((liqueur) => !(/pur[eé]e/i.test(liqueur.name) || (/falernum/i.test(liqueur.name) && !isFalernumLiqueur(liqueur.name)))).map((liqueur) => ({...liqueur})).concat(inferredLiqueurs.filter((item) => isFalernumLiqueur(item.name) && !source.liqueurs.some((existing) => isFalernumLiqueur(existing.name)))) : inferredLiqueurs
       };
     }
 

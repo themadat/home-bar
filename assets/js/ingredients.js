@@ -1,4 +1,10 @@
 // Classic-script function declarations; shared state is initialized in app.js.
+function isFalernumLiqueur(name) {
+          const text = String(name || '').toLowerCase();
+          if (/non[ -]?alcoholic|alcohol[ -]?free|0\s*%/.test(text)) return false;
+          return /falernum/.test(text) && /velvet|liqueur/.test(text) && !/\bsyrup\b/.test(text);
+        }
+
 function nutLiqueurSubtypeForName(name) {
           // Saved bottles are migrated before app.js initializes the shared norm helper.
           const text = String(name ?? '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, ' ').trim();
@@ -10,6 +16,7 @@ function nutLiqueurSubtypeForName(name) {
         }
 
 function canonicalLiqueurSubtype(name, subtype) {
+          if (isFalernumLiqueur(name)) return 'Herb, Other';
           if (/\b(?:aperol|campari)\b/i.test(name)) return 'Bitter liqueurs';
           if (['Nuts liqueurs', 'Nut Liqueur', 'Nut'].includes(subtype)) return nutLiqueurSubtypeForName(name) || 'Nut, Other';
           if (/chart(?:reuse|ruse)|benedictine|fernet|cynar/i.test(String(name).normalize('NFD').replace(/[\u0300-\u036f]/g, ''))) return 'Herb, Other';
@@ -62,14 +69,19 @@ function titleCaseDiffordsIngredientLine(value) {
 function normalizeSpecialtyLiqueurIngredients(cocktail) {
       if (!cocktail || !Array.isArray(cocktail.ingredientNames)) return cocktail;
       if (!Array.isArray(cocktail.liqueurs)) cocktail.liqueurs = [];
-      const hadSyrupOrPureeLiqueur = cocktail.liqueurs.some((item) => /falernum|pur[eé]e/i.test(item.name));
-      cocktail.liqueurs = cocktail.liqueurs.filter((item) => !/falernum|pur[eé]e/i.test(item.name));
+      const hadSyrupOrPureeLiqueur = cocktail.liqueurs.some((item) => (/pur[eé]e/i.test(item.name) || (/falernum/i.test(item.name) && !isFalernumLiqueur(item.name))));
+      cocktail.liqueurs = cocktail.liqueurs.filter((item) => !(/pur[eé]e/i.test(item.name) || (/falernum/i.test(item.name) && !isFalernumLiqueur(item.name))));
       const ingredientText = [
         ...cocktail.ingredientNames,
         ...(Array.isArray(cocktail.ingredients) ? cocktail.ingredients : []),
         ...(Array.isArray(cocktail.ingredientBottles) ? cocktail.ingredientBottles : []),
         ...cocktail.liqueurs.map((liqueur) => liqueur.name || '')
       ].join(' ');
+      const alcoholicFalernum = [...cocktail.ingredientNames, ...(cocktail.ingredients || []), ...(cocktail.ingredientBottles || [])].find(isFalernumLiqueur);
+      if (alcoholicFalernum && !cocktail.liqueurs.some((item) => isFalernumLiqueur(item.name))) {
+        cocktail.liqueurs.push({name: /velvet/i.test(alcoholicFalernum) ? 'Velvet Falernum' : 'Falernum Liqueur', subtype: 'Herb, Other', flavor: 'lime, almond, spice'});
+        if (!(cocktail.baseLiquor || []).includes('Liqueurs')) cocktail.baseLiquor = [...(cocktail.baseLiquor || []), 'Liqueurs'];
+      }
       SPECIALTY_LIQUEUR_INGREDIENTS.forEach((specialty) => {
         const existing = cocktail.liqueurs.find((liqueur) => specialty.pattern.test(String(liqueur.name || '')));
         const specialtyName = specialty.name === 'Chartreuse'
@@ -356,6 +368,7 @@ function specialtyIngredientLabel(name) {
           if (/chart(?:reuse|ruse)/.test(key)) return `Herb, Other Liqueur [Chartreuse (${key.includes('yellow') ? 'Yellow' : 'Green'})]`;
           if (key.includes('benedictine')) return 'Herb, Other Liqueur [Bénédictine D.O.M.]';
           if (key.includes('cynar')) return 'Herb, Other Liqueur [Cynar]';
+          if (isFalernumLiqueur(name)) return `Herb, Other Liqueur [${key.includes('velvet') ? 'Velvet Falernum' : 'Falernum'}]`;
           if (key.includes('falernum')) return 'Sweet Spiced Syrup [Falernum (Caribbean)]';
           if (key.includes('puree')) return titleWords(key).replace(/Puree/g, 'Purée');
           if (/fernet/.test(key)) return `Herb, Other Liqueur [${key.includes('branca') ? 'Fernet-Branca' : 'Fernet'}]`;
@@ -449,6 +462,7 @@ function ingredientDisplayParts(cocktail, index) {
           const rawName = cocktail.ingredientNames[index] || parseIngredientLine(cocktail.ingredients[index] || '').name;
           const sourceLine = String(cocktail.ingredients[index] || '');
           const explicitBottle = String(cocktail.ingredientBottles?.[index] || '').trim();
+          if (isFalernumLiqueur(explicitBottle || sourceLine) && /falernum/i.test(rawName)) return splitSpecificIngredientLabel(specialtyIngredientLabel(explicitBottle || sourceLine));
           const sourceName = parseIngredientLine(sourceLine).name;
           const standardized = standardizedLiqueurLabel(explicitBottle || sourceName) || standardizedLiqueurLabel(rawName);
           if (standardized) {
@@ -760,6 +774,7 @@ function compactTypeTag(cocktail, includeStatus = false) {
     }
 
 function cocktailServingStyle(cocktail) {
+      if (cocktail?.id === 'chartreuse-swizzle') return 'Ice';
       const method = Array.isArray(cocktail?.method) ? cocktail.method.join(' ') : '';
       if (!method.trim()) return '';
       const text = norm(method);
