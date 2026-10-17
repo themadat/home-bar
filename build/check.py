@@ -116,6 +116,22 @@ if (standardizedLiqueurLabel('Maraschino Cherries')) throw new Error('Garnish be
         result = subprocess.run([node or str(jsc), str(target)], capture_output=True, text=True)
         if result.returncode:
             raise SystemExit('LABEL FAIL: liqueur aliases, brands, or style qualifiers')
+        availability_helpers = '\n'.join([
+            next(line.strip() for line in app.splitlines() if line.strip().startswith('const ' + name + ' ='))
+            for name in ['cloneRecipeLines', 'unique', 'textHas', 'subtypeValue']
+        ])
+        mixing_helpers = app[app.index('    const isFutureBarBottle ='):app.index('    const cocktailLookupBottle =')]
+        pantry_helpers = app[app.index('    const isNonAlcoholicIngredientName ='):app.index('const pantryIngredientTags =')]
+        target.write_text('\n'.join([
+            (ROOT / 'assets/js/ingredients.js').read_text(),
+            (ROOT / 'assets/js/availability.js').read_text(),
+            (ROOT / 'assets/js/dialogs.js').read_text(),
+            config, helpers, availability_helpers, mixing_helpers, pantry_helpers,
+            (ROOT / 'build/check-availability.js').read_text()
+        ]))
+        result = subprocess.run([node or str(jsc), str(target)], capture_output=True, text=True)
+        if result.returncode or 'AVAILABILITY OK' not in result.stdout:
+            raise SystemExit('AVAILABILITY FAIL: ' + (result.stderr + result.stdout)[-1500:])
         target.write_text('\n'.join((ROOT / path).read_text() for path in [
             'assets/js/dialogs.js', 'assets/js/sync.js', 'build/check-notes-sync.js'
         ]))
@@ -125,6 +141,7 @@ if (standardizedLiqueurLabel('Maraschino Cherries')) throw new Error('Garnish be
     print(f'PARSE OK {len(scripts)} scripts and combined scope; local assets exist')
     print('STARTUP OK legacy nut liqueur migrations before shared helper initialization')
     print('LABEL OK liqueur aliases, brands, style qualifiers, and garnish exclusion')
+    print('AVAILABILITY OK required rinses, named ingredients, source variants, and out-of-stock bottles')
     print('NOTES/SYNC OK safe Markdown, heading sections, upload races, retries, and shared locking')
 
 
