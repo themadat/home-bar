@@ -1021,7 +1021,7 @@ let storedFriendRatings = {};
       };
     });
         const state = {
-          shoppingView: 'buy', shoppingCategory: 'all', shoppingPriceDescending: false,
+          shoppingView: 'buy', shoppingCategory: 'all', shoppingSort: 'price', shoppingSortDescending: false,
           q: '', ingredientQ: '', sort: 'name', sortDirection: 'default', pantrySort: 'alpha', statFilter: 'all', expanded: new Set(), barExpandedBottle: '', barExpandedRecommendation: '', neatExpandedBottle: '', bottleUsageId: '', bottleUsageOverride: null, pendingRemoveBottleId: '',
 	          futureBarPreview: false,
 	          barRecommendationView: 'owned',
@@ -1095,7 +1095,8 @@ let storedFriendRatings = {};
     $('#glasswareButton').title = 'Drinkware (D)';
     $('#manageBarButton').title = 'Manage My Bar (B)';
     $('#archiveButton').title = 'Archive (E)';
-    $('#shoppingListButton').title = 'Shopping List (P)';
+    $('#shoppingListButton').title = 'Lists (P)';
+    $('#shoppingListButton').setAttribute('aria-label', 'Lists');
     $('#addCocktailButton').title = 'Add cocktail (Control+Option+Shift+A)';
     $('#settingsButton').title = 'Settings (Control+Option+Shift+,)';
     $('#githubSyncButton').title = 'GitHub Sync (Control+Option+Shift+S)';
@@ -1181,10 +1182,14 @@ let friendRatingCocktailId = '';
     let editingFriendRatingName = '';
 
 $('#shoppingListButton').innerHTML = __SHOPPING_LIST;
-$('#shoppingAllToggle').innerHTML = __SHOPPING_ALL + 'All';
-$('#shoppingSpiritsToggle').innerHTML = __SHOPPING_SPIRITS + 'Liquor &amp; Liqueurs';
-$('#shoppingLiquorToggle').innerHTML = __SHOPPING_LIQUOR + 'Liquor Only';
-    $('#barShoppingListButton').innerHTML = __BAG_FILL;
+$('#shoppingAllToggle').innerHTML = __SHOPPING_ALL + '<span>All</span>';
+$('#shoppingSpiritsToggle').innerHTML = __SHOPPING_SPIRITS + '<span>Alcohol</span>';
+$('#shoppingBuyToggle').innerHTML = __WINEGLASS_FILL + '<span>To Buy</span>';
+$('#shoppingHaveToggle').innerHTML = __SHOPPING_HAVE + '<span>I Have</span>';
+$('#mobileShoppingBuy').innerHTML = __SHOPPING_BASKET;
+$('#mobileShoppingHave').innerHTML = __WINEGLASS_FILL;
+$('#shoppingLiquorToggle').innerHTML = __SHOPPING_LIQUOR + '<span>Liquor</span>';
+    $('#barShoppingListButton').innerHTML = __SHOPPING_LIST;
     $('#archiveButton').innerHTML = __ARCHIVEBOX_FILL;
     $('#notesButton').innerHTML = __LIST_CLIPBOARD_FILL;
     $('#glasswareButton').innerHTML = __WINEGLASS_FILL;
@@ -2051,7 +2056,19 @@ $('#importData').addEventListener('click', () => $('#importFile').click());
     [['shoppingBuyToggle', 'shoppingView', 'buy'], ['shoppingHaveToggle', 'shoppingView', 'have'], ['shoppingAllToggle', 'shoppingCategory', 'all'], ['shoppingSpiritsToggle', 'shoppingCategory', 'spirits'], ['shoppingLiquorToggle', 'shoppingCategory', 'liquor']].forEach(([id, key, value]) => {
       $('#' + id).addEventListener('click', () => { state[key] = value; renderShoppingList(); });
     });
-    $('#shoppingPriceSort').addEventListener('click', () => { state.shoppingPriceDescending = !state.shoppingPriceDescending; renderShoppingList(); });
+    [['shoppingPriceSort', 'price'], ['shoppingAbvSort', 'abv']].forEach(([id, sort]) => {
+      $('#' + id).addEventListener('click', () => {
+        state.shoppingSortDescending = state.shoppingSort === sort ? !state.shoppingSortDescending : false;
+        state.shoppingSort = sort;
+        renderShoppingList();
+      });
+    });
+    [['mobileShoppingBuy', 'buy', 'all', 'price'], ['mobileShoppingHave', 'have', 'spirits', 'price']].forEach(([id, view, category, sort]) => {
+      $('#' + id).addEventListener('click', () => {
+        Object.assign(state, {shoppingView: view, shoppingCategory: category, shoppingSort: sort, shoppingSortDescending: false});
+        openShoppingListModal();
+      });
+    });
 	    $('#shoppingListModalClose').addEventListener('click', closeShoppingListModal);
 	    $('#shoppingListBarButton').addEventListener('click', () => {
 	      closeShoppingListModal();
@@ -2474,7 +2491,7 @@ let resizeTimer = null;
         updateAppButton: 'Update',
         settingsButton: 'Settings', lettersLiquorGalleryButton: 'Gallery', notesButton: 'Notes',
         glasswareButton: 'Drinkware', manageBarButton: 'My Bar', archiveButton: 'Archive',
-        shoppingListButton: 'Shopping', addCocktailButton: 'Add'
+        shoppingListButton: 'Lists', addCocktailButton: 'Add'
       };
       const singleKeyLabels = {
         lettersLiquorGalleryButton: 'G', glasswareButton: 'D', manageBarButton: 'B',

@@ -661,38 +661,18 @@ function setSettingsTab(tabName, focus = false) {
 	          });
 	        }
 
-function shoppingLocationKey(location) {
-	          const text = String(location || '').toLowerCase();
-	          if (/\bback\s*wall\b/.test(text)) return [0, 0, 0, 0, 0];
-	          const aisle = text.match(/\baisle\s*0*(\d+)/);
-	          if (!aisle) return [2, 0, 0, 0, 0];
-	          const side = /\bleft\b/.test(text) ? 0 : /\bright\b/.test(text) ? 1 : 2;
-	          const bay = Number(text.match(/\bbay\s*0*(\d+)/)?.[1] || 999);
-	          const shelf = Number(text.match(/\bshelf\s*0*(\d+)/)?.[1] || 999);
-	          return [1, Number(aisle[1]), side, bay, shelf];
-	        }
-
-function compareShoppingItems(a, b) {
-	          const aKey = shoppingLocationKey(a.location);
-	          const bKey = shoppingLocationKey(b.location);
-	          for (let index = 0; index < aKey.length; index += 1) {
-	            if (aKey[index] !== bKey[index]) return aKey[index] - bKey[index];
-	          }
-	          return a.name.localeCompare(b.name);
-	        }
-
 function renderShoppingList() {
           const owned = state.shoppingView === 'have';
-          const matchesCategory = (bottle) => state.shoppingCategory === 'all' || ['Vodka', 'Gin', 'Tequila', 'Whiskey', 'Rum', 'Brandy'].includes(bottle.base) || (state.shoppingCategory === 'spirits' && ['Vermouth', 'Liqueurs'].includes(bottle.base));
+          const matchesCategory = (bottle) => state.shoppingCategory === 'all' || ['Vodka', 'Gin', 'Tequila', 'Whiskey', 'Rum', 'Brandy'].includes(bottle.base) || (state.shoppingCategory === 'spirits' && (['Vermouth', 'Liqueurs', 'Wine', 'Beer'].includes(bottle.base) || Number(bottle.abv) > 0));
           const bottles = store.bar.filter((bottle) => bottle.kind !== 'ingredient' && bottle.recommended !== true && (owned ? bottle.shoppingList !== true : bottle.shoppingList === true) && matchesCategory(bottle));
           const needed = owned ? [] : allRecommendedBottles().filter((recommendation) => {
             const source = recommendation.sourceBottleId && store.bar.find((bottle) => bottle.id === recommendation.sourceBottleId);
             return source?.shoppingList === true && matchesCategory(recommendation);
           });
           const items = [
-            ...bottles.map((bottle) => ({name: bottle.name, location: bottle.totalWineLocation, price: bottle.price, html: shoppingBottleHtml(bottle, owned)})),
-            ...needed.map((recommendation) => ({name: recommendation.name, location: recommendation.location, price: recommendation.price, html: shoppingRecommendationHtml(recommendation)}))
-          ].sort(owned ? compareShoppingPrices : compareShoppingItems);
+            ...bottles.map((bottle) => ({name: bottle.name, price: bottle.price, abv: defaultBottleAbv(bottle.base, bottle.subtype, bottle.abv), html: shoppingBottleHtml(bottle, owned)})),
+            ...needed.map((recommendation) => ({name: recommendation.name, price: recommendation.price, abv: defaultBottleAbv(recommendation.base, recommendation.subtype, recommendation.abv), html: shoppingRecommendationHtml(recommendation)}))
+          ].sort(compareShoppingValues);
           const count = items.length;
           const knownPrices = items.map((item) => normalizeBottlePrice(item.price)).filter((price) => price !== '').map(Number);
           const expectedTotal = knownPrices.reduce((total, price) => total + price, 0);
@@ -703,16 +683,24 @@ function renderShoppingList() {
           $('#shoppingAllToggle').setAttribute('aria-pressed', state.shoppingCategory === 'all');
           $('#shoppingSpiritsToggle').setAttribute('aria-pressed', state.shoppingCategory === 'spirits');
           $('#shoppingLiquorToggle').setAttribute('aria-pressed', state.shoppingCategory === 'liquor');
-          $('#shoppingPriceSort').hidden = !owned;
-          $('#shoppingPriceSort').textContent = state.shoppingPriceDescending ? '750 ml: High to Low ↓' : '750 ml: Low to High ↑';
+          [['shoppingPriceSort', 'price', 'Price', __SHOPPING_PRICE], ['shoppingAbvSort', 'abv', 'ABV', __SHOPPING_ABV]].forEach(([id, sort, label, icon]) => {
+            const active = state.shoppingSort === sort;
+            const direction = state.shoppingSortDescending ? 'High to Low' : 'Low to High';
+            const button = $('#' + id);
+            button.setAttribute('aria-pressed', active);
+            button.setAttribute('aria-label', `${label}${active ? ': ' + direction : ''}. ${active ? 'Reverse sort' : 'Sort low to high'}`);
+            button.title = button.getAttribute('aria-label');
+            button.innerHTML = icon + `<span>${label}${active ? (state.shoppingSortDescending ? ' ↓' : ' ↑') : ''}</span>`;
+          });
           $('#shoppingListItems').innerHTML = count ? items.map((item) => item.html).join('') : `<p class="shopping-list-empty">${state.shoppingCategory === 'liquor' ? 'No liquor bottles' : 'No bottles'} ${owned ? 'in your bar' : 'to buy'}.</p>`;
         }
 
-function compareShoppingPrices(a, b) {
-          const aPrice = normalizeBottlePrice(a.price);
-          const bPrice = normalizeBottlePrice(b.price);
-          if (aPrice === '' || bPrice === '') return (aPrice === '') - (bPrice === '') || a.name.localeCompare(b.name);
-          return (aPrice - bPrice) * (state.shoppingPriceDescending ? -1 : 1) || a.name.localeCompare(b.name);
+function compareShoppingValues(a, b) {
+          const normalize = state.shoppingSort === 'abv' ? normalizeBottleAbv : normalizeBottlePrice;
+          const aValue = normalize(a[state.shoppingSort]);
+          const bValue = normalize(b[state.shoppingSort]);
+          if (aValue === '' || bValue === '') return (aValue === '') - (bValue === '') || a.name.localeCompare(b.name);
+          return (aValue - bValue) * (state.shoppingSortDescending ? -1 : 1) || a.name.localeCompare(b.name);
         }
 
 function openShoppingListModal() {
