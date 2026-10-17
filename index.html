@@ -15,7 +15,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Home Bar">
   <meta name="mobile-web-app-capable" content="yes">
-  <link rel="stylesheet" href="assets/css/app.css?v=2.0.0.163">
+  <link rel="stylesheet" href="assets/css/app.css?v=2.0.0.164">
 </head>
 <body>
   <div class="app">
@@ -426,7 +426,7 @@
           <div class="shopping-controls" aria-label="Bottle List Controls">
             <div class="shopping-toggle" role="group" aria-label="Bottle Status"><button class="button" id="shoppingBuyToggle" type="button" aria-pressed="true">To Buy</button><button class="button" id="shoppingHaveToggle" type="button" aria-pressed="false">I Have</button></div>
             <div class="shopping-toggle" role="group" aria-label="Bottle Category"><button class="button" id="shoppingAllToggle" type="button" aria-pressed="true">All</button><button class="button" id="shoppingSpiritsToggle" type="button" aria-pressed="false">Liquor &amp; Liqueurs</button><button class="button" id="shoppingLiquorToggle" type="button" aria-pressed="false">Liquor Only</button></div>
-            <div class="shopping-toggle shopping-sort" role="group" aria-label="Sort Bottles"><button class="button" id="shoppingPriceSort" type="button" aria-pressed="false">Price</button><button class="button" id="shoppingAbvSort" type="button" aria-pressed="false">ABV</button></div>
+            <div class="shopping-toggle shopping-sort" role="group" aria-label="Sort Bottles"><button class="button" id="shoppingLocationSort" type="button" aria-pressed="true">Location</button><button class="button" id="shoppingPriceSort" type="button" aria-pressed="false">Price</button><button class="button" id="shoppingAbvSort" type="button" aria-pressed="false">ABV</button></div>
           </div>
           <div id="shoppingListItems" class="shopping-list"></div>
           <p class="shopping-list-disclaimer">Prices and availability depend on the selected Total Wine &amp; More store.</p>
@@ -786,34 +786,34 @@
       </div>
     </div>
   </div>
-  <script src="letters-liquor-notes.js?v=2.0.0.163"></script>
-  <script src="letters-liquor-data.js?v=2.0.0.163"></script>
-  <script src="diffords-data.js?v=2.0.0.163"></script>
-  <script src="data/classic-recipes.js?v=2.0.0.163"></script>
+  <script src="letters-liquor-notes.js?v=2.0.0.164"></script>
+  <script src="letters-liquor-data.js?v=2.0.0.164"></script>
+  <script src="diffords-data.js?v=2.0.0.164"></script>
+  <script src="data/classic-recipes.js?v=2.0.0.164"></script>
   <script>
-const BUILD_VERSION = '2.0.0.163';
+const BUILD_VERSION = '2.0.0.164';
     const CURRENT_RELEASE = {
-      "title": "Lists and mobile cocktail layout",
-      "summary": "Refresh bottle lists with colored types, price and ABV sorting, and mobile shortcuts.",
+      "title": "Location sorting and list controls",
+      "summary": "Add aisle, bay, and shelf sorting with mode-specific defaults and refine bottle list controls.",
       "changes": [
-        "Add All, Alcohol, and Liquor filters with the supplied icons and compact mobile controls.",
-        "Show colored bottle types beside two-line names and stack price and ABV beside the size control.",
-        "Add reversible price and ABV sorts plus mobile shortcuts for To Buy and I Have Alcohol.",
-        "Rename the top-bar action to Lists, match its My Bar icon, and arrange mobile cocktails into name/Try/rating and category/recipe/prep/serve rows."
+        "Add Location as the leftmost sort option, ordered numerically by aisle, bay, and shelf, with reversible direction and unset locations last.",
+        "Default To Buy to location sorting and I Have to price sorting, including mobile shortcuts.",
+        "Match plus and bag actions to liquor type colors, move the 375ml price between price and ABV, and use bag and wine-glass mode icons.",
+        "Keep all eight mobile controls on one line and highlight all four borders of selected toggles."
       ]
     };
   </script>
-  <script src="data/cocktails.js?v=2.0.0.163"></script>
-  <script src="assets/js/icons.js?v=2.0.0.163"></script>
-  <script src="assets/js/ingredients.js?v=2.0.0.163"></script>
-  <script src="assets/js/ratings.js?v=2.0.0.163"></script>
-  <script src="assets/js/availability.js?v=2.0.0.163"></script>
-  <script src="assets/js/render.js?v=2.0.0.163"></script>
-  <script src="assets/js/dialogs.js?v=2.0.0.163"></script>
-  <script src="assets/js/bar.js?v=2.0.0.163"></script>
-  <script src="assets/js/cocktail-editor.js?v=2.0.0.163"></script>
-  <script src="assets/js/sync.js?v=2.0.0.163"></script>
-  <script src="assets/js/interface.js?v=2.0.0.163"></script>
-  <script src="assets/js/app.js?v=2.0.0.163"></script>
+  <script src="data/cocktails.js?v=2.0.0.164"></script>
+  <script src="assets/js/icons.js?v=2.0.0.164"></script>
+  <script src="assets/js/ingredients.js?v=2.0.0.164"></script>
+  <script src="assets/js/ratings.js?v=2.0.0.164"></script>
+  <script src="assets/js/availability.js?v=2.0.0.164"></script>
+  <script src="assets/js/render.js?v=2.0.0.164"></script>
+  <script src="assets/js/dialogs.js?v=2.0.0.164"></script>
+  <script src="assets/js/bar.js?v=2.0.0.164"></script>
+  <script src="assets/js/cocktail-editor.js?v=2.0.0.164"></script>
+  <script src="assets/js/sync.js?v=2.0.0.164"></script>
+  <script src="assets/js/interface.js?v=2.0.0.164"></script>
+  <script src="assets/js/app.js?v=2.0.0.164"></script>
 </body>
 </html>
