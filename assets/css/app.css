@@ -1543,21 +1543,28 @@
     #shoppingListModalOverlay { padding: 8px; }
     .modal.modal-shopping { max-width: 680px; height: calc(100dvh - 16px); max-height: none; display: flex; flex-direction: column; overflow: hidden; }
     .modal.modal-shopping .modal-body { flex: 1 1 auto; min-height: 0; overflow-y: auto; align-content: start; }
+    #shoppingListModalOverlay .modal-body { padding-top: 0; }
     .shopping-list { display: grid; gap: 6px; }
     .shopping-heading-meta { display: inline-flex; align-items: baseline; gap: 5px; margin-left: 6px; color: var(--muted); font-size: 12px; font-weight: 650; white-space: nowrap; }
-    .bar-bottle-row.shopping-item { grid-template-columns: 26px minmax(0, 1fr) auto auto; gap: 6px; min-height: 64px; height: auto; padding: 6px; }
+    .bar-bottle-row.shopping-item { grid-template-columns: 26px minmax(0, 1fr) 74px 24px; align-items: start; gap: 6px; min-height: 64px; height: auto; padding: 6px; }
     .shopping-item .recommended-left-action { color: var(--base-text, var(--accent)); border-color: var(--base-line, var(--accent)); background: var(--base-bg, var(--accent-soft)); }
     .shopping-item .recommended-left-action:hover { border-color: var(--base-edge, var(--accent)); background: var(--base-on, var(--accent-soft)); color: var(--base-active-text, var(--text)); }
     .shopping-item-copy { display: grid; gap: 3px; min-width: 0; }
-    .shopping-item-primary { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .65fr); align-items: start; gap: 8px; min-width: 0; }
-    .shopping-item-secondary { display: flex; align-items: baseline; gap: 6px; min-width: 0; }
+    .shopping-item-primary { min-height: 30px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .65fr); align-items: start; gap: 8px; min-width: 0; }
+    .shopping-item-secondary { display: flex; align-items: flex-start; gap: 4px; min-width: 0; }
     .shopping-item-primary .bar-bottle-name, .shopping-item-type { display: -webkit-box; min-width: 0; max-height: 2.5em; line-height: 1.25; white-space: normal; overflow: hidden; overflow-wrap: anywhere; -webkit-box-orient: vertical; -webkit-line-clamp: 2; text-align: left; }
     .shopping-item-type { color: var(--base-text, var(--muted)); border-left: 2px solid var(--base-line, var(--line)); padding-left: 5px; font-size: 11px; font-weight: 650; }
     .shopping-item-attributes { display: grid; gap: 3px; align-content: center; color: var(--muted); font-size: 10px; text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
     .shopping-item-attributes > :first-child { color: var(--text); font-weight: 700; }
     .shopping-small-price { color: var(--faint); font-size: 8px; }
-    .shopping-item-secondary { color: var(--muted); font-size: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .shopping-location-link { min-width: 0; color: var(--accent-2); text-decoration: underline; overflow: hidden; text-overflow: ellipsis; }
+    .shopping-item-secondary { color: var(--muted); font-size: 10px; line-height: 1.35; }
+    .shopping-location-link { flex: 0 1 auto; min-width: 0; color: var(--accent-2); text-decoration: underline; white-space: normal; overflow-wrap: anywhere; }
+    .shopping-item .shopping-size-button { display: grid; place-items: center; flex: 0 0 16px; width: 16px; min-height: 16px; height: 16px; padding: 2px; border: 0; border-radius: 3px; color: var(--muted); background: transparent; }
+    .shopping-item .shopping-size-button .sf-symbol { width: 9px; height: 10px; fill: currentColor; }
+    .shopping-item .shopping-size-button:not(.active) { opacity: .4; }
+    .shopping-item .shopping-size-button.active, .shopping-item .shopping-size-button:hover { color: var(--base-text, var(--accent)); background: var(--base-bg, var(--accent-soft)); }
+    .shopping-item-attributes { align-self: center; }
+    .shopping-item .bar-bottle-actions button { width: 24px; }
     .shopping-location-link:hover { color: var(--text); }
     .shopping-item .shopping-remove-button:hover { color: #F1C9CB; background: var(--danger-soft); }
     .shopping-restock { border-color: rgba(194, 154, 82, .55); background: var(--accent-soft); }
@@ -1842,7 +1849,7 @@
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
       }
-      .bar-bottle-row.shopping-item { min-height: 70px; gap: 4px; padding: 5px 4px; grid-template-columns: 24px minmax(0, 1fr) auto auto; }
+      .bar-bottle-row.shopping-item { min-height: 70px; gap: 4px; padding: 5px 4px; grid-template-columns: 24px minmax(0, 1fr) 60px 22px; }
       .shopping-item-primary { gap: 5px; }
       .shopping-item-primary .bar-bottle-name { font-size: 12px; }
       .shopping-item-type { font-size: 10px; }
@@ -1939,6 +1946,13 @@
       thead tr { display: flex; width: max-content; gap: 4px; }
       thead th { display: none; position: static; width: auto !important; padding: 0; border: 0; background: transparent; }
       thead th.sortable-column { display: block; flex: 0 0 auto; }
+      .cocktail-table thead tr { display: grid; grid-template-columns: 38px 10px minmax(0, 1fr) 32px 88px; width: 100%; gap: 0; }
+      .cocktail-table thead th.sortable-column:not([data-col="cocktail"]):not([data-col="try"]):not([data-col="rating"]) { display: none; }
+      .cocktail-table thead th[data-col="cocktail"] { grid-column: 3; }
+      .cocktail-table thead th[data-col="try"] { grid-column: 4; }
+      .cocktail-table thead th[data-col="rating"] { grid-column: 5; }
+      .cocktail-table thead th[data-col="try"] .table-sort-button { font-size: 8px; gap: 2px; padding-inline: 1px; }
+      .cocktail-table thead th[data-col="try"] .table-sort-icon, .cocktail-table thead th[data-col="try"] .table-sort-icon .sf-symbol { width: 10px; height: 10px; flex-basis: 10px; }
       .table-sort-button {
         width: auto; min-height: 28px; padding: 4px 7px; gap: 5px;
         border: 1px solid var(--line); border-radius: 6px; background: var(--panel-2); font-size: 10px;
@@ -1958,13 +1972,17 @@
       .summary-row td[data-label="Recipe"] { grid-column: 3 / -1; grid-row: 2; padding-top: 0; }
       .summary-row .name-cell { grid-template-columns: minmax(0, 1fr); gap: 2px; }
       .summary-row .cocktail-row-markers { display: none; }
-      .summary-row .cocktail-row-details { flex-wrap: wrap; gap: 4px; }
-      .summary-row .mobile-cocktail-meta { display: contents; }
+      .summary-row .cocktail-row-details { display: grid; grid-template-columns: minmax(0, 1fr) 63px 32px 30px; align-items: start; column-gap: 4px; }
+      .summary-row .mobile-cocktail-meta { display: block; min-width: 0; }
+      .summary-row .mobile-cocktail-category { display: grid; justify-items: start; gap: 2px; }
+      .summary-row .mobile-cocktail-category > * { max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
+      .summary-row .mobile-cocktail-prep { grid-column: 3; }
+      .summary-row .mobile-cocktail-serve { grid-column: 4; }
       .summary-row .cocktail-row-details .table-type-tag, .summary-row .cocktail-row-details .serving-style-tag { min-height: 16px; padding: 1px 4px; font-size: 8px; }
       .summary-row .cocktail-row-details .cocktail-source-flag { height: 16px; }
-      .summary-row .cocktail-row-details .recipe-source-slots { flex: 0 0 auto; grid-template-columns: repeat(5, 12px); width: 72px; gap: 3px; margin: 0; }
-      .summary-row .cocktail-row-details .recipe-source-slot { width: 12px; height: 16px; }
-      .summary-row .cocktail-row-details .recipe-source-symbol, .summary-row .cocktail-row-details .recipe-source-symbol svg { width: 12px; height: 12px; }
+      .summary-row .cocktail-row-details .recipe-source-slots { grid-column: 2; grid-template-columns: repeat(5, 11px); width: 63px; gap: 2px; margin: 0; }
+      .summary-row .cocktail-row-details .recipe-source-slot { width: 11px; height: 16px; }
+      .summary-row .cocktail-row-details .recipe-source-symbol, .summary-row .cocktail-row-details .recipe-source-symbol svg { width: 11px; height: 11px; }
 	      .summary-row .availability-slot { width: 8px; flex-basis: 8px; }
       .summary-row .cocktail-name { white-space: nowrap; }
       .summary-row .cocktail-alternate-names { display: block; margin-top: 2px; font-size: 9px; line-height: 1.1; overflow: hidden; text-overflow: ellipsis; }
@@ -2231,7 +2249,7 @@
     }
 
     .shopping-controls, .shopping-toggle { display: flex; align-items: center; }
-    .shopping-controls { gap: 10px; flex-wrap: wrap; }
+    .shopping-controls { position: sticky; top: 0; z-index: 3; gap: 10px; flex-wrap: wrap; margin: 0 -16px; padding: 12px 16px; background: var(--panel-2); border-bottom: 1px solid var(--line); }
     .shopping-toggle { gap: 0; }
     .shopping-toggle .button { border-radius: 0; }
     .shopping-toggle .button + .button { margin-left: -1px; }

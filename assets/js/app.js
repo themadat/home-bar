@@ -1185,9 +1185,9 @@ $('#shoppingListButton').innerHTML = __SHOPPING_LIST;
 $('#shoppingAllToggle').innerHTML = __SHOPPING_ALL + '<span>All</span>';
 $('#shoppingSpiritsToggle').innerHTML = __SHOPPING_SPIRITS + '<span>Alcohol</span>';
 $('#shoppingBuyToggle').innerHTML = __BAG_FILL + '<span>To Buy</span>';
-$('#shoppingHaveToggle').innerHTML = __WINEGLASS_FILL + '<span>I Have</span>';
+$('#shoppingHaveToggle').innerHTML = __WATER_BOTTLE_FILL + '<span>I Have</span>';
 $('#mobileShoppingBuy').innerHTML = __SHOPPING_BASKET;
-$('#mobileShoppingHave').innerHTML = __WINEGLASS_FILL;
+$('#mobileShoppingHave').innerHTML = __WATER_BOTTLE_FILL;
 $('#shoppingLiquorToggle').innerHTML = __SHOPPING_LIQUOR + '<span>Liquor</span>';
     $('#barShoppingListButton').innerHTML = __SHOPPING_LIST;
     $('#archiveButton').innerHTML = __ARCHIVEBOX_FILL;
@@ -1295,7 +1295,7 @@ const FEATURES = [
 	          'Star ratings from 0.5 to 5 in half-star steps, sortable and filterable above, below, or within a range',
 	          'My Bar — track the spirits and ingredients you own, see what\'s Ready to Make, One Item Away, and your Neat Pours',
 	          'Glassware — log the glasses you own, with type, brand, size, count, cost, and a product link',
-	          'Shopping List, auto-built from what My Bar is missing, with a Future Bar preview toggle',
+	          'Lists, auto-built from what My Bar is missing, with a Future Bar preview toggle',
 	          'GitHub Sync — back up and sync your data, with Download Latest available to restore the GitHub copy directly',
 	          'Import and export a full JSON backup of your notes, ratings, and custom types',
 	          'Custom cocktail types and per-cocktail type reassignment',
@@ -2057,6 +2057,7 @@ $('#importData').addEventListener('click', () => $('#importFile').click());
       $('#' + id).addEventListener('click', () => {
         if (key === 'shoppingView' && state[key] !== value) {
           state.shoppingSort = value === 'buy' ? 'location' : 'price';
+          state.shoppingCategory = value === 'buy' ? 'all' : 'liquor';
           state.shoppingSortDescending = false;
         }
         state[key] = value;
@@ -2070,7 +2071,7 @@ $('#importData').addEventListener('click', () => $('#importFile').click());
         renderShoppingList();
       });
     });
-    [['mobileShoppingBuy', 'buy', 'all', 'location'], ['mobileShoppingHave', 'have', 'spirits', 'price']].forEach(([id, view, category, sort]) => {
+    [['mobileShoppingBuy', 'buy', 'all', 'location'], ['mobileShoppingHave', 'have', 'liquor', 'price']].forEach(([id, view, category, sort]) => {
       $('#' + id).addEventListener('click', () => {
         Object.assign(state, {shoppingView: view, shoppingCategory: category, shoppingSort: sort, shoppingSortDescending: false});
         openShoppingListModal();
