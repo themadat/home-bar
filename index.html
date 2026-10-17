@@ -15,7 +15,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Home Bar">
   <meta name="mobile-web-app-capable" content="yes">
-  <link rel="stylesheet" href="assets/css/app.css?v=2.0.0.167">
+  <link rel="stylesheet" href="assets/css/app.css?v=2.0.0.168">
 </head>
 <body>
   <div class="app">
@@ -786,33 +786,34 @@
       </div>
     </div>
   </div>
-  <script src="letters-liquor-notes.js?v=2.0.0.167"></script>
-  <script src="letters-liquor-data.js?v=2.0.0.167"></script>
-  <script src="diffords-data.js?v=2.0.0.167"></script>
-  <script src="data/classic-recipes.js?v=2.0.0.167"></script>
+  <script src="letters-liquor-notes.js?v=2.0.0.168"></script>
+  <script src="letters-liquor-data.js?v=2.0.0.168"></script>
+  <script src="diffords-data.js?v=2.0.0.168"></script>
+  <script src="data/classic-recipes.js?v=2.0.0.168"></script>
   <script>
-const BUILD_VERSION = '2.0.0.167';
+const BUILD_VERSION = '2.0.0.168';
     const CURRENT_RELEASE = {
-      "title": "Require rinse ingredients in My Bar",
-      "summary": "Prevent imported recipes from being marked ready when a required rinse ingredient is missing.",
+      "title": "Prevent false sync conflicts from collection order",
+      "summary": "Keep unchanged devices in sync when saved collections load in a different order.",
       "changes": [
-        "Keep liqueurs inferred from recipe ingredients even when imported liqueur metadata is empty or incomplete, including absinthe rinses.",
-        "Preserve explicit liqueur requirements and aliases without duplicates, and highlight missing rinse ingredients.",
-        "Add availability regression checks for rinse forms, imported recipe variants, unrelated liqueurs, and out-of-stock rinse bottles."
+        "Compare bottles, custom cocktails, drinkware, archived bottles, and custom types consistently by record identity without changing their saved display order.",
+        "Keep ingredient and method order meaningful and preserve genuine edit conflicts.",
+        "Recognize matching current copies despite older sync fingerprints and migrate a legacy baseline only when a copy demonstrably matches it.",
+        "Add regression checks for zero-difference comparisons, order-only auto sync without uploads, legacy status recovery, and real conflicts."
       ]
     };
   </script>
-  <script src="data/cocktails.js?v=2.0.0.167"></script>
-  <script src="assets/js/icons.js?v=2.0.0.167"></script>
-  <script src="assets/js/ingredients.js?v=2.0.0.167"></script>
-  <script src="assets/js/ratings.js?v=2.0.0.167"></script>
-  <script src="assets/js/availability.js?v=2.0.0.167"></script>
-  <script src="assets/js/render.js?v=2.0.0.167"></script>
-  <script src="assets/js/dialogs.js?v=2.0.0.167"></script>
-  <script src="assets/js/bar.js?v=2.0.0.167"></script>
-  <script src="assets/js/cocktail-editor.js?v=2.0.0.167"></script>
-  <script src="assets/js/sync.js?v=2.0.0.167"></script>
-  <script src="assets/js/interface.js?v=2.0.0.167"></script>
-  <script src="assets/js/app.js?v=2.0.0.167"></script>
+  <script src="data/cocktails.js?v=2.0.0.168"></script>
+  <script src="assets/js/icons.js?v=2.0.0.168"></script>
+  <script src="assets/js/ingredients.js?v=2.0.0.168"></script>
+  <script src="assets/js/ratings.js?v=2.0.0.168"></script>
+  <script src="assets/js/availability.js?v=2.0.0.168"></script>
+  <script src="assets/js/render.js?v=2.0.0.168"></script>
+  <script src="assets/js/dialogs.js?v=2.0.0.168"></script>
+  <script src="assets/js/bar.js?v=2.0.0.168"></script>
+  <script src="assets/js/cocktail-editor.js?v=2.0.0.168"></script>
+  <script src="assets/js/sync.js?v=2.0.0.168"></script>
+  <script src="assets/js/interface.js?v=2.0.0.168"></script>
+  <script src="assets/js/app.js?v=2.0.0.168"></script>
 </body>
 </html>

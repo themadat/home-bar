@@ -132,8 +132,12 @@ if (standardizedLiqueurLabel('Maraschino Cherries')) throw new Error('Garnish be
         result = subprocess.run([node or str(jsc), str(target)], capture_output=True, text=True)
         if result.returncode or 'AVAILABILITY OK' not in result.stdout:
             raise SystemExit('AVAILABILITY FAIL: ' + (result.stderr + result.stdout)[-1500:])
-        target.write_text('\n'.join((ROOT / path).read_text() for path in [
-            'assets/js/dialogs.js', 'assets/js/sync.js', 'build/check-notes-sync.js'
+        descriptor_start = app.index('const SYNC_CHANGE_DESCRIPTORS =')
+        sync_descriptors = app[descriptor_start:app.index('];', descriptor_start) + 2]
+        target.write_text('\n'.join([
+            (ROOT / 'assets/js/dialogs.js').read_text(),
+            (ROOT / 'assets/js/sync.js').read_text(), sync_descriptors,
+            (ROOT / 'build/check-notes-sync.js').read_text()
         ]))
         result = subprocess.run([node or str(jsc), str(target)], capture_output=True, text=True)
         if result.returncode or 'NOTES/SYNC OK' not in result.stdout:

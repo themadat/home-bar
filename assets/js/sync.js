@@ -38,10 +38,22 @@ function hasPersistedHomeBarData() {
 	          return HOME_BAR_STORAGE_KEYS.some((key) => localStorage.getItem(key) !== null);
 	        }
 
-function syncComparableData(data) {
+function syncComparableCollection(values) {
+          return values.map((value, index) => ({
+            key: value && typeof value === 'object' ? String(value.id || value.name || value.type || index) : String(value),
+            value
+          })).sort((a, b) => {
+            // Code-point ordering stays identical across device languages/locales.
+            if (a.key !== b.key) return a.key < b.key ? -1 : 1;
+            const left = stableJson(a.value), right = stableJson(b.value);
+            return left === right ? 0 : left < right ? -1 : 1;
+          }).map((entry) => entry.value);
+        }
+
+function syncComparableData(data, {sortCollections = true} = {}) {
 	          // Compare both copies after the same startup migrations, without mutating either.
 	          const source = data && typeof data === 'object' ? JSON.parse(JSON.stringify(data)) : {};
-	          return {
+	          const comparable = {
 	            customTypes: source.customTypes || [],
 	            typeAssignments: source.typeAssignments || source.assignments || {},
 	            notes: source.notes || {},
@@ -55,6 +67,12 @@ function syncComparableData(data) {
 	            appNotes: source.appNotes || '',
 	            glassware: source.glassware || []
 	          };
+          if (sortCollections) {
+            ['customTypes', 'bar', 'archivedBar', 'customCocktails', 'glassware'].forEach((key) => {
+              if (Array.isArray(comparable[key])) comparable[key] = syncComparableCollection(comparable[key]);
+            });
+          }
+          return comparable;
 	        }
 
 function stableJson(value) {
@@ -65,8 +83,8 @@ function stableJson(value) {
 	          return JSON.stringify(value);
 	        }
 
-function syncDataFingerprint(data = userDataSnapshot()) {
-	          const serializable = JSON.parse(JSON.stringify(syncComparableData(data)));
+function syncDataFingerprint(data = userDataSnapshot(), options = {}) {
+	          const serializable = JSON.parse(JSON.stringify(syncComparableData(data, options)));
 	          const text = stableJson(serializable);
 	          let hash = 2166136261;
 	          for (let index = 0; index < text.length; index += 1) {
@@ -75,6 +93,16 @@ function syncDataFingerprint(data = userDataSnapshot()) {
 	          }
 	          return (hash >>> 0).toString(16).padStart(8, '0');
 	        }
+
+function upgradeGitHubSyncFingerprint(settings, meta, ...copies) {
+          if (meta.target !== gitHubSyncTarget(settings) || !meta.dataHash || meta.fingerprintVersion === 2) return meta;
+          // Rebase an older fingerprint only when a copy demonstrably matches its baseline.
+          const baseline = copies.find((copy) => copy && syncDataFingerprint(copy, {sortCollections: false}) === meta.dataHash);
+          if (!baseline) return meta;
+          const next = {...meta, dataHash: syncDataFingerprint(baseline), fingerprintVersion: 2};
+          localStorage.setItem(GITHUB_SYNC_META_KEY, JSON.stringify(next));
+          return next;
+        }
 
 function relativeSyncTime(timestamp) {
 	          const time = Date.parse(timestamp || '');
@@ -102,8 +130,9 @@ function gitHubSyncStateInfo() {
 	          const meta = storedMeta.target === gitHubSyncTarget(settings) ? storedMeta : {};
 	          const localHash = syncDataFingerprint();
 	          const baselineHash = meta.dataHash || githubSyncRuntime.remoteHash;
-	          const localDirty = Boolean(baselineHash && baselineHash !== localHash);
-          const remoteChanged = Boolean(githubSyncRuntime.remoteHash && meta.dataHash && githubSyncRuntime.remoteHash !== meta.dataHash);
+	          const copiesMatch = Boolean(githubSyncRuntime.remoteHash && githubSyncRuntime.remoteHash === localHash);
+	          const localDirty = Boolean(!copiesMatch && baselineHash && baselineHash !== localHash);
+          const remoteChanged = Boolean(!copiesMatch && githubSyncRuntime.remoteHash && meta.dataHash && githubSyncRuntime.remoteHash !== meta.dataHash);
 	          const synced = meta.syncedAt ? relativeSyncTime(meta.syncedAt) : 'never';
 	          const checkedAt = githubSyncRuntime.checkedAt || meta.checkedAt;
 	          const checked = checkedAt ? relativeSyncTime(checkedAt) : 'not checked yet';
@@ -523,7 +552,7 @@ function rememberGitHubSync(settings, sha, exportedAt, data) {
 	          const now = new Date().toISOString();
 	          const dataHash = syncDataFingerprint(data);
 	          localStorage.setItem(GITHUB_SYNC_META_KEY, JSON.stringify({
-	            target: gitHubSyncTarget(settings), sha, dataHash, exportedAt: exportedAt || '', syncedAt: now, checkedAt: now
+	            target: gitHubSyncTarget(settings), sha, dataHash, fingerprintVersion: 2, exportedAt: exportedAt || '', syncedAt: now, checkedAt: now
 	          }));
 	          Object.assign(githubSyncRuntime, {checking: false, remoteSha: sha, remoteHash: dataHash, remoteData: data, checkedAt: now, error: '', offline: false, autoFailures: 0});
 	          updateGitHubSyncButton();
@@ -572,7 +601,7 @@ async function runGitHubAutoSync() {
           const settings = storedGitHubSyncSettings();
           const token = storedGitHubSyncToken();
           const target = gitHubSyncTarget(settings);
-          const meta = parseStoredJson(GITHUB_SYNC_META_KEY);
+          let meta = parseStoredJson(GITHUB_SYNC_META_KEY);
           if (!settings.autoSync || !token || meta.target !== target || !meta.sha || !meta.dataHash) return;
           const stillCurrent = () => storedGitHubSyncSettings().autoSync
             && gitHubSyncTarget(storedGitHubSyncSettings()) === target && storedGitHubSyncToken() === token;
@@ -585,6 +614,7 @@ async function runGitHubAutoSync() {
             const data = gitHubUploadSnapshot();
             const localHash = syncDataFingerprint(data);
             const remoteHash = syncDataFingerprint(remote.data);
+            meta = upgradeGitHubSyncFingerprint(settings, meta, data, remote.data);
             Object.assign(githubSyncRuntime, {remoteSha: remote.sha, remoteHash, remoteData: remote.data, checkedAt: new Date().toISOString(), offline: false});
             const plan = gitHubSyncPlan({remoteExists: true, hasBaseline: true,
               localHasSavedData: true, localHash, remoteHash,
@@ -623,7 +653,7 @@ async function runGitHubSyncStatusCheck(force = false) {
 	          if (!githubSyncConfigured() || githubSyncRuntime.checking || githubSyncBusy) return;
 	          const settings = storedGitHubSyncSettings();
 	          const token = storedGitHubSyncToken();
-	          const storedMeta = parseStoredJson(GITHUB_SYNC_META_KEY);
+	          let storedMeta = parseStoredJson(GITHUB_SYNC_META_KEY);
 	          // A page reload clears githubSyncRuntime, so remoteSha/remoteHash are gone even though
 	          // storedMeta.checkedAt (persisted) may still look recent. Only skip the network check when
 	          // THIS session already has a fresh in-memory result to fall back on -- otherwise the status
@@ -643,11 +673,13 @@ async function runGitHubSyncStatusCheck(force = false) {
 	            const checkedAt = new Date().toISOString();
 	            const remoteHash = syncDataFingerprint(remote.data);
 	            Object.assign(githubSyncRuntime, {remoteSha: remote.sha, remoteHash, remoteData: remote.data, checkedAt, error: '', offline: false});
+	            storedMeta = upgradeGitHubSyncFingerprint(settings, storedMeta, userDataSnapshot(), remote.data);
 	            const nextMeta = {...storedMeta, checkedAt};
 	            // An older build's baseline can differ even when the actual copies now match.
 	            if (remoteHash === syncDataFingerprint()) {
 	              nextMeta.target = gitHubSyncTarget(settings);
 	              nextMeta.dataHash = remoteHash;
+              nextMeta.fingerprintVersion = 2;
 	              nextMeta.sha = remote.sha;
 	              nextMeta.syncedAt = storedMeta.syncedAt || remote.data.exportedAt || checkedAt;
 	            }
@@ -739,7 +771,7 @@ async function runGitHubManualSync() {
 	            const data = gitHubUploadSnapshot();
 	            const localHash = syncDataFingerprint(data);
 	            const remoteHash = remote ? syncDataFingerprint(remote.data) : '';
-	            const meta = parseStoredJson(GITHUB_SYNC_META_KEY);
+	            const meta = upgradeGitHubSyncFingerprint(settings, parseStoredJson(GITHUB_SYNC_META_KEY), data, remote?.data);
 	            const target = gitHubSyncTarget(settings);
 	            const hasBaseline = meta.target === target && Boolean(meta.sha && meta.dataHash);
 	            let plan = gitHubSyncPlan({

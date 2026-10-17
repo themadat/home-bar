@@ -72,6 +72,71 @@ const reset = () => {
   assert(plan('base', 'edit') === 'download' && plan('left', 'right') === 'choose', 'Real remote edits and conflicts');
   assert(plan('same', 'same') === 'clean', 'Equal copies');
 
+  // A device may restore collections in a different order without editing any records.
+  const ordered = {...clone(baseline),
+    customTypes: ['Zed', 'Alpha'],
+    bar: [{id: 'b', name: 'BottleB', price: 20}, {id: 'a', name: 'BottleA', price: 10}],
+    archivedBar: [{id: 'old-b'}, {id: 'old-a'}],
+    customCocktails: [{id: 'b', name: 'DrinkB', ingredients: ['Gin', 'Vermouth'], method: ['Stir', 'Strain']}, {id: 'a', name: 'DrinkA'}],
+    glassware: [{id: 'glass-b'}, {id: 'glass-a'}]
+  };
+  const reordered = clone(ordered);
+  for (const key of ['customTypes', 'bar', 'archivedBar', 'customCocktails', 'glassware']) reordered[key].reverse();
+  reordered.buildVersion = 'new build'; reordered.exportedAt = 'new export';
+  assert(syncDataFingerprint(ordered, {sortCollections: false}) !== syncDataFingerprint(reordered, {sortCollections: false}), 'Fixture reproduces legacy order-sensitive hashes');
+  assert(syncDataFingerprint(ordered) === syncDataFingerprint(reordered), 'Collection ordering is not an edit');
+  assert(syncChangeRows(ordered, reordered).length === 0, 'Equal records must not show a zero-difference category');
+  assert(ordered.customCocktails[0].id === 'b' && reordered.customCocktails[0].id === 'a', 'Comparison leaves actual display order unchanged');
+  for (const field of ['ingredients', 'method']) {
+    const edited = clone(ordered); edited.customCocktails[0][field].reverse();
+    assert(syncDataFingerprint(ordered) !== syncDataFingerprint(edited), 'Recipe ' + field + ' order remains meaningful');
+    assert(syncChangeRows(ordered, edited).some((row) => row.key === 'customCocktails' && row.totals.changed === 1), 'Real recipe edits remain visible');
+  }
+  const priceEdit = clone(ordered); priceEdit.bar[0].price = 25;
+  assert(syncDataFingerprint(ordered) !== syncDataFingerprint(priceEdit), 'Actual bottle edits remain dirty');
+
+  reset(); local = clone(ordered);
+  const legacyMeta = {...parseStoredJson(GITHUB_SYNC_META_KEY), dataHash: syncDataFingerprint(ordered, {sortCollections: false})};
+  delete legacyMeta.fingerprintVersion;
+  localStorage.setItem(GITHUB_SYNC_META_KEY, JSON.stringify(legacyMeta));
+  const upgraded = upgradeGitHubSyncFingerprint(settings, legacyMeta, ordered, reordered);
+  assert(upgraded.fingerprintVersion === 2 && upgraded.dataHash === syncDataFingerprint(ordered), 'Known legacy baseline upgrades locally');
+  assert(gitHubSyncPlan({remoteExists: true, hasBaseline: true, localHasSavedData: true, localHash: syncDataFingerprint(ordered), remoteHash: syncDataFingerprint(priceEdit), baselineHash: upgraded.dataHash}) === 'download', 'A real remote edit after baseline migration remains a download');
+  const localEdit = {...clone(ordered), appNotes: 'edited here'};
+  const unknown = upgradeGitHubSyncFingerprint(settings, legacyMeta, localEdit, priceEdit);
+  assert(unknown.dataHash === legacyMeta.dataHash && !unknown.fingerprintVersion, 'Do not guess the baseline when both copies really changed');
+  Object.assign(githubSyncRuntime, {remoteSha: 'matching-sha', remoteHash: syncDataFingerprint(reordered)});
+  localStorage.setItem(GITHUB_SYNC_META_KEY, JSON.stringify({...legacyMeta, dataHash: 'old hash'}));
+  assert(gitHubSyncStateInfo().state === 'clean', 'Matching current copies override a stale baseline warning');
+
+  reset(); local = clone(ordered);
+  let orderOnlyRequests = 0;
+  fetch = async (url, options) => {
+    orderOnlyRequests += 1;
+    assert(options.method !== 'PUT', 'Reordering must not upload or overwrite GitHub');
+    return remoteResponse(reordered, 'reordered-sha');
+  };
+  await autoSyncGitHubData();
+  assert(orderOnlyRequests === 1 && !githubSyncRuntime.error, 'Order-only auto sync finishes cleanly without writes');
+  assert(parseStoredJson(GITHUB_SYNC_META_KEY).dataHash === syncDataFingerprint(ordered), 'Order-only auto sync repairs the local baseline');
+  assert(local.customCocktails[0].id === 'b', 'Order-only auto sync does not replace the device copy');
+
+  reset(); local = clone(ordered);
+  localStorage.setItem(GITHUB_SYNC_META_KEY, JSON.stringify(legacyMeta));
+  fetch = async () => remoteResponse(reordered, 'matching-sha');
+  await checkGitHubSyncStatus(true);
+  assert(gitHubSyncStateInfo().state === 'clean' && parseStoredJson(GITHUB_SYNC_META_KEY).fingerprintVersion === 2, 'Status check clears the legacy false conflict');
+
+  reset(); local = clone(ordered);
+  rememberGitHubSync(settings, 'baseline-sha', '', ordered);
+  local.appNotes = 'edited-here';
+  fetch = async (url, options) => {
+    assert(options.method !== 'PUT', 'Real conflicts must not overwrite GitHub automatically');
+    return remoteResponse(priceEdit, 'changed-sha');
+  };
+  await autoSyncGitHubData();
+  assert(local.appNotes === 'edited-here' && /Both copies changed/.test(githubSyncRuntime.error), 'Genuine conflicts keep local edits and require review');
+
   // A stale SHA can retry once only when the remote content is still identical.
   reset();
   local.appNotes = 'edited';
@@ -145,4 +210,8 @@ const reset = () => {
   assert(lockNames.length === 4 && lockNames.every((name) => name === lockNames[0]), 'Shared GitHub operation lock');
   const report = typeof print === 'function' ? print : console.log;
   report('NOTES/SYNC OK');
-})().catch((error) => { throw error; });
+})().catch((error) => {
+  const report = typeof print === 'function' ? print : console.error;
+  report(String(error) + (error.stack ? "\n" + error.stack : ""));
+  throw error;
+});
