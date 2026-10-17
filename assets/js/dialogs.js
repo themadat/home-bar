@@ -670,8 +670,8 @@ function renderShoppingList() {
             return source?.shoppingList === true && matchesCategory(recommendation);
           });
           const items = [
-            ...bottles.map((bottle) => ({name: bottle.name, price: bottle.price, abv: defaultBottleAbv(bottle.base, bottle.subtype, bottle.abv), html: shoppingBottleHtml(bottle, owned)})),
-            ...needed.map((recommendation) => ({name: recommendation.name, price: recommendation.price, abv: defaultBottleAbv(recommendation.base, recommendation.subtype, recommendation.abv), html: shoppingRecommendationHtml(recommendation)}))
+            ...bottles.map((bottle) => ({name: bottle.name, location: bottle.totalWineLocation, price: bottle.price, abv: defaultBottleAbv(bottle.base, bottle.subtype, bottle.abv), html: shoppingBottleHtml(bottle, owned)})),
+            ...needed.map((recommendation) => ({name: recommendation.name, location: recommendation.location, price: recommendation.price, abv: defaultBottleAbv(recommendation.base, recommendation.subtype, recommendation.abv), html: shoppingRecommendationHtml(recommendation)}))
           ].sort(compareShoppingValues);
           const count = items.length;
           const knownPrices = items.map((item) => normalizeBottlePrice(item.price)).filter((price) => price !== '').map(Number);
@@ -683,19 +683,45 @@ function renderShoppingList() {
           $('#shoppingAllToggle').setAttribute('aria-pressed', state.shoppingCategory === 'all');
           $('#shoppingSpiritsToggle').setAttribute('aria-pressed', state.shoppingCategory === 'spirits');
           $('#shoppingLiquorToggle').setAttribute('aria-pressed', state.shoppingCategory === 'liquor');
-          [['shoppingPriceSort', 'price', 'Price', __SHOPPING_PRICE], ['shoppingAbvSort', 'abv', 'ABV', __SHOPPING_ABV]].forEach(([id, sort, label, icon]) => {
+          [['shoppingLocationSort', 'location', 'Location', __SHOPPING_LOCATION], ['shoppingPriceSort', 'price', 'Price', __SHOPPING_PRICE], ['shoppingAbvSort', 'abv', 'ABV', __SHOPPING_ABV]].forEach(([id, sort, label, icon]) => {
             const active = state.shoppingSort === sort;
             const direction = state.shoppingSortDescending ? 'High to Low' : 'Low to High';
             const button = $('#' + id);
             button.setAttribute('aria-pressed', active);
             button.setAttribute('aria-label', `${label}${active ? ': ' + direction : ''}. ${active ? 'Reverse sort' : 'Sort low to high'}`);
-            button.title = button.getAttribute('aria-label');
-            button.innerHTML = icon + `<span>${label}${active ? (state.shoppingSortDescending ? ' ↓' : ' ↑') : ''}</span>`;
+            button.title = button.getAttribute('aria-label') + (sort === 'location' ? ' (Aisle, Bay, Shelf)' : '');
+            const visibleLabel = sort === 'location' ? '<span class="shopping-location-label-full">Location</span><span class="shopping-location-label-short">Loc.</span>' : label;
+            button.innerHTML = icon + `<span>${visibleLabel}${active ? (state.shoppingSortDescending ? ' ↓' : ' ↑') : ''}</span>`;
           });
           $('#shoppingListItems').innerHTML = count ? items.map((item) => item.html).join('') : `<p class="shopping-list-empty">${state.shoppingCategory === 'liquor' ? 'No liquor bottles' : 'No bottles'} ${owned ? 'in your bar' : 'to buy'}.</p>`;
         }
 
+function shoppingLocationKey(location) {
+          const text = String(location || '').trim();
+          if (!text || /^location not set$/i.test(text)) return null;
+          if (/\bback\s*wall\b/i.test(text)) return [0, 0, 0, 0];
+          const aisle = text.match(/\baisle\s*0*(\d+)/i);
+          if (!aisle) return [2, 0, 0, 0];
+          const bay = text.match(/\bbay\s*0*(\d+)/i);
+          const shelf = text.match(/\bshelf\s*0*(\d+)/i);
+          return [1, Number(aisle[1]), bay ? Number(bay[1]) : null, shelf ? Number(shelf[1]) : null];
+        }
+
+function compareShoppingLocations(a, b) {
+          const aKey = shoppingLocationKey(a.location);
+          const bKey = shoppingLocationKey(b.location);
+          if (!aKey || !bKey) return (!aKey) - (!bKey) || a.name.localeCompare(b.name);
+          const direction = state.shoppingSortDescending ? -1 : 1;
+          for (let index = 0; index < aKey.length; index += 1) {
+            if (aKey[index] === bKey[index]) continue;
+            if (aKey[index] === null || bKey[index] === null) return (aKey[index] === null) - (bKey[index] === null);
+            return (aKey[index] - bKey[index]) * direction;
+          }
+          return String(a.location).localeCompare(String(b.location), undefined, {numeric: true, sensitivity: 'base'}) * direction || a.name.localeCompare(b.name);
+        }
+
 function compareShoppingValues(a, b) {
+          if (state.shoppingSort === 'location') return compareShoppingLocations(a, b);
           const normalize = state.shoppingSort === 'abv' ? normalizeBottleAbv : normalizeBottlePrice;
           const aValue = normalize(a[state.shoppingSort]);
           const bValue = normalize(b[state.shoppingSort]);

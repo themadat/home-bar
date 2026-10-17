@@ -1021,7 +1021,7 @@ let storedFriendRatings = {};
       };
     });
         const state = {
-          shoppingView: 'buy', shoppingCategory: 'all', shoppingSort: 'price', shoppingSortDescending: false,
+          shoppingView: 'buy', shoppingCategory: 'all', shoppingSort: 'location', shoppingSortDescending: false,
           q: '', ingredientQ: '', sort: 'name', sortDirection: 'default', pantrySort: 'alpha', statFilter: 'all', expanded: new Set(), barExpandedBottle: '', barExpandedRecommendation: '', neatExpandedBottle: '', bottleUsageId: '', bottleUsageOverride: null, pendingRemoveBottleId: '',
 	          futureBarPreview: false,
 	          barRecommendationView: 'owned',
@@ -1184,8 +1184,8 @@ let friendRatingCocktailId = '';
 $('#shoppingListButton').innerHTML = __SHOPPING_LIST;
 $('#shoppingAllToggle').innerHTML = __SHOPPING_ALL + '<span>All</span>';
 $('#shoppingSpiritsToggle').innerHTML = __SHOPPING_SPIRITS + '<span>Alcohol</span>';
-$('#shoppingBuyToggle').innerHTML = __WINEGLASS_FILL + '<span>To Buy</span>';
-$('#shoppingHaveToggle').innerHTML = __SHOPPING_HAVE + '<span>I Have</span>';
+$('#shoppingBuyToggle').innerHTML = __BAG_FILL + '<span>To Buy</span>';
+$('#shoppingHaveToggle').innerHTML = __WINEGLASS_FILL + '<span>I Have</span>';
 $('#mobileShoppingBuy').innerHTML = __SHOPPING_BASKET;
 $('#mobileShoppingHave').innerHTML = __WINEGLASS_FILL;
 $('#shoppingLiquorToggle').innerHTML = __SHOPPING_LIQUOR + '<span>Liquor</span>';
@@ -2054,16 +2054,23 @@ $('#importData').addEventListener('click', () => $('#importFile').click());
 	    $('#githubSyncCloseAction').addEventListener('click', closeGitHubSyncModal);
 	    $('#shoppingListButton').addEventListener('click', openShoppingListModal);
     [['shoppingBuyToggle', 'shoppingView', 'buy'], ['shoppingHaveToggle', 'shoppingView', 'have'], ['shoppingAllToggle', 'shoppingCategory', 'all'], ['shoppingSpiritsToggle', 'shoppingCategory', 'spirits'], ['shoppingLiquorToggle', 'shoppingCategory', 'liquor']].forEach(([id, key, value]) => {
-      $('#' + id).addEventListener('click', () => { state[key] = value; renderShoppingList(); });
+      $('#' + id).addEventListener('click', () => {
+        if (key === 'shoppingView' && state[key] !== value) {
+          state.shoppingSort = value === 'buy' ? 'location' : 'price';
+          state.shoppingSortDescending = false;
+        }
+        state[key] = value;
+        renderShoppingList();
+      });
     });
-    [['shoppingPriceSort', 'price'], ['shoppingAbvSort', 'abv']].forEach(([id, sort]) => {
+    [['shoppingLocationSort', 'location'], ['shoppingPriceSort', 'price'], ['shoppingAbvSort', 'abv']].forEach(([id, sort]) => {
       $('#' + id).addEventListener('click', () => {
         state.shoppingSortDescending = state.shoppingSort === sort ? !state.shoppingSortDescending : false;
         state.shoppingSort = sort;
         renderShoppingList();
       });
     });
-    [['mobileShoppingBuy', 'buy', 'all', 'price'], ['mobileShoppingHave', 'have', 'spirits', 'price']].forEach(([id, view, category, sort]) => {
+    [['mobileShoppingBuy', 'buy', 'all', 'location'], ['mobileShoppingHave', 'have', 'spirits', 'price']].forEach(([id, view, category, sort]) => {
       $('#' + id).addEventListener('click', () => {
         Object.assign(state, {shoppingView: view, shoppingCategory: category, shoppingSort: sort, shoppingSortDescending: false});
         openShoppingListModal();

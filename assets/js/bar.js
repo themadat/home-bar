@@ -343,7 +343,7 @@ function bottleSizePrices(bottle) {
 
 function shoppingAttributesHtml(bottle) {
           const abv = defaultBottleAbv(bottle.base, bottle.subtype || '', bottle.abv);
-          return `<span class="shopping-item-attributes"><span title="750 ml price; smaller size price when available">${escapeHtml(formatBottlePrice(bottle.price) || '—')}</span><span>${abv === '' ? 'ABV —' : escapeHtml(abv) + '% ABV'}</span>${formatBottlePrice(bottle.price375) ? `<span class="shopping-small-price">375ml ${escapeHtml(formatBottlePrice(bottle.price375))}</span>` : ''}</span>`;
+          return `<span class="shopping-item-attributes"><span title="750 ml price; smaller size price when available">${escapeHtml(formatBottlePrice(bottle.price) || '—')}</span>${formatBottlePrice(bottle.price375) ? `<span class="shopping-small-price">375ml ${escapeHtml(formatBottlePrice(bottle.price375))}</span>` : ''}<span>${abv === '' ? 'ABV —' : escapeHtml(abv) + '% ABV'}</span></span>`;
         }
 
 function shoppingBottleHtml(bottle, owned = false) {
@@ -352,7 +352,7 @@ function shoppingBottleHtml(bottle, owned = false) {
 	          const location = bottle.totalWineLocation || 'Location Not Set';
 	          const extraDetails = [bottleHas375mlOption(bottle.name, bottle.has375ml) ? '375ml Option: Aisle 08' : '', owned ? 'In My Bar' : 'Restock'].filter(Boolean);
 	          const details = [price, location, ...extraDetails].join(' · ');
-	          return `<article class="bar-bottle-row shopping-item ${owned ? 'shopping-owned' : 'shopping-restock'}">
+	          return `<article class="bar-bottle-row shopping-item base-${classToken(bottle.base)} ${owned ? 'shopping-owned' : 'shopping-restock'}">
 	            <button type="button" class="recommended-left-action" data-toggle-bottle-shopping="${escapeHtml(bottle.id)}" aria-label="${owned ? 'Move' : 'Restock'} ${escapeHtml(bottle.name)}${owned ? ' to Shopping List' : ''}" title="${owned ? 'Move to Shopping List' : 'Mark Restocked'}">${owned ? __BAG_FILL : '+'}</button>
 	            <span class="shopping-item-copy">
 	              <span class="shopping-item-primary"><button type="button" class="bar-bottle-name" data-shopping-bottle-cocktails="${escapeHtml(bottle.id)}" aria-label="Show Cocktails Using ${escapeHtml(bottle.name)}" title="Show Cocktails Using This Bottle">${escapeHtml(bottle.name)}</button><span class="shopping-item-type base-${classToken(bottle.base)}">${escapeHtml(bottleStyleName(bottle))}</span></span>
@@ -373,7 +373,7 @@ function shoppingRecommendationHtml(recommendation) {
 	          const location = recommendation.location || 'Location Not Set';
 	          const extraDetails = [bottleHas375mlOption(recommendation.name, recommendation.has375ml) ? '375ml Option: Aisle 08' : '', 'Recommended'].filter(Boolean);
 	          const details = [price, location, ...extraDetails].join(' · ');
-	          return `<article class="bar-bottle-row shopping-item recommended">
+	          return `<article class="bar-bottle-row shopping-item recommended base-${classToken(recommendation.base)}">
 	            <span class="bar-bottle-left">
 	              <button class="recommended-left-action" type="button" data-add-recommended="${escapeHtml(recommendation.id)}" aria-label="Add ${escapeHtml(recommendation.name)} to My Bar" title="Add to My Bar">+</button>
 	            </span>
