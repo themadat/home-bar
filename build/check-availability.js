@@ -41,4 +41,5 @@ for (const rinse of ['1 Absinthe Rinse', 'Absinthe Rinse', 'Rinse of Absinthe'])
 }
 const chartreuse = sourceRecipeClassification({ingredients: ['1 dash Yellow Chartreuse'], ingredientNames: ['Yellow Chartreuse'], liqueurs: [{name: 'Chartreuse, Yellow', subtype: 'Herb, Other'}]}, {baseLiquor: ['Liqueurs']});
 requireAvailability(chartreuse.liqueurs.length === 1, 'A named liqueur alias was duplicated');
-print('AVAILABILITY OK required rinses, named ingredients, source variants, and out-of-stock bottles');
+const report = typeof print === 'function' ? print : console.log;
+report('AVAILABILITY OK required rinses, named ingredients, source variants, and out-of-stock bottles');
