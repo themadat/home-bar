@@ -15,7 +15,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Home Bar">
   <meta name="mobile-web-app-capable" content="yes">
-  <link rel="stylesheet" href="assets/css/app.css?v=2.0.0.162">
+  <link rel="stylesheet" href="assets/css/app.css?v=2.0.0.163">
 </head>
 <body>
   <div class="app">
@@ -230,6 +230,10 @@
         </section>
       </div>
     </main>
+    <nav class="mobile-list-shortcuts" aria-label="Quick Lists">
+      <button id="mobileShoppingBuy" class="button" type="button" aria-label="Open full To Buy list" title="To Buy" aria-haspopup="dialog"></button>
+      <button id="mobileShoppingHave" class="button" type="button" aria-label="Open I Have alcohol list sorted by price" title="I Have Alcohol" aria-haspopup="dialog"></button>
+    </nav>
 	    <div id="infoPopover" class="info-popover" role="dialog" aria-live="polite" hidden></div>
 	    <div id="tryPriorityPopover" class="try-priority-popover" role="dialog" aria-label="Choose Try priority" hidden></div>
 	    <div id="cocktailLinkPopover" class="cocktail-link-popover" role="dialog" aria-label="Cocktail links" hidden></div>
@@ -422,7 +426,7 @@
           <div class="shopping-controls" aria-label="Bottle List Controls">
             <div class="shopping-toggle" role="group" aria-label="Bottle Status"><button class="button" id="shoppingBuyToggle" type="button" aria-pressed="true">To Buy</button><button class="button" id="shoppingHaveToggle" type="button" aria-pressed="false">I Have</button></div>
             <div class="shopping-toggle" role="group" aria-label="Bottle Category"><button class="button" id="shoppingAllToggle" type="button" aria-pressed="true">All</button><button class="button" id="shoppingSpiritsToggle" type="button" aria-pressed="false">Liquor &amp; Liqueurs</button><button class="button" id="shoppingLiquorToggle" type="button" aria-pressed="false">Liquor Only</button></div>
-            <button class="button" id="shoppingPriceSort" type="button" hidden>750 ml: Low to High ↑</button>
+            <div class="shopping-toggle shopping-sort" role="group" aria-label="Sort Bottles"><button class="button" id="shoppingPriceSort" type="button" aria-pressed="false">Price</button><button class="button" id="shoppingAbvSort" type="button" aria-pressed="false">ABV</button></div>
           </div>
           <div id="shoppingListItems" class="shopping-list"></div>
           <p class="shopping-list-disclaimer">Prices and availability depend on the selected Total Wine &amp; More store.</p>
@@ -712,7 +716,7 @@
               <span id="barFutureCount" class="bar-future-count">0</span>
             </label>
           </div>
-          <button id="barShoppingListButton" class="button icon" type="button" aria-label="Shopping List" title="Shopping List" aria-haspopup="dialog"></button>
+          <button id="barShoppingListButton" class="button icon" type="button" aria-label="Lists" title="Lists" aria-haspopup="dialog"></button>
           <button id="barModalClose" class="button icon" type="button" aria-label="Close">×</button>
         </div>
         <div class="modal-body">
@@ -782,32 +786,34 @@
       </div>
     </div>
   </div>
-  <script src="letters-liquor-notes.js?v=2.0.0.162"></script>
-  <script src="letters-liquor-data.js?v=2.0.0.162"></script>
-  <script src="diffords-data.js?v=2.0.0.162"></script>
-  <script src="data/classic-recipes.js?v=2.0.0.162"></script>
+  <script src="letters-liquor-notes.js?v=2.0.0.163"></script>
+  <script src="letters-liquor-data.js?v=2.0.0.163"></script>
+  <script src="diffords-data.js?v=2.0.0.163"></script>
+  <script src="data/classic-recipes.js?v=2.0.0.163"></script>
   <script>
-const BUILD_VERSION = '2.0.0.162';
+const BUILD_VERSION = '2.0.0.163';
     const CURRENT_RELEASE = {
-      "title": "Clarify IBA Tiki ginger",
-      "summary": "Show the IBA Tiki ginger as one slice, match it to pantry Ginger, and explain ground or grated ginger substitutions.",
+      "title": "Lists and mobile cocktail layout",
+      "summary": "Refresh bottle lists with colored types, price and ABV sorting, and mobile shortcuts.",
       "changes": [
-        "Change IBA Tiki to 1 slice Ginger with slice as the measure and Ginger as the pantry-matched ingredient.",
-        "Add Ginger info with alternatives of 1/8 tsp ground ginger or 1/2 tsp finely grated fresh ginger, and clarify the muddling instruction."
+        "Add All, Alcohol, and Liquor filters with the supplied icons and compact mobile controls.",
+        "Show colored bottle types beside two-line names and stack price and ABV beside the size control.",
+        "Add reversible price and ABV sorts plus mobile shortcuts for To Buy and I Have Alcohol.",
+        "Rename the top-bar action to Lists, match its My Bar icon, and arrange mobile cocktails into name/Try/rating and category/recipe/prep/serve rows."
       ]
     };
   </script>
-  <script src="data/cocktails.js?v=2.0.0.162"></script>
-  <script src="assets/js/icons.js?v=2.0.0.162"></script>
-  <script src="assets/js/ingredients.js?v=2.0.0.162"></script>
-  <script src="assets/js/ratings.js?v=2.0.0.162"></script>
-  <script src="assets/js/availability.js?v=2.0.0.162"></script>
-  <script src="assets/js/render.js?v=2.0.0.162"></script>
-  <script src="assets/js/dialogs.js?v=2.0.0.162"></script>
-  <script src="assets/js/bar.js?v=2.0.0.162"></script>
-  <script src="assets/js/cocktail-editor.js?v=2.0.0.162"></script>
-  <script src="assets/js/sync.js?v=2.0.0.162"></script>
-  <script src="assets/js/interface.js?v=2.0.0.162"></script>
-  <script src="assets/js/app.js?v=2.0.0.162"></script>
+  <script src="data/cocktails.js?v=2.0.0.163"></script>
+  <script src="assets/js/icons.js?v=2.0.0.163"></script>
+  <script src="assets/js/ingredients.js?v=2.0.0.163"></script>
+  <script src="assets/js/ratings.js?v=2.0.0.163"></script>
+  <script src="assets/js/availability.js?v=2.0.0.163"></script>
+  <script src="assets/js/render.js?v=2.0.0.163"></script>
+  <script src="assets/js/dialogs.js?v=2.0.0.163"></script>
+  <script src="assets/js/bar.js?v=2.0.0.163"></script>
+  <script src="assets/js/cocktail-editor.js?v=2.0.0.163"></script>
+  <script src="assets/js/sync.js?v=2.0.0.163"></script>
+  <script src="assets/js/interface.js?v=2.0.0.163"></script>
+  <script src="assets/js/app.js?v=2.0.0.163"></script>
 </body>
 </html>
