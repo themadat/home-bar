@@ -525,7 +525,7 @@ function rowTemplate(c) {
 	        <td data-label="Photo">${thumbCell(c)}</td>
 	        <td data-label="My Bar"><span class="availability-slot">${supportedIndicator}</span></td>
 	        <td data-label="Cocktail"><div class="name-cell"><div class="cocktail-name">${cocktailNameMarkup(c)}</div><div class="cocktail-row-markers">${cocktailDataFlagsMarkup(c)}<span class="cocktail-marker-tags">${compactTypeTag(c)}${cocktailRowSourceFlag(c)}</span></div></div></td>
-	        <td data-label="Recipe"><div class="cocktail-row-details"><span class="mobile-cocktail-meta">${compactTypeTag(c)}${cocktailRowSourceFlag(c)}</span>${recipeSourceIndicators(c)}<span class="mobile-cocktail-meta">${preparationTags(c)}${servingStyleTag(c)}</span></div></td>
+	        <td data-label="Recipe"><div class="cocktail-row-details"><span class="mobile-cocktail-meta mobile-cocktail-category">${compactTypeTag(c)}${cocktailRowSourceFlag(c)}</span>${recipeSourceIndicators(c)}<span class="mobile-cocktail-meta mobile-cocktail-prep">${preparationTags(c)}</span><span class="mobile-cocktail-meta mobile-cocktail-serve">${servingStyleTag(c)}</span></div></td>
 	        <td data-label="Try" class="bookmark-cell">${bookmarkToggle(c)}</td>
 	        <td data-label="Rating"><div class="rating-cell" title="${escapeHtml(ratingTitle)}">${ratingStars(c.id, rating, store.ratingView === 'friends' ? 'friends-view' : '')}<span class="rating-value">${ratingValueLabel(rating)}</span></div></td>
 	        <td data-label="Prep">${preparationTags(c)}</td>
