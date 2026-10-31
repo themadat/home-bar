@@ -1021,7 +1021,7 @@ let storedFriendRatings = {};
       };
     });
         const state = {
-          shoppingView: 'buy', shoppingCategory: 'all', shoppingSort: 'location', shoppingSortDescending: false,
+          shoppingBarViewsDirty: false, shoppingView: 'buy', shoppingCategory: 'all', shoppingSort: 'location', shoppingSortDescending: false,
           q: '', ingredientQ: '', sort: 'name', sortDirection: 'default', pantrySort: 'alpha', statFilter: 'all', expanded: new Set(), barExpandedBottle: '', barExpandedRecommendation: '', neatExpandedBottle: '', bottleUsageId: '', bottleUsageOverride: null, pendingRemoveBottleId: '',
 	          futureBarPreview: false,
 	          barRecommendationView: 'owned',

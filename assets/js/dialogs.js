@@ -737,6 +737,10 @@ function openShoppingListModal() {
 
 function closeShoppingListModal() {
 	          $('#shoppingListModalOverlay').hidden = true;
+          if (state.shoppingBarViewsDirty) {
+            state.shoppingBarViewsDirty = false;
+            refreshShoppingBarViews();
+          }
 	          refreshShortcutHints(shortcutHintsActive);
 	        }
 

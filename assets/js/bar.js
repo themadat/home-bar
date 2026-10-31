@@ -631,6 +631,17 @@ function showPantryIngredientCocktails(name) {
 	          $('.table-wrap')?.scrollIntoView({behavior: 'smooth', block: 'start'});
 	        }
 
+// Lists needs only its own rows while open; rebuild cocktail availability once on exit.
+function refreshShoppingBarViews() {
+          if (!$('#shoppingListModalOverlay').hidden) {
+            state.shoppingBarViewsDirty = true;
+            renderShoppingList();
+            return;
+          }
+          if (!$('#barModalOverlay').hidden) refreshBarModal();
+          render();
+        }
+
 function addRecommendedBottle(recommendationId) {
 	          const recommendation = allRecommendedBottles().find((item) => item.id === recommendationId);
 	          if (!recommendation) return;
@@ -651,9 +662,7 @@ function addRecommendedBottle(recommendationId) {
 	            has375ml: bottleHas375mlOption(recommendation.name, recommendation.has375ml)
 	          });
 	          saveCustom();
-	          refreshBarModal();
-	          render();
-	          if (!$('#shoppingListModalOverlay').hidden) renderShoppingList();
+	          refreshShoppingBarViews();
 	        }
 
 function toggleRecommendedShopping(recommendationId) {
@@ -661,9 +670,7 @@ function toggleRecommendedShopping(recommendationId) {
 	          if (!saved) return;
 	          saved.shoppingList = saved.shoppingList !== true;
 	          saveCustom();
-	          refreshBarModal();
-	          render();
-	          if (!$('#shoppingListModalOverlay').hidden) renderShoppingList();
+	          refreshShoppingBarViews();
 	        }
 
 function setRecommendationPurpose(recommendationId, isSipping) {
@@ -944,9 +951,7 @@ function toggleBottleShopping(bottleId) {
 	            if (state.bottleUsageId === bottleId) state.bottleUsageId = '';
 	          }
 	          saveCustom();
-	          refreshBarModal();
-	          render();
-	          if (!$('#shoppingListModalOverlay').hidden) renderShoppingList();
+	          refreshShoppingBarViews();
 	        }
 
 function toggleBarIngredient(name, present) {
