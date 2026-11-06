@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Home Bar</title>
   <meta name="description" content="A searchable, filterable list of cocktails with ratings, notes, and a home bar tracker.">
   <link rel="manifest" href="manifest.webmanifest?v=2026.07.22.11">
@@ -15,7 +15,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Home Bar">
   <meta name="mobile-web-app-capable" content="yes">
-  <link rel="stylesheet" href="assets/css/app.css?v=2.0.0.169">
+  <link rel="stylesheet" href="assets/css/app.css?v=2.0.0.170">
 </head>
 <body>
   <div class="app">
@@ -231,8 +231,8 @@
       </div>
     </main>
     <nav class="mobile-list-shortcuts" aria-label="Quick Lists">
-      <button id="mobileShoppingBuy" class="button" type="button" aria-label="Open full To Buy list" title="To Buy" aria-haspopup="dialog"></button>
-      <button id="mobileShoppingHave" class="button" type="button" aria-label="Open I Have liquor list sorted by price" title="I Have Liquor" aria-haspopup="dialog"></button>
+      <button id="mobileShoppingBuy" class="button" type="button" aria-label="Open full To Buy list" data-label="To Buy" aria-haspopup="dialog"></button>
+      <button id="mobileShoppingHave" class="button" type="button" aria-label="Open I Have liquor list sorted by price" data-label="I Have" aria-haspopup="dialog"></button>
     </nav>
 	    <div id="infoPopover" class="info-popover" role="dialog" aria-live="polite" hidden></div>
 	    <div id="tryPriorityPopover" class="try-priority-popover" role="dialog" aria-label="Choose Try priority" hidden></div>
@@ -786,31 +786,33 @@
       </div>
     </div>
   </div>
-  <script src="letters-liquor-notes.js?v=2.0.0.169"></script>
-  <script src="letters-liquor-data.js?v=2.0.0.169"></script>
-  <script src="diffords-data.js?v=2.0.0.169"></script>
-  <script src="data/classic-recipes.js?v=2.0.0.169"></script>
+  <script src="letters-liquor-notes.js?v=2.0.0.170"></script>
+  <script src="letters-liquor-data.js?v=2.0.0.170"></script>
+  <script src="diffords-data.js?v=2.0.0.170"></script>
+  <script src="data/classic-recipes.js?v=2.0.0.170"></script>
   <script>
-const BUILD_VERSION = '2.0.0.169';
+const BUILD_VERSION = '2.0.0.170';
     const CURRENT_RELEASE = {
-      "title": "Responsive bottle list actions",
-      "summary": "Move bottles between I Have and To Buy without waiting for hidden cocktail and catalog views to rebuild.",
+      "title": "Adaptive layouts and persistent list shortcuts",
+      "summary": "Improve folded and unfolded layouts with floating list shortcuts available while panels are open or closed.",
       "changes": [
-        "Update Lists immediately for bag, restock, and recommendation actions; refresh cocktail availability once when Lists closes."
+        "Keep labeled To Buy and I Have shortcuts floating across screen sizes and within open dialogs.",
+        "Use readable cocktail cards through intermediate widths instead of a clipped desktop table.",
+        "Reserve space for shortcuts and iPhone safe areas, and improve touch targets."
       ]
     };
   </script>
-  <script src="data/cocktails.js?v=2.0.0.169"></script>
-  <script src="assets/js/icons.js?v=2.0.0.169"></script>
-  <script src="assets/js/ingredients.js?v=2.0.0.169"></script>
-  <script src="assets/js/ratings.js?v=2.0.0.169"></script>
-  <script src="assets/js/availability.js?v=2.0.0.169"></script>
-  <script src="assets/js/render.js?v=2.0.0.169"></script>
-  <script src="assets/js/dialogs.js?v=2.0.0.169"></script>
-  <script src="assets/js/bar.js?v=2.0.0.169"></script>
-  <script src="assets/js/cocktail-editor.js?v=2.0.0.169"></script>
-  <script src="assets/js/sync.js?v=2.0.0.169"></script>
-  <script src="assets/js/interface.js?v=2.0.0.169"></script>
-  <script src="assets/js/app.js?v=2.0.0.169"></script>
+  <script src="data/cocktails.js?v=2.0.0.170"></script>
+  <script src="assets/js/icons.js?v=2.0.0.170"></script>
+  <script src="assets/js/ingredients.js?v=2.0.0.170"></script>
+  <script src="assets/js/ratings.js?v=2.0.0.170"></script>
+  <script src="assets/js/availability.js?v=2.0.0.170"></script>
+  <script src="assets/js/render.js?v=2.0.0.170"></script>
+  <script src="assets/js/dialogs.js?v=2.0.0.170"></script>
+  <script src="assets/js/bar.js?v=2.0.0.170"></script>
+  <script src="assets/js/cocktail-editor.js?v=2.0.0.170"></script>
+  <script src="assets/js/sync.js?v=2.0.0.170"></script>
+  <script src="assets/js/interface.js?v=2.0.0.170"></script>
+  <script src="assets/js/app.js?v=2.0.0.170"></script>
 </body>
 </html>
