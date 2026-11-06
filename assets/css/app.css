@@ -1112,7 +1112,7 @@
     .install-steps li { color: var(--text); line-height: 1.5; }
     .install-note { margin: 0; color: var(--faint); font-size: 12px; }
     .modal.modal-sync { max-width: 920px; }
-    #githubSyncModalOverlay:has(#appPreferences:not([hidden])) .modal-sync { max-width: 1120px; max-height: 88vh; }
+    #githubSyncModalOverlay:has(#appPreferences:not([hidden])) .modal-sync { max-width: 1120px; }
     .modal.modal-version { max-width: 980px; max-height: 85vh; }
 	    .modal.modal-lnl-gallery { width: calc(100vw - 64px); max-width: 1040px; height: calc(100dvh - 48px); max-height: none; display: flex; flex-direction: column; overflow: hidden; }
     .lnl-gallery-body { flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: 0 16px 20px; }
@@ -2333,3 +2333,7 @@
       .cocktail-table { min-width: 1254px; }
       .cocktail-table th { position: static; }
     }
+
+    /* Settings shares the viewport limit with other dialogs; keep Close above scrolling content. */
+    #githubSyncModalOverlay .modal-header { z-index: 2; }
+    #githubSyncModalClose { flex: 0 0 auto; min-width: 44px; min-height: 44px; }
