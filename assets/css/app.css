@@ -1932,7 +1932,7 @@
 	          .section-pill { justify-self: start; }
 	          .compact-search { flex-basis: 100%; }
     }
-    @media (max-width: 1100px) {
+    @media (max-width: 760px) {
       .table-wrap { border: 0; background: transparent; box-shadow: none; }
       .lnl-table-banner { gap: 4px; padding: 4px; border: 1px solid var(--line); border-radius: var(--radius); margin-bottom: 6px; }
 	      .lnl-table-banner.is-title { grid-template-columns: min(180px, 70vw); }
@@ -2266,16 +2266,16 @@
     .shopping-toggle .button:last-child { border-radius: 0 7px 7px 0; }
     .shopping-controls .button { display: inline-flex; justify-content: center; align-items: center; gap: 5px; font-size: 11px; padding-inline: 8px; }
     .shopping-location-label-short { display: none; }
-    :root { --floating-space: calc(84px + env(safe-area-inset-bottom)); }
+    :root { --floating-space: calc(140px + env(safe-area-inset-bottom)); }
     .mobile-list-shortcuts {
       position: fixed; right: max(12px, env(safe-area-inset-right));
       bottom: calc(12px + env(safe-area-inset-bottom)); z-index: 115;
-      display: flex; gap: 8px; padding: 6px; border: 1px solid var(--line);
+      display: flex; flex-direction: column; gap: 8px; padding: 6px; border: 1px solid var(--line);
       border-radius: 22px; background: var(--panel); box-shadow: 0 6px 24px #0008;
     }
     .mobile-list-shortcuts .button {
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 3px; min-width: 58px; min-height: 52px; padding: 6px 10px;
+      gap: 3px; width: 58px; min-height: 52px; padding: 6px 10px;
       border-radius: 16px; color: var(--accent); background: var(--panel-2);
     }
     .mobile-list-shortcuts .button::after { content: attr(data-label); font-size: 10px; font-weight: 650; }
@@ -2326,3 +2326,10 @@
 .recipe-source-column h3 > .recipe-header-link { display: flex; align-items: center; justify-content: space-between; gap: 6px; width: 100%; }
 .recipe-header-link:hover { text-decoration-thickness: 2px; }
 .recipe-header-link:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; border-radius: 2px; }
+
+    /* Keep the desktop columns aligned and contain swiping within the table. */
+    @media (min-width: 761px) and (max-width: 1100px) {
+      .table-wrap { overflow-x: auto; overscroll-behavior-x: contain; }
+      .cocktail-table { min-width: 1254px; }
+      .cocktail-table th { position: static; }
+    }
