@@ -1188,6 +1188,7 @@ $('#shoppingBuyToggle').innerHTML = __BAG_FILL + '<span>To Buy</span>';
 $('#shoppingHaveToggle').innerHTML = __WATER_BOTTLE_FILL + '<span>I Have</span>';
 $('#mobileShoppingBuy').innerHTML = __SHOPPING_BASKET;
 $('#mobileShoppingHave').innerHTML = __WATER_BOTTLE_FILL;
+initFloatingListShortcuts();
 $('#shoppingLiquorToggle').innerHTML = __SHOPPING_LIQUOR + '<span>Liquor</span>';
     $('#barShoppingListButton').innerHTML = __SHOPPING_LIST;
     $('#archiveButton').innerHTML = __ARCHIVEBOX_FILL;

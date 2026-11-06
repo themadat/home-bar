@@ -379,3 +379,18 @@ function scheduleColumnWidthUpdate() {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(applyColumnWidths, 120);
     }
+
+// Keep shortcuts within the active dialog's accessibility scope as panels change.
+function initFloatingListShortcuts() {
+      const shortcuts = $('.mobile-list-shortcuts');
+      const overlays = $$('.modal-overlay');
+      const update = () => {
+        const active = overlays.filter((overlay) => !overlay.hidden)
+          .sort((a, b) => (Number(getComputedStyle(a).zIndex) || 0) - (Number(getComputedStyle(b).zIndex) || 0)).pop();
+        const parent = active?.querySelector('[role="dialog"]') || $('.app');
+        if (shortcuts.parentElement !== parent) parent.append(shortcuts);
+      };
+      const observer = new MutationObserver(update);
+      overlays.forEach((overlay) => observer.observe(overlay, {attributes: true, attributeFilter: ['hidden']}));
+      update();
+    }

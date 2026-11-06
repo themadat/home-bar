@@ -1931,6 +1931,8 @@
 	          .pill-section .subtype-panel { grid-template-columns: 1fr; }
 	          .section-pill { justify-self: start; }
 	          .compact-search { flex-basis: 100%; }
+    }
+    @media (max-width: 1100px) {
       .table-wrap { border: 0; background: transparent; box-shadow: none; }
       .lnl-table-banner { gap: 4px; padding: 4px; border: 1px solid var(--line); border-radius: var(--radius); margin-bottom: 6px; }
 	      .lnl-table-banner.is-title { grid-template-columns: min(180px, 70vw); }
@@ -2037,6 +2039,8 @@
 	      }
 	      .lnl-cocktail-artwork figcaption { font-size: 7px; }
 	      .detail-grid.has-recipe-comparison .detail-notes-card { grid-column: auto; }
+    }
+    @media (max-width: 760px) {
       .cocktail-notes-drawer { width: 100vw; min-width: 0; max-width: none; border-left: 0; }
 	      .cocktail-notes-drawer .modal-body { display: flex; flex-direction: column; overflow-y: auto; }
 	      .cocktail-notes-media-column { flex: 0 0 auto; min-height: auto; overflow: visible; }
@@ -2261,18 +2265,55 @@
     .shopping-toggle .button:first-child { border-radius: 7px 0 0 7px; }
     .shopping-toggle .button:last-child { border-radius: 0 7px 7px 0; }
     .shopping-controls .button { display: inline-flex; justify-content: center; align-items: center; gap: 5px; font-size: 11px; padding-inline: 8px; }
-    .mobile-list-shortcuts, .shopping-location-label-short { display: none; }
+    .shopping-location-label-short { display: none; }
+    :root { --floating-space: calc(84px + env(safe-area-inset-bottom)); }
+    .mobile-list-shortcuts {
+      position: fixed; right: max(12px, env(safe-area-inset-right));
+      bottom: calc(12px + env(safe-area-inset-bottom)); z-index: 115;
+      display: flex; gap: 8px; padding: 6px; border: 1px solid var(--line);
+      border-radius: 22px; background: var(--panel); box-shadow: 0 6px 24px #0008;
+    }
+    .mobile-list-shortcuts .button {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 3px; min-width: 58px; min-height: 52px; padding: 6px 10px;
+      border-radius: 16px; color: var(--accent); background: var(--panel-2);
+    }
+    .mobile-list-shortcuts .button::after { content: attr(data-label); font-size: 10px; font-weight: 650; }
+    .mobile-list-shortcuts .sf-symbol { width: 22px; height: 22px; fill: currentColor; }
+    main { padding-bottom: var(--floating-space); }
+    /* Keep the last controls and content above the persistent shortcuts. */
+    .modal-overlay { padding-bottom: var(--floating-space); }
+    .modal-overlay .modal { max-height: calc(100dvh - var(--floating-space) - 20px); }
+    .modal-overlay .modal.modal-bar,
+    .modal-overlay .modal.modal-glassware,
+    .modal-overlay .modal.modal-lnl-gallery { height: calc(100dvh - var(--floating-space) - 20px); }
+    #shoppingListModalOverlay { z-index: 110; padding-bottom: var(--floating-space); }
+    #removeBottleModalOverlay, #githubSyncModalOverlay { z-index: 120; }
+    @media (pointer: coarse) and (min-width: 761px) and (max-width: 1100px) {
+      .topbar .button.header-action { min-width: 44px; min-height: 48px; }
+      .quick-chip, .shopping-controls .button { min-height: 44px; }
+      input, select, textarea { font-size: 16px; }
+    }
+    @media (max-width: 760px) {
+      header { padding-top: env(safe-area-inset-top); }
+      .topbar, .list-quick-filter-bar { width: calc(100% - 24px - env(safe-area-inset-left) - env(safe-area-inset-right)); }
+      .topbar .button.header-action { min-height: 44px; }
+      .topbar-search { min-height: 44px; }
+      .quick-filter-controls .quick-chip { min-height: 40px; }
+      .modal-overlay { padding: max(8px, env(safe-area-inset-top)) max(8px, env(safe-area-inset-right)) var(--floating-space) max(8px, env(safe-area-inset-left)); }
+      .modal-overlay .modal { max-height: calc(100dvh - var(--floating-space) - max(8px, env(safe-area-inset-top))); }
+      #barModalOverlay, #glasswareModalOverlay, #lnlGalleryOverlay { padding-bottom: var(--floating-space); padding-top: env(safe-area-inset-top); }
+      .modal-overlay .modal.modal-bar,
+      .modal-overlay .modal.modal-glassware,
+      .modal-overlay .modal.modal-lnl-gallery { height: calc(100dvh - var(--floating-space) - env(safe-area-inset-top)); }
+    }
     @media (max-width: 760px) {
       .shopping-controls { display: grid; grid-template-columns: 2fr 3fr 3fr; gap: 5px; }
       .shopping-toggle { min-width: 0; }
       .shopping-location-label-full { display: none; }
       .shopping-location-label-short { display: inline; }
       .shopping-controls .button { flex: 1 1 0; flex-direction: column; gap: 3px; min-width: 0; min-height: 48px; padding: 5px 0; font-size: 8px; white-space: nowrap; }
-      .mobile-list-shortcuts { position: fixed; right: max(14px, env(safe-area-inset-right)); bottom: calc(16px + env(safe-area-inset-bottom)); z-index: 30; display: grid; gap: 10px; }
-      .mobile-list-shortcuts .button { display: grid; place-items: center; width: 48px; height: 48px; padding: 12px; border-radius: 50%; color: var(--accent); background: var(--panel); border-color: var(--accent); box-shadow: 0 4px 16px #0008; }
-      .mobile-list-shortcuts .sf-symbol { width: 24px; height: 24px; fill: currentColor; }
-      body:has(.modal-overlay:not([hidden])) .mobile-list-shortcuts, body:has(.lnl-gallery-overlay:not([hidden])) .mobile-list-shortcuts { display: none; }
-      main { padding-bottom: 130px; }
+
     }
     .shopping-controls .button[hidden] { display: none; }
     .shopping-toggle .button[aria-pressed="true"] { position: relative; z-index: 1; color: var(--accent); background: var(--accent-soft); border-color: var(--accent); }
