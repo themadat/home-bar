@@ -394,3 +394,24 @@ function initFloatingListShortcuts() {
       overlays.forEach((overlay) => observer.observe(overlay, {attributes: true, attributeFilter: ['hidden']}));
       update();
     }
+
+function initCollapsibleSearch() {
+      const toggle = $('#searchToggle');
+      const input = $('#searchInput');
+      let expanded = false;
+      const update = () => {
+        const visible = expanded || /[1-9]/.test($('#activeMeta').textContent) || !!input.value || document.activeElement === input;
+        document.body.classList.toggle('search-visible', visible);
+        toggle.setAttribute('aria-expanded', String(visible));
+        toggle.setAttribute('aria-label', visible ? 'Hide search' : 'Show search');
+      };
+      toggle.addEventListener('click', () => {
+        expanded = !document.body.classList.contains('search-visible');
+        if (!expanded) input.blur();
+        update();
+        if (expanded) input.focus();
+      });
+      input.addEventListener('blur', () => { expanded = false; update(); });
+      new MutationObserver(update).observe($('#activeMeta'), {childList: true, characterData: true, subtree: true});
+      update();
+    }
