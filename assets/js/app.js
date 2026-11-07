@@ -2498,11 +2498,15 @@ let resizeTimer = null;
       
       
       const labels = {
-        updateAppButton: 'Update',
+        searchToggle: 'Search', updateAppButton: 'Update',
         settingsButton: 'Settings', lettersLiquorGalleryButton: 'Gallery', notesButton: 'Notes',
         glasswareButton: 'Drinkware', manageBarButton: 'My Bar', archiveButton: 'Archive',
         shoppingListButton: 'Lists', addCocktailButton: 'Add'
       };
+      const syncToolbarLabel = document.createElement('span');
+      syncToolbarLabel.className = 'sync-toolbar-label';
+      syncToolbarLabel.textContent = 'Sync';
+      $('#githubSyncButton').append(syncToolbarLabel);
       const singleKeyLabels = {
         lettersLiquorGalleryButton: 'G', glasswareButton: 'D', manageBarButton: 'B',
         archiveButton: 'E', shoppingListButton: 'P'

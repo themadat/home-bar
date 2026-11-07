@@ -2439,3 +2439,30 @@
       .cocktail-table th[data-col="base"] .table-sort-button { font-size: 9px; letter-spacing: 0; }
       .cocktail-table th[data-col="base"] .table-sort-button > span:first-child { white-space: nowrap; }
     }
+
+    .sync-toolbar-label { display: none; }
+    .mobile-list-shortcuts { position: fixed; z-index: 130; }
+    @media (min-width: 761px) and (max-width: 1200px) and (orientation: landscape) {
+      .topbar { align-items: center; padding-block: 6px; }
+      .topbar-left-actions, .topbar-actions { align-items: center; }
+      .topbar .button.header-action, .topbar #searchToggle, .topbar #githubSyncButton {
+        width: 44px; min-width: 44px; flex: 0 0 44px; height: 48px; min-height: 48px;
+        padding: 4px 2px; gap: 3px; border-radius: var(--radius);
+      }
+      .topbar .button.header-action .button-label { display: block; font-size: 9px; line-height: 12px; }
+      .topbar .button.header-action .button-icon { height: 22px; }
+      .topbar #githubSyncButton { flex-direction: column; justify-content: center; }
+      .topbar #githubSyncButton .sf-symbol { width: 22px; height: 22px; }
+      .topbar #githubSyncButton .sync-toolbar-label { display: block; font-size: 9px; line-height: 12px; font-weight: 650; }
+    }
+    @media (min-width: 761px) and (max-width: 1100px) {
+      .cocktail-table thead tr, .cocktail-table .summary-row {
+        grid-template-columns: 42px 12px minmax(160px, 1fr) 102px 30px 90px 64px 110px 70px;
+      }
+      .cocktail-table .summary-row td[data-label="Photo"] { overflow: visible; }
+      .cocktail-table .thumb, .cocktail-table .thumb-button { width: 34px; height: 34px; }
+      .cocktail-table .thumb { object-fit: contain; }
+      .cocktail-table th { font-size: 10px; line-height: 1.25; letter-spacing: .04em; text-align: left; }
+      .cocktail-table th .table-sort-button { font-size: 10px; line-height: 1.25; letter-spacing: .04em; min-height: 36px; }
+      .cocktail-table thead { border-bottom: 1px solid var(--line); }
+    }
