@@ -2466,3 +2466,31 @@
       .cocktail-table th .table-sort-button { font-size: 10px; line-height: 1.25; letter-spacing: .04em; min-height: 36px; }
       .cocktail-table thead { border-bottom: 1px solid var(--line); }
     }
+
+    :root { --floating-edge: max(8px, env(safe-area-inset-right), env(safe-area-inset-bottom)); --floating-space: calc(168px + env(safe-area-inset-bottom)); }
+    .mobile-list-shortcuts { right: var(--floating-edge); bottom: calc(var(--floating-edge) + 52px); padding: 2px; gap: 4px; }
+    .mobile-list-shortcuts .button { width: 40px; height: 40px; min-height: 40px; padding: 9px; }
+    #searchToggle.floating-search { position: fixed; right: var(--floating-edge); bottom: var(--floating-edge); z-index: 130;
+      display: grid; place-items: center; width: 46px; height: 46px; min-width: 46px; padding: 8px; margin: 0;
+      border: 1px solid var(--line); border-radius: 50%; background: var(--panel-2); box-shadow: 0 6px 24px #0008; }
+    #searchToggle.floating-search .button-label { display: none; }
+    #searchToggle.floating-search .button-icon { font-size: 28px; height: auto; }
+    .compact-prep-label { display: none; }
+    @media (min-width: 761px) and (max-width: 1100px) {
+      .cocktail-table thead tr, .cocktail-table .summary-row { grid-template-columns: 42px 12px minmax(160px, 1fr) 102px 30px 90px 100px 110px; }
+      .cocktail-table .summary-row td:nth-child(7) { grid-column: 7; grid-row: 1 / span 2; align-self: center; padding: 4px; }
+      .cocktail-table .summary-row td:nth-child(8), .cocktail-table .summary-row td:nth-child(13), .cocktail-table th[data-col="glass"] { display: none; }
+      .cocktail-table .regular-prep-label { display: none; }
+      .cocktail-table .compact-prep-label { display: block; }
+      .cocktail-table .compact-prep-pills { display: flex; flex-wrap: wrap; gap: 2px; align-items: center; }
+      .cocktail-table .compact-glassware { display: block; white-space: normal; font-size: 9px; line-height: 1.25; margin-top: 2px; }
+      .cocktail-table thead th { border: 0; align-self: stretch; display: flex; align-items: center; }
+      .cocktail-table thead th[data-col="serving"], .cocktail-table thead th[data-col="garnish"],
+      .cocktail-table thead th[data-col="ing"], .cocktail-table thead th[data-col="time"], .cocktail-table thead th[data-col="status"], .cocktail-table thead th[data-col="glass"] { display: none; }
+      .cocktail-table thead .table-sort-button { border: 0; box-shadow: none; text-decoration: none; }
+    }
+
+    @media (min-width: 761px) and (max-width: 1100px) {
+      .cocktail-table thead th[data-col="base"] { display: block; align-content: center; white-space: nowrap; }
+    }
+    #searchToggle.floating-search svg { display: block; width: 24px; height: 24px; }
