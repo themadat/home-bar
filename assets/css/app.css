@@ -2494,3 +2494,23 @@
       .cocktail-table thead th[data-col="base"] { display: block; align-content: center; white-space: nowrap; }
     }
     #searchToggle.floating-search svg { display: block; width: 24px; height: 24px; }
+
+    /* Scroll the app surface, leaving viewport controls outside its scroll tree. */
+    html, body { height: 100%; overflow: hidden; }
+    .app { position: fixed; inset: 0; min-height: 0; overflow-y: auto; overflow-x: hidden; overscroll-behavior-y: none; }
+    .app > header { position: sticky; top: 0; flex-shrink: 0; }
+    body > .mobile-list-shortcuts, body > #searchToggle.floating-search { position: fixed; }
+
+    /* Modal surfaces use the viewport; floating controls overlay them. */
+    .modal-overlay[id] { padding-top: env(safe-area-inset-top) !important; padding-bottom: env(safe-area-inset-bottom) !important; height: 100dvh; }
+    .modal-overlay[id] > .modal {
+      height: 100% !important; max-height: 100% !important; min-height: 0;
+      border-top: 0; border-bottom: 0; border-radius: 0;
+    }
+    #githubSyncModalOverlay:has(#appPreferences:not([hidden])) .modal-sync { padding-bottom: env(safe-area-inset-bottom); }
+    @media (max-width: 1100px) {
+      .summary-row .rating-cell { width: 100%; gap: 3px; }
+      .summary-row .stars { flex: 0 0 auto; gap: 0; }
+      .summary-row .star { width: 10px; height: 12px; font-size: 11px; }
+      .summary-row .rating-value { flex: 0 0 auto; min-width: 22px; font-size: 10px; padding-right: 2px; }
+    }
