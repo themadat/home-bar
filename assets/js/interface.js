@@ -380,19 +380,9 @@ function scheduleColumnWidthUpdate() {
       resizeTimer = setTimeout(applyColumnWidths, 120);
     }
 
-// Keep fixed shortcuts outside scrolling dialog panels.
+// A body-level fixed rail avoids containing blocks created by modal backdrop filters.
 function initFloatingListShortcuts() {
-      const shortcuts = $('.mobile-list-shortcuts');
-      const overlays = $$('.modal-overlay');
-      const update = () => {
-        const active = overlays.filter((overlay) => !overlay.hidden)
-          .sort((a, b) => (Number(getComputedStyle(a).zIndex) || 0) - (Number(getComputedStyle(b).zIndex) || 0)).pop();
-        const parent = active || document.body;
-        if (shortcuts.parentElement !== parent) parent.append(shortcuts);
-      };
-      const observer = new MutationObserver(update);
-      overlays.forEach((overlay) => observer.observe(overlay, {attributes: true, attributeFilter: ['hidden']}));
-      update();
+      document.body.append($('.mobile-list-shortcuts'));
     }
 
 function initCollapsibleSearch() {
