@@ -380,14 +380,14 @@ function scheduleColumnWidthUpdate() {
       resizeTimer = setTimeout(applyColumnWidths, 120);
     }
 
-// Keep shortcuts within the active dialog's accessibility scope as panels change.
+// Keep fixed shortcuts outside scrolling dialog panels.
 function initFloatingListShortcuts() {
       const shortcuts = $('.mobile-list-shortcuts');
       const overlays = $$('.modal-overlay');
       const update = () => {
         const active = overlays.filter((overlay) => !overlay.hidden)
           .sort((a, b) => (Number(getComputedStyle(a).zIndex) || 0) - (Number(getComputedStyle(b).zIndex) || 0)).pop();
-        const parent = active?.querySelector('[role="dialog"]') || $('.app');
+        const parent = active || document.body;
         if (shortcuts.parentElement !== parent) parent.append(shortcuts);
       };
       const observer = new MutationObserver(update);
