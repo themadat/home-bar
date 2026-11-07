@@ -382,7 +382,8 @@ function scheduleColumnWidthUpdate() {
 
 // A body-level fixed rail avoids containing blocks created by modal backdrop filters.
 function initFloatingListShortcuts() {
-      document.body.append($('.mobile-list-shortcuts'));
+      document.body.append($('.mobile-list-shortcuts'), $('#searchToggle'));
+      $('#searchToggle').classList.add('floating-search');
     }
 
 function initCollapsibleSearch() {

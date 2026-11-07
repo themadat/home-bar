@@ -528,7 +528,7 @@ function rowTemplate(c) {
 	        <td data-label="Recipe"><div class="cocktail-row-details"><span class="mobile-cocktail-meta mobile-cocktail-category">${cocktailDataFlagsMarkup(c)}${compactTypeTag(c)}${cocktailRowSourceFlag(c)}</span>${recipeSourceIndicators(c)}<span class="mobile-cocktail-meta mobile-cocktail-prep">${preparationTags(c)}</span><span class="mobile-cocktail-meta mobile-cocktail-serve">${servingStyleTag(c)}</span></div></td>
 	        <td data-label="Try" class="bookmark-cell">${bookmarkToggle(c)}</td>
 	        <td data-label="Rating"><div class="rating-cell" title="${escapeHtml(ratingTitle)}">${ratingStars(c.id, rating, store.ratingView === 'friends' ? 'friends-view' : '')}<span class="rating-value">${ratingValueLabel(rating)}</span></div></td>
-	        <td data-label="Prep">${preparationTags(c)}</td>
+	        <td data-label="Prep"><span class="regular-prep-label">${preparationTags(c)}</span><div class="compact-prep-label"><div class="compact-prep-pills">${preparationTags(c)}${servingStyleTag(c)}</div><span class="compact-glassware">${escapeHtml(displayGlass(c.glassware))}</span></div></td>
 	        <td data-label="Serve">${servingStyleTag(c)}</td>
 	        <td data-label="Base Liquor"><div class="tagline">${bases}</div></td>
 	        <td data-label="Garnish"><span class="garnish-cell">${escapeHtml(garnish)}</span></td>
