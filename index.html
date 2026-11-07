@@ -15,7 +15,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Home Bar">
   <meta name="mobile-web-app-capable" content="yes">
-  <link rel="stylesheet" href="assets/css/app.css?v=2.0.0.174">
+  <link rel="stylesheet" href="assets/css/app.css?v=2.0.0.175">
 </head>
 <body>
   <div class="app">
@@ -172,9 +172,9 @@
 	              <th data-col="recipe" style="width: 112px;" title="Recipe sources: Difford's, IBA, L&amp;L, Classic, Other">Recipe</th>
 	              <th class="sortable-column" data-col="try" data-sort-key="try" aria-sort="none" style="width: 56px;"><button class="table-sort-button" type="button" data-table-sort="try"><span>Try</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
 	              <th class="sortable-column" data-col="rating" data-sort-key="rating" aria-sort="none" style="width: 94px;"><div class="rating-header-group"><button class="table-sort-button" type="button" data-table-sort="rating"><span>Rating</span><span class="table-sort-icon" aria-hidden="true"></span></button><div id="ratingViewPill" class="rating-unlocked-controls" data-view="mine" hidden><button id="ratingAudienceToggle" class="rating-audience-toggle" type="button" data-view="mine" title="Show friends average" aria-label="Show friends average">Mine</button><button class="table-sort-button rating-pill-sort" type="button" data-table-sort="rating"><span class="visually-hidden">Rating</span><span class="table-sort-icon" aria-hidden="true"></span></button></div></div></th>
-	              <th data-col="prep" style="width: 70px;">Prep</th>
+	              <th data-col="prep" style="width: 70px;">Prep<span class="compact-column-sublabel">Serve</span></th>
 	              <th data-col="serving" style="width: 88px;">Serve</th>
-	              <th class="sortable-column" data-col="base" data-sort-key="base" aria-sort="none" style="width: 20%;"><button class="table-sort-button" type="button" data-table-sort="base"><span>Base Liquor</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
+	              <th class="sortable-column" data-col="base" data-sort-key="base" aria-sort="none" style="width: 20%;"><button class="table-sort-button" type="button" data-table-sort="base"><span>Base Liquor<span class="compact-column-sublabel">Garnish</span></span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
 	              <th class="sortable-column" data-col="garnish" data-sort-key="garnish" aria-sort="none" style="width: 16%;"><button class="table-sort-button" type="button" data-table-sort="garnish"><span>Garnish</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
 	              <th class="sortable-column" data-col="ing" data-sort-key="ingredients" aria-sort="none" style="width: 56px;"><button class="table-sort-button" type="button" data-table-sort="ingredients"><span>Ing.</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
 	              <th class="sortable-column" data-col="time" data-sort-key="time" aria-sort="none" style="width: 76px;"><button class="table-sort-button" type="button" data-table-sort="time"><span>Time</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
@@ -786,34 +786,33 @@
       </div>
     </div>
   </div>
-  <script src="letters-liquor-notes.js?v=2.0.0.174"></script>
-  <script src="letters-liquor-data.js?v=2.0.0.174"></script>
-  <script src="diffords-data.js?v=2.0.0.174"></script>
-  <script src="data/classic-recipes.js?v=2.0.0.174"></script>
+  <script src="letters-liquor-notes.js?v=2.0.0.175"></script>
+  <script src="letters-liquor-data.js?v=2.0.0.175"></script>
+  <script src="diffords-data.js?v=2.0.0.175"></script>
+  <script src="data/classic-recipes.js?v=2.0.0.175"></script>
   <script>
-const BUILD_VERSION = '2.0.0.174';
+const BUILD_VERSION = '2.0.0.175';
     const CURRENT_RELEASE = {
-      "title": "Compact Duo toolbar and paired table columns",
-      "summary": "Add collapsible search and compact folded and unfolded controls while preserving full cocktail names.",
+      "title": "Anchor Duo controls and refine compact rows",
+      "summary": "Keep floating controls stationary, restore sticky scrolling, and align compact table details.",
       "changes": [
-        "Use a rounded vertical floating rail with equal edge spacing in every mode.",
-        "Reveal search on tap or while filters are active, and compact landscape toolbar to one row.",
-        "Pair prep with serve and base liquor with garnish at small tablet widths; hide ingredient count and time.",
-        "Wrap full cocktail names, shorten filter chips, and remove Serve sorting."
+        "Anchor floating controls outside scrolling dialog panels and keep page and table headers sticky.",
+        "Add breathing room around compact search and sync controls and show unavailable status circles.",
+        "Center names vertically, fit all five recipe slots, and match paired chip sizes with two-line column labels."
       ]
     };
   </script>
-  <script src="data/cocktails.js?v=2.0.0.174"></script>
-  <script src="assets/js/icons.js?v=2.0.0.174"></script>
-  <script src="assets/js/ingredients.js?v=2.0.0.174"></script>
-  <script src="assets/js/ratings.js?v=2.0.0.174"></script>
-  <script src="assets/js/availability.js?v=2.0.0.174"></script>
-  <script src="assets/js/render.js?v=2.0.0.174"></script>
-  <script src="assets/js/dialogs.js?v=2.0.0.174"></script>
-  <script src="assets/js/bar.js?v=2.0.0.174"></script>
-  <script src="assets/js/cocktail-editor.js?v=2.0.0.174"></script>
-  <script src="assets/js/sync.js?v=2.0.0.174"></script>
-  <script src="assets/js/interface.js?v=2.0.0.174"></script>
-  <script src="assets/js/app.js?v=2.0.0.174"></script>
+  <script src="data/cocktails.js?v=2.0.0.175"></script>
+  <script src="assets/js/icons.js?v=2.0.0.175"></script>
+  <script src="assets/js/ingredients.js?v=2.0.0.175"></script>
+  <script src="assets/js/ratings.js?v=2.0.0.175"></script>
+  <script src="assets/js/availability.js?v=2.0.0.175"></script>
+  <script src="assets/js/render.js?v=2.0.0.175"></script>
+  <script src="assets/js/dialogs.js?v=2.0.0.175"></script>
+  <script src="assets/js/bar.js?v=2.0.0.175"></script>
+  <script src="assets/js/cocktail-editor.js?v=2.0.0.175"></script>
+  <script src="assets/js/sync.js?v=2.0.0.175"></script>
+  <script src="assets/js/interface.js?v=2.0.0.175"></script>
+  <script src="assets/js/app.js?v=2.0.0.175"></script>
 </body>
 </html>

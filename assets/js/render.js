@@ -513,7 +513,7 @@ function rowTemplate(c) {
         ? '<span class="bar-supported-indicator" role="img" aria-label="My Bar can make this cocktail" title="My Bar can make this cocktail"></span>'
         : availability.state === 'substitute'
           ? `<span class="bar-supported-indicator bar-substituted-indicator" role="img" aria-label="My Bar can make this cocktail with substitutions" title="${escapeHtml(substitutionTitle)}"></span>`
-          : '';
+          : '<span class="bar-supported-indicator bar-unavailable-indicator" role="img" aria-label="My Bar is missing ingredients" title="My Bar is missing ingredients"></span>';
       const bases = c.baseLiquor.map((base) => `<span class="mini-tag base-tag base-${classToken(base)}">${escapeHtml(displayBaseLabel(base))}</span>`).join('');
 	      const garnish = rowGarnish(c);
 	      const rating = getRating(c);
