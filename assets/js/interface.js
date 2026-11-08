@@ -285,10 +285,10 @@ function measurePriorityColumnNeeds() {
 	    <td></td>
 	    <td><div class="name-cell"><div class="cocktail-name" data-probe="name"></div><div class="cocktail-row-markers" data-probe="markers"></div></div></td>
 	    <td></td><td></td><td></td><td></td><td></td>
+        <td data-probe="glass"></td>
         <td><div class="tagline" data-probe="base"></div></td>
         <td><span class="garnish-cell" data-probe="garnish"></span></td>
         <td></td><td></td>
-        <td data-probe="glass"></td>
         <td></td>
       `;
       tbody.appendChild(probeRow);
