@@ -2514,3 +2514,34 @@
       .summary-row .star { width: 10px; height: 12px; font-size: 11px; }
       .summary-row .rating-value { flex: 0 0 auto; min-width: 22px; font-size: 10px; padding-right: 2px; }
     }
+
+    :root { --floating-edge: max(22px, env(safe-area-inset-right), env(safe-area-inset-bottom)); }
+    .mobile-list-shortcuts {
+      right: var(--floating-edge); bottom: calc(var(--floating-edge) + 62px);
+      width: 46px; padding: 3px; gap: 6px; border-radius: 999px;
+      background: rgba(40, 42, 44, .9); touch-action: none; user-select: none; -webkit-user-select: none;
+      transition: width .16s ease, padding .16s ease;
+    }
+    .mobile-list-shortcuts .button { width: 38px; height: 44px; min-height: 44px; padding: 7px; color: var(--text); }
+    .mobile-list-shortcuts .sf-symbol { width: 27px; height: 27px; }
+    .mobile-list-shortcuts .button::after { content: attr(data-label); }
+    .mobile-list-shortcuts.is-expanded { width: 90px; padding: 5px; }
+    .mobile-list-shortcuts.is-expanded .button { width: 78px; height: 68px; min-height: 68px; padding: 7px; gap: 5px; }
+    .mobile-list-shortcuts.is-expanded .button::after { display: block; font-size: 12px; white-space: nowrap; }
+    .mobile-list-shortcuts .button.is-highlighted { background: #080B10; color: var(--accent); }
+    #searchToggle.floating-search { width: 46px; height: 46px; touch-action: none; user-select: none; -webkit-user-select: none; transition: width .16s ease, height .16s ease; }
+    #searchToggle.floating-search svg { width: 27px; height: 27px; }
+    #searchToggle.floating-search.is-expanded { width: 90px; height: 58px; border-radius: 28px; gap: 2px; padding: 5px; }
+    #searchToggle.floating-search.is-expanded .button-label { display: block; font-size: 12px; line-height: 16px; }
+    #searchToggle.floating-search.is-highlighted { color: var(--accent); }
+    .bar-unavailable-indicator { opacity: .22; }
+    .summary-row .name-cell { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; width: 100%; }
+    .summary-row td[data-label="Cocktail"] { vertical-align: middle; align-self: center; }
+    @media (max-width: 760px) {
+      .summary-row .name-cell { grid-template-columns: minmax(0, 1fr); }
+      .summary-row .cocktail-row-markers { display: none; }
+      .summary-row td[data-label="Cocktail"] { grid-row: 1; align-self: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .mobile-list-shortcuts, #searchToggle.floating-search { transition: none; }
+    }

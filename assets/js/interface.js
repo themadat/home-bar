@@ -384,25 +384,82 @@ function scheduleColumnWidthUpdate() {
 function initFloatingListShortcuts() {
       document.body.append($('.mobile-list-shortcuts'), $('#searchToggle'));
       $('#searchToggle').classList.add('floating-search');
+      initFloatingSelection($('.mobile-list-shortcuts'));
+      initFloatingSelection($('#searchToggle'));
     }
 
 function initCollapsibleSearch() {
       const toggle = $('#searchToggle');
       const input = $('#searchInput');
       let expanded = false;
+      const roomy = matchMedia('(min-width: 1450px)');
       const update = () => {
-        const visible = expanded || /[1-9]/.test($('#activeMeta').textContent) || !!input.value || document.activeElement === input;
+        const visible = roomy.matches || expanded || /[1-9]/.test($('#activeMeta').textContent) || !!input.value || document.activeElement === input;
         document.body.classList.toggle('search-visible', visible);
         toggle.setAttribute('aria-expanded', String(visible));
-        toggle.setAttribute('aria-label', visible ? 'Hide search' : 'Show search');
+        toggle.setAttribute('aria-label', 'Focus cocktail search');
       };
       toggle.addEventListener('click', () => {
-        expanded = !document.body.classList.contains('search-visible');
-        if (!expanded) input.blur();
+        expanded = true;
         update();
-        if (expanded) input.focus();
+        input.focus();
       });
+      roomy.addEventListener('change', update);
       input.addEventListener('blur', () => { expanded = false; update(); });
       new MutationObserver(update).observe($('#activeMeta'), {childList: true, characterData: true, subtree: true});
       update();
+    }
+
+// Pointer capture lets a held control slide between choices without scrolling the page.
+function initFloatingSelection(container) {
+      let dragging = false;
+      let selected = null;
+      let timer = null;
+      let suppressPointerClick = false;
+      const buttons = () => container.matches('button') ? [container] : Array.from(container.querySelectorAll('button'));
+      const choose = (event) => {
+        const rect = container.getBoundingClientRect();
+        const inside = event.clientX >= rect.left && event.clientX <= rect.right && event.clientY >= rect.top && event.clientY <= rect.bottom;
+        const choices = buttons();
+        selected = inside ? choices.reduce((best, button) => {
+          const box = button.getBoundingClientRect();
+          const distance = Math.abs(event.clientY - (box.top + box.bottom) / 2);
+          return !best || distance < best.distance ? {button, distance} : best;
+        }, null)?.button : null;
+        choices.forEach((button) => button.classList.toggle('is-highlighted', button === selected));
+      };
+      const finish = () => {
+        clearTimeout(timer);
+        dragging = false;
+        selected = null;
+        container.classList.remove('is-expanded');
+        buttons().forEach((button) => button.classList.remove('is-highlighted'));
+      };
+      container.addEventListener('pointerenter', (event) => {
+        if (event.pointerType === 'mouse') container.classList.add('is-expanded');
+      });
+      container.addEventListener('pointerleave', () => { if (!dragging) finish(); });
+      container.addEventListener('pointerdown', (event) => {
+        if (event.button !== 0) return;
+        dragging = true;
+        suppressPointerClick = true;
+        container.setPointerCapture(event.pointerId);
+        choose(event);
+        timer = setTimeout(() => { if (dragging) { container.classList.add('is-expanded'); choose(event); } }, 220);
+      });
+      container.addEventListener('pointermove', (event) => { if (dragging) choose(event); });
+      container.addEventListener('pointerup', (event) => {
+        if (!dragging) return;
+        choose(event);
+        const action = selected;
+        finish();
+        if (container.hasPointerCapture(event.pointerId)) container.releasePointerCapture(event.pointerId);
+        action?.click();
+      });
+      container.addEventListener('pointercancel', finish);
+      container.addEventListener('lostpointercapture', () => { if (dragging) finish(); });
+      container.addEventListener('click', (event) => {
+        if (suppressPointerClick && event.detail > 0) { event.preventDefault(); event.stopImmediatePropagation(); }
+      }, true);
+      container.addEventListener('contextmenu', (event) => event.preventDefault());
     }
