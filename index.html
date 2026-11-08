@@ -15,7 +15,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Home Bar">
   <meta name="mobile-web-app-capable" content="yes">
-  <link rel="stylesheet" href="assets/css/app.css?v=2.0.0.181">
+  <link rel="stylesheet" href="assets/css/app.css?v=2.0.0.182">
 </head>
 <body>
   <div class="app">
@@ -68,7 +68,7 @@
 	              <div id="ingredientPills" class="pill-row" hidden></div>
 	            </div>
 	            <div class="pill-card is-collapsible" data-filter-section="base">
-		              <button class="section-pill collapse-toggle" type="button" data-collapse-toggle="base" aria-expanded="false" aria-controls="baseFilterBody">Base Liquor <span id="baseToggleCount" class="mobile-section-count"></span><span class="collapse-icon" aria-hidden="true">+</span></button>
+		              <button class="section-pill collapse-toggle" type="button" data-collapse-toggle="base" aria-expanded="false" aria-controls="baseFilterBody">Base(s) <span id="baseToggleCount" class="mobile-section-count"></span><span class="collapse-icon" aria-hidden="true">+</span></button>
 	              <div class="collapse-summary">
 	                <span id="baseSummary" class="section-meta"></span>
 	              </div>
@@ -157,11 +157,11 @@
             <col data-table-col="rating">
             <col data-table-col="prep">
             <col data-table-col="serving">
+            <col data-table-col="glass">
             <col data-table-col="base">
             <col data-table-col="garnish">
             <col data-table-col="ing">
             <col data-table-col="time">
-            <col data-table-col="glass">
             <col data-table-col="status">
           </colgroup>
           <thead>
@@ -174,11 +174,11 @@
 	              <th class="sortable-column" data-col="rating" data-sort-key="rating" aria-sort="none" style="width: 94px;"><div class="rating-header-group"><button class="table-sort-button" type="button" data-table-sort="rating"><span>Rating</span><span class="table-sort-icon" aria-hidden="true"></span></button><div id="ratingViewPill" class="rating-unlocked-controls" data-view="mine" hidden><button id="ratingAudienceToggle" class="rating-audience-toggle" type="button" data-view="mine" title="Show friends average" aria-label="Show friends average">Mine</button><button class="table-sort-button rating-pill-sort" type="button" data-table-sort="rating"><span class="visually-hidden">Rating</span><span class="table-sort-icon" aria-hidden="true"></span></button></div></div></th>
 	              <th data-col="prep" style="width: 70px;"><span class="regular-prep-label">Prep</span><span class="compact-prep-label">Prep/Serve<br>Glassware</span></th>
 	              <th data-col="serving" style="width: 88px;">Serve</th>
-	              <th data-col="base">Base Liquor<span class="compact-column-sublabel">Garnish</span></th>
-	              <th data-col="garnish">Garnish</th>
-	              <th class="sortable-column" data-col="ing" data-sort-key="ingredients" aria-sort="none" style="width: 56px;"><button class="table-sort-button" type="button" data-table-sort="ingredients"><span>Ing.</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
-	              <th class="sortable-column" data-col="time" data-sort-key="time" aria-sort="none" style="width: 76px;"><button class="table-sort-button" type="button" data-table-sort="time"><span>Time</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
 	              <th data-col="glass">Glassware</th>
+	              <th data-col="base">Base(s)<span class="compact-column-sublabel">Garnish</span></th>
+	              <th data-col="garnish">Garnish</th>
+	              <th class="sortable-column" data-col="ing" data-sort-key="ingredients" aria-sort="none" style="width: 56px;"><button class="table-sort-button" type="button" data-table-sort="ingredients"><span class="regular-ing-label">Ing.</span><span class="compact-ing-time">Ing.<br>Time</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
+	              <th class="sortable-column" data-col="time" data-sort-key="time" aria-sort="none" style="width: 76px;"><button class="table-sort-button" type="button" data-table-sort="time"><span>Time</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
 	              <th class="sortable-column" data-col="status" data-sort-key="status" aria-sort="none" style="width: 7%;"><button class="table-sort-button" type="button" data-table-sort="status"><span>Status</span><span class="table-sort-icon" aria-hidden="true"></span></button></th>
             </tr>
           </thead>
@@ -786,32 +786,34 @@
       </div>
     </div>
   </div>
-  <script src="letters-liquor-notes.js?v=2.0.0.181"></script>
-  <script src="letters-liquor-data.js?v=2.0.0.181"></script>
-  <script src="diffords-data.js?v=2.0.0.181"></script>
-  <script src="data/classic-recipes.js?v=2.0.0.181"></script>
+  <script src="letters-liquor-notes.js?v=2.0.0.182"></script>
+  <script src="letters-liquor-data.js?v=2.0.0.182"></script>
+  <script src="diffords-data.js?v=2.0.0.182"></script>
+  <script src="data/classic-recipes.js?v=2.0.0.182"></script>
   <script>
-const BUILD_VERSION = '2.0.0.181';
+const BUILD_VERSION = '2.0.0.182';
     const CURRENT_RELEASE = {
-      "title": "Highlight active floating views",
-      "summary": "Color active and hovered floating choices and move the controls closer to screen edges.",
+      "title": "Refine cocktail details across layouts",
+      "summary": "Rebalance compact columns, add phone details, and unify muted metadata and Base(s) labels.",
       "changes": [
-        "Highlight the open To Buy or I Have view and the floating choice under the slider or pointer.",
-        "Reduce matching right and bottom spacing from 22px to 12px, respecting safe areas."
+        "Rename Base Liquor to Base(s), mute ingredient/time/glassware text, and reduce floating edge margins to 6px.",
+        "Add Base(s), Garnish, and Glassware below phone tags and preparation details.",
+        "Add a narrow stacked ingredient/time column and give compact Base(s)/Garnish more room.",
+        "Place desktop Glassware after Serve and match preparation pill sizing to base pills."
       ]
     };
   </script>
-  <script src="data/cocktails.js?v=2.0.0.181"></script>
-  <script src="assets/js/icons.js?v=2.0.0.181"></script>
-  <script src="assets/js/ingredients.js?v=2.0.0.181"></script>
-  <script src="assets/js/ratings.js?v=2.0.0.181"></script>
-  <script src="assets/js/availability.js?v=2.0.0.181"></script>
-  <script src="assets/js/render.js?v=2.0.0.181"></script>
-  <script src="assets/js/dialogs.js?v=2.0.0.181"></script>
-  <script src="assets/js/bar.js?v=2.0.0.181"></script>
-  <script src="assets/js/cocktail-editor.js?v=2.0.0.181"></script>
-  <script src="assets/js/sync.js?v=2.0.0.181"></script>
-  <script src="assets/js/interface.js?v=2.0.0.181"></script>
-  <script src="assets/js/app.js?v=2.0.0.181"></script>
+  <script src="data/cocktails.js?v=2.0.0.182"></script>
+  <script src="assets/js/icons.js?v=2.0.0.182"></script>
+  <script src="assets/js/ingredients.js?v=2.0.0.182"></script>
+  <script src="assets/js/ratings.js?v=2.0.0.182"></script>
+  <script src="assets/js/availability.js?v=2.0.0.182"></script>
+  <script src="assets/js/render.js?v=2.0.0.182"></script>
+  <script src="assets/js/dialogs.js?v=2.0.0.182"></script>
+  <script src="assets/js/bar.js?v=2.0.0.182"></script>
+  <script src="assets/js/cocktail-editor.js?v=2.0.0.182"></script>
+  <script src="assets/js/sync.js?v=2.0.0.182"></script>
+  <script src="assets/js/interface.js?v=2.0.0.182"></script>
+  <script src="assets/js/app.js?v=2.0.0.182"></script>
 </body>
 </html>

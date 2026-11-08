@@ -489,7 +489,7 @@ function detailTemplate(c) {
 	          <section class="detail-card mobile-detail-facts">
 	            <h3>Details</h3>
 	            <dl class="detail-facts-list">
-	              <div><dt>Base Liquor</dt><dd>${escapeHtml(detailBases)}</dd></div>
+	              <div><dt>Base(s)</dt><dd>${escapeHtml(detailBases)}</dd></div>
 	              <div><dt>Ingredients</dt><dd>${escapeHtml(c.ingredientCount)}</dd></div>
 	              <div><dt>Make Time</dt><dd>${escapeHtml(c.makeTime)} min</dd></div>
 	              <div><dt>Glassware</dt><dd>${escapeHtml(displayGlass(c.glassware))}</dd></div>
@@ -525,16 +525,16 @@ function rowTemplate(c) {
 	        <td data-label="Photo">${thumbCell(c)}</td>
 	        <td data-label="My Bar"><span class="availability-slot">${supportedIndicator}</span></td>
 	        <td data-label="Cocktail"><div class="name-cell"><div class="cocktail-name">${cocktailNameMarkup(c)}</div><div class="cocktail-row-markers">${cocktailDataFlagsMarkup(c)}<span class="cocktail-marker-tags">${compactTypeTag(c)}${cocktailRowSourceFlag(c)}</span></div></div></td>
-	        <td data-label="Recipe"><div class="cocktail-row-details"><span class="mobile-cocktail-meta mobile-cocktail-category">${cocktailDataFlagsMarkup(c)}${compactTypeTag(c)}${cocktailRowSourceFlag(c)}</span>${recipeSourceIndicators(c)}<span class="mobile-cocktail-meta mobile-cocktail-prep">${preparationTags(c)}</span><span class="mobile-cocktail-meta mobile-cocktail-serve">${servingStyleTag(c)}</span></div></td>
+	        <td data-label="Recipe"><div class="cocktail-row-details"><span class="mobile-cocktail-meta mobile-cocktail-category">${cocktailDataFlagsMarkup(c)}${compactTypeTag(c)}${cocktailRowSourceFlag(c)}</span>${recipeSourceIndicators(c)}<span class="mobile-cocktail-meta mobile-cocktail-prep">${preparationTags(c)}</span><span class="mobile-cocktail-meta mobile-cocktail-serve">${servingStyleTag(c)}</span></div><div class="phone-cocktail-facts"><span>Base(s): ${escapeHtml(c.baseLiquor.map(displayBaseLabel).join(', '))}</span><span>Garnish: ${escapeHtml(garnish)}</span><span>Glassware: ${escapeHtml(displayGlass(c.glassware))}</span></div></td>
 	        <td data-label="Try" class="bookmark-cell">${bookmarkToggle(c)}</td>
 	        <td data-label="Rating"><div class="rating-cell" title="${escapeHtml(ratingTitle)}">${ratingStars(c.id, rating, store.ratingView === 'friends' ? 'friends-view' : '')}<span class="rating-value">${ratingValueLabel(rating)}</span></div></td>
 	        <td data-label="Prep"><span class="regular-prep-label">${preparationTags(c)}</span><div class="compact-prep-label"><div class="compact-prep-pills">${preparationTags(c)}${servingStyleTag(c)}</div><span class="compact-glassware">${escapeHtml(displayGlass(c.glassware))}</span></div></td>
 	        <td data-label="Serve">${servingStyleTag(c)}</td>
-	        <td data-label="Base Liquor"><div class="tagline">${bases}</div></td>
-	        <td data-label="Garnish"><span class="garnish-cell">${escapeHtml(garnish)}</span></td>
-	        <td data-label="Ing.">${c.ingredientCount}</td>
-        <td data-label="Time">${c.makeTime} min</td>
         <td data-label="Glassware">${escapeHtml(displayGlass(c.glassware))}</td>
+	        <td data-label="Base(s)"><div class="tagline">${bases}</div></td>
+	        <td data-label="Garnish"><span class="garnish-cell">${escapeHtml(garnish)}</span></td>
+	        <td data-label="Ing."><span class="regular-ing-label">${c.ingredientCount}</span><span class="compact-ing-time">${c.ingredientCount} ing.<br>${c.makeTime} min</span></td>
+        <td data-label="Time">${c.makeTime} min</td>
         <td data-label="Status">${escapeHtml(statusLabel(c))}</td>
       </tr>${expanded ? detailTemplate(c) : ''}`;
     }
