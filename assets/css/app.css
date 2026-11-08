@@ -2515,7 +2515,7 @@
       .summary-row .rating-value { flex: 0 0 auto; min-width: 22px; font-size: 10px; padding-right: 2px; }
     }
 
-    :root { --floating-edge: max(22px, env(safe-area-inset-right), env(safe-area-inset-bottom)); }
+    :root { --floating-edge: max(12px, env(safe-area-inset-right), env(safe-area-inset-bottom)); }
     .mobile-list-shortcuts {
       right: var(--floating-edge); bottom: calc(var(--floating-edge) + 62px);
       width: 46px; padding: 3px; gap: 6px; border-radius: 999px;
@@ -2545,3 +2545,8 @@
     @media (prefers-reduced-motion: reduce) {
       .mobile-list-shortcuts, #searchToggle.floating-search { transition: none; }
     }
+
+    .mobile-list-shortcuts .button[aria-pressed="true"] .sf-symbol,
+    .mobile-list-shortcuts .button.is-highlighted .sf-symbol,
+    #searchToggle.floating-search.is-highlighted svg,
+    body:has(#searchInput:focus) #searchToggle.floating-search svg { color: var(--accent); }

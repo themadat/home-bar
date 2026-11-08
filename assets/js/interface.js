@@ -386,6 +386,16 @@ function initFloatingListShortcuts() {
       $('#searchToggle').classList.add('floating-search');
       initFloatingSelection($('.mobile-list-shortcuts'));
       initFloatingSelection($('#searchToggle'));
+      const updateActive = () => {
+        const open = !$('#shoppingListModalOverlay').hidden;
+        [['mobileShoppingBuy', 'shoppingBuyToggle'], ['mobileShoppingHave', 'shoppingHaveToggle']].forEach(([floating, source]) => {
+          $('#' + floating).setAttribute('aria-pressed', String(open && $('#' + source).getAttribute('aria-pressed') === 'true'));
+        });
+      };
+      const activeObserver = new MutationObserver(updateActive);
+      activeObserver.observe($('#shoppingListModalOverlay'), {attributes: true, attributeFilter: ['hidden']});
+      ['shoppingBuyToggle', 'shoppingHaveToggle'].forEach((id) => activeObserver.observe($('#' + id), {attributes: true, attributeFilter: ['aria-pressed']}));
+      updateActive();
     }
 
 function initCollapsibleSearch() {
@@ -436,7 +446,7 @@ function initFloatingSelection(container) {
         buttons().forEach((button) => button.classList.remove('is-highlighted'));
       };
       container.addEventListener('pointerenter', (event) => {
-        if (event.pointerType === 'mouse') container.classList.add('is-expanded');
+        if (event.pointerType === 'mouse') { container.classList.add('is-expanded'); choose(event); }
       });
       container.addEventListener('pointerleave', () => { if (!dragging) finish(); });
       container.addEventListener('pointerdown', (event) => {
@@ -447,7 +457,7 @@ function initFloatingSelection(container) {
         choose(event);
         timer = setTimeout(() => { if (dragging) { container.classList.add('is-expanded'); choose(event); } }, 220);
       });
-      container.addEventListener('pointermove', (event) => { if (dragging) choose(event); });
+      container.addEventListener('pointermove', (event) => { if (dragging || event.pointerType === 'mouse') choose(event); });
       container.addEventListener('pointerup', (event) => {
         if (!dragging) return;
         choose(event);
