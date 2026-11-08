@@ -2586,3 +2586,18 @@
     @media (max-width: 760px) {
       .app > header, .list-quick-filter-bar { background: var(--bg); backdrop-filter: none; }
     }
+
+    :root { --floating-edge: max(22px, env(safe-area-inset-right), env(safe-area-inset-bottom)); }
+    @media (max-width: 1100px) {
+      :root { --floating-edge: 4px; }
+    }
+    @media (max-width: 760px) {
+      .cocktail-table thead { background: var(--panel-2); margin-bottom: 5px; border-bottom: 1px solid var(--line); border-radius: 0; }
+      .cocktail-table thead th, .cocktail-table thead .table-sort-button,
+      .cocktail-table thead .rating-audience-toggle { background: transparent; border: 0; border-radius: 0; box-shadow: none; }
+      .cocktail-table thead .rating-unlocked-controls { border: 0; border-radius: 0; background: transparent; }
+      .summary-row .phone-cocktail-facts { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr); gap: 8px; align-items: start; }
+      .phone-fact-base { text-align: left; }
+      .phone-fact-garnish { text-align: center; }
+      .phone-fact-glass { text-align: right; }
+    }
