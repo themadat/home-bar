@@ -2589,7 +2589,7 @@
 
     :root { --floating-edge: max(22px, env(safe-area-inset-right), env(safe-area-inset-bottom)); }
     @media (max-width: 1100px) {
-      :root { --floating-edge: 4px; }
+      :root { --floating-edge: 8px; }
     }
     @media (max-width: 760px) {
       .cocktail-table thead { background: var(--panel-2); margin-bottom: 5px; border-bottom: 1px solid var(--line); border-radius: 0; }
@@ -2600,4 +2600,19 @@
       .phone-fact-base { text-align: left; }
       .phone-fact-garnish { text-align: center; }
       .phone-fact-glass { text-align: right; }
+    }
+
+    @media (max-width: 1100px) {
+      .modal-overlay[id] {
+        padding: 5dvh 5vw !important;
+        align-items: center;
+        justify-content: center;
+      }
+      .modal-overlay[id] > .modal {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+      }
     }
