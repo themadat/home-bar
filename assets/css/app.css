@@ -2616,3 +2616,11 @@
         border-radius: var(--radius);
       }
     }
+
+    @media (max-width: 1100px) {
+      .topbar u { text-decoration: none; }
+      .shortcut-hints-visible [data-shortcut].shortcut-eligible::after { display: none; }
+      .summary-row .bookmark-cell { overflow: visible; }
+      .summary-row .bookmark-toggle { max-width: 100%; }
+      .summary-row .try-priority-level { top: 0; right: 0; width: 12px; height: 12px; font-size: 8px; }
+    }

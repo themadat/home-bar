@@ -1095,7 +1095,7 @@ let storedFriendRatings = {};
     $('#glasswareButton').title = 'Drinkware (D)';
     $('#manageBarButton').title = 'Manage My Bar (B)';
     $('#archiveButton').title = 'Archive (E)';
-    $('#shoppingListButton').title = 'Lists (P)';
+    $('#shoppingListButton').title = 'Lists (L)';
     $('#shoppingListButton').setAttribute('aria-label', 'Lists');
     $('#addCocktailButton').title = 'Add cocktail (Control+Option+Shift+A)';
     $('#settingsButton').title = 'Settings (Control+Option+Shift+,)';
@@ -1810,6 +1810,7 @@ document.addEventListener('keydown', (event) => {
           d: $('#glasswareButton'),
           b: $('#manageBarButton'),
           e: $('#archiveButton'),
+          l: $('#shoppingListButton'),
           p: $('#shoppingListButton')
         };
         const control = singleKeyControls[event.key.toLowerCase()];
@@ -2509,7 +2510,7 @@ let resizeTimer = null;
       $('#githubSyncButton').append(syncToolbarLabel);
       const singleKeyLabels = {
         lettersLiquorGalleryButton: 'G', glasswareButton: 'D', manageBarButton: 'B',
-        archiveButton: 'E', shoppingListButton: 'P'
+        archiveButton: 'E', shoppingListButton: 'L'
       };
       Object.entries(labels).forEach(([id, text]) => {
         const button = $('#' + id);
